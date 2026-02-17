@@ -1,0 +1,29 @@
+name: SSOT Validation OG10
+
+on:
+  pull_request:
+    paths:
+      - 'ssot/**'
+      - 'scripts/ssot/**'
+      - 'docs/ssot/**'
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'ssot/**'
+      - 'scripts/ssot/**'
+      - 'docs/ssot/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          pip install pyyaml
+      - name: Run OG10 SSOT Validation
+        run: |
+          bash scripts/ssot/validate_all_ssot.sh

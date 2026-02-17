@@ -1,0 +1,847 @@
+skills_registry_og10:
+  version: OG10_SKILLS_REGISTRY_v1
+  generated_at: '2026-02-17'
+  rules:
+    language_primary: pt-BR
+    language_fallbacks:
+    - en-US
+    - es-ES
+    lazy_loading_levels:
+      L1: index_only
+      L2: load_skill_md
+      L3: load_assets_and_scripts
+    budget_guard:
+      strategy: '85_15'
+      notes: L1-L2 default. L3 somente por trigger. Evitar prompt bloat.
+  metric_binding:
+    universal_skills: 3
+    pain_pack: 15
+    addons_pack: 40
+    action_pack: 250
+    action_pack_mode: referenced_only
+  required_sets:
+    universal_skills_3:
+    - skill_id: ssot-guard
+    - skill_id: doctor-runner
+    - skill_id: evidence-publisher
+  skills:
+  - skill_id: ssot-guard
+    name: SSOT Guard
+    description: 'Mantém SSOT consistente: schemas, registries, no-holes, estrutura
+      repo-ready e sem placeholders.'
+    visibility: CORE
+    level_support:
+    - L1
+    - L2
+    - L3
+    doctor_required: doctor2
+    evidence_required: true
+    evidence_outputs:
+    - evidence/SSOT_GUARD_REPORT.md
+    - evidence/SSOT_GUARD_HASHES.txt
+    path: skills/ssot-guard
+    pack: UNIVERSAL
+  - skill_id: doctor-runner
+    name: Doctor Runner
+    description: Executa gates e validações (Doctor1/Doctor2) e falha no vermelho.
+      Produz evidências sanitizadas.
+    visibility: CORE
+    level_support:
+    - L1
+    - L2
+    - L3
+    doctor_required: doctor2
+    evidence_required: true
+    evidence_outputs:
+    - evidence/DOCTOR1_RESULT.json
+    - evidence/DOCTOR2_RESULT.json
+    - evidence/DOCTOR_SUMMARY.md
+    path: skills/doctor-runner
+    pack: UNIVERSAL
+  - skill_id: evidence-publisher
+    name: Evidence Publisher
+    description: Gera manifests/hashes e publica evidências SSOT_PUBLIC (sanitizadas)
+      e pointers públicos de auditoria.
+    visibility: CORE
+    level_support:
+    - L1
+    - L2
+    - L3
+    doctor_required: doctor1
+    evidence_required: true
+    evidence_outputs:
+    - evidence/EVIDENCE_MANIFEST.json
+    - evidence/EVIDENCE_HASHES.txt
+    - evidence/EVIDENCE_BUNDLE_INDEX.md
+    path: skills/evidence-publisher
+    pack: UNIVERSAL
+  - skill_id: pain-secrets-guard
+    name: Secrets Guard
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-secrets-guard
+    description: Evita vazamento de tokens, chaves e cookies em commits e docs públicos.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-sanitize-evidence
+    name: Evidence Sanitizer
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-sanitize-evidence
+    description: 'Sanitiza evidências para SSOT_PUBLIC: remove payloads reais e PII.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-no-holes-enforcer
+    name: No Holes Enforcer
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-no-holes-enforcer
+    description: 'Garante preenchimento completo: contagens, IDs e enums válidos.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-schema-contracts
+    name: Schema & Contracts
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-schema-contracts
+    description: Mantém schemas e contratos públicos consistentes e verificáveis.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-idempotency
+    name: Idempotency Control
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-idempotency
+    description: Reduz duplicação de ações e efeitos colaterais em automações e jobs.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-cross-tenant
+    name: Cross-Tenant Guard
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-cross-tenant
+    description: Impede mistura de tenants e reforça filtros e fronteiras de dados.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-policy-gates
+    name: Policy Gates
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-policy-gates
+    description: 'Aplica políticas públicas de risco: allowlist, bloqueios e limitação.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-run-trace-public
+    name: Public Trace Lite
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-run-trace-public
+    description: Gera trilha pública mínima (hashes e receipts), sem conteúdo sensível.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-drift-detection
+    name: Drift Detector
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-drift-detection
+    description: 'Detecta drift de SSOT: mudanças fora do padrão ou fora do schema.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-ci-failfast
+    name: CI Fail-Fast
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-ci-failfast
+    description: Falha cedo no CI quando invariantes e gates não são atendidos. (SSOT_PUBLIC,
+      sem segredos e sem logs brutos).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-rollback-plan
+    name: Rollback Plan
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-rollback-plan
+    description: Define plano de rollback e reversão de mudanças em alto nível. (SSOT_PUBLIC,
+      sem segredos e sem logs brutos).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-doc-consistency
+    name: Doc Consistency
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-doc-consistency
+    description: 'Padroniza docs públicas: títulos, links, navegação e coerência.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-versioning
+    name: Versioning Discipline
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-versioning
+    description: 'Controle de versões sem buracos: version bumps e changelog público.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-safe-templates
+    name: Safe Templates
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-safe-templates
+    description: 'Templates de issues/PRs seguros: sem anexos sensíveis e checklist.
+      (SSOT_PUBLIC, sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: pain-release-proof
+    name: Release Proof
+    pack: PAIN
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/pain-release-proof
+    description: 'Provas mínimas de release: SHAs, checks e links RAW 200. (SSOT_PUBLIC,
+      sem segredos e sem logs brutos).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-lint-yaml
+    name: YAML Lint
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-lint-yaml
+    description: Valida YAML e estrutura de registries antes do commit. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-jsonschema-check
+    name: JSON Schema Check
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-jsonschema-check
+    description: Valida JSON schemas e padrões de campos. (SSOT_PUBLIC, foco em qualidade
+      e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-link-checker
+    name: Link Checker
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-link-checker
+    description: Checa links internos e RAW URLs (HTTP 200) para docs públicas. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-readme-builder
+    name: README Builder
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-readme-builder
+    description: Gera README/Portal com navegação e ordem de leitura. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-security-md
+    name: SECURITY.md Generator
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-security-md
+    description: Mantém política de segurança pública e atualizada. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-issue-templates
+    name: Issue Templates
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-issue-templates
+    description: Cria templates públicos seguros (security, bug, docs). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-changelog
+    name: Changelog Lite
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-changelog
+    description: Changelog público com alterações SSOT_PUBLIC. (SSOT_PUBLIC, foco
+      em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-hash-manifest
+    name: Hash Manifest
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-hash-manifest
+    description: Gera lista de SHAs para artefatos públicos. (SSOT_PUBLIC, foco em
+      qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-repo-layout
+    name: Repo Layout
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-repo-layout
+    description: Cria estrutura de pastas SSOT padrão e idempotente. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-ci-workflow
+    name: CI Workflow
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-ci-workflow
+    description: Cria/atualiza workflow de validação SSOT no GitHub Actions. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-precommit-hooks
+    name: Pre-commit Hooks
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-precommit-hooks
+    description: Sugere hooks públicos (sem segredos) para qualidade. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-doc-index
+    name: Doc Indexer
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-doc-index
+    description: Gera índice de docs e mapa de navegação. (SSOT_PUBLIC, foco em qualidade
+      e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-risk-labels
+    name: Risk Labels
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-risk-labels
+    description: Padroniza labels de risco (security, compliance, docs). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-public-contracts
+    name: Public Contracts
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-public-contracts
+    description: Modelos de contratos públicos para tool/MCP/skills. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-redaction-rules
+    name: Redaction Rules
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-redaction-rules
+    description: Regras públicas de masking/redaction e exemplos seguros. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-retention-policy
+    name: Retention Policy
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-retention-policy
+    description: Política pública de retenção em alto nível (sem números internos).
+      (SSOT_PUBLIC, foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-telemetry-lite
+    name: Telemetry Lite
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-telemetry-lite
+    description: Métricas públicas agregadas (sem payloads e sem PII). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-rate-limit-spec
+    name: Rate Limit Spec
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-rate-limit-spec
+    description: Spec público de limites por classe de risco. (SSOT_PUBLIC, foco em
+      qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-audit-pointer
+    name: Audit Pointers
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-audit-pointer
+    description: Ponteiros públicos para evidências e receipts sanitizados. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-compat-matrix
+    name: Compatibility Matrix
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-compat-matrix
+    description: Matriz pública de compatibilidade (versões, schemas). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-env-bootstrap
+    name: Env Bootstrap
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-env-bootstrap
+    description: 'Bootstrap local: venv, deps mínimos e comandos de validação. (SSOT_PUBLIC,
+      foco em qualidade e segurança).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-faq-public
+    name: FAQ Public
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-faq-public
+    description: 'FAQ público: o que entra e o que não entra no SSOT_PUBLIC. (SSOT_PUBLIC,
+      foco em qualidade e segurança).'
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-style-guide
+    name: Style Guide
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-style-guide
+    description: Guia de estilo para docs SSOT_PUBLIC. (SSOT_PUBLIC, foco em qualidade
+      e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-licenses
+    name: Licenses
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-licenses
+    description: Arquivo de licença e avisos quando aplicável. (SSOT_PUBLIC, foco
+      em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-contrib-guide
+    name: Contrib Guide
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-contrib-guide
+    description: CONTRIBUTING com regras de segurança e PR checklist. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-codeowners
+    name: CODEOWNERS
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-codeowners
+    description: Sugere CODEOWNERS para áreas críticas (público, sem dados). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-branch-protection
+    name: Branch Protection Spec
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-branch-protection
+    description: Spec público para proteção de branch (alto nível). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-release-notes
+    name: Release Notes
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-release-notes
+    description: Notas públicas de release e checklist. (SSOT_PUBLIC, foco em qualidade
+      e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-badge-status
+    name: Status Badges
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-badge-status
+    description: Badges no README para CI e validação. (SSOT_PUBLIC, foco em qualidade
+      e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-sbom-lite
+    name: SBOM Lite
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-sbom-lite
+    description: SBOM público simplificado quando aplicável. (SSOT_PUBLIC, foco em
+      qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-threat-model-lite
+    name: Threat Model Lite
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-threat-model-lite
+    description: Threat model público em alto nível (sem vetores exploráveis). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-api-surface-map
+    name: API Surface Map
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-api-surface-map
+    description: Mapa público de superfícies (menu/palette/capô aberto). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-glossary
+    name: Glossary
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-glossary
+    description: Glossário público de termos (SSOT, MCP, gates, evidences). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-templates-docs
+    name: Docs Templates
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-templates-docs
+    description: Templates de docs para padronização sem placeholders. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-sample-data-safe
+    name: Safe Sample Data
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-sample-data-safe
+    description: Conjunto de dados fictício e seguro para exemplos. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-naming-conventions
+    name: Naming Conventions
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-naming-conventions
+    description: Regras públicas de nomes (IDs, pastas, arquivos). (SSOT_PUBLIC, foco
+      em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-error-codes
+    name: Error Codes
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-error-codes
+    description: Tabela pública de códigos de erro (sem detalhes sensíveis). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-migration-notes
+    name: Migration Notes
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-migration-notes
+    description: Notas públicas de migração entre versões de schema. (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-validation-report
+    name: Validation Report
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-validation-report
+    description: Relatório público de validação (PASS/FAIL e hashes). (SSOT_PUBLIC,
+      foco em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
+  - skill_id: addon-doc-packager
+    name: Doc Packager
+    pack: ADDON
+    visibility: INVISIBLE
+    doctor_required: doctor1
+    evidence_required: false
+    path: skills/addon-doc-packager
+    description: Empacota docs públicas e gera índice de bundle. (SSOT_PUBLIC, foco
+      em qualidade e segurança).
+    level_support:
+    - L1
+    - L2
+    - L3
+    evidence_outputs: []
