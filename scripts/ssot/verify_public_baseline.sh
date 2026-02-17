@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DEFAULT_TAG="ssot_public_og10_2026-02-17_final"
-TAG="${1:-$DEFAULT_TAG}"
-REPO="ADEILSONTAVARES/gitnanu-ssot-public"
+TAG_ARG="${1:-latest}"
 
-# Atalho: "latest" resolve para o tag mais recente ssot_public_og10_*_final
-if [[ "${TAG}" == "latest" ]]; then
-  TAG="$(git tag --list "ssot_public_og10_*_final" --sort=-creatordate | head -n 1 || true)"
-  if [[ -z "${TAG}" ]]; then
-    echo "FAIL: nenhum tag ssot_public_og10_*_final encontrado"
-    exit 5
+# resolve TAG
+if [ "$TAG_ARG" = "latest" ]; then
+  TAG="$(git tag --list 'ssot_public_og10_*_final' --sort=-creatordate | head -n 1 || true)"
+  if [ -z "$TAG" ]; then
+    echo "FAIL: nenhum tag ssot_public_og10_*_final encontrado."
+    exit 3
   fi
+else
+  TAG="$TAG_ARG"
 fi
 
-# 1) valida tag existe antes de resolver ^{commit}
+# tag existe?
 if ! git rev-parse -q --verify "${TAG}" >/dev/null; then
   echo "FAIL: tag inexistente: ${TAG}"
   echo
@@ -22,35 +22,64 @@ if ! git rev-parse -q --verify "${TAG}" >/dev/null; then
   git tag --list "ssot_public_og10_*" | tail -n 50 || true
   echo
   echo "Dica: use um tag real, por exemplo:"
-  echo "  bash scripts/ssot/verify_public_baseline.sh ${DEFAULT_TAG}"
+  echo "  bash scripts/ssot/verify_public_baseline.sh ssot_public_og10_YYYY-MM-DD_final"
   echo "Ou use:"
   echo "  bash scripts/ssot/verify_public_baseline.sh latest"
   exit 4
 fi
 
-HEAD_SHA="$(git rev-parse --short HEAD)"
-TAG_SHA="$(git rev-parse --short "${TAG}^{commit}")"
+HEAD="$(git rev-parse --short HEAD)"
+TAG_COMMIT="$(git rev-parse --short "${TAG}^{commit}")"
 
-echo "HEAD=${HEAD_SHA}"
-echo "TAG_COMMIT=${TAG_SHA}"
+echo "HEAD=${HEAD}"
+echo "TAG_COMMIT=${TAG_COMMIT}"
 
-if [[ "${HEAD_SHA}" != "${TAG_SHA}" ]]; then
+if [ "$HEAD" != "$TAG_COMMIT" ]; then
   echo "FAIL: tag não aponta para o HEAD"
-  exit 2
+  echo "  HEAD      = $HEAD"
+  echo "  TAG^{commit} = $TAG_COMMIT"
+  exit 10
 fi
 
-receipt_url="https://raw.githubusercontent.com/${REPO}/${TAG}/evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md"
-docs_url="https://raw.githubusercontent.com/${REPO}/${TAG}/docs/DOCS_INDEX.md"
+# Detecta repo GitHub para checar RAW 200
+REMOTE_URL="$(git config --get remote.origin.url || true)"
+OWNER_REPO=""
+if echo "$REMOTE_URL" | grep -q "^git@github.com:"; then
+  OWNER_REPO="$(echo "$REMOTE_URL" | sed -E 's#^git@github.com:##; s#\.git$##')"
+elif echo "$REMOTE_URL" | grep -q "^https://github.com/"; then
+  OWNER_REPO="$(echo "$REMOTE_URL" | sed -E 's#^https://github.com/##; s#\.git$##')"
+fi
 
-receipt_code="$(curl -s -o /dev/null -w "%{http_code}" "${receipt_url}")"
-docs_code="$(curl -s -o /dev/null -w "%{http_code}" "${docs_url}")"
+if [ -z "$OWNER_REPO" ]; then
+  echo "WARN: origin não é GitHub. Pulando checagem RAW."
+  echo "PASS: TAG == HEAD"
+  exit 0
+fi
 
-echo "receipt=${receipt_code}"
-echo "docs=${docs_code}"
+# caminhos esperados (ajuste se seu repo usar outros)
+TODAY="$(date +%F)"
+RECEIPT_PATH="docs/ssot_public/SSOT_PUBLIC_RECEIPT_${TODAY}.md"
+DOCS_PATH="docs/DOCS_INDEX.md"
 
-if [[ "${receipt_code}" != "200" || "${docs_code}" != "200" ]]; then
-  echo "FAIL: github raw não está servindo receipt/docs pelo tag"
-  exit 3
+RECEIPT_URL="https://raw.githubusercontent.com/${OWNER_REPO}/${TAG}/${RECEIPT_PATH}"
+DOCS_URL="https://raw.githubusercontent.com/${OWNER_REPO}/${TAG}/${DOCS_PATH}"
+
+receipt="$(curl -s -o /dev/null -w "%{http_code}" "$RECEIPT_URL" || echo 000)"
+docs="$(curl -s -o /dev/null -w "%{http_code}" "$DOCS_URL" || echo 000)"
+
+echo "receipt=${receipt}"
+echo "docs=${docs}"
+
+if [ "$receipt" != "200" ]; then
+  echo "FAIL: receipt RAW não retornou 200"
+  echo "  $RECEIPT_URL"
+  exit 20
+fi
+
+if [ "$docs" != "200" ]; then
+  echo "FAIL: docs RAW não retornou 200"
+  echo "  $DOCS_URL"
+  exit 21
 fi
 
 echo "PASS: SSOT_PUBLIC OG10 baseline ok (tag=${TAG})"
