@@ -7,7 +7,7 @@
 
 ## Regras
 - Tudo em `docs/` entra completo ou não entra.
-- Proibido placeholder: COLE AQUI, TODO, em breve, <NUMERO>.
+- Proibido marcadores de rascunho e preenchimento.
 - Proibido texto de conversa operacional (prints, “ou seja”, etc.).
 - Nunca colar Markdown no Terminal. Documento é no editor.
 
