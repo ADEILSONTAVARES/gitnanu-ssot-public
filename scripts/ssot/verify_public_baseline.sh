@@ -5,11 +5,7 @@ TAG_ARG="${1:-latest}"
 
 # resolve TAG
 if [ "$TAG_ARG" = "latest" ]; then
-  TAG="$(git tag --list 'ssot_public_og10_*_final' --sort=-creatordate | head -n 1 || true)"
-  if [ -z "$TAG" ]; then
-    echo "FAIL: nenhum tag ssot_public_og10_*_final encontrado."
-    exit 3
-  fi
+  TAG="ssot_public_og10_latest"
 else
   TAG="$TAG_ARG"
 fi
