@@ -1,119 +1,127 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# -----------------------------
-# SSOT_PUBLIC OG10 - Release Baseline
-# - retag determinístico apontando para o HEAD
-# - push tag
-# - verifica RAW 200 + HEAD == TAG^{commit}
-# -----------------------------
+TAG_ARG="${1:-auto}"
 
-usage() {
-  echo "Uso:"
-  echo "  bash scripts/ssot/release_public_baseline.sh [TAG|latest|auto]"
-  echo
-  echo "Exemplos:"
-  echo "  bash scripts/ssot/release_public_baseline.sh auto"
-  echo "  bash scripts/ssot/release_public_baseline.sh ssot_public_og10_2026-02-17_final"
-  echo
-}
+# requirements
+command -v git >/dev/null 2>&1 || { echo "FAIL: git não encontrado"; exit 2; }
+command -v curl >/dev/null 2>&1 || { echo "FAIL: curl não encontrado"; exit 2; }
 
-# resolve default branch do origin/HEAD
-DEFAULT_BRANCH="$(git symbolic-ref -q --short refs/remotes/origin/HEAD | sed 's#^origin/##' || true)"
-[ -n "${DEFAULT_BRANCH:-}" ] || DEFAULT_BRANCH="main"
-
-ARG="${1:-auto}"
-
-# exige estar dentro de um repo git
-git rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo "FAIL: não está em um repo git"; exit 2; }
-
-# exige branch correta (não obrigatório, mas reduz caos)
-CUR_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-if [ "$CUR_BRANCH" != "$DEFAULT_BRANCH" ]; then
-  echo "WARN: você está em '$CUR_BRANCH' mas o default é '$DEFAULT_BRANCH'."
-  echo "      Recomendo: git checkout $DEFAULT_BRANCH"
-fi
-
-# exige working tree limpa
+# working tree clean
 if [ -n "$(git status --porcelain)" ]; then
   echo "FAIL: working tree não está limpa. Rode:"
   echo "  git status --porcelain"
-  exit 3
+  exit 10
 fi
 
-# exige scripts de verificação existentes
-VERIFY="scripts/ssot/verify_public_baseline.sh"
-if [ ! -f "$VERIFY" ]; then
-  echo "FAIL: não encontrei $VERIFY"
-  exit 4
-fi
+# branch default (evita confusão main/principal)
+DEFAULT_BRANCH="$(git symbolic-ref -q --short refs/remotes/origin/HEAD | sed 's#^origin/##')"
+[ -n "$DEFAULT_BRANCH" ] || DEFAULT_BRANCH="main"
 
-# HEAD e data
+git fetch --all --tags --prune >/dev/null 2>&1 || true
+
 HEAD_SHA_FULL="$(git rev-parse HEAD)"
 HEAD_SHA_SHORT="$(git rev-parse --short HEAD)"
-TODAY="$(date +%F)"  # YYYY-MM-DD (usa timezone local do sistema)
 
 # resolve TAG
-TAG=""
-if [ "$ARG" = "latest" ]; then
-  # "latest" aqui significa: pegar o último tag ssot_public_og10_*_final
-  TAG="$(git tag --list 'ssot_public_og10_*_final' --sort=-creatordate | head -n 1 || true)"
-  if [ -z "$TAG" ]; then
-    echo "FAIL: não existe tag ssot_public_og10_*_final ainda."
-    exit 5
-  fi
-elif [ "$ARG" = "auto" ]; then
+TODAY="$(date +%F)"
+if [ "$TAG_ARG" = "auto" ] || [ -z "$TAG_ARG" ]; then
   TAG="ssot_public_og10_${TODAY}_final"
 else
-  TAG="$ARG"
+  TAG="$TAG_ARG"
 fi
 
-# sanity de formato (não bloqueia, mas alerta)
-case "$TAG" in
-  ssot_public_og10_*_final) : ;;
-  *)
-    echo "WARN: TAG fora do padrão esperado: $TAG"
-    ;;
-esac
+VERIFY="scripts/ssot/verify_public_baseline.sh"
 
-echo "HEAD=$HEAD_SHA_SHORT"
-echo "TAG=$TAG"
-echo "DEFAULT_BRANCH=$DEFAULT_BRANCH"
+echo "HEAD=${HEAD_SHA_SHORT}"
+echo "TAG=${TAG}"
+echo "DEFAULT_BRANCH=${DEFAULT_BRANCH}"
 
-# deletar tag local/remota se já existir, para garantir que aponta para o HEAD (retag canônico)
-if git rev-parse -q --verify "$TAG" >/dev/null; then
-  echo "INFO: tag local existe -> removendo: $TAG"
-  git tag -d "$TAG" >/dev/null
+# sanity: script verify existe
+if [ ! -x "$VERIFY" ]; then
+  echo "FAIL: verify não encontrado ou não executável: $VERIFY"
+  exit 11
 fi
 
-# remover remoto (se existir)
-if git ls-remote --tags origin | grep -q "refs/tags/$TAG"; then
-  echo "INFO: tag remota existe -> removendo no origin: $TAG"
-  git push origin ":refs/tags/$TAG" >/dev/null
+# Se tag existe e já aponta para HEAD, não retaga (idempotência)
+TAG_EXISTS="0"
+if git rev-parse -q --verify "${TAG}" >/dev/null 2>&1; then
+  TAG_EXISTS="1"
 fi
 
-# criar tag anotada apontando para HEAD
+if [ "$TAG_EXISTS" = "1" ]; then
+  TAG_COMMIT_FULL="$(git rev-parse "${TAG}^{commit}" 2>/dev/null || true)"
+  TAG_COMMIT_SHORT="$(git rev-parse --short "${TAG}^{commit}" 2>/dev/null || true)"
+
+  if [ -n "$TAG_COMMIT_FULL" ] && [ "$TAG_COMMIT_FULL" = "$HEAD_SHA_FULL" ]; then
+    echo "INFO: tag já aponta para o HEAD -> sem retag"
+    echo
+    echo "---- VERIFY (tag explícita) ----"
+    bash "$VERIFY" "$TAG"
+    echo
+    echo "---- VERIFY (latest) ----"
+    bash "$VERIFY" latest || true
+
+    REMOTE_URL="$(git config --get remote.origin.url || true)"
+    OWNER_REPO=""
+    if echo "$REMOTE_URL" | grep -q "^git@github.com:"; then
+      OWNER_REPO="$(echo "$REMOTE_URL" | sed -E 's#^git@github.com:##; s#\.git$##')"
+    elif echo "$REMOTE_URL" | grep -q "^https://github.com/"; then
+      OWNER_REPO="$(echo "$REMOTE_URL" | sed -E 's#^https://github.com/##; s#\.git$##')"
+    fi
+
+    if [ -n "$OWNER_REPO" ]; then
+      RECEIPT_PATH="docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md"
+      DOCS_INDEX_PATH="docs/DOCS_INDEX.md"
+      echo
+      echo "---- RAW LINKS ----"
+      echo "RECEIPT (por tag): https://raw.githubusercontent.com/${OWNER_REPO}/${TAG}/${RECEIPT_PATH}"
+      echo "DOCS_INDEX (por tag): https://raw.githubusercontent.com/${OWNER_REPO}/${TAG}/${DOCS_INDEX_PATH}"
+    fi
+
+    echo
+    echo "DONE: baseline verificado (sem retag)."
+    exit 0
+  else
+    echo "INFO: tag existe mas está atrás do HEAD (TAG_COMMIT=${TAG_COMMIT_SHORT:-?}) -> retag necessário"
+  fi
+fi
+
+# Garantir que estamos no default branch atualizado
+git checkout "$DEFAULT_BRANCH" >/dev/null 2>&1
+git pull --ff-only origin "$DEFAULT_BRANCH" >/dev/null 2>&1 || true
+
+# Remove tag local se existir
+if git rev-parse -q --verify "${TAG}" >/dev/null 2>&1; then
+  echo "INFO: tag local existe -> removendo: ${TAG}"
+  git tag -d "${TAG}" >/dev/null 2>&1 || true
+fi
+
+# Remove tag remota se existir
+if git ls-remote --tags origin "${TAG}" | grep -q "${TAG}$"; then
+  echo "INFO: tag remota existe -> removendo no origin: ${TAG}"
+  git push origin ":refs/tags/${TAG}" >/dev/null 2>&1 || true
+fi
+
+# Cria tag anotada apontando pro HEAD
 MSG="SSOT_PUBLIC OG10 PASS (baseline at HEAD ${HEAD_SHA_SHORT})"
 git tag -a "$TAG" -m "$MSG" "$HEAD_SHA_FULL"
 
-# push tag
+# Push tag
 git push origin "$TAG"
 
-# verificar baseline por tag explícita
+# Verificar baseline por tag explícita
 echo
 echo "---- VERIFY (tag explícita) ----"
 bash "$VERIFY" "$TAG"
 
-# verificar baseline por latest (se o verify suportar latest)
+# Verificar baseline por latest (se suportar latest)
 echo
 echo "---- VERIFY (latest) ----"
 bash "$VERIFY" latest || true
 
-# imprimir URLs RAW (receipt + docs), se for GitHub
+# Imprimir URLs RAW (receipt + docs), se for GitHub
 REMOTE_URL="$(git config --get remote.origin.url || true)"
-# normaliza github URLs:
-# - git@github.com:OWNER/REPO.git
-# - https://github.com/OWNER/REPO.git
 OWNER_REPO=""
 if echo "$REMOTE_URL" | grep -q "^git@github.com:"; then
   OWNER_REPO="$(echo "$REMOTE_URL" | sed -E 's#^git@github.com:##; s#\.git$##')"
@@ -128,8 +136,6 @@ if [ -n "$OWNER_REPO" ]; then
   echo "---- RAW LINKS ----"
   echo "RECEIPT (por tag): https://raw.githubusercontent.com/${OWNER_REPO}/${TAG}/${RECEIPT_PATH}"
   echo "DOCS_INDEX (por tag): https://raw.githubusercontent.com/${OWNER_REPO}/${TAG}/${DOCS_INDEX_PATH}"
-  echo
-  echo "Se o receipt estiver com outra data no nome, ajuste o caminho acima."
 else
   echo
   echo "INFO: origin não parece ser GitHub; pulei impressão de raw links."
