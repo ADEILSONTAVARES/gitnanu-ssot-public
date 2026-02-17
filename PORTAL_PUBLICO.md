@@ -5,7 +5,7 @@ Este portal é o ponto de entrada público para a documentação do GitNanu no e
 ## Comece por aqui
 - **Visão geral (CAPA)**: [GITNANU_MASTER_SSOT_PUBLIC](./GITNANU_MASTER_SSOT_PUBLIC.md)
 - **Documento completo (FULL)**: [GITNANU_MASTER_SSOT_PUBLIC_FULL](./GITNANU_MASTER_SSOT_PUBLIC_FULL.md)
-- **Como contribuir com segurança**: [CONTRIBUTING](../../CONTRIBUTING.md)
+- **Como contribuir com segurança**: [CONTRIBUTING](./CONTRIBUTING.md)
 
 ## O que este repositório publica
 - Documentação SSOT_PUBLIC
