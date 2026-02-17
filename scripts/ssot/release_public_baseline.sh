@@ -104,7 +104,7 @@ if git ls-remote --tags origin "${TAG}" | grep -q "${TAG}$"; then
 fi
 
 # Cria tag anotada apontando pro HEAD
-MSG="SSOT_PUBLIC OG10 PASS (baseline at HEAD ${HEAD_SHA_SHORT})"
+MSG="SSOT_PUBLIC PASS (baseline at HEAD ${HEAD_SHA_SHORT})"
 git tag -a "$TAG" -m "$MSG" "$HEAD_SHA_FULL"
 
 # Push tag

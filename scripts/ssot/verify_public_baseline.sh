@@ -76,4 +76,4 @@ if [ "$docs" != "200" ]; then
   exit 21
 fi
 
-echo "PASS: SSOT_PUBLIC OG10 baseline ok (tag=${TAG})"
+echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
