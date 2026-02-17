@@ -1,21 +1,32 @@
 # GitNanu — SSOT_PUBLIC
 
-Bem-vindo ao repositório **público** do GitNanu.  
-Aqui vive somente material **SSOT_PUBLIC**: documentação, contratos e evidências **sanitizadas**.
+Este repositório é a **fachada pública** do GitNanu no ecossistema NANUCAI.  
+Aqui só existe conteúdo **SSOT_PUBLIC**: documentação sanitizada, contratos públicos e orientações de contribuição sem risco.
 
-## Comece por aqui (1 minuto)
-➡️ **Portal Público (entrada):** [PORTAL_PUBLICO.md](./PORTAL_PUBLICO.md)
+## Comece por aqui (ordem recomendada)
+1) **Portal (entrada e navegação):** [PORTAL_PUBLICO](./PORTAL_PUBLICO.md)  
+2) **CAPA (visão e regras públicas):** [GITNANU_MASTER_SSOT_PUBLIC](./GITNANU_MASTER_SSOT_PUBLIC.md)  
+3) **FULL (documento completo público):** [GITNANU_MASTER_SSOT_PUBLIC_FULL](./GITNANU_MASTER_SSOT_PUBLIC_FULL.md)  
+4) **Como contribuir com segurança:** [CONTRIBUTING](./CONTRIBUTING.md)
 
-## O que existe aqui
-- Documentação SSOT_PUBLIC (Capa e Full)
-- Contratos e referências públicas (quando aplicável)
-- Evidências sanitizadas (quando aplicável)
+## O que é publicado aqui
+- Documentação **SSOT_PUBLIC**
+- Schemas e contratos públicos (quando existirem)
+- Evidências **sanitizadas** (quando aplicável)
 
-## O que NUNCA deve aparecer aqui
+## O que NÃO é publicado aqui
 - Credenciais (tokens, chaves, cookies)
 - Logs com payload real
-- Qualquer parâmetro interno confidencial
-- Material de área interna restrita
+- Parâmetros internos confidenciais e políticas internas
+- Qualquer material de área interna restrita
 
-## Segurança
-Se você achar qualquer risco de vazamento, abra uma issue e marque como **security** (sem anexar dados reais).
+## Garantias de segurança (regras duras)
+- Este repo é **público**: tudo aqui precisa ser tratável como “pode ir para a internet”.
+- Se algo parecer sensível, **não publique**. Primeiro sanitize ou mova para a camada privada.
+- Se houver risco de vazamento: reporte como **security** (sem anexar dados reais).
+
+## Reporte de risco (security)
+Se você identificar risco de vazamento ou falha de sanitização:
+- Abra uma issue com o mínimo de detalhes
+- Sinalize como **security**
+- Não anexe dados reais
