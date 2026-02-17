@@ -9,6 +9,8 @@ Aqui só existe conteúdo **SSOT_PUBLIC**: documentação sanitizada, contratos 
 3) **FULL (documento completo público):** [GITNANU_MASTER_SSOT_PUBLIC_FULL](./GITNANU_MASTER_SSOT_PUBLIC_FULL.md)  
 4) **Como contribuir com segurança:** [CONTRIBUTING](./CONTRIBUTING.md)
 
+
+5) **Política de Segurança (SSOT_PUBLIC):** [SECURITY](./SECURITY.md)
 ## O que é publicado aqui
 - Documentação **SSOT_PUBLIC**
 - Schemas e contratos públicos (quando existirem)

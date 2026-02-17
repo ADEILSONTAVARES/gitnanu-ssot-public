@@ -7,6 +7,7 @@ Este portal é o ponto de entrada público para a documentação do GitNanu no e
 - **Documento completo (FULL)**: [GITNANU_MASTER_SSOT_PUBLIC_FULL](./GITNANU_MASTER_SSOT_PUBLIC_FULL.md)
 - **Como contribuir com segurança**: [CONTRIBUTING](./CONTRIBUTING.md)
 
+- **Política de Segurança (SSOT_PUBLIC)**: [SECURITY](./SECURITY.md)
 ## Leitura guiada
 Se você está chegando agora, siga esta ordem:
 1. Leia a **CAPA** para entender a visão e as regras públicas.
