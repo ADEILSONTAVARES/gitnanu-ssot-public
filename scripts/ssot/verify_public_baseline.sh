@@ -36,7 +36,7 @@ echo "TAG_COMMIT=${TAG_COMMIT}"
 
 if [ "$HEAD" != "$TAG_COMMIT" ]; then
   echo "FAIL: tag não aponta para o HEAD"
-  echo "  HEAD      = $HEAD"
+  echo "  HEAD        = $HEAD"
   echo "  TAG^{commit} = $TAG_COMMIT"
   exit 10
 fi
@@ -56,9 +56,7 @@ if [ -z "$OWNER_REPO" ]; then
   exit 0
 fi
 
-# caminhos esperados (ajuste se seu repo usar outros)
-TODAY="$(date +%F)"
-RECEIPT_PATH="docs/ssot_public/SSOT_PUBLIC_RECEIPT_${TODAY}.md"
+RECEIPT_PATH="docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md"
 DOCS_PATH="docs/DOCS_INDEX.md"
 
 RECEIPT_URL="https://raw.githubusercontent.com/${OWNER_REPO}/${TAG}/${RECEIPT_PATH}"
