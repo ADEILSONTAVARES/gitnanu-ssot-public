@@ -21,6 +21,5 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
 ## Carimbo de baseline
 
 - VALIDATED_COMMIT: 65a9408
-- RECEIPT_COMMIT: ad7b08d
-- BASELINE_TAG: ssot_public_og10_2026-02-17_final -> ad7b08d
-
+- RECEIPT_COMMIT: ab06c00
+- BASELINE_TAG: ssot_public_og10_2026-02-17_final -> ab06c00
