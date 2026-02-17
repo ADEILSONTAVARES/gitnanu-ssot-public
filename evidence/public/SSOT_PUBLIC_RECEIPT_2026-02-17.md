@@ -18,3 +18,9 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
 - 2026-02-17: SSOT OG10 PASS (validate_all_ssot) no commit 65a9408.
 - PASS_AT: 65a9408 (SSOT_PUBLIC OG10 VALIDATION OK)
 
+## Carimbo de baseline
+
+- VALIDATED_COMMIT: 65a9408
+- RECEIPT_COMMIT: ad7b08d
+- BASELINE_TAG: ssot_public_og10_2026-02-17_final -> ad7b08d
+
