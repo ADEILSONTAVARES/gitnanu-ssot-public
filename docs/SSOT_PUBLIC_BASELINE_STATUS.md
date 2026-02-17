@@ -21,7 +21,7 @@
 - Este repositório é **SSOT_PUBLIC**.
 - É proibido armazenar aqui:
   - segredos (tokens, chaves, credenciais)
-  - “fórmula Coca-Cola”
+  - “fórmula Private Formula”
   - dados de usuários (PII), logs sensíveis, ledgers privados
 - GitNanu é a camada que opera terminal/VPS e entrega apenas o necessário ao público.
 - A nossa fórmula é nossa. A fórmula do cliente é do cliente. Cada uma guardada no seu cofre correto.

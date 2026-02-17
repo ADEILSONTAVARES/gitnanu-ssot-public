@@ -8,5 +8,5 @@ Este receipt é um ponteiro estável do SSOT_PUBLIC OG10.
 ## Regra
 - Este arquivo existe para evitar dependência de data no nome do receipt.
 - Receipts datados podem existir como histórico, mas o gate usa o LATEST.
-- SSOT_PUBLIC não contém segredos, nem “fórmula Coca-Cola”, nem dados de usuários.
+- SSOT_PUBLIC não contém segredos, nem “fórmula Private Formula”, nem dados de usuários.
 

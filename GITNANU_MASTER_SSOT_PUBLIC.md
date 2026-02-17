@@ -6,7 +6,7 @@ Este é o documento **público** de entrada do GitNanu no ecossistema NANUCAI.
 GitNanu é o agente e o fluxo que **opera o terminal e o Git** de forma governada, com foco em:
 - integridade do SSOT
 - evidências e trilhas sanitizadas quando aplicável
-- prevenção de vazamentos (segredos e “Coca-Cola” ficam fora do público)
+- prevenção de vazamentos (segredos e “Private Formula” ficam fora do público)
 
 ## Escopo deste SSOT_PUBLIC
 Inclui apenas:
