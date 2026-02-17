@@ -11,7 +11,7 @@ Padronizar o trilho diario de SSOT_PUBLIC: editar, validar, evidenciar e commita
 Um arquivo em docs/ entra completo e validado, ou nao entra.
 
 Proibido:
-- placeholders (COLE AQUI, TODO, em breve, <NUMERO>)
+- safe
 - texto de conversa operacional (olha o print, voce digitou, ou seja)
 - fences quebrados
 - exemplos duplicados que confundem
