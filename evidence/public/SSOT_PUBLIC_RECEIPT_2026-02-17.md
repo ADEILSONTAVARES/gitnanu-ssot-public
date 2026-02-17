@@ -15,6 +15,6 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
 - ssot/skills/SKILLS_REGISTRY.yaml: ed126613cc02c91096723830d94a80f3d4a3abcb
 - ssot/metrics/METRICS_REGISTRY.yaml: 2bd3fc626a6a25c54c5be57511a5ffe18e3e912b
 - scripts/ssot/validate_all_ssot.sh: f402f4b7b68f9dab6170e4f54e326d848ac02877
-- 2026-02-17: SSOT OG10 PASS (validate_all_ssot) no commit 8f862f7.
-- PASS_AT: 8f862f7 (SSOT_PUBLIC OG10 VALIDATION OK)
+- 2026-02-17: SSOT OG10 PASS (validate_all_ssot) no commit 65a9408.
+- PASS_AT: 65a9408 (SSOT_PUBLIC OG10 VALIDATION OK)
 
