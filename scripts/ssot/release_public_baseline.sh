@@ -122,7 +122,7 @@ elif echo "$REMOTE_URL" | grep -q "^https://github.com/"; then
 fi
 
 if [ -n "$OWNER_REPO" ]; then
-  RECEIPT_PATH="docs/ssot_public/SSOT_PUBLIC_RECEIPT_${TODAY}.md"
+  RECEIPT_PATH="docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md"
   DOCS_INDEX_PATH="docs/DOCS_INDEX.md"
   echo
   echo "---- RAW LINKS ----"
