@@ -1,4 +1,4 @@
-version: "og10_registries_manifest_v1"
+version: "ssotp_registries_manifest_v1"
 updated_at: "2026-02-18"
 registries:
   rules: "ssot/registries/RULES_REGISTRY.yaml"
