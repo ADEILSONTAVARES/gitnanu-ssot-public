@@ -1,5 +1,5 @@
-skills_registry_og10:
-  version: OG10_SKILLS_REGISTRY_v1
+skills_registry:
+  version: SKILLS_REGISTRY_v1
   generated_at: '2026-02-17'
   rules:
     language_primary: pt-BR

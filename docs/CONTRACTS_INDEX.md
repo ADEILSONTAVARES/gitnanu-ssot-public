@@ -1,12 +1,12 @@
-# CONTRACTS INDEX — SSOT_PUBLIC OG10
+# CONTRACTS INDEX — SSOT_PUBLIC
 
-Este índice lista os “contratos públicos” do SSOT_PUBLIC OG10: caminhos, propósito e regras mínimas esperadas.
+Este índice lista os “contratos públicos” do SSOT_PUBLIC: caminhos, propósito e regras mínimas esperadas.
 
 ## 1) SSOT contracts
 
 ### 1.1 BASILEIA 52
-- `ssot/basileia/BASILEIA_52_OG10.yaml`
-- `ssot/basileia/BASILEIA_52_OG10.schema.json`
+- `ssot/basileia/BASILEIA_52.yaml`
+- `ssot/basileia/BASILEIA_52.schema.json`
 
 Contrato:
 - `studios` deve existir e conter exatamente **52** itens
@@ -53,7 +53,7 @@ Este gate valida:
 - validação mínima de guardrails e métricas
 
 ### 2.2 Workflow público (GitHub Actions)
-- `.github/workflows/ssot_validation_og10.yml`
+- `.github/workflows/ssot_validation.yml`
 
 Objetivo:
 - rodar checks reprodutíveis em PR/push

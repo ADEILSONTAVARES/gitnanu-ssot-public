@@ -1,16 +1,16 @@
-# RUNBOOK — SSOT_PUBLIC OG10 — v1
-Versao: RUNBOOK_SSOT_PUBLIC_OG10_v1
+# RUNBOOK — SSOT_PUBLIC — v1
+Versao: RUNBOOK_SSOT_PUBLIC_v1
 Data: 2026-02-17
 Status: CANONICO (PUBLIC_SAFE)
 
 ## 1) Objetivo
-Executar o fluxo SSOT_PUBLIC OG10 com consistencia: editar, validar, evidenciar e publicar sem quebra.
+Executar o fluxo SSOT_PUBLIC com consistencia: editar, validar, evidenciar e publicar sem quebra.
 
 ## 2) Entrada oficial
 - docs/DOCS_INDEX.md
-- docs/EXPLAINER_SSOT_PUBLIC_OG10.md
-- docs/CONTRACTS_INDEX_OG10.md
-- docs/OG10_GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
+- docs/EXPLAINER_SSOT_PUBLIC.md
+- docs/CONTRACTS_INDEX.md
+- docs/GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
 
 ## 3) Fluxo no terminal
 3.1 Preparar:

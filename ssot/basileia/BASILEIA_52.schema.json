@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "BASILEIA 52 OG10 Schema",
+  "title": "BASILEIA 52 Schema",
   "type": "object",
-  "required": ["basileia_og10"],
+  "required": ["basileia"],
   "properties": {
-    "basileia_og10": {
+    "basileia": {
       "type": "object",
       "required": ["version", "studios", "rules"],
       "properties": {

@@ -1,10 +1,10 @@
-# SSOT_PUBLIC OG10 — BASELINE STATUS
+# SSOT_PUBLIC — BASELINE STATUS
 
 ## Estado atual
 - Atualizado em: 2026-02-17 18:21:29
 - Branch: main
 - HEAD: 4c262fe
-- Tag baseline: ssot_public_og10_2026-02-17_final
+- Tag baseline: ssot_public_2026-02-17_final
 - Tag^{commit}: 4c262fe
 
 ## Gate (sem buracos)
@@ -14,8 +14,8 @@
   - TAG^{commit} = 4c262fe
 
 ## Links RAW (GitHub)
-- Receipt (LATEST): https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_og10_2026-02-17_final/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md
-- DOCS_INDEX: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_og10_2026-02-17_final/docs/DOCS_INDEX.md
+- Receipt (LATEST): https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md
+- DOCS_INDEX: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/DOCS_INDEX.md
 
 ## Regra de Segurança e Propriedade
 - Este repositório é **SSOT_PUBLIC**.

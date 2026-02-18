@@ -1,6 +1,6 @@
 # SSOT_PUBLIC Receipt — 2026-02-17
 
-Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBLIC OG10 passou nos gates locais e que os arquivos críticos estão publicados no GitHub via RAW.
+Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBLIC passou nos gates locais e que os arquivos críticos estão publicados no GitHub via RAW.
 
 ## Gates locais
 - validate_all_ssot.sh: PASS
@@ -11,15 +11,15 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
 
 ## Hashes locais (SHA1)
 - ssot/guardrails/GUARDRAILS_POLICIES.yaml: 52ad58b57841c2d54fa8210ac2ca4ac4b01dbcdf
-- ssot/basileia/BASILEIA_52_OG10.yaml: 4cdf2245824d66167bcf5796a67064d34be91c06
+- ssot/basileia/BASILEIA_52.yaml: 4cdf2245824d66167bcf5796a67064d34be91c06
 - ssot/skills/SKILLS_REGISTRY.yaml: ed126613cc02c91096723830d94a80f3d4a3abcb
 - ssot/metrics/METRICS_REGISTRY.yaml: 2bd3fc626a6a25c54c5be57511a5ffe18e3e912b
 - scripts/ssot/validate_all_ssot.sh: f402f4b7b68f9dab6170e4f54e326d848ac02877
-- 2026-02-17: SSOT OG10 PASS (validate_all_ssot) no commit 65a9408.
-- PASS_AT: 65a9408 (SSOT_PUBLIC OG10 VALIDATION OK)
+- 2026-02-17: SSOT PASS (validate_all_ssot) no commit 65a9408.
+- PASS_AT: 65a9408 (SSOT_PUBLIC VALIDATION OK)
 
 ## Carimbo de baseline
 
 - VALIDATED_COMMIT: 65a9408
 - RECEIPT_COMMIT: ab06c00
-- BASELINE_TAG: ssot_public_og10_2026-02-17_final -> ab06c00
+- BASELINE_TAG: ssot_public_2026-02-17_final -> ab06c00

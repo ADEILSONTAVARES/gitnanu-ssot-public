@@ -5,7 +5,7 @@ TAG_ARG="${1:-latest}"
 
 # resolve TAG
 if [ "$TAG_ARG" = "latest" ]; then
-  TAG="ssot_public_og10_latest"
+  TAG="ssot_public_latest"
 else
   TAG="$TAG_ARG"
 fi
@@ -15,10 +15,10 @@ if ! git rev-parse -q --verify "${TAG}" >/dev/null; then
   echo "FAIL: tag inexistente: ${TAG}"
   echo
   echo "Tags disponíveis (filtradas):"
-  git tag --list "ssot_public_og10_*" | tail -n 50 || true
+  git tag --list "ssot_public_*" | tail -n 50 || true
   echo
   echo "Dica: use um tag real, por exemplo:"
-  echo "  bash scripts/ssot/verify_public_baseline.sh ssot_public_og10_YYYY-MM-DD_final"
+  echo "  bash scripts/ssot/verify_public_baseline.sh ssot_public_YYYY-MM-DD_final"
   echo "Ou use:"
   echo "  bash scripts/ssot/verify_public_baseline.sh latest"
   exit 4

@@ -1,6 +1,6 @@
-# CHANGELOG — SSOT_PUBLIC OG10
+# CHANGELOG — SSOT_PUBLIC
 
-Este changelog registra alteracoes de alto nivel no SSOT_PUBLIC OG10.
+Este changelog registra alteracoes de alto nivel no SSOT_PUBLIC.
 Escopo: docs, contratos, registries, guardrails e evidencias publicas.
 Nao inclui logs runtime, dados pessoais, credenciais ou quaisquer artefatos sensiveis.
 
@@ -12,7 +12,7 @@ Nao inclui logs runtime, dados pessoais, credenciais ou quaisquer artefatos sens
 - DOCS_INDEX: adiciona RUNBOOK como primeira entrada de leitura.
 
 ### 70c5d5e
-- RUNBOOK: cria runbook SSOT_PUBLIC OG10 v1 com fluxo de terminal e recovery.
+- RUNBOOK: cria runbook SSOT_PUBLIC v1 com fluxo de terminal e recovery.
 
 ### 23ce7e8
 - RECEIPT: atualiza receipt publico registrando baseline PASS.
@@ -33,7 +33,7 @@ Nao inclui logs runtime, dados pessoais, credenciais ou quaisquer artefatos sens
 - CONTRACTS_INDEX: adiciona indice de contratos SSOT_PUBLIC.
 
 ### 49fa1a8
-- EXPLAINER: adiciona explainer SSOT_PUBLIC OG10.
+- EXPLAINER: adiciona explainer SSOT_PUBLIC.
 
 ### 3d3d122
 - EVIDENCE: adiciona receipt publico (hashes e prova RAW).

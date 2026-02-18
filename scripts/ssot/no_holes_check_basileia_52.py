@@ -20,17 +20,17 @@ def die(msg: str):
 
 def main():
   if len(sys.argv) != 2:
-    die("usage: no_holes_check_basileia_52.py <BASILEIA_52_OG10.yaml>")
+    die("usage: no_holes_check_basileia_52.py <BASILEIA_52.yaml>")
 
   p = Path(sys.argv[1])
   if not p.exists():
     die(f"file_not_found: {p}")
 
   data = yaml.safe_load(p.read_text(encoding="utf-8"))
-  if not isinstance(data, dict) or "basileia_og10" not in data:
-    die("missing key: basileia_og10")
+  if not isinstance(data, dict) or "basileia" not in data:
+    die("missing key: basileia")
 
-  b = data["basileia_og10"]
+  b = data["basileia"]
   studios = b.get("studios")
   if not isinstance(studios, list):
     die("studios must be a list")

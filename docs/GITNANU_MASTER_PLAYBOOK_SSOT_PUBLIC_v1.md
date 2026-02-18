@@ -1,5 +1,5 @@
-# OG10 — GITNANU MASTER PLAYBOOK (SSOT_PUBLIC) — PUBLIC_SAFE
-Versao: OG10_GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1
+# GITNANU MASTER PLAYBOOK (SSOT_PUBLIC) — PUBLIC_SAFE
+Versao: GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1
 Data: 2026-02-17
 Status: CANONICO (PUBLIC_SAFE)
 Classificacao: SSOT_PUBLIC SAFE (SEM FORMULA, SEM LEDGER REAL, SEM LOGS SENSIVEIS)
@@ -25,7 +25,7 @@ Pode:
 - targets conceituais sem numeros sensiveis
 
 Nao pode:
-- formula OG10 master e heuristicas internas
+- formula privada e heuristicas internas
 - ledger real e historico real
 - logs runtime completos (payload, prompts, outputs, traces)
 - credenciais, chaves, cookies, ids pessoais, emails reais
@@ -43,12 +43,12 @@ Nao pode:
 PASS somente com EXIT_CODE=0.
 
 3.3 Checagem do arquivo:
-- wc -l docs/OG10_GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
-- head -n 10 docs/OG10_GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
-- tail -n 10 docs/OG10_GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
+- wc -l docs/GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
+- head -n 10 docs/GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
+- tail -n 10 docs/GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
 
 ## 4) Commit
-- git add docs/OG10_GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
+- git add docs/GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
 - git diff --staged
 - git commit -m "docs(ssot): add public safe gitnanu playbook"
 

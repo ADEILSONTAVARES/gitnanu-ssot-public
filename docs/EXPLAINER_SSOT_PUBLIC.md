@@ -1,6 +1,6 @@
-# EXPLAINER — SSOT_PUBLIC OG10
+# EXPLAINER — SSOT_PUBLIC
 
-Este repositório publica um recorte **SSOT_PUBLIC** do OG10: contratos, registries, guardrails e gates mínimos para validação reprodutível, sem qualquer dado sensível.
+Este repositório publica um recorte **SSOT_PUBLIC** do baseline interno: contratos, registries, guardrails e gates mínimos para validação reprodutível, sem qualquer dado sensível.
 
 A ideia é simples:
 - **SSOT** significa *Single Source of Truth*: um conjunto pequeno de arquivos que definem estrutura e invariantes.
@@ -8,7 +8,7 @@ A ideia é simples:
 
 ## O que existe aqui (alto nível)
 
-- **BASILEIA 52 (OG10)**  
+- **BASILEIA 52**  
   Mapa de 52 studios com “no holes” (sem lacunas de IDs) e consistência básica.
 
 - **SKILLS_REGISTRY (3/15/40)**  

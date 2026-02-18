@@ -1,6 +1,6 @@
 guardrails_policies:
   guardrails:
-    version: OG10_GUARDRAILS_v1
+    version: GUARDRAILS_v1
     enabled: true
     risk_class: R3
     fail_mode: closed

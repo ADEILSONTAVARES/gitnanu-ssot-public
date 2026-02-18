@@ -1,5 +1,5 @@
-basileia_og10:
-  version: "BASILEIA_52_OG10_v1"
+basileia:
+  version: "BASILEIA_52_v1"
   generated_at: "2026-02-17"
   rules:
     studio_id_range: ["S00", "S51"]

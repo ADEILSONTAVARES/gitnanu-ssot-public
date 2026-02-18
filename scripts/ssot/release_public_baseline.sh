@@ -26,7 +26,7 @@ HEAD_SHA_SHORT="$(git rev-parse --short HEAD)"
 # resolve TAG
 TODAY="$(date +%F)"
 if [ "$TAG_ARG" = "auto" ] || [ -z "$TAG_ARG" ]; then
-  TAG="ssot_public_og10_${TODAY}_final"
+  TAG="ssot_public_${TODAY}_final"
 else
   TAG="$TAG_ARG"
 fi

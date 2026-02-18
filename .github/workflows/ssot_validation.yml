@@ -1,4 +1,4 @@
-name: SSOT Validation OG10
+name: SSOT Validation
 
 on:
   pull_request:
@@ -24,6 +24,6 @@ jobs:
       - name: Install deps
         run: |
           pip install pyyaml
-      - name: Run OG10 SSOT Validation
+      - name: Run SSOT Validation
         run: |
           bash scripts/ssot/validate_all_ssot.sh

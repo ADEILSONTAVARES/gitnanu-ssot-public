@@ -1,9 +1,9 @@
-# SSOT_PUBLIC OG10 — RECEIPT (LATEST)
+# SSOT_PUBLIC — RECEIPT (LATEST)
 
-Este receipt é um ponteiro estável do SSOT_PUBLIC OG10.
+Este receipt é um ponteiro estável do SSOT_PUBLIC.
 
 ## Baseline atual
-- Tag: ssot_public_og10_2026-02-17_final
+- Tag: ssot_public_2026-02-17_final
 
 ## Regra
 - Este arquivo existe para evitar dependência de data no nome do receipt.

@@ -34,9 +34,9 @@ def main():
     # Metrics: exige chaves mínimas
     if not isinstance(md, dict):
         die("metrics_not_object")
-    if "metrics_registry_og10" not in md:
-        die("metrics_missing_root_key: metrics_registry_og10")
-    cats = md["metrics_registry_og10"].get("categories")
+    if "metrics_registry" not in md:
+        die("metrics_missing_root_key: metrics_registry")
+    cats = md["metrics_registry"].get("categories")
     if not isinstance(cats, list) or len(cats) < 1:
         die("metrics_categories_invalid_or_empty")
 

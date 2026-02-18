@@ -1,5 +1,5 @@
-metrics_registry_og10:
-  version: "OG10_METRICS_REGISTRY_v1"
+metrics_registry:
+  version: "METRICS_REGISTRY_v1"
   categories:
     - name: "context_quality"
       metrics:

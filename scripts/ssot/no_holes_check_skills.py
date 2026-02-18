@@ -25,10 +25,10 @@ def main():
     die(f"file_not_found: {p}")
 
   data = yaml.safe_load(p.read_text(encoding="utf-8"))
-  if "skills_registry_og10" not in data:
-    die("missing key: skills_registry_og10")
+  if "skills_registry" not in data:
+    die("missing key: skills_registry")
 
-  reg = data["skills_registry_og10"]
+  reg = data["skills_registry"]
   bind = reg.get("metric_binding") or {}
   req_universal = int(bind.get("universal_skills", 3))
   req_pain = int(bind.get("pain_pack", 15))
