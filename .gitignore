@@ -9,3 +9,6 @@ scripts/ssot/_bak/
 scripts/ssot/scanners/
 ssot/config/
 ssot/workflows/
+
+# generated receipts (local)
+evidence/public/_run/
