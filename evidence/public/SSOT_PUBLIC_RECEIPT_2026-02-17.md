@@ -23,3 +23,12 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
 - VALIDATED_COMMIT: 65a9408
 - RECEIPT_COMMIT: ab06c00
 - BASELINE_TAG: ssot_public_2026-02-17_final -> ab06c00
+
+## Baseline lock update (tags)
+- BASELINE_LOCK_COMMIT: 1ea6cf1
+- TAGS:
+  - ssot_public_latest -> 1ea6cf1
+  - ssot_public_2026-02-17_final -> 1ea6cf1
+- VERIFY:
+  - PASS: verify_public_baseline.sh ssot_public_latest
+  - PASS: verify_public_baseline.sh ssot_public_2026-02-17_final
