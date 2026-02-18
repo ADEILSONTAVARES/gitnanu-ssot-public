@@ -55,7 +55,9 @@ fi
 
 # 3) registrar evidência pública do checkpoint (idempotente por bloco)
 mkdir -p evidence/public
-RECEIPT_FILE="evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md"
+RECEIPT_FILE="evidence/public/SSOT_PUBLIC_CHECKPOINTS.md"
+
+mkdir -p "20 20 12 61 79 80 81 701 33 98 100 204 250 395 398 399 400dirname "")"
 
 cat >> "${RECEIPT_FILE}" <<EOF
 
@@ -71,4 +73,4 @@ cat >> "${RECEIPT_FILE}" <<EOF
   - Receipt: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md?v=${HEAD}
   - Index : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/DOCS_INDEX.md?v=${HEAD}
   - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=${HEAD}
-  - EvRec : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md?v=${HEAD}
+  - EvRec : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public//evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md?v=
