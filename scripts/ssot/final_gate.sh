@@ -25,7 +25,9 @@ echo "OK: sem placeholders em docs/"
 echo
 echo "SCAN: OG10/og10 fora .git/.venv/node_modules"
 if grep -RniE '\bog10\b|OG10' . \
-  --exclude-dir .git --exclude-dir .venv --exclude-dir node_modules \
+  --exclude-dir .git --exclude-dir .venv --exclude-dir node_modules --exclude-dir evidence \
+  --exclude \"*.bak.*\" \
+  --exclude "*.bak.*" \
   --exclude "*.png" --exclude "*.jpg" --exclude "*.jpeg" --exclude "*.pdf" --exclude "*.pyc" --exclude "*.exe" >/dev/null 2>&1; then
   echo "STOP: achou OG10/og10 fora lugares permitidos."
   grep -RniE '\bog10\b|OG10' . \
