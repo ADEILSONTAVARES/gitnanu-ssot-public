@@ -6,6 +6,7 @@
 - docs/EXPLAINER_SSOT_PUBLIC.md
 - docs/CONTRACTS_INDEX.md
 - docs/GITNANU_MASTER_PLAYBOOK_SSOT_PUBLIC_v1.md
+- docs/SSOT_PUBLIC_BASELINE_STATUS.md
 
 ## Regras
 - Tudo em `docs/` entra completo ou não entra.

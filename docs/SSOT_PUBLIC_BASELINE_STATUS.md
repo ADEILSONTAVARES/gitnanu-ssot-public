@@ -1,17 +1,15 @@
-# SSOT_PUBLIC — BASELINE STATUS
-
 ## Estado atual
-- Atualizado em: 2026-02-17 18:21:29
+- Atualizado em: 2026-02-17 22:31:08
 - Branch: main
-- HEAD: 4c262fe
+- HEAD: 9b86c1a
 - Tag baseline: ssot_public_2026-02-17_final
-- Tag^{commit}: 4c262fe
+- Tag^{commit}: 9b86c1a
 
 ## Gate (sem buracos)
 - Regra: HEAD deve ser igual a TAG^{commit}
 - Resultado:
-  - HEAD        = 4c262fe
-  - TAG^{commit} = 4c262fe
+  - HEAD        = 9b86c1a
+  - TAG^{commit} = 9b86c1a
 
 ## Links RAW (GitHub)
 - Receipt (LATEST): https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md
@@ -21,13 +19,13 @@
 - Este repositório é **SSOT_PUBLIC**.
 - É proibido armazenar aqui:
   - segredos (tokens, chaves, credenciais)
-  - “fórmula Private Formula”
+  - “Private Formula”
   - dados de usuários (PII), logs sensíveis, ledgers privados
 - GitNanu é a camada que opera terminal/VPS e entrega apenas o necessário ao público.
 - A nossa fórmula é nossa. A fórmula do cliente é do cliente. Cada uma guardada no seu cofre correto.
 
 ## Procedimento canônico de release
 1) commit e push no branch padrão
-2) retag baseline (tag anotada) para apontar para o HEAD
+2) retag baseline para apontar para o HEAD
 3) verify por tag explícita + verify latest
 4) publicar links RAW (receipt latest + docs index)
