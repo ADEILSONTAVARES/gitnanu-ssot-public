@@ -16,7 +16,7 @@
 
 
 ## VPS Security Pack
-- docs/ssot_public/OG10_GITNANU_VPS_SECURITY_v1.md
+- docs/ssot_public/GITNANU_VPS_SECURITY_v1.md
 - docs/runbooks/RUNBOOK_VPS_COMPROMISED.md
 - docs/runbooks/RUNBOOK_BACKUP_RESTORE.md
 - docs/runbooks/RUNBOOK_TOKEN_ROTATION.md
