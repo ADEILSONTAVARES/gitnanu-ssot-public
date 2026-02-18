@@ -41,3 +41,13 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
 - Checks:
   - placeholders in docs/: PASS
   - og10/OG10 outside .git/.venv: PASS
+
+## Final checkpoint — baseline lock PASS
+- Updated at: 2026-02-17 22:40:54
+- HEAD: ceaa61f
+- ssot_public_2026-02-17_final^{commit}: ceaa61f
+- Gate: PASS (HEAD == TAG^{commit})
+- RAW (cache-bust):
+  - Receipt: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md?v=ceaa61f
+  - Index : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/DOCS_INDEX.md?v=ceaa61f
+  - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=ceaa61f
