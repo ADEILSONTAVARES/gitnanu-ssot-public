@@ -51,3 +51,17 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
   - Receipt: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md?v=ceaa61f
   - Index : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/DOCS_INDEX.md?v=ceaa61f
   - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=ceaa61f
+
+## Final checkpoint — baseline lock PASS
+- Updated at: 2026-02-18 00:47:46
+- HEAD: 8b5c1d3
+- main^{commit}: 8b5c1d3
+- Gate: PASS (HEAD == TAG^{commit})
+- Checks:
+  - placeholders in docs/: PASS
+  - og10/OG10 outside .git/.venv: PASS
+- RAW (cache-bust):
+  - Receipt: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md?v=8b5c1d3
+  - Index : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/docs/DOCS_INDEX.md?v=8b5c1d3
+  - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=8b5c1d3
+  - EvRec : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md?v=8b5c1d3
