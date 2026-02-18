@@ -23,20 +23,21 @@ fi
 echo "OK: sem placeholders em docs/"
 
 echo
+OG10_OPTS=(
+  --exclude-dir .git
+  --exclude-dir .venv
+  --exclude-dir node_modules
+  --exclude-dir evidence
+  --exclude "*.bak.*"
+)
+
 echo "SCAN: OG10/og10 fora .git/.venv/node_modules"
-if grep -RniE '\bog10\b|OG10' . \
-  --exclude-dir .git --exclude-dir .venv --exclude-dir node_modules --exclude-dir evidence \
-  --exclude \"*.bak.*\" \
-  --exclude "*.bak.*" \
-  --exclude "*.png" --exclude "*.jpg" --exclude "*.jpeg" --exclude "*.pdf" --exclude "*.pyc" --exclude "*.exe" >/dev/null 2>&1; then
+if grep -RniE '\bog10\b|OG10' . "${OG10_OPTS[@]}" >/dev/null 2>&1; then
   echo "STOP: achou OG10/og10 fora lugares permitidos."
-  grep -RniE '\bog10\b|OG10' . \
-    --exclude-dir .git --exclude-dir .venv --exclude-dir node_modules \
-    --exclude "*.png" --exclude "*.jpg" --exclude "*.jpeg" --exclude "*.pdf" --exclude "*.pyc" --exclude "*.exe" || true
+  grep -RniE '\bog10\b|OG10' . "${OG10_OPTS[@]}" || true
   exit 1
 fi
 echo "OK: sem OG10/og10 fora .git/.venv"
-
 # 2) gate hard (antes de escrever evidence)
 echo
 HEAD="$(git rev-parse --short HEAD)"
