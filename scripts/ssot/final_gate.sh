@@ -56,6 +56,11 @@ fi
 # 3) registrar evidência pública do checkpoint (idempotente por bloco)
 mkdir -p evidence/public
 RECEIPT_FILE="evidence/public/_run/final_gate_receipt_.md"
+
+if [[ "$RECEIPT_FILE" == "evidence/public/SSOT_PUBLIC_CHECKPOINTS.md" ]]; then
+  echo "FAIL: receipt_file cannot be SSOT_PUBLIC_CHECKPOINTS.md"
+  exit 42
+fi
 mkdir -p "$(dirname "$RECEIPT_FILE")"
 
 RAW_BASE="https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}"
