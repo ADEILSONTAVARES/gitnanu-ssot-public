@@ -55,7 +55,7 @@ fi
 
 # 3) registrar evidência pública do checkpoint (idempotente por bloco)
 mkdir -p evidence/public
-RECEIPT_FILE="evidence/public/_run/final_gate_receipt_.md"
+RECEIPT_FILE="evidence/public/_run/final_gate_receipt_${TAG_FINAL}.md"
 
 if [[ "$RECEIPT_FILE" == "evidence/public/SSOT_PUBLIC_CHECKPOINTS.md" ]]; then
   echo "FAIL: receipt_file cannot be SSOT_PUBLIC_CHECKPOINTS.md"
