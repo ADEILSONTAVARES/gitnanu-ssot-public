@@ -26,7 +26,7 @@ echo
 OG10_OPTS=(
   --exclude-dir .git
   --exclude-dir .venv
-  --exclude-dir node_modules
+  --exclude-dir node_modules --exclude-dir scripts
   --exclude-dir evidence
   --exclude "*.bak.*"
 )
