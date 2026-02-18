@@ -56,12 +56,16 @@ fi
 # 3) registrar evidência pública do checkpoint (idempotente por bloco)
 mkdir -p evidence/public
 RECEIPT_FILE="evidence/public/SSOT_PUBLIC_CHECKPOINTS.md"
-
+mkdir -p "$(dirname "$RECEIPT_FILE")"
 
 RAW_BASE="https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}"
 RAW_QS="?v=${HEAD}"
 
-cat >> "${RECEIPT_FILE}" <<EOF
+RAW_BASE="https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}"
+RAW_QS="?v=${HEAD}"
+
+cat > "${RECEIPT_FILE}" <<EOF
+# SSOT_PUBLIC Checkpoints
 
 ## Final checkpoint — baseline lock PASS
 - Updated at: ${TS}
@@ -75,5 +79,5 @@ cat >> "${RECEIPT_FILE}" <<EOF
   - Receipt: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md?v=${HEAD}
   - Index : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/DOCS_INDEX.md?v=${HEAD}
   - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=${HEAD}
-  - EvRec : ${RAW_BASE}/evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md${RAW_QS}
-  - Ckpt : ${RAW_BASE}/evidence/public/SSOT_PUBLIC_CHECKPOINTS.md${RAW_QS}
+  - EvRec : /evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md
+  - Ckpt : /evidence/public/SSOT_PUBLIC_CHECKPOINTS.md
