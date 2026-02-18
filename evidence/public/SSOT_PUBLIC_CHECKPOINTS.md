@@ -1,5 +1,7 @@
 # SSOT_PUBLIC Checkpoints
 
+# SSOT_PUBLIC Checkpoints
+
 ## Final checkpoint — baseline lock PASS
 - Updated at: 2026-02-18 01:06:47
 - HEAD: 52e1850
@@ -107,3 +109,18 @@
   - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=988c497
   - EvRec : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md?v=988c497
   - Ckpt : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/evidence/public/SSOT_PUBLIC_CHECKPOINTS.md?v=988c497
+
+## Final checkpoint — baseline lock PASS
+- Updated at: 2026-02-18 01:09:02
+- HEAD: d494248
+- main^{commit}: d494248
+- Gate: PASS (HEAD == TAG^{commit})
+- Checks:
+  - placeholders in docs/: PASS
+  - og10/OG10 outside .git/.venv: PASS
+- RAW (cache-bust):
+  - Receipt: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md?v=d494248
+  - Index : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/docs/DOCS_INDEX.md?v=d494248
+  - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=d494248
+  - EvRec : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md?v=d494248
+  - Ckpt : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/main/evidence/public/SSOT_PUBLIC_CHECKPOINTS.md?v=d494248
