@@ -34,3 +34,13 @@ test "$(git rev-parse HEAD)" = "$(git rev-parse ssot_public_2026-02-17_final^{co
 2) retag baseline para apontar para o HEAD
 3) verify por tag explícita + verify latest
 4) publicar links RAW (receipt latest + docs index)
+
+## VPS Security Pack
+- Status: PRESENT
+- Targets: ssot/vps/VPS_SECURITY_TARGETS.yaml
+- Policies: ssot/policies/PUSH_POLICY.yaml, ssot/policies/BRANCH_PROTECTION_POLICY.yaml
+- Terminal: ssot/terminal/TERMINAL_POLICY.yaml
+- Device: ssot/device/LOCK_POLICY.yaml, ssot/device/DEVICE_REGISTRY.example.yaml
+- Gates: scripts/vps/vps_gate.sh (dry)
+- Templates: templates/vps/
+- Evidence (sanitized): evidence/public/VPS_GATE_REPORT.example.md

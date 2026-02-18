@@ -14,3 +14,13 @@
 - Proibido texto de conversa operacional (prints, “ou seja”, etc.).
 - Nunca colar Markdown no Terminal. Documento é no editor.
 
+
+## VPS Security Pack
+- docs/ssot_public/OG10_GITNANU_VPS_SECURITY_v1.md
+- docs/runbooks/RUNBOOK_VPS_COMPROMISED.md
+- docs/runbooks/RUNBOOK_BACKUP_RESTORE.md
+- docs/runbooks/RUNBOOK_TOKEN_ROTATION.md
+- docs/runbooks/RUNBOOK_MULTI_DEVICE_SYNC.md
+- docs/runbooks/RUNBOOK_CONFLICT_RESOLUTION.md
+- scripts/vps/vps_gate.sh (dry)
+- ssot/vps/VPS_SECURITY_TARGETS.yaml

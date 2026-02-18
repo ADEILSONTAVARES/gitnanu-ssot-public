@@ -41,3 +41,6 @@ Nao inclui logs runtime, dados pessoais, credenciais ou quaisquer artefatos sens
 ### 4c1e899
 - SSOT_CORE: adiciona registries, guardrails, gates e workflow CI do SSOT_PUBLIC.
 
+
+## 2026-02-18
+- Added VPS Security Pack (public): targets, policies, templates, dry gates, runbooks.
