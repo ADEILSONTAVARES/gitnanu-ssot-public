@@ -32,3 +32,12 @@ Este receipt registra provas públicas (sem dados sensíveis) de que o SSOT_PUBL
 - VERIFY:
   - PASS: verify_public_baseline.sh ssot_public_latest
   - PASS: verify_public_baseline.sh ssot_public_2026-02-17_final
+
+## Baseline status stabilized (non-drifting doc)
+- Updated at: 2026-02-17 22:38:31
+- HEAD: a5e1fde
+- ssot_public_2026-02-17_final^{commit}: a5e1fde
+- Gate: PASS (HEAD == TAG^{commit})
+- Checks:
+  - placeholders in docs/: PASS
+  - og10/OG10 outside .git/.venv: PASS
