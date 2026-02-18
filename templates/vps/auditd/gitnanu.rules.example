@@ -1,0 +1,2 @@
+# auditd rules example
+-w /home/gitnanu -p wa -k gitnanu_activity

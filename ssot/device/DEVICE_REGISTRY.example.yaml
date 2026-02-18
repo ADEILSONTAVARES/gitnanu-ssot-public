@@ -1,0 +1,11 @@
+device_registry_example:
+  version: "v1"
+  devices:
+    - device_id: "iphone_example"
+      type: "mobile"
+      trusted: true
+      last_seen_iso_example: "2026-02-17T14:30:00Z"
+    - device_id: "macbook_example"
+      type: "desktop"
+      trusted: true
+      last_seen_iso_example: "2026-02-17T15:00:00Z"

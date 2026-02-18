@@ -1,0 +1,10 @@
+lock_policy:
+  version: "v1"
+  lock_scope:
+    - "repo_sync"
+    - "push_pipeline"
+  lock_timeout_ms_example: 60000
+  conflict_resolution: "manual_only"
+  notify_channels_example:
+    - "email"
+    - "push"

@@ -1,0 +1,13 @@
+push_policy:
+  version: "v1"
+  rule: "push only after audit + evidence"
+  require:
+    - "doctor1_pass"
+    - "doctor2_pass"
+    - "evidence_present"
+  block_if:
+    - "secrets_detected"
+    - "gate_failed"
+    - "baseline_tag_mismatch"
+  notes:
+    - "No tokens, keys, env files in repo"
