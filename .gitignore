@@ -1,3 +1,6 @@
 .ssot_public_ok.log
 scripts/ssot/final_gate.sh.bak.*
 evidence/public/VPS_GATE_REPORT.latest.md
+
+# local backups (never commit)
+scripts/ssot/_bak/
