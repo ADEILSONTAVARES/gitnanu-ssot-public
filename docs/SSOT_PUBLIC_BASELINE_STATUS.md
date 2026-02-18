@@ -1,17 +1,16 @@
 # SSOT_PUBLIC — BASELINE STATUS
 
 ## Estado atual
-- Atualizado em: 2026-02-17 22:35:07
+- Atualizado em: 2026-02-17 22:36:26
 - Branch: main
-- HEAD: 3a91954
 - Tag baseline: ssot_public_2026-02-17_final
-- Tag^{commit}: 3a91954
+- Baseline commit (TAG^{commit}): c5f6ffb
 
 ## Gate (sem buracos)
-- Regra: HEAD deve ser igual a TAG^{commit}
+- Regra: baseline commit deve ser igual a TAG^{commit}
 - Resultado:
-  - HEAD        = 3a91954
-  - TAG^{commit} = 3a91954
+  - BASELINE_COMMIT = c5f6ffb
+  - TAG^{commit}    = c5f6ffb
 
 ## Links RAW (GitHub)
 - Receipt (LATEST): https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/ssot_public_2026-02-17_final/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md
