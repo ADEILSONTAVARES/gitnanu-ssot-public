@@ -57,7 +57,7 @@ fi
 echo "PASS: handoff exists and is indexed"
 
 echo "== ACTION: set latest locally before baseline =="
-git tag -f ssot_public_latest "" >/dev/null 2>&1 || true
+git tag -f ssot_public_latest "$HEAD" >/dev/null 2>&1 || true
 echo "OK: ssot_public_latest set to HEAD (local)"
 
 echo "== GATE: SSOT_PUBLIC baseline must PASS =="
@@ -65,7 +65,7 @@ bash scripts/ssot/verify_public_baseline.sh latest
 echo "PASS: baseline ok"
 
 echo "== ACTION: tag latest + day package =="
-git tag -f ssot_public_latest ""
+git tag -f ssot_public_latest "$HEAD"
 git tag -f "$TAG_DAY" "$HEAD"
 
 echo "== PUSH: tags =="
