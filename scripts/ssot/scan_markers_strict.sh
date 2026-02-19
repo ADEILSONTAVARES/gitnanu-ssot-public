@@ -20,7 +20,7 @@ RX='(<TAG|<DATA|<YYYY|<KEY|<TOKEN|<TAG_FINAL|COLE_AQUI|T O D O|T B D|F I X M E|P
 hits=""
 for s in "${SCOPES[@]}"; do
   [ -e "$s" ] || continue
-  out=$(grep -RniE "$RX" "$s" \
+  out=20 20 12 61 79 80 81 701 33 98 100 204 250 395 398 399 400grep -RniE "" "" \
     --exclude-dir=.git \
     --exclude-dir=.venv \
     --exclude-dir=node_modules \
