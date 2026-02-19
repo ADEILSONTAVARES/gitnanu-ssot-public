@@ -22,3 +22,9 @@ evidence/
 *.pfx
 vault_local/
 ssot/private/
+
+# GitNanu: local backups
+scripts/ssot/*.bak.*
+
+# GitNanu: local backups
+scripts/ssot/*.bak.*
