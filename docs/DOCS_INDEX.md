@@ -50,3 +50,4 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_35.md — Handoff p0_35 (pre-tag: required by docs gate)
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_36.md — Handoff p0_36 (day tags immutable; latest only is force)
+- 2026-02-19 p0_37: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_37.md
