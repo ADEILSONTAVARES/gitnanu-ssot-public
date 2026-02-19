@@ -9,7 +9,6 @@ set -euo pipefail
 # • foca em tokens de template típicos de docs/scripts de release
 
 SCOPES=(
-  "ssot"
   ".github/workflows"
   "scripts/gates"
   "scripts/metrics"
