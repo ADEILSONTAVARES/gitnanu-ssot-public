@@ -32,3 +32,6 @@ Se você identificar risco de vazamento ou falha de sanitização:
 - Abra uma issue com o mínimo de detalhes
 - Sinalize como **security**
 - Não anexe dados reais
+
+## SSOT Public (OG10)
+- Documento mestre completo (2026-02-19): docs/ssot_public/OG10_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
