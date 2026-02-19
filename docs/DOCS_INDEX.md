@@ -30,3 +30,5 @@
 - scripts/ssot/verify_public_baseline.sh — Baseline SSOT_PUBLIC (inclui Gate bash -n para scripts/**)
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-18_p0_19.md — Handoff do baseline + gates (bash -n + inbox untracked)
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-18_p0_22.md — Handoff p0_22 (inbox ignored gate + baseline proof)
