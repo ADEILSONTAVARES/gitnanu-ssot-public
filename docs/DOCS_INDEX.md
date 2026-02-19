@@ -38,3 +38,5 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_29.md — Handoff p0_29 (docs gate: tag requires handoff + index)
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_30.md — Handoff p0_30 (required by docs gate for today package tag)
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_31.md — Handoff p0_31 (tag repointed after p0_30 docs)
