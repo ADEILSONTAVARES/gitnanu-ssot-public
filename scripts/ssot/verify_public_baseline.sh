@@ -107,4 +107,21 @@ if ! grep -qE "(^|/)(inbox/|inbox/\*\*|inbox\*/)$" .gitignore 2>/dev/null && ! g
 fi
 echo "PASS: inbox is ignored by .gitignore"
 
+
+# == GATE: .gitignore required patterns ==
+echo "== GATE: .gitignore required patterns =="
+req_patterns=("^inbox/" "^\.env$" "^\.env\." "\*\.pem$" "\*\.key$" "\*\.p12$" "\*\.pfx$" "^vault_local/" "^ssot/private/")
+missing=0
+for pat in "${req_patterns[@]}"; do
+  if ! grep -qE "$pat" .gitignore 2>/dev/null; then
+    echo "FAIL: .gitignore missing required pattern: $pat"
+    missing=1
+  fi
+done
+if [ "$missing" -ne 0 ]; then
+  echo "HINT: restore required ignore patterns (see gate output)"
+  exit 1
+fi
+echo "PASS: .gitignore required patterns present"
+
 echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
