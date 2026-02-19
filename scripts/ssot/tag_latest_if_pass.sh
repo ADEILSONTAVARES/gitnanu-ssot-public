@@ -31,11 +31,17 @@ if ! git diff --quiet || ! git diff --cached --quiet; then
 fi
 echo "PASS: working tree clean"
 
+# Captura HEAD uma vez (antes de qualquer gate que dependa de tag)
+HEAD="$(git rev-parse HEAD)"
+
+echo "== ACTION: set latest locally before baseline =="
+git tag -f ssot_public_latest "$HEAD" >/dev/null 2>&1 || true
+echo "OK: ssot_public_latest set to HEAD (local)"
+
 echo "== GATE: SSOT_PUBLIC baseline must PASS =="
 bash scripts/ssot/verify_public_baseline.sh latest
 echo "PASS: baseline ok"
 
-HEAD="$(git rev-parse HEAD)"
 TODAY="$(date +%F)"
 TAG_DAY="ssot_public_${TODAY}_${SUFFIX}"
 
