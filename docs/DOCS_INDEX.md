@@ -46,3 +46,5 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_33.md — Handoff p0_33 (pre-tag requirement)
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_34.md — Handoff p0_34 (pre-tag: required by docs gate)
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_35.md — Handoff p0_35 (pre-tag: required by docs gate)
