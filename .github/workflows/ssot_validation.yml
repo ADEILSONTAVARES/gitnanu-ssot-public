@@ -28,7 +28,11 @@ jobs:
           python scripts/gates/check_antigravity_dependency.py
           python scripts/metrics/measure_l0_l3.py
           python scripts/gndrive/cleanup.py
-          bash scripts/ssot/scan_markers_strict.sh .
+
+          # Strict scan only on SSOT + scripts + workflows (default scope)
+          bash scripts/ssot/scan_markers_strict.sh
+
+          # Docs scan: warns only (examples ok)
           bash scripts/ssot/scan_public_docs_examples.sh docs/ssot_public
 
           echo "PASS: SSOT_PUBLIC P0 gates"

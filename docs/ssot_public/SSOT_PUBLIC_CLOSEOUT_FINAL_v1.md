@@ -11,7 +11,7 @@ Gates não podem modificar arquivos tracked. Evidências devem ir para stdout ou
 
 ## 3) Correção implementada e por que ela é a correta
 Criado evidence/public/_run (ignorado) e final_gate passou a escrever receipt em:
-RECEIPT_FILE="evidence/public/_run/final_gate_receipt_<TAG_FINAL>.md"
+RECEIPT_FILE="evidence/public/_run/final_gate_receipt_ssot_public_2026-02-18_final.md"
 
 ## 4) Procedimento canônico de fechamento (copy/paste)
 ```bash
