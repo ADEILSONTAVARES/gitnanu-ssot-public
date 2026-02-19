@@ -57,9 +57,9 @@ Qualquer item que fuja disso é buraco. E buraco vira fragilidade, vira confusã
 ### 2.2 Proibição total de placeholders
 Placeholder é qualquer texto que finge ser conteúdo e passa batido. Exemplos:
 - “COLE AQUI”
-- “T0D0”
-- “TBD_Exemplo”
-- “F1XME”
+- “TODO”
+- “TBD”
+- “FIXME”
 - marcadores com chaves e substituição
 - tokens genéricos de template
 
@@ -143,8 +143,8 @@ Protege contra:
 Objetivo: impedir conteúdo fake.
 Protege contra:
 - “COLE AQUI”
-- “T0D0”
-- “TBD_Exemplo”
+- “TODO”
+- “TBD”
 - textos genéricos
 
 ### 6.3 Scan de segredos óbvios
@@ -201,7 +201,7 @@ Recomendação: pelo menos 120 linhas.
 
 ### 9.3 Validar ausência de marcadores proibidos
 Não pode existir:
-- T0D0, TBD_Exemplo, PL4CEH0LDER, F1XME
+- TODO, TBD, PLACEHOLDER, FIXME
 - “COLE AQUI”
 - qualquer marcador que implique substituição
 

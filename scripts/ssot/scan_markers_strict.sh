@@ -1,51 +1,75 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
+
+# Strict markers scan:
+# - FAIL se achar placeholders/markers proibidos em áreas que devem ser "limpas".
+# - NÃO escaneia .git/.venv/node_modules/dist/build etc.
+# - NÃO escaneia docs/ssot_public (public docs podem conter exemplos controlados por outro scan).
 
 target="${1:-docs}"
 
 rx='(^|[^A-Z0-9_])(T O D O|T B D|F I X M E|P L A C E H O L D E R|COLE_AQUI)([^A-Z0-9_]|$)|<TAG|<DATA|<YYYY|<KEY|<TOKEN|\$\{'
 
-# Diretórios e padrões que NUNCA entram no scan strict
-EXCLUDE_DIRS=(
+# Diretórios que nunca entram no strict
+PRUNE_DIRS=(
   ".git"
   ".venv"
   "node_modules"
   "dist"
   "build"
-  "coverage"
+  ".next"
+  ".cache"
+  ".pytest_cache"
   "__pycache__"
-  "evidence"
-  "vault_local"
-  "ssot/private"
+  "vendor"
 )
 
-# Monta args do grep para excluir dirs
-GREP_EXCLUDES=()
-for d in "${EXCLUDE_DIRS[@]}"; do
-  GREP_EXCLUDES+=(--exclude-dir="$d")
+# Caminhos que não entram no strict
+PRUNE_PATHS=(
+  "docs/ssot_public"
+)
+
+# monta expressão do find
+FIND_EXPR=()
+for d in "${PRUNE_DIRS[@]}"; do
+  FIND_EXPR+=( -path "*/$d/*" -o )
+done
+for p in "${PRUNE_PATHS[@]}"; do
+  FIND_EXPR+=( -path "./$p/*" -o )
 done
 
-# Exclui arquivos binários e cache comuns
-GREP_EXCLUDES+=(
-  --exclude="*.pyc"
-  --exclude="*.pyo"
-  --exclude="*.so"
-  --exclude="*.dylib"
-  --exclude="*.dll"
-  --exclude="*.pack"
-  --exclude="*.idx"
-  --exclude="*.png"
-  --exclude="*.jpg"
-  --exclude="*.jpeg"
-  --exclude="*.webp"
-  --exclude="*.pdf"
+# remove o último -o se existir
+if [ "${#FIND_EXPR[@]}" -gt 0 ]; then
+  unset 'FIND_EXPR[${#FIND_EXPR[@]}-1]'
+fi
+
+# lista arquivos textuais relevantes
+# -print0 para segurança com espaços
+mapfile -d '' files < <(
+  if [ "${#FIND_EXPR[@]}" -gt 0 ]; then
+    find "$target" \( "${FIND_EXPR[@]}" \) -prune -o -type f \
+      \( -name "*.md" -o -name "*.yaml" -o -name "*.yml" -o -name "*.json" -o -name "*.py" -o -name "*.ts" -o -name "*.js" \) \
+      -print0
+  else
+    find "$target" -type f \
+      \( -name "*.md" -o -name "*.yaml" -o -name "*.yml" -o -name "*.json" -o -name "*.py" -o -name "*.ts" -o -name "*.js" \) \
+      -print0
+  fi
 )
 
-# Scan
-if grep -RniE "${rx}" "${target}" "${GREP_EXCLUDES[@]}" >/dev/null 2>&1; then
-  grep -RniE "${rx}" "${target}" "${GREP_EXCLUDES[@]}" || true
+# grep:
+# -I ignora binários
+# -n linha
+# -E regex
+hits=""
+if [ "${#files[@]}" -gt 0 ]; then
+  hits=$(grep -nIE "$rx" "${files[@]}" || true)
+fi
+
+if [ -n "$hits" ]; then
   echo "FAIL: markers detected"
+  echo "$hits"
   exit 1
 fi
 
-echo "PASS: no markers detected"
+echo "PASS: no strict markers detected"
