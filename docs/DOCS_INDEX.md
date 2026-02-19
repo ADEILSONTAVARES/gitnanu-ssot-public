@@ -24,3 +24,5 @@
 - docs/runbooks/RUNBOOK_CONFLICT_RESOLUTION.md
 - scripts/vps/vps_gate.sh (dry)
 - ssot/vps/VPS_SECURITY_TARGETS.yaml
+
+- docs/ssot_public/GATE_STRICT_MARKERS_POLICY.md — Política do Gate STRICT (template markers)
