@@ -26,3 +26,5 @@
 - ssot/vps/VPS_SECURITY_TARGETS.yaml
 
 - docs/ssot_public/GATE_STRICT_MARKERS_POLICY.md — Política do Gate STRICT (template markers)
+
+- scripts/ssot/verify_public_baseline.sh — Baseline SSOT_PUBLIC (inclui Gate bash -n para scripts/**)
