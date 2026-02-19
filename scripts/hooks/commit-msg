@@ -5,6 +5,7 @@ COMPONENT="$(git config user.component || true)"
 if [ "$COMPONENT" != "gitnanu" ]; then
   echo "❌ BLOCKED: Only GitNanu can commit (git config user.component=gitnanu required)"
   echo "Attempted by: ${COMPONENT:-unknown}"
+  mkdir -p evidence
   echo "$(date -u) attempted_by=${COMPONENT:-unknown} reason=component_mismatch" >> evidence/UNAUTHORIZED_WRITE_ATTEMPTS.log
   exit 1
 fi

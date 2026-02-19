@@ -14,20 +14,20 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python3@v5
         with:
-          python-version: "3.11"
+          python3-version: "3.11"
 
       - name: Run P0 gates
         shell: bash
         run: |
           set -euo pipefail
 
-          python scripts/gates/validate_envelope_schema.py
-          python scripts/gates/validate_registries.py
-          python scripts/gates/check_antigravity_dependency.py
-          python scripts/metrics/measure_l0_l3.py
-          python scripts/gndrive/cleanup.py
+          python3 scripts/gates/validate_envelope_schema.py
+          python3 scripts/gates/validate_registries.py
+          python3 scripts/gates/check_antigravity_dependency.py
+          python3 scripts/metrics/measure_l0_l3.py
+          python3 scripts/gndrive/cleanup.py
 
           # Strict scan only on SSOT + scripts + workflows (default scope)
           bash scripts/ssot/scan_markers_strict.sh
@@ -35,4 +35,6 @@ jobs:
           # Docs scan: warns only (examples ok)
           bash scripts/ssot/scan_public_docs_examples.sh docs/ssot_public
 
-          echo "PASS: SSOT_PUBLIC P0 gates"
+          bash scripts/ssot/scan_markers_strict.sh
+bash scripts/ssot/scan_public_docs_examples.sh
+echo "PASS: SSOT_PUBLIC P0 gates"

@@ -1,17 +1,25 @@
 #!/bin/bash
 set -euo pipefail
 
-# Scan leve em docs/ssot_public: permite exemplos, mas avisa se tiver tokens "soltos"
-# fora de blocos de código. Este script não falha; ele orienta.
+# Scan leve: permite exemplos em docs/ssot_public e scripts/vps
+# Ele não falha. Ele só avisa.
 
-target="${1:-docs/ssot_public}"
-RX='(<TAG|<DATA|<YYYY|<KEY|<TOKEN|\$\{)'
+TARGETS=(
+  "docs/ssot_public"
+  "scripts/vps"
+)
 
-hits=$(grep -RniE "$RX" "$target" || true)
-if [ -n "$hits" ]; then
-  echo "WARN: template tokens found in public docs (expected if used as examples)"
-  echo "$hits"
-  exit 0
-fi
+RX='(<TAG|<DATA|<YYYY|<KEY|<TOKEN|<TAG_FINAL)'
 
-echo "PASS: no template tokens found in public docs"
+for t in "${TARGETS[@]}"; do
+  [ -e "$t" ] || continue
+  hits=$(grep -RniE "$RX" "$t" 2>/dev/null || true)
+  if [ -n "$hits" ]; then
+    echo "WARN: template tokens found in: $t"
+    echo "$hits"
+  else
+    echo "PASS: no template tokens found in: $t"
+  fi
+done
+
+exit 0
