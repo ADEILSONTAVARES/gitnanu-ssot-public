@@ -34,3 +34,5 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-18_p0_22.md — Handoff p0_22 (inbox ignored gate + baseline proof)
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_28.md — Handoff p0_28 (tag_latest_if_pass flow + baseline PASS)
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_29.md — Handoff p0_29 (docs gate: tag requires handoff + index)
