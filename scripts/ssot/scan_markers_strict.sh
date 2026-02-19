@@ -1,12 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-# STRICT scan: bloqueia se encontrar tokens de template perigosos
-# Regras:
-# • não varre o repo inteiro
-# • não analisa .venv, node_modules, dist, build, evidence, inbox
-# • não proíbe "${...}" porque é sintaxe normal (TS/JS/shell)
-# • foca em tokens de template típicos de docs/scripts de release
+# STRICT scan: falha se encontrar tokens de template perigosos em escopos críticos.
+# Observação: exemplos são permitidos em ssot/vps, scripts/vps e docs/ssot_public,
+# então estes paths são filtrados (não entram no FAIL).
 
 SCOPES=(
   ".github/workflows"
@@ -15,12 +12,15 @@ SCOPES=(
   "scripts/ssot"
 )
 
+# tokens que NÃO podem aparecer em código/gates/ci (exemplos ficam fora do strict)
 RX='(<TAG|<DATA|<YYYY|<KEY|<TOKEN|<TAG_FINAL|COLE_AQUI|T O D O|T B D|F I X M E|P L A C E H O L D E R)'
 
 hits=""
+
 for s in "${SCOPES[@]}"; do
   [ -e "$s" ] || continue
-  out=20 20 12 61 79 80 81 701 33 98 100 204 250 395 398 399 400grep -RniE "" "" \
+
+  out=$(grep -RniE "$RX" "$s" \
     --exclude-dir=.git \
     --exclude-dir=.venv \
     --exclude-dir=node_modules \
@@ -37,10 +37,11 @@ for s in "${SCOPES[@]}"; do
     --exclude='*.pdf' \
     2>/dev/null || true)
 
-  # filtra auto-matches (o próprio gate e o scan leve)
-  out=20 20 12 61 79 80 81 701 33 98 100 204 250 395 398 399 400echo "" | grep -vE '^scripts/ssot/(scan_markers_strict.sh|scan_public_docs_examples.sh):')
+  # filtra auto-matches e áreas onde exemplos são permitidos
+  # (robusto em macOS: filtra pela saída path:line:)
+  out=$(echo "$out" | grep -vE '^(ssot/vps/|scripts/vps/|docs/ssot_public/|scripts/ssot/scan_markers_strict\.sh:|scripts/ssot/scan_public_docs_examples\.sh:)' || true)
 
-  if [ -n "" ]; then
+  if [ -n "$out" ]; then
     hits="${hits}${out}\n"
   fi
 done
