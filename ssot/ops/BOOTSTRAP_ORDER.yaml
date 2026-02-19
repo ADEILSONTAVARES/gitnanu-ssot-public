@@ -1,0 +1,20 @@
+# BOOTSTRAP_ORDER — OG10 (SSOT_PUBLIC)
+# Objetivo: ordem determinística de boot e smoke.
+
+version: "v1"
+steps:
+  - id: S01_VERIFY_ENV
+    cmd: "bash scripts/ops/smoke_test.sh"
+    must_pass: true
+
+  - id: S02_VERIFY_BASELINE
+    cmd: "bash scripts/ssot/verify_public_baseline.sh latest"
+    must_pass: true
+
+  - id: S03_VERIFY_WRITE_LOCK
+    cmd: "bash scripts/security/verify_write_lock.sh"
+    must_pass: true
+
+  - id: S04_OPTIONAL_GNDRIVE_SYNC
+    cmd: "python3 scripts/gndrive/cleanup.py --dry-run"
+    must_pass: true

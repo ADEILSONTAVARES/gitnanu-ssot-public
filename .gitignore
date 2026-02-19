@@ -28,3 +28,6 @@ scripts/ssot/*.bak.*
 
 # GitNanu: local backups
 scripts/ssot/*.bak.*
+
+# Evidence runtime-only (do not commit ledgers)
+evidence/*.jsonl

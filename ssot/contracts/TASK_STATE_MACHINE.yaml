@@ -1,0 +1,46 @@
+# TASK_STATE_MACHINE — OG10 (SSOT_PUBLIC)
+# Objetivo: estado único e verificável para qualquer tarefa/job/run.
+# Regra: sem estado válido => FAIL nos gates.
+
+version: "v1"
+states:
+  - id: DRAFT
+    terminal: false
+    allowed_next: [QUEUED, CANCELLED]
+
+  - id: QUEUED
+    terminal: false
+    allowed_next: [RUNNING, CANCELLED]
+
+  - id: RUNNING
+    terminal: false
+    allowed_next: [NEEDS_REVIEW, FAILED, CANCELLED]
+
+  - id: NEEDS_REVIEW
+    terminal: false
+    allowed_next: [APPROVED, FAILED, CANCELLED]
+
+  - id: APPROVED
+    terminal: false
+    allowed_next: [MERGED, RELEASED, FAILED]
+
+  - id: MERGED
+    terminal: true
+    allowed_next: []
+
+  - id: RELEASED
+    terminal: true
+    allowed_next: []
+
+  - id: FAILED
+    terminal: true
+    allowed_next: []
+
+  - id: CANCELLED
+    terminal: true
+    allowed_next: []
+
+invariants:
+  - "Todo task precisa ter state ∈ states[].id"
+  - "Transição precisa estar em allowed_next"
+  - "Se terminal=true, não pode ter allowed_next"

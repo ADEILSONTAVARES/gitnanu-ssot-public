@@ -1,0 +1,33 @@
+# EVIDENCE_PACK_TEMPLATE — OG10 (SSOT_PUBLIC)
+# Objetivo: template mínimo que qualquer "evidence pack" deve seguir.
+
+version: "v1"
+required_fields:
+  - pack_id
+  - created_at
+  - repo
+  - head_commit
+  - tag
+  - gates
+  - artifacts
+
+schema:
+  pack_id: "string (ex: 2026-02-19_p0_38)"
+  created_at: "ISO8601"
+  repo: "string"
+  head_commit: "string"
+  tag: "string"
+  gates:
+    - name: "string"
+      status: "PASS|FAIL"
+      output_ref: "string (path/uri)"
+  artifacts:
+    - name: "string"
+      path: "string"
+      sha256: "string"
+      bytes: "int"
+
+invariants:
+  - "Se qualquer gate status=FAIL => pacote FAIL"
+  - "head_commit precisa bater com git rev-parse HEAD no momento do pack"
+  - "artifacts[].sha256 precisa ser real"

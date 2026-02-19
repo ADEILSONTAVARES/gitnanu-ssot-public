@@ -1,0 +1,31 @@
+# AUTHORITY_HIERARCHY — OG10 (SSOT_PUBLIC)
+# Objetivo: definir quem manda em quê. Sem isso, vira conflito infinito.
+
+version: "v1"
+sources_of_truth:
+  - id: SSOT_PUBLIC_REPO
+    priority: 100
+    description: "Repo público (mirror). Contém contratos e políticas sem segredos."
+
+  - id: GNDRIVE_VAULT
+    priority: 90
+    description: "Ambiente vivo (GammaNotion/GNDrive). Pode conter evidências e artefatos runtime. Nunca segredos em SSOT_PUBLIC."
+
+  - id: LOCAL_VAULT_PRIVATE
+    priority: 110
+    description: "Coca-Cola local-only (gitignored). Tem precedência para segredos e fórmulas, mas não pode ser exportado."
+
+rules:
+  - "Se houver conflito entre SSOT_PUBLIC_REPO e GNDRIVE_VAULT sobre contratos/políticas => SSOT_PUBLIC_REPO vence."
+  - "Se houver conflito sobre segredos/fórmula => LOCAL_VAULT_PRIVATE vence e nunca pode vazar."
+  - "Qualquer arquivo em ssot/private/ é proibido no repo público."
+
+write_access:
+  - actor: GitNanu
+    can_write: [SSOT_PUBLIC_REPO, GNDRIVE_VAULT, LOCAL_VAULT_PRIVATE]
+  - actor: GitRuby
+    can_write: []
+    can_read: [SSOT_PUBLIC_REPO]
+  - actor: HumanDev
+    can_write: [GNDRIVE_VAULT]
+    requires: ["Doctor gate PASS", "No secrets"]
