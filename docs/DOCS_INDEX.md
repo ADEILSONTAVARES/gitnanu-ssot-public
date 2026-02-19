@@ -52,3 +52,4 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_36.md — Handoff p0_36 (day tags immutable; latest only is force)
 - 2026-02-19 p0_37: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_37.md
 - 2026-02-19 p0_38: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_38.md
+- 2026-02-19 p0_39: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_39.md
