@@ -82,4 +82,14 @@ echo "== GATE: bash syntax (scripts/**/*.sh) =="
 find scripts -type f -name "*.sh" -maxdepth 3 -print0 | xargs -0 -n 1 bash -n
 echo "PASS: bash syntax ok"
 
+
+# == GATE: inbox must be untracked ==
+echo "== GATE: inbox must be untracked =="
+if git ls-files --error-unmatch inbox >/dev/null 2>&1; then
+  echo "FAIL: inbox/ has tracked files (must be local-only)"
+  git ls-files inbox
+  exit 1
+fi
+echo "PASS: inbox is untracked"
+
 echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
