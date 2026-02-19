@@ -3,7 +3,7 @@
 ## Estado do pacote
 - Repo: gitnanu-ssot-public
 - Branch: main
-- HEAD (main): c310ef9
+- HEAD (main): a57f7ac
 - Objetivo: registrar handoff + index antes de tag (No Holes)
 
 ## Gates canônicos
