@@ -42,3 +42,5 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_31.md — Handoff p0_31 (tag repointed after p0_30 docs)
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_32.md — Handoff p0_32 (required by docs gate for today package tag)
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_33.md — Handoff p0_33 (pre-tag requirement)
