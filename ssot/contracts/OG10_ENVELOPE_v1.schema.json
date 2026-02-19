@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OG10 Task Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "created_at",
+    "owner_component",
+    "task_id",
+    "action_pack_id",
+    "context",
+    "pass_fail_criteria",
+    "expected_outputs"
+  ],
+  "properties": {
+    "version": { "type": "string", "enum": ["OG10_ENVELOPE_v1"] },
+    "created_at": { "type": "string" },
+    "owner_component": { "type": "string" },
+
+    "task_id": { "type": "string", "pattern": "^JOB_S[0-9]{2}_[A-Z0-9_]+$" },
+    "action_pack_id": { "type": "string", "pattern": "^ACTION_[0-9]{3}$" },
+
+    "addons": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^ADDON_[0-9]{3}$" },
+      "maxItems": 10
+    },
+    "pain_pack_refs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^PAIN_[0-9]{2}$" },
+      "maxItems": 5
+    },
+    "universal_skills": {
+      "type": "array",
+      "items": {
+        "enum": ["ssot-guard", "doctor-runner", "evidence-publisher"]
+      },
+      "maxItems": 3
+    },
+    "bench90_target": {
+      "type": "string",
+      "pattern": "^BENCH_[0-9]{2}$"
+    },
+
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gammanote_pointers"],
+      "properties": {
+        "mcp_context": { "type": "object" },
+        "context7_refs": { "type": "array", "items": { "type": "string" } },
+        "gammanote_pointers": { "type": "array", "items": { "type": "string" } },
+        "gndrive_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "pass_fail_criteria": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["testsprite_pass", "ralph_pass", "doctor1_pass"],
+      "properties": {
+        "testsprite_pass": { "type": "boolean" },
+        "ralph_pass": { "type": "boolean" },
+        "doctor1_pass": { "type": "boolean" },
+        "doctor2_pass": { "type": "boolean" },
+        "custom_checks": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "expected_outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["patch_or_diff", "receipt", "evidence"],
+      "properties": {
+        "patch_or_diff": { "type": "string" },
+        "receipt": { "type": "object" },
+        "evidence": { "type": "array", "items": { "type": "string" } },
+        "registry_updates": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

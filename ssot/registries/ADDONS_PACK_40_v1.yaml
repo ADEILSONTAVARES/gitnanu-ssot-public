@@ -1,0 +1,36 @@
+addons_pack_40:
+  version: v1
+  subset_public:
+    count: 10
+    note: remaining addons exist in private environment
+  addons:
+    - id: ADDON_001
+      name: writer_lock_ci
+      purpose: enforce writer trailer in CI
+    - id: ADDON_002
+      name: envelope_schema_gate
+      purpose: ensure envelope schema exists and is validated
+    - id: ADDON_003
+      name: registry_validator
+      purpose: validate registries for ids and duplicates
+    - id: ADDON_004
+      name: l0_l3_budget_meter
+      purpose: measure and enforce fallback ratio
+    - id: ADDON_005
+      name: gndrive_cleanup_receipt
+      purpose: generate cleanup receipts for retention
+    - id: ADDON_006
+      name: antigravity_dependency_scan
+      purpose: block direct dependencies on transitional tool
+    - id: ADDON_007
+      name: log_sanitization_policy
+      purpose: prevent secrets in logs
+    - id: ADDON_008
+      name: n8n_reliability_policy
+      purpose: mitigate SPOF risk
+    - id: ADDON_009
+      name: stitch_contingency_policy
+      purpose: handle beta breaking changes
+    - id: ADDON_010
+      name: multi_device_conflict_policy
+      purpose: define conflict resolution

@@ -1,0 +1,34 @@
+benchmarks_baselines:
+  version: v1
+  note: public baselines are conservative; private environment may hold richer baselines
+  baselines:
+    BENCH_01_ui_render_ms:
+      baseline: 120
+      target: 90
+    BENCH_02_api_response_ms:
+      baseline: 250
+      target: 180
+    BENCH_03_build_time_s:
+      baseline: 120
+      target: 90
+    BENCH_04_ci_total_s:
+      baseline: 240
+      target: 180
+    BENCH_05_testsuite_s:
+      baseline: 180
+      target: 120
+    BENCH_06_ssot_validation_s:
+      baseline: 10
+      target: 8
+    BENCH_07_registry_validation_s:
+      baseline: 3
+      target: 2
+    BENCH_08_secret_scan_s:
+      baseline: 5
+      target: 4
+    BENCH_09_docs_gate_s:
+      baseline: 3
+      target: 2
+    BENCH_10_tag_update_s:
+      baseline: 10
+      target: 8

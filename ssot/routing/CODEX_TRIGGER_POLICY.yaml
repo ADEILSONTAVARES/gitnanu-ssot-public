@@ -1,0 +1,33 @@
+codex_trigger_policy:
+  enabled: true
+
+  target_rate:
+    desired: 0.005
+    alert_if_exceeds: 0.008
+
+  decision_engine:
+    primary: prm
+    fallback: n8n_rule_based
+
+  triggers:
+    antigravity_failures:
+      threshold: 2
+      window_minutes: 30
+
+    testsprite_regression:
+      severity: critical
+      consecutive_fails: 1
+
+    ralph_drift_detected:
+      scope_leak: true
+
+    doctor1_repair_request:
+      reason: code_quality
+
+  fallback_if_codex_fails:
+    - human_review
+    - rollback_last_good
+
+  monitoring:
+    track_usage_rate: true
+    log_class: logs_sanitized

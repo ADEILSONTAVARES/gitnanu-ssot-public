@@ -1,0 +1,25 @@
+prm_readiness_criteria:
+  must_pass_all:
+    - id: PRM_001
+      criterion: execute_tasks_via_envelope
+      target: { count: 50, pass_rate_min: 0.95 }
+
+    - id: PRM_002
+      criterion: doctor1_doctor2_pass_rate
+      target: { pass_rate_min: 0.95, window_tasks: 50 }
+
+    - id: PRM_003
+      criterion: zero_direct_antigravity_dependencies
+      target: { required: true }
+
+    - id: PRM_004
+      criterion: rollback_plan_tested
+      target: { required: true }
+
+    - id: PRM_005
+      criterion: writer_lock_respected
+      target: { required_trailer: "X-GitNanu-Writer: gitnanu" }
+
+  readiness_outcome:
+    on_pass: prm_can_assume_l0
+    on_fail: remain_shadow_or_fallback

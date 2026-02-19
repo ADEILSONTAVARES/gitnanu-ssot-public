@@ -1,0 +1,51 @@
+antigravity_exit_plan:
+  status: TRANSITORIO_ATIVO
+
+  principles:
+    - antigravity_is_not_ssot
+    - antigravity_must_be_removable
+    - all_tasks_must_flow_through_envelope
+    - removals_are_criteria_based_not_calendar_based
+
+  phases:
+    phase1_coexist_shadow:
+      entry_criteria:
+        - p0_foundation_pass
+      exit_criteria:
+        - prm_shadow_tasks_pass_min: 25
+        - envelope_compliance_pass_rate_min: 0.95
+      mode:
+        l0_executor: antigravity
+        prm: shadow_observer
+        fallback: none
+
+    phase2_transition:
+      entry_criteria:
+        - phase1_coexist_shadow_exit
+      exit_criteria:
+        - prm_l0_tasks_pass_min: 50
+        - prm_doctor_pass_rate_min: 0.95
+        - codex_trigger_policy_defined: true
+      mode:
+        l0_executor: prm
+        antigravity: fallback_only
+        fallback: antigravity
+
+    phase3_removal:
+      entry_criteria:
+        - phase2_transition_exit
+      exit_criteria:
+        - antigravity_dependency_check_pass: true
+        - rollback_tested: true
+      mode:
+        l0_executor: prm
+        antigravity: archived
+        fallback: rollback_last_good
+
+  rollback:
+    trigger_conditions:
+      - prm_critical_failures_over_window: { threshold: 3, window_minutes: 60 }
+    action:
+      - rollback_last_good
+      - enable_antigravity_fallback
+      - alert_ops

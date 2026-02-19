@@ -1,29 +1,32 @@
-name: SSOT Validation
+name: ssot_validation
 
 on:
-  pull_request:
-    paths:
-      - 'ssot/**'
-      - 'scripts/ssot/**'
-      - 'docs/ssot/**'
   push:
-    branches: [ "main" ]
-    paths:
-      - 'ssot/**'
-      - 'scripts/ssot/**'
-      - 'docs/ssot/**'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  validate:
+  ssot_public_gates:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install deps
+
+      - name: Run P0 gates
+        shell: bash
         run: |
-          pip install pyyaml
-      - name: Run SSOT Validation
-        run: |
-          bash scripts/ssot/validate_all_ssot.sh
+          set -euo pipefail
+
+          python scripts/gates/validate_envelope_schema.py
+          python scripts/gates/validate_registries.py
+          python scripts/gates/check_antigravity_dependency.py
+          python scripts/metrics/measure_l0_l3.py
+          python scripts/gndrive/cleanup.py
+
+          echo "PASS: SSOT_PUBLIC P0 gates"

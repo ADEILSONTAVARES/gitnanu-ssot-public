@@ -1,0 +1,156 @@
+action_pack_250:
+  version: v1
+  subset_public:
+    count: 50
+    note: remaining actions exist in private environment
+  actions:
+    - id: ACTION_001
+      name: scaffold_ui_component
+      category: ui
+    - id: ACTION_002
+      name: create_api_route
+      category: backend
+    - id: ACTION_003
+      name: add_env_var_reference_safe
+      category: security
+    - id: ACTION_004
+      name: add_ci_workflow
+      category: ops
+    - id: ACTION_005
+      name: create_schema_contract
+      category: ssot
+    - id: ACTION_006
+      name: create_registry_entry
+      category: ssot
+    - id: ACTION_007
+      name: validate_registry
+      category: ssot
+    - id: ACTION_008
+      name: create_receipt_template
+      category: ops
+    - id: ACTION_009
+      name: enforce_commit_trailer
+      category: ops
+    - id: ACTION_010
+      name: scan_forbidden_strings
+      category: security
+    - id: ACTION_011
+      name: add_docs_spec
+      category: docs
+    - id: ACTION_012
+      name: add_policy_file
+      category: ssot
+    - id: ACTION_013
+      name: create_cleanup_script
+      category: ops
+    - id: ACTION_014
+      name: add_metrics_script
+      category: metrics
+    - id: ACTION_015
+      name: add_gate_script
+      category: ops
+    - id: ACTION_016
+      name: add_dependency_checker
+      category: ops
+    - id: ACTION_017
+      name: add_baseline_file
+      category: metrics
+    - id: ACTION_018
+      name: update_tag_release
+      category: ops
+    - id: ACTION_019
+      name: generate_evidence_manifest
+      category: ops
+    - id: ACTION_020
+      name: validate_yaml_json
+      category: ops
+    - id: ACTION_021
+      name: patch_docs_no_placeholders
+      category: docs
+    - id: ACTION_022
+      name: verify_public_baseline
+      category: ops
+    - id: ACTION_023
+      name: add_writer_lock_policy
+      category: security
+    - id: ACTION_024
+      name: add_retention_policy
+      category: ops
+    - id: ACTION_025
+      name: add_trigger_policy
+      category: routing
+    - id: ACTION_026
+      name: create_mouse_spec
+      category: docs
+    - id: ACTION_027
+      name: create_conflict_policy
+      category: ops
+    - id: ACTION_028
+      name: create_log_sanitization_policy
+      category: security
+    - id: ACTION_029
+      name: create_n8n_reliability_policy
+      category: ops
+    - id: ACTION_030
+      name: create_stitch_contingency_policy
+      category: ops
+    - id: ACTION_031
+      name: create_prm_readiness_criteria
+      category: roadmap
+    - id: ACTION_032
+      name: create_exit_plan
+      category: roadmap
+    - id: ACTION_033
+      name: add_testsprite_ralph_contract
+      category: gates
+    - id: ACTION_034
+      name: add_codex_trigger_policy
+      category: routing
+    - id: ACTION_035
+      name: add_budget_tracker_policy
+      category: metrics
+    - id: ACTION_036
+      name: add_budget_meter_script
+      category: metrics
+    - id: ACTION_037
+      name: add_envelope_schema_validator
+      category: ssot
+    - id: ACTION_038
+      name: add_registry_validator_script
+      category: ssot
+    - id: ACTION_039
+      name: add_ci_ssot_validation
+      category: ops
+    - id: ACTION_040
+      name: add_ci_writer_lock
+      category: ops
+    - id: ACTION_041
+      name: create_receipt_example
+      category: docs
+    - id: ACTION_042
+      name: create_envelope_example
+      category: docs
+    - id: ACTION_043
+      name: enforce_no_antigravity_dependency
+      category: ops
+    - id: ACTION_044
+      name: enforce_no_secrets_in_repo
+      category: security
+    - id: ACTION_045
+      name: verify_docs_min_length
+      category: docs
+    - id: ACTION_046
+      name: verify_tags_match_head
+      category: ops
+    - id: ACTION_047
+      name: generate_checkpoint
+      category: ops
+    - id: ACTION_048
+      name: run_fast_gates
+      category: ops
+    - id: ACTION_049
+      name: run_deep_gates
+      category: ops
+    - id: ACTION_050
+      name: publish_public_ssot
+      category: ops
