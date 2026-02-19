@@ -33,6 +33,13 @@ TODAY="$(date +%F)"
 TAG_DAY="ssot_public_${TODAY}_${SUFFIX}"
 HANDOFF="docs/ssot_public/NEXT_CHAT_HANDOFF_${TODAY}_${SUFFIX}.md"
 
+# Guard canônico: TAG_DAY é imutável (nunca reescrever)
+if git rev-parse -q --verify "refs/tags/${TAG_DAY}" >/dev/null; then
+  echo "FAIL: TAG_DAY já existe e é imutável: ${TAG_DAY}"
+  echo "Dica: gere um novo pack (ex.: p0_37) ao invés de reusar o mesmo."
+  exit 31
+fi
+
 echo "== GATE: handoff must exist and be indexed (pre-tag) =="
 if [ ! -f "$HANDOFF" ]; then
   echo "FAIL: missing handoff file (must be committed BEFORE tagging)"
@@ -66,7 +73,11 @@ echo "PASS: baseline ok"
 
 echo "== ACTION: tag latest + day package =="
 git tag -f ssot_public_latest "$HEAD"
-git tag -f "$TAG_DAY" "$HEAD"
+git tag "$TAG_DAY" "$HEAD"
+
+echo "== PUSH: tags =="
+git push origin -f ssot_public_latest
+git push origin "$TAG_DAY"
 
 echo "== PUSH: tags =="
 git push origin -f ssot_public_latest "$TAG_DAY"
