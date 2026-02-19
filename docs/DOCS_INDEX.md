@@ -55,3 +55,4 @@
 - 2026-02-19 p0_39: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_39.md
 - 2026-02-19: docs/ssot_public/OG10_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
 - 2026-02-19 p0_40: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_40.md
+- 2026-02-19 p0_41: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_41.md
