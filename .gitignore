@@ -4,16 +4,21 @@ evidence/public/VPS_GATE_REPORT.latest.md
 
 # local backups (never commit)
 scripts/ssot/_bak/
-
 # local-only (generated)
 scripts/ssot/scanners/
 ssot/config/
 ssot/workflows/
-
 # generated receipts (local)
 evidence/public/_run/
-
 # SSOT_PUBLIC: rascunhos e evidências locais
 inbox/
 evidence/
-inbox/
+# == SSOT_PUBLIC perimeter (required) ==
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+vault_local/
+ssot/private/
