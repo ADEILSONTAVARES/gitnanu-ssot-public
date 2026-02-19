@@ -76,4 +76,10 @@ if [ "$docs" != "200" ]; then
   exit 21
 fi
 
+
+# == GATE: bash syntax (scripts/**/*.sh) ==
+echo "== GATE: bash syntax (scripts/**/*.sh) =="
+find scripts -type f -name "*.sh" -maxdepth 3 -print0 | xargs -0 -n 1 bash -n
+echo "PASS: bash syntax ok"
+
 echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
