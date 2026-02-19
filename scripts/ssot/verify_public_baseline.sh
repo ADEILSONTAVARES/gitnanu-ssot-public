@@ -92,4 +92,19 @@ if git ls-files --error-unmatch inbox >/dev/null 2>&1; then
 fi
 echo "PASS: inbox is untracked"
 
+
+# == GATE: inbox must be ignored in .gitignore ==
+echo "== GATE: inbox must be ignored in .gitignore =="
+if [ ! -f .gitignore ]; then
+  echo "FAIL: missing .gitignore (required)"
+  exit 1
+fi
+# aceita variações comuns: inbox/, /inbox/, inbox/**
+if ! grep -qE "(^|/)(inbox/|inbox/\*\*|inbox\*/)$" .gitignore 2>/dev/null && ! grep -qE "^inbox/" .gitignore; then
+  echo "FAIL: .gitignore must ignore inbox/ (add: inbox/)"
+  echo "HINT: echo \"inbox/\" >> .gitignore"
+  exit 1
+fi
+echo "PASS: inbox is ignored by .gitignore"
+
 echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
