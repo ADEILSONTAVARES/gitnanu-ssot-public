@@ -36,3 +36,5 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_28.md — Handoff p0_28 (tag_latest_if_pass flow + baseline PASS)
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_29.md — Handoff p0_29 (docs gate: tag requires handoff + index)
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_30.md — Handoff p0_30 (required by docs gate for today package tag)
