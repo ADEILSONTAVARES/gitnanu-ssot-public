@@ -87,3 +87,5 @@
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-20_p0_56.md
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-20_p0_57.md
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-20_p0_58.md
