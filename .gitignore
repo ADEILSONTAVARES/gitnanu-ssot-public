@@ -31,3 +31,5 @@ scripts/ssot/*.bak.*
 
 # Evidence runtime-only (do not commit ledgers)
 evidence/*.jsonl
+
+.venv/
