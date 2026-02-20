@@ -1,0 +1,2 @@
+# OG10 SSOT_PUBLIC - MASTER INDEX
+(Conteudo aqui)
