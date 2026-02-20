@@ -59,3 +59,5 @@
 - 2026-02-19 p0_42: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_42.md
 
 - docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-20_p0_43.md
+
+- docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-20_p0_44.md
