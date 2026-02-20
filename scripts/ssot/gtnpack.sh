@@ -53,5 +53,5 @@ git push origin main
 git push origin --tags
 
 # 5) status final
-gtnhere
+echo "== HEAD =="; git show -s --oneline HEAD; echo; echo "== LOG =="; git --no-pager log -7 --oneline --decorate; echo; echo "== TAGS =="; git tag -l "ssot_public_*" | tail -n 15; echo; echo "== STATUS =="; git status -sb;
 git status -sb
