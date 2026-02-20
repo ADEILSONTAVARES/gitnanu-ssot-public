@@ -22,7 +22,7 @@ echo "HANDOFF=$HANDOFF"
 echo
 
 # 1) gates + noholes
-bash scripts/ssot/verify_public_baseline.sh latest
+bash scripts/ssot/verify_public_baseline.sh HEAD
 bash scripts/ssot/run_noholes.sh
 
 # 2) handoff
@@ -34,7 +34,7 @@ cat > "$HANDOFF" <<EOF2
 - latest tag: ssot_public_latest
 
 ## COMANDOS
-- baseline: bash scripts/ssot/verify_public_baseline.sh latest
+- baseline: bash scripts/ssot/verify_public_baseline.sh HEAD
 - noholes : bash scripts/ssot/run_noholes.sh
 - publish : bash scripts/ssot/tag_latest_if_pass.sh ${SUF}
 EOF2
