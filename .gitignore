@@ -39,3 +39,13 @@ evidence/*.jsonl
 
 # Exports do n8n podem ser grandes/voláteis (se quiser manter fora)
 ssot/workflows/n8n_exports/
+
+# --- OG10: workflows SSOT ---
+# 1) re-incluir o diretório (necessário para exceptions funcionarem)
+!ssot/workflows/
+
+# 2) YAML é canônico e deve ser versionado
+!ssot/workflows/*.yaml
+
+# 3) exports do n8n ficam fora do git (voláteis/pesados)
+ssot/workflows/n8n_exports/
