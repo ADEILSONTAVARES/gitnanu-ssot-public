@@ -139,4 +139,7 @@ else
 fi
 
 
+echo "== GATE: assert_no_escaped_env (run_noholes selector) =="
+bash scripts/ssot/assert_no_escaped_env.sh scripts/ssot/run_noholes.sh
+
 echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
