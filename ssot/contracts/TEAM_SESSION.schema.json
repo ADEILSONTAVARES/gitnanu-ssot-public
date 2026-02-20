@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TEAM_SESSION",
+  "type": "object",
+  "required": ["session_id", "company_id", "project_id", "owner", "mode", "budgets", "dod", "locks", "status", "created_at"],
+  "properties": {
+    "session_id": { "type": "string" },
+    "company_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "owner": {
+      "type": "object",
+      "required": ["agent_id", "role"],
+      "properties": {
+        "agent_id": { "type": "string" },
+        "role": { "type": "string" }
+      }
+    },
+    "teammates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agent_id", "role"],
+        "properties": {
+          "agent_id": { "type": "string" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    "mode": { "type": "string", "enum": ["SOLO", "TEAM"] },
+    "budgets": {
+      "type": "object",
+      "required": ["max_cost_usd", "max_latency_ms_p95"],
+      "properties": {
+        "max_cost_usd": { "type": "number" },
+        "max_latency_ms_p95": { "type": "number" }
+      }
+    },
+    "dod": {
+      "type": "object",
+      "required": ["definition_of_done"],
+      "properties": {
+        "definition_of_done": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "locks": {
+      "type": "object",
+      "properties": {
+        "file_ownership_ref": { "type": "string" },
+        "active_locks_ref": { "type": "string" }
+      }
+    },
+    "status": { "type": "string", "enum": ["PENDING", "RUNNING", "AWAITING_REVIEW", "DONE", "FAILED", "CANCELED"] },
+    "created_at": { "type": "string" }
+  }
+}

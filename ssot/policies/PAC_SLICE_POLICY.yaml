@@ -1,0 +1,12 @@
+version: "v1.0"
+policy: PAC_SLICE_POLICY
+
+limits:
+  pac_min_tokens: 2000
+  pac_max_tokens: 12000
+
+rules:
+  - "No raw data in chat: use GNDrive pointers"
+  - "One PAC per intent; do not merge unrelated tasks"
+  - "Every PAC must list: sources, constraints, acceptance"
+  - "PAC older than 7 days must be revalidated"

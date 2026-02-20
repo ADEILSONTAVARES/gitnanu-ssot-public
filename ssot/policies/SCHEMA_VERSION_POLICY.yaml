@@ -1,0 +1,20 @@
+version: "v1.0"
+policy: SCHEMA_VERSION_POLICY
+
+strategy:
+  default: "additive_only"
+  breaking_change_requires: "major_version_bump"
+  backward_compatible_window_days: 30
+
+rules:
+  - rule: "never_remove_fields_in_minor_or_patch"
+    enforcement: "block"
+  - rule: "major_bump_requires_migration_plan"
+    enforcement: "block"
+  - rule: "schemas_must_declare_version"
+    enforcement: "block"
+
+migration:
+  required: true
+  location: "ssot/ops/migrations/"
+  naming: "MIGRATE_{schema_name}_v{from}_to_v{to}.md"

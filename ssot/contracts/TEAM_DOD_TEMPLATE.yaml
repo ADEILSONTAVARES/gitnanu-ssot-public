@@ -1,0 +1,12 @@
+version: "v1.0"
+contract: TEAM_DOD_TEMPLATE
+
+definition_of_done_required:
+  - "Acceptance criteria list is present and testable"
+  - "Patch is minimal (<= 50 lines, <= 3 files) unless justified"
+  - "TestSprite PASS (affected tests)"
+  - "Doctor1 PASS"
+  - "Doctor2 PASS when risk >= medium"
+  - "Evidence Pack generated and stored in GNDrive"
+  - "Receipt signed (sha256 + ed25519)"
+  - "GitNanu commit created (single writer)"

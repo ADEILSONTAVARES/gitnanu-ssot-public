@@ -1,0 +1,25 @@
+version: "v1.0"
+policy: SSOT_VS_EVIDENCE_POLICY
+
+definitions:
+  ssot:
+    meaning: "Fonte de verdade de governança e contratos"
+    allowed_locations: ["git_repo"]
+    allowed_types: ["schema", "policy", "registry", "runbook", "adr"]
+  evidence:
+    meaning: "Prova do run (o que ocorreu, quando, com hash e assinatura)"
+    allowed_locations: ["gndrive", "git_repo_sanitized_subset"]
+    allowed_types: ["receipt", "report", "logs_sanitized", "artifacts_manifest", "screenshots"]
+
+rules:
+  - rule: "n8n_state_is_not_ssot"
+    enforcement: "block"
+    note: "Workflows e estado do n8n sao operacionais, nunca SSOT."
+
+  - rule: "ssot_must_be_versioned"
+    enforcement: "block"
+    note: "SSOT só existe se estiver versionado no git."
+
+  - rule: "evidence_pack_required_for_state_change"
+    enforcement: "block"
+    note: "Mudança de estado sem Evidence Pack é inválida."

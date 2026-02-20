@@ -1,0 +1,17 @@
+version: "v1.0"
+policy: KILL_SWITCH_POLICY
+
+default_enabled: true
+
+triggers_defaults:
+  max_cost_usd: 1.00
+  max_latency_ms_p95: 30000
+  max_retries: 3
+  max_loop_count: 2
+  regression_detected: true
+
+actions_on_trigger:
+  - "freeze_current_run"
+  - "fallback_to_SOLO"
+  - "emit_incident_receipt"
+  - "require_owner_review_before_resume"

@@ -1,0 +1,28 @@
+version: "v1.0"
+contract: BILLING_MIN_DB_SCOPE
+statement: "Mesmo em files-first, estes domínios exigem DB mínimo por idempotência e auditoria."
+
+db_required_domains:
+  - name: "payments_events"
+    reason: "idempotency + reconciliation"
+    tables_min:
+      - "payments"
+      - "payment_events"
+  - name: "credits_ledger"
+    reason: "append-only ledger"
+    tables_min:
+      - "credits_ledger"
+  - name: "mcp_tokens"
+    reason: "tenant isolation + rotation + oauth"
+    tables_min:
+      - "mcp_tokens"
+  - name: "audit_log"
+    reason: "append-only immutable audit"
+    tables_min:
+      - "mcp_audit_log"
+      - "system_audit_log"
+
+invariants:
+  - "RLS_MULTI_TENANT_ALWAYS_ON"
+  - "company_id_derived_from_session_never_from_client_body"
+  - "idempotency_key_required_for_write_events"

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KILL_SWITCH",
+  "type": "object",
+  "required": ["session_id", "enabled", "triggers", "actions"],
+  "properties": {
+    "session_id": { "type": "string" },
+    "enabled": { "type": "boolean" },
+    "triggers": {
+      "type": "object",
+      "properties": {
+        "max_cost_usd": { "type": "number" },
+        "max_latency_ms_p95": { "type": "number" },
+        "max_retries": { "type": "integer" },
+        "max_loop_count": { "type": "integer" },
+        "regression_detected": { "type": "boolean" }
+      }
+    },
+    "actions": {
+      "type": "object",
+      "properties": {
+        "fallback_mode": { "type": "string", "enum": ["SOLO", "FREEZE", "ROLLBACK"] },
+        "notify_owner": { "type": "boolean" },
+        "require_manual_review": { "type": "boolean" }
+      }
+    }
+  }
+}
