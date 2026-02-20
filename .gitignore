@@ -33,3 +33,9 @@ scripts/ssot/*.bak.*
 evidence/*.jsonl
 
 .venv/
+
+# SSOT workflows: YAML é canônico e deve ser versionado
+!ssot/workflows/*.yaml
+
+# Exports do n8n podem ser grandes/voláteis (se quiser manter fora)
+ssot/workflows/n8n_exports/
