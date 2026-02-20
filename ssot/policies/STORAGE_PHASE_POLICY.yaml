@@ -1,0 +1,37 @@
+version: "v1.0"
+policy: STORAGE_PHASE_POLICY
+principle: "files_first_until_obvious_db_need"
+
+phases:
+  phase_0:
+    name: "FILES_FIRST"
+    ssot_storage:
+      primary: "git_repo_files"
+      formats_allowed: ["yaml", "json", "jsonl", "md"]
+      forbidden: ["db_as_ssot", "n8n_as_ssot"]
+    evidence_storage:
+      primary: "gndrive"
+      formats_allowed: ["json", "jsonl", "md", "pdf", "png", "zip"]
+    db_min_scope_allowed: true
+    db_min_scope_ref: "ssot/contracts/BILLING_MIN_DB_SCOPE.yaml"
+
+  phase_1:
+    name: "HYBRID_INDEXED_FILES"
+    adds:
+      - "file_index_manifests"
+      - "materialized_views_as_files"
+    db_min_scope_allowed: true
+
+  phase_2:
+    name: "DB_FOR_RELATIONAL_QUERIES"
+    condition_required:
+      any_of:
+        - "jsonl_over_10gb_per_tenant"
+        - "cross_evidence_queries_required"
+        - "public_api_consumers_need_sla"
+
+gates:
+  required_always:
+    - "AUTHORITY_HIERARCHY"
+    - "EVIDENCE_PACK_TEMPLATE"
+    - "SCHEMA_VERSION_POLICY"
