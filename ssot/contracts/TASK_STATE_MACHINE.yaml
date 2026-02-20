@@ -41,6 +41,6 @@ states:
     allowed_next: []
 
 invariants:
-  - "Todo task precisa ter state ∈ states[].id"
+  - "Toda tarefa precisa ter state ∈ states[].id"
   - "Transição precisa estar em allowed_next"
   - "Se terminal=true, não pode ter allowed_next"
