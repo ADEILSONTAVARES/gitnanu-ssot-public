@@ -3,7 +3,6 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
-# usa python do ambiente ativo; se não tiver venv, tenta python3
 PY="${PYTHON:-}"
 if [ -z "$PY" ]; then
   if command -v python >/dev/null 2>&1; then PY="python"; else PY="python3"; fi
@@ -22,4 +21,4 @@ echo
 "$PY" scripts/ssot/no_holes_check_skills.py "$SKL"
 "$PY" scripts/ssot/validate_guardrails_metrics.py
 
-echo "PASS: run_noholes ✅"
+echo "PASS: run_noholes"
