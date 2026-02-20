@@ -124,4 +124,19 @@ if [ "$missing" -ne 0 ]; then
 fi
 echo "PASS: .gitignore required patterns present"
 
+echo "== GATE: assert_public_no_secrets =="
+if [ -x "scripts/ssot/assert_public_no_secrets.sh" ]; then
+  bash scripts/ssot/assert_public_no_secrets.sh
+else
+  echo "WARN: scripts/ssot/assert_public_no_secrets.sh não existe. Pulando."
+fi
+
+echo "== GATE: assert_gitignore_public =="
+if [ -x "scripts/ssot/assert_gitignore_public.sh" ]; then
+  bash scripts/ssot/assert_gitignore_public.sh
+else
+  echo "WARN: scripts/ssot/assert_gitignore_public.sh não existe. Pulando."
+fi
+
+
 echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
