@@ -3,15 +3,17 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
-PY="\${PYTHON:-}"
-if [ -z "\$PY" ]; then
-  # 1) venv ativo -> usa python do venv
-  if [ -n "\${VIRTUAL_ENV:-}" ] && [ -x "\${VIRTUAL_ENV}/bin/python" ]; then
-    PY="\${VIRTUAL_ENV}/bin/python"
-  # 2) python no PATH
+# Seleção de Python (ordem):
+# 1) PYTHON explícito
+# 2) venv ativo -> python do venv
+# 3) python no PATH
+# 4) python3 fallback
+PY="${PYTHON:-}"
+if [ -z "$PY" ]; then
+  if [ -n "${VIRTUAL_ENV:-}" ] && [ -x "${VIRTUAL_ENV}/bin/python" ]; then
+    PY="${VIRTUAL_ENV}/bin/python"
   elif command -v python >/dev/null 2>&1; then
     PY="python"
-  # 3) fallback
   else
     PY="python3"
   fi
