@@ -1,0 +1,8 @@
+gitnanu_operational:
+  version: "v1.0"
+  secrets:
+    rule: "nunca logar plaintext"
+    injection: "runtime_fetch (prod)"
+    masking: "sempre mascarar tokens/keys em logs e traces"
+  delete_policy:
+    rule: "todo delete gera audit_log com justificativa"

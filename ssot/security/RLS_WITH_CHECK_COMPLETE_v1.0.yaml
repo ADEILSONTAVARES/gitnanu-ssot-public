@@ -1,0 +1,20 @@
+rls_with_check_complete:
+  version: "v1.0"
+  rule: "USING + WITH CHECK para SELECT/INSERT/UPDATE/DELETE"
+  example_users_policies: |
+    CREATE POLICY users_select ON users
+      FOR SELECT
+      USING (company_id = current_setting('app.company_id')::uuid);
+
+    CREATE POLICY users_insert ON users
+      FOR INSERT
+      WITH CHECK (company_id = current_setting('app.company_id')::uuid);
+
+    CREATE POLICY users_update ON users
+      FOR UPDATE
+      USING (company_id = current_setting('app.company_id')::uuid)
+      WITH CHECK (company_id = current_setting('app.company_id')::uuid);
+
+    CREATE POLICY users_delete ON users
+      FOR DELETE
+      USING (company_id = current_setting('app.company_id')::uuid);

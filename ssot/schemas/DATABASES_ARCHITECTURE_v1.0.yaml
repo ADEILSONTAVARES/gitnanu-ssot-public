@@ -1,0 +1,8 @@
+databases_architecture:
+  version: "v1.0"
+  postgresql_supabase:
+    rule: "RLS sempre em tabelas com company_id"
+  qdrant:
+    rule: "vector search com filter por company_id"
+  redis:
+    rule: "cache + locks + idempotency + rate limit"

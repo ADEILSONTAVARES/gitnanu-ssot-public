@@ -49,3 +49,15 @@ ssot/workflows/n8n_exports/
 
 # 3) exports do n8n ficam fora do git (voláteis/pesados)
 ssot/workflows/n8n_exports/
+
+# BEGIN NANUCAI_COCA_BLOCK
+# ==========================
+# COCA-COLA (local-only)
+# ==========================
+ssot/private/
+vault_local/
+**/bench90_results.json
+**/ledger_cost.json
+**/evidence_pack.manifest.json
+**/og10_formula_master.yaml
+# END NANUCAI_COCA_BLOCK

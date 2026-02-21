@@ -1,0 +1,15 @@
+job_lifecycle_contract:
+  version: "v1.0"
+  states:
+    - pending
+    - running
+    - doctor1_check
+    - executing
+    - doctor2_check
+    - sealing
+    - completed
+    - failed
+    - canceled
+  invariants:
+    - "completed exige receipt assinado"
+    - "state transition gera audit event"

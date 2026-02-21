@@ -1,0 +1,6 @@
+protocols_signature_anti_replay:
+  version: "v1.0"
+  a2a_signature:
+    algorithm: "HMAC-SHA256"
+    anti_replay:
+      rule: "timestamp <= 120s + nonce único (Redis TTL 120s)"

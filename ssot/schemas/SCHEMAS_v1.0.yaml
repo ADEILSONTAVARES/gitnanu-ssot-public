@@ -1,0 +1,22 @@
+schemas:
+  version: "v1.0"
+  receipt_schema:
+    required_fields:
+      - receipt_id
+      - job_id
+      - company_id
+      - timestamps: {started_at, ended_at}
+      - engine: {connector_id, model}
+      - cost_usd
+      - latency_ms
+      - status: "PASS|FAIL"
+      - artifacts: [{type, uri, sha256}]
+      - signatures: {receipt_sha256}
+  job_request_schema:
+    required_fields:
+      - job_id
+      - job_type
+      - company_id
+      - output_contract: {format, schema_id, acceptance}
+      - budgets: {max_cost_usd, max_latency_ms}
+      - idempotency: {key}

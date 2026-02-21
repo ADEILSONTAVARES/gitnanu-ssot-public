@@ -1,0 +1,6 @@
+infrastructure_costs_og10:
+  version: "v1.0"
+  statement: "Custos de infra (estimativa) + redução via cache/dedup/vault"
+  note:
+    - "Infra separado de LLM"
+    - "Otimização: cache alto, dedup, blobs fora do DB"

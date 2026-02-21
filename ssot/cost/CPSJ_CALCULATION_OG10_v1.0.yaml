@@ -1,0 +1,6 @@
+cpsj_calculation_og10:
+  version: "v1.0"
+  statement: "Cost Per Successful Job (CPSJ) com split 85/15 e shadow band"
+  split_85_15: {L0: 0.85, L1_L3: 0.15}
+  shadow_band_default: {range: [0.003, 0.006], note: "dentro do 15%"}
+  target_cpsj: "< 0.000133"

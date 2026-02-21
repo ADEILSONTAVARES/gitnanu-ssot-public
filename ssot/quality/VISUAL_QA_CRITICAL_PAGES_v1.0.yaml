@@ -1,0 +1,6 @@
+visual_qa_critical_pages:
+  version: "v1.0"
+  critical_pages:
+    - {name: "login", url: "/login", threshold_pixels: 0}
+    - {name: "billing_checkout", url: "/billing/checkout", threshold_pixels: 0}
+    - {name: "dashboard", url: "/dashboard", threshold_pixels: 100}
