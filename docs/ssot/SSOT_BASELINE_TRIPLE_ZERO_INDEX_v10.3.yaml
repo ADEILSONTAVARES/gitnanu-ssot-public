@@ -29,6 +29,8 @@ ssot_baseline_triple_zero_index:
   - scripts/ssot/validate_doctor_crosscheck.py
   - ssot/governance/OG10_COST_SPLIT_POLICY_v1.yaml
   - scripts/ssot/validate_og10_cost_split_policy.py
+  - ssot/connectors/CONNECTORS_REGISTRY_OG10_v1.yaml
+  - scripts/ssot/validate_connectors_registry.py
   coca_local_only_pointers:
   - ssot/quality/DOCTOR_GATE_COMPLETE_v1.1.yaml
   - ssot/bench/BENCH90_REGRESSION_DETECTION_v1.0.yaml

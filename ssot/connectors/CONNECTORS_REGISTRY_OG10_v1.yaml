@@ -1,0 +1,60 @@
+connectors_registry_og10:
+  version: "v1"
+  intent: "SSOT público: inventário de APIs/Conectores e seus MCPs + amarração com Skills + custo/banda + Bench90 + Doctor required"
+  rules:
+    - "FAIL se status=ACTIVE e faltar mcp_ref"
+    - "FAIL se status=ACTIVE e skills_refs vazio"
+    - "FAIL se status=ACTIVE e cost_band_ref != '0.3-0.6%'"
+    - "FAIL se status=ACTIVE e bench90_tags vazio"
+    - "FAIL se domain in {billing,security,deploy,identity} e doctor_required != true"
+  enums:
+    status: ["ACTIVE","RESERVED","DISABLED"]
+    cost_band_ref: ["0.3-0.6%","0.6-1.2%","1.2-2%","0%"]
+  connectors:
+    # EXEMPLOS MINIMAMENTE COMPLETOS (você vai crescer isso depois sem buracos)
+    - connector_id: "api.stripe"
+      status: "ACTIVE"
+      domain: "billing"
+      provider: "stripe"
+      mcp_ref: "mcp.stripe.core"
+      skills_refs:
+        - "skill.s11.billing.stripe_webhooks_idempotency"
+        - "skill.s11.billing.reconcile_ledger"
+      cost_band_ref: "0.3-0.6%"
+      bench90_tags: ["billing","webhooks","idempotency","reconciliation"]
+      doctor_required: true
+      notes: "Sem segredos. Tokens/chaves ficam fora do SSOT_PUBLIC; aqui é só contrato."
+
+    - connector_id: "api.supabase"
+      status: "ACTIVE"
+      domain: "security"
+      provider: "supabase"
+      mcp_ref: "mcp.supabase.db"
+      skills_refs:
+        - "skill.s10.security.rls_deny_by_default"
+        - "skill.s05.db.safe_sql_migrations"
+      cost_band_ref: "0.3-0.6%"
+      bench90_tags: ["db","rls","multitenant","privacy"]
+      doctor_required: true
+
+    - connector_id: "api.n8n"
+      status: "ACTIVE"
+      domain: "ops"
+      provider: "n8n"
+      mcp_ref: "mcp.n8n.orchestrator"
+      skills_refs:
+        - "skill.s08.automation.dlq_replay"
+      cost_band_ref: "0.3-0.6%"
+      bench90_tags: ["automation","workflows","dlq"]
+      doctor_required: false
+
+    - connector_id: "api.cloudflare"
+      status: "RESERVED"
+      domain: "deploy"
+      provider: "cloudflare"
+      mcp_ref: "mcp.cloudflare.edge"
+      skills_refs: []
+      cost_band_ref: "0.3-0.6%"
+      bench90_tags: ["edge","cdn","kv","r2"]
+      doctor_required: true
+      notes: "RESERVED: só promove pra ACTIVE após Detetive 7×/políticas/termos."
