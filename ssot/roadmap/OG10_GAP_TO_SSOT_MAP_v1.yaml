@@ -1,0 +1,94 @@
+og10_gap_to_ssot_map:
+  version: "v1"
+  scope: "public_planning"
+  policy:
+    no_secrets: true
+    targets_only: true
+    notes: "Mapa de lacunas do checklist para SSOT e gates. Sem ledgers brutos."
+
+  gaps:
+    - gap_id: "GAP_DOCTOR_PACK"
+      priority: "P0"
+      description: "Doctor1/Doctor2 como SSOT executável (policy + registry de checks)."
+      target_files:
+        - "ssot/quality/DOCTOR1_POLICY_v1.yaml"
+        - "ssot/quality/DOCTOR2_POLICY_v1.yaml"
+        - "ssot/quality/DOCTOR_CHECKS_REGISTRY_v1.yaml"
+      gate_plan:
+        - "integrar validação no run_noholes.sh e/ou verify_public_baseline.sh"
+      evidence_min:
+        - "doctor_report.json (sanitizado)"
+        - "receipt.json"
+
+    - gap_id: "GAP_PIPELINE_60_60_60_150_150_100x3"
+      priority: "P0"
+      description: "Pipeline canônico com stage receipts e repair mode (contratos + schemas)."
+      target_files:
+        - "ssot/pipeline/PIPELINE_60_60_60_150_150_100x3_v1.yaml"
+        - "ssot/pipeline/STAGE_RECEIPT_SCHEMA_v1.yaml"
+        - "ssot/pipeline/REPAIR_MODE_CONTRACT_v1.yaml"
+      gate_plan:
+        - "gate de integridade de pipeline + receipts obrigatórios"
+      evidence_min:
+        - "stage_receipt.json"
+        - "repair_receipt.json"
+
+    - gap_id: "GAP_BENCHPACK_54"
+      priority: "P1"
+      description: "BenchPack 54 enumerado e runner com report."
+      target_files:
+        - "ssot/quality/BENCHPACK_54_REGISTRY_v1.yaml"
+        - "ssot/quality/BENCHPACK_RUN_CONTRACT_v1.yaml"
+        - "ssot/quality/REGRESSION_BUDGET_POLICY_v1.yaml"
+      gate_plan:
+        - "bench_report.json + regression budget gate"
+      evidence_min:
+        - "bench_report.json"
+
+    - gap_id: "GAP_ADDONS_40"
+      priority: "P1"
+      description: "AddONS 40 (8x5) enumerado 40/40 + receipt schema."
+      target_files:
+        - "ssot/addons/ADDONS_40_REGISTRY_v1.yaml"
+        - "ssot/addons/ADDON_RECEIPT_SCHEMA_v1.yaml"
+        - "ssot/addons/ADDONS_40_HARNESS_v1.yaml"
+      gate_plan:
+        - "gate exige 40/40 + receipt por addon ativado"
+      evidence_min:
+        - "addon_receipt.json"
+
+    - gap_id: "GAP_MCP_REGISTRY"
+      priority: "P1"
+      description: "Registry MCP (ACTIVE/RESERVED) + schema de cards + self-test."
+      target_files:
+        - "ssot/mcp/MCP_REGISTRY_v1.yaml"
+        - "ssot/mcp/MCP_CARD_SCHEMA_v1.yaml"
+        - "ssot/mcp/MCP_SELFTEST_CONTRACT_v1.yaml"
+      gate_plan:
+        - "gate no-holes para MCP registry + self-test contract"
+      evidence_min:
+        - "mcp_self_test_report.json"
+
+    - gap_id: "GAP_AGENT_REGISTRY_OG10"
+      priority: "P2"
+      description: "Agent registry OG10 + allowlist de tools + budget por agente."
+      target_files:
+        - "ssot/agents/AGENTS_REGISTRY_OG10_v1.yaml"
+        - "ssot/agents/AGENT_TOOL_ALLOWLIST_v1.yaml"
+        - "ssot/agents/AGENT_BUDGET_POLICY_v1.yaml"
+      gate_plan:
+        - "gate no-holes de agentes + allowlist/budget"
+      evidence_min:
+        - "agent_audit_report.json"
+
+    - gap_id: "GAP_GNDRIVE_STRUCTURE"
+      priority: "P2"
+      description: "Spec de estrutura GNDrive (estrutura, schemas e chain-of-custody)."
+      target_files:
+        - "ssot/gndrive/GNDRIVE_STRUCTURE_SPEC_v1.yaml"
+        - "ssot/gndrive/EVIDENCE_CHAIN_SCHEMA_v1.yaml"
+        - "ssot/gndrive/PROJECTPACK_SCHEMA_v1.yaml"
+      gate_plan:
+        - "gate de pointers e estrutura mínima (sem paths sensíveis)"
+      evidence_min:
+        - "evidence_chain.json"

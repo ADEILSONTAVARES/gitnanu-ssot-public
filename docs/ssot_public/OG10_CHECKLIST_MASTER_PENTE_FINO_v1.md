@@ -9,6 +9,71 @@ Regra: este documento é humano (docs). As métricas-alvo ficam em SSOT (ssot/me
 - Evidence pesada fica fora do git (GNDrive), o repo guarda contratos/targets/checklists.
 
 ---
+## Z) Targets-only vs Ledger (regra SSOT_PUBLIC)
+Esta seção evita o buraco mais comum: misturar **targets públicos** com **ledger bruto**.
+
+Regras:
+- **targets-only (OK no repo público):** limites, thresholds, ranges, SLOs e regras de validação.
+- **audited (OK no repo público):** schemas, contratos, taxonomias, checklists e políticas.
+- **ledger bruto (NÃO entra no repo público):** tokens reais por execução, custos reais por job, chaves, dumps, payloads completos.
+- Evidence pesada e ledgers ficam no GNDrive (por ponteiros + receipts), e o repo guarda apenas contratos e targets.
+
+Se um número for “valor real medido” e não um target, ele deve ir para **evidência** (GNDrive), não para SSOT_PUBLIC.
+## ZA) Mapa Gap → SSOT → Gate → Evidência (sem buracos)
+A regra aqui é: todo item importante do checklist precisa ter:
+1) **Arquivo SSOT alvo** (path canônico)
+2) **Gate** que valida (ou plano para criar)
+3) **Evidência mínima** esperada (quando aplicável)
+
+Formato:
+- Gap → SSOT file → Gate → Evidence
+## ZB) Mínimos SSOT faltantes (paths canônicos)
+Abaixo estão os “mínimos” que o checklist exige, mas ainda não estão garantidos como SSOT executável (ou não estão obrigados por TRIPLE-ZERO). Estes são os próximos arquivos-alvo recomendados:
+
+1) Doctor Pack
+- ssot/quality/DOCTOR1_POLICY_v1.yaml
+- ssot/quality/DOCTOR2_POLICY_v1.yaml
+- ssot/quality/DOCTOR_CHECKS_REGISTRY_v1.yaml
+
+2) Pipeline (60-60-60-150-150-100x3)
+- ssot/pipeline/PIPELINE_60_60_60_150_150_100x3_v1.yaml
+- ssot/pipeline/STAGE_RECEIPT_SCHEMA_v1.yaml
+- ssot/pipeline/REPAIR_MODE_CONTRACT_v1.yaml
+
+3) BenchPack 54 + Regression Budget
+- ssot/quality/BENCHPACK_54_REGISTRY_v1.yaml
+- ssot/quality/BENCHPACK_RUN_CONTRACT_v1.yaml
+- ssot/quality/REGRESSION_BUDGET_POLICY_v1.yaml
+
+4) AddONS 40 (40/40 enumerado)
+- ssot/addons/ADDONS_40_REGISTRY_v1.yaml
+- ssot/addons/ADDON_RECEIPT_SCHEMA_v1.yaml
+- ssot/addons/ADDONS_40_HARNESS_v1.yaml
+
+5) MCP Registry + Cards
+- ssot/mcp/MCP_REGISTRY_v1.yaml
+- ssot/mcp/MCP_CARD_SCHEMA_v1.yaml
+- ssot/mcp/MCP_SELFTEST_CONTRACT_v1.yaml
+
+6) Agent Registry OG10
+- ssot/agents/AGENTS_REGISTRY_OG10_v1.yaml
+- ssot/agents/AGENT_TOOL_ALLOWLIST_v1.yaml
+- ssot/agents/AGENT_BUDGET_POLICY_v1.yaml
+
+7) GNDrive Structure Spec
+- ssot/gndrive/GNDRIVE_STRUCTURE_SPEC_v1.yaml
+- ssot/gndrive/EVIDENCE_CHAIN_SCHEMA_v1.yaml
+- ssot/gndrive/PROJECTPACK_SCHEMA_v1.yaml
+
+Observação:
+- Esses arquivos devem ser adicionados ao TRIPLE-ZERO quando se tornarem “public_required_files”.
+
+
+
+
+
+
+
 
 ## A) CANÔNICOS OG8/OG9/OG10 + BASILÉIA + No Holes
 - Regra OG8 "No Holes": Studio/Agente aparece em palette + sidebar + slash + mouse + voz
