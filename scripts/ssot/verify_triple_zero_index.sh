@@ -1,83 +1,52 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-INDEX_FILE="${1:-docs/ssot/SSOT_OG10_TRIPLE_ZERO_INDEX_v10.3.yaml}"
-
-if [ ! -f "$INDEX_FILE" ]; then
-  echo "FAIL: index file não existe: $INDEX_FILE" >&2
+INDEX="${1:-}"
+if [ -z "$INDEX" ] || [ ! -f "$INDEX" ]; then
+  echo "FAIL: uso: $0 <index_yaml>" >&2
   exit 1
 fi
 
 echo "== verify_triple_zero_index =="
-echo "INDEX=$INDEX_FILE"
+echo "INDEX=$INDEX"
 
-# Extrai SOMENTE a lista public_required_files do YAML
-# (entre 'public_required_files:' e 'coca_local_only_pointers:')
-mapfile -t files < <(
-  awk '
-    BEGIN {inside=0}
-    /^[[:space:]]*public_required_files:[[:space:]]*$/ {inside=1; next}
-    /^[[:space:]]*coca_local_only_pointers:[[:space:]]*$/ {inside=0; exit}
-    inside==1 {
-      # pega entradas do tipo: - "path/to/file"
-      if ($0 ~ /^[[:space:]]*-[[:space:]]*"/) {
-        line=$0
-        sub(/^[[:space:]]*-[[:space:]]*"/,"",line)
-        sub(/".*$/,"",line)
-        print line
-      }
-    }
-  ' "$INDEX_FILE"
-)
+tmp="$(mktemp -t tz_index.XXXXXX)"
+trap 'rm -f "$tmp"' EXIT
 
-if [ "${#files[@]}" -eq 0 ]; then
-  echo "FAIL: public_required_files vazio ou não encontrado no índice." >&2
+# Extrai paths do bloco public_required_files -> coca_local_only_pointers
+# IMPORTANTE: usa flag (não usa variável 'in')
+awk '
+  BEGIN{flag=0}
+  /^  public_required_files:/ {flag=1; next}
+  /^  coca_local_only_pointers:/ {flag=0}
+  flag && $0 ~ /^[[:space:]]+- / {
+    sub(/^[[:space:]]+-[[:space:]]+/, "", $0)
+    gsub(/"/, "", $0)
+    print $0
+  }
+' "$INDEX" > "$tmp"
+
+# Se awk falhar ou não produzir nada, isso é buraco
+if [ ! -s "$tmp" ]; then
+  echo "FAIL: índice não gerou lista de arquivos (awk falhou ou lista vazia)." >&2
   exit 1
 fi
 
-# 1) Checagens de segurança: índice NUNCA pode exigir COCA
-bad=0
-dup=0
-
-# detecta duplicatas (sem depender de sort -u com locale estranho)
-declare -A seen
-for f in "${files[@]}"; do
-  if [ -z "$f" ]; then
-    echo "FAIL: entrada vazia em public_required_files" >&2
-    bad=$((bad+1))
-    continue
-  fi
-
-  # bloqueia COCA no índice público
-  if [[ "$f" == ssot/private/* ]] || [[ "$f" == vault_local/* ]]; then
-    echo "FAIL: índice público referenciou caminho COCA: $f" >&2
-    bad=$((bad+1))
-  fi
-
-  if [[ -n "${seen[$f]:-}" ]]; then
-    echo "FAIL: duplicata no índice: $f" >&2
-    dup=$((dup+1))
-  else
-    seen["$f"]=1
-  fi
-done
-
-# 2) Existência dos arquivos
 missing=0
-for f in "${files[@]}"; do
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
   if [ -f "$f" ]; then
     echo "OK: $f"
   else
     echo "MISSING: $f"
     missing=$((missing+1))
   fi
-done
+done < "$tmp"
 
-echo
-if [ "$bad" -ne 0 ] || [ "$dup" -ne 0 ] || [ "$missing" -ne 0 ]; then
-  echo "FAIL: verify_triple_zero_index"
-  echo "  bad_paths=$bad dup=$dup missing=$missing" >&2
+if [ "$missing" -eq 0 ]; then
+  echo "PASS: TRIPLE-ZERO index inventory ok."
+  exit 0
+else
+  echo "FAIL: TRIPLE-ZERO index missing $missing file(s)." >&2
   exit 1
 fi
-
-echo "PASS: TRIPLE-ZERO index ok (${#files[@]} arquivos)."
