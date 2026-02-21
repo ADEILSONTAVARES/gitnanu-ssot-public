@@ -12,6 +12,7 @@ Este PatchPack adiciona o mínimo canônico para:
 
 Regra: este arquivo não copia conteúdo dos contratos/policies. Ele apenas referencia paths canônicos.
 
+
 ## 1) ADRs (decisões arquiteturais)
 - docs/adr/ADR_0010_STORAGE_STRATEGY_PHASE0_FILES_OVER_DB.md
 
