@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
-# Seleção de Python (ordem):
+# Seleção única de Python (mac-safe):
+# Prioridade:
 # 1) PYTHON explícito
-# 2) venv ativo -> python do venv
-# 3) python no PATH
-# 4) python3 fallback
+# 2) .venv/bin/python no repo
+# 3) venv ativo (VIRTUAL_ENV)
+# 4) python3 do sistema
 PY="${PYTHON:-}"
-if [ -z "$PY" ]; then
-  if [ -n "${VIRTUAL_ENV:-}" ] && [ -x "${VIRTUAL_ENV}/bin/python" ]; then
-    PY="${VIRTUAL_ENV}/bin/python"
-  elif command -v python >/dev/null 2>&1; then
-    PY="python"
-  else
-    PY="python3"
-  fi
+
+if [ -z "${PY:-}" ] && [ -x ".venv/bin/python" ]; then
+  PY="$(pwd)/.venv/bin/python"
+elif [ -z "${PY:-}" ] && [ -n "${VIRTUAL_ENV:-}" ] && [ -x "${VIRTUAL_ENV}/bin/python" ]; then
+  PY="${VIRTUAL_ENV}/bin/python"
+elif [ -z "${PY:-}" ]; then
+  PY="$(command -v python3 || true)"
+fi
+
+if [ -z "${PY:-}" ]; then
+  echo "FAIL: python não encontrado (.venv/VIRTUAL_ENV/python3)" >&2
+  exit 1
 fi
 
 BAS="ssot/basileia/BASILEIA_52.yaml"
@@ -27,6 +33,11 @@ echo "PY=$PY"
 echo "BAS=$BAS"
 echo "SKL=$SKL"
 echo
+
+"$PY" -c "import yaml; print('OK: pyyaml', getattr(yaml,'__version__','?'))" >/dev/null 2>&1 || {
+  echo "FAIL: missing dependency pyyaml. Use: $PY -m pip install -U pyyaml" >&2
+  exit 1
+}
 
 "$PY" scripts/ssot/no_holes_check_basileia_52.py "$BAS"
 "$PY" scripts/ssot/no_holes_check_skills.py "$SKL"
