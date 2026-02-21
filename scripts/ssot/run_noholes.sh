@@ -43,4 +43,9 @@ echo
 "$PY" scripts/ssot/no_holes_check_skills.py "$SKL"
 "$PY" scripts/ssot/validate_guardrails_metrics.py
 
+echo "== validate_og10_target_metrics =="
+"$PY" scripts/ssot/validate_og10_target_metrics.py
+echo "PASS: OG10_TARGET_METRICS validated"
+
+
 echo "PASS: run_noholes"
