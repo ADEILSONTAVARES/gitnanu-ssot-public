@@ -1,0 +1,35 @@
+ssot_og10_triple_zero_index:
+  version: "v10.3"
+  status: "PUBLIC_SAFE"
+  statement: "Inventário canônico do TRIPLE-ZERO (public) + pointers COCA (local-only)."
+
+  public_required_files:
+    - "docs/ssot/OG10_FORMULA_POINTER_PUBLIC_v1.0.yaml"
+    - "docs/ssot/SSOT_OG10_TRIPLE_ZERO_INDEX_v10.3.yaml"
+
+    - "ssot/protocols/UNIVERSAL_PROTOCOLS_v1.0.yaml"
+    - "ssot/protocols/PROTOCOLS_SIGNATURE_ANTI_REPLAY_v1.0.yaml"
+
+    - "ssot/schemas/SCHEMAS_v1.0.yaml"
+    - "ssot/schemas/DATABASES_ARCHITECTURE_v1.0.yaml"
+
+    - "ssot/cost/CPSJ_CALCULATION_OG10_v1.0.yaml"
+    - "ssot/cost/INFRASTRUCTURE_COSTS_OG10_v1.0.yaml"
+
+    - "ssot/contracts/JOB_LIFECYCLE_CONTRACT_v1.0.yaml"
+    - "ssot/contracts/MODULE_INTEGRATION_MAP_v1.0.yaml"
+    - "ssot/contracts/DOCTOR_GATE_SEVERITIES_v1.0.yaml"
+
+    - "ssot/security/GITNANU_OPERATIONAL_v1.0.yaml"
+    - "ssot/security/RLS_WITH_CHECK_COMPLETE_v1.0.yaml"
+
+    - "ssot/quality/BENCH90_TAXONOMY_v1.0.yaml"
+    - "ssot/quality/VISUAL_QA_CRITICAL_PAGES_v1.0.yaml"
+
+    - "ssot/payments/PAYMENTS_IDEMPOTENCY_STATE_MACHINE_v1.0.yaml"
+    - "ssot/observability/OBSERVABILITY_COMPLETE_v1.0.yaml"
+
+  coca_local_only_pointers:
+    - "ssot/private/og10/"
+    - "ssot/private/bench90/"
+    - "vault_local/"
