@@ -52,6 +52,9 @@ echo "== validate_doctor_pack =="
 echo "PASS: DOCTOR_PACK validated"
 
 echo "== validate_og10_execution_envelope =="
+echo "== validate_og10_cost_split_policy =="
+"$PY" scripts/ssot/validate_og10_cost_split_policy.py
+echo "PASS: OG10_COST_SPLIT_POLICY validated"
 "$PY" scripts/ssot/validate_og10_execution_envelope.py
 echo "PASS: OG10_EXECUTION_ENVELOPE validated"
 

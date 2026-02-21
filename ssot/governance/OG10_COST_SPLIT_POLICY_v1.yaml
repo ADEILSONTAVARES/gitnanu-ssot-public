@@ -1,0 +1,47 @@
+og10_cost_split_policy:
+  version: "v1"
+  intent: "Cost split + warm/shadow band hard rules (SSOT). Fail-closed."
+  currency: "USD"
+
+  # Regra canônica: 85/15
+  allocation:
+    l0_share: 0.85
+    l1_l3_share: 0.15
+
+  # Regra canônica: L1-L3 (MCP/APIs/Agentes/Doctor/Docker/Supabase/n8n) dentro de 0.3–0.6% (shadow band)
+  l1_l3_band:
+    min: 0.003
+    max: 0.006
+    unit: "fraction_of_total_requests"
+
+  # O que é permitido dentro do 15%
+  l1_l3_components_allowlist:
+    - "mcp"
+    - "api"
+    - "agent"
+    - "doctor"
+    - "docker"
+    - "supabase"
+    - "n8n"
+    - "pipeline"
+    - "cache_quantum"
+    - "redis"
+    - "observability"
+
+  # Pacotes canônicos de execução (somente referência SSOT aqui; os registries completos entram em arquivos próprios)
+  packs:
+    addons:
+      addons_40: true
+      painpack_15: true
+      universalskills_3: true
+    subagent:
+      envelope_60_5_30: true
+    benchmarks:
+      pipeline_60_60_60_150_150_100x3: true
+      bench90_required: true
+
+  # Fail-closed: se qualquer componente fora da allowlist tentar entrar no 15%, bloqueia.
+  fail_closed:
+    unknown_component_blocks: true
+    allocation_sum_must_equal_1: true
+    band_must_be_valid: true
