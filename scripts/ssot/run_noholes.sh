@@ -55,6 +55,11 @@ echo "== validate_og10_execution_envelope =="
 "$PY" scripts/ssot/validate_og10_execution_envelope.py
 echo "PASS: OG10_EXECUTION_ENVELOPE validated"
 
+echo "== validate_doctor_crosscheck =="
+"$PY" scripts/ssot/validate_doctor_crosscheck.py
+echo "PASS: DOCTOR_CROSSCHECK validated"
+
+
 
 
 

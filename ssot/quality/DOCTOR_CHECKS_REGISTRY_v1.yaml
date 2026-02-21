@@ -1,96 +1,94 @@
 doctor_checks_registry:
-  version: "v1"
+  version: v1
   policy:
     no_secrets: true
     targets_only: true
-
   checks:
-    # Doctor1 (pré-exec)
-    - check_id: "D1_SECRETS_SCAN_PUBLIC"
-      doctor: "doctor1"
-      stage: "pre"
-      intent: "Bloquear segredos e padrões proibidos em SSOT_PUBLIC."
-      severity_default: "BLOCK"
-      evidence:
-        required: false
-
-    - check_id: "D1_RLS_REQUIRED"
-      doctor: "doctor1"
-      stage: "pre"
-      intent: "Ações com dados devem exigir RLS/deny-by-default (quando aplicável)."
-      severity_default: "BLOCK"
-      evidence:
-        required: false
-
-    - check_id: "D1_IDEMPOTENCY_POLICY_REQUIRED"
-      doctor: "doctor1"
-      stage: "pre"
-      intent: "Ações críticas devem ter policy de idempotência referenciada."
-      severity_default: "BLOCK"
-      evidence:
-        required: false
-
-    - check_id: "D1_OUTPUT_SCRUB_REQUIRED"
-      doctor: "doctor1"
-      stage: "pre"
-      intent: "Saída deve ser scrubbed (sem tokens/segredos)."
-      severity_default: "BLOCK"
-      evidence:
-        required: false
-
-    - check_id: "D1_BUDGET_GUARD_REQUIRED"
-      doctor: "doctor1"
-      stage: "pre"
-      intent: "Budget guard deve existir para domínios críticos."
-      severity_default: "BLOCK"
-      evidence:
-        required: false
-
-    # Doctor2 (pós-exec)
-    - check_id: "D2_EVIDENCE_PACK_REQUIRED"
-      doctor: "doctor2"
-      stage: "post"
-      intent: "Publishable exige evidence pack mínimo (sanitizado)."
-      severity_default: "BLOCK"
-      evidence:
-        required: true
-        artifacts:
-          - "evidence_pack.manifest.json"
-
-    - check_id: "D2_CHAIN_OF_CUSTODY_REQUIRED"
-      doctor: "doctor2"
-      stage: "post"
-      intent: "Publishable exige chain of custody (linha de geração)."
-      severity_default: "BLOCK"
-      evidence:
-        required: true
-        artifacts:
-          - "evidence_chain.json"
-
-    - check_id: "D2_REGRESSION_BUDGET_REQUIRED"
-      doctor: "doctor2"
-      stage: "post"
-      intent: "Publishable exige budget de regressão definido (targets-only)."
-      severity_default: "BLOCK"
-      evidence:
-        required: false
-
-    - check_id: "D2_ROLLBACK_PLAN_REQUIRED"
-      doctor: "doctor2"
-      stage: "post"
-      intent: "Publishable exige plano de rollback/kill-switch."
-      severity_default: "BLOCK"
-      evidence:
-        required: true
-        artifacts:
-          - "rollback_plan.json"
-
-    - check_id: "D2_FINAL_QA_REQUIRED"
-      doctor: "doctor2"
-      stage: "post"
-      intent: "Publishable exige QA final (fast+full quando aplicável)."
-      severity_default: "BLOCK"
-      evidence:
-        required: true
-        artifacts:
-          - "qa_report.json"
+  - check_id: D1_SECRETS_SCAN_PUBLIC
+    doctor: doctor1
+    stage: pre
+    intent: Bloquear segredos e padrões proibidos em SSOT_PUBLIC.
+    severity_default: BLOCK
+    evidence:
+      required: false
+    severity: FAIL_BLOCKING
+  - check_id: D1_RLS_REQUIRED
+    doctor: doctor1
+    stage: pre
+    intent: Ações com dados devem exigir RLS/deny-by-default (quando aplicável).
+    severity_default: BLOCK
+    evidence:
+      required: false
+    severity: FAIL_BLOCKING
+  - check_id: D1_IDEMPOTENCY_POLICY_REQUIRED
+    doctor: doctor1
+    stage: pre
+    intent: Ações críticas devem ter policy de idempotência referenciada.
+    severity_default: BLOCK
+    evidence:
+      required: false
+    severity: FAIL_BLOCKING
+  - check_id: D1_OUTPUT_SCRUB_REQUIRED
+    doctor: doctor1
+    stage: pre
+    intent: Saída deve ser scrubbed (sem tokens/segredos).
+    severity_default: BLOCK
+    evidence:
+      required: false
+    severity: FAIL_BLOCKING
+  - check_id: D1_BUDGET_GUARD_REQUIRED
+    doctor: doctor1
+    stage: pre
+    intent: Budget guard deve existir para domínios críticos.
+    severity_default: BLOCK
+    evidence:
+      required: false
+    severity: FAIL_BLOCKING
+  - check_id: D2_EVIDENCE_PACK_REQUIRED
+    doctor: doctor2
+    stage: post
+    intent: Publishable exige evidence pack mínimo (sanitizado).
+    severity_default: BLOCK
+    evidence:
+      required: true
+      artifacts:
+      - evidence_pack.manifest.json
+    severity: FAIL_BLOCKING
+  - check_id: D2_CHAIN_OF_CUSTODY_REQUIRED
+    doctor: doctor2
+    stage: post
+    intent: Publishable exige chain of custody (linha de geração).
+    severity_default: BLOCK
+    evidence:
+      required: true
+      artifacts:
+      - evidence_chain.json
+    severity: FAIL_BLOCKING
+  - check_id: D2_REGRESSION_BUDGET_REQUIRED
+    doctor: doctor2
+    stage: post
+    intent: Publishable exige budget de regressão definido (targets-only).
+    severity_default: BLOCK
+    evidence:
+      required: false
+    severity: FAIL_BLOCKING
+  - check_id: D2_ROLLBACK_PLAN_REQUIRED
+    doctor: doctor2
+    stage: post
+    intent: Publishable exige plano de rollback/kill-switch.
+    severity_default: BLOCK
+    evidence:
+      required: true
+      artifacts:
+      - rollback_plan.json
+    severity: FAIL_BLOCKING
+  - check_id: D2_FINAL_QA_REQUIRED
+    doctor: doctor2
+    stage: post
+    intent: Publishable exige QA final (fast+full quando aplicável).
+    severity_default: BLOCK
+    evidence:
+      required: true
+      artifacts:
+      - qa_report.json
+    severity: FAIL_BLOCKING

@@ -35,6 +35,7 @@ ssot_baseline_triple_zero_index:
     - "ssot/metrics/OG10_TARGET_METRICS_v1.yaml"
     - "ssot/governance/OG10_EXECUTION_ENVELOPE_v1.yaml"
 
+    - "scripts/ssot/validate_doctor_crosscheck.py"
   coca_local_only_pointers:
     - "ssot/quality/DOCTOR_GATE_COMPLETE_v1.1.yaml"
     - "ssot/bench/BENCH90_REGRESSION_DETECTION_v1.0.yaml"
