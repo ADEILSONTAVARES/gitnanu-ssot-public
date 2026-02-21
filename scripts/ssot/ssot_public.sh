@@ -112,7 +112,7 @@ cmd_publish() {
   git commit -m "$msg" -m "X-GitNanu-Writer: gitnanu"
 
   # Confirma trailer no commit (garantia extra)
-  git log -1 --pretty=full | grep -qE '^X-GitNanu-Writer: gitnanu$' || die "commit sem trailer obrigatório"
+  git show -s --format=%B HEAD | grep -qE '^X-GitNanu-Writer:[[:space:]]*gitnanu[[:space:]]*$' || die "commit sem trailer obrigatório"
 
   # Gates pós-commit
   info "rodando gates pós-commit"
