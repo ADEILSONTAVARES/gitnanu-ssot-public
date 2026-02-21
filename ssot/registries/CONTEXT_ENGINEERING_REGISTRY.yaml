@@ -1,0 +1,4 @@
+version: "v1.0"
+registry: "CONTEXT_ENGINEERING_REGISTRY"
+ce:
+  ce30: "ssot/context_engineering/CE_30_v1.yaml"

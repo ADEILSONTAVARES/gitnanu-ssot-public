@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MICROSKILLS_40",
+  "type": "object",
+  "required": ["version", "pack", "statement", "estrutura", "regras"],
+  "properties": {
+    "version": { "type": "string" },
+    "pack": { "type": "string" },
+    "statement": { "type": "string" },
+    "estrutura": {
+      "type": "object",
+      "required": ["total", "formato_id"],
+      "properties": {
+        "total": { "type": "integer" },
+        "formato_id": { "type": "string" }
+      }
+    },
+    "regras": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,17 @@
+version: "v1.1"
+pack: "SUBPACK_170"
+statement: "170 ações intermediárias que tornam Core-40 executável sem gambiarra."
+estrutura:
+  total: 170
+  formato_id: "SP{000} (ex: SP001..SP170)"
+categorias:
+  - id: "SP_PREPARACAO"
+    range: "SP001..SP030"
+  - id: "SP_EXECUCAO"
+    range: "SP031..SP080"
+  - id: "SP_VALIDACAO"
+    range: "SP081..SP120"
+  - id: "SP_INTEGRACAO"
+    range: "SP121..SP150"
+  - id: "SP_CLEANUP"
+    range: "SP151..SP170"

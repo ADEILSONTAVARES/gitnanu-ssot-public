@@ -1,0 +1,4 @@
+version: "v1.0"
+registry: "ENGINES_REGISTRY"
+engines:
+  coverage_matrix: "ssot/engines/ENGINES_COVERAGE_MATRIX_v1_1.yaml"

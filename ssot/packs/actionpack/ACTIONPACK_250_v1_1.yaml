@@ -1,0 +1,53 @@
+version: "v1.1"
+pack: "ACTIONPACK_250"
+statement: "250 ações canônicas universais para MCP/Agents. Nenhuma engine inventa ações fora do pack."
+
+principios:
+  - "Nenhuma engine inventa ações fora do pack"
+  - "Engines declaram cobertura: ACTIVE|ASSISTED|RESERVED|DEPRECATED"
+  - "Novas ações passam por Council antes de entrar no pack"
+  - "Nomes estáveis (major bump para breaking changes)"
+  - "Cada ação tem schema de input/output (referência por action_id)"
+
+estrutura:
+  blocos: 10
+  acoes_por_bloco: 25
+  total: 250
+  formato_id: "A{bloco}_{numero} (ex: A0_001, A0_002...)"
+
+blocos:
+  - id: "A0"
+    nome: "WORKSPACE_PROJETO"
+    range: "A0_001..A0_025"
+  - id: "A1"
+    nome: "CONTEXTO_MEMORIA"
+    range: "A1_026..A1_050"
+  - id: "A2"
+    nome: "PLANEJAMENTO_DECOMPOSICAO"
+    range: "A2_051..A2_075"
+  - id: "A3"
+    nome: "IMPLEMENTACAO_CODIGO"
+    range: "A3_076..A3_100"
+  - id: "A4"
+    nome: "TESTES_QA_REGRESSAO"
+    range: "A4_101..A4_125"
+  - id: "A5"
+    nome: "DEBUG_OBSERVABILIDADE_PERFORMANCE"
+    range: "A5_126..A5_150"
+  - id: "A6"
+    nome: "GITNANU_CONTROLE_MUDANCA"
+    range: "A6_151..A6_175"
+  - id: "A7"
+    nome: "DEPLOY_DNS_ENTREGA"
+    range: "A7_176..A7_200"
+  - id: "A8"
+    nome: "UI_MOUSE_GOLDEN_PATHS"
+    range: "A8_201..A8_225"
+  - id: "A9"
+    nome: "EVIDENCIA_CUSTOS_COMPLIANCE"
+    range: "A9_226..A9_250"
+
+# Observação:
+# O conteúdo completo 250/250 pode ser armazenado em um arquivo "ACTIONS_TABLE"
+# (ex.: ssot/packs/actionpack/ACTIONPACK_250_TABLE_v1_1.yaml) para evitar arquivo gigante.
+# Este arquivo é o "contrato raiz" do pack e serve como âncora e validação de versão.

@@ -1,0 +1,9 @@
+version: "v1.1"
+pack: "MICROSKILLS_40"
+statement: "40 micro-habilidades acionáveis que resolvem dores operacionais e garantem rastreabilidade."
+estrutura:
+  total: 40
+  formato_id: "MS{00} (ex: MS01..MS40)"
+regras:
+  - "Microskill deve declarar: description, steps, inputs, outputs, invariants"
+  - "Microskill deve referenciar gates (Doctor1/Doctor2/TestSprite) quando aplicável"

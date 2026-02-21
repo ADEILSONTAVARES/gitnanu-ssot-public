@@ -1,0 +1,4 @@
+version: "v1.0"
+registry: "GATES_REGISTRY"
+gates:
+  gates_7: "ssot/gates/GATES_7_CANON_v1.yaml"
