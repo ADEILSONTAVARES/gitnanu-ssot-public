@@ -38,7 +38,7 @@ Referência:
 - ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml
 
 ## 5) O que NUNCA entra no repo público (local_only)
-- vault_local/
+- vault local (gitignored; nunca versionado)
 - ssot/private/
 - ledgers/cost raw, tokens, chaves, .env
 - dumps de providers
