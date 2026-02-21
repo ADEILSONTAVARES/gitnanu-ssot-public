@@ -2,6 +2,7 @@
 set -euo pipefail
 
 # SSOT_PUBLIC CLI — sem buracos
+# SSOT_PUBLIC CLI — sem buracos + msg obrigatória
 # Uso:
 #   bash scripts/ssot/ssot_public.sh verify
 #   bash scripts/ssot/ssot_public.sh publish
