@@ -73,7 +73,30 @@ cmd_verify() {
 cmd_publish() {
   repo_root
 
-  # Se nada staged, não faz nada (sem susto)
+  # Parse args: exige --msg "<mensagem>"
+  local msg=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --msg)
+        shift
+        [ $# -gt 0 ] || die "--msg exige um valor"
+        msg="$1"
+        shift
+        ;;
+      *)
+        die "publish: argumento inválido: $1 (use --msg \"...\")"
+        ;;
+    esac
+  done
+
+  [ -n "$msg" ] || die "publish exige --msg \"<mensagem>\""
+
+  # Bloqueia msg genérica/baixa qualidade (anti-alucinação de histórico)
+  if echo "$msg" | LC_ALL=C grep -qE '^\s*chore\(ssot\):\s*publish SSOT_PUBLIC\s*$'; then
+    die "mensagem proibida (genérica). Use algo específico, ex: docs(ssot_public): link TOP INDEX"
+  fi
+
+  # Se nada staged, não publica
   if [ -z "$(git diff --cached --name-only || true)" ]; then
     info "nada staged — nada a publicar."
     exit 0
@@ -85,7 +108,10 @@ cmd_publish() {
 
   # Commit exige trailer
   info "commitando (exige trailer X-GitNanu-Writer)"
-  git commit -m "chore(ssot): publish SSOT_PUBLIC" -m "X-GitNanu-Writer: gitnanu"
+  git commit -m "$msg" -m "X-GitNanu-Writer: gitnanu"
+
+  # Confirma trailer no commit (garantia extra)
+  git log -1 --pretty=full | grep -qE '^X-GitNanu-Writer: gitnanu$' || die "commit sem trailer obrigatório"
 
   # Gates pós-commit
   info "rodando gates pós-commit"
