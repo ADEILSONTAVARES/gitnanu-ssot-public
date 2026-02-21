@@ -61,3 +61,5 @@ vault_local/
 # END NANUCAI_COCA_BLOCK
 
 *.tmp
+
+evidence/public/
