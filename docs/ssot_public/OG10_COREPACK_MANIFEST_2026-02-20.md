@@ -44,8 +44,8 @@ Regra: este arquivo não copia conteúdo. Apenas referencia paths canônicos.
 
 ## 7) Critério de “CorePack PASS”
 PASS = todos abaixo verdadeiros:
-- verify_public_baseline.sh latest => PASS
+- verify_public_baseline.sh ssot_public_og10_corepack_2026-02-20 => PASS
 - run_noholes.sh => PASS
-- tags CorePack + latest apontam pro mesmo HEAD
+- tag CorePack aponta pro mesmo HEAD
 
 FAIL = qualquer gate falhar.
