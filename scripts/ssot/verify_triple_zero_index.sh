@@ -14,7 +14,7 @@ tmp="$(mktemp -t tz_index.XXXXXX)"
 trap 'rm -f "$tmp"' EXIT
 
 # Extrai paths do bloco public_required_files -> coca_local_only_pointers
-# IMPORTANTE: usa flag (não usa variável 'in')
+# (usa flag; compatível com awk do macOS)
 awk '
   BEGIN{flag=0}
   /^  public_required_files:/ {flag=1; next}
@@ -26,15 +26,26 @@ awk '
   }
 ' "$INDEX" > "$tmp"
 
-# Se awk falhar ou não produzir nada, isso é buraco
 if [ ! -s "$tmp" ]; then
-  echo "FAIL: índice não gerou lista de arquivos (awk falhou ou lista vazia)." >&2
+  echo "FAIL: índice não gerou lista de arquivos (lista vazia ou parse falhou)." >&2
   exit 1
 fi
 
 missing=0
+bad_paths=0
+
+# 1) Checagem de caminhos proibidos no índice público
+# 2) Checagem de existência dos arquivos
 while IFS= read -r f; do
   [ -z "$f" ] && continue
+
+  case "$f" in
+    ssot/private/*|vault_local/*)
+      echo "FAIL: índice público referenciou caminho private-local: $f" >&2
+      bad_paths=$((bad_paths+1))
+      ;;
+  esac
+
   if [ -f "$f" ]; then
     echo "OK: $f"
   else
@@ -43,10 +54,25 @@ while IFS= read -r f; do
   fi
 done < "$tmp"
 
-if [ "$missing" -eq 0 ]; then
-  echo "PASS: TRIPLE-ZERO index inventory ok."
-  exit 0
-else
+# Duplicatas (sem arrays; usa sort/uniq)
+dup_count="$(LC_ALL=C sort "$tmp" | uniq -d | wc -l | tr -d ' ')"
+
+echo
+if [ "$bad_paths" -ne 0 ]; then
+  echo "FAIL: índice contém caminho(s) private-local (bad_paths=$bad_paths)." >&2
+  exit 1
+fi
+
+if [ "$dup_count" -ne 0 ]; then
+  echo "FAIL: índice contém duplicata(s) em public_required_files (dup_count=$dup_count)." >&2
+  echo "DUPLICATAS:" >&2
+  LC_ALL=C sort "$tmp" | uniq -d >&2
+  exit 1
+fi
+
+if [ "$missing" -ne 0 ]; then
   echo "FAIL: TRIPLE-ZERO index missing $missing file(s)." >&2
   exit 1
 fi
+
+echo "PASS: TRIPLE-ZERO index inventory ok."
