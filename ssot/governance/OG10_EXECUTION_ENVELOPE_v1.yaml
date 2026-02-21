@@ -1,0 +1,64 @@
+og10_execution_envelope:
+  version: v1
+  policy:
+    no_secrets: true
+    targets_only: true
+    notes: 'Envelope OG10: L0=85% com 3 skills universais; L1-L3=15% com banda shadow
+      0.3-0.6% e governança por gates.'
+  lanes:
+    L0:
+      share_target: 0.85
+      universal_skills_required: 3
+      rule: L0 faz 85% do trabalho. L1-L3 só entra por gatilho/necessidade.
+    L1_L3:
+      share_target: 0.15
+      shadow_band:
+        min_rate: 0.003
+        max_rate: 0.006
+      allowed_components:
+      - mcp
+      - agents
+      - doctor
+      - docker
+      - supabase
+      - n8n
+      - external_apis
+      rule: L1-L3 é acionado pouco e deve ser gateado (budget, risk, evidence, idempotency).
+  packs:
+    addons:
+      addons_40: true
+      pains_15: true
+      universal_3: true
+    subagent_envelope:
+      explore: 60
+      replan: 5
+      execute: 30
+    benchmark_pipeline:
+      stages:
+      - 60
+      - 60
+      - 60
+      - 150
+      - 150
+      - 100x3
+    bench90_required: true
+  governance:
+    mcp_per_integration_required: true
+    mcp_cards_required_fields:
+    - capabilities
+    - auth
+    - limits
+    - retries
+    - observability
+    - evidence
+    doctor_required_for_domains:
+    - billing
+    - security
+    - deploy
+    evidence_minimum_required_for_publishable:
+    - receipt.json
+    - evidence_pack.manifest.json
+    - run_trace.json
+    - evidence_chain.json
+    idempotency_required_for_critical_actions: true
+  bench90_required: true

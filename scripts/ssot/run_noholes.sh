@@ -51,6 +51,11 @@ echo "== validate_doctor_pack =="
 "$PY" scripts/ssot/validate_doctor_pack.py
 echo "PASS: DOCTOR_PACK validated"
 
+echo "== validate_og10_execution_envelope =="
+"$PY" scripts/ssot/validate_og10_execution_envelope.py
+echo "PASS: OG10_EXECUTION_ENVELOPE validated"
+
+
 
 
 echo "PASS: run_noholes"

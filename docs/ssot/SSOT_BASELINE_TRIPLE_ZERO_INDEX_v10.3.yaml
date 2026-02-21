@@ -33,6 +33,7 @@ ssot_baseline_triple_zero_index:
     - "ssot/payments/PAYMENTS_IDEMPOTENCY_STATE_MACHINE_v1.0.yaml"
     - "ssot/observability/OBSERVABILITY_COMPLETE_v1.0.yaml"
     - "ssot/metrics/OG10_TARGET_METRICS_v1.yaml"
+    - "ssot/governance/OG10_EXECUTION_ENVELOPE_v1.yaml"
 
   coca_local_only_pointers:
     - "ssot/quality/DOCTOR_GATE_COMPLETE_v1.1.yaml"
