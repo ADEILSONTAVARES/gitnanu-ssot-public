@@ -1,0 +1,28 @@
+doctor_gate_complete:
+  version: "v1.1"
+  statement: "Doctor1 (preflight < 5s) e Doctor2 (audit < 30s) como gates obrigatórios"
+  doctor1:
+    target_ms: 5000
+    checks:
+      - schema_validation
+      - secrets_regex
+      - pii_basic
+      - claims_matrix
+      - idempotency_key_present
+      - output_contract_present
+      - budget_check
+  doctor2:
+    target_ms: 30000
+    checks:
+      - doctor1_redundancy
+      - output_vs_acceptance
+      - artifacts_integrity_sha256
+      - no_secret_leak_guardrails8
+      - no_pii_leak_presidio
+      - receipt_schema_complete
+      - cost_within_budget
+      - latency_within_budget
+      - bench90_regression_hook
+      - evidence_pack_complete
+      - no_unauthorized_side_effects
+      - reproducible_replay

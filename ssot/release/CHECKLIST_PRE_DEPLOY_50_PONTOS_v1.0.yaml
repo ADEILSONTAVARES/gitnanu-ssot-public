@@ -1,0 +1,5 @@
+checklist_pre_deploy_50_pontos:
+  version: "v1.0"
+  statement: "Checklist 50 pontos: security/quality/perf/reliability/compliance"
+  categories: [security, quality, performance, reliability, compliance]
+  ci_cd_required: true

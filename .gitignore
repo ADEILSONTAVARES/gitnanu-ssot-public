@@ -20,8 +20,6 @@ evidence/
 *.key
 *.p12
 *.pfx
-vault_local/
-ssot/private/
 
 # GitNanu: local backups
 scripts/ssot/*.bak.*

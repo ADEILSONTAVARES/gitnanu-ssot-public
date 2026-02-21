@@ -1,0 +1,11 @@
+payments_20_percent_stripe_hotmart_complete:
+  version: "v1.1"
+  statement: "Stripe global + Hotmart BR com split 80/20 + RLS + idempotência"
+  split:
+    company: 0.80
+    nanucai: 0.20
+  providers: [stripe, hotmart]
+  invariants:
+    - "UNIQUE(provider, provider_payment_id)"
+    - "idempotency lock por provider_event_id"
+    - "tenant_isolation RLS em subscriptions/payments"

@@ -1,0 +1,12 @@
+n8n_workflows_automation:
+  version: "v1.0"
+  statement: "n8n: webhooks + cron para payments, secret rotation, competitor monitor, bench90, backups"
+  workflows:
+    - WF001_payment_webhook_stripe
+    - WF002_daily_secret_rotation_check
+    - WF003_competitor_landing_page_monitor
+    - WF004_bench90_scheduled
+    - WF005_receipt_backup_s3
+  integration:
+    fastapi_triggers_n8n: true
+    n8n_calls_fastapi: true

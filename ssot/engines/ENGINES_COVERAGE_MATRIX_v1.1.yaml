@@ -1,0 +1,13 @@
+engines_coverage_matrix:
+  version: "v1.1"
+  statement: "Cobertura ActionPack-250 por engine + regra de escolha por job_type"
+  engines:
+    - {id: "claude.sonnet_4", role: "core_85"}
+    - {id: "claude.opus_4", role: "l1_critical"}
+    - {id: "gpt5", role: "alt_core"}
+    - {id: "gemini.pro", role: "budget"}
+    - {id: "kimi.k1_5", role: "long_context"}
+  decision_by_job_type:
+    ppt_create: {primary: "claude.sonnet_4", fallback: "gemini.pro", l1: "claude.opus_4"}
+    code_review: {primary: "claude.sonnet_4", fallback: "gpt5", l1: "claude.opus_4"}
+    deep_research: {primary: "notebooklm+claude.sonnet_4", fallback: "claude.opus_4"}

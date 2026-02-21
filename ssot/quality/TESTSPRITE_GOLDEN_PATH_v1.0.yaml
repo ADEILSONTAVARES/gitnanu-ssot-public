@@ -1,0 +1,9 @@
+testsprite_golden_path:
+  version: "v1.0"
+  statement: "Golden paths E2E com replay determinístico e idempotência"
+  golden_paths:
+    - GP001_signup_to_first_job
+    - GP002_payment_flow
+    - GP003_agent_create_ppt
+  replay_policy:
+    rule: "mesma idempotency_key deve retornar mesmo receipt/artifacts"
