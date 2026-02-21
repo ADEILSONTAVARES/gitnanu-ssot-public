@@ -400,3 +400,4 @@ echo "PASS: VPS_GATE ok"
 chmod +x scripts/vps/*.sh
 
 echo "DONE: VPS pack created."
+EOF

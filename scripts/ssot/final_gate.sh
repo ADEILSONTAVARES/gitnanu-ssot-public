@@ -83,3 +83,5 @@ cat > "${RECEIPT_FILE}" <<EOF
   - Base  : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/SSOT_PUBLIC_BASELINE_STATUS.md?v=${HEAD}
   - EvRec : ${RAW_BASE}/evidence/public/SSOT_PUBLIC_RECEIPT_2026-02-17.md${RAW_QS}
   - Ckpt : ${RAW_BASE}/evidence/public/SSOT_PUBLIC_CHECKPOINTS.md${RAW_QS}
+
+EOF

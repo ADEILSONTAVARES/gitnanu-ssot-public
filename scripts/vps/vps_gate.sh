@@ -24,3 +24,4 @@ cat > evidence/public/VPS_GATE_REPORT.latest.md <<EOF
 - repo_commit: ${COMMIT}
 - mode: ${MODE}
 - result: PASS
+EOF

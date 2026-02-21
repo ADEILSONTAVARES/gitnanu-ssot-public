@@ -79,7 +79,7 @@ fi
 
 # == GATE: bash syntax (scripts/**/*.sh) ==
 echo "== GATE: bash syntax (scripts/**/*.sh) =="
-find scripts -type f -name "*.sh" -maxdepth 3 -print0 | xargs -0 -n 1 bash -n
+find scripts -maxdepth 3 -type f -name "*.sh" -print0 | xargs -0 -n 1 bash -n
 echo "PASS: bash syntax ok"
 
 
