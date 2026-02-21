@@ -32,6 +32,7 @@ ssot_baseline_triple_zero_index:
   - ssot/connectors/CONNECTORS_REGISTRY_OG10_v1.yaml
   - scripts/ssot/validate_connectors_registry.py
   - scripts/ssot/validate_permissions.py
+  - scripts/ssot/run_all_gates.sh
   coca_local_only_pointers:
   - ssot/quality/DOCTOR_GATE_COMPLETE_v1.1.yaml
   - ssot/bench/BENCH90_REGRESSION_DETECTION_v1.0.yaml
