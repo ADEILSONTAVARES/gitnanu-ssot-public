@@ -22,6 +22,7 @@ Tag de referência: ssot_public_og10_patchpack_2026-02-20
 ## 3) Contracts (SSOT)
 - ssot/contracts/BILLING_MIN_DB_SCOPE.yaml
 - ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml
+- ssot/contracts/EVIDENCE_PACK_TEMPLATE_v2.yaml
 - ssot/contracts/TEAM_SESSION.schema.json
 - ssot/contracts/TASK_STATE_MACHINE_TEAM.yaml
 - ssot/contracts/TEAM_DOD_TEMPLATE.yaml
