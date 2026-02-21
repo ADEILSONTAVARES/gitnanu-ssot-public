@@ -1,0 +1,16 @@
+ssot_public_top_index:
+  version: "v1.0"
+  purpose: "Machine-readable entry point for SSOT_PUBLIC indexes"
+  indexes:
+    baseline:
+      - "docs/ssot/SSOT_BASELINE_TRIPLE_ZERO_INDEX_v10.3.yaml"
+    formula_pointer_public:
+      - "docs/ssot/BASELINE_FORMULA_POINTER_PUBLIC_v1.0.yaml"
+    repo_master_index_human:
+      - "docs/ssot_public/BASELINE_REPO_MASTER_INDEX.md"
+    runbooks:
+      - "docs/runbooks/RUNBOOK_BACKUP_RESTORE.md"
+      - "docs/runbooks/RUNBOOK_CONFLICT_RESOLUTION.md"
+      - "docs/runbooks/RUNBOOK_MULTI_DEVICE_SYNC.md"
+      - "docs/runbooks/RUNBOOK_TOKEN_ROTATION.md"
+      - "docs/runbooks/RUNBOOK_VPS_COMPROMISED.md"

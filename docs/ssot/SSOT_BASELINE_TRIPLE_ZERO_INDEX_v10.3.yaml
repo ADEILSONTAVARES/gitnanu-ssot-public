@@ -6,6 +6,7 @@ ssot_baseline_triple_zero_index:
   public_required_files:
     - "docs/ssot/BASELINE_FORMULA_POINTER_PUBLIC_v1.0.yaml"
     - "docs/ssot/SSOT_BASELINE_TRIPLE_ZERO_INDEX_v10.3.yaml"
+    - "docs/ssot/SSOT_PUBLIC_TOP_INDEX_v1.0.yaml"
 
     - "ssot/protocols/UNIVERSAL_PROTOCOLS_v1.0.yaml"
     - "ssot/protocols/PROTOCOLS_SIGNATURE_ANTI_REPLAY_v1.0.yaml"
@@ -30,7 +31,6 @@ ssot_baseline_triple_zero_index:
     - "ssot/observability/OBSERVABILITY_COMPLETE_v1.0.yaml"
 
   coca_local_only_pointers:
-    - "vault_local/"
     - "ssot/quality/DOCTOR_GATE_COMPLETE_v1.1.yaml"
     - "ssot/bench/BENCH90_REGRESSION_DETECTION_v1.0.yaml"
     - "ssot/quality/VISUAL_QA_PLAYWRIGHT_v1.0.yaml"
