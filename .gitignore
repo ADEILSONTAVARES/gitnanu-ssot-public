@@ -59,3 +59,5 @@ vault_local/
 **/evidence_pack.manifest.json
 **/og10_formula_master.yaml
 # END NANUCAI_COCA_BLOCK
+
+*.tmp
