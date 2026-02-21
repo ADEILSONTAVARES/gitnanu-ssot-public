@@ -1,0 +1,35 @@
+doctor_policy:
+  id: "doctor2"
+  version: "v1"
+  scope: "post_exec_blocking"
+  policy:
+    no_secrets: true
+    targets_only: true
+    notes: "Doctor2 é o gate pós-exec (bloqueios após execução: evidência, QA, rollback)."
+
+  triggers:
+    always_on: false
+    min_plan: "297"
+    publishable_domains:
+      - "billing"
+      - "security"
+      - "deploy"
+
+  required_checks:
+    - check_id: "D2_EVIDENCE_PACK_REQUIRED"
+      severity: "BLOCK"
+    - check_id: "D2_CHAIN_OF_CUSTODY_REQUIRED"
+      severity: "BLOCK"
+    - check_id: "D2_REGRESSION_BUDGET_REQUIRED"
+      severity: "BLOCK"
+    - check_id: "D2_ROLLBACK_PLAN_REQUIRED"
+      severity: "BLOCK"
+    - check_id: "D2_FINAL_QA_REQUIRED"
+      severity: "BLOCK"
+
+  outputs:
+    expected_artifacts:
+      - "doctor2_report.json"
+      - "evidence_pack.manifest.json"
+      - "receipt.json"
+    report_sanitized: true

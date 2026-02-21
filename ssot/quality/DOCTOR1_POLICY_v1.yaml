@@ -1,0 +1,34 @@
+doctor_policy:
+  id: "doctor1"
+  version: "v1"
+  scope: "pre_exec_blocking"
+  policy:
+    no_secrets: true
+    targets_only: true
+    notes: "Doctor1 é o gate pré-exec (bloqueios antes de executar ações)."
+
+  triggers:
+    always_on: true
+    domains:
+      - "billing"
+      - "security"
+      - "deploy"
+      - "data_access"
+
+  required_checks:
+    - check_id: "D1_SECRETS_SCAN_PUBLIC"
+      severity: "BLOCK"
+    - check_id: "D1_RLS_REQUIRED"
+      severity: "BLOCK"
+    - check_id: "D1_IDEMPOTENCY_POLICY_REQUIRED"
+      severity: "BLOCK"
+    - check_id: "D1_OUTPUT_SCRUB_REQUIRED"
+      severity: "BLOCK"
+    - check_id: "D1_BUDGET_GUARD_REQUIRED"
+      severity: "BLOCK"
+
+  outputs:
+    expected_artifacts:
+      - "doctor1_report.json"
+      - "receipt.json"
+    report_sanitized: true

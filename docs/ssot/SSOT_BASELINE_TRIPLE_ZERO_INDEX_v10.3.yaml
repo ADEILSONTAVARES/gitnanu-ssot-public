@@ -26,6 +26,9 @@ ssot_baseline_triple_zero_index:
 
     - "ssot/quality/BENCH90_TAXONOMY_v1.0.yaml"
     - "ssot/quality/VISUAL_QA_CRITICAL_PAGES_v1.0.yaml"
+    - "ssot/quality/DOCTOR1_POLICY_v1.yaml"
+    - "ssot/quality/DOCTOR2_POLICY_v1.yaml"
+    - "ssot/quality/DOCTOR_CHECKS_REGISTRY_v1.yaml"
 
     - "ssot/payments/PAYMENTS_IDEMPOTENCY_STATE_MACHINE_v1.0.yaml"
     - "ssot/observability/OBSERVABILITY_COMPLETE_v1.0.yaml"

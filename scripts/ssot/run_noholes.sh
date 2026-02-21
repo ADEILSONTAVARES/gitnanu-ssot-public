@@ -47,5 +47,10 @@ echo "== validate_og10_target_metrics =="
 "$PY" scripts/ssot/validate_og10_target_metrics.py
 echo "PASS: OG10_TARGET_METRICS validated"
 
+echo "== validate_doctor_pack =="
+"$PY" scripts/ssot/validate_doctor_pack.py
+echo "PASS: DOCTOR_PACK validated"
+
+
 
 echo "PASS: run_noholes"
