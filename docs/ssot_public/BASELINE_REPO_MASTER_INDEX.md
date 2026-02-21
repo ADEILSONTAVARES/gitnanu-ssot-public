@@ -1,3 +1,10 @@
+# SSOT_PUBLIC — Master Index (Human)
+
+## Entry point (machine-readable)
+- `docs/ssot/SSOT_PUBLIC_TOP_INDEX_v1.0.yaml`
+
+----
+
 # BASELINE_REPO_MASTER_INDEX (SSOT_PUBLIC)
 
 Data: 2026-02-20
