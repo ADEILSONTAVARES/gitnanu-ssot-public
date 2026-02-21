@@ -1,11 +1,11 @@
 # NEXT CHAT HANDOFF — GitNanu SSOT Public — 2026-02-19 — p0_41
 
 ## Contexto
-Fechamento do buraco: README/DOCS_INDEX/handoff apontavam para docs/ssot_public/OG10_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md, mas o arquivo não existia no repo
+Fechamento do buraco: README/DOCS_INDEX/handoff apontavam para docs/ssot_public/BASELINE_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md, mas o arquivo não existia no repo
 em alguns recomeços de execução.
 
 ## Mudança
-- docs/ssot_public/OG10_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md (garantido no repo)
+- docs/ssot_public/BASELINE_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md (garantido no repo)
 - docs/DOCS_INDEX.md (garantida referência)
 - README.md (garantida referência)
 

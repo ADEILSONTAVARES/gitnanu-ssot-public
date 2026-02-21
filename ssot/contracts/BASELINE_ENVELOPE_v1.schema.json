@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "OG10 Task Envelope",
+  "title": "BASELINE Task Envelope",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -14,7 +14,7 @@
     "expected_outputs"
   ],
   "properties": {
-    "version": { "type": "string", "enum": ["OG10_ENVELOPE_v1"] },
+    "version": { "type": "string", "enum": ["BASELINE_ENVELOPE_v1"] },
     "created_at": { "type": "string" },
     "owner_component": { "type": "string" },
 

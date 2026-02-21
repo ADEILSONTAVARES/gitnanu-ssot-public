@@ -1,6 +1,6 @@
 version: "v1.0"
 gates: "GATES_7_CANON"
-statement: "Ordem canônica dos 7 gates OG10 antes de publicar qualquer mudança persistente."
+statement: "Ordem canônica dos 7 gates BASELINE antes de publicar qualquer mudança persistente."
 
 ordem:
   G1: "Firewall policy check (ALLOW/DENY) + reasons"

@@ -13,7 +13,7 @@ echo "PASS: bash syntax ok"
 
 echo "== SMOKE: required SSOT files =="
 req=(
-  "ssot/contracts/OG10_ENVELOPE_v1.schema.json"
+  "ssot/contracts/BASELINE_ENVELOPE_v1.schema.json"
   "ssot/contracts/TASK_STATE_MACHINE.yaml"
   "ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml"
   "ssot/policies/AUTHORITY_HIERARCHY.yaml"

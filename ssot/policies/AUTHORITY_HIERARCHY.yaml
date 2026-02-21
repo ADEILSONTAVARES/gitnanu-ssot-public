@@ -1,4 +1,4 @@
-# AUTHORITY_HIERARCHY — OG10 (SSOT_PUBLIC)
+# AUTHORITY_HIERARCHY — BASELINE (SSOT_PUBLIC)
 # Objetivo: definir quem manda em quê. Sem isso, vira conflito infinito.
 
 version: "v1"
@@ -13,7 +13,7 @@ sources_of_truth:
 
   - id: LOCAL_VAULT_PRIVATE
     priority: 110
-    description: "Coca-Cola local-only (gitignored). Tem precedência para segredos e fórmulas, mas não pode ser exportado."
+    description: "local_only local-only (gitignored). Tem precedência para segredos e fórmulas, mas não pode ser exportado."
 
 rules:
   - "Se houver conflito entre SSOT_PUBLIC_REPO e GNDRIVE_VAULT sobre contratos/políticas => SSOT_PUBLIC_REPO vence."

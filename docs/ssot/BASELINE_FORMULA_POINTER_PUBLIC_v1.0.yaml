@@ -1,4 +1,4 @@
-og10_formula_pointer_public:
+baseline_formula_pointer_public:
   version: "v1.0"
   status: "PUBLIC_SAFE"
   rule:

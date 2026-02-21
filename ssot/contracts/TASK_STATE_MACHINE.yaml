@@ -1,4 +1,4 @@
-# TASK_STATE_MACHINE — OG10 (SSOT_PUBLIC)
+# TASK_STATE_MACHINE — BASELINE (SSOT_PUBLIC)
 # Objetivo: estado único e verificável para qualquer tarefa/job/run.
 # Regra: sem estado válido => FAIL nos gates.
 

@@ -4,7 +4,7 @@ import re
 import sys
 from pathlib import Path
 
-SCHEMA_PATH = Path("ssot/contracts/OG10_ENVELOPE_v1.schema.json")
+SCHEMA_PATH = Path("ssot/contracts/BASELINE_ENVELOPE_v1.schema.json")
 
 def fail(msg: str, code: int = 1):
   print(f"FAIL: {msg}")
@@ -24,7 +24,7 @@ def main():
     fail(f"missing schema: {SCHEMA_PATH}")
 
   schema = load_json(SCHEMA_PATH)
-  if schema.get("title") != "OG10 Task Envelope":
+  if schema.get("title") != "BASELINE Task Envelope":
     fail("schema title mismatch")
 
   # smoke: required keys present

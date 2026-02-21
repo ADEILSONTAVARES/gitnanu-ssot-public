@@ -1,6 +1,6 @@
 version: "v1.0"
 spec: "CE_30"
-statement: "30 regras para engenharia de contexto eficiente (2k-12k tokens) com governança OG10."
+statement: "30 regras para engenharia de contexto eficiente (2k-12k tokens) com governança BASELINE."
 
 categorias:
   preparacao:

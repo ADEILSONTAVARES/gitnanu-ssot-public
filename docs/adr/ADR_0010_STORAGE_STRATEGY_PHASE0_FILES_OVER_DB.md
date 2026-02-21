@@ -1,10 +1,10 @@
 # ADR_0010 — Storage Strategy (Phase 0): Files over DB
 Data: 2026-02-20
 Status: ACCEPTED
-Escopo: OG10 Core (GammaNotion + GNDrive + GitNanu + Mouse + PrM) em fase inicial.
+Escopo: BASELINE Core (GammaNotion + GNDrive + GitNanu + Mouse + PrM) em fase inicial.
 
 ## Decisão
-Na Fase 0, o OG10 usa arquivos como fonte primária de verdade para SSOT:
+Na Fase 0, o BASELINE usa arquivos como fonte primária de verdade para SSOT:
 - YAML, JSON, JSONL no repo (SSOT_PUBLIC)
 - GNDrive para evidências e assets pesados
 - n8n como automação (estado operacional, não SSOT)

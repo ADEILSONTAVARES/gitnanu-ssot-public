@@ -1,4 +1,4 @@
-infrastructure_costs_og10:
+infrastructure_costs_baseline:
   version: "v1.0"
   statement: "Custos de infra (estimativa) + redução via cache/dedup/vault"
   note:

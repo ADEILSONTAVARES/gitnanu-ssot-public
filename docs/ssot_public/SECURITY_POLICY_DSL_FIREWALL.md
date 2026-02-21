@@ -1,7 +1,7 @@
 # SECURITY_POLICY_DSL_FIREWALL (SSOT_PUBLIC)
 
 Data: 2026-02-20  
-Objetivo: definir o firewall de políticas do OG10 (ALLOW/DENY) antes de qualquer execução, tool call, escrita ou publicação.
+Objetivo: definir o firewall de políticas do BASELINE (ALLOW/DENY) antes de qualquer execução, tool call, escrita ou publicação.
 
 ## 1) Conceito
 O Firewall é a etapa única que decide se um pedido pode executar:

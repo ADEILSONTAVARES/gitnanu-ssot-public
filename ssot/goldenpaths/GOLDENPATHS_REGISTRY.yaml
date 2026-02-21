@@ -1,6 +1,6 @@
 version: "v1.0"
 registry: "GOLDENPATHS"
-statement: "Golden paths canônicos (replay determinístico) — base do 'jogo da velha' OG10."
+statement: "Golden paths canônicos (replay determinístico) — base do 'jogo da velha' BASELINE."
 
 required_minimum:
   - "GP001_patchpack_pass"

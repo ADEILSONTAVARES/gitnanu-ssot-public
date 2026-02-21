@@ -10,7 +10,7 @@ cat > .git/hooks/pre-commit <<'HOOK'
 #!/usr/bin/env bash
 set -euo pipefail
 
-# OG10: Write lock (mínimo). Ajuste conforme sua política.
+# BASELINE: Write lock (mínimo). Ajuste conforme sua política.
 # Regra: só permite commit se tiver X-GitNanu-Writer no commit message OU user.email setado pro GitNanu.
 # OBS: commit-msg hook seria mais preciso, mas aqui é o mínimo.
 

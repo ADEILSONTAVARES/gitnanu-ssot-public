@@ -1,7 +1,7 @@
-# OG10 PatchPack Manifest — 2026-02-20
+# BASELINE PatchPack Manifest — 2026-02-20
 
-Este arquivo é o ponto único de entrada do PatchPack OG10 (files-first + TeamsWork10x).
-Tag de referência: ssot_public_og10_patchpack_2026-02-20
+Este arquivo é o ponto único de entrada do PatchPack BASELINE (files-first + TeamsWork10x).
+Tag de referência: ssot_public_baseline_patchpack_2026-02-20
 
 ## 0) O que é este PatchPack (escopo)
 Este PatchPack adiciona o mínimo canônico para:
@@ -50,7 +50,7 @@ Regra: este arquivo não copia conteúdo dos contratos/policies. Ele apenas refe
 
 ## 6) Docs públicos relacionados (SSOT_PUBLIC)
 - docs/ssot_public/README.md
-- docs/ssot_public/OG10_REPO_MASTER_INDEX.md
+- docs/ssot_public/BASELINE_REPO_MASTER_INDEX.md
 - docs/ssot_public/SECURITY_POLICY_DSL_FIREWALL.md
 
 ## 7) Gates (prova de integridade)
@@ -63,6 +63,6 @@ PASS = todos abaixo verdadeiros:
 - verify_public_baseline.sh latest => PASS
 - run_noholes.sh => PASS
 - tag ssot_public_latest aponta para HEAD
-- tag ssot_public_og10_patchpack_2026-02-20 existe e aponta para o mesmo HEAD
+- tag ssot_public_baseline_patchpack_2026-02-20 existe e aponta para o mesmo HEAD
 
 FAIL = qualquer gate falhar.

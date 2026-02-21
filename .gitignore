@@ -38,7 +38,7 @@ evidence/*.jsonl
 # Exports do n8n podem ser grandes/voláteis (se quiser manter fora)
 ssot/workflows/n8n_exports/
 
-# --- OG10: workflows SSOT ---
+# --- BASELINE: workflows SSOT ---
 # 1) re-incluir o diretório (necessário para exceptions funcionarem)
 !ssot/workflows/
 
@@ -50,14 +50,14 @@ ssot/workflows/n8n_exports/
 
 # BEGIN NANUCAI_COCA_BLOCK
 # ==========================
-# COCA-COLA (local-only)
+# local_only (local-only)
 # ==========================
 ssot/private/
 vault_local/
 **/bench90_results.json
 **/ledger_cost.json
 **/evidence_pack.manifest.json
-**/og10_formula_master.yaml
+**/baseline_formula_master.yaml
 # END NANUCAI_COCA_BLOCK
 
 *.tmp

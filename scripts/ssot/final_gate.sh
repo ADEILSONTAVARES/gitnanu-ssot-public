@@ -23,7 +23,7 @@ fi
 echo "OK: sem placeholders em docs/"
 
 echo
-OG10_OPTS=(
+BASELINE_OPTS=(
   --exclude-dir .git
   --exclude-dir .venv
   --exclude-dir node_modules --exclude-dir scripts
@@ -31,13 +31,13 @@ OG10_OPTS=(
   --exclude "*.bak.*"
 )
 
-echo "SCAN: OG10/og10 fora .git/.venv/node_modules"
-if grep -RniE '\bog10\b|OG10' . "${OG10_OPTS[@]}" >/dev/null 2>&1; then
-  echo "STOP: achou OG10/og10 fora lugares permitidos."
-  grep -RniE '\bog10\b|OG10' . "${OG10_OPTS[@]}" || true
+echo "SCAN: BASELINE/baseline fora .git/.venv/node_modules"
+if grep -RniE '\bbaseline\b|BASELINE' . "${BASELINE_OPTS[@]}" >/dev/null 2>&1; then
+  echo "STOP: achou BASELINE/baseline fora lugares permitidos."
+  grep -RniE '\bbaseline\b|BASELINE' . "${BASELINE_OPTS[@]}" || true
   exit 1
 fi
-echo "OK: sem OG10/og10 fora .git/.venv"
+echo "OK: sem BASELINE/baseline fora .git/.venv"
 # 2) gate hard (antes de escrever evidence)
 echo
 HEAD="$(git rev-parse --short HEAD)"
@@ -76,7 +76,7 @@ cat > "${RECEIPT_FILE}" <<EOF
 - Gate: PASS (HEAD == TAG^{commit})
 - Checks:
   - placeholders in docs/: PASS
-  - og10/OG10 outside .git/.venv: PASS
+  - baseline/BASELINE outside .git/.venv: PASS
 - RAW (cache-bust):
   - Receipt: https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/ssot_public/SSOT_PUBLIC_RECEIPT_LATEST.md?v=${HEAD}
   - Index : https://raw.githubusercontent.com/ADEILSONTAVARES/gitnanu-ssot-public/${TAG_FINAL}/docs/DOCS_INDEX.md?v=${HEAD}

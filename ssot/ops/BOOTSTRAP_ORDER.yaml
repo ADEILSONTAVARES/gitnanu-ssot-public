@@ -1,4 +1,4 @@
-# BOOTSTRAP_ORDER — OG10 (SSOT_PUBLIC)
+# BOOTSTRAP_ORDER — BASELINE (SSOT_PUBLIC)
 # Objetivo: ordem determinística de boot e smoke.
 
 version: "v1"

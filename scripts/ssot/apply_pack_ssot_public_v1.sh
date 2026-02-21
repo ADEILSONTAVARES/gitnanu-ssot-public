@@ -7,8 +7,8 @@ cd "$ROOT"
 mkdir -p ssot/product ssot/teamwork10x ssot/rules_system ssot/guardrails ssot/mcp_gateway \
          ssot/console ssot/doctor ssot/testing ssot/packkit docs/ssot_public
 
-cat > docs/ssot_public/OG10_REPO_MASTER_INDEX.md <<'EOM'
-# OG10 SSOT_PUBLIC - MASTER INDEX
+cat > docs/ssot_public/BASELINE_REPO_MASTER_INDEX.md <<'EOM'
+# BASELINE SSOT_PUBLIC - MASTER INDEX
 (Conteudo aqui)
 EOM
 

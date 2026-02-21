@@ -1,7 +1,7 @@
-# OG10_REPO_MASTER_INDEX (SSOT_PUBLIC)
+# BASELINE_REPO_MASTER_INDEX (SSOT_PUBLIC)
 
 Data: 2026-02-20
-Escopo: índice do repositório público SSOT do GitNanu (OG10).  
+Escopo: índice do repositório público SSOT do GitNanu (BASELINE).  
 Regra: Git é a fonte de verdade de SSOT. Evidência pesada fica no GNDrive.
 
 ## 1) Estrutura SSOT (fonte de verdade)
@@ -30,7 +30,7 @@ Referência:
 - ssot/policies/SSOT_VS_EVIDENCE_POLICY.yaml
 - ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml
 
-## 5) O que NUNCA entra no repo público (Coca-Cola)
+## 5) O que NUNCA entra no repo público (local_only)
 - vault_local/
 - ssot/private/
 - ledgers/cost raw, tokens, chaves, .env

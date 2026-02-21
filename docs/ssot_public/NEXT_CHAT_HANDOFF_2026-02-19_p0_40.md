@@ -4,7 +4,7 @@
 Publicar no repo o documento mestre completo (checklist + passo a passo + conferência + conteúdo integral dos DOCX).
 
 ## Mudança
-- docs/ssot_public/OG10_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
+- docs/ssot_public/BASELINE_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
 
 ## Gates esperados
 - bash scripts/ssot/verify_public_baseline.sh latest => PASS

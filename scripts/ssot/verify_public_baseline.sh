@@ -145,4 +145,4 @@ bash scripts/ssot/assert_no_escaped_env.sh scripts/ssot/run_noholes.sh
 echo "PASS: SSOT_PUBLIC baseline ok (tag=${TAG})"
 
 echo "== GATE: verify_triple_zero_index =="
-bash scripts/ssot/verify_triple_zero_index.sh docs/ssot/SSOT_OG10_TRIPLE_ZERO_INDEX_v10.3.yaml
+bash scripts/ssot/verify_triple_zero_index.sh docs/ssot/SSOT_BASELINE_TRIPLE_ZERO_INDEX_v10.3.yaml

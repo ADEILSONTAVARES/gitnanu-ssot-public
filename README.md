@@ -33,5 +33,5 @@ Se você identificar risco de vazamento ou falha de sanitização:
 - Sinalize como **security**
 - Não anexe dados reais
 
-## SSOT Public (OG10)
-- Documento mestre completo (2026-02-19): docs/ssot_public/OG10_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
+## SSOT Public (BASELINE)
+- Documento mestre completo (2026-02-19): docs/ssot_public/BASELINE_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md

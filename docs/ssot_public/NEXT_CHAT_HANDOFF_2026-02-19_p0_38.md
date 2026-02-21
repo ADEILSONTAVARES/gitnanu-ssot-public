@@ -1,7 +1,7 @@
 # NEXT CHAT HANDOFF — GitNanu SSOT Public — 2026-02-19 — p0_38
 
 ## Contexto
-Fechamento de buracos OG10 que estavam faltando no SSOT_PUBLIC:
+Fechamento de buracos BASELINE que estavam faltando no SSOT_PUBLIC:
 - TASK_STATE_MACHINE
 - AUTHORITY_HIERARCHY
 - EVIDENCE_PACK_TEMPLATE + gate validate_evidence_pack.ts

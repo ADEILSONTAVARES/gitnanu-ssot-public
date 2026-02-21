@@ -16,8 +16,8 @@
 ## LOG (últimos 7)
 6620e71 (HEAD -> main, tag: ssot_public_latest, tag: ssot_public_2026-02-19_p0_42, origin/main, origin/HEAD) docs(handoff): add 2026-02-19 p0_42 handoff (align latest to HEAD)
 aabbbbe docs(handoff): add 2026-02-19 p0_41 handoff (fix doc publication)
-a460521 docs(ssot_public): publish OG10 full document path (fix missing file)
-5bb9a08 docs(readme): link to OG10 SSOT public full document
+a460521 docs(ssot_public): publish BASELINE full document path (fix missing file)
+5bb9a08 docs(readme): link to BASELINE SSOT public full document
 885d930 (tag: ssot_public_2026-02-19_p0_40) docs(handoff): add 2026-02-19 p0_40 handoff (full document)
 b1c4fc5 (tag: ssot_public_2026-02-19_p0_39) docs(handoff): add 2026-02-19 p0_39 handoff (status snapshot pack)
 15210cb docs(status): add status snapshot 2026-02-19 p0_38

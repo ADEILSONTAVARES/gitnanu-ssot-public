@@ -1,11 +1,11 @@
-ssot_og10_triple_zero_index:
+ssot_baseline_triple_zero_index:
   version: "v10.3"
   status: "PUBLIC_SAFE"
   statement: "Inventário canônico do TRIPLE-ZERO (public) + pointers COCA (local-only)."
 
   public_required_files:
-    - "docs/ssot/OG10_FORMULA_POINTER_PUBLIC_v1.0.yaml"
-    - "docs/ssot/SSOT_OG10_TRIPLE_ZERO_INDEX_v10.3.yaml"
+    - "docs/ssot/BASELINE_FORMULA_POINTER_PUBLIC_v1.0.yaml"
+    - "docs/ssot/SSOT_BASELINE_TRIPLE_ZERO_INDEX_v10.3.yaml"
 
     - "ssot/protocols/UNIVERSAL_PROTOCOLS_v1.0.yaml"
     - "ssot/protocols/PROTOCOLS_SIGNATURE_ANTI_REPLAY_v1.0.yaml"
@@ -13,8 +13,8 @@ ssot_og10_triple_zero_index:
     - "ssot/schemas/SCHEMAS_v1.0.yaml"
     - "ssot/schemas/DATABASES_ARCHITECTURE_v1.0.yaml"
 
-    - "ssot/cost/CPSJ_CALCULATION_OG10_v1.0.yaml"
-    - "ssot/cost/INFRASTRUCTURE_COSTS_OG10_v1.0.yaml"
+    - "ssot/cost/CPSJ_CALCULATION_BASELINE_v1.0.yaml"
+    - "ssot/cost/INFRASTRUCTURE_COSTS_BASELINE_v1.0.yaml"
 
     - "ssot/contracts/JOB_LIFECYCLE_CONTRACT_v1.0.yaml"
     - "ssot/contracts/MODULE_INTEGRATION_MAP_v1.0.yaml"
@@ -30,8 +30,6 @@ ssot_og10_triple_zero_index:
     - "ssot/observability/OBSERVABILITY_COMPLETE_v1.0.yaml"
 
   coca_local_only_pointers:
-    - "ssot/private/og10/"
-    - "ssot/private/bench90/"
     - "vault_local/"
     - "ssot/quality/DOCTOR_GATE_COMPLETE_v1.1.yaml"
     - "ssot/bench/BENCH90_REGRESSION_DETECTION_v1.0.yaml"
