@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SRC="documentos/ssot_public"
+SRC=""
+# ordem canônica (repo atual): ssot_public -> docs/ssot_public -> documentos/ssot_public
+if [ -d "ssot_public" ]; then SRC="ssot_public"; fi
+if [ -z "\" ] && [ -d "docs/ssot_public" ]; then SRC="docs/ssot_public"; fi
+if [ -z "\" ] && [ -d "documentos/ssot_public" ]; then SRC="documentos/ssot_public"; fi
+if [ -z "\" ]; then
+  echo "N: SRC inexistente. Esperado: ssot_public/ ou docs/ssot_public/ ou documentos/ssot_public" >&2
+  ls -la 2>/dev/null || true
+  ls -la docs 2>/dev/null || true
+  ls -la documentos 2>/dev/null || true
+  exit 2
+fi
+
 PUB_REPO="ADEILSONTAVARES/gitnanu-ssot-public"
 WORK="/tmp/gitnanu-ssot-public"
 
