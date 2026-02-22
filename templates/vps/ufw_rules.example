@@ -1,6 +1,0 @@
-# UFW example
-ufw default deny incoming
-ufw default allow outgoing
-ufw allow <SSH_PORT_EXAMPLE>/tcp
-ufw allow 443/tcp
-ufw enable

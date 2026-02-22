@@ -1,5 +1,0 @@
-module_integration_map:
-  version: "v1.0"
-  prm_to_studios: {caller: "S41_PRM", callees: ["S11_CODEX","S18_ANTIGRAVITY","S21_NOTEBOOKLM"], contract: "job_request"}
-  studios_to_doctor: {doctor1: "blocking", doctor2: "blocking"}
-  u2_to_gndrive: {rule: "upload artifact + sha256 + receipt"}

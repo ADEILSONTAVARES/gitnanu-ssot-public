@@ -1,5 +1,0 @@
-version: "ssotp_skills_registry_pointer_v1"
-updated_at: "2026-02-18"
-owner: "SSOT_PUBLIC"
-pointer:
-  path: "ssot/skills/SKILLS_REGISTRY.yaml"

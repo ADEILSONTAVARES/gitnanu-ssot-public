@@ -1,9 +1,0 @@
-shadcn_ui_supabase_frontend:
-  version: "v1.0"
-  statement: "Next.js + shadcn/ui + Supabase Auth"
-  required_surfaces:
-    - command_palette
-    - sidebar
-    - slash_commands
-    - mouse_interactions
-    - voice_input

@@ -1,9 +1,0 @@
-branch_protection_policy:
-  version: "v1"
-  branch: "main"
-  require_status_checks: true
-  require_linear_history: true
-  allow_force_push: false
-  allow_deletions: false
-  recommended:
-    - "signed_commits"

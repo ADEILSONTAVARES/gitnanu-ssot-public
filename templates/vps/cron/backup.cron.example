@@ -1,2 +1,0 @@
-# Daily backup example at 02:00
-0 2 * * * /home/gitnanu/scripts/backup.sh

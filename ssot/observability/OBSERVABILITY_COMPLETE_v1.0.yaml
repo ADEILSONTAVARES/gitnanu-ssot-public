@@ -1,8 +1,0 @@
-observability_complete:
-  version: "v1.0"
-  trace_id:
-    rule: "X-Trace-ID em todas as chamadas"
-  tables:
-    - job_run
-    - tool_call
-    - cost_ledger

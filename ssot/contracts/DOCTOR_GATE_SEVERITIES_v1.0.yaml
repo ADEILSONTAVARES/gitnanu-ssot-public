@@ -1,6 +1,0 @@
-doctor_gate_severities:
-  version: "v1.0"
-  verdicts: [PASS_STRICT, PASS_WITH_WARNINGS, FAIL_BLOCKING, FAIL_SECURITY]
-  receipt_signing:
-    algorithm: "Ed25519 + SHA-256"
-    rule: "sem signature => FAIL_BLOCKING"

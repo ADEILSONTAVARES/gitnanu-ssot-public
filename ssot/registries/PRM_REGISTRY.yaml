@@ -1,4 +1,0 @@
-version: "v1.0"
-registry: "PRM_REGISTRY"
-prm:
-  routing_policy: "ssot/prm/PRM_ROUTING_POLICY_v1_1.yaml"

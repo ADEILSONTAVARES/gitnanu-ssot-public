@@ -1,9 +1,0 @@
-version: "v1.0"
-registry: "PACKS_REGISTRY"
-packs:
-  actionpack_root: "ssot/packs/actionpack/ACTIONPACK_250_v1_1.yaml"
-  actionpack_schema: "ssot/packs/actionpack/ACTIONPACK_250.schema.json"
-  subpack_root: "ssot/packs/subpack/SUBPACK_170_v1_1.yaml"
-  subpack_schema: "ssot/packs/subpack/SUBPACK_170.schema.json"
-  microskills_root: "ssot/packs/microskills/MICROSKILLS_40_v1_1.yaml"
-  microskills_schema: "ssot/packs/microskills/MICROSKILLS_40.schema.json"

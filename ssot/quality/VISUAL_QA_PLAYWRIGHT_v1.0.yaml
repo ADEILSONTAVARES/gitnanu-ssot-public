@@ -1,7 +1,0 @@
-visual_qa_playwright:
-  version: "v1.0"
-  statement: "Visual regression testing com Playwright + screenshot diff"
-  tools: [playwright, pixelmatch]
-  baseline_first_run: true
-  thresholds:
-    default_max_diff_pixels: 100
