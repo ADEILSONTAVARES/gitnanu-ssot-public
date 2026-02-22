@@ -35,3 +35,19 @@ Se você identificar risco de vazamento ou falha de sanitização:
 
 ## SSOT Public (BASELINE)
 - Documento mestre completo (2026-02-19): docs/ssot_public/BASELINE_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
+
+
+## Regras SSOT de Operacao (MAC vs VPS)
+
+### MAC (local)
+No Mac, o objetivo e sincronizar e validar, sem publicar.
+
+- Permitido: git fetch, git pull --ff-only, git status, git log.
+- Bloqueado (por guard): git push e git tag -f.
+
+Comando canonico MAC: bash scripts/ssot/ssot_sync_mac.sh
+
+### VPS (publicacao)
+A VPS e a camada de publicacao: gates + push main + tags moveis + prova.
+
+Comando canonico VPS: bash scripts/vps/ssot_publish_vps.sh
