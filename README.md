@@ -37,17 +37,22 @@ Se você identificar risco de vazamento ou falha de sanitização:
 - Documento mestre completo (2026-02-19): docs/ssot_public/BASELINE_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
 
 
-## Regras SSOT de Operacao (MAC vs VPS)
+## Regras SSOT de Operação (MAC vs VPS)
 
 ### MAC (local)
-No Mac, o objetivo e sincronizar e validar, sem publicar.
+No Mac, o objetivo é sincronizar e validar, sem publicar.
 
-- Permitido: git fetch, git pull --ff-only, git status, git log.
+- Permitido: git fetch, git pull --ff-only, git status, git log, git diff, execução de gates locais.
 - Bloqueado (por guard): git push e git tag -f.
 
-Comando canonico MAC: bash scripts/ssot/ssot_sync_mac.sh
+Comando canônico (MAC): bash scripts/ssot/ssot_sync_mac.sh
 
-### VPS (publicacao)
-A VPS e a camada de publicacao: gates + push main + tags moveis + prova.
+### VPS (publicação)
+A VPS é a camada de publicação: gates + push main + tags móveis + prova.
 
-Comando canonico VPS: bash scripts/vps/ssot_publish_vps.sh
+- Obrigatório: rodar gates antes de publicar.
+- Publica: main, ssot_public_latest e ssot_public_YYYY-MM-DD_final (sempre apontando para o HEAD).
+
+Comando canônico (VPS): bash scripts/vps/ssot_publish_vps.sh
+
+Nota: se ssot_publish_vps.sh falhar com "tag não aponta para o HEAD", atualize as tags móveis para o HEAD e rode novamente.
