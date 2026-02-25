@@ -1,2 +1,6 @@
 vault_local/
 ssot/private/
+.venv/
+*.bak.*
+*.log
+scripts/*.bak.*
