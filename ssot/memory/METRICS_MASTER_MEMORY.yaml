@@ -1,9 +1,0 @@
-metrics_master_memory:
-  version: v1.0
-  status: CANON_PUBLIC_SAFE
-  context_streaming:
-    thrash_rate_max: 0.02
-    page_fault_rate_max_by_plan: {plan_99: 0.18, plan_297: 0.15, plan_699: 0.15, plan_999: 0.12}
-  rlm_exec:
-    read_amplification_p95_max: 35
-    stop_condition_accuracy_min: 0.95

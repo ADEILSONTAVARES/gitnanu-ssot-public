@@ -1,6 +1,0 @@
-memory_gates:
-  version: v1.0
-  status: CANON_PUBLIC_SAFE
-  doctor2_required_when: [promote_to_LTA, restore_from_TRASH, critical_domain_billing_deploy_delete]
-  promotion_rules:
-    LTA: {require: {evidence_ref_present: true, contradiction_check_pass: true, doctor2_pass: true, quality_score_min: 0.90}}

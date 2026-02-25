@@ -1,1 +1,0 @@
-{"name":"CLLM_SMOKE_SPEC_v1","checks":[{"id":"files_exist","must_exist":["ssot/engines/CLLM_READY_OFF_v1.yaml","ssot/cost/COST_FLOOR_MINIMUM_v1.yaml"]}]}

@@ -1,8 +1,0 @@
-cost_floor_minimum:
-  version: v1.0
-  status: TARGETS_UNTIL_MEASURED
-  floors:
-    off_cllm: {fixed_min_usd_per_month: 30}
-    on_cllm_gpu:
-      fixed_min_usd_per_month: 282.10
-      breakdown: {backend_floor: 30, hetzner_gpu_floor_estimate: 252.10}
