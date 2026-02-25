@@ -1,22 +1,20 @@
-# OG10 PACK POINTERS v1
+# OG10 PACK POINTERS v1 (public-safe)
 
-Core:
+## Core
 - ssot/core/OG10_SYSTEM_MAP_v1.yaml
 
-Engines + Router:
+## Plans
+- ssot/plans/PLANS_CATALOG_v1.yaml
+
+## Engines
 - ssot/engines/ENGINE_CATALOG.yaml
 - ssot/prm/ROUTER_RULES_ENGINES.yaml
 
-Memoria:
+## Memoria
 - ssot/memory/PLAN_MEMORY_POLICY.yaml
 - ssot/memory/MEMORY_BACKENDS.yaml
 - ssot/memory/MEMORY_GATES.yaml
 - ssot/memory/METRICS_MASTER_MEMORY.yaml
 
-CLLM Ready Off:
-- ssot/engines/CLLM_READY_OFF_v1.yaml
-- ssot/cost/COST_FLOOR_MINIMUM_v1.yaml
-- ssot/ramp/RAMP_SCHEDULE_TABLE_v1.yaml
-- docs/runbooks/RUNBOOK_CLLM_ENABLE_DISABLE_v1.md
-- ssot/security/NO_HOLES_CLLM_HARNESS_v1.yaml
-- tests/harness/CLLM_SMOKE_SPEC_v1.json
+## Regras
+- .gitignore (COCA: ssot/private e vault_local)
