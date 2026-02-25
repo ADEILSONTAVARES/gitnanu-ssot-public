@@ -8,3 +8,6 @@ vault_local/
 **/evidence_pack.manifest.json
 
 .venv/
+*.bak.*
+*.log
+scripts/*.bak.*
