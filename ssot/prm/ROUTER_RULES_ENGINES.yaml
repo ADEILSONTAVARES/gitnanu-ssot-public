@@ -1,0 +1,25 @@
+router_rules_engines:
+  version: v1.1
+  status: CANON_PUBLIC_SAFE
+  packs_required:
+    addons_40_15_3: {addons: 40, pains: 15, universals: 3}
+    actionpack_250: {actions: 250}
+    subagent_60_5_3: {lane: [60,5,3]}
+  metric:
+    split_85_15: {L0: 0.85, L1_L3: 0.15}
+    shadow_band_within_micro:
+      default: [0.003, 0.006]
+      max: 0.02
+      effective_total_formula: 0.15 * shadow_rate
+  thinking_policy:
+    pick_one: true
+    rates: {default: 0.003, max: 0.006}
+  selection_rules:
+    - {id: R1_code, when: [code_impl, patch], choose: {primary: engine.codex, fallback: [engine.claude_code]}}
+    - {id: R2_review, when: [review, infra], choose: {primary: engine.claude_code, fallback: [engine.codex]}}
+    - {id: R3_reasoning, when: [general, reasoning], choose: {primary: engine.openai_gpt, fallback: [engine.anthropic_claude]}}
+    - {id: R4_cllm_internal, when: [cllm_internal], choose: {primary: engine.nanucai_cllm_cf, fallback: [engine.nanucai_cllm_hz, engine.openai_gpt]}}
+  guardrails:
+    - engines_never_write_repo_direct
+    - gitnanu_single_writer
+    - doctor1_always_doctor2_on_critical

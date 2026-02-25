@@ -1,0 +1,14 @@
+cllm_ready_off:
+  version: v1.0
+  status: CANON_PUBLIC_SAFE
+  feature_flags_default:
+    CLLM_ENABLED: false
+    CLLM_CF_ENABLED: false
+    CLLM_HZ_ENABLED: false
+    CLLM_CF_RAMP: 0.0
+    CLLM_HZ_RAMP: 0.0
+  ramp_policy:
+    cloudflare: {step: 0.003, max: 0.10}
+    hetzner: {standby: 0, step: 0.003, max: 0.10}
+  math:
+    effective_total_formula: effective_total = 0.15 * ramp

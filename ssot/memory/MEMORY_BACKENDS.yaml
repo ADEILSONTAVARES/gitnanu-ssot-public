@@ -1,0 +1,6 @@
+memory_backends:
+  version: v1.0
+  status: CANON_PUBLIC_SAFE
+  cloudflare_cloud: {enabled_plans: [plan_699, plan_999], components: [r2, workers, kv, waf, turnstile]}
+  supabase_vector_lite: {enabled_plans: [plan_297, plan_699, plan_999], rls: {deny_by_default: true}}
+  redis_antidote: {enabled_plans: [plan_99, plan_297, plan_699, plan_999], features: [hot_cache, locks_lease, idempotency_keys, poison_quarantine, coalescing_anti_stampede]}

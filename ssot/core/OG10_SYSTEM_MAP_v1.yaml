@@ -1,0 +1,19 @@
+og10_system_map:
+  version: v1.1
+  status: CANON_PUBLIC_SAFE
+  note:
+    - L0 manda sempre: Router_V8 + Agno + PrM
+    - Packs invariantes: Addons 40-15-3, ActionPack 250, SubAgent 60-5-3
+    - MCP catalogo no L0; engines executam em L1-L3
+  invariants:
+    - single_writer: GitNanu
+    - no_evidence_no_claim
+    - raw_never_in_chat
+    - thinking_pick_one
+  L0_always_on:
+    components: [Router_V8, Agno_L0, PrM_PRN, SERENA, MCPContext, Context7x, Doctor1, Doctor2, AgentZero, TestSprite, Ralph]
+    packs:
+      addons_40_15_3: {addons: 40, pains: 15, universals: 3}
+      actionpack_250: {actions: 250}
+      subagent_60_5_3: {lane: [60,5,3]}
+  L1_L3_workers_examples: [engine.codex, engine.claude_code, engine.openai_gpt, engine.anthropic_claude, engine.gemini, engine.kimi_2_5, engine.minimax_m2, engine.nanucai_cllm_cf, engine.nanucai_cllm_hz, tool.firecrawl, runner.n8n]
