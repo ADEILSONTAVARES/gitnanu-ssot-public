@@ -6,3 +6,5 @@ vault_local/
 **/bench90_results.json
 **/ledger_cost.json
 **/evidence_pack.manifest.json
+
+.venv/
