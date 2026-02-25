@@ -11,3 +11,5 @@ vault_local/
 *.bak.*
 *.log
 scripts/*.bak.*
+docs/SSOT_PUBLIC_PUBLISH_RECEIPT_LATEST.md
+docs/receipts_publish/
