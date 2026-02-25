@@ -3,9 +3,10 @@ set -euo pipefail
 
 # SSOT_PUBLIC snapshot publisher (layout-agnostic)
 # - Se existir ssot_public/ (ou variantes), publica dali.
-# - Caso contrário, usa a RAIZ do repo como SRC (seu layout atual).
+# - Caso contrário, usa a RAIZ do repo como SRC (layout atual).
 #
-# Exclui: .git, .venv, vault_local, ssot/private, backups/logs.
+# Exclui do snapshot: .git, .venv, vault_local, ssot/private, backups/logs
+# Receipt do publish: fica em vault_local/ (local-only, não publica, não versiona)
 
 PUB_REPO="ADEILSONTAVARES/gitnanu-ssot-public"
 WORK="/tmp/gitnanu-ssot-public"
@@ -91,15 +92,17 @@ if [ "$HTTP" = "200" ]; then
   echo "T: OK (publicado e RAW 200)"
   echo "RAW_PORTAL: $RAW"
 
-  # === RECEIPT (publish) ===
+  # === RECEIPT (local-only) ===
   TS_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   TS_LOCAL="$(date +%Y-%m-%dT%H:%M:%S%z)"
   PUBLIC_HEAD="$(git rev-parse --short HEAD 2>/dev/null || echo NA)"
   HTTPS_HEAD="$(git ls-remote https://github.com/${PUB_REPO}.git refs/heads/main 2>/dev/null | cut -c1-7 || echo NA)"
 
-  mkdir -p "$SRC_ROOT/docs/receipts_publish"
-  RECEIPT_LATEST="$SRC_ROOT/docs/SSOT_PUBLIC_PUBLISH_RECEIPT_LATEST.md"
-  RECEIPT_TS="$SRC_ROOT/docs/receipts_publish/SSOT_PUBLIC_PUBLISH_RECEIPT_${TS_LOCAL//:/}_${PUBLIC_HEAD}.md"
+  RECEIPT_DIR="$SRC_ROOT/vault_local/receipts_publish"
+  mkdir -p "$RECEIPT_DIR"
+
+  RECEIPT_LATEST="$RECEIPT_DIR/SSOT_PUBLIC_PUBLISH_RECEIPT_LATEST.md"
+  RECEIPT_TS="$RECEIPT_DIR/SSOT_PUBLIC_PUBLISH_RECEIPT_${TS_LOCAL//:/}_${PUBLIC_HEAD}.md"
 
   cat <<EOF_R > "$RECEIPT_LATEST"
 # SSOT_PUBLIC PUBLISH RECEIPT — LATEST
@@ -113,7 +116,7 @@ if [ "$HTTP" = "200" ]; then
 EOF_R
 
   cp -f "$RECEIPT_LATEST" "$RECEIPT_TS" 2>/dev/null || true
-  echo "RECEIPT: $RECEIPT_LATEST"
+  echo "RECEIPT(local-only): $RECEIPT_LATEST"
 else
   echo "N: FALHOU (HTTP=$HTTP)"
   echo "RAW_PORTAL: $RAW"
