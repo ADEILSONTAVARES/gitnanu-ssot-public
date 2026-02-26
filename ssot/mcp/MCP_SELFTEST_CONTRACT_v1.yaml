@@ -1,0 +1,11 @@
+# MCP_SELFTEST_CONTRACT_v1
+version: 1
+steps:
+  - step: ping
+    pass_condition: response_time_ms < 2000
+  - step: auth_check
+    pass_condition: auth_status == ok
+  - step: dry_run
+    pass_condition: status == success
+promote_condition: all_steps_pass
+on_fail: keep_RESERVED

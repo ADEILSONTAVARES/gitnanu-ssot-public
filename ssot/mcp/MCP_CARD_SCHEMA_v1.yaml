@@ -1,0 +1,13 @@
+# MCP_CARD_SCHEMA_v1
+version: 1
+fields:
+  - field: mcp_id
+    required: true
+  - field: status
+    required: true
+  - field: description
+    required: true
+  - field: auth_type
+    required: false
+  - field: self_test_script
+    required: false

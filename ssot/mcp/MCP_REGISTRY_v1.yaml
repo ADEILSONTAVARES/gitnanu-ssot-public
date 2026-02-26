@@ -1,0 +1,18 @@
+# MCP_REGISTRY_v1
+version: 1
+mcps:
+  - mcp_id: MCP_WEB_SEARCH
+    status: RESERVED
+    description: Busca web
+  - mcp_id: MCP_GNDRIVE
+    status: RESERVED
+    description: Acesso GNDrive
+  - mcp_id: MCP_N8N
+    status: RESERVED
+    description: Workflows n8n
+  - mcp_id: MCP_GITHUB
+    status: RESERVED
+    description: Operacoes Git
+  - mcp_id: MCP_NOTION
+    status: RESERVED
+    description: Leitura e escrita Notion
