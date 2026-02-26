@@ -1,0 +1,35 @@
+# DOCTOR_CHECKS_REGISTRY_v1
+version: 1
+checks:
+  - check_id: D1_SSOT_FILES
+    gate: doctor1
+    severity: critical
+    script: null
+  - check_id: D1_NO_SECRETS
+    gate: doctor1
+    severity: critical
+    script: null
+  - check_id: D1_NO_HOLES
+    gate: doctor1
+    severity: critical
+    script: scripts/ssot/no_holes_check_basileia_52.py
+  - check_id: D1_IDEMPOTENCY
+    gate: doctor1
+    severity: high
+    script: null
+  - check_id: D2_BENCHPACK
+    gate: doctor2
+    severity: high
+    script: null
+  - check_id: D2_PIPELINE
+    gate: doctor2
+    severity: high
+    script: null
+  - check_id: D2_BUDGET
+    gate: doctor2
+    severity: high
+    script: null
+  - check_id: D2_ANOMALY
+    gate: doctor2
+    severity: critical
+    script: null

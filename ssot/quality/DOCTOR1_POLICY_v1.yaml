@@ -1,0 +1,15 @@
+# DOCTOR1_POLICY_v1
+version: 1
+gate: doctor1
+description: Verifica integridade minima antes de publicacao
+checks:
+  - check_id: D1_SSOT_FILES
+    description: Arquivos SSOT obrigatorios existem
+  - check_id: D1_NO_SECRETS
+    description: Nenhum segredo ou chave no repo
+  - check_id: D1_NO_HOLES
+    description: Todos studios cobertos no BASILEIA
+  - check_id: D1_IDEMPOTENCY
+    description: Operacoes criticas tem idempotency_record
+pass_required: true
+blocks: publishable

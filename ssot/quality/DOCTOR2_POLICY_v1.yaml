@@ -1,0 +1,15 @@
+# DOCTOR2_POLICY_v1
+version: 1
+gate: doctor2
+description: Verifica qualidade antes de deploy
+checks:
+  - check_id: D2_BENCHPACK
+    description: BenchPack 54 sem regressao
+  - check_id: D2_PIPELINE
+    description: Pipeline stages com receipts validos
+  - check_id: D2_BUDGET
+    description: Custo dentro do regression budget
+  - check_id: D2_ANOMALY
+    description: Nenhuma anomalia critica aberta
+pass_required: true
+blocks: deploy
