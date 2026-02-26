@@ -47,3 +47,6 @@ Referência:
 - BASILEIA: ssot/basileia/BASILEIA_52.yaml
 - Skills: ssot/skills/SKILLS_REGISTRY.yaml
 - Workflows: ssot/workflows/
+
+## 7) Checkers ativos
+- scripts/ssot/no_holes_check_basileia_52.py — PASS 52 studios (2026-02-26)
