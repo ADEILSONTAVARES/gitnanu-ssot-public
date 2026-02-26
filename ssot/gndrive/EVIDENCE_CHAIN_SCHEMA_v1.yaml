@@ -1,0 +1,12 @@
+# EVIDENCE_CHAIN_SCHEMA_v1
+version: 1
+fields:
+  - {field: run_id, required: true}
+  - {field: studio_id, required: true}
+  - {field: action_id, required: true}
+  - {field: artifacts, required: true}
+  - {field: evidence_hash, required: true}
+  - {field: seal_level, values: [U1,U2,U3], required: true}
+  - {field: timestamp, required: true}
+  - {field: cost_usd, required: false}
+rule: no_evidence_no_claim

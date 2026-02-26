@@ -1,0 +1,35 @@
+# GNDRIVE_STRUCTURE_SPEC_v1
+version: 1
+uri_pattern: gndrive://Projects/{project_id}/...
+structure:
+  Evidence:
+    - billing
+    - deploy
+    - ops
+    - security
+    - memory
+    - consolidated
+  Vault:
+    - tools
+    - rag
+  TrashQuantum:
+    - objects
+    - index
+    - receipts
+    - history
+  LTA:
+    - decisions
+    - releases
+    - manifests
+  ProjectPack:
+    - context
+    - tasks
+    - insights
+    - ports
+    - policy
+    - secrets_ref
+rules:
+  - raw_never_in_git: true
+  - pointer_first: true
+  - no_evidence_no_claim: true
+  - evidence_in_gndrive_not_git: true

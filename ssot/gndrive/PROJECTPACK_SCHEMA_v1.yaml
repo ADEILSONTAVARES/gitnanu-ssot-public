@@ -1,0 +1,12 @@
+# PROJECTPACK_SCHEMA_v1
+version: 1
+files:
+  - filetree_snapshot_json: por checkpoint
+  - context_pack_json: por turno com hash
+  - run_trace_json: tool_duration_ms + cache_hit + cost_usd
+  - stage_receipts: por DAG stage
+  - repair_receipts: quando verify rodar em repair
+  - evidence_chain_json: chain of custody
+  - known_anomalies_registry: por release
+  - regression_budget_state: rolling 30d
+rule: all files stay in GNDrive never in git
