@@ -1,0 +1,14 @@
+# STUDIO_ACTIONS_GLOBAL_v1
+version: 1
+applies_to: all_studios
+actions:
+  - action_id: open
+    description: Abre o Studio
+  - action_id: describe
+    description: Retorna identidade e capacidades
+  - action_id: self_test
+    description: Verifica dependencias e status
+  - action_id: run
+    description: Executa acao principal
+  - action_id: close
+    description: Finaliza sessao

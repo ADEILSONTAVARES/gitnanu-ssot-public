@@ -1,0 +1,15 @@
+# STUDIO_ROUTER_MAP_v1
+version: 1
+routes:
+  - intent: open_studio
+    studio_id: "*"
+    action_id: open
+  - intent: describe_studio
+    studio_id: "*"
+    action_id: describe
+  - intent: test_studio
+    studio_id: "*"
+    action_id: self_test
+  - intent: run_studio
+    studio_id: "*"
+    action_id: run
