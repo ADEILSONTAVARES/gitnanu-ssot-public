@@ -1,0 +1,22 @@
+# SKILL_UNIVERSAL_CONTRACT_v1
+# Fonte: SKIIL UNIVERSAL SSOT_NANUCAI_SKILL_UNIVERSAL_MULTIAPI_TOP3_v1.2
+version: 1
+pattern: skill.<studio_id>.universal
+split:
+  skill_pct: 80-90
+  api_pct: 10-20
+  api_bulk_cheap_pct: 70
+  api_finish_top_pct: 30
+warm_bands: [0, 0.3-0.6, 0.6-0.9, 0.9-1.2, 1.2-1.5, 1.5-1.75, 1.75-2.0]
+functions:
+  - normalize_request
+  - choose_task
+  - filter_eligible_apis
+  - rank_by_task
+  - execute_top3
+  - apply_bulk_finish_split
+  - register_evidence
+  - expose_capo_aberto
+micro_skill_pattern: micro.<connector_id>.<action_id>
+api_pool_min: 7
+api_roles: [bulk_cheap, top_finish, fallback, acabamento]

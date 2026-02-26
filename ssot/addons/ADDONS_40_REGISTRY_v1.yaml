@@ -1,0 +1,20 @@
+# ADDONS_40_REGISTRY_v1 — 30 domain + 10 normal features por Studio
+version: 1
+total_addons: 40
+structure:
+  domain_features: 30
+  normal_features: 10
+normal_features:
+  - {feature_id: AF01, name: cost_per_call, score: null}
+  - {feature_id: AF02, name: latency_p95, score: null}
+  - {feature_id: AF03, name: error_rate, score: null}
+  - {feature_id: AF04, name: stability_score, score: null}
+  - {feature_id: AF05, name: docs_quality, score: null}
+  - {feature_id: AF06, name: batch_support, score: null}
+  - {feature_id: AF07, name: rate_limit, score: null}
+  - {feature_id: AF08, name: quota_daily, score: null}
+  - {feature_id: AF09, name: warmup_time_ms, score: null}
+  - {feature_id: AF10, name: evidence_seal, score: null}
+domain_features: TBD_per_studio
+scoring: {scale: 1-10, fields: [score, weight, evidence_ref, last_updated]}
+activation_bands: [0, 0.3-0.6, 0.6-0.9, 0.9-1.2, 1.2-1.5, 1.5-1.75, 1.75-2.0]

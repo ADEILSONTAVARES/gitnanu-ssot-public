@@ -1,0 +1,52 @@
+# DORES_15_REGISTRY_v1 — 15 dores reais do usuario (L1-L3)
+version: 1
+total_dores: 15
+layer: L1-L3
+description: Problemas reais que 3 Skill Universal nao resolvem sozinhas
+dores:
+  - dor_id: D01
+    name: TBD
+    layer: L1
+  - dor_id: D02
+    name: TBD
+    layer: L1
+  - dor_id: D03
+    name: TBD
+    layer: L2
+  - dor_id: D04
+    name: TBD
+    layer: L2
+  - dor_id: D05
+    name: TBD
+    layer: L2
+  - dor_id: D06
+    name: TBD
+    layer: L2
+  - dor_id: D07
+    name: TBD
+    layer: L2
+  - dor_id: D08
+    name: TBD
+    layer: L2
+  - dor_id: D09
+    name: TBD
+    layer: L3
+  - dor_id: D10
+    name: TBD
+    layer: L3
+  - dor_id: D11
+    name: TBD
+    layer: L3
+  - dor_id: D12
+    name: TBD
+    layer: L3
+  - dor_id: D13
+    name: TBD
+    layer: L3
+  - dor_id: D14
+    name: TBD
+    layer: L3
+  - dor_id: D15
+    name: TBD
+    layer: L3
+note: Preencher com documento das 15 dores quando disponivel

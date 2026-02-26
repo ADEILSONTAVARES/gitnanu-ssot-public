@@ -1,0 +1,14 @@
+# ADDONS_40_HARNESS_v1
+version: 1
+gate: verify all 40 addons scored before deploy
+checks:
+  - check_id: H01
+    description: Todos AF01-AF10 com score preenchido
+  - check_id: H02
+    description: domain_features 30 definidos por studio
+  - check_id: H03
+    description: activation_bands respeitados
+  - check_id: H04
+    description: evidence_ref presente em cada addon
+pass_condition: all_checks_pass
+on_fail: block_deploy
