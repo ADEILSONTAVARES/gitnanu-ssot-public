@@ -1,0 +1,35 @@
+# BENCHPACK_90_REGISTRY_v1
+version: 1
+total_benches: 90
+description: Registro canonico dos 90 benchmarks do sistema
+benches:
+  - bench_id: B001
+    domain: routing
+    description: Router resolve intencao em < 150ms
+  - bench_id: B002
+    domain: routing
+    description: Router nao retorna studio invalido
+  - bench_id: B003
+    domain: quality
+    description: Doctor1 bloqueia publishable com falha critica
+  - bench_id: B004
+    domain: quality
+    description: Doctor2 bloqueia deploy com regressao
+  - bench_id: B005
+    domain: pipeline
+    description: Stage ingest completa em < 60ms
+  - bench_id: B006
+    domain: pipeline
+    description: Stage publish completa em < 100ms
+  - bench_id: B007
+    domain: agents
+    description: AGENT_DOCTOR executa Doctor1 sem erro
+  - bench_id: B008
+    domain: agents
+    description: AGENT_VERIFIER detecta No Holes corretamente
+  - bench_id: B009
+    domain: mcp
+    description: MCP ping responde em < 2000ms
+  - bench_id: B010
+    domain: mcp
+    description: MCP dry_run retorna status success
