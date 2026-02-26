@@ -1,35 +1,369 @@
-# BENCHPACK_90_REGISTRY_v1
+# BENCHPACK_90_REGISTRY_v1 — Registro canonico BENCH90 NANUCAI OG10
+# Fonte: NANUCAI_OG10_BENCH90_MCPs_ELITE_v9.docx
 version: 1
 total_benches: 90
-description: Registro canonico dos 90 benchmarks do sistema
+sections:
+  - F01-F54: Fundamentais (54 benchmarks)
+  - V01-V20: VideoPackPerformance (20 benchmarks)
+  - E01-E16: ExtPack Market (16 benchmarks)
 benches:
-  - bench_id: B001
-    domain: routing
-    description: Router resolve intencao em < 150ms
-  - bench_id: B002
-    domain: routing
-    description: Router nao retorna studio invalido
-  - bench_id: B003
-    domain: quality
-    description: Doctor1 bloqueia publishable com falha critica
-  - bench_id: B004
-    domain: quality
-    description: Doctor2 bloqueia deploy com regressao
-  - bench_id: B005
-    domain: pipeline
-    description: Stage ingest completa em < 60ms
-  - bench_id: B006
-    domain: pipeline
-    description: Stage publish completa em < 100ms
-  - bench_id: B007
-    domain: agents
-    description: AGENT_DOCTOR executa Doctor1 sem erro
-  - bench_id: B008
-    domain: agents
-    description: AGENT_VERIFIER detecta No Holes corretamente
-  - bench_id: B009
-    domain: mcp
-    description: MCP ping responde em < 2000ms
-  - bench_id: B010
-    domain: mcp
-    description: MCP dry_run retorna status success
+  - bench_id: F01
+    domain: knowledge
+    description: "MMLU — Massive Multitask Language Understanding"
+    status: RESERVED
+  - bench_id: F02
+    domain: knowledge
+    description: "MMLU-Pro — Professional Hard Subset"
+    status: RESERVED
+  - bench_id: F03
+    domain: knowledge
+    description: "BBH — Big Bench Hard"
+    status: RESERVED
+  - bench_id: F04
+    domain: knowledge
+    description: "ARC Challenge — AI2 Reasoning"
+    status: RESERVED
+  - bench_id: F05
+    domain: knowledge
+    description: "HellaSwag — Commonsense NLI"
+    status: RESERVED
+  - bench_id: F06
+    domain: knowledge
+    description: "WinoGrande — Winograd Schema"
+    status: RESERVED
+  - bench_id: F07
+    domain: math
+    description: "GSM8K — Grade School Math"
+    status: RESERVED
+  - bench_id: F08
+    domain: math
+    description: "MATH-500 — Competition Math AMC/AIME"
+    status: RESERVED
+  - bench_id: F09
+    domain: math
+    description: "AIME — American Invitational Math Exam"
+    status: RESERVED
+  - bench_id: F10
+    domain: math
+    description: "GPQA Diamond — PhD-Level Science"
+    status: RESERVED
+  - bench_id: F11
+    domain: reading
+    description: "SQuAD 2.0 — Stanford QA"
+    status: RESERVED
+  - bench_id: F12
+    domain: reading
+    description: "QuAC — Conversational QA"
+    status: RESERVED
+  - bench_id: F13
+    domain: reading
+    description: "HotpotQA — Multi-Hop Reasoning"
+    status: RESERVED
+  - bench_id: F14
+    domain: reading
+    description: "NaturalQuestions — Google NQ"
+    status: RESERVED
+  - bench_id: F15
+    domain: instruction
+    description: "IFEval — Instruction Following"
+    status: RESERVED
+  - bench_id: F16
+    domain: instruction
+    description: "MT-Bench — Multi-Turn Conversation"
+    status: RESERVED
+  - bench_id: F17
+    domain: instruction
+    description: "AlpacaEval — General Chat"
+    status: RESERVED
+  - bench_id: F18
+    domain: instruction
+    description: "Arena Hard — Chatbot Arena Hard"
+    status: RESERVED
+  - bench_id: F19
+    domain: multilingual
+    description: "MMMLU — Multilingual MMLU"
+    status: RESERVED
+  - bench_id: F20
+    domain: multilingual
+    description: "TyDiQA — Typologically Diverse QA"
+    status: RESERVED
+  - bench_id: F21
+    domain: multilingual
+    description: "XNLI — Cross-lingual NLI"
+    status: RESERVED
+  - bench_id: F22
+    domain: long_context
+    description: "LongBench v2 — Long Context"
+    status: RESERVED
+  - bench_id: F23
+    domain: safety
+    description: "TruthfulQA — Truthfulness"
+    status: RESERVED
+  - bench_id: F24
+    domain: safety
+    description: "Toxicity — Detection and Avoidance"
+    status: RESERVED
+  - bench_id: F25
+    domain: safety
+    description: "BBQ — Bias Benchmark QA"
+    status: RESERVED
+  - bench_id: F26
+    domain: safety
+    description: "BOLD — Bias in Open Language"
+    status: RESERVED
+  - bench_id: F27
+    domain: code
+    description: "HumanEval — Python Code Generation"
+    status: RESERVED
+  - bench_id: F28
+    domain: code
+    description: "SWE-Bench — Software Engineering"
+    status: RESERVED
+  - bench_id: F29
+    domain: agentic
+    description: "WebArena — Web Navigation and Tasks"
+    status: RESERVED
+  - bench_id: F30
+    domain: agentic
+    description: "GAIA — General AI Assistant"
+    status: RESERVED
+  - bench_id: F31
+    domain: agentic
+    description: "AgentBench — OS/Web/DB Tasks"
+    status: RESERVED
+  - bench_id: F32
+    domain: agentic
+    description: "ToolBench — Tool Use"
+    status: RESERVED
+  - bench_id: F33
+    domain: agentic
+    description: "Mind2Web — Web Intent Prediction"
+    status: RESERVED
+  - bench_id: F34
+    domain: agentic
+    description: "InterCode — Interactive Code Execution"
+    status: RESERVED
+  - bench_id: F35
+    domain: multimodal
+    description: "MMMU — Multimodal University"
+    status: RESERVED
+  - bench_id: F36
+    domain: multimodal
+    description: "MathVista — Math in Visual Context"
+    status: RESERVED
+  - bench_id: F37
+    domain: multimodal
+    description: "ChartQA — Chart Question Answering"
+    status: RESERVED
+  - bench_id: F38
+    domain: multimodal
+    description: "DocVQA — Document Visual QA"
+    status: RESERVED
+  - bench_id: F39
+    domain: reasoning
+    description: "ProofWriter — Logical Proof Generation"
+    status: RESERVED
+  - bench_id: F40
+    domain: reasoning
+    description: "StrategyQA — Strategy Reasoning"
+    status: RESERVED
+  - bench_id: F41
+    domain: reasoning
+    description: "Temporal Reasoning"
+    status: RESERVED
+  - bench_id: F42
+    domain: reasoning
+    description: "Causal Reasoning"
+    status: RESERVED
+  - bench_id: F43
+    domain: reasoning
+    description: "Analogical Reasoning"
+    status: RESERVED
+  - bench_id: F44
+    domain: reasoning
+    description: "Counterfactual Reasoning"
+    status: RESERVED
+  - bench_id: F45
+    domain: domain
+    description: "PubMedQA — Biomedical QA"
+    status: RESERVED
+  - bench_id: F46
+    domain: domain
+    description: "FinQA — Financial QA"
+    status: RESERVED
+  - bench_id: F47
+    domain: domain
+    description: "LegalBench — Legal Reasoning"
+    status: RESERVED
+  - bench_id: F48
+    domain: domain
+    description: "BioASQ — Biomedical Semantic QA"
+    status: RESERVED
+  - bench_id: F49
+    domain: robustness
+    description: "AdvGLUE — Adversarial GLUE"
+    status: RESERVED
+  - bench_id: F50
+    domain: robustness
+    description: "ANLI — Adversarial NLI"
+    status: RESERVED
+  - bench_id: F51
+    domain: robustness
+    description: "Adversarial NLI Extended"
+    status: RESERVED
+  - bench_id: F52
+    domain: robustness
+    description: "StressTest — Edge Cases"
+    status: RESERVED
+  - bench_id: F53
+    domain: robustness
+    description: "Adversarial QA"
+    status: RESERVED
+  - bench_id: F54
+    domain: robustness
+    description: "Contrast Sets — Minimal Edits"
+    status: RESERVED
+  - bench_id: V01
+    domain: performance
+    description: "Terminal/Bash Proficiency"
+    status: RESERVED
+  - bench_id: V02
+    domain: performance
+    description: "SWE Bench Professional"
+    status: RESERVED
+  - bench_id: V03
+    domain: performance
+    description: "OS World — OS-Level Tasks"
+    status: RESERVED
+  - bench_id: V04
+    domain: performance
+    description: "MRCR 8 Needles — Multi-Needle Retrieval"
+    status: RESERVED
+  - bench_id: V05
+    domain: performance
+    description: "Context Rot Degradation Curve"
+    status: RESERVED
+  - bench_id: V06
+    domain: efficiency
+    description: "L2F Ratio — Token Efficiency"
+    status: RESERVED
+  - bench_id: V07
+    domain: cache
+    description: "Redis Cache Hit Rate"
+    status: RESERVED
+  - bench_id: V08
+    domain: latency
+    description: "Latency p95 — TTFT + TPS"
+    status: RESERVED
+  - bench_id: V09
+    domain: latency
+    description: "Routing Latency Overhead"
+    status: RESERVED
+  - bench_id: V10
+    domain: reliability
+    description: "Tool Call Success Rate"
+    status: RESERVED
+  - bench_id: V11
+    domain: reliability
+    description: "Error Recovery Rate"
+    status: RESERVED
+  - bench_id: V12
+    domain: reliability
+    description: "Build and Toolchain Success"
+    status: RESERVED
+  - bench_id: V13
+    domain: efficiency
+    description: "Memory Footprint"
+    status: RESERVED
+  - bench_id: V14
+    domain: cost
+    description: "Cost Per 1K Requests"
+    status: RESERVED
+  - bench_id: V15
+    domain: efficiency
+    description: "Parallel Execution Efficiency"
+    status: RESERVED
+  - bench_id: V16
+    domain: autocura
+    description: "AutoCura MTTR"
+    status: RESERVED
+  - bench_id: V17
+    domain: cache
+    description: "Redis Cache Hit Latency"
+    status: RESERVED
+  - bench_id: V18
+    domain: efficiency
+    description: "Context Pack Assembly Speed"
+    status: RESERVED
+  - bench_id: V19
+    domain: reliability
+    description: "Web Scraping Success Rate"
+    status: RESERVED
+  - bench_id: V20
+    domain: evidence
+    description: "Evidence Seal Coverage"
+    status: RESERVED
+  - bench_id: E01
+    domain: market
+    description: "Terminal Benchmark 2.0 Market"
+    status: RESERVED
+  - bench_id: E02
+    domain: market
+    description: "SWE Bench Pro Market Version"
+    status: RESERVED
+  - bench_id: E03
+    domain: market
+    description: "OS World Professional"
+    status: RESERVED
+  - bench_id: E04
+    domain: market
+    description: "LiveBench — Contamination-Free"
+    status: RESERVED
+  - bench_id: E05
+    domain: market
+    description: "BFCL — Berkeley Function Calling"
+    status: RESERVED
+  - bench_id: E06
+    domain: market
+    description: "SimpleQA — Factuality"
+    status: RESERVED
+  - bench_id: E07
+    domain: market
+    description: "MixEval — Diverse Tasks"
+    status: RESERVED
+  - bench_id: E08
+    domain: market
+    description: "WildBench — Real-World Tasks"
+    status: RESERVED
+  - bench_id: E09
+    domain: market
+    description: "AlpacaEval 2.0 — Chat Quality"
+    status: RESERVED
+  - bench_id: E10
+    domain: market
+    description: "MT-Bench Professional"
+    status: RESERVED
+  - bench_id: E11
+    domain: market
+    description: "RULER — Long Context Retrieval"
+    status: RESERVED
+  - bench_id: E12
+    domain: market
+    description: "LongBench Extended"
+    status: RESERVED
+  - bench_id: E13
+    domain: market
+    description: "BBEH — Big Bench Extended Hard"
+    status: RESERVED
+  - bench_id: E14
+    domain: market
+    description: "HLE Subset — Ultra-Hard Reasoning"
+    status: RESERVED
+  - bench_id: E15
+    domain: market
+    description: "ARC-AGI 2.0 — Abstract Reasoning"
+    status: RESERVED
+  - bench_id: E16
+    domain: market
+    description: "DROP — Discrete Reasoning Over Paragraphs"
+    status: RESERVED

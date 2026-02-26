@@ -1,0 +1,15 @@
+# BENCHPACK_RUN_CONTRACT_v1
+version: 1
+description: Contrato de execucao do BENCH90
+inputs:
+  - bench_id: string (obrigatorio)
+  - model_id: string (obrigatorio)
+  - run_id: string (obrigatorio)
+outputs:
+  - score: float (0-100)
+  - vs_competitor: dict
+  - evidence_manifest: string (path)
+  - seal_level: enum [U1, U2, U3]
+pass_condition: score >= 95 OR rank == 1
+seal_required: U2
+report_format: bench_report.json
