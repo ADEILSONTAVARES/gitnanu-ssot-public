@@ -1,0 +1,17 @@
+# REPAIR_MODE_CONTRACT_v1
+version: 1
+trigger: stage_status == failed
+steps:
+  - step: diagnose
+    description: Identifica causa da falha
+  - step: patch
+    description: Aplica correcao minima
+  - step: rerun
+    description: Reexecuta stage com patch
+  - step: verify
+    description: Confirma que stage passou
+  - step: emit_repair_receipt
+    description: Grava repair_receipt.json
+max_repair_attempts: 2
+on_exceed: escalate_to_doctor
+receipt_required: true

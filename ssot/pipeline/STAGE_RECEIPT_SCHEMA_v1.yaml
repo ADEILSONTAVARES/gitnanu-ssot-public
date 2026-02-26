@@ -1,0 +1,22 @@
+# STAGE_RECEIPT_SCHEMA_v1
+version: 1
+fields:
+  - field: stage_id
+    required: true
+  - field: run_id
+    required: true
+  - field: started_at
+    required: true
+  - field: finished_at
+    required: true
+  - field: duration_ms
+    required: true
+  - field: status
+    values: [success, failed, repaired]
+    required: true
+  - field: cost_usd
+    required: false
+  - field: inputs_hash
+    required: true
+  - field: outputs_hash
+    required: true

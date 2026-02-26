@@ -1,0 +1,25 @@
+# PIPELINE_60_60_60_150_150_100x3_v1
+version: 1
+description: Pipeline canonico de 6 stages com budget por stage
+stages:
+  - stage_id: S1
+    name: ingest
+    budget_ms: 60
+  - stage_id: S2
+    name: parse
+    budget_ms: 60
+  - stage_id: S3
+    name: enrich
+    budget_ms: 60
+  - stage_id: S4
+    name: validate
+    budget_ms: 150
+  - stage_id: S5
+    name: assemble
+    budget_ms: 150
+  - stage_id: S6
+    name: publish
+    budget_ms: 100
+    retries: 3
+repair_mode: enabled
+receipt_required: true
