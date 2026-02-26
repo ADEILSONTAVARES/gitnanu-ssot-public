@@ -1,0 +1,19 @@
+# PAIN_REGISTRY_v1 — 15 Dores reais do usuario
+version: 1
+total_pains: 15
+pains:
+  - {pain_id: P-001, name: Codigo reescrito demais, severity: HIGH}
+  - {pain_id: P-002, name: Mudanca sem story e sem evidencia, severity: HIGH}
+  - {pain_id: P-003, name: Drift entre docs codigo e decisoes, severity: HIGH}
+  - {pain_id: P-004, name: Falta compatibilidade por IDE, severity: MEDIUM}
+  - {pain_id: P-005, name: Execucao em cadeia sem aprovacao, severity: CRITICAL}
+  - {pain_id: P-006, name: Acao nao idempotente, severity: HIGH}
+  - {pain_id: P-007, name: Falta rollback real, severity: HIGH}
+  - {pain_id: P-008, name: Preflight fraco, severity: HIGH}
+  - {pain_id: P-009, name: Custos invisiveis sem guard, severity: MEDIUM}
+  - {pain_id: P-010, name: Falta receipts auditaveis, severity: HIGH}
+  - {pain_id: P-011, name: Hidden actions, severity: CRITICAL}
+  - {pain_id: P-012, name: Config shell scripts quebrando ambiente, severity: HIGH}
+  - {pain_id: P-013, name: Dependencia travada por versao, severity: MEDIUM}
+  - {pain_id: P-014, name: Secrets vazando, severity: CRITICAL}
+  - {pain_id: P-015, name: Escopo ambiguo virando retrabalho, severity: HIGH}

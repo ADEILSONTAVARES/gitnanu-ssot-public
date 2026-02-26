@@ -1,0 +1,21 @@
+# ACTION_REGISTRY_v1 — 370 acoes TeamsWork10X
+version: 1
+total_actions: 370
+defaults: {requires_approval: true, receipts: true, rollback: true, idempotent: true, diff_first: true}
+sections:
+  - CW-001..CW-250: CoworkActions250
+  - MB-001..MB-040: Multibot55 Bridge
+  - PAY-001..PAY-080: StripeOps20
+status: STUB — expand from docs/TEAMSWORK10X_MASTER_v1.md
+actions_stub:
+  - {action_id: CW-001, name: Definir pasta autorizada, studio_id: S00, risk: LOW}
+  - {action_id: CW-011, name: Criar plano de rollback, studio_id: S00, risk: MEDIUM}
+  - {action_id: CW-201, name: Preflight obrigatorio, studio_id: S46, risk: LOW}
+  - {action_id: CW-206, name: Receipts com hashes, studio_id: S49, risk: LOW}
+  - {action_id: CW-215, name: Stop button real, studio_id: S46, risk: LOW}
+  - {action_id: MB-001, name: Criar scaffold por template, studio_id: S02, risk: LOW}
+  - {action_id: MB-019, name: Rodar tarefa com preflight, studio_id: S42, risk: MEDIUM}
+  - {action_id: PAY-008, name: Retry seguro sem duplicar cobranca, studio_id: S35, risk: CRITICAL}
+  - {action_id: PAY-018, name: Verificar assinatura webhook, studio_id: S35, risk: CRITICAL}
+  - {action_id: PAY-020, name: Deduplicar por event_id, studio_id: S34, risk: CRITICAL}
+  - {action_id: PAY-037, name: Smart retries revenue recovery, studio_id: S34, risk: HIGH}
