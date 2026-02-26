@@ -1,0 +1,18 @@
+# AGENTS_REGISTRY_OG10_v1
+version: 1
+agents:
+  - agent_id: AGENT_ROUTER
+    role: Roteia intencoes
+    status: RESERVED
+  - agent_id: AGENT_DOCTOR
+    role: Gates Doctor1 e Doctor2
+    status: RESERVED
+  - agent_id: AGENT_BUILDER
+    role: Gera patches de codigo
+    status: RESERVED
+  - agent_id: AGENT_VERIFIER
+    role: Verifica No Holes
+    status: RESERVED
+  - agent_id: AGENT_DEPLOYER
+    role: Pipeline deploy com receipts
+    status: RESERVED

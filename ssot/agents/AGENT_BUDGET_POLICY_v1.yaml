@@ -1,0 +1,9 @@
+# AGENT_BUDGET_POLICY_v1
+version: 1
+policy:
+  max_cost_per_run_usd: 0.10
+  max_tokens_per_run: 50000
+  max_retries: 3
+  on_budget_exceed: abort_and_report
+  on_retry_exceed: escalate_to_doctor
+  audit_required: true

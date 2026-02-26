@@ -1,0 +1,13 @@
+# AGENT_TOOL_ALLOWLIST_v1
+version: 1
+allowlist:
+  - tool: web_search
+    allowed_agents: [AGENT_HARVESTER, AGENT_ROUTER]
+  - tool: file_read
+    allowed_agents: [ALL]
+  - tool: file_write
+    allowed_agents: [AGENT_BUILDER, AGENT_DEPLOYER]
+  - tool: git_commit
+    allowed_agents: [AGENT_DEPLOYER]
+  - tool: run_script
+    allowed_agents: [AGENT_DOCTOR, AGENT_VERIFIER]
