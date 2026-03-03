@@ -1,0 +1,96 @@
+# DORES_S08_axe_core_wcag_v1
+studio_id: S08
+api: axe.core.wcag
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S08-aw-01
+    name: "Relatorio publicado sem aprovacao"
+    sintoma: "Output automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S08-aw-02
+    name: "PII em relatorio"
+    sintoma: "Dado pessoal em output"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S08-aw-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S08-aw-04
+    name: "Scope violation"
+    sintoma: "Auditoria em URL fora do workspace"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S08-aw-05
+    name: "WCAG level incorreto"
+    sintoma: "Auditoria em nivel errado AA vs AAA"
+    causa_raiz: "Sem level validation"
+    mitigacao: "Level validation gate"
+    severity: HIGH
+  - dor_id: D-S08-aw-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-aw-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S08-aw-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S08-aw-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S08-aw-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S08-aw-11
+    name: "Falso negativo"
+    sintoma: "Violacao WCAG nao detectada"
+    causa_raiz: "Sem coverage threshold"
+    mitigacao: "Coverage threshold obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-aw-12
+    name: "Timeout sem fallback"
+    sintoma: "Auditoria trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S08-aw-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-aw-14
+    name: "Versao sem auditoria"
+    sintoma: "Regras WCAG desatualizadas"
+    causa_raiz: "Sem version gate"
+    mitigacao: "Version gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-aw-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

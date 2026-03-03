@@ -1,0 +1,96 @@
+# DORES_S08_avatar_sinais_v1
+studio_id: S08
+api: avatar.sinais
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S08-as-01
+    name: "Avatar publicado sem aprovacao"
+    sintoma: "Output automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S08-as-02
+    name: "Likeness sem consentimento"
+    sintoma: "Avatar de pessoa real sem gate"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S08-as-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S08-as-04
+    name: "PII em output"
+    sintoma: "Dado pessoal em animacao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S08-as-05
+    name: "Sinal incorreto"
+    sintoma: "Gesto errado para o contexto"
+    causa_raiz: "Sem sign validation"
+    mitigacao: "Sign validation gate"
+    severity: HIGH
+  - dor_id: D-S08-as-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-as-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S08-as-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S08-as-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S08-as-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S08-as-11
+    name: "Sincronizacao incorreta"
+    sintoma: "Avatar fora de sincronia com audio"
+    causa_raiz: "Sem sync validation"
+    mitigacao: "Sync validation gate"
+    severity: HIGH
+  - dor_id: D-S08-as-12
+    name: "WCAG nao atendido"
+    sintoma: "Avatar sem conformidade de acessibilidade"
+    causa_raiz: "Sem WCAG gate"
+    mitigacao: "WCAG gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-as-13
+    name: "Timeout sem fallback"
+    sintoma: "Pipeline trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S08-as-14
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-as-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

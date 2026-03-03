@@ -1,0 +1,96 @@
+# DORES_S08_openai_stt_v1
+studio_id: S08
+api: openai.stt
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S08-os-01
+    name: "Transcricao publicada sem aprovacao"
+    sintoma: "Output automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S08-os-02
+    name: "PII em transcricao"
+    sintoma: "Dado pessoal transcrito"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S08-os-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S08-os-04
+    name: "Audio sem consentimento"
+    sintoma: "Voz real processada sem gate"
+    causa_raiz: "Sem voice consent gate"
+    mitigacao: "CW-213 voice consent"
+    severity: CRITICAL
+  - dor_id: D-S08-os-05
+    name: "Idioma incorreto"
+    sintoma: "Transcricao em idioma errado"
+    causa_raiz: "Sem language validation"
+    mitigacao: "Language validation gate"
+    severity: HIGH
+  - dor_id: D-S08-os-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-os-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S08-os-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S08-os-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S08-os-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S08-os-11
+    name: "Qualidade abaixo do minimo"
+    sintoma: "Transcricao com erros excessivos"
+    causa_raiz: "Sem quality threshold"
+    mitigacao: "Quality threshold obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-os-12
+    name: "Timeout sem fallback"
+    sintoma: "Pipeline trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S08-os-13
+    name: "Scope violation"
+    sintoma: "Acesso a audio fora do workspace"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S08-os-14
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-os-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
