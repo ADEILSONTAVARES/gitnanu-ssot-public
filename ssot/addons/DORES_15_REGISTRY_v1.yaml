@@ -1,52 +1,154 @@
-# DORES_15_REGISTRY_v1 — 15 dores reais do usuario (L1-L3)
+# DORES_15_REGISTRY_v1 — 15 Dores reais NANUCAI OG10
 version: 1
 total_dores: 15
-layer: L1-L3
-description: Problemas reais que 3 Skill Universal nao resolvem sozinhas
 dores:
   - dor_id: D01
-    name: TBD
-    layer: L1
+    level: L1
+    name: "Codigo reescrito demais"
+    sintoma: "Mudanca simples vira reescrita ampla"
+    causa_raiz: "Agente nao faz diff-first"
+    mitigacao: "SERENA diff-first + MB-019 + CW-205"
+    severity: HIGH
+    action_ids: [MB-019,MB-020,CW-204,CW-205]
+    gates: [DOCTOR1,SERENA_DIFF_FIRST]
+    studios_afetados: [S02,S42,S43,S46]
   - dor_id: D02
-    name: TBD
-    layer: L1
+    level: L1
+    name: "Mudanca sem story e sem evidencia"
+    sintoma: "Nenhum rastro do que foi feito"
+    causa_raiz: "Sem story obrigatoria antes de mudanca"
+    mitigacao: "MB-014 no story no change + MB-009 + CW-206"
+    severity: HIGH
+    action_ids: [MB-009,MB-014,MB-016,CW-206]
+    gates: [DOCTOR1,NO_EVIDENCE_NO_CLAIM]
+    studios_afetados: [S00,S42,S49]
   - dor_id: D03
-    name: TBD
-    layer: L2
+    level: L2
+    name: "Drift entre docs codigo e decisoes"
+    sintoma: "Docs dizem uma coisa codigo faz outra"
+    causa_raiz: "Sem gate de consistencia entre artefatos"
+    mitigacao: "CW-211 drift bloqueia + MB-013 impact map"
+    severity: HIGH
+    action_ids: [CW-062,CW-211,MB-013]
+    gates: [DOCTOR1,DRIFT_CHECK]
+    studios_afetados: [S00,S17,S42,S43]
   - dor_id: D04
-    name: TBD
-    layer: L2
+    level: L2
+    name: "Falta compatibilidade IDE"
+    sintoma: "Promessas de hook que a IDE nao suporta"
+    causa_raiz: "Nao verifica prereqs antes de prometer"
+    mitigacao: "MB-006 prereqs + MB-027 compatibilidade + MB-028 fallback"
+    severity: MEDIUM
+    action_ids: [MB-006,MB-027,MB-028]
+    gates: [DOCTOR1]
+    studios_afetados: [S02]
   - dor_id: D05
-    name: TBD
-    layer: L2
+    level: L2
+    name: "Execucao em cadeia sem aprovacao"
+    sintoma: "Agente encadeia steps sem confirmacao"
+    causa_raiz: "Falta Approval Router e gate por acao"
+    mitigacao: "CW-202 aprovacao + MB-022 pausar + CW-215 stop button"
+    severity: CRITICAL
+    action_ids: [CW-202,CW-215,CW-217,MB-022]
+    gates: [DOCTOR1,APPROVAL_REQUIRED]
+    studios_afetados: [S00,S45,S46]
   - dor_id: D06
-    name: TBD
-    layer: L2
+    level: L2
+    name: "Acao nao idempotente duplica estado"
+    sintoma: "Reexecutar duplica cobranca ou arquivo"
+    causa_raiz: "Sem idempotency_key e sem dedupe guard"
+    mitigacao: "CW-209 idempotencia + MB-023 retry seguro + PAY-008"
+    severity: HIGH
+    action_ids: [CW-209,MB-023,PAY-008,PAY-011]
+    gates: [DOCTOR1,IDEMPOTENCY_GUARD]
+    studios_afetados: [S34,S35,S46,S48]
   - dor_id: D07
-    name: TBD
-    layer: L2
+    level: L2
+    name: "Falta rollback real"
+    sintoma: "Quando quebra nao da para desfazer"
+    causa_raiz: "Sem rollback pack por acao"
+    mitigacao: "CW-011 plano rollback + CW-208 rollback pack + CW-216"
+    severity: HIGH
+    action_ids: [CW-011,CW-208,CW-216,MB-039]
+    gates: [DOCTOR1,ROLLBACK_REQUIRED]
+    studios_afetados: [S00,S27,S35,S46]
   - dor_id: D08
-    name: TBD
-    layer: L2
+    level: L2
+    name: "Preflight fraco"
+    sintoma: "Ninguem sabe o que vai mudar antes de mudar"
+    causa_raiz: "Preflight nao lista impacto e rollback"
+    mitigacao: "CW-201 preflight obrigatorio + MB-019"
+    severity: HIGH
+    action_ids: [CW-201,MB-015,MB-019]
+    gates: [DOCTOR1]
+    studios_afetados: [S00,S42,S43,S46]
   - dor_id: D09
-    name: TBD
-    layer: L3
+    level: L3
+    name: "Custos invisiveis sem guard"
+    sintoma: "Tokens e API queimando sem controle"
+    causa_raiz: "Sem cost guard e sem budget envelope"
+    mitigacao: "CW-214 cost guard + CW-014 estimar custo"
+    severity: MEDIUM
+    action_ids: [CW-014,CW-214,CW-198]
+    gates: [DOCTOR1,COST_GUARD]
+    studios_afetados: [S45,S46,S48]
   - dor_id: D10
-    name: TBD
-    layer: L3
+    level: L3
+    name: "Falta receipts auditaveis"
+    sintoma: "Nao da para provar o que foi feito"
+    causa_raiz: "Sem receipt obrigatorio e sem evidence chain"
+    mitigacao: "CW-206 receipts hashes + CW-207 evidence pack"
+    severity: HIGH
+    action_ids: [CW-206,CW-207,CW-225,MB-016]
+    gates: [DOCTOR1,NO_EVIDENCE_NO_CLAIM]
+    studios_afetados: [S46,S49]
   - dor_id: D11
-    name: TBD
-    layer: L3
+    level: L3
+    name: "Hidden actions em rede e arquivos"
+    sintoma: "Sistema faz operacoes sem avisar"
+    causa_raiz: "Sem No Hidden Steps guard"
+    mitigacao: "CW-219 no hidden steps + CW-001 pasta autorizada"
+    severity: CRITICAL
+    action_ids: [CW-001,CW-213,CW-219,CW-220]
+    gates: [DOCTOR1,NO_HIDDEN_STEPS]
+    studios_afetados: [S00,S20,S43,S46]
   - dor_id: D12
-    name: TBD
-    layer: L3
+    level: L3
+    name: "Config e scripts quebrando ambiente"
+    sintoma: "Script mal feito destroi setup local"
+    causa_raiz: "Sem prereqs check e sem dry-run"
+    mitigacao: "MB-006 prereqs + CW-012 confirmacao + CW-216 dry-run"
+    severity: HIGH
+    action_ids: [CW-012,CW-216,MB-006,MB-031]
+    gates: [DOCTOR2]
+    studios_afetados: [S02,S27,S44,S46]
   - dor_id: D13
-    name: TBD
-    layer: L3
+    level: L3
+    name: "Dependencia travada por versao"
+    sintoma: "Conflito de versao paralisa o projeto"
+    causa_raiz: "Sem mapa de dependencias"
+    mitigacao: "CW-098 mapa deps + MB-006 prereqs + MB-013 impact map"
+    severity: MEDIUM
+    action_ids: [CW-097,CW-098,MB-006,MB-013]
+    gates: [DOCTOR1]
+    studios_afetados: [S02,S09,S41,S44]
   - dor_id: D14
-    name: TBD
-    layer: L3
+    level: L3
+    name: "Secrets vazando em logs e repo"
+    sintoma: "Chaves e senhas em logs publicos ou git"
+    causa_raiz: "Sem secrets scan e sem policy guard"
+    mitigacao: "CW-212 policy guard + MB-004 env.example + CW-006"
+    severity: CRITICAL
+    action_ids: [CW-006,CW-212,MB-004]
+    gates: [DOCTOR1,DOCTOR2,SECRETS_SCAN]
+    studios_afetados: [S00,S20,S41,S46]
   - dor_id: D15
-    name: TBD
-    layer: L3
-note: Preencher com documento das 15 dores quando disponivel
+    level: L3
+    name: "Escopo ambiguo virando retrabalho"
+    sintoma: "Sem definicao clara tudo precisa ser refeito"
+    causa_raiz: "Sem contrato de sessao e sem definicao de done"
+    mitigacao: "CW-004 contrato sessao + CW-093 done + MB-010"
+    severity: HIGH
+    action_ids: [CW-004,CW-093,MB-009,MB-010]
+    gates: [DOCTOR1]
+    studios_afetados: [S00,S02,S42]
