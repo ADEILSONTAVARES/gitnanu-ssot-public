@@ -1,0 +1,96 @@
+# DORES_S07_makereels_v1
+studio_id: S07
+api: makereels
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-mr-01
+    name: "Reel publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S07-mr-02
+    name: "PII em video"
+    sintoma: "Rosto real sem deteccao"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S07-mr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S07-mr-04
+    name: "Copyright violado"
+    sintoma: "Audio ou clip sem licenca"
+    causa_raiz: "Sem copyright gate"
+    mitigacao: "Copyright gate"
+    severity: CRITICAL
+  - dor_id: D-S07-mr-05
+    name: "Conteudo NSFW"
+    sintoma: "Video inapropriado"
+    causa_raiz: "Sem content policy"
+    mitigacao: "Content policy gate"
+    severity: CRITICAL
+  - dor_id: D-S07-mr-06
+    name: "Scope violation"
+    sintoma: "Post em conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S07-mr-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-mr-08
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S07-mr-09
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S07-mr-10
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S07-mr-11
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S07-mr-12
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual incorreto"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S07-mr-13
+    name: "Watermark ausente"
+    sintoma: "Sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-mr-14
+    name: "Template corrompido"
+    sintoma: "Reel com layout invalido"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template validation gate"
+    severity: HIGH
+  - dor_id: D-S07-mr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

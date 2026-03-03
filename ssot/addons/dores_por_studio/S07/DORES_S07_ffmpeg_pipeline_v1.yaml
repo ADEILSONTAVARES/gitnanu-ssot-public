@@ -1,0 +1,96 @@
+# DORES_S07_ffmpeg_pipeline_v1
+studio_id: S07
+api: ffmpeg.pipeline
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-ff-01
+    name: "Processamento sem aprovacao"
+    sintoma: "Operacao critica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S07-ff-02
+    name: "Credencial em comando"
+    sintoma: "Secret em ffmpeg args"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S07-ff-03
+    name: "Path traversal"
+    sintoma: "Output fora do workspace"
+    causa_raiz: "Sem sandbox"
+    mitigacao: "CW-001 sandbox obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S07-ff-04
+    name: "Network nao bloqueada"
+    sintoma: "ffmpeg faz egress inesperado"
+    causa_raiz: "Sem network off"
+    mitigacao: "Network off default"
+    severity: CRITICAL
+  - dor_id: D-S07-ff-05
+    name: "Copyright violado"
+    sintoma: "Clip processado sem licenca"
+    causa_raiz: "Sem copyright gate"
+    mitigacao: "Copyright gate"
+    severity: CRITICAL
+  - dor_id: D-S07-ff-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-ff-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de processamento"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S07-ff-08
+    name: "Rollback impossivel"
+    sintoma: "Arquivo sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S07-ff-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S07-ff-10
+    name: "Timeout sem killswitch"
+    sintoma: "Pipeline trava indefinidamente"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout killswitch obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-ff-11
+    name: "Codec invalido"
+    sintoma: "Output com codec incompativel"
+    causa_raiz: "Sem codec validation"
+    mitigacao: "Codec validation gate"
+    severity: HIGH
+  - dor_id: D-S07-ff-12
+    name: "Qualidade abaixo do minimo"
+    sintoma: "Video com artefatos visiveis"
+    causa_raiz: "Sem quality gate"
+    mitigacao: "Quality gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-ff-13
+    name: "Watermark ausente"
+    sintoma: "Sem marca no output"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-ff-14
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S07-ff-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

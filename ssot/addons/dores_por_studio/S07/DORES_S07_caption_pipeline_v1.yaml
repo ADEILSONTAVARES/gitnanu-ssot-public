@@ -1,0 +1,96 @@
+# DORES_S07_caption_pipeline_v1
+studio_id: S07
+api: caption.pipeline
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-cp-01
+    name: "Caption publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S07-cp-02
+    name: "PII em legenda"
+    sintoma: "Dado pessoal transcrito"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S07-cp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S07-cp-04
+    name: "Copyright violado"
+    sintoma: "Transcricao de audio protegido"
+    causa_raiz: "Sem copyright gate"
+    mitigacao: "Copyright gate"
+    severity: CRITICAL
+  - dor_id: D-S07-cp-05
+    name: "Sincronizacao incorreta"
+    sintoma: "Legenda fora de sincronia com audio"
+    causa_raiz: "Sem sync validation"
+    mitigacao: "Sync validation gate"
+    severity: HIGH
+  - dor_id: D-S07-cp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-cp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S07-cp-08
+    name: "Rollback impossivel"
+    sintoma: "Caption sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S07-cp-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S07-cp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S07-cp-11
+    name: "Idioma incorreto"
+    sintoma: "Legenda em idioma errado"
+    causa_raiz: "Sem language validation"
+    mitigacao: "Language validation gate"
+    severity: HIGH
+  - dor_id: D-S07-cp-12
+    name: "Qualidade de transcricao baixa"
+    sintoma: "Erros excessivos na legenda"
+    causa_raiz: "Sem quality threshold"
+    mitigacao: "Quality threshold obrigatorio"
+    severity: HIGH
+  - dor_id: D-S07-cp-13
+    name: "Formato invalido"
+    sintoma: "SRT ou VTT corrompido"
+    causa_raiz: "Sem format validation"
+    mitigacao: "Format validation gate"
+    severity: HIGH
+  - dor_id: D-S07-cp-14
+    name: "Timeout sem fallback"
+    sintoma: "Pipeline trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S07-cp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
