@@ -1,0 +1,55 @@
+# DORES_S29_Live_e_Streaming_Engine_v1
+studio_id: S29
+studio_name: Live e Streaming Engine
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S29-01
+    api: obs.websocket
+    name: "OBS desconectando durante live"
+    sintoma: "Sem reconexao automatica"
+    causa_raiz: "Sem heartbeat e sem reconnect policy"
+    mitigacao: "Heartbeat + auto-reconnect obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S29-02
+    api: rtmp.srt
+    name: "Stream caindo sem fallback"
+    sintoma: "Sem redundancia de stream"
+    causa_raiz: "Sem backup stream e sem failover"
+    mitigacao: "Backup RTMP/SRT + failover automatico"
+    severity: CRITICAL
+  - dor_id: D-S29-03
+    api: vmix.api
+    name: "Cena errada ao vivo"
+    sintoma: "Transicao ativada sem confirmacao"
+    causa_raiz: "Sem gate de aprovacao para cenas ao vivo"
+    mitigacao: "CW-202 aprovacao para transicoes criticas"
+    severity: HIGH
+  - dor_id: D-S29-04
+    api: ndi.tooling
+    name: "Latencia alta no NDI"
+    sintoma: "Rede congestionada sem prioridade"
+    causa_raiz: "Sem QoS e sem monitoramento de latencia"
+    mitigacao: "QoS config + p95 latency monitor"
+    severity: HIGH
+  - dor_id: D-S29-05
+    api: holyrics
+    name: "Letra errada projetada"
+    sintoma: "Sem revisao antes de ir ao ar"
+    causa_raiz: "Sem gate de aprovacao de conteudo"
+    mitigacao: "Gate revisao + CW-202 aprovacao"
+    severity: MEDIUM
+  - dor_id: D-S29-06
+    api: resolume.arena
+    name: "Visual glitch durante apresentacao"
+    sintoma: "Asset incompativel sem validacao"
+    causa_raiz: "Sem pre-check de assets antes de carregar"
+    mitigacao: "Asset validation gate + CW-024"
+    severity: HIGH
+  - dor_id: D-S29-07
+    api: mediashout
+    name: "Apresentacao sem backup"
+    sintoma: "Arquivo unico sem copia"
+    causa_raiz: "Sem policy de backup pre-live"
+    mitigacao: "CW-011 backup obrigatorio pre-live"
+    severity: HIGH

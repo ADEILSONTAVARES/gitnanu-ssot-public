@@ -1,0 +1,55 @@
+# DORES_S27_Dominios_DNS_Deploy_Proxy_v1
+studio_id: S27
+studio_name: Dominios DNS Deploy Proxy
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S27-01
+    api: cloudflare.dns
+    name: "DNS propagando errado ou lento"
+    sintoma: "Zona configurada incorretamente ou TTL alto"
+    causa_raiz: "Sem validacao de propagacao pos-deploy"
+    mitigacao: "Gate DNS check + CW-024 validar outputs"
+    severity: CRITICAL
+  - dor_id: D-S27-02
+    api: cloudflare.workers
+    name: "Worker deployado sem teste"
+    sintoma: "Deploy direto sem smoke test"
+    causa_raiz: "Sem dry-run e sem preflight"
+    mitigacao: "CW-216 dry-run + CW-201 preflight obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-03
+    api: ssl.acme
+    name: "Certificado expirado sem alerta"
+    sintoma: "Renovacao nao monitorada"
+    causa_raiz: "Sem monitor de expiracao SSL"
+    mitigacao: "Uptime monitor + alerta 30 dias antes"
+    severity: CRITICAL
+  - dor_id: D-S27-04
+    api: proxy.rotator
+    name: "IP bloqueado sem fallback"
+    sintoma: "Proxy banido sem rotacao automatica"
+    causa_raiz: "Sem health check de proxies"
+    mitigacao: "Health check continuo + rotacao automatica"
+    severity: HIGH
+  - dor_id: D-S27-05
+    api: nmail.deliverability
+    name: "Email caindo em spam"
+    sintoma: "SPF/DKIM/DMARC mal configurado"
+    causa_raiz: "Sem validacao de reputacao pre-envio"
+    mitigacao: "Gate SPF/DKIM/DMARC check obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-06
+    api: github.actions.deploy
+    name: "Deploy em producao sem aprovacao"
+    sintoma: "Action dispara automaticamente sem gate"
+    causa_raiz: "Sem environment protection rules"
+    mitigacao: "GitHub environment approval obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S27-07
+    api: uptime.monitor
+    name: "Downtime sem notificacao"
+    sintoma: "Monitor nao configurado ou silenciado"
+    causa_raiz: "Sem alert routing e sem oncall"
+    mitigacao: "CW-197 escalonamento + monitor obrigatorio"
+    severity: HIGH

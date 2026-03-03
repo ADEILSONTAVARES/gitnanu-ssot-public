@@ -1,0 +1,55 @@
+# DORES_S40_Marketplaces_3D_v1
+studio_id: S40
+studio_name: Marketplaces 3D
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S40-01
+    api: licensing.checker
+    name: "Asset publicado com licenca errada"
+    sintoma: "Tipo de licenca nao verificado"
+    causa_raiz: "Sem gate de licenca pre-publish"
+    mitigacao: "Licensing gate bloqueante pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S40-02
+    api: publishing.packager
+    name: "Bundle incompleto enviado"
+    sintoma: "Faltando previews ou metadata"
+    causa_raiz: "Sem checklist de bundle pre-submit"
+    mitigacao: "Bundle checklist obrigatorio por marketplace"
+    severity: HIGH
+  - dor_id: D-S40-03
+    api: watermark.provenance
+    name: "Asset sem marca dagua"
+    sintoma: "Proveniencia nao registrada"
+    causa_raiz: "Sem watermark obrigatorio"
+    mitigacao: "Watermark gate pre-export"
+    severity: HIGH
+  - dor_id: D-S40-04
+    api: payout.rules
+    name: "Payout calculado incorretamente"
+    sintoma: "Split rules erradas ou desatualizadas"
+    causa_raiz: "Sem validacao de split rules"
+    mitigacao: "Gate split validation + CW-024"
+    severity: CRITICAL
+  - dor_id: D-S40-05
+    api: cults.connector
+    name: "Upload rejeitado sem motivo claro"
+    sintoma: "Formato ou tamanho nao conformes"
+    causa_raiz: "Sem pre-check por marketplace"
+    mitigacao: "Policy check por marketplace pre-upload"
+    severity: HIGH
+  - dor_id: D-S40-06
+    api: sketchfab.connector
+    name: "Preview 3D com qualidade ruim"
+    sintoma: "Thumbnail gerado automaticamente ruim"
+    causa_raiz: "Sem gate de qualidade de preview"
+    mitigacao: "QC preview obrigatorio pos-geracao"
+    severity: MEDIUM
+  - dor_id: D-S40-07
+    api: turbosquid.connector
+    name: "Metadados inconsistentes entre marketplaces"
+    sintoma: "Cada marketplace com dados diferentes"
+    causa_raiz: "Sem SSOT de metadata"
+    mitigacao: "SSOT metadata + sync por marketplace"
+    severity: HIGH

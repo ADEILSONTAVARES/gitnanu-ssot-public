@@ -1,0 +1,55 @@
+# DORES_S32_Publicacao_e_Distribuicao_v1
+studio_id: S32
+studio_name: Publicacao e Distribuicao
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S32-01
+    api: amazon.kdp
+    name: "Livro publicado com metadata errado"
+    sintoma: "ISBN ou categoria incorretos"
+    causa_raiz: "Sem validacao de metadata pre-submit"
+    mitigacao: "Gate metadata validation + ONIX check"
+    severity: HIGH
+  - dor_id: D-S32-02
+    api: epubcheck
+    name: "EPUB com erros publicado"
+    sintoma: "Arquivo com erros de formatacao enviado"
+    causa_raiz: "Sem epubcheck obrigatorio antes de submit"
+    mitigacao: "EPUBCheck gate bloqueante pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S32-03
+    api: apple.books
+    name: "Rejeicao da Apple sem motivo claro"
+    sintoma: "Conteudo ou metadata nao conformes"
+    causa_raiz: "Sem pre-check de politicas da Apple"
+    mitigacao: "Policy pre-check gate por plataforma"
+    severity: HIGH
+  - dor_id: D-S32-04
+    api: onix.metadata
+    name: "Metadados inconsistentes entre lojas"
+    sintoma: "Cada loja recebe versao diferente"
+    causa_raiz: "Sem fonte unica de metadata"
+    mitigacao: "SSOT metadata + ONIX como fonte unica"
+    severity: HIGH
+  - dor_id: D-S32-05
+    api: ingramspark
+    name: "Preco errado em distribuicao global"
+    sintoma: "Conversao de moeda incorreta"
+    causa_raiz: "Sem validacao de preco por regiao"
+    mitigacao: "Gate price validation por regiao"
+    severity: HIGH
+  - dor_id: D-S32-06
+    api: calibre.cli
+    name: "Conversao de formato perdendo formatacao"
+    sintoma: "CSS ou fontes nao embarcados"
+    causa_raiz: "Sem validacao visual pos-conversao"
+    mitigacao: "QC visual pos-conversao obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S32-07
+    api: nanucai.gndrive
+    name: "Bundle enviado sem hash"
+    sintoma: "Arquivo publicado sem evidencia"
+    causa_raiz: "Sem hash e sem manifest pre-submit"
+    mitigacao: "CW-206 receipts + manifest obrigatorio"
+    severity: HIGH

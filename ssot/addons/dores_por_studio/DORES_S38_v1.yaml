@@ -1,0 +1,55 @@
+# DORES_S38_Acessibilidade_Avancada_v1
+studio_id: S38
+studio_name: Acessibilidade Avancada
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S38-01
+    api: axe.wcag
+    name: "WCAG fail em producao"
+    sintoma: "Violacoes de acessibilidade chegando ao usuario"
+    causa_raiz: "Sem axe-core no CI/CD"
+    mitigacao: "axe-core gate bloqueante no CI"
+    severity: HIGH
+  - dor_id: D-S38-02
+    api: caption.pipeline
+    name: "Legenda dessincronizada"
+    sintoma: "Timing de caption errado"
+    causa_raiz: "Sem validacao de sync pos-render"
+    mitigacao: "Gate sync check + CW-024"
+    severity: HIGH
+  - dor_id: D-S38-03
+    api: voice.control.hooks
+    name: "Comando de voz nao reconhecido"
+    sintoma: "STT com baixa acuracia para o idioma"
+    causa_raiz: "Sem confidence threshold"
+    mitigacao: "Confidence gate + fallback manual"
+    severity: MEDIUM
+  - dor_id: D-S38-04
+    api: deepl
+    name: "Traducao com terminologia errada"
+    sintoma: "Glossario especifico nao configurado"
+    causa_raiz: "Sem terminology glossary"
+    mitigacao: "Terminology glossary obrigatorio por dominio"
+    severity: MEDIUM
+  - dor_id: D-S38-05
+    api: playwright.a11y
+    name: "Testes de acessibilidade nao rodando"
+    sintoma: "Suite desatualizada ou desativada"
+    causa_raiz: "Sem a11y no pipeline CI"
+    mitigacao: "a11y suite obrigatoria no CI"
+    severity: HIGH
+  - dor_id: D-S38-06
+    api: google.stt
+    name: "STT falhando silenciosamente"
+    sintoma: "Erro de API sem retry"
+    causa_raiz: "Sem retry policy e sem DLQ"
+    mitigacao: "Retry policy + DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S38-07
+    api: elevenlabs.tts
+    name: "TTS com voz errada"
+    sintoma: "Voice ID incorreto configurado"
+    causa_raiz: "Sem validacao de voice_id pre-sintetizar"
+    mitigacao: "Gate voice_id validation obrigatorio"
+    severity: MEDIUM

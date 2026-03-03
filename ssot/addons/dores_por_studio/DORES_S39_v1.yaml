@@ -1,0 +1,55 @@
+# DORES_S39_3D_Games_e_World_v1
+studio_id: S39
+studio_name: 3D Games e World
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S39-01
+    api: trellis2
+    name: "3D gerado com geometria quebrada"
+    sintoma: "Mesh com erros nao detectados"
+    causa_raiz: "Sem mesh QA pos-geracao"
+    mitigacao: "Mesh QA gate bloqueante"
+    severity: HIGH
+  - dor_id: D-S39-02
+    api: hunyuan.scene3d
+    name: "Timeout sem fallback"
+    sintoma: "Geracao pesada sem limite de tempo"
+    causa_raiz: "Sem timeout e sem fallback engine"
+    mitigacao: "Timeout obrigatorio + fallback para Trellis2"
+    severity: HIGH
+  - dor_id: D-S39-03
+    api: export.glb.fbx.usdz
+    name: "Formato exportado incompativel"
+    sintoma: "Engine de destino nao suporta o formato"
+    causa_raiz: "Sem validacao de formato por destino"
+    mitigacao: "Gate formato por plataforma destino"
+    severity: HIGH
+  - dor_id: D-S39-04
+    api: pbr.texture
+    name: "Textura PBR com resolucao errada"
+    sintoma: "Textura muito grande ou muito pequena"
+    causa_raiz: "Sem validacao de resolucao"
+    mitigacao: "Gate resolucao 512/1024/2048/4096"
+    severity: MEDIUM
+  - dor_id: D-S39-05
+    api: 3d.viewer.web
+    name: "Preview nao carregando no browser"
+    sintoma: "CORS ou formato nao suportado"
+    causa_raiz: "Sem validacao de compatibilidade web"
+    mitigacao: "CORS check + web format validation"
+    severity: HIGH
+  - dor_id: D-S39-06
+    api: asset.metadata.gndrive
+    name: "Asset sem proveniencia"
+    sintoma: "Origem do asset nao registrada"
+    causa_raiz: "Sem evidencia de criacao"
+    mitigacao: "CW-206 receipts + proveniencia obrigatoria"
+    severity: HIGH
+  - dor_id: D-S39-07
+    api: mesh.qa
+    name: "Asset publicado sem QC"
+    sintoma: "QC nao rodando antes de entregar"
+    causa_raiz: "Sem gate de mesh QC"
+    mitigacao: "Mesh QC gate bloqueante pre-export"
+    severity: HIGH

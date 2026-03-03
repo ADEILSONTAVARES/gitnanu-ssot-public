@@ -1,0 +1,55 @@
+# DORES_S28_Church_7x_v1
+studio_id: S28
+studio_name: Church 7x
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S28-01
+    api: app.shell.whitelabel
+    name: "Branding errado no app publicado"
+    sintoma: "BrandKit nao aplicado antes de build"
+    causa_raiz: "Sem validacao de brand pre-build"
+    mitigacao: "CW-037 BrandKit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-02
+    api: checkin.wifi
+    name: "Check-in duplicado para mesma pessoa"
+    sintoma: "Sem dedupe por device/usuario"
+    causa_raiz: "Sem idempotency_key por evento de presenca"
+    mitigacao: "CW-209 idempotencia + dedupe por device_id"
+    severity: HIGH
+  - dor_id: D-S28-03
+    api: whatsapp.cloud
+    name: "Notificacao enviada fora do horario"
+    sintoma: "Sem timezone guard e sem agendamento"
+    causa_raiz: "Sem politica de horario por congregacao"
+    mitigacao: "Timezone guard + schedule policy obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S28-04
+    api: stripe.checkout
+    name: "Doacao processada sem receipt"
+    sintoma: "Sem receipt obrigatorio pos-pagamento"
+    causa_raiz: "Sem webhook de confirmacao"
+    mitigacao: "PAY-009 receipt interno + CW-206 hashes"
+    severity: CRITICAL
+  - dor_id: D-S28-05
+    api: calendar.api
+    name: "Evento criado em calendario errado"
+    sintoma: "Calendar ID nao validado antes de criar"
+    causa_raiz: "Sem verificacao de escopo de calendario"
+    mitigacao: "Gate calendar_id validation + CW-024"
+    severity: MEDIUM
+  - dor_id: D-S28-06
+    api: rbac.abac
+    name: "Membro com permissao alem do necessario"
+    sintoma: "Role assignado sem revisao periodica"
+    causa_raiz: "Sem auditoria de permissoes"
+    mitigacao: "CW-196 matriz permissoes + audit periodico"
+    severity: HIGH
+  - dor_id: D-S28-07
+    api: presence.n8n
+    name: "Automacao de presenca travando workflow"
+    sintoma: "n8n sem timeout e sem DLQ"
+    causa_raiz: "Sem DLQ e sem timeout por job"
+    mitigacao: "DLQ obrigatorio + timeout por automacao"
+    severity: HIGH
