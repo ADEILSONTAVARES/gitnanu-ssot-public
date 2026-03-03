@@ -1,0 +1,96 @@
+# DORES_S26_stripe_webhooks_v1
+studio_id: S26
+api: stripe.webhooks
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S26-sw-01
+    name: "Evento processado sem aprovacao"
+    sintoma: "Acao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S26-sw-02
+    name: "PII em payload"
+    sintoma: "Dado pessoal em webhook"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S26-sw-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S26-sw-04
+    name: "Assinatura nao validada"
+    sintoma: "Webhook sem verificacao de assinatura"
+    causa_raiz: "Sem signature validation"
+    mitigacao: "Stripe signature validation"
+    severity: CRITICAL
+  - dor_id: D-S26-sw-05
+    name: "Idempotencia ausente"
+    sintoma: "Evento duplicado processado"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S26-sw-06
+    name: "Scope violation"
+    sintoma: "Evento de conta errada aceito"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S26-sw-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S26-sw-08
+    name: "Rollback impossivel"
+    sintoma: "Acao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S26-sw-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S26-sw-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S26-sw-11
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-sw-12
+    name: "Replay attack"
+    sintoma: "Evento antigo reprocessado"
+    causa_raiz: "Sem timestamp validation"
+    mitigacao: "Timestamp validation obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S26-sw-13
+    name: "Timeout sem fallback"
+    sintoma: "Processamento trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S26-sw-14
+    name: "ENV gate ausente"
+    sintoma: "Webhook de producao em dev"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-sw-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

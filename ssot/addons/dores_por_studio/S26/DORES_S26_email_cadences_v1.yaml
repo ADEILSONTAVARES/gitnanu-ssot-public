@@ -1,0 +1,96 @@
+# DORES_S26_email_cadences_v1
+studio_id: S26
+api: email.cadences
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S26-ec-01
+    name: "Cadencia enviada sem aprovacao"
+    sintoma: "Envio automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S26-ec-02
+    name: "PII em email"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S26-ec-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S26-ec-04
+    name: "Scope violation"
+    sintoma: "Email enviado por dominio errado"
+    causa_raiz: "Sem domain scope lock"
+    mitigacao: "Domain scope lock"
+    severity: CRITICAL
+  - dor_id: D-S26-ec-05
+    name: "LGPD nao atendida"
+    sintoma: "Email sem opt-in"
+    causa_raiz: "Sem opt-in gate"
+    mitigacao: "Opt-in gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S26-ec-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-ec-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S26-ec-08
+    name: "Rollback impossivel"
+    sintoma: "Cadencia sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S26-ec-09
+    name: "Envio sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S26-ec-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S26-ec-11
+    name: "SPF DKIM ausente"
+    sintoma: "Email sem autenticacao"
+    causa_raiz: "Sem SPF DKIM gate"
+    mitigacao: "SPF DKIM obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-ec-12
+    name: "Unsubscribe nao processado"
+    sintoma: "Contato descadastrado recebe email"
+    causa_raiz: "Sem unsubscribe gate"
+    mitigacao: "Unsubscribe gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S26-ec-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-ec-14
+    name: "Bounce sem tratamento"
+    sintoma: "Reputacao de dominio comprometida"
+    causa_raiz: "Sem bounce handler"
+    mitigacao: "Bounce handler obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-ec-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

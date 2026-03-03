@@ -1,0 +1,96 @@
+# DORES_S26_salesmartly_v1
+studio_id: S26
+api: salesmartly
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S26-sl-01
+    name: "Mensagem enviada sem aprovacao"
+    sintoma: "Envio automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S26-sl-02
+    name: "PII em conversa"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S26-sl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S26-sl-04
+    name: "Scope violation"
+    sintoma: "Mensagem em canal errado"
+    causa_raiz: "Sem channel scope lock"
+    mitigacao: "Channel scope lock"
+    severity: CRITICAL
+  - dor_id: D-S26-sl-05
+    name: "LGPD nao atendida"
+    sintoma: "Contato sem opt-in"
+    causa_raiz: "Sem opt-in gate"
+    mitigacao: "Opt-in gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S26-sl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-sl-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S26-sl-08
+    name: "Rollback impossivel"
+    sintoma: "Conversa sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S26-sl-09
+    name: "Envio sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S26-sl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S26-sl-11
+    name: "Contato duplicado"
+    sintoma: "Mesmo contato em dois fluxos"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-sl-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-sl-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-sl-14
+    name: "Anomalia nao detectada"
+    sintoma: "Queda de resposta sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-sl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

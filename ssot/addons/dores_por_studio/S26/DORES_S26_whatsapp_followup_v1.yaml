@@ -1,0 +1,96 @@
+# DORES_S26_whatsapp_followup_v1
+studio_id: S26
+api: whatsapp.followup
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S26-wf-01
+    name: "Follow-up enviado sem aprovacao"
+    sintoma: "Envio automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S26-wf-02
+    name: "PII em mensagem"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S26-wf-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S26-wf-04
+    name: "Scope violation"
+    sintoma: "Mensagem em numero errado"
+    causa_raiz: "Sem number scope lock"
+    mitigacao: "Number scope lock"
+    severity: CRITICAL
+  - dor_id: D-S26-wf-05
+    name: "LGPD nao atendida"
+    sintoma: "Contato sem opt-in"
+    causa_raiz: "Sem opt-in gate"
+    mitigacao: "Opt-in gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S26-wf-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-wf-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S26-wf-08
+    name: "Rollback impossivel"
+    sintoma: "Follow-up sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S26-wf-09
+    name: "Envio sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S26-wf-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S26-wf-11
+    name: "Template nao aprovado"
+    sintoma: "Mensagem com template invalido"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template validation gate"
+    severity: HIGH
+  - dor_id: D-S26-wf-12
+    name: "Cadencia duplicada"
+    sintoma: "Mesmo contato recebe dois follow-ups"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-wf-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-wf-14
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S26-wf-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

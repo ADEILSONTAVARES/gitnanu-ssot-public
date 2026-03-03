@@ -1,0 +1,96 @@
+# DORES_S26_highlevel_v1
+studio_id: S26
+api: highlevel
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S26-hl-01
+    name: "Acao CRM publicada sem aprovacao"
+    sintoma: "Pipeline move sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S26-hl-02
+    name: "PII em contato CRM"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S26-hl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S26-hl-04
+    name: "Scope violation"
+    sintoma: "Acao em sub-conta errada"
+    causa_raiz: "Sem sub-account scope lock"
+    mitigacao: "Sub-account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S26-hl-05
+    name: "LGPD nao atendida"
+    sintoma: "Contato sem consentimento registrado"
+    causa_raiz: "Sem LGPD gate"
+    mitigacao: "LGPD gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S26-hl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-hl-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S26-hl-08
+    name: "Rollback impossivel"
+    sintoma: "Stage move sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S26-hl-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S26-hl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S26-hl-11
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S26-hl-12
+    name: "Lead duplicado no CRM"
+    sintoma: "Mesmo contato em dois pipelines"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-hl-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-hl-14
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S26-hl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
