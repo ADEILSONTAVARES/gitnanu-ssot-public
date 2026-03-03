@@ -1,21 +1,375 @@
-# ACTION_REGISTRY_v1 — 370 acoes TeamsWork10X
+# ACTION_REGISTRY_v1 FULL — 370 acoes
 version: 1
 total_actions: 370
-defaults: {requires_approval: true, receipts: true, rollback: true, idempotent: true, diff_first: true}
-sections:
-  - CW-001..CW-250: CoworkActions250
-  - MB-001..MB-040: Multibot55 Bridge
-  - PAY-001..PAY-080: StripeOps20
-status: STUB — expand from docs/TEAMSWORK10X_MASTER_v1.md
-actions_stub:
-  - {action_id: CW-001, name: Definir pasta autorizada, studio_id: S00, risk: LOW}
-  - {action_id: CW-011, name: Criar plano de rollback, studio_id: S00, risk: MEDIUM}
-  - {action_id: CW-201, name: Preflight obrigatorio, studio_id: S46, risk: LOW}
-  - {action_id: CW-206, name: Receipts com hashes, studio_id: S49, risk: LOW}
-  - {action_id: CW-215, name: Stop button real, studio_id: S46, risk: LOW}
-  - {action_id: MB-001, name: Criar scaffold por template, studio_id: S02, risk: LOW}
-  - {action_id: MB-019, name: Rodar tarefa com preflight, studio_id: S42, risk: MEDIUM}
-  - {action_id: PAY-008, name: Retry seguro sem duplicar cobranca, studio_id: S35, risk: CRITICAL}
-  - {action_id: PAY-018, name: Verificar assinatura webhook, studio_id: S35, risk: CRITICAL}
-  - {action_id: PAY-020, name: Deduplicar por event_id, studio_id: S34, risk: CRITICAL}
-  - {action_id: PAY-037, name: Smart retries revenue recovery, studio_id: S34, risk: HIGH}
+defaults: {requires_approval: true, receipts: true, idempotent: true, diff_first: true}
+actions:
+  - {action_id: CW-001, name: Definir pasta autorizada, cat: cowork}
+  - {action_id: CW-002, name: Configurar instrucoes globais, cat: cowork}
+  - {action_id: CW-003, name: Configurar instrucoes por pasta, cat: cowork}
+  - {action_id: CW-004, name: Criar contrato de sessao, cat: cowork}
+  - {action_id: CW-005, name: Inventario inicial, cat: cowork}
+  - {action_id: CW-006, name: Detectar arquivos sensiveis, cat: cowork}
+  - {action_id: CW-007, name: Ativar modo somente leitura, cat: cowork}
+  - {action_id: CW-008, name: Ativar modo fila/batch, cat: cowork}
+  - {action_id: CW-009, name: Criar log local, cat: cowork}
+  - {action_id: CW-010, name: Definir stop points, cat: cowork}
+  - {action_id: CW-011, name: Criar plano rollback, cat: cowork}
+  - {action_id: CW-012, name: Exigir confirmacao delete, cat: cowork}
+  - {action_id: CW-013, name: Detectar conflito instrucoes, cat: cowork}
+  - {action_id: CW-014, name: Estimar custo lotes, cat: cowork}
+  - {action_id: CW-015, name: Modo auditoria, cat: cowork}
+  - {action_id: CW-016, name: Modo hands-off, cat: cowork}
+  - {action_id: CW-017, name: Validar permissoes rede, cat: cowork}
+  - {action_id: CW-018, name: Offline mode, cat: cowork}
+  - {action_id: CW-019, name: Matriz de risco, cat: cowork}
+  - {action_id: CW-020, name: Checklist DoD, cat: cowork}
+  - {action_id: CW-021, name: Encerrar sessao, cat: cowork}
+  - {action_id: CW-022, name: Gerar pacote evidencia, cat: cowork}
+  - {action_id: CW-023, name: Reabrir sessao, cat: cowork}
+  - {action_id: CW-024, name: Validar outputs, cat: cowork}
+  - {action_id: CW-025, name: Relatorio conformidade, cat: cowork}
+  - {action_id: CW-026, name: Padronizar nomes, cat: cowork}
+  - {action_id: CW-027, name: Renomear em lote, cat: cowork}
+  - {action_id: CW-028, name: Criar subpastas, cat: cowork}
+  - {action_id: CW-029, name: Detectar duplicatas, cat: cowork}
+  - {action_id: CW-030, name: Quase duplicatas, cat: cowork}
+  - {action_id: CW-031, name: Mover arquivos, cat: cowork}
+  - {action_id: CW-032, name: Criar indice, cat: cowork}
+  - {action_id: CW-033, name: Manifest assets, cat: cowork}
+  - {action_id: CW-034, name: Originais vs derivados, cat: cowork}
+  - {action_id: CW-035, name: Arquivos gigantes, cat: cowork}
+  - {action_id: CW-036, name: Compactar zip, cat: cowork}
+  - {action_id: CW-037, name: BrandKit, cat: cowork}
+  - {action_id: CW-038, name: Padronizar extensoes, cat: cowork}
+  - {action_id: CW-039, name: Biblioteca templates, cat: cowork}
+  - {action_id: CW-040, name: Pacote entrega, cat: cowork}
+  - {action_id: CW-041, name: Mapa arvore, cat: cowork}
+  - {action_id: CW-042, name: Housekeeping, cat: cowork}
+  - {action_id: CW-043, name: Versionamento arquivos, cat: cowork}
+  - {action_id: CW-044, name: Verificador naming, cat: cowork}
+  - {action_id: CW-045, name: Arquivos sem dono, cat: cowork}
+  - {action_id: CW-046, name: Arquivos orfaos, cat: cowork}
+  - {action_id: CW-047, name: Pasta handoff, cat: cowork}
+  - {action_id: CW-048, name: Changelog arquivos, cat: cowork}
+  - {action_id: CW-049, name: Arquivo referencia, cat: cowork}
+  - {action_id: CW-050, name: PASS/FAIL organizacao, cat: cowork}
+  - {action_id: CW-051, name: Notas para doc, cat: cowork}
+  - {action_id: CW-052, name: Reescrever sentido, cat: cowork}
+  - {action_id: CW-053, name: Revisar ortografia, cat: cowork}
+  - {action_id: CW-054, name: Versao curta longa, cat: cowork}
+  - {action_id: CW-055, name: FAQ, cat: cowork}
+  - {action_id: CW-056, name: Manual usuario, cat: cowork}
+  - {action_id: CW-057, name: Guia rapido, cat: cowork}
+  - {action_id: CW-058, name: Onboarding, cat: cowork}
+  - {action_id: CW-059, name: Politica interna, cat: cowork}
+  - {action_id: CW-060, name: Runbook, cat: cowork}
+  - {action_id: CW-061, name: Release notes, cat: cowork}
+  - {action_id: CW-062, name: Registro decisoes, cat: cowork}
+  - {action_id: CW-063, name: Consolidar docs, cat: cowork}
+  - {action_id: CW-064, name: Publico vs privado, cat: cowork}
+  - {action_id: CW-065, name: Checklist conformidade, cat: cowork}
+  - {action_id: CW-066, name: Templates, cat: cowork}
+  - {action_id: CW-067, name: Normalizar estilo, cat: cowork}
+  - {action_id: CW-068, name: Blocos aprovacao, cat: cowork}
+  - {action_id: CW-069, name: Indice docs, cat: cowork}
+  - {action_id: CW-070, name: Versao PDF, cat: cowork}
+  - {action_id: CW-071, name: Leitura rapida, cat: cowork}
+  - {action_id: CW-072, name: Trechos risco, cat: cowork}
+  - {action_id: CW-073, name: Pendencias, cat: cowork}
+  - {action_id: CW-074, name: Pacote final docs, cat: cowork}
+  - {action_id: CW-075, name: Relatorio alteracoes, cat: cowork}
+  - {action_id: CW-076, name: PRD, cat: cowork}
+  - {action_id: CW-077, name: Spec tecnica, cat: cowork}
+  - {action_id: CW-078, name: Arquitetura camadas, cat: cowork}
+  - {action_id: CW-079, name: Matriz integracoes, cat: cowork}
+  - {action_id: CW-080, name: Contrato API, cat: cowork}
+  - {action_id: CW-081, name: Checklist qualidade, cat: cowork}
+  - {action_id: CW-082, name: Backlog PRD, cat: cowork}
+  - {action_id: CW-083, name: Stories, cat: cowork}
+  - {action_id: CW-084, name: Validar coerencia, cat: cowork}
+  - {action_id: CW-085, name: Plano incremental, cat: cowork}
+  - {action_id: CW-086, name: Gates por fase, cat: cowork}
+  - {action_id: CW-087, name: Papeis squad, cat: cowork}
+  - {action_id: CW-088, name: Squad pack, cat: cowork}
+  - {action_id: CW-089, name: Entidades, cat: cowork}
+  - {action_id: CW-090, name: Risco mudanca, cat: cowork}
+  - {action_id: CW-091, name: Plano testes, cat: cowork}
+  - {action_id: CW-092, name: Harness, cat: cowork}
+  - {action_id: CW-093, name: Definicao done, cat: cowork}
+  - {action_id: CW-094, name: Governanca aprovacao, cat: cowork}
+  - {action_id: CW-095, name: Guia contribuicao, cat: cowork}
+  - {action_id: CW-096, name: Guia naming, cat: cowork}
+  - {action_id: CW-097, name: Politica versionamento, cat: cowork}
+  - {action_id: CW-098, name: Mapa dependencias, cat: cowork}
+  - {action_id: CW-099, name: Migracao brownfield, cat: cowork}
+  - {action_id: CW-100, name: Pacote especificacao, cat: cowork}
+  - {action_id: CW-101, name: Excel formulas, cat: cowork}
+  - {action_id: CW-102, name: Cronograma, cat: cowork}
+  - {action_id: CW-103, name: Orcamento, cat: cowork}
+  - {action_id: CW-104, name: Inventario alertas, cat: cowork}
+  - {action_id: CW-105, name: CRM basico, cat: cowork}
+  - {action_id: CW-106, name: Limpar dataset, cat: cowork}
+  - {action_id: CW-107, name: Outliers, cat: cowork}
+  - {action_id: CW-108, name: Pivot, cat: cowork}
+  - {action_id: CW-109, name: Validacao dados, cat: cowork}
+  - {action_id: CW-110, name: Formatacao condicional, cat: cowork}
+  - {action_id: CW-111, name: Lookup, cat: cowork}
+  - {action_id: CW-112, name: Pipeline raw clean, cat: cowork}
+  - {action_id: CW-113, name: Graficos, cat: cowork}
+  - {action_id: CW-114, name: KPI, cat: cowork}
+  - {action_id: CW-115, name: Dicionario dados, cat: cowork}
+  - {action_id: CW-116, name: Regras automaticas, cat: cowork}
+  - {action_id: CW-117, name: Amostras, cat: cowork}
+  - {action_id: CW-118, name: Export xlsx, cat: cowork}
+  - {action_id: CW-119, name: Trilha auditoria, cat: cowork}
+  - {action_id: CW-120, name: Capacidade time, cat: cowork}
+  - {action_id: CW-121, name: Priorizacao, cat: cowork}
+  - {action_id: CW-122, name: RACI, cat: cowork}
+  - {action_id: CW-123, name: QA checklist, cat: cowork}
+  - {action_id: CW-124, name: Planilha receipts, cat: cowork}
+  - {action_id: CW-125, name: Resumo executivo, cat: cowork}
+  - {action_id: CW-126, name: Deck docs, cat: cowork}
+  - {action_id: CW-127, name: Roteiro slides, cat: cowork}
+  - {action_id: CW-128, name: Pitch, cat: cowork}
+  - {action_id: CW-129, name: Relatorio slides, cat: cowork}
+  - {action_id: CW-130, name: Storyline, cat: cowork}
+  - {action_id: CW-131, name: Slide arquitetura, cat: cowork}
+  - {action_id: CW-132, name: Slide status, cat: cowork}
+  - {action_id: CW-133, name: Treinamento, cat: cowork}
+  - {action_id: CW-134, name: Proposta, cat: cowork}
+  - {action_id: CW-135, name: Pos-mortem slides, cat: cowork}
+  - {action_id: CW-136, name: Speaker notes, cat: cowork}
+  - {action_id: CW-137, name: Revisao deck, cat: cowork}
+  - {action_id: CW-138, name: Atualizar deck, cat: cowork}
+  - {action_id: CW-139, name: Graficos deck, cat: cowork}
+  - {action_id: CW-140, name: Pacote executivo, cat: cowork}
+  - {action_id: CW-141, name: Aprovacao deck, cat: cowork}
+  - {action_id: CW-142, name: PDF export, cat: cowork}
+  - {action_id: CW-143, name: Deck onboarding, cat: cowork}
+  - {action_id: CW-144, name: Deck governanca, cat: cowork}
+  - {action_id: CW-145, name: Deck studios, cat: cowork}
+  - {action_id: CW-146, name: Deck roadmap, cat: cowork}
+  - {action_id: CW-147, name: Deck metricas, cat: cowork}
+  - {action_id: CW-148, name: Deck riscos, cat: cowork}
+  - {action_id: CW-149, name: Deck vendas, cat: cowork}
+  - {action_id: CW-150, name: Bundle final, cat: cowork}
+  - {action_id: CW-151, name: Sintese web, cat: cowork}
+  - {action_id: CW-152, name: Ler papers, cat: cowork}
+  - {action_id: CW-153, name: Comparar ferramentas, cat: cowork}
+  - {action_id: CW-154, name: Brief mercado, cat: cowork}
+  - {action_id: CW-155, name: Temas transcricoes, cat: cowork}
+  - {action_id: CW-156, name: Mapa argumentos, cat: cowork}
+  - {action_id: CW-157, name: Perguntas criticas, cat: cowork}
+  - {action_id: CW-158, name: Matriz decisao, cat: cowork}
+  - {action_id: CW-159, name: Plano experimento, cat: cowork}
+  - {action_id: CW-160, name: Benchmark, cat: cowork}
+  - {action_id: CW-161, name: Resumo executivo tecnico, cat: cowork}
+  - {action_id: CW-162, name: Synthesis notas, cat: cowork}
+  - {action_id: CW-163, name: Bibliografia, cat: cowork}
+  - {action_id: CW-164, name: Radar tendencias, cat: cowork}
+  - {action_id: CW-165, name: Alertas contradicoes, cat: cowork}
+  - {action_id: CW-166, name: Revisao sistematica, cat: cowork}
+  - {action_id: CW-167, name: Glossario, cat: cowork}
+  - {action_id: CW-168, name: Roteiro video, cat: cowork}
+  - {action_id: CW-169, name: Roteiro post, cat: cowork}
+  - {action_id: CW-170, name: Perguntas entrevista, cat: cowork}
+  - {action_id: CW-171, name: Roteiro call, cat: cowork}
+  - {action_id: CW-172, name: Plano conteudo, cat: cowork}
+  - {action_id: CW-173, name: Stakeholders, cat: cowork}
+  - {action_id: CW-174, name: Decisoes pendentes, cat: cowork}
+  - {action_id: CW-175, name: Fechamento fontes, cat: cowork}
+  - {action_id: CW-176, name: Backlog completo, cat: cowork}
+  - {action_id: CW-177, name: Priorizar backlog, cat: cowork}
+  - {action_id: CW-178, name: Quebrar epicos, cat: cowork}
+  - {action_id: CW-179, name: Atribuir RACI, cat: cowork}
+  - {action_id: CW-180, name: Sprint, cat: cowork}
+  - {action_id: CW-181, name: Pauta reuniao, cat: cowork}
+  - {action_id: CW-182, name: Pos-reuniao, cat: cowork}
+  - {action_id: CW-183, name: Handoff, cat: cowork}
+  - {action_id: CW-184, name: Workflow pack, cat: cowork}
+  - {action_id: CW-185, name: Mapa bloqueios, cat: cowork}
+  - {action_id: CW-186, name: Agenda, cat: cowork}
+  - {action_id: CW-187, name: Multi-step, cat: cowork}
+  - {action_id: CW-188, name: Paralelismo, cat: cowork}
+  - {action_id: CW-189, name: Fila aprovacoes, cat: cowork}
+  - {action_id: CW-190, name: Relatorio diario, cat: cowork}
+  - {action_id: CW-191, name: Relatorio semanal, cat: cowork}
+  - {action_id: CW-192, name: Painel, cat: cowork}
+  - {action_id: CW-193, name: Checklist release, cat: cowork}
+  - {action_id: CW-194, name: Post-mortem, cat: cowork}
+  - {action_id: CW-195, name: Melhoria continua, cat: cowork}
+  - {action_id: CW-196, name: Matriz permissoes, cat: cowork}
+  - {action_id: CW-197, name: Escalonamento, cat: cowork}
+  - {action_id: CW-198, name: Excecoes, cat: cowork}
+  - {action_id: CW-199, name: Fechar sprint, cat: cowork}
+  - {action_id: CW-200, name: Session closeout, cat: cowork}
+  - {action_id: CW-201, name: Preflight, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-202, name: Aprovacao escrita, cat: cowork.governance, risk: HIGH}
+  - {action_id: CW-203, name: Aprovacao delete, cat: cowork.governance, risk: CRITICAL}
+  - {action_id: CW-204, name: Patch diff, cat: cowork.governance, risk: HIGH}
+  - {action_id: CW-205, name: Diff-first, cat: cowork.governance, risk: HIGH}
+  - {action_id: CW-206, name: Receipts hashes, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-207, name: Evidence pack, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-208, name: Rollback pack, cat: cowork.governance, risk: MEDIUM}
+  - {action_id: CW-209, name: Idempotencia, cat: cowork.governance, risk: MEDIUM}
+  - {action_id: CW-210, name: Conflito edicao, cat: cowork.governance, risk: MEDIUM}
+  - {action_id: CW-211, name: Drift bloqueia, cat: cowork.governance, risk: HIGH}
+  - {action_id: CW-212, name: Policy guard, cat: cowork.security, risk: CRITICAL}
+  - {action_id: CW-213, name: Consent guard, cat: cowork.security, risk: HIGH}
+  - {action_id: CW-214, name: Cost guard, cat: cowork.cost, risk: MEDIUM}
+  - {action_id: CW-215, name: Stop button, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-216, name: Dry-run, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-217, name: Approve-batch, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-218, name: PASS/FAIL acao, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-219, name: No hidden steps, cat: cowork.governance, risk: CRITICAL}
+  - {action_id: CW-220, name: Audit trail, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-221, name: Exception handler, cat: cowork.governance, risk: MEDIUM}
+  - {action_id: CW-222, name: Retry seguro, cat: cowork.governance, risk: MEDIUM}
+  - {action_id: CW-223, name: Quarentena outputs, cat: cowork.governance, risk: HIGH}
+  - {action_id: CW-224, name: Checklist seguranca, cat: cowork.security, risk: HIGH}
+  - {action_id: CW-225, name: Final receipt, cat: cowork.governance, risk: LOW}
+  - {action_id: CW-226, name: Instalar plugin, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-227, name: Criar plugin, cat: cowork.studios, risk: MEDIUM}
+  - {action_id: CW-228, name: Customizar plugin, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-229, name: Listar comandos, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-230, name: Whitelist MCPs, cat: cowork.studios, risk: MEDIUM}
+  - {action_id: CW-231, name: Deny by default, cat: cowork.studios, risk: HIGH}
+  - {action_id: CW-232, name: Plugin Core, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-233, name: Plugin Multibot, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-234, name: Plugin AIOS, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-235, name: Export ACTION, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-236, name: Export PAIN, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-237, name: Tag actions, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-238, name: Dispatcher Studio, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-239, name: Coverage report, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-240, name: No-holes, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-241, name: StudioPack, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-242, name: StudioSquad, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-243, name: Handoff contract, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-244, name: SLA checklist, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-245, name: Evidence publisher, cat: cowork.studios, risk: LOW}
+  - {action_id: CW-246, name: Team Mode, cat: cowork.studios, risk: MEDIUM}
+  - {action_id: CW-247, name: Cross-studio, cat: cowork.studios, risk: MEDIUM}
+  - {action_id: CW-248, name: Approval Router, cat: cowork.studios, risk: HIGH}
+  - {action_id: CW-249, name: Install Update, cat: cowork.studios, risk: MEDIUM}
+  - {action_id: CW-250, name: Master Bundle, cat: cowork.studios, risk: LOW}
+  - {action_id: MB-001, name: Criar scaffold, cat: multibot}
+  - {action_id: MB-002, name: Greenfield vs brownfield, cat: multibot}
+  - {action_id: MB-003, name: Config minima, cat: multibot}
+  - {action_id: MB-004, name: Gerar .env.example, cat: multibot}
+  - {action_id: MB-005, name: Criar .gitignore, cat: multibot}
+  - {action_id: MB-006, name: Verificar prereqs, cat: multibot}
+  - {action_id: MB-007, name: First-value path, cat: multibot}
+  - {action_id: MB-008, name: Gerar manifest, cat: multibot}
+  - {action_id: MB-009, name: Gerar story padrao, cat: multibot}
+  - {action_id: MB-010, name: Validar story, cat: multibot}
+  - {action_id: MB-011, name: Progresso por diffs, cat: multibot}
+  - {action_id: MB-012, name: Changelog story, cat: multibot}
+  - {action_id: MB-013, name: Impact map, cat: multibot}
+  - {action_id: MB-014, name: No story no change, cat: multibot, risk: HIGH}
+  - {action_id: MB-015, name: Resumo aprovacao, cat: multibot}
+  - {action_id: MB-016, name: Arquivar story receipt, cat: multibot}
+  - {action_id: MB-017, name: Registrar tarefa contrato, cat: multibot}
+  - {action_id: MB-018, name: Listar tarefas tags, cat: multibot}
+  - {action_id: MB-019, name: Rodar tarefa preflight, cat: multibot}
+  - {action_id: MB-020, name: Rodar tarefa dry-run, cat: multibot}
+  - {action_id: MB-021, name: Encadear workflow, cat: multibot}
+  - {action_id: MB-022, name: Pausar workflow, cat: multibot}
+  - {action_id: MB-023, name: Reexecutar step, cat: multibot}
+  - {action_id: MB-024, name: Relatorio workflow, cat: multibot}
+  - {action_id: MB-025, name: Pacote IDE, cat: multibot}
+  - {action_id: MB-026, name: Sincronizar regras IDE, cat: multibot}
+  - {action_id: MB-027, name: Validar compatibilidade IDE, cat: multibot}
+  - {action_id: MB-028, name: Fallback plan IDE, cat: multibot}
+  - {action_id: MB-029, name: Config recomendada, cat: multibot}
+  - {action_id: MB-030, name: IDE Pack versionado, cat: multibot}
+  - {action_id: MB-031, name: Validator pre-commit, cat: multibot}
+  - {action_id: MB-032, name: Validator pre-push, cat: multibot}
+  - {action_id: MB-033, name: Validator CI, cat: multibot}
+  - {action_id: MB-034, name: PASS/FAIL motivos, cat: multibot}
+  - {action_id: MB-035, name: Fix suggestions, cat: multibot}
+  - {action_id: MB-036, name: Correcoes com aprovacao, cat: multibot}
+  - {action_id: MB-037, name: Listar squads, cat: multibot}
+  - {action_id: MB-038, name: Instalar squad, cat: multibot}
+  - {action_id: MB-039, name: Atualizar squad, cat: multibot}
+  - {action_id: MB-040, name: Desinstalar squad, cat: multibot}
+  - {action_id: PAY-001, name: Politica estados Payment, cat: stripe, risk: HIGH}
+  - {action_id: PAY-002, name: Regra requires_action, cat: stripe, risk: HIGH}
+  - {action_id: PAY-003, name: Manual vs auto confirmation, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-004, name: Captura manual vs automatica, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-005, name: Save card future usage, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-006, name: Metodos por pais, cat: stripe, risk: HIGH}
+  - {action_id: PAY-007, name: Politica erros soft/hard, cat: stripe, risk: HIGH}
+  - {action_id: PAY-008, name: Retry seguro sem duplicar, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-009, name: Receipt interno pagamento, cat: stripe, risk: HIGH}
+  - {action_id: PAY-010, name: Reconciliacao order/intent, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-011, name: Double-submit guard, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-012, name: Status canonicos UI, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-013, name: Expiracao pagamento, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-014, name: Regra comprovante, cat: stripe, risk: LOW}
+  - {action_id: PAY-015, name: Sandbox E2E, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-016, name: Go-live checklist, cat: stripe, risk: HIGH}
+  - {action_id: PAY-017, name: Eventos fonte da verdade, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-018, name: Verificar assinatura webhook, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-019, name: Anti replay, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-020, name: Deduplicar event_id, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-021, name: Responder rapido fila, cat: stripe, risk: HIGH}
+  - {action_id: PAY-022, name: Handler idempotente, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-023, name: Webhook health alertas, cat: stripe, risk: HIGH}
+  - {action_id: PAY-024, name: Replay seguro locks, cat: stripe, risk: HIGH}
+  - {action_id: PAY-025, name: Event contract schema, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-026, name: Mapear eventos assinatura, cat: stripe, risk: HIGH}
+  - {action_id: PAY-027, name: invoice.payment_failed, cat: stripe, risk: HIGH}
+  - {action_id: PAY-028, name: invoice.payment_action_required, cat: stripe, risk: HIGH}
+  - {action_id: PAY-029, name: invoice.finalization_failed, cat: stripe, risk: HIGH}
+  - {action_id: PAY-030, name: Guardar request_id, cat: stripe, risk: HIGH}
+  - {action_id: PAY-031, name: Eventos Connect vs plataforma, cat: stripe, risk: HIGH}
+  - {action_id: PAY-032, name: Modo manutencao, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-033, name: Dead-letter queue, cat: stripe, risk: HIGH}
+  - {action_id: PAY-034, name: Relatorio webhooks, cat: stripe, risk: LOW}
+  - {action_id: PAY-035, name: Catalogo precos, cat: stripe, risk: HIGH}
+  - {action_id: PAY-036, name: Estados assinatura, cat: stripe, risk: HIGH}
+  - {action_id: PAY-037, name: Smart retries, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-038, name: Politica dunning, cat: stripe, risk: HIGH}
+  - {action_id: PAY-039, name: Reativacao segura, cat: stripe, risk: HIGH}
+  - {action_id: PAY-040, name: Provisionamento invoice.paid, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-041, name: Grace period, cat: stripe, risk: HIGH}
+  - {action_id: PAY-042, name: Handler invoice created, cat: stripe, risk: HIGH}
+  - {action_id: PAY-043, name: Proration policy, cat: stripe, risk: HIGH}
+  - {action_id: PAY-044, name: Cupom antifraude, cat: stripe, risk: HIGH}
+  - {action_id: PAY-045, name: Aviso fim trial, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-046, name: Cancel flow, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-047, name: Pause subscription, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-048, name: Entitlements plano, cat: stripe, risk: HIGH}
+  - {action_id: PAY-049, name: Invoice-only, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-050, name: Recovery dashboard, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-051, name: Receipts cobranca, cat: stripe, risk: HIGH}
+  - {action_id: PAY-052, name: Checklist assinatura producao, cat: stripe, risk: HIGH}
+  - {action_id: PAY-053, name: Ativar portal, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-054, name: Branding portal, cat: stripe, risk: LOW}
+  - {action_id: PAY-055, name: Portal session, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-056, name: Politica acesso portal, cat: stripe, risk: HIGH}
+  - {action_id: PAY-057, name: Webhooks portal, cat: stripe, risk: HIGH}
+  - {action_id: PAY-058, name: Limitacoes portal, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-059, name: Rollout por plano, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-060, name: Receipt portal, cat: stripe, risk: LOW}
+  - {action_id: PAY-061, name: Radar thresholds, cat: stripe, risk: HIGH}
+  - {action_id: PAY-062, name: 3DS adaptativo, cat: stripe, risk: HIGH}
+  - {action_id: PAY-063, name: Playbook fraude, cat: stripe, risk: HIGH}
+  - {action_id: PAY-064, name: Testes sandbox fraude, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-065, name: Politica chargeback, cat: stripe, risk: HIGH}
+  - {action_id: PAY-066, name: Politica refund, cat: stripe, risk: HIGH}
+  - {action_id: PAY-067, name: Refund webhook, cat: stripe, risk: HIGH}
+  - {action_id: PAY-068, name: Liability shift, cat: stripe, risk: HIGH}
+  - {action_id: PAY-069, name: Friendly fraud, cat: stripe, risk: HIGH}
+  - {action_id: PAY-070, name: Blocklist allowlist, cat: stripe, risk: HIGH}
+  - {action_id: PAY-071, name: Relatorio disputas, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-072, name: Antifraude ao ledger, cat: stripe, risk: HIGH}
+  - {action_id: PAY-073, name: Ativar Tax, cat: stripe, risk: HIGH}
+  - {action_id: PAY-074, name: Testar Tax sandbox, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-075, name: Guard localizacao, cat: stripe, risk: HIGH}
+  - {action_id: PAY-076, name: Itens recorrentes tax, cat: stripe, risk: HIGH}
+  - {action_id: PAY-077, name: Politica endereco, cat: stripe, risk: MEDIUM}
+  - {action_id: PAY-078, name: Filing via parceiro, cat: stripe, risk: HIGH}
+  - {action_id: PAY-079, name: Modelo Connect, cat: stripe, risk: CRITICAL}
+  - {action_id: PAY-080, name: application_fee payouts, cat: stripe, risk: CRITICAL}
