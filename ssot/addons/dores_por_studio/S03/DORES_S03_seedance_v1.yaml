@@ -1,0 +1,96 @@
+# DORES_S03_seedance_v1
+studio_id: S03
+api: seedance
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S03-sc-01
+    name: "Video publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S03-sc-02
+    name: "PII em video"
+    sintoma: "Rosto real no output"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S03-sc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S03-sc-04
+    name: "Copyright violado"
+    sintoma: "Input sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate"
+    severity: CRITICAL
+  - dor_id: D-S03-sc-05
+    name: "Deepfake gerado"
+    sintoma: "Rosto manipulado"
+    causa_raiz: "Sem deepfake gate"
+    mitigacao: "Deepfake detection"
+    severity: CRITICAL
+  - dor_id: D-S03-sc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-sc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S03-sc-08
+    name: "Consistencia de personagem quebrada"
+    sintoma: "Personagem muda entre takes"
+    causa_raiz: "Sem consistency gate"
+    mitigacao: "Consistency gate por serie"
+    severity: HIGH
+  - dor_id: D-S03-sc-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S03-sc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S03-sc-11
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual incorreto"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S03-sc-12
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S03-sc-13
+    name: "Watermark ausente"
+    sintoma: "Sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-sc-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S03-sc-15
+    name: "Preset de nicho ausente"
+    sintoma: "Sem padrao por campanha"
+    causa_raiz: "Sem preset management"
+    mitigacao: "Preset management obrigatorio"
+    severity: HIGH

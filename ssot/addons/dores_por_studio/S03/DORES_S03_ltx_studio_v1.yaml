@@ -1,0 +1,96 @@
+# DORES_S03_ltx_studio_v1
+studio_id: S03
+api: ltx.studio
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S03-lx-01
+    name: "Video publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S03-lx-02
+    name: "Likeness sem consentimento"
+    sintoma: "Rosto ou voz usados sem permissao"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S03-lx-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S03-lx-04
+    name: "PII em video"
+    sintoma: "Dado pessoal no output"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S03-lx-05
+    name: "Lip sync falhando"
+    sintoma: "Audio e video descolados"
+    causa_raiz: "Sem sync validation"
+    mitigacao: "Sync validation gate"
+    severity: HIGH
+  - dor_id: D-S03-lx-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-lx-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S03-lx-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S03-lx-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S03-lx-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S03-lx-11
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual incorreto"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S03-lx-12
+    name: "Watermark ausente"
+    sintoma: "Sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-lx-13
+    name: "Copyright de audio violado"
+    sintoma: "Musica sem licenca no output"
+    causa_raiz: "Sem audio license check"
+    mitigacao: "Audio license gate"
+    severity: CRITICAL
+  - dor_id: D-S03-lx-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S03-lx-15
+    name: "Deepfake de audio nao detectado"
+    sintoma: "Voz clonada para enganar"
+    causa_raiz: "Sem deepfake audio gate"
+    mitigacao: "Deepfake audio detection"
+    severity: CRITICAL

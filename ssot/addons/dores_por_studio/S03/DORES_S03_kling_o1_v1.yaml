@@ -1,0 +1,96 @@
+# DORES_S03_kling_o1_v1
+studio_id: S03
+api: kling.o1
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S03-ko-01
+    name: "Video editado publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S03-ko-02
+    name: "PII em video editado"
+    sintoma: "Rosto real exposto"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S03-ko-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S03-ko-04
+    name: "Copyright violado em video2video"
+    sintoma: "Input sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate"
+    severity: CRITICAL
+  - dor_id: D-S03-ko-05
+    name: "Deepfake gerado"
+    sintoma: "Rosto manipulado"
+    causa_raiz: "Sem deepfake gate"
+    mitigacao: "Deepfake detection"
+    severity: CRITICAL
+  - dor_id: D-S03-ko-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-ko-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S03-ko-08
+    name: "Coerencia de camera quebrada"
+    sintoma: "Camera oscila entre versoes"
+    causa_raiz: "Sem camera consistency gate"
+    mitigacao: "Camera consistency gate"
+    severity: HIGH
+  - dor_id: D-S03-ko-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S03-ko-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S03-ko-11
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S03-ko-12
+    name: "Ads-safe violado"
+    sintoma: "Conteudo fora de policy de ads"
+    causa_raiz: "Sem ads-safe gate"
+    mitigacao: "Ads-safe gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S03-ko-13
+    name: "Watermark ausente"
+    sintoma: "Sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-ko-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S03-ko-15
+    name: "Batch sem escopo"
+    sintoma: "Frames errados reprocessados"
+    causa_raiz: "Sem batch scope lock"
+    mitigacao: "Batch scope lock"
+    severity: HIGH

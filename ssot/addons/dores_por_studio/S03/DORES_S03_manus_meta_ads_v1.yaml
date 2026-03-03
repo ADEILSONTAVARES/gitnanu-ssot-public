@@ -1,0 +1,96 @@
+# DORES_S03_manus_meta_ads_v1
+studio_id: S03
+api: manus.meta.ads
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S03-ma-01
+    name: "Relatorio gerado sem aprovacao"
+    sintoma: "Relatorio critico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S03-ma-02
+    name: "PII em relatorio"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S03-ma-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S03-ma-04
+    name: "Dado de ads desatualizado"
+    sintoma: "Metrica com cache velho"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-ma-05
+    name: "Anomalia nao detectada"
+    sintoma: "Spike de CPM sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-ma-06
+    name: "Output sem hash"
+    sintoma: "Relatorio sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-ma-07
+    name: "Custo sem limite"
+    sintoma: "Queries sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S03-ma-08
+    name: "Rollback impossivel"
+    sintoma: "Decisao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S03-ma-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S03-ma-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S03-ma-11
+    name: "Naming sem padrao"
+    sintoma: "Campanhas sem nomenclatura correta"
+    causa_raiz: "Sem naming gate"
+    mitigacao: "Naming gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-ma-12
+    name: "Decisao por achismo"
+    sintoma: "Recomendacao sem evidencia"
+    causa_raiz: "Sem evidence gate"
+    mitigacao: "Evidence gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-ma-13
+    name: "Cross-account leak"
+    sintoma: "Dados de outra conta acessiveis"
+    causa_raiz: "Sem account scope"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S03-ma-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Relatorio sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S03-ma-15
+    name: "Historico de decisoes ausente"
+    sintoma: "Sem log do que foi decidido"
+    causa_raiz: "Sem decision log"
+    mitigacao: "Decision log obrigatorio"
+    severity: HIGH
