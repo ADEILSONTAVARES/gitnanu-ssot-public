@@ -1,0 +1,96 @@
+# DORES_S34_stripe_tax_v1
+studio_id: S34
+api: stripe.tax
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S34-st-01
+    name: "Tax jurisdiction incorreta"
+    sintoma: "Imposto calculado para pais errado"
+    causa_raiz: "Sem jurisdiction detection"
+    mitigacao: "Jurisdiction detection obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-st-02
+    name: "Tax rate desatualizado"
+    sintoma: "Aliquota antiga aplicada"
+    causa_raiz: "Sem freshness check de rates"
+    mitigacao: "Tax rate freshness gate"
+    severity: CRITICAL
+  - dor_id: D-S34-st-03
+    name: "Tax ID do cliente nao validado"
+    sintoma: "VAT/CPF invalido aceito"
+    causa_raiz: "Sem tax_id validation"
+    mitigacao: "Tax ID validation gate"
+    severity: HIGH
+  - dor_id: D-S34-st-04
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S34-st-05
+    name: "Calculo sem receipt"
+    sintoma: "Tax sem log auditavel"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S34-st-06
+    name: "Rollback impossivel"
+    sintoma: "Tax aplicado sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S34-st-07
+    name: "Exempt incorreto"
+    sintoma: "Cliente tributado indevidamente"
+    causa_raiz: "Sem exemption check"
+    mitigacao: "Exemption gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-st-08
+    name: "Teste em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate"
+    severity: CRITICAL
+  - dor_id: D-S34-st-09
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash por calculo"
+    severity: HIGH
+  - dor_id: D-S34-st-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S34-st-11
+    name: "Compliance fiscal violado"
+    sintoma: "Regra local nao aplicada"
+    causa_raiz: "Sem compliance gate"
+    mitigacao: "Compliance gate por jurisdicao"
+    severity: CRITICAL
+  - dor_id: D-S34-st-12
+    name: "Report fiscal sem aprovacao"
+    sintoma: "Filing sem gate humano"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S34-st-13
+    name: "Multipla tributacao"
+    sintoma: "Mesmo item taxado duas vezes"
+    causa_raiz: "Sem dedup check"
+    mitigacao: "Dedup gate pre-apply"
+    severity: CRITICAL
+  - dor_id: D-S34-st-14
+    name: "DLQ ausente"
+    sintoma: "Evento perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S34-st-15
+    name: "Custo sem limite"
+    sintoma: "Calculos sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S34_evidence_ledger_v1
+studio_id: S34
+api: evidence_ledger
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S34-el-01
+    name: "Evidence financeira sem hash"
+    sintoma: "Log sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio por evidencia"
+    severity: CRITICAL
+  - dor_id: D-S34-el-02
+    name: "Evidence alterada"
+    sintoma: "Ledger mutavel"
+    causa_raiz: "Sem imutabilidade"
+    mitigacao: "Append-only obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-el-03
+    name: "Evidence sem timestamp"
+    sintoma: "Log sem data"
+    causa_raiz: "Sem timestamp"
+    mitigacao: "Timestamp ISO8601"
+    severity: HIGH
+  - dor_id: D-S34-el-04
+    name: "actor_id incorreto"
+    sintoma: "Log com usuario errado"
+    causa_raiz: "Sem actor_id validation"
+    mitigacao: "actor_id gate"
+    severity: CRITICAL
+  - dor_id: D-S34-el-05
+    name: "action_id ausente"
+    sintoma: "Log sem referencia"
+    causa_raiz: "Sem action_id"
+    mitigacao: "action_id obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-el-06
+    name: "Ledger sem backup"
+    sintoma: "Evidence sem copia"
+    causa_raiz: "Sem backup"
+    mitigacao: "Backup obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-el-07
+    name: "RBAC ausente"
+    sintoma: "Qualquer usuario acessando"
+    causa_raiz: "Sem permissoes"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-el-08
+    name: "Evidence deletada"
+    sintoma: "Log removido"
+    causa_raiz: "Sem soft delete"
+    mitigacao: "Soft delete + DLQ"
+    severity: CRITICAL
+  - dor_id: D-S34-el-09
+    name: "Cross-tenant leak"
+    sintoma: "Evidence de outro cliente"
+    causa_raiz: "Sem tenant scope"
+    mitigacao: "Tenant scope lock"
+    severity: CRITICAL
+  - dor_id: D-S34-el-10
+    name: "Export sem aprovacao"
+    sintoma: "Dump sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S34-el-11
+    name: "Retention sem policy"
+    sintoma: "Ledger crescendo sem limite"
+    causa_raiz: "Sem retention"
+    mitigacao: "Retention policy obrigatoria"
+    severity: HIGH
+  - dor_id: D-S34-el-12
+    name: "Schema invalido aceito"
+    sintoma: "Evidence incompleta"
+    causa_raiz: "Sem schema validation"
+    mitigacao: "Schema validation"
+    severity: HIGH
+  - dor_id: D-S34-el-13
+    name: "Rollback sem evidence"
+    sintoma: "Reversao sem log"
+    causa_raiz: "Sem rollback evidence"
+    mitigacao: "Evidence obrigatoria"
+    severity: HIGH
+  - dor_id: D-S34-el-14
+    name: "Query sem auditoria"
+    sintoma: "Consulta sem log"
+    causa_raiz: "Sem query log"
+    mitigacao: "Query log obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-el-15
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM

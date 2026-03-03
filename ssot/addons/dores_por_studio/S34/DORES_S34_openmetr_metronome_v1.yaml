@@ -1,0 +1,96 @@
+# DORES_S34_openmetr_metronome_v1
+studio_id: S34
+api: openmetr.metronome
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S34-om-01
+    name: "Usage event duplicado"
+    sintoma: "Mesmo evento contado duas vezes"
+    causa_raiz: "Sem idempotency_key"
+    mitigacao: "CW-209 idempotency obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-om-02
+    name: "Usage event perdido"
+    sintoma: "Evento nao chegando ao Metronome"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-om-03
+    name: "Metering atrasado gerando invoice errada"
+    sintoma: "Atraso na ingestion afetando fatura"
+    causa_raiz: "Sem latency SLA"
+    mitigacao: "Latency SLA obrigatorio para ingestion"
+    severity: HIGH
+  - dor_id: D-S34-om-04
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S34-om-05
+    name: "Usage sem hash"
+    sintoma: "Dado sem integridade"
+    causa_raiz: "Sem hash por event"
+    mitigacao: "Hash obrigatorio por event"
+    severity: HIGH
+  - dor_id: D-S34-om-06
+    name: "Rollback impossivel"
+    sintoma: "Event sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S34-om-07
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S34-om-08
+    name: "Custo de billing errado"
+    sintoma: "Rate plan incorreto aplicado"
+    causa_raiz: "Sem rate plan validation"
+    mitigacao: "Rate plan gate pre-invoice"
+    severity: CRITICAL
+  - dor_id: D-S34-om-09
+    name: "Teste em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-om-10
+    name: "Invoice sem receipt"
+    sintoma: "Fatura sem log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S34-om-11
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash por invoice"
+    severity: HIGH
+  - dor_id: D-S34-om-12
+    name: "Alert de anomalia ausente"
+    sintoma: "Spike de usage sem deteccao"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-om-13
+    name: "Reembolso sem aprovacao"
+    sintoma: "Credit sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S34-om-14
+    name: "Plan migration sem validacao"
+    sintoma: "Cliente em plan errado pos-migracao"
+    causa_raiz: "Sem migration gate"
+    mitigacao: "Migration gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-om-15
+    name: "Webhook sem verificacao"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature"
+    mitigacao: "PAY-018 signature"
+    severity: CRITICAL

@@ -1,0 +1,96 @@
+# DORES_S34_stripe_billing_v1
+studio_id: S34
+api: stripe.billing
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S34-sb-01
+    name: "Assinatura ativa apos cancelamento"
+    sintoma: "Webhook customer.subscription.deleted nao processado"
+    causa_raiz: "Sem handler de cancelamento"
+    mitigacao: "Handler obrigatorio + revoke access imediato"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-02
+    name: "Webhook sem verificacao de assinatura"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem stripe-signature validation"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-03
+    name: "Cobranca duplicada no ciclo"
+    sintoma: "Invoice criada duas vezes"
+    causa_raiz: "Sem idempotency_key"
+    mitigacao: "CW-209 idempotency obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-04
+    name: "Trial convertido sem notificacao"
+    sintoma: "Cliente nao avisado antes de cobrar"
+    causa_raiz: "Sem dunning pre-trial-end"
+    mitigacao: "Dunning obrigatorio 7/3/1 dias antes"
+    severity: HIGH
+  - dor_id: D-S34-sb-05
+    name: "Preco errado aplicado"
+    sintoma: "Price ID incorreto na assinatura"
+    causa_raiz: "Sem price validation pre-subscribe"
+    mitigacao: "Gate price_id validation"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-06
+    name: "Desconto nao expirado"
+    sintoma: "Coupon permanente sem TTL"
+    causa_raiz: "Sem coupon expiry check"
+    mitigacao: "Coupon expiry gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-sb-07
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund automatico sem gate"
+    causa_raiz: "Sem aprovacao pre-refund"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-08
+    name: "Secret key em log"
+    sintoma: "sk_live vazando"
+    causa_raiz: "Sem secrets redaction"
+    mitigacao: "CW-212 + log redaction"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-09
+    name: "Metering incorreto"
+    sintoma: "Usage record errado"
+    causa_raiz: "Sem usage validation"
+    mitigacao: "Gate usage validation pre-report"
+    severity: HIGH
+  - dor_id: D-S34-sb-10
+    name: "Webhook sem DLQ"
+    sintoma: "Evento perdido sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-11
+    name: "Upgrade sem prorating correto"
+    sintoma: "Credito de upgrade errado"
+    causa_raiz: "Sem prorate calculation check"
+    mitigacao: "Prorate gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-sb-12
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S34-sb-13
+    name: "Teste em producao"
+    sintoma: "sk_test em prod"
+    causa_raiz: "Sem env validation"
+    mitigacao: "ENV gate sk_live vs sk_test"
+    severity: CRITICAL
+  - dor_id: D-S34-sb-14
+    name: "Invoice sem receipt"
+    sintoma: "Cobranca sem log auditavel"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-sb-15
+    name: "Conciliacao sem hash"
+    sintoma: "Dados financeiros sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio por invoice"
+    severity: HIGH

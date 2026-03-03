@@ -1,0 +1,96 @@
+# DORES_S34_paddle_v1
+studio_id: S34
+api: paddle
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S34-pd-01
+    name: "Webhook sem verificacao"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature validation"
+    mitigacao: "PAY-018 signature"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-02
+    name: "Assinatura ativa apos cancelamento"
+    sintoma: "Evento nao processado"
+    causa_raiz: "Sem handler"
+    mitigacao: "Handler + revoke imediato"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-03
+    name: "Cobranca duplicada"
+    sintoma: "Invoice duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-04
+    name: "Imposto calculado errado"
+    sintoma: "Tax jurisdiction incorreta"
+    causa_raiz: "Sem tax validation"
+    mitigacao: "Tax gate por jurisdicao"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-05
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-06
+    name: "Preco errado por pais"
+    sintoma: "Localization incorreta"
+    causa_raiz: "Sem price localization check"
+    mitigacao: "Price localization gate"
+    severity: HIGH
+  - dor_id: D-S34-pd-07
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-08
+    name: "DLQ ausente"
+    sintoma: "Evento perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-09
+    name: "Trial sem dunning"
+    sintoma: "Sem aviso pre-cobranca"
+    causa_raiz: "Sem dunning"
+    mitigacao: "Dunning 7/3/1 dias"
+    severity: HIGH
+  - dor_id: D-S34-pd-10
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S34-pd-11
+    name: "Teste em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate"
+    severity: CRITICAL
+  - dor_id: D-S34-pd-12
+    name: "Invoice sem receipt"
+    sintoma: "Sem log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S34-pd-13
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash por invoice"
+    severity: HIGH
+  - dor_id: D-S34-pd-14
+    name: "Upgrade sem prorate"
+    sintoma: "Credito errado"
+    causa_raiz: "Sem prorate"
+    mitigacao: "Prorate gate"
+    severity: HIGH
+  - dor_id: D-S34-pd-15
+    name: "Compliance fiscal violado"
+    sintoma: "Regras de VAT ignoradas"
+    causa_raiz: "Sem VAT compliance gate"
+    mitigacao: "VAT compliance gate obrigatorio"
+    severity: CRITICAL

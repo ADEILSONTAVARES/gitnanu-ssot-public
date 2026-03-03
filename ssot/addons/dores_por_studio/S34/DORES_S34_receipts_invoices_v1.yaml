@@ -1,0 +1,96 @@
+# DORES_S34_receipts_invoices_v1
+studio_id: S34
+api: receipts.invoices
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S34-ri-01
+    name: "Receipt sem hash"
+    sintoma: "Comprovante sem integridade"
+    causa_raiz: "Sem hash por receipt"
+    mitigacao: "Hash obrigatorio por receipt"
+    severity: CRITICAL
+  - dor_id: D-S34-ri-02
+    name: "Invoice com valor errado"
+    sintoma: "Amount incorreto no documento"
+    causa_raiz: "Sem amount validation pre-emit"
+    mitigacao: "Gate amount pre-emissao"
+    severity: CRITICAL
+  - dor_id: D-S34-ri-03
+    name: "Receipt entregue para cliente errado"
+    sintoma: "customer_id nao validado"
+    causa_raiz: "Sem customer scope"
+    mitigacao: "customer_id gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-ri-04
+    name: "PII no receipt publicado"
+    sintoma: "Dados pessoais expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S34-ri-05
+    name: "Emissao sem aprovacao"
+    sintoma: "Documento critico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S34-ri-06
+    name: "Template errado aplicado"
+    sintoma: "Layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-ri-07
+    name: "Receipt sem timestamp"
+    sintoma: "Documento sem data"
+    causa_raiz: "Sem timestamp"
+    mitigacao: "Timestamp ISO8601 obrigatorio"
+    severity: HIGH
+  - dor_id: D-S34-ri-08
+    name: "Rollback impossivel"
+    sintoma: "Emissao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S34-ri-09
+    name: "Numeracao duplicada"
+    sintoma: "Dois documentos com mesmo numero"
+    causa_raiz: "Sem sequence check"
+    mitigacao: "Sequence lock obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S34-ri-10
+    name: "Receipt sem GNDrive"
+    sintoma: "Documento sem backup"
+    causa_raiz: "Sem publish gate"
+    mitigacao: "Publish obrigatorio pos-emissao"
+    severity: HIGH
+  - dor_id: D-S34-ri-11
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S34-ri-12
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash por invoice"
+    severity: HIGH
+  - dor_id: D-S34-ri-13
+    name: "Compliance fiscal violado"
+    sintoma: "Campos obrigatorios ausentes"
+    causa_raiz: "Sem compliance check"
+    mitigacao: "Compliance gate por jurisdicao"
+    severity: CRITICAL
+  - dor_id: D-S34-ri-14
+    name: "Custo sem limite"
+    sintoma: "Emissao em lote sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S34-ri-15
+    name: "Receipt alterado pos-emissao"
+    sintoma: "Documento mutavel"
+    causa_raiz: "Sem imutabilidade"
+    mitigacao: "Append-only + hash lock"
+    severity: CRITICAL

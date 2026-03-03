@@ -1,0 +1,96 @@
+# DORES_S34_recurly_v1
+studio_id: S34
+api: recurly
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S34-rc-01
+    name: "Assinatura ativa apos cancelamento"
+    sintoma: "Evento nao processado"
+    causa_raiz: "Sem handler"
+    mitigacao: "Handler + revoke imediato"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-02
+    name: "Webhook sem HMAC"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature"
+    mitigacao: "PAY-018 HMAC"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-03
+    name: "Cobranca duplicada"
+    sintoma: "Invoice duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-04
+    name: "Trial sem aviso"
+    sintoma: "Sem dunning"
+    causa_raiz: "Sem dunning policy"
+    mitigacao: "Dunning 7/3/1 dias"
+    severity: HIGH
+  - dor_id: D-S34-rc-05
+    name: "Preco errado"
+    sintoma: "Plan incorreto"
+    causa_raiz: "Sem plan validation"
+    mitigacao: "Plan gate pre-subscribe"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-06
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-07
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-08
+    name: "DLQ ausente"
+    sintoma: "Evento perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-09
+    name: "Upgrade sem prorate"
+    sintoma: "Credito errado"
+    causa_raiz: "Sem prorate"
+    mitigacao: "Prorate gate"
+    severity: HIGH
+  - dor_id: D-S34-rc-10
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S34-rc-11
+    name: "Teste em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate"
+    severity: CRITICAL
+  - dor_id: D-S34-rc-12
+    name: "Invoice sem receipt"
+    sintoma: "Sem log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S34-rc-13
+    name: "Metering incorreto"
+    sintoma: "Usage errado"
+    causa_raiz: "Sem usage validation"
+    mitigacao: "Usage gate"
+    severity: HIGH
+  - dor_id: D-S34-rc-14
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash por invoice"
+    severity: HIGH
+  - dor_id: D-S34-rc-15
+    name: "Dunning agressivo bloqueando cliente"
+    sintoma: "Conta suspensa prematuramente"
+    causa_raiz: "Sem grace period"
+    mitigacao: "Grace period obrigatorio"
+    severity: HIGH
