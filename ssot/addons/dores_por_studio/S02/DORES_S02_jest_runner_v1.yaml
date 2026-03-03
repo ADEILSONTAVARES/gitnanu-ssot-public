@@ -1,0 +1,96 @@
+# DORES_S02_jest_runner_v1
+studio_id: S02
+api: jest.runner
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-jr-01
+    name: "Suite executada sem aprovacao"
+    sintoma: "Execucao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S02-jr-02
+    name: "PII em snapshot"
+    sintoma: "Dado pessoal em test snapshot"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S02-jr-03
+    name: "API key em log"
+    sintoma: "Key vazando em output"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S02-jr-04
+    name: "Scope violation"
+    sintoma: "Teste acessa ambiente errado"
+    causa_raiz: "Sem env scope lock"
+    mitigacao: "Env scope lock"
+    severity: CRITICAL
+  - dor_id: D-S02-jr-05
+    name: "Coverage gate ignorado"
+    sintoma: "Codigo sem cobertura minima deployado"
+    causa_raiz: "Sem coverage gate"
+    mitigacao: "Coverage gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-jr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de report"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-jr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-jr-08
+    name: "Rollback impossivel"
+    sintoma: "Snapshot sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S02-jr-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S02-jr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S02-jr-11
+    name: "Flaky test sem deteccao"
+    sintoma: "Teste intermitente bloqueia pipeline"
+    causa_raiz: "Sem flaky detection"
+    mitigacao: "Flaky detection gate"
+    severity: HIGH
+  - dor_id: D-S02-jr-12
+    name: "Timeout sem killswitch"
+    sintoma: "Suite trava sem limite"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + killswitch"
+    severity: HIGH
+  - dor_id: D-S02-jr-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-jr-14
+    name: "Mock vazando para producao"
+    sintoma: "Mock de teste ativo em prod"
+    causa_raiz: "Sem mock isolation gate"
+    mitigacao: "Mock isolation gate"
+    severity: CRITICAL
+  - dor_id: D-S02-jr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

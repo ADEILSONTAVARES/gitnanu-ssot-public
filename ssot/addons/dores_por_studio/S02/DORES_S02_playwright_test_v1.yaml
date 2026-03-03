@@ -1,0 +1,96 @@
+# DORES_S02_playwright_test_v1
+studio_id: S02
+api: playwright.test
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-pt-01
+    name: "Teste executado sem aprovacao"
+    sintoma: "Execucao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S02-pt-02
+    name: "PII em screenshot"
+    sintoma: "Dado pessoal capturado em teste"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S02-pt-03
+    name: "API key em log"
+    sintoma: "Key vazando em output de teste"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S02-pt-04
+    name: "Scope violation"
+    sintoma: "Teste acessa ambiente errado"
+    causa_raiz: "Sem env scope lock"
+    mitigacao: "Env scope lock"
+    severity: CRITICAL
+  - dor_id: D-S02-pt-05
+    name: "Teste em producao"
+    sintoma: "Execucao em prod sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-pt-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de report"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-pt-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-pt-08
+    name: "Rollback impossivel"
+    sintoma: "Teste sem historico"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S02-pt-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S02-pt-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S02-pt-11
+    name: "Flaky test sem deteccao"
+    sintoma: "Teste intermitente bloqueia pipeline"
+    causa_raiz: "Sem flaky detection"
+    mitigacao: "Flaky detection gate"
+    severity: HIGH
+  - dor_id: D-S02-pt-12
+    name: "Timeout sem killswitch"
+    sintoma: "Suite trava sem limite"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + killswitch"
+    severity: HIGH
+  - dor_id: D-S02-pt-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-pt-14
+    name: "Credencial em teste"
+    sintoma: "Usuario de teste com senha real"
+    causa_raiz: "Sem test credential gate"
+    mitigacao: "Test credential gate"
+    severity: HIGH
+  - dor_id: D-S02-pt-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

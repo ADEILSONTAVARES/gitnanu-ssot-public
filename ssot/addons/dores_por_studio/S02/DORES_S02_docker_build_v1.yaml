@@ -1,0 +1,96 @@
+# DORES_S02_docker_build_v1
+studio_id: S02
+api: docker.build
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-db-01
+    name: "Imagem buildada sem aprovacao"
+    sintoma: "Build automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S02-db-02
+    name: "PII em layer de imagem"
+    sintoma: "Dado pessoal em dockerfile"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-build"
+    severity: CRITICAL
+  - dor_id: D-S02-db-03
+    name: "API key em log"
+    sintoma: "Key vazando em build log"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S02-db-04
+    name: "Scope violation"
+    sintoma: "Build acessa registry errado"
+    causa_raiz: "Sem registry scope lock"
+    mitigacao: "Registry scope lock"
+    severity: CRITICAL
+  - dor_id: D-S02-db-05
+    name: "Secret em dockerfile"
+    sintoma: "Secret hardcoded em imagem"
+    causa_raiz: "Sem secret scan"
+    mitigacao: "Secret scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-db-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de imagem"
+    causa_raiz: "Sem image digest"
+    mitigacao: "Image digest obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-db-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-db-08
+    name: "Rollback impossivel"
+    sintoma: "Imagem sem tag anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S02-db-09
+    name: "Build sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S02-db-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S02-db-11
+    name: "Base image vulneravel"
+    sintoma: "Imagem base com CVE critico"
+    causa_raiz: "Sem base image scan"
+    mitigacao: "Base image scan obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-db-12
+    name: "ENV gate ausente"
+    sintoma: "Build em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-db-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-db-14
+    name: "Timeout sem killswitch"
+    sintoma: "Build trava sem limite"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + killswitch"
+    severity: HIGH
+  - dor_id: D-S02-db-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
