@@ -1,0 +1,96 @@
+# DORES_S21_twilio_v1
+studio_id: S21
+api: twilio
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S21-tw-01
+    name: "SMS enviado para numero errado"
+    sintoma: "To number nao validado"
+    causa_raiz: "Sem number validation"
+    mitigacao: "Number validation gate pre-send"
+    severity: CRITICAL
+  - dor_id: D-S21-tw-02
+    name: "Auth token em log"
+    sintoma: "Token Twilio vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S21-tw-03
+    name: "SMS duplicado enviado"
+    sintoma: "Mesmo SMS duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency obrigatorio"
+    severity: HIGH
+  - dor_id: D-S21-tw-04
+    name: "PII em corpo do SMS"
+    sintoma: "Dado pessoal no texto"
+    causa_raiz: "Sem PII scan pre-send"
+    mitigacao: "PII scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-tw-05
+    name: "Webhook sem validacao"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature validation"
+    mitigacao: "Twilio signature validation"
+    severity: CRITICAL
+  - dor_id: D-S21-tw-06
+    name: "Opt-out ignorado"
+    sintoma: "SMS enviado apos descadastro"
+    causa_raiz: "Sem opt-out check"
+    mitigacao: "Opt-out check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-tw-07
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S21-tw-08
+    name: "Custo sem limite"
+    sintoma: "Envios sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S21-tw-09
+    name: "DLQ ausente"
+    sintoma: "Mensagem perdida"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S21-tw-10
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S21-tw-11
+    name: "Sandbox em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-tw-12
+    name: "Rollback impossivel"
+    sintoma: "SMS enviado sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S21-tw-13
+    name: "Numero nao verificado"
+    sintoma: "SMS para numero invalido"
+    causa_raiz: "Sem number lookup"
+    mitigacao: "Number lookup pre-send"
+    severity: HIGH
+  - dor_id: D-S21-tw-14
+    name: "Conteudo sem aprovacao"
+    sintoma: "Mensagem critica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S21-tw-15
+    name: "LGPD violada"
+    sintoma: "Envio sem base legal"
+    causa_raiz: "Sem consent check"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL

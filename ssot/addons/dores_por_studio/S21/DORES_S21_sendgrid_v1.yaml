@@ -1,0 +1,96 @@
+# DORES_S21_sendgrid_v1
+studio_id: S21
+api: sendgrid
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S21-sg-01
+    name: "Email enviado para endereco errado"
+    sintoma: "To nao validado"
+    causa_raiz: "Sem email validation"
+    mitigacao: "Email validation gate"
+    severity: CRITICAL
+  - dor_id: D-S21-sg-02
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S21-sg-03
+    name: "Email duplicado"
+    sintoma: "Mesmo email duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S21-sg-04
+    name: "PII em corpo do email"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S21-sg-05
+    name: "Webhook sem HMAC"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature"
+    mitigacao: "HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-sg-06
+    name: "Unsubscribe ignorado"
+    sintoma: "Email apos descadastro"
+    causa_raiz: "Sem unsubscribe check"
+    mitigacao: "Unsubscribe check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-sg-07
+    name: "Bounce nao tratado"
+    sintoma: "Envio para email invalido repetido"
+    causa_raiz: "Sem bounce handler"
+    mitigacao: "Bounce handler obrigatorio"
+    severity: HIGH
+  - dor_id: D-S21-sg-08
+    name: "Spam trap atingido"
+    sintoma: "Domain na blacklist"
+    causa_raiz: "Sem reputation monitor"
+    mitigacao: "Reputation monitor obrigatorio"
+    severity: HIGH
+  - dor_id: D-S21-sg-09
+    name: "Template errado"
+    sintoma: "Email com layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S21-sg-10
+    name: "Custo sem limite"
+    sintoma: "Envios sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S21-sg-11
+    name: "DLQ ausente"
+    sintoma: "Email perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S21-sg-12
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S21-sg-13
+    name: "Sandbox em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate"
+    severity: CRITICAL
+  - dor_id: D-S21-sg-14
+    name: "LGPD violada"
+    sintoma: "Envio sem consentimento"
+    causa_raiz: "Sem consent check"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S21-sg-15
+    name: "Dominio sem SPF/DKIM"
+    sintoma: "Email caindo em spam"
+    causa_raiz: "Sem DNS check"
+    mitigacao: "SPF+DKIM+DMARC gate"
+    severity: HIGH

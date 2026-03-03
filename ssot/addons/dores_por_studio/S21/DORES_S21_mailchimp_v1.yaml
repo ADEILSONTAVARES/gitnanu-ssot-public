@@ -1,0 +1,96 @@
+# DORES_S21_mailchimp_v1
+studio_id: S21
+api: mailchimp
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S21-mc-01
+    name: "Campanha enviada sem aprovacao"
+    sintoma: "Disparo automatico"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S21-mc-02
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S21-mc-03
+    name: "Unsubscribe ignorado"
+    sintoma: "Email apos opt-out"
+    causa_raiz: "Sem unsubscribe check"
+    mitigacao: "Unsubscribe check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-mc-04
+    name: "PII em campanha"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S21-mc-05
+    name: "Segmento errado"
+    sintoma: "Campanha para lista incorreta"
+    causa_raiz: "Sem segment validation"
+    mitigacao: "Segment validation gate"
+    severity: HIGH
+  - dor_id: D-S21-mc-06
+    name: "Bounce nao tratado"
+    sintoma: "Envio repetido para invalido"
+    causa_raiz: "Sem bounce handler"
+    mitigacao: "Bounce handler"
+    severity: HIGH
+  - dor_id: D-S21-mc-07
+    name: "Spam trap atingido"
+    sintoma: "Domain na blacklist"
+    causa_raiz: "Sem reputation monitor"
+    mitigacao: "Reputation monitor"
+    severity: HIGH
+  - dor_id: D-S21-mc-08
+    name: "Template errado"
+    sintoma: "Layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate"
+    severity: HIGH
+  - dor_id: D-S21-mc-09
+    name: "Custo sem limite"
+    sintoma: "Envios sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S21-mc-10
+    name: "DLQ ausente"
+    sintoma: "Email perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S21-mc-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S21-mc-12
+    name: "Webhook sem HMAC"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature"
+    mitigacao: "HMAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S21-mc-13
+    name: "LGPD violada"
+    sintoma: "Sem base legal"
+    causa_raiz: "Sem consent"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S21-mc-14
+    name: "A/B test sem rollback"
+    sintoma: "Variante errada sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S21-mc-15
+    name: "Automacao em loop"
+    sintoma: "Workflow sem criterio de saida"
+    causa_raiz: "Sem exit condition"
+    mitigacao: "Exit condition obrigatoria"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S21_slack_v1
+studio_id: S21
+api: slack
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S21-sl-01
+    name: "Bot token em log"
+    sintoma: "Token vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S21-sl-02
+    name: "Mensagem em canal errado"
+    sintoma: "channel_id nao validado"
+    causa_raiz: "Sem channel validation"
+    mitigacao: "channel_id gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-sl-03
+    name: "Webhook sem validacao"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature check"
+    mitigacao: "Slack signature obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-sl-04
+    name: "PII em mensagem"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S21-sl-05
+    name: "Mensagem duplicada"
+    sintoma: "Mesma msg duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S21-sl-06
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S21-sl-07
+    name: "Custo sem limite"
+    sintoma: "Envios sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S21-sl-08
+    name: "DLQ ausente"
+    sintoma: "Mensagem perdida"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S21-sl-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S21-sl-10
+    name: "Workspace scope violado"
+    sintoma: "Msg em workspace errado"
+    causa_raiz: "Sem workspace lock"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S21-sl-11
+    name: "Flood sem throttle"
+    sintoma: "Bot spammando canal"
+    causa_raiz: "Sem rate throttle"
+    mitigacao: "Rate throttle obrigatorio"
+    severity: HIGH
+  - dor_id: D-S21-sl-12
+    name: "Rollback impossivel"
+    sintoma: "Mensagem sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S21-sl-13
+    name: "Conteudo sem aprovacao"
+    sintoma: "Msg critica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S21-sl-14
+    name: "RBAC ausente"
+    sintoma: "Qualquer user postando"
+    causa_raiz: "Sem RBAC"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S21-sl-15
+    name: "LGPD violada"
+    sintoma: "Dado sem base legal"
+    causa_raiz: "Sem consent"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL

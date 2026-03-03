@@ -1,0 +1,96 @@
+# DORES_S21_firebase_fcm_v1
+studio_id: S21
+api: firebase.fcm
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S21-fcm-01
+    name: "Service account em log"
+    sintoma: "Credencial vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S21-fcm-02
+    name: "Push para device errado"
+    sintoma: "token nao validado"
+    causa_raiz: "Sem token validation"
+    mitigacao: "Token validation gate"
+    severity: HIGH
+  - dor_id: D-S21-fcm-03
+    name: "Notificacao duplicada"
+    sintoma: "Mesma push duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S21-fcm-04
+    name: "PII em payload"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S21-fcm-05
+    name: "Token expirado ignorado"
+    sintoma: "Push falhando silenciosamente"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh + cleanup"
+    severity: HIGH
+  - dor_id: D-S21-fcm-06
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S21-fcm-07
+    name: "Custo sem limite"
+    sintoma: "Envios sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S21-fcm-08
+    name: "DLQ ausente"
+    sintoma: "Push perdida"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S21-fcm-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S21-fcm-10
+    name: "Topic sem scope"
+    sintoma: "Push para topico errado"
+    causa_raiz: "Sem topic lock"
+    mitigacao: "Topic scope lock"
+    severity: HIGH
+  - dor_id: D-S21-fcm-11
+    name: "Flood sem throttle"
+    sintoma: "Notificacoes em excesso"
+    causa_raiz: "Sem throttle"
+    mitigacao: "Rate throttle"
+    severity: HIGH
+  - dor_id: D-S21-fcm-12
+    name: "Rollback impossivel"
+    sintoma: "Push sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S21-fcm-13
+    name: "Conteudo sem aprovacao"
+    sintoma: "Push critica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S21-fcm-14
+    name: "Sandbox em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate"
+    severity: CRITICAL
+  - dor_id: D-S21-fcm-15
+    name: "LGPD violada"
+    sintoma: "Dado sem base legal"
+    causa_raiz: "Sem consent"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL

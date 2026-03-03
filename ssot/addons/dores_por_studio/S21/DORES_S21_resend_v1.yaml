@@ -1,0 +1,96 @@
+# DORES_S21_resend_v1
+studio_id: S21
+api: resend
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S21-rs-01
+    name: "Email enviado sem aprovacao"
+    sintoma: "Disparo automatico"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S21-rs-02
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S21-rs-03
+    name: "Email duplicado"
+    sintoma: "Mesmo email duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S21-rs-04
+    name: "PII em email"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S21-rs-05
+    name: "Webhook sem HMAC"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature"
+    mitigacao: "HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S21-rs-06
+    name: "Unsubscribe ignorado"
+    sintoma: "Email apos opt-out"
+    causa_raiz: "Sem unsubscribe check"
+    mitigacao: "Unsubscribe check"
+    severity: CRITICAL
+  - dor_id: D-S21-rs-07
+    name: "Bounce nao tratado"
+    sintoma: "Envio repetido para invalido"
+    causa_raiz: "Sem bounce handler"
+    mitigacao: "Bounce handler"
+    severity: HIGH
+  - dor_id: D-S21-rs-08
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S21-rs-09
+    name: "Custo sem limite"
+    sintoma: "Envios sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S21-rs-10
+    name: "DLQ ausente"
+    sintoma: "Email perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S21-rs-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S21-rs-12
+    name: "Dominio sem SPF/DKIM"
+    sintoma: "Email em spam"
+    causa_raiz: "Sem DNS check"
+    mitigacao: "SPF+DKIM+DMARC gate"
+    severity: HIGH
+  - dor_id: D-S21-rs-13
+    name: "LGPD violada"
+    sintoma: "Sem consent"
+    causa_raiz: "Sem consent check"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S21-rs-14
+    name: "Template errado"
+    sintoma: "Layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate"
+    severity: HIGH
+  - dor_id: D-S21-rs-15
+    name: "Sandbox em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate"
+    severity: CRITICAL
