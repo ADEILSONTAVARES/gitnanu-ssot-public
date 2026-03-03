@@ -1,0 +1,96 @@
+# DORES_S36_role_permission_matrix_v1
+studio_id: S36
+api: role.permission.matrix
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S36-rp-01
+    name: "Matrix publicada sem aprovacao"
+    sintoma: "Atualizacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S36-rp-02
+    name: "PII em matrix"
+    sintoma: "Dado pessoal em definicao de role"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S36-rp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S36-rp-04
+    name: "Scope violation"
+    sintoma: "Matrix aplicada em workspace errado"
+    causa_raiz: "Sem workspace scope lock"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S36-rp-05
+    name: "Privilegio excessivo na matrix"
+    sintoma: "Role com permissoes alem do necessario"
+    causa_raiz: "Sem least privilege validation"
+    mitigacao: "Least privilege validation"
+    severity: CRITICAL
+  - dor_id: D-S36-rp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S36-rp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S36-rp-08
+    name: "Rollback impossivel"
+    sintoma: "Matrix sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S36-rp-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S36-rp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S36-rp-11
+    name: "Conflito de roles"
+    sintoma: "Usuario em dois roles incompativeis"
+    causa_raiz: "Sem role conflict gate"
+    mitigacao: "Role conflict gate"
+    severity: HIGH
+  - dor_id: D-S36-rp-12
+    name: "Matrix desatualizada"
+    sintoma: "Role sem revisao periodica"
+    causa_raiz: "Sem role review gate"
+    mitigacao: "Role review gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S36-rp-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S36-rp-14
+    name: "LGPD nao atendida"
+    sintoma: "Acesso sem base legal documentada"
+    causa_raiz: "Sem LGPD gate"
+    mitigacao: "LGPD gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S36-rp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

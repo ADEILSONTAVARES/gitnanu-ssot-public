@@ -1,0 +1,96 @@
+# DORES_S36_notion_members_v1
+studio_id: S36
+api: notion.members
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S36-nm-01
+    name: "Membro adicionado sem aprovacao"
+    sintoma: "Convite automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S36-nm-02
+    name: "PII em workspace"
+    sintoma: "Dado pessoal exposto em pagina"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-share"
+    severity: CRITICAL
+  - dor_id: D-S36-nm-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S36-nm-04
+    name: "Scope violation"
+    sintoma: "Acesso em workspace errado"
+    causa_raiz: "Sem workspace scope lock"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S36-nm-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado compartilhado sem consentimento"
+    causa_raiz: "Sem LGPD gate"
+    mitigacao: "LGPD gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S36-nm-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S36-nm-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S36-nm-08
+    name: "Rollback impossivel"
+    sintoma: "Permissao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S36-nm-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S36-nm-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S36-nm-11
+    name: "Privilegio excessivo"
+    sintoma: "Membro recebe Full Access sem necessidade"
+    causa_raiz: "Sem least privilege gate"
+    mitigacao: "Least privilege gate"
+    severity: CRITICAL
+  - dor_id: D-S36-nm-12
+    name: "Pagina publica sem gate"
+    sintoma: "Conteudo interno exposto publicamente"
+    causa_raiz: "Sem public page gate"
+    mitigacao: "Public page gate"
+    severity: HIGH
+  - dor_id: D-S36-nm-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S36-nm-14
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S36-nm-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
