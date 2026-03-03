@@ -1,0 +1,191 @@
+# CONNECTORS_MASTER_v1 — APIs por Studio S36-S51
+version: 1
+source: SSOT_OG10_BASILEIA_52
+studios:
+  S36:
+    total_connectors: 8
+    connectors:
+      - rbac.core
+      - abac.core
+      - workos.sso.scim
+      - passkeys.webauthn
+      - audit.log.engine
+      - invites.org.policy
+      - okta.auth0.clerk
+      - device.trust
+  S37:
+    total_connectors: 9
+    connectors:
+      - zendesk
+      - intercom
+      - freshdesk
+      - helpscout
+      - sentry.alerts
+      - statuspage
+      - nanucai.gammanote
+      - gmail.intake
+      - highlevel.crm
+  S38:
+    total_connectors: 10
+    connectors:
+      - google.stt
+      - openai.stt
+      - elevenlabs.tts
+      - kokoro.tts
+      - deepl
+      - caption.pipeline
+      - playwright.a11y
+      - axe.wcag
+      - voice.control.hooks
+      - avatar.sinais
+  S39:
+    total_connectors: 8
+    connectors:
+      - trellis2
+      - hunyuan.scene3d
+      - hunyuan.worldplay
+      - export.glb.fbx.usdz
+      - pbr.texture
+      - mesh.qa
+      - 3d.viewer.web
+      - asset.metadata.gndrive
+  S40:
+    total_connectors: 8
+    connectors:
+      - cults.connector
+      - sketchfab.connector
+      - cgtrader.connector
+      - turbosquid.connector
+      - licensing.checker
+      - publishing.packager
+      - watermark.provenance
+      - payout.rules
+  S41:
+    total_connectors: 9
+    connectors:
+      - connector.naming.rules
+      - capabilities.schema
+      - auth.schema
+      - warm.band.field
+      - cost.field
+      - quota.field
+      - reserved.handling
+      - detetive7x.queue
+      - mcp.versioning
+  S42:
+    total_connectors: 9
+    connectors:
+      - action.naming
+      - job_request.schema
+      - job_result.schema
+      - idempotency.key.rules
+      - retry.rules
+      - rollback.hooks
+      - risk.classification
+      - evidence.attachment
+      - rate.limit.rules
+  S43:
+    total_connectors: 9
+    connectors:
+      - palette.coverage.check
+      - sidebar.coverage.check
+      - slash.coverage.check
+      - mouse.coverage.check
+      - voice.coverage.check
+      - build.fail.policy
+      - tombstone.policy
+      - studio.visibility.rules
+      - overlay.coverage.check
+  S44:
+    total_connectors: 8
+    connectors:
+      - mcp.template.generator
+      - connector.to.mcp.mapping
+      - schema.scaffolding
+      - n8n.tool.wrapper
+      - auth.adapter.templates
+      - observability.hooks
+      - retry.backoff.templates
+      - cost.metering.hooks
+  S45:
+    total_connectors: 8
+    connectors:
+      - solo.locked.rule
+      - top1.top2.selection
+      - shadow.routing.bands
+      - hedge.trigger.rules
+      - budget.guard.integration
+      - cache.coalescing.rules
+      - p95.routing.goals
+      - failover.policy
+  S46:
+    total_connectors: 9
+    connectors:
+      - preflight.checks
+      - postflight.checks
+      - secrets.guard
+      - delete.guard
+      - deploy.guard
+      - billing.guard
+      - policy.dsl
+      - human.approval
+      - audit.summary
+  S47:
+    total_connectors: 8
+    connectors:
+      - bench60.global
+      - domain.a.bench150
+      - domain.b.bench150
+      - council.100x3.triggers
+      - flaky.budget.rules
+      - mcp.coverage.scoring
+      - tool.success.scoring
+      - report.pack.export
+  S48:
+    total_connectors: 9
+    connectors:
+      - payload.hash
+      - latency.capture
+      - error.capture
+      - cost.capture
+      - replay.runner
+      - idempotency.tracking
+      - rate.limit.tracking
+      - diff.linkage.pr
+      - run_id.indexing
+  S49:
+    total_connectors: 9
+    connectors:
+      - evidence_item.schema
+      - undo_token.schema
+      - manifest.json.generator
+      - hash.tree
+      - bundle.export
+      - artifact.retention
+      - link.to.pr
+      - timeline.gammanote
+      - restore.recipes
+  S50:
+    total_connectors: 9
+    connectors:
+      - key.versioning
+      - ttl.classes
+      - lock.lease.rules
+      - anti.stampede
+      - poisoning.guard
+      - macro.micro.compat
+      - cache.learn.rules
+      - hot.cache.rules
+      - coalescing.rules
+  S51:
+    total_connectors: 9
+    connectors:
+      - rag3.trim.twin.quantum
+      - rag.familia7.registry
+      - lta.policies
+      - crew.overlay.map
+      - memory.pack.sizes
+      - retrieval.gates
+      - evidence.aware.retrieval
+      - recipe.reuse.rules
+      - poison.guard.rules

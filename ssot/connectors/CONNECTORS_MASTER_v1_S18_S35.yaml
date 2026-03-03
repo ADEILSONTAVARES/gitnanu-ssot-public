@@ -1,0 +1,238 @@
+# CONNECTORS_MASTER_v1 — APIs por Studio S18-S35
+version: 1
+source: SSOT_OG10_BASILEIA_52
+studios:
+  S18:
+    total_connectors: 9
+    connectors:
+      - stripe.billing
+      - stripe.checkout
+      - membership.gating
+      - community.connector
+      - notifications.engine
+      - nanucai.gndrive
+      - ga4.data
+      - posthog
+      - support.hooks
+  S19:
+    total_connectors: 11
+    connectors:
+      - serp.websearch
+      - google.maps.directions
+      - google.distance_matrix
+      - google.places
+      - google.geocoding
+      - mapbox
+      - here.tomtom
+      - openrouteservice
+      - youtube.data
+      - trends.pipeline
+      - workspace.pois
+  S20:
+    total_connectors: 8
+    connectors:
+      - consent.manager
+      - secure.link.vault
+      - expiring.otp
+      - access.logs
+      - audit.export
+      - key.rotation
+      - device.attestation
+      - export.codeonly
+  S21:
+    total_connectors: 11
+    connectors:
+      - whatsapp.cloud
+      - telegram.bot
+      - sendgrid
+      - postmark
+      - mailgun
+      - gmail.api
+      - nmail.cofre
+      - dns.spf.dkim.dmarc
+      - twilio.sms
+      - kingsender.pro
+      - salesmartly
+  S22:
+    total_connectors: 10
+    connectors:
+      - instagram.graph
+      - meta.graph
+      - youtube.data
+      - tiktok.publish
+      - x.api
+      - n8n
+      - make
+      - zapier
+      - geelark
+      - utm.shortlink
+  S23:
+    total_connectors: 9
+    connectors:
+      - meta.marketing
+      - google.ads
+      - tiktok.ads
+      - linkedin.marketing
+      - meta.capi
+      - ga4.data
+      - search.console
+      - geelark
+      - utm.shortlink
+  S24:
+    total_connectors: 10
+    connectors:
+      - youtube.analytics
+      - youtube.data
+      - instagram.insights
+      - tiktok.insights
+      - ga4.data
+      - runway
+      - klingai
+      - openai.image15
+      - nanobanana
+      - stt.ritmo
+  S25:
+    total_connectors: 11
+    connectors:
+      - meta.lead.ads
+      - google.lead.forms
+      - linkedin.lead.gen
+      - tiktok.instant.forms
+      - whatsapp.cloud
+      - email.cadences
+      - highlevel
+      - salesmartly
+      - wisemind
+      - phantombuster
+      - geelark
+  S26:
+    total_connectors: 9
+    connectors:
+      - highlevel
+      - salesmartly
+      - wisemind
+      - dealism
+      - kingsender.pro
+      - whatsapp.followup
+      - email.cadences
+      - stripe.webhooks
+      - n8n.pipeline
+  S27:
+    total_connectors: 10
+    connectors:
+      - cloudflare.dns
+      - cloudflare.workers
+      - cloudflare.pages
+      - ssl.acme
+      - uptime.monitor
+      - reputation.monitor
+      - nmail.deliverability
+      - registrar.api
+      - proxy.rotator
+      - github.actions.deploy
+  S28:
+    total_connectors: 9
+    connectors:
+      - app.shell.whitelabel
+      - checkin.wifi
+      - presence.qr
+      - whatsapp.cloud
+      - calendar.api
+      - stripe.checkout
+      - rbac.abac
+      - presence.n8n
+      - nanucai.gndrive
+  S29:
+    total_connectors: 11
+    connectors:
+      - obs.websocket
+      - vmix.api
+      - propresenter
+      - holyrics
+      - resolume.arena
+      - madmapper
+      - easyworship
+      - openlp
+      - mediashout
+      - ndi.tooling
+      - rtmp.srt
+  S30:
+    total_connectors: 14
+    connectors:
+      - zoom.api
+      - webrtc
+      - stt.realtime.google
+      - stt.realtime.openai
+      - translate.deepl
+      - translate.google
+      - tts.elevenlabs
+      - tts.kokoro
+      - tts.hailuo
+      - avatar.heygen
+      - avatar.arcads
+      - latentsync
+      - replay.gndrive
+      - live.caption
+  S31:
+    total_connectors: 9
+    connectors:
+      - hotmart.affiliates
+      - eduzz
+      - kiwify
+      - amazon.associates
+      - royalties.ledger
+      - utm.shortlink
+      - fraud.guard
+      - split.rules
+      - payout.engine
+  S32:
+    total_connectors: 11
+    connectors:
+      - amazon.kdp
+      - apple.books
+      - google.play.books
+      - kobo
+      - draft2digital
+      - ingramspark
+      - acx.findaway
+      - onix.metadata
+      - epubcheck
+      - calibre.cli
+      - nanucai.gndrive
+  S33:
+    total_connectors: 9
+    connectors:
+      - youtube.data
+      - youtube.analytics
+      - firecrawl
+      - playwright
+      - serp.websearch
+      - notebooklm
+      - gemini.flash
+      - nanucai.gndrive
+      - trend.radar
+  S34:
+    total_connectors: 8
+    connectors:
+      - stripe.billing
+      - chargebee
+      - recurly
+      - paddle
+      - openmetr.metronome
+      - nanucai.evidence_ledger
+      - stripe.tax
+      - receipts.invoices
+  S35:
+    total_connectors: 11
+    connectors:
+      - stripe.payments
+      - mercadopago
+      - pagseguro
+      - adyen
+      - checkout.com
+      - dlocal
+      - braintree.paypal
+      - apple.pay
+      - google.pay
+      - card.brands
+      - fraud.rules

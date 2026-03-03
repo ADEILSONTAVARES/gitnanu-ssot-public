@@ -1,0 +1,248 @@
+# CONNECTORS_MASTER_v1 — APIs por Studio S00-S17
+version: 1
+source: SSOT_OG10_BASILEIA_52
+studios:
+  S00:
+    total_connectors: 12
+    connectors:
+      - nanucai.gammanote
+      - nanucai.gndrive
+      - nanucai.prm
+      - agno
+      - playwright
+      - firecrawl
+      - serp.websearch
+      - sentry
+      - context7
+      - ocr.engine
+      - pdf.engine
+      - nanucai.evidence_ledger
+  S01:
+    total_connectors: 14
+    connectors:
+      - google.docs
+      - google.drive
+      - microsoft.graph
+      - notebooklm
+      - fliphtml5
+      - wondershare.pdfelement
+      - ocr.engine
+      - pdf.engine
+      - deepl
+      - paninitranslate
+      - epubcheck
+      - calibre.cli
+      - openai.gpt
+      - anthropic.claude
+  S02:
+    total_connectors: 20
+    connectors:
+      - replit
+      - antigravity
+      - manus
+      - abacus
+      - lovable
+      - base44
+      - cursor
+      - trae.solo
+      - bolt
+      - claudecode
+      - codex
+      - blackbox.ai
+      - tile.dev
+      - kilo
+      - bun
+      - line_profiler
+      - kernprof
+      - context7
+      - sentry
+      - playwright
+  S03:
+    total_connectors: 12
+    connectors:
+      - runway.gen45
+      - klingai.v26
+      - klingai.o1
+      - invideo
+      - nemo.video
+      - wan.v26
+      - luma.dreammachine
+      - gen3.alpha
+      - makereels
+      - creatify
+      - motionstream
+      - luciotion
+  S04:
+    total_connectors: 11
+    connectors:
+      - openai.image15
+      - nanobanana.pro
+      - flux2.pro
+      - qwen.image
+      - lovart
+      - leonardo.blueprints
+      - z-image
+      - betterpic
+      - manus.designview
+      - bloom.ai
+      - synthid
+  S05:
+    total_connectors: 11
+    connectors:
+      - elevenlabs
+      - kokoro
+      - hailuo.v26
+      - openai.stt
+      - openai.tts
+      - google.stt
+      - google.tts
+      - google.aistudio.voice
+      - latentsync
+      - heygen
+      - meta.audio
+  S06:
+    total_connectors: 9
+    connectors:
+      - suno
+      - udio
+      - sonauto
+      - dj.studio
+      - mixboard
+      - stem.separation
+      - mix.master.loudness
+      - meta.audio
+      - audio.tagging
+  S07:
+    total_connectors: 10
+    connectors:
+      - runway
+      - klingai
+      - youtube.data
+      - youtube.analytics
+      - instagram.graph
+      - tiktok.insights
+      - makereels
+      - creatify
+      - ffmpeg.pipeline
+      - caption.pipeline
+  S08:
+    total_connectors: 10
+    connectors:
+      - google.stt
+      - openai.stt
+      - elevenlabs.tts
+      - kokoro.tts
+      - deepl
+      - paninitranslate
+      - caption.pipeline
+      - playwright.a11y
+      - axe.wcag
+      - avatar.sinais
+  S09:
+    total_connectors: 9
+    connectors:
+      - oauth.google
+      - oauth.microsoft
+      - oauth.meta
+      - webhooks.generic
+      - api.key.vault
+      - consent.permissions
+      - connector.directory
+      - mcp.discovery
+      - n8n.bridge
+  S10:
+    total_connectors: 9
+    connectors:
+      - n8n
+      - make
+      - zapier
+      - webhooks
+      - scheduler.cron
+      - queues.jobs
+      - dlq.replay
+      - bun.runtime
+      - pica.os
+  S11:
+    total_connectors: 9
+    connectors:
+      - ga4.data
+      - youtube.analytics
+      - sentry.metrics
+      - google.sheets
+      - metabase
+      - posthog
+      - mixpanel
+      - amplitude
+      - cost.latency.report
+  S12:
+    total_connectors: 8
+    connectors:
+      - nanucai.gndrive
+      - asset.storage.r2
+      - brandkit.store
+      - template.marketplace
+      - licensing.checker
+      - mockup.export
+      - 3d.asset.bridge
+      - synthid
+  S13:
+    total_connectors: 8
+    connectors:
+      - deepl
+      - paninitranslate
+      - google.translate
+      - subtitle.aligner
+      - stt.multiidioma
+      - tts.multiidioma
+      - locale.pack
+      - terminology.glossary
+  S14:
+    total_connectors: 8
+    connectors:
+      - quiz.engine
+      - youtube.hosting
+      - vimeo.hosting
+      - pdf.engine
+      - tts.engine
+      - badge.certification
+      - lms.connectors
+      - nanucai.gndrive
+  S15:
+    total_connectors: 9
+    connectors:
+      - amazon.catalog
+      - mercadolivre.catalog
+      - reviews.fetch
+      - price.tracker
+      - deal.finder
+      - offer.builder
+      - compare.engine
+      - saasworthy
+      - affiliate.link
+  S16:
+    total_connectors: 12
+    connectors:
+      - amadeus
+      - sabre
+      - travelport
+      - duffel
+      - kiwi.tequila
+      - skyscanner
+      - booking.hotel
+      - google.maps
+      - playwright
+      - firecrawl
+      - whatsapp.cloud
+      - voucher.packager
+  S17:
+    total_connectors: 9
+    connectors:
+      - wondershare.pdfelement
+      - ocr.engine
+      - pdf.engine
+      - docx.engine
+      - template.engine
+      - deepl
+      - paninitranslate
+      - e-sign
+      - nanucai.gndrive
