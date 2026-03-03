@@ -1,0 +1,96 @@
+# DORES_S31_loki_grafana_v1
+studio_id: S31
+api: loki.grafana
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S31-lg-01
+    name: "Log stream configurado sem aprovacao"
+    sintoma: "Config automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S31-lg-02
+    name: "PII em log"
+    sintoma: "Dado pessoal em linha de log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-ingest"
+    severity: CRITICAL
+  - dor_id: D-S31-lg-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S31-lg-04
+    name: "Scope violation"
+    sintoma: "Log acessa tenant errado"
+    causa_raiz: "Sem tenant scope lock"
+    mitigacao: "Tenant scope lock"
+    severity: CRITICAL
+  - dor_id: D-S31-lg-05
+    name: "LGPD nao atendida"
+    sintoma: "Log retido alem do prazo"
+    causa_raiz: "Sem retention policy gate"
+    mitigacao: "Retention policy gate"
+    severity: CRITICAL
+  - dor_id: D-S31-lg-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-lg-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S31-lg-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S31-lg-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log do log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S31-lg-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S31-lg-11
+    name: "Alerta sem notificacao"
+    sintoma: "Threshold sem canal de alerta"
+    causa_raiz: "Sem notification gate"
+    mitigacao: "Notification gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-lg-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-lg-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-lg-14
+    name: "Anomalia nao detectada"
+    sintoma: "Spike de logs sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-lg-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S31_elastic_apm_v1
+studio_id: S31
+api: elastic.apm
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S31-ea-01
+    name: "APM configurado sem aprovacao"
+    sintoma: "Config automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S31-ea-02
+    name: "PII em trace"
+    sintoma: "Dado pessoal em transaction data"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-ingest"
+    severity: CRITICAL
+  - dor_id: D-S31-ea-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S31-ea-04
+    name: "Scope violation"
+    sintoma: "APM acessa indice errado"
+    causa_raiz: "Sem index scope lock"
+    mitigacao: "Index scope lock"
+    severity: CRITICAL
+  - dor_id: D-S31-ea-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado retido alem do prazo"
+    causa_raiz: "Sem retention policy gate"
+    mitigacao: "Retention policy gate"
+    severity: CRITICAL
+  - dor_id: D-S31-ea-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-ea-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de ingestao"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S31-ea-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S31-ea-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S31-ea-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S31-ea-11
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-ea-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-ea-13
+    name: "Timeout sem fallback"
+    sintoma: "Ingestao trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S31-ea-14
+    name: "Anomalia nao detectada"
+    sintoma: "Latencia elevada sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-ea-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
