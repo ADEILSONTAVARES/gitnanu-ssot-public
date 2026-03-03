@@ -1,0 +1,96 @@
+# DORES_S23_meta_capi_v1
+studio_id: S23
+api: meta.capi
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S23-mc-01
+    name: "Evento enviado sem aprovacao"
+    sintoma: "Conversao enviada automaticamente"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S23-mc-02
+    name: "PII em evento"
+    sintoma: "Dado pessoal em payload CAPI"
+    causa_raiz: "Sem PII hash obrigatorio"
+    mitigacao: "PII hash SHA256 obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S23-mc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S23-mc-04
+    name: "Scope violation"
+    sintoma: "Evento em pixel errado"
+    causa_raiz: "Sem pixel scope lock"
+    mitigacao: "Pixel scope lock"
+    severity: CRITICAL
+  - dor_id: D-S23-mc-05
+    name: "Deduplicacao ausente"
+    sintoma: "Evento duplicado enviado"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S23-mc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-mc-07
+    name: "Rollback impossivel"
+    sintoma: "Evento sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S23-mc-08
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S23-mc-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S23-mc-10
+    name: "Evento atrasado"
+    sintoma: "Conversao com timestamp defasado"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-mc-11
+    name: "Test mode em producao"
+    sintoma: "Eventos de teste em prod"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S23-mc-12
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-mc-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-mc-14
+    name: "Timeout sem fallback"
+    sintoma: "Pipeline trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S23-mc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

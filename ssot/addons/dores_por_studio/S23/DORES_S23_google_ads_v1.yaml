@@ -1,0 +1,96 @@
+# DORES_S23_google_ads_v1
+studio_id: S23
+api: google.ads
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S23-ga-01
+    name: "Campanha publicada sem aprovacao"
+    sintoma: "Lancamento automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S23-ga-02
+    name: "PII em audiencia"
+    sintoma: "Dado pessoal em customer match"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-upload"
+    severity: CRITICAL
+  - dor_id: D-S23-ga-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S23-ga-04
+    name: "Scope violation"
+    sintoma: "Campanha em conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S23-ga-05
+    name: "Budget sem limite"
+    sintoma: "Gasto sem teto"
+    causa_raiz: "Sem budget cap"
+    mitigacao: "Budget cap obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S23-ga-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-ga-07
+    name: "Rollback impossivel"
+    sintoma: "Campanha sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S23-ga-08
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S23-ga-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S23-ga-10
+    name: "Anomalia de gasto"
+    sintoma: "Spike sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-ga-11
+    name: "UTM ausente"
+    sintoma: "Campanha sem rastreamento"
+    causa_raiz: "Sem UTM gate"
+    mitigacao: "UTM gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-ga-12
+    name: "Ads-safe gate ausente"
+    sintoma: "Conteudo sensivel em ad"
+    causa_raiz: "Sem ads-safe gate"
+    mitigacao: "Ads-safe gate CRITICAL"
+    severity: CRITICAL
+  - dor_id: D-S23-ga-13
+    name: "Quota estourada"
+    sintoma: "Request bloqueado"
+    causa_raiz: "Sem quota monitor"
+    mitigacao: "Quota monitor obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-ga-14
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-ga-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

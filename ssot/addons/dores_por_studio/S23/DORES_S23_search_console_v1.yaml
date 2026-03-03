@@ -1,0 +1,96 @@
+# DORES_S23_search_console_v1
+studio_id: S23
+api: search.console
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S23-sc-01
+    name: "Relatorio exportado sem aprovacao"
+    sintoma: "Export automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S23-sc-02
+    name: "PII em relatorio"
+    sintoma: "Dado pessoal em export"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S23-sc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S23-sc-04
+    name: "Scope violation"
+    sintoma: "Acesso a propriedade errada"
+    causa_raiz: "Sem property scope lock"
+    mitigacao: "Property scope lock"
+    severity: CRITICAL
+  - dor_id: D-S23-sc-05
+    name: "Dados desatualizados"
+    sintoma: "Relatorio com metricas velhas"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-sc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-sc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S23-sc-08
+    name: "Rollback impossivel"
+    sintoma: "Export sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S23-sc-09
+    name: "Export sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S23-sc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S23-sc-11
+    name: "Anomalia nao detectada"
+    sintoma: "Queda de impressoes sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-sc-12
+    name: "Quota estourada"
+    sintoma: "Request bloqueado"
+    causa_raiz: "Sem quota monitor"
+    mitigacao: "Quota monitor obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-sc-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-sc-14
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S23-sc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
