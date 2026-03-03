@@ -1,0 +1,57 @@
+# WORKFLOW_REGISTRY_v1 — 52 workflows canonicos
+version: 1
+total: 52
+defaults: {requires_approval: true, receipts: true, doctor_gate: DOCTOR1}
+workflows:
+  - {workflow_id: WF-S00-01, studio_id: S00, name: "GammaNotion session init", stages: "ingest>parse>enrich>validate>assemble>publish", status: DEFINED}
+  - {workflow_id: WF-S01-01, studio_id: S01, name: "WorGamma longform write", stages: "ingest>outline>draft>review>finalize>publish", status: DEFINED}
+  - {workflow_id: WF-S02-01, studio_id: S02, name: "IDE scaffold + build", stages: "scaffold>config>generate>validate>preview>deploy", status: DEFINED}
+  - {workflow_id: WF-S03-01, studio_id: S03, name: "Video generation pipeline", stages: "brief>storyboard>generate>edit>review>export", status: DEFINED}
+  - {workflow_id: WF-S04-01, studio_id: S04, name: "Image design pipeline", stages: "brief>generate>variants>select>refine>export", status: DEFINED}
+  - {workflow_id: WF-S05-01, studio_id: S05, name: "TTS/STT pipeline", stages: "text_in>normalize>synthesize>review>export", status: DEFINED}
+  - {workflow_id: WF-S06-01, studio_id: S06, name: "Music generation pipeline", stages: "brief>generate>mix>master>export", status: DEFINED}
+  - {workflow_id: WF-S07-01, studio_id: S07, name: "Shorts repurpose pipeline", stages: "ingest>clip>caption>brand>export>distribute", status: DEFINED}
+  - {workflow_id: WF-S08-01, studio_id: S08, name: "Accessibility mode", stages: "detect>configure>apply>test>save", status: DEFINED}
+  - {workflow_id: WF-S09-01, studio_id: S09, name: "Integration connect", stages: "discover>configure>test>activate>monitor", status: DEFINED}
+  - {workflow_id: WF-S10-01, studio_id: S10, name: "Automation build", stages: "design>configure>test>activate>monitor", status: DEFINED}
+  - {workflow_id: WF-S11-01, studio_id: S11, name: "Dashboard report", stages: "collect>process>visualize>review>publish", status: DEFINED}
+  - {workflow_id: WF-S12-01, studio_id: S12, name: "Asset library update", stages: "ingest>tag>validate>index>publish", status: DEFINED}
+  - {workflow_id: WF-S13-01, studio_id: S13, name: "i18n translation", stages: "extract>translate>review>validate>deploy", status: DEFINED}
+  - {workflow_id: WF-S14-01, studio_id: S14, name: "Course publish", stages: "create>review>publish>enroll>track", status: DEFINED}
+  - {workflow_id: WF-S15-01, studio_id: S15, name: "Marketplace listing", stages: "create>price>images>publish>monitor", status: DEFINED}
+  - {workflow_id: WF-S16-01, studio_id: S16, name: "Travel booking", stages: "search>compare>book>confirm>notify", status: DEFINED}
+  - {workflow_id: WF-S17-01, studio_id: S17, name: "Document pro pipeline", stages: "ingest>ocr>structure>review>export", status: DEFINED}
+  - {workflow_id: WF-S18-01, studio_id: S18, name: "Community onboard", stages: "invite>verify>welcome>assign_role>activate", status: DEFINED}
+  - {workflow_id: WF-S19-01, studio_id: S19, name: "NcAI search + research", stages: "query>search>aggregate>synthesize>report", status: DEFINED}
+  - {workflow_id: WF-S20-01, studio_id: S20, name: "Privacy audit", stages: "collect>classify>redact>report>archive", status: DEFINED}
+  - {workflow_id: WF-S21-01, studio_id: S21, name: "Mensageria blast", stages: "compose>review>schedule>send>track", status: DEFINED}
+  - {workflow_id: WF-S22-01, studio_id: S22, name: "Social automation post", stages: "draft>approve>schedule>publish>monitor", status: DEFINED}
+  - {workflow_id: WF-S23-01, studio_id: S23, name: "AdsOps campaign", stages: "brief>create>review>launch>monitor>optimize", status: DEFINED}
+  - {workflow_id: WF-S24-01, studio_id: S24, name: "Viral metrics report", stages: "collect>process>analyze>visualize>report", status: DEFINED}
+  - {workflow_id: WF-S25-01, studio_id: S25, name: "Lead capture pipeline", stages: "form>validate>enrich>score>route>notify", status: DEFINED}
+  - {workflow_id: WF-S26-01, studio_id: S26, name: "CRM lead pipeline", stages: "capture>enrich>score>assign>follow_up", status: DEFINED}
+  - {workflow_id: WF-S27-01, studio_id: S27, name: "Domain deploy pipeline", stages: "dns_check>configure>deploy>verify>monitor", status: DEFINED}
+  - {workflow_id: WF-S28-01, studio_id: S28, name: "Church app shell build", stages: "template>customize>content>review>deploy", status: DEFINED}
+  - {workflow_id: WF-S29-01, studio_id: S29, name: "Live stream setup", stages: "configure>test>go_live>monitor>archive", status: DEFINED}
+  - {workflow_id: WF-S30-01, studio_id: S30, name: "Call translation pipeline", stages: "join>transcribe>translate>avatar>lipsync>export", status: DEFINED}
+  - {workflow_id: WF-S31-01, studio_id: S31, name: "Affiliate antifraude", stages: "register>verify>track>detect_fraud>payout", status: DEFINED}
+  - {workflow_id: WF-S32-01, studio_id: S32, name: "App store publish", stages: "build>sign>validate>submit>monitor", status: DEFINED}
+  - {workflow_id: WF-S33-01, studio_id: S33, name: "Research pipeline", stages: "query>search>synthesize>summarize>publish", status: DEFINED}
+  - {workflow_id: WF-S34-01, studio_id: S34, name: "Billing cycle", stages: "invoice_create>charge>webhook>reconcile>report", status: DEFINED}
+  - {workflow_id: WF-S35-01, studio_id: S35, name: "Checkout pipeline", stages: "initiate>validate>charge>confirm>receipt", status: DEFINED}
+  - {workflow_id: WF-S36-01, studio_id: S36, name: "RBAC setup", stages: "define_roles>assign>test>audit>activate", status: DEFINED}
+  - {workflow_id: WF-S37-01, studio_id: S37, name: "Support ticket", stages: "receive>classify>assign>resolve>close>feedback", status: DEFINED}
+  - {workflow_id: WF-S38-01, studio_id: S38, name: "Accessibility advanced", stages: "detect>configure>voice_map>test>activate", status: DEFINED}
+  - {workflow_id: WF-S39-01, studio_id: S39, name: "3D world build", stages: "design>model>texture>scene>export", status: DEFINED}
+  - {workflow_id: WF-S40-01, studio_id: S40, name: "3D marketplace listing", stages: "create>price>publish>monitor>fulfill", status: DEFINED}
+  - {workflow_id: WF-S41-01, studio_id: S41, name: "Connector register", stages: "submit>validate>test>approve>activate", status: DEFINED}
+  - {workflow_id: WF-S42-01, studio_id: S42, name: "Action register", stages: "define>validate>map_studio>approve>activate", status: DEFINED}
+  - {workflow_id: WF-S43-01, studio_id: S43, name: "No holes check", stages: "scan>report>block_if_fail>notify>archive", status: DEFINED}
+  - {workflow_id: WF-S44-01, studio_id: S44, name: "MCP factory build", stages: "spec>generate>test>validate>deploy", status: DEFINED}
+  - {workflow_id: WF-S45-01, studio_id: S45, name: "Router policy update", stages: "define>simulate>test>approve>deploy", status: DEFINED}
+  - {workflow_id: WF-S46-01, studio_id: S46, name: "Doctor gate run", stages: "preflight>doctor1>doctor2>seal>archive", status: DEFINED}
+  - {workflow_id: WF-S47-01, studio_id: S47, name: "Benchmark run", stages: "select>run>score>compare>report", status: DEFINED}
+  - {workflow_id: WF-S48-01, studio_id: S48, name: "API history log", stages: "capture>hash>store>index>query", status: DEFINED}
+  - {workflow_id: WF-S49-01, studio_id: S49, name: "Evidence publish", stages: "collect>hash>seal>publish_gndrive>archive", status: DEFINED}
+  - {workflow_id: WF-S50-01, studio_id: S50, name: "Cache quantum refresh", stages: "scan>invalidate>warm>verify>report", status: DEFINED}
+  - {workflow_id: WF-S51-01, studio_id: S51, name: "RAG quantum update", stages: "ingest>embed>index>test>activate", status: DEFINED}
