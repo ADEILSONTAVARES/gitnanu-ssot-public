@@ -1,0 +1,30 @@
+# DORES_S06_Musica_e_Audio_v1
+studio_id: S06
+studio_name: Musica e Audio
+version: 1
+total_dores: 4
+dores:
+  - dor_id: D-S06-01
+    name: "Direitos autorais nao verificados"
+    sintoma: "Musica gerada com sample protegido"
+    causa_raiz: "Sem fingerprint check pre-export"
+    mitigacao: "Copyright fingerprint gate antes de export"
+    severity: CRITICAL
+  - dor_id: D-S06-02
+    name: "Export em formato incompativel"
+    sintoma: "Audio exportado em codec nao suportado pelo destino"
+    causa_raiz: "Sem validacao de formato por plataforma destino"
+    mitigacao: "CW-038 padronizar extensoes + gate formato"
+    severity: HIGH
+  - dor_id: D-S06-03
+    name: "Geracao infinita sem timeout"
+    sintoma: "Job de geracao trava indefinidamente"
+    causa_raiz: "Sem timeout e sem cost guard"
+    mitigacao: "CW-214 cost guard + timeout obrigatorio por job"
+    severity: HIGH
+  - dor_id: D-S06-04
+    name: "Qualidade abaixo do minimo sem rejeicao"
+    sintoma: "Audio com artefatos entregue sem aviso"
+    causa_raiz: "Sem quality score gate"
+    mitigacao: "Quality score minimo 8.0 bloqueante"
+    severity: MEDIUM

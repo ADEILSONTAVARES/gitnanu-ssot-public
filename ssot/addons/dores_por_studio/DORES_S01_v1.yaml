@@ -1,0 +1,30 @@
+# DORES_S01_WorGamma_v1
+studio_id: S01
+studio_name: WorGamma
+version: 1
+total_dores: 4
+dores:
+  - dor_id: D-S01-01
+    name: "Longform perde contexto no meio"
+    sintoma: "Texto longo perde coerencia apos 4k tokens"
+    causa_raiz: "Sem LTA e sem chunk strategy"
+    mitigacao: "S51 RAG QUANTUM + LTA obrigatorio para longform"
+    severity: CRITICAL
+  - dor_id: D-S01-02
+    name: "Formatacao de ebook corrompida"
+    sintoma: "Exportacao PDF/epub com layout quebrado"
+    causa_raiz: "Nao valida output antes de entregar"
+    mitigacao: "CW-024 validar outputs + CW-070 versao PDF"
+    severity: HIGH
+  - dor_id: D-S01-03
+    name: "Plagio nao detectado"
+    sintoma: "Conteudo gerado replica fonte sem citar"
+    causa_raiz: "Sem check de similaridade"
+    mitigacao: "No Evidence No Claim + similaridade check"
+    severity: HIGH
+  - dor_id: D-S01-04
+    name: "Publicacao sem aprovacao humana"
+    sintoma: "Livro vai para loja sem revisao final"
+    causa_raiz: "Sem gate de aprovacao pre-publish"
+    mitigacao: "CW-202 aprovacao obrigatoria + WF-S01-01"
+    severity: CRITICAL

@@ -1,0 +1,30 @@
+# DORES_S05_Voz_TTS_STT_v1
+studio_id: S05
+studio_name: Voz TTS STT
+version: 1
+total_dores: 4
+dores:
+  - dor_id: D-S05-01
+    name: "Clonagem de voz sem consentimento"
+    sintoma: "Voz clonada de pessoa sem permissao explicita"
+    causa_raiz: "Sem consent guard e sem verificacao de autoria"
+    mitigacao: "CW-213 consent guard CRITICO para clonagem"
+    severity: CRITICAL
+  - dor_id: D-S05-02
+    name: "Sincronizacao labial errada"
+    sintoma: "Audio e video dessincronizados no lipsync"
+    causa_raiz: "Sem validacao de alinhamento pos-render"
+    mitigacao: "Gate de validacao AV sync antes de entregar"
+    severity: HIGH
+  - dor_id: D-S05-03
+    name: "Idioma trocado silenciosamente"
+    sintoma: "TTS gera em idioma errado sem avisar"
+    causa_raiz: "Sem validacao de locale antes de sintetizar"
+    mitigacao: "CW-013 detectar conflito + gate locale check"
+    severity: HIGH
+  - dor_id: D-S05-04
+    name: "STT transcrevendo errado sem alerta"
+    sintoma: "Transcricao incorreta entregue como correta"
+    causa_raiz: "Sem confidence score e sem human review gate"
+    mitigacao: "Confidence threshold + CW-024 validar outputs"
+    severity: MEDIUM

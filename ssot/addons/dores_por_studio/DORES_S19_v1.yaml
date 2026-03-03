@@ -1,0 +1,30 @@
+# DORES_S19_NcAI_G10x_v1
+studio_id: S19
+studio_name: NcAI G10x
+version: 1
+total_dores: 4
+dores:
+  - dor_id: D-S19-01
+    name: "Resultado de busca desatualizado"
+    sintoma: "POI ou dado retornado esta desatualizado"
+    causa_raiz: "Sem TTL e sem freshness check"
+    mitigacao: "S50 Cache QUANTUM TTL + freshness gate"
+    severity: HIGH
+  - dor_id: D-S19-02
+    name: "Sintese alucinando fontes"
+    sintoma: "Resumo cita fontes que nao existem"
+    causa_raiz: "Sem No Evidence No Claim gate"
+    mitigacao: "CW-219 + evidence chain obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S19-03
+    name: "Custo de busca sem teto"
+    sintoma: "Multiplas queries em loop sem limite"
+    causa_raiz: "Sem cost guard por sessao"
+    mitigacao: "CW-214 cost guard + max_queries por job"
+    severity: HIGH
+  - dor_id: D-S19-04
+    name: "YouTube summary vazando conteudo pago"
+    sintoma: "Resumo expoe conteudo de video privado ou pago"
+    causa_raiz: "Sem verificacao de acesso antes de sumarizar"
+    mitigacao: "Gate de acesso + CW-213 consent guard"
+    severity: CRITICAL

@@ -1,0 +1,30 @@
+# DORES_S23_Trafego_Pago_AdsOps_v1
+studio_id: S23
+studio_name: Trafego Pago AdsOps
+version: 1
+total_dores: 4
+dores:
+  - dor_id: D-S23-01
+    name: "Campanha ativada sem aprovacao"
+    sintoma: "Anuncio vai ao ar sem revisao humana"
+    causa_raiz: "Sem gate de aprovacao pre-launch"
+    mitigacao: "CW-202 aprovacao CRITICO + WF-S23-01"
+    severity: CRITICAL
+  - dor_id: D-S23-02
+    name: "Budget estourado sem alerta"
+    sintoma: "Gasto ultrapassa limite sem notificacao"
+    causa_raiz: "Sem cost guard e sem budget envelope"
+    mitigacao: "CW-214 cost guard + budget_envelope por campanha"
+    severity: CRITICAL
+  - dor_id: D-S23-03
+    name: "Audience targeting errado"
+    sintoma: "Anuncio exibido para publico incorreto"
+    causa_raiz: "Sem validacao de audience pre-launch"
+    mitigacao: "Gate audience validation + CW-024"
+    severity: HIGH
+  - dor_id: D-S23-04
+    name: "Criativo reprovado pela plataforma"
+    sintoma: "Ad rejeitado apos lancamento por violacao de politica"
+    causa_raiz: "Sem pre-check de politicas da plataforma"
+    mitigacao: "Policy pre-check gate por plataforma"
+    severity: HIGH

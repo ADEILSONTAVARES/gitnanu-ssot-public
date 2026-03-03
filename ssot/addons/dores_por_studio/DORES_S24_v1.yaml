@@ -1,0 +1,24 @@
+# DORES_S24_Metrica_Viral_de_Video_v1
+studio_id: S24
+studio_name: Metrica Viral de Video
+version: 1
+total_dores: 3
+dores:
+  - dor_id: D-S24-01
+    name: "Metricas desatualizadas no dashboard"
+    sintoma: "Dados de views e engajamento com horas de atraso"
+    causa_raiz: "Sem TTL e sem refresh policy"
+    mitigacao: "S50 Cache TTL + freshness gate por metrica"
+    severity: HIGH
+  - dor_id: D-S24-02
+    name: "Calculo de viral score errado"
+    sintoma: "Formula incorreta gera score inflado"
+    causa_raiz: "Sem validacao de formula e sem audit trail"
+    mitigacao: "CW-119 trilha auditoria + formula validation gate"
+    severity: HIGH
+  - dor_id: D-S24-03
+    name: "Atribuicao de fonte incorreta"
+    sintoma: "Metrica atribuida ao canal errado"
+    causa_raiz: "Sem source_id validation"
+    mitigacao: "Source validation + CW-024 validar outputs"
+    severity: MEDIUM

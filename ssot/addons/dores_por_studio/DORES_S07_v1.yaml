@@ -1,0 +1,30 @@
+# DORES_S07_Shorts_Repurpose_v1
+studio_id: S07
+studio_name: Shorts Repurpose
+version: 1
+total_dores: 4
+dores:
+  - dor_id: D-S07-01
+    name: "Corte no momento errado"
+    sintoma: "Clip corta no meio de frase ou acao"
+    causa_raiz: "Sem semantic cut detection"
+    mitigacao: "Semantic boundary detection antes de cortar"
+    severity: HIGH
+  - dor_id: D-S07-02
+    name: "Legenda fora de sincronia"
+    sintoma: "Caption nao alinha com audio"
+    causa_raiz: "Sem validacao de sync pos-render"
+    mitigacao: "Gate sync check + CW-024 validar outputs"
+    severity: HIGH
+  - dor_id: D-S07-03
+    name: "Marca dagua errada ou ausente"
+    sintoma: "Branding incorreto no short exportado"
+    causa_raiz: "Sem BrandKit validation pre-export"
+    mitigacao: "CW-037 BrandKit + gate brand check"
+    severity: MEDIUM
+  - dor_id: D-S07-04
+    name: "Distribuicao sem aprovacao"
+    sintoma: "Short publicado automaticamente sem revisao"
+    causa_raiz: "Sem gate de aprovacao pre-distribute"
+    mitigacao: "CW-202 aprovacao + WF-S07-01 gate distribute"
+    severity: CRITICAL

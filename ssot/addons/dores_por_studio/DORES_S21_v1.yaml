@@ -1,0 +1,30 @@
+# DORES_S21_Mensageria_v1
+studio_id: S21
+studio_name: Mensageria
+version: 1
+total_dores: 4
+dores:
+  - dor_id: D-S21-01
+    name: "Mensagem enviada em duplicata"
+    sintoma: "Mesmo blast enviado duas vezes para mesma lista"
+    causa_raiz: "Sem idempotency_key por campanha"
+    mitigacao: "CW-209 idempotencia + dedupe por campaign_id"
+    severity: CRITICAL
+  - dor_id: D-S21-02
+    name: "Opt-out ignorado"
+    sintoma: "Usuario descadastrado recebe mensagem"
+    causa_raiz: "Sem verificacao de opt-out antes de enviar"
+    mitigacao: "Gate opt-out check CRITICO antes de qualquer envio"
+    severity: CRITICAL
+  - dor_id: D-S21-03
+    name: "Template com dados errados"
+    sintoma: "Variavel nao preenchida aparece como placeholder"
+    causa_raiz: "Sem validacao de template pre-envio"
+    mitigacao: "CW-024 validar outputs + template render check"
+    severity: HIGH
+  - dor_id: D-S21-04
+    name: "WhatsApp banindo conta por spam"
+    sintoma: "Conta bloqueada por volume ou conteudo irregular"
+    causa_raiz: "Sem rate limit e sem compliance check"
+    mitigacao: "Rate limit guard + compliance gate LGPD"
+    severity: CRITICAL
