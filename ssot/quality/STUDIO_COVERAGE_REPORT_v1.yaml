@@ -1,0 +1,422 @@
+# STUDIO_COVERAGE_REPORT_v1
+version: 1
+generated: 2026-02-26
+total_studios: 52
+studios:
+  - studio_id: S00
+    name: GammaNotion Core
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S01
+    name: WorGamma
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S02
+    name: IDE 2x1 Builder
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S03
+    name: Video e Cinema
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S04
+    name: Imagem Design Logo
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S05
+    name: Voz TTS STT
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S06
+    name: Musica e audio
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S07
+    name: Shorts Repurpose
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S19
+    name: NcAI G10x
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S21
+    name: Mensageria
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S22
+    name: Social Automation
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S23
+    name: Trafego Pago
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S24
+    name: Metrica Viral
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S25
+    name: Captacao Leads
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S27
+    name: Dominios DNS
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S28
+    name: Church 7x
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S29
+    name: Live Streaming
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S30
+    name: Calls 7x
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S31
+    name: Afiliados
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S32
+    name: Publicacao
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S34
+    name: Billing Creditos
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S35
+    name: Pagamentos Checkout
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S39
+    name: 3D Games
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S40
+    name: Marketplaces 3D
+    group: A1
+    actions_min: 12
+    actions_current: 0
+    pains_min: 6
+    workflows_min: 2
+    status: PENDING
+  - studio_id: S09
+    name: Integracoes
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S11
+    name: Dashboards
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S12
+    name: Biblioteca
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S13
+    name: Localizacao
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S14
+    name: Cursos
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S15
+    name: Marketplace
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S16
+    name: Milhas
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S17
+    name: Documentos Pro
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S18
+    name: Comunidades
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S26
+    name: CRM Vendas
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S36
+    name: Times Permissoes
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S37
+    name: Support Tickets
+    group: A2
+    actions_min: 8
+    actions_current: 0
+    pains_min: 4
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S08
+    name: Acessibilidade
+    group: B
+    actions_min: 5
+    actions_current: 0
+    pains_min: 3
+    workflows_min: 0
+    status: PENDING
+  - studio_id: S10
+    name: Automacoes
+    group: B
+    actions_min: 5
+    actions_current: 0
+    pains_min: 3
+    workflows_min: 0
+    status: PENDING
+  - studio_id: S20
+    name: Conta Privacidade
+    group: B
+    actions_min: 5
+    actions_current: 0
+    pains_min: 3
+    workflows_min: 0
+    status: PENDING
+  - studio_id: S33
+    name: Pesquisa Radar
+    group: B
+    actions_min: 5
+    actions_current: 0
+    pains_min: 3
+    workflows_min: 0
+    status: PENDING
+  - studio_id: S38
+    name: Acessibilidade Avancada
+    group: B
+    actions_min: 5
+    actions_current: 0
+    pains_min: 3
+    workflows_min: 0
+    status: PENDING
+  - studio_id: S41
+    name: CONNECTORS_REGISTRY
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S42
+    name: ACTION_REGISTRY
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S43
+    name: NO_HOLES_CHECK
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S44
+    name: MCP Factory
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S45
+    name: Router Policy
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S46
+    name: Doctor 1 e 2
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S47
+    name: Benchmark Lab
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S48
+    name: API History DB
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S49
+    name: Evidence Ledger
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S50
+    name: Cache QUANTUM
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+  - studio_id: S51
+    name: RAG QUANTUM
+    group: C
+    actions_min: 10
+    actions_current: 0
+    pains_min: 0
+    workflows_min: 1
+    status: PENDING
+summary: {total: 52, pass: 0, pending: 52}
