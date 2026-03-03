@@ -1,0 +1,96 @@
+# DORES_S06_midjourney_v1
+studio_id: S06
+api: midjourney
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S06-mj-01
+    name: "Imagem publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S06-mj-02
+    name: "PII em imagem gerada"
+    sintoma: "Rosto ou dado pessoal no output"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S06-mj-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S06-mj-04
+    name: "Copyright violado"
+    sintoma: "Estilo de artista real replicado"
+    causa_raiz: "Sem copyright gate"
+    mitigacao: "Copyright gate pre-generation"
+    severity: CRITICAL
+  - dor_id: D-S06-mj-05
+    name: "Deepfake gerado"
+    sintoma: "Rosto real manipulado"
+    causa_raiz: "Sem deepfake gate"
+    mitigacao: "Deepfake detection obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S06-mj-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S06-mj-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S06-mj-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S06-mj-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S06-mj-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S06-mj-11
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual fora do padrao"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S06-mj-12
+    name: "Conteudo NSFW gerado"
+    sintoma: "Imagem inapropriada"
+    causa_raiz: "Sem content policy gate"
+    mitigacao: "Content policy gate"
+    severity: CRITICAL
+  - dor_id: D-S06-mj-13
+    name: "Watermark ausente"
+    sintoma: "Imagem sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S06-mj-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S06-mj-15
+    name: "Prompt injection"
+    sintoma: "Prompt manipulado por input externo"
+    causa_raiz: "Sem prompt sanitization"
+    mitigacao: "Prompt sanitization obrigatoria"
+    severity: CRITICAL

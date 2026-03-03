@@ -1,0 +1,96 @@
+# DORES_S06_z_image_v1
+studio_id: S06
+api: z.image
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S06-zi-01
+    name: "Imagem publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S06-zi-02
+    name: "PII em imagem"
+    sintoma: "Rosto real no output"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S06-zi-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S06-zi-04
+    name: "Copyright violado"
+    sintoma: "Artista replicado"
+    causa_raiz: "Sem copyright gate"
+    mitigacao: "Copyright gate"
+    severity: CRITICAL
+  - dor_id: D-S06-zi-05
+    name: "Conteudo NSFW"
+    sintoma: "Imagem inapropriada"
+    causa_raiz: "Sem content policy"
+    mitigacao: "Content policy gate"
+    severity: CRITICAL
+  - dor_id: D-S06-zi-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S06-zi-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S06-zi-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S06-zi-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S06-zi-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S06-zi-11
+    name: "SLO de tempo violado"
+    sintoma: "Geracao acima do p95"
+    causa_raiz: "Sem SLO monitor"
+    mitigacao: "SLO monitor obrigatorio"
+    severity: HIGH
+  - dor_id: D-S06-zi-12
+    name: "Texto em imagem ilegivel"
+    sintoma: "CTA nao legivel"
+    causa_raiz: "Sem text quality gate"
+    mitigacao: "Text quality gate"
+    severity: HIGH
+  - dor_id: D-S06-zi-13
+    name: "Watermark ausente"
+    sintoma: "Sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S06-zi-14
+    name: "Prompt injection"
+    sintoma: "Prompt manipulado"
+    causa_raiz: "Sem sanitization"
+    mitigacao: "Prompt sanitization"
+    severity: CRITICAL
+  - dor_id: D-S06-zi-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
