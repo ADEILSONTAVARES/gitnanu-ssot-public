@@ -1,0 +1,96 @@
+# DORES_S10_scheduler_cron_v1
+studio_id: S10
+api: scheduler.cron
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S10-sc-01
+    name: "Job critico sem aprovacao"
+    sintoma: "Execucao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S10-sc-02
+    name: "Credencial em log"
+    sintoma: "Secret vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S10-sc-03
+    name: "Scope violation"
+    sintoma: "Job acessa recursos externos"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S10-sc-04
+    name: "Job duplicado por drift de clock"
+    sintoma: "Execucao dupla por timezone errado"
+    causa_raiz: "Sem timezone lock"
+    mitigacao: "Timezone lock obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-sc-05
+    name: "Idempotencia ausente"
+    sintoma: "Re-execucao duplica efeitos"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S10-sc-06
+    name: "Custo sem limite"
+    sintoma: "Jobs sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S10-sc-07
+    name: "Rollback impossivel"
+    sintoma: "Job sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S10-sc-08
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S10-sc-09
+    name: "Overlap de jobs"
+    sintoma: "Execucao anterior nao terminou"
+    causa_raiz: "Sem overlap prevention"
+    mitigacao: "Overlap prevention obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-sc-10
+    name: "Falha silenciosa"
+    sintoma: "Job falhou sem alerta"
+    causa_raiz: "Sem alerting"
+    mitigacao: "Alert on failure obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-sc-11
+    name: "Timeout sem killswitch"
+    sintoma: "Job trava sem ser encerrado"
+    causa_raiz: "Sem timeout killswitch"
+    mitigacao: "Timeout killswitch obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-sc-12
+    name: "PII em payload de job"
+    sintoma: "Dado pessoal em log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S10-sc-13
+    name: "ENV gate ausente"
+    sintoma: "Job roda em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-sc-14
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-sc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup de execucao"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

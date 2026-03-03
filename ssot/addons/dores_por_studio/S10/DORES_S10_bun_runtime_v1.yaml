@@ -1,0 +1,96 @@
+# DORES_S10_bun_runtime_v1
+studio_id: S10
+api: bun.runtime
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S10-br-01
+    name: "Script executado sem aprovacao"
+    sintoma: "Execucao critica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S10-br-02
+    name: "Credencial em script"
+    sintoma: "Secret hardcoded"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S10-br-03
+    name: "Scope violation"
+    sintoma: "Script acessa filesystem fora do workspace"
+    causa_raiz: "Sem sandbox"
+    mitigacao: "CW-001 sandbox obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-br-04
+    name: "Network nao bloqueada"
+    sintoma: "Script faz egress sem allowlist"
+    causa_raiz: "Sem network off default"
+    mitigacao: "Network off default"
+    severity: CRITICAL
+  - dor_id: D-S10-br-05
+    name: "Custo sem limite"
+    sintoma: "Execucao sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S10-br-06
+    name: "Rollback impossivel"
+    sintoma: "Script sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S10-br-07
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S10-br-08
+    name: "Timeout sem killswitch"
+    sintoma: "Script trava indefinidamente"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout killswitch obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-br-09
+    name: "Dependencia sem pinning"
+    sintoma: "Versao de pacote imprevisivel"
+    causa_raiz: "Sem lockfile"
+    mitigacao: "Lockfile obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-br-10
+    name: "PII em output de script"
+    sintoma: "Dado pessoal em log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S10-br-11
+    name: "ENV gate ausente"
+    sintoma: "Script roda em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-br-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-br-13
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S10-br-14
+    name: "Build sem lint gate"
+    sintoma: "Codigo com erros deployado"
+    causa_raiz: "Sem lint pre-build"
+    mitigacao: "Lint gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-br-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup de execucao"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

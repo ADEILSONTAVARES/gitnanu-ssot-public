@@ -1,0 +1,96 @@
+# DORES_S10_queues_jobs_v1
+studio_id: S10
+api: queues.jobs
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S10-qj-01
+    name: "Job critico sem aprovacao"
+    sintoma: "Execucao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S10-qj-02
+    name: "Credencial em payload"
+    sintoma: "Secret vazando em job"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S10-qj-03
+    name: "Scope violation"
+    sintoma: "Job acessa recursos externos"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S10-qj-04
+    name: "Idempotencia ausente"
+    sintoma: "Job re-enfileirado duplica efeitos"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S10-qj-05
+    name: "PII em payload"
+    sintoma: "Dado pessoal em job log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S10-qj-06
+    name: "Custo sem limite"
+    sintoma: "Jobs sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S10-qj-07
+    name: "Rollback impossivel"
+    sintoma: "Job sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S10-qj-08
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log de evidencia"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S10-qj-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S10-qj-10
+    name: "DLQ ausente"
+    sintoma: "Job falhou sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-qj-11
+    name: "Timeout sem killswitch"
+    sintoma: "Job trava indefinidamente"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout killswitch obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-qj-12
+    name: "Fila sem prioridade"
+    sintoma: "Job critico atrasado por fila plana"
+    causa_raiz: "Sem priority queue"
+    mitigacao: "Priority queue obrigatoria"
+    severity: HIGH
+  - dor_id: D-S10-qj-13
+    name: "Poison message loop"
+    sintoma: "Mensagem invalida re-enfileirada infinitamente"
+    causa_raiz: "Sem max_delivery_count"
+    mitigacao: "Max delivery count obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-qj-14
+    name: "ENV gate ausente"
+    sintoma: "Job roda em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-qj-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup de job"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

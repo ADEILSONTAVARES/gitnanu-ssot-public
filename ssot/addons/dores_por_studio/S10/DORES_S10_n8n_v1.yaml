@@ -1,0 +1,96 @@
+# DORES_S10_n8n_v1
+studio_id: S10
+api: n8n
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S10-n8-01
+    name: "Workflow executado sem aprovacao"
+    sintoma: "Workflow critico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S10-n8-02
+    name: "Credencial em log de workflow"
+    sintoma: "Secret vazando em execution log"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S10-n8-03
+    name: "Scope violation"
+    sintoma: "Workflow acessa recursos fora do workspace"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S10-n8-04
+    name: "Loop infinito"
+    sintoma: "Workflow sem exit condition"
+    causa_raiz: "Sem max_iterations"
+    mitigacao: "Max iterations obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-n8-05
+    name: "Idempotencia ausente"
+    sintoma: "Webhook re-executa em retry"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S10-n8-06
+    name: "Custo sem limite"
+    sintoma: "Execucoes sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S10-n8-07
+    name: "Rollback impossivel"
+    sintoma: "Workflow sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S10-n8-08
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log de evidencia"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S10-n8-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S10-n8-10
+    name: "DLQ ausente"
+    sintoma: "Falha sem fila de reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-n8-11
+    name: "Timeout sem fallback"
+    sintoma: "Execucao trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S10-n8-12
+    name: "Webhook sem validacao de assinatura"
+    sintoma: "Request nao autenticado"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-n8-13
+    name: "PII em payload"
+    sintoma: "Dado pessoal em execution log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S10-n8-14
+    name: "ENV gate ausente"
+    sintoma: "Workflow roda em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-n8-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup de execucao"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

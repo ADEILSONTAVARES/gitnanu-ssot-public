@@ -1,0 +1,96 @@
+# DORES_S10_redis_cache_v1
+studio_id: S10
+api: redis.cache
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S10-rc-01
+    name: "Credencial Redis em log"
+    sintoma: "Secret vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S10-rc-02
+    name: "Scope violation"
+    sintoma: "Cache acessa keys fora do namespace"
+    causa_raiz: "Sem namespace lock"
+    mitigacao: "Namespace lock obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-rc-03
+    name: "Cache poisoning"
+    sintoma: "Key invalida aceita sem validacao"
+    causa_raiz: "Sem poison guard"
+    mitigacao: "Poison guard obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-rc-04
+    name: "PII em cache"
+    sintoma: "Dado pessoal em key de cache"
+    causa_raiz: "Sem PII scan pre-write"
+    mitigacao: "PII scan pre-write"
+    severity: CRITICAL
+  - dor_id: D-S10-rc-05
+    name: "Cache stampede"
+    sintoma: "Multiplas requisicoes reconstruindo cache"
+    causa_raiz: "Sem anti-stampede"
+    mitigacao: "Anti-stampede obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-rc-06
+    name: "TTL ausente"
+    sintoma: "Key sem expiracao"
+    causa_raiz: "Sem TTL policy"
+    mitigacao: "TTL policy obrigatoria"
+    severity: HIGH
+  - dor_id: D-S10-rc-07
+    name: "Lock sem lease"
+    sintoma: "Lock nunca expirado"
+    causa_raiz: "Sem lock lease"
+    mitigacao: "Lock lease obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-rc-08
+    name: "Custo sem limite"
+    sintoma: "Cache sem budget de memoria"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S10-rc-09
+    name: "Rollback impossivel"
+    sintoma: "Cache corrompido sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S10-rc-10
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log de operacao critica"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S10-rc-11
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S10-rc-12
+    name: "Key versioning ausente"
+    sintoma: "Cache stale sem deteccao"
+    causa_raiz: "Sem key versioning"
+    mitigacao: "Key versioning obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-rc-13
+    name: "ENV gate ausente"
+    sintoma: "Cache de producao acessado em dev"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-rc-14
+    name: "Eviction sem alerta"
+    sintoma: "Keys criticas removidas silenciosamente"
+    causa_raiz: "Sem eviction alerting"
+    mitigacao: "Eviction alerting obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-rc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup de snapshot"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

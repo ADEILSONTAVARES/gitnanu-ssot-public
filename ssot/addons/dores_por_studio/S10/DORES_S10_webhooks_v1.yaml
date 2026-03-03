@@ -1,0 +1,96 @@
+# DORES_S10_webhooks_v1
+studio_id: S10
+api: webhooks
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S10-wh-01
+    name: "Webhook sem validacao de assinatura"
+    sintoma: "Request nao autenticado aceito"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-wh-02
+    name: "Credencial em log"
+    sintoma: "Secret vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S10-wh-03
+    name: "Replay attack"
+    sintoma: "Request antigo reprocessado"
+    causa_raiz: "Sem timestamp validation"
+    mitigacao: "Timestamp validation obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S10-wh-04
+    name: "Idempotencia ausente"
+    sintoma: "Evento duplicado processado"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S10-wh-05
+    name: "PII em payload"
+    sintoma: "Dado pessoal em log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S10-wh-06
+    name: "Scope violation"
+    sintoma: "Webhook acessa recursos externos"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S10-wh-07
+    name: "Custo sem limite"
+    sintoma: "Processamento sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S10-wh-08
+    name: "Rollback impossivel"
+    sintoma: "Evento sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S10-wh-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S10-wh-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S10-wh-11
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-wh-12
+    name: "Timeout sem fallback"
+    sintoma: "Processamento trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S10-wh-13
+    name: "ENV gate ausente"
+    sintoma: "Roda em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-wh-14
+    name: "Loop de retries infinito"
+    sintoma: "Retry sem limite maximo"
+    causa_raiz: "Sem max_retries"
+    mitigacao: "Max retries obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-wh-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
