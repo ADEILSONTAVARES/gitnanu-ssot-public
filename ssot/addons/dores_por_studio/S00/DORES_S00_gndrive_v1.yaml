@@ -1,0 +1,96 @@
+# DORES_S00_gndrive_v1
+studio_id: S00
+api: gndrive
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-gd-01
+    name: "Arquivo enviado para folder errado"
+    sintoma: "Folder ID nao validado"
+    causa_raiz: "Sem folder validation"
+    mitigacao: "Gate folder_id obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gd-02
+    name: "Arquivo publico sem intencao"
+    sintoma: "Permissao aberta por default"
+    causa_raiz: "Sem permission policy"
+    mitigacao: "Private by default obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-gd-03
+    name: "Arquivo sobrescrito sem backup"
+    sintoma: "Upload destruindo versao anterior"
+    causa_raiz: "Sem versioning"
+    mitigacao: "Versioning obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-gd-04
+    name: "PII em arquivo publico"
+    sintoma: "Dados pessoais acessiveis"
+    causa_raiz: "Sem PII scan pre-upload"
+    mitigacao: "PII scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-gd-05
+    name: "Link de compartilhamento sem expiry"
+    sintoma: "Link permanente sem controle"
+    causa_raiz: "Sem link expiry policy"
+    mitigacao: "Expiry obrigatorio por link"
+    severity: HIGH
+  - dor_id: D-S00-gd-06
+    name: "Arquivo sem hash"
+    sintoma: "Integridade nao verificavel"
+    causa_raiz: "Sem hash pos-upload"
+    mitigacao: "CW-206 hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gd-07
+    name: "Quota estourada sem alerta"
+    sintoma: "Storage cheio sem aviso"
+    causa_raiz: "Sem quota monitor"
+    mitigacao: "Quota monitor + alerta"
+    severity: HIGH
+  - dor_id: D-S00-gd-08
+    name: "Upload sem receipt"
+    sintoma: "Nenhum log auditavel"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gd-09
+    name: "Rate limit sem retry"
+    sintoma: "Upload falhando silencioso"
+    causa_raiz: "Sem retry policy"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S00-gd-10
+    name: "Arquivo deletado sem soft delete"
+    sintoma: "Delete irreversivel"
+    causa_raiz: "Sem soft delete"
+    mitigacao: "Soft delete + DLQ"
+    severity: CRITICAL
+  - dor_id: D-S00-gd-11
+    name: "Cross-workspace leak"
+    sintoma: "Arquivo de outro workspace acessivel"
+    causa_raiz: "Sem workspace scope"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S00-gd-12
+    name: "Token OAuth expirado"
+    sintoma: "Acesso falhando silencioso"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gd-13
+    name: "Arquivo corrompido aceito"
+    sintoma: "Upload sem validacao de integridade"
+    causa_raiz: "Sem integrity check"
+    mitigacao: "Integrity check pos-upload"
+    severity: HIGH
+  - dor_id: D-S00-gd-14
+    name: "Custo de storage sem limite"
+    sintoma: "Arquivos crescendo sem controle"
+    causa_raiz: "Sem storage quota"
+    mitigacao: "Storage quota obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gd-15
+    name: "Sync com gammanote falhando"
+    sintoma: "Drive sem sync receipt"
+    causa_raiz: "Sem sync evidence"
+    mitigacao: "Sync receipt obrigatorio"
+    severity: HIGH

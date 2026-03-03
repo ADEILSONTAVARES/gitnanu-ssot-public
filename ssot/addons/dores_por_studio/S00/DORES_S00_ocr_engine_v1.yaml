@@ -1,0 +1,96 @@
+# DORES_S00_ocr_engine_v1
+studio_id: S00
+api: ocr.engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-ocr-01
+    name: "OCR em documento com PII"
+    sintoma: "CPF e RG extraidos sem controle"
+    causa_raiz: "Sem PII detection pos-ocr"
+    mitigacao: "PII scan obrigatorio pos-ocr"
+    severity: CRITICAL
+  - dor_id: D-S00-ocr-02
+    name: "Resultado sem hash"
+    sintoma: "Texto extraido sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio pos-ocr"
+    severity: HIGH
+  - dor_id: D-S00-ocr-03
+    name: "Acuracia abaixo do minimo"
+    sintoma: "Texto com erros entregue"
+    causa_raiz: "Sem confidence threshold"
+    mitigacao: "Confidence gate minimo 0.95"
+    severity: HIGH
+  - dor_id: D-S00-ocr-04
+    name: "Timeout sem fallback"
+    sintoma: "Documento grande travando"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-ocr-05
+    name: "Documento de outro usuario processado"
+    sintoma: "user_id nao validado"
+    causa_raiz: "Sem user scope"
+    mitigacao: "user_id gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-ocr-06
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S00-ocr-07
+    name: "Custo sem limite"
+    sintoma: "OCR de lote sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S00-ocr-08
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S00-ocr-09
+    name: "Idioma errado detectado"
+    sintoma: "OCR com language model errado"
+    causa_raiz: "Sem language lock"
+    mitigacao: "Language lock pre-ocr"
+    severity: HIGH
+  - dor_id: D-S00-ocr-10
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S00-ocr-11
+    name: "Documento corrompido aceito"
+    sintoma: "Arquivo invalido processado"
+    causa_raiz: "Sem file validation"
+    mitigacao: "File validation pre-ocr"
+    severity: HIGH
+  - dor_id: D-S00-ocr-12
+    name: "Output sem proveniencia"
+    sintoma: "Texto sem link ao documento original"
+    causa_raiz: "Sem source link"
+    mitigacao: "Source link obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-ocr-13
+    name: "Cache de resultado incorreto"
+    sintoma: "Resultado antigo retornado"
+    causa_raiz: "Sem cache invalidation"
+    mitigacao: "Cache invalidation obrigatoria"
+    severity: HIGH
+  - dor_id: D-S00-ocr-14
+    name: "Resultado nao publicado"
+    sintoma: "Output sem GNDrive"
+    causa_raiz: "Sem publish gate"
+    mitigacao: "Publish obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-ocr-15
+    name: "Documento retido alem do necessario"
+    sintoma: "Arquivo sem TTL de retencao"
+    causa_raiz: "Sem retention policy"
+    mitigacao: "Retention policy obrigatoria"
+    severity: HIGH

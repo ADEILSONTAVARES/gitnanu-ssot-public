@@ -1,0 +1,96 @@
+# DORES_S00_sentry_v1
+studio_id: S00
+api: sentry
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-sn-01
+    name: "Erro silenciado sem alerta"
+    sintoma: "Exception nao reportada"
+    causa_raiz: "Sem Sentry capture"
+    mitigacao: "Sentry capture em todos catch blocks"
+    severity: CRITICAL
+  - dor_id: D-S00-sn-02
+    name: "PII em error report"
+    sintoma: "Dados pessoais no log"
+    causa_raiz: "Sem PII scrubbing"
+    mitigacao: "PII scrubbing obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-sn-03
+    name: "Alert sem threshold"
+    sintoma: "Volume de erros sem alerta"
+    causa_raiz: "Sem alert rules"
+    mitigacao: "Alert rules obrigatorias"
+    severity: HIGH
+  - dor_id: D-S00-sn-04
+    name: "Source maps ausentes"
+    sintoma: "Stack trace ilegivel"
+    causa_raiz: "Sem source map upload"
+    mitigacao: "Source map upload no CI"
+    severity: HIGH
+  - dor_id: D-S00-sn-05
+    name: "Ambiente errado no report"
+    sintoma: "Staging como prod"
+    causa_raiz: "Sem environment tag"
+    mitigacao: "Environment tag obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-sn-06
+    name: "Release nao vinculada"
+    sintoma: "Erro sem versao"
+    causa_raiz: "Sem release tracking"
+    mitigacao: "Release tracking obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-sn-07
+    name: "Quota estourada"
+    sintoma: "Eventos descartados"
+    causa_raiz: "Sem quota monitor"
+    mitigacao: "Quota monitor + alerta"
+    severity: HIGH
+  - dor_id: D-S00-sn-08
+    name: "Session replay sem consent"
+    sintoma: "Replay sem aviso"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S00-sn-09
+    name: "Issue sem auto-ticket"
+    sintoma: "Erro sem ticket criado"
+    causa_raiz: "Sem auto-ticket"
+    mitigacao: "Auto-ticket para CRITICAL"
+    severity: HIGH
+  - dor_id: D-S00-sn-10
+    name: "DSN exposto"
+    sintoma: "Sentry DSN no bundle"
+    causa_raiz: "Sem DSN restriction"
+    mitigacao: "DSN restriction obrigatoria"
+    severity: HIGH
+  - dor_id: D-S00-sn-11
+    name: "Tracing desativado"
+    sintoma: "Lentidao sem deteccao"
+    causa_raiz: "Sem tracing"
+    mitigacao: "Tracing obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-sn-12
+    name: "GitHub nao integrado"
+    sintoma: "Commit sem link ao erro"
+    causa_raiz: "Sem GitHub integration"
+    mitigacao: "GitHub integration obrigatoria"
+    severity: MEDIUM
+  - dor_id: D-S00-sn-13
+    name: "Fingerprint incorreto"
+    sintoma: "Erros distintos agrupados"
+    causa_raiz: "Sem fingerprint customizado"
+    mitigacao: "Fingerprint por tipo de erro"
+    severity: MEDIUM
+  - dor_id: D-S00-sn-14
+    name: "Report sem evidence"
+    sintoma: "Erro sem link GNDrive"
+    causa_raiz: "Sem evidence publish"
+    mitigacao: "CW-206 evidence publish"
+    severity: HIGH
+  - dor_id: D-S00-sn-15
+    name: "Rollback sem evidencia"
+    sintoma: "Reversao sem log"
+    causa_raiz: "Sem receipt de rollback"
+    mitigacao: "Receipt obrigatorio por rollback"
+    severity: HIGH

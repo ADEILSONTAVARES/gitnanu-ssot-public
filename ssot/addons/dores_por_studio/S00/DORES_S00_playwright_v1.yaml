@@ -1,0 +1,96 @@
+# DORES_S00_playwright_v1
+studio_id: S00
+api: playwright
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-pw-01
+    name: "Scraping bloqueado por anti-bot"
+    sintoma: "Site detectando automacao"
+    causa_raiz: "Sem stealth mode"
+    mitigacao: "Stealth mode obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pw-02
+    name: "Selector instavel"
+    sintoma: "Selector mudando com deploy do site"
+    causa_raiz: "Sem selector strategy"
+    mitigacao: "data-testid ou XPath robusto"
+    severity: HIGH
+  - dor_id: D-S00-pw-03
+    name: "Screenshot sem hash"
+    sintoma: "Evidencia sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "CW-206 hash obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-pw-04
+    name: "Browser sem isolamento"
+    sintoma: "Sessoes compartilhando estado"
+    causa_raiz: "Sem context isolation"
+    mitigacao: "Context isolation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pw-05
+    name: "Timeout sem fallback"
+    sintoma: "Pagina lenta travando scraping"
+    causa_raiz: "Sem timeout configurado"
+    mitigacao: "Timeout + fallback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pw-06
+    name: "Credenciais em script"
+    sintoma: "Login hardcoded no scraper"
+    causa_raiz: "Sem secrets guard"
+    mitigacao: "CW-212 secrets obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-pw-07
+    name: "Scraping de dado privado"
+    sintoma: "Conteudo protegido extraido"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S00-pw-08
+    name: "Rate limit do site ignorado"
+    sintoma: "Requisicoes rapidas demais"
+    causa_raiz: "Sem rate throttle"
+    mitigacao: "Rate throttle obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pw-09
+    name: "Browser nao fechado"
+    sintoma: "Leak de processo"
+    causa_raiz: "Sem cleanup"
+    mitigacao: "Cleanup obrigatorio pos-sessao"
+    severity: MEDIUM
+  - dor_id: D-S00-pw-10
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S00-pw-11
+    name: "Custo de CI sem limite"
+    sintoma: "Suite longa sem timeout"
+    causa_raiz: "Sem CI timeout"
+    mitigacao: "CI timeout obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-pw-12
+    name: "Dado capturado sem hash"
+    sintoma: "Resultado sem integridade"
+    causa_raiz: "Sem hash pos-captura"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pw-13
+    name: "IP bloqueado sem fallback"
+    sintoma: "Proxy banido sem rotacao"
+    causa_raiz: "Sem proxy rotation"
+    mitigacao: "Proxy rotation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pw-14
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot de estado"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S00-pw-15
+    name: "Dado stale entregue"
+    sintoma: "Cache com resultado antigo"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "TTL + freshness gate"
+    severity: HIGH

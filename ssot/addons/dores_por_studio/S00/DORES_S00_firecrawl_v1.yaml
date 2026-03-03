@@ -1,0 +1,96 @@
+# DORES_S00_firecrawl_v1
+studio_id: S00
+api: firecrawl
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-fc-01
+    name: "Crawl de site nao autorizado"
+    sintoma: "robots.txt ignorado"
+    causa_raiz: "Sem robots.txt check"
+    mitigacao: "robots.txt check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-fc-02
+    name: "Rate limit do alvo ignorado"
+    sintoma: "Crawl muito rapido"
+    causa_raiz: "Sem rate throttle"
+    mitigacao: "Rate throttle + delay"
+    severity: HIGH
+  - dor_id: D-S00-fc-03
+    name: "PII extraido sem controle"
+    sintoma: "Dados pessoais no output"
+    causa_raiz: "Sem PII scan pos-crawl"
+    mitigacao: "PII scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-fc-04
+    name: "Resultado sem hash"
+    sintoma: "Output sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio pos-crawl"
+    severity: HIGH
+  - dor_id: D-S00-fc-05
+    name: "Credenciais em config"
+    sintoma: "API key hardcoded"
+    causa_raiz: "Sem secrets guard"
+    mitigacao: "CW-212 secrets"
+    severity: CRITICAL
+  - dor_id: D-S00-fc-06
+    name: "Crawl sem timeout"
+    sintoma: "Travando em site lento"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-fc-07
+    name: "Dado stale em cache"
+    sintoma: "Resultado antigo entregue"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "TTL + freshness gate"
+    severity: HIGH
+  - dor_id: D-S00-fc-08
+    name: "IP bloqueado sem rotacao"
+    sintoma: "Crawl parado sem fallback"
+    causa_raiz: "Sem proxy rotation"
+    mitigacao: "Proxy rotation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-fc-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S00-fc-10
+    name: "Custo sem limite"
+    sintoma: "Crawl grande sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S00-fc-11
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S00-fc-12
+    name: "Conteudo copyrightado sem flag"
+    sintoma: "Material protegido extraido"
+    causa_raiz: "Sem copyright detection"
+    mitigacao: "Copyright flag obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-fc-13
+    name: "Crawl sem escopo"
+    sintoma: "Dominio fora do alvo crawleado"
+    causa_raiz: "Sem domain scope lock"
+    mitigacao: "Domain scope lock obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-fc-14
+    name: "Retry sem backoff"
+    sintoma: "Hammering em site falhando"
+    causa_raiz: "Sem exponential backoff"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S00-fc-15
+    name: "DLQ ausente"
+    sintoma: "Job falhando sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH

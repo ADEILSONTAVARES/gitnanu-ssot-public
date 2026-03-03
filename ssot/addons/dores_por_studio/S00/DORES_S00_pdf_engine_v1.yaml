@@ -1,0 +1,96 @@
+# DORES_S00_pdf_engine_v1
+studio_id: S00
+api: pdf.engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-pdf-01
+    name: "PDF com PII publicado"
+    sintoma: "Dados pessoais no documento"
+    causa_raiz: "Sem PII scan pre-publish"
+    mitigacao: "PII scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-pdf-02
+    name: "PDF sem hash"
+    sintoma: "Documento sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pdf-03
+    name: "PDF sem acessibilidade"
+    sintoma: "PDF/UA nao aplicado"
+    causa_raiz: "Sem a11y check"
+    mitigacao: "PDF/UA gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pdf-04
+    name: "Gerado sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S00-pdf-05
+    name: "Timeout sem fallback"
+    sintoma: "Geracao lenta travando"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S00-pdf-06
+    name: "Template errado aplicado"
+    sintoma: "Documento com layout errado"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pdf-07
+    name: "Publicado sem aprovacao"
+    sintoma: "Documento critico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S00-pdf-08
+    name: "Custo sem limite"
+    sintoma: "Geracao de lote sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S00-pdf-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S00-pdf-10
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S00-pdf-11
+    name: "PDF corrompido entregue"
+    sintoma: "Arquivo invalido sem deteccao"
+    causa_raiz: "Sem integrity check"
+    mitigacao: "Integrity check pos-geracao"
+    severity: HIGH
+  - dor_id: D-S00-pdf-12
+    name: "Dado desatualizado no PDF"
+    sintoma: "Fonte de dado sem freshness"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate pre-render"
+    severity: HIGH
+  - dor_id: D-S00-pdf-13
+    name: "Watermark ausente"
+    sintoma: "Documento sem marca dagua"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-pdf-14
+    name: "Sem retencao policy"
+    sintoma: "PDF retido sem TTL"
+    causa_raiz: "Sem retention"
+    mitigacao: "Retention policy obrigatoria"
+    severity: HIGH
+  - dor_id: D-S00-pdf-15
+    name: "Output sem proveniencia"
+    sintoma: "Sem link a fonte dos dados"
+    causa_raiz: "Sem source link"
+    mitigacao: "Source link obrigatorio"
+    severity: HIGH

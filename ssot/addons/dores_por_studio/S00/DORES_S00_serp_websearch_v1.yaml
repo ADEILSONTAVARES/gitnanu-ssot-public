@@ -1,0 +1,96 @@
+# DORES_S00_serp_websearch_v1
+studio_id: S00
+api: serp.websearch
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-serp-01
+    name: "Resultado desatualizado entregue"
+    sintoma: "SERP com dados velhos"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-serp-02
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S00-serp-03
+    name: "Query com PII"
+    sintoma: "Dado pessoal na busca"
+    causa_raiz: "Sem PII filter pre-query"
+    mitigacao: "PII filter obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-serp-04
+    name: "Resultado sem hash"
+    sintoma: "Output sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-serp-05
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S00-serp-06
+    name: "Custo sem limite"
+    sintoma: "Queries sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S00-serp-07
+    name: "Resultado sem cache"
+    sintoma: "Mesma query sem reaproveitamento"
+    causa_raiz: "Sem semantic cache"
+    mitigacao: "Semantic cache obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-serp-08
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S00-serp-09
+    name: "Fonte nao confiavel retornada"
+    sintoma: "Resultado de site suspeito"
+    causa_raiz: "Sem source quality filter"
+    mitigacao: "Source quality gate"
+    severity: HIGH
+  - dor_id: D-S00-serp-10
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot de resultados"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: MEDIUM
+  - dor_id: D-S00-serp-11
+    name: "Timeout sem fallback"
+    sintoma: "API lenta sem alternativa"
+    causa_raiz: "Sem timeout + fallback"
+    mitigacao: "Timeout + fallback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-serp-12
+    name: "Resultado injetado por SEO"
+    sintoma: "Spam em posicao alta"
+    causa_raiz: "Sem spam filter"
+    mitigacao: "Spam filter obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-serp-13
+    name: "Locale errado na busca"
+    sintoma: "Resultados de pais errado"
+    causa_raiz: "Sem locale lock"
+    mitigacao: "Locale lock obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-serp-14
+    name: "DLQ ausente"
+    sintoma: "Job falhando sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-serp-15
+    name: "Evidencia sem proveniencia"
+    sintoma: "Fonte nao linkada no output"
+    causa_raiz: "Sem source attribution"
+    mitigacao: "Source attribution obrigatorio"
+    severity: HIGH

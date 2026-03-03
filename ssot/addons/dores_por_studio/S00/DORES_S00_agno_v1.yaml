@@ -1,0 +1,96 @@
+# DORES_S00_agno_v1
+studio_id: S00
+api: agno
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-agno-01
+    name: "Agente em loop infinito"
+    sintoma: "Execucao sem criterio de done"
+    causa_raiz: "Sem max_iterations"
+    mitigacao: "Max iterations + done check"
+    severity: CRITICAL
+  - dor_id: D-S00-agno-02
+    name: "Tool call fora do escopo"
+    sintoma: "Agente chamando tool nao autorizada"
+    causa_raiz: "Sem tool allowlist"
+    mitigacao: "Tool allowlist obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-agno-03
+    name: "Secret exposto em tool call"
+    sintoma: "Key em parametro de tool"
+    causa_raiz: "Sem secrets guard"
+    mitigacao: "CW-212 secrets guard"
+    severity: CRITICAL
+  - dor_id: D-S00-agno-04
+    name: "Custo sem controle"
+    sintoma: "Tokens sem budget guard"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S00-agno-05
+    name: "Execucao sem story"
+    sintoma: "Sem rastro da tarefa"
+    causa_raiz: "Sem story pre-execucao"
+    mitigacao: "MB-014 no story no change"
+    severity: HIGH
+  - dor_id: D-S00-agno-06
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S00-agno-07
+    name: "Rede acessada sem allowlist"
+    sintoma: "HTTP call nao autorizada"
+    causa_raiz: "Sem egress allowlist"
+    mitigacao: "Egress allowlist obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-agno-08
+    name: "Hallucination de tool"
+    sintoma: "Usa tool inexistente"
+    causa_raiz: "Sem tool verification"
+    mitigacao: "Tool verification gate"
+    severity: CRITICAL
+  - dor_id: D-S00-agno-09
+    name: "Output sem evidence"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem receipt"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-agno-10
+    name: "Multi-agent sem coordenacao"
+    sintoma: "Agentes conflitando"
+    causa_raiz: "Sem crew overlay"
+    mitigacao: "Crew overlay obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-agno-11
+    name: "Aprovacao ignorada"
+    sintoma: "Acao critica sem gate"
+    causa_raiz: "Sem human approval"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S00-agno-12
+    name: "Memoria LTA crescendo sem limite"
+    sintoma: "Contexto sem pruning"
+    causa_raiz: "Sem LTA policy"
+    mitigacao: "LTA retention policy"
+    severity: HIGH
+  - dor_id: D-S00-agno-13
+    name: "Retry sem backoff"
+    sintoma: "Hammering em API falhando"
+    causa_raiz: "Sem exponential backoff"
+    mitigacao: "Retry + backoff obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-agno-14
+    name: "Sessao sem timeout"
+    sintoma: "Agente rodando indefinidamente"
+    causa_raiz: "Sem session timeout"
+    mitigacao: "Session timeout obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-agno-15
+    name: "Output sem hash"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH

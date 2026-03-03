@@ -1,0 +1,96 @@
+# DORES_S00_evidence_ledger_v1
+studio_id: S00
+api: evidence_ledger
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-el-01
+    name: "Evidence sem hash"
+    sintoma: "Log sem integridade verificavel"
+    causa_raiz: "Sem hash por evidencia"
+    mitigacao: "Hash obrigatorio por evidencia"
+    severity: CRITICAL
+  - dor_id: D-S00-el-02
+    name: "Evidence alterada pos-registro"
+    sintoma: "Ledger mutavel"
+    causa_raiz: "Sem imutabilidade"
+    mitigacao: "Append-only obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-el-03
+    name: "Evidence sem timestamp"
+    sintoma: "Log sem data"
+    causa_raiz: "Sem timestamp obrigatorio"
+    mitigacao: "Timestamp ISO8601 obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-el-04
+    name: "Evidence de usuario errado"
+    sintoma: "actor_id incorreto"
+    causa_raiz: "Sem actor_id validation"
+    mitigacao: "actor_id gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-el-05
+    name: "Evidence sem action_id"
+    sintoma: "Log sem referencia a acao"
+    causa_raiz: "Sem action_id obrigatorio"
+    mitigacao: "action_id obrigatorio por evidencia"
+    severity: HIGH
+  - dor_id: D-S00-el-06
+    name: "Ledger sem backup"
+    sintoma: "Evidence sem copia"
+    causa_raiz: "Sem backup policy"
+    mitigacao: "Backup obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-el-07
+    name: "Evidence consultada sem RBAC"
+    sintoma: "Qualquer usuario acessando"
+    causa_raiz: "Sem permissoes"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-el-08
+    name: "Evidence deletada"
+    sintoma: "Log removido"
+    causa_raiz: "Sem soft delete obrigatorio"
+    mitigacao: "Soft delete + DLQ"
+    severity: CRITICAL
+  - dor_id: D-S00-el-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S00-el-10
+    name: "Custo de storage sem limite"
+    sintoma: "Ledger crescendo sem controle"
+    causa_raiz: "Sem retention policy"
+    mitigacao: "Retention policy obrigatoria"
+    severity: HIGH
+  - dor_id: D-S00-el-11
+    name: "Cross-tenant leak"
+    sintoma: "Evidence de outro cliente acessivel"
+    causa_raiz: "Sem tenant scope"
+    mitigacao: "Tenant scope lock obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-el-12
+    name: "Evidence sem payload completo"
+    sintoma: "Log incompleto"
+    causa_raiz: "Sem schema validation"
+    mitigacao: "Schema validation por evidencia"
+    severity: HIGH
+  - dor_id: D-S00-el-13
+    name: "Rollback de acao sem evidence"
+    sintoma: "Reversao sem log"
+    causa_raiz: "Sem rollback evidence"
+    mitigacao: "Evidence obrigatoria por rollback"
+    severity: HIGH
+  - dor_id: D-S00-el-14
+    name: "Busca sem auditoria"
+    sintoma: "Consulta ao ledger sem log"
+    causa_raiz: "Sem query log"
+    mitigacao: "Query log obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-el-15
+    name: "Export sem aprovacao"
+    sintoma: "Dump do ledger sem gate"
+    causa_raiz: "Sem aprovacao pre-export"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL

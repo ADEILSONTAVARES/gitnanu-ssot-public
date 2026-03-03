@@ -1,0 +1,96 @@
+# DORES_S00_context7_v1
+studio_id: S00
+api: context7
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-c7-01
+    name: "Docs desatualizadas"
+    sintoma: "Versao antiga injetada"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "Freshness gate pre-inject"
+    severity: HIGH
+  - dor_id: D-S00-c7-02
+    name: "Lib errada por nome similar"
+    sintoma: "Confundindo libs"
+    causa_raiz: "Sem exact match"
+    mitigacao: "Exact match + version pin"
+    severity: HIGH
+  - dor_id: D-S00-c7-03
+    name: "Token de contexto estourado"
+    sintoma: "Docs cortando contexto"
+    causa_raiz: "Sem truncation"
+    mitigacao: "Chunking obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-c7-04
+    name: "Lookup sem cache"
+    sintoma: "Mesma doc buscada multiplas vezes"
+    causa_raiz: "Sem cache"
+    mitigacao: "Cache de docs obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-c7-05
+    name: "Doc privada exposta"
+    sintoma: "Docs internas acessiveis"
+    causa_raiz: "Sem scope"
+    mitigacao: "Scope de docs por projeto"
+    severity: CRITICAL
+  - dor_id: D-S00-c7-06
+    name: "Hallucination nao detectada"
+    sintoma: "API inexistente usada"
+    causa_raiz: "Sem verificacao"
+    mitigacao: "Verification gate pos-suggestion"
+    severity: CRITICAL
+  - dor_id: D-S00-c7-07
+    name: "Versao incompativel"
+    sintoma: "Doc v2 em projeto v1"
+    causa_raiz: "Sem version compat"
+    mitigacao: "Version compat gate"
+    severity: HIGH
+  - dor_id: D-S00-c7-08
+    name: "Lookup sem timeout"
+    sintoma: "Bloqueando agente"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout por lookup"
+    severity: HIGH
+  - dor_id: D-S00-c7-09
+    name: "Codigo enviado externamente"
+    sintoma: "Privacidade violada"
+    causa_raiz: "Sem privacy gate"
+    mitigacao: "CW-213 consent pre-lookup"
+    severity: CRITICAL
+  - dor_id: D-S00-c7-10
+    name: "Rate limit sem retry"
+    sintoma: "Lookup falhando"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S00-c7-11
+    name: "Docs sem hash"
+    sintoma: "Integridade nao verificavel"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-c7-12
+    name: "Deprecated API sugerida"
+    sintoma: "API antiga no output"
+    causa_raiz: "Sem deprecated check"
+    mitigacao: "Deprecated filter"
+    severity: HIGH
+  - dor_id: D-S00-c7-13
+    name: "Sem fallback"
+    sintoma: "Agente sem docs prossegue"
+    causa_raiz: "Sem fallback policy"
+    mitigacao: "Fallback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-c7-14
+    name: "Lookup sem evidence"
+    sintoma: "Nenhum log do injetado"
+    causa_raiz: "Sem receipt"
+    mitigacao: "CW-206 log de contexto"
+    severity: HIGH
+  - dor_id: D-S00-c7-15
+    name: "Custo sem limite"
+    sintoma: "Lookups sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH

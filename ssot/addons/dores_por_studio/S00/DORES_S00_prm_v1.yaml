@@ -1,0 +1,96 @@
+# DORES_S00_prm_v1
+studio_id: S00
+api: prm
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-prm-01
+    name: "Contato duplicado criado"
+    sintoma: "Mesmo contato duas vezes"
+    causa_raiz: "Sem dedup check"
+    mitigacao: "Dedup gate pre-create"
+    severity: HIGH
+  - dor_id: D-S00-prm-02
+    name: "PII sem consentimento"
+    sintoma: "Dados sem opt-in registrado"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S00-prm-03
+    name: "Lead atribuido ao vendedor errado"
+    sintoma: "Routing errado"
+    causa_raiz: "Sem routing rules"
+    mitigacao: "Routing rules obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-prm-04
+    name: "Contato deletado sem soft delete"
+    sintoma: "Delete irreversivel"
+    causa_raiz: "Sem soft delete"
+    mitigacao: "Soft delete + DLQ"
+    severity: CRITICAL
+  - dor_id: D-S00-prm-05
+    name: "Deal fechado sem receipt"
+    sintoma: "Nenhum log de conversao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-prm-06
+    name: "Stage movido sem aprovacao"
+    sintoma: "Pipeline alterado sem gate"
+    causa_raiz: "Sem stage gate"
+    mitigacao: "Stage gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-prm-07
+    name: "Dados desatualizados entregues"
+    sintoma: "Cache com dados velhos"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "TTL + freshness gate"
+    severity: HIGH
+  - dor_id: D-S00-prm-08
+    name: "RBAC ausente"
+    sintoma: "Vendedor vendo dados de outro"
+    causa_raiz: "Sem permissoes por papel"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-prm-09
+    name: "Import sem validacao"
+    sintoma: "CSV com dados invalidos importado"
+    causa_raiz: "Sem import validation"
+    mitigacao: "Import validation gate"
+    severity: HIGH
+  - dor_id: D-S00-prm-10
+    name: "Email enviado sem opt-in"
+    sintoma: "LGPD violada"
+    causa_raiz: "Sem opt-in check pre-send"
+    mitigacao: "Opt-in check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-prm-11
+    name: "Webhook de CRM sem HMAC"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature validation"
+    mitigacao: "HMAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-prm-12
+    name: "Atividade sem timestamp"
+    sintoma: "Log sem data"
+    causa_raiz: "Sem timestamp obrigatorio"
+    mitigacao: "Timestamp obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-prm-13
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S00-prm-14
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S00-prm-15
+    name: "Relatorio sem hash"
+    sintoma: "Output sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH

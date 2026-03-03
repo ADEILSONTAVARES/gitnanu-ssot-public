@@ -1,0 +1,96 @@
+# DORES_S00_gammanote_v1
+studio_id: S00
+api: gammanote
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-gn-01
+    name: "Note criada em workspace errado"
+    sintoma: "Workspace ID nao validado pre-criacao"
+    causa_raiz: "Sem workspace validation"
+    mitigacao: "Gate workspace_id obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gn-02
+    name: "Note publicada sem aprovacao"
+    sintoma: "Publicacao automatica sem gate"
+    causa_raiz: "Sem aprovacao pre-publish"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-03
+    name: "Conteudo sobrescrito sem backup"
+    sintoma: "Edicao destruindo versao anterior"
+    causa_raiz: "Sem snapshot pre-edit"
+    mitigacao: "CW-208 rollback pre-edit"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-04
+    name: "Note com PII sem controle"
+    sintoma: "Dados pessoais em nota publica"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan obrigatorio pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-05
+    name: "Link de nota expirado"
+    sintoma: "Share link vencido sem aviso"
+    causa_raiz: "Sem expiry monitor"
+    mitigacao: "Expiry monitor + renovacao auto"
+    severity: HIGH
+  - dor_id: D-S00-gn-06
+    name: "Versao desatualizada entregue"
+    sintoma: "Cache servindo versao antiga"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "TTL + freshness gate"
+    severity: HIGH
+  - dor_id: D-S00-gn-07
+    name: "Colaboracao sem RBAC"
+    sintoma: "Qualquer usuario editando"
+    causa_raiz: "Sem permissoes por papel"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gn-08
+    name: "Note sem evidence de criacao"
+    sintoma: "Nenhum log auditavel"
+    causa_raiz: "Sem receipt"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gn-09
+    name: "Busca retornando notas de outro workspace"
+    sintoma: "Cross-workspace data leak"
+    causa_raiz: "Sem workspace scope em queries"
+    mitigacao: "Workspace scope lock obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-10
+    name: "Attachment sem hash"
+    sintoma: "Arquivo anexado sem integridade"
+    causa_raiz: "Sem hash de attachment"
+    mitigacao: "Hash obrigatorio por attachment"
+    severity: HIGH
+  - dor_id: D-S00-gn-11
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa por rate limit"
+    causa_raiz: "Sem retry policy"
+    mitigacao: "Retry + backoff obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-gn-12
+    name: "Template aplicado em note errada"
+    sintoma: "Template sem validacao de alvo"
+    causa_raiz: "Sem target validation"
+    mitigacao: "Target validation pre-apply"
+    severity: HIGH
+  - dor_id: D-S00-gn-13
+    name: "Note deletada sem DLQ"
+    sintoma: "Delete irreversivel sem periodo de graca"
+    causa_raiz: "Sem soft delete policy"
+    mitigacao: "Soft delete + DLQ obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-14
+    name: "Custo de storage sem limite"
+    sintoma: "Attachments crescendo sem controle"
+    causa_raiz: "Sem storage quota"
+    mitigacao: "Storage quota obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-gn-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Note sem backup externo"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt obrigatorio"
+    severity: HIGH
