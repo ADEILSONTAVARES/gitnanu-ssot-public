@@ -1,0 +1,96 @@
+# DORES_S03_video_caption_v1
+studio_id: S03
+api: video.caption
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S03-vc-01
+    name: "Caption publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S03-vc-02
+    name: "PII em caption"
+    sintoma: "Dado pessoal transcrito"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S03-vc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S03-vc-04
+    name: "Idioma errado detectado"
+    sintoma: "Transcricao em lingua errada"
+    causa_raiz: "Sem language lock"
+    mitigacao: "Language lock pre-caption"
+    severity: HIGH
+  - dor_id: D-S03-vc-05
+    name: "Acuracia abaixo do minimo"
+    sintoma: "Caption com muitos erros"
+    causa_raiz: "Sem confidence threshold"
+    mitigacao: "Confidence gate minimo 0.9"
+    severity: HIGH
+  - dor_id: D-S03-vc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-vc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S03-vc-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S03-vc-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S03-vc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S03-vc-11
+    name: "Sincronizacao errada"
+    sintoma: "Caption fora do tempo do video"
+    causa_raiz: "Sem sync validation"
+    mitigacao: "Sync validation gate"
+    severity: HIGH
+  - dor_id: D-S03-vc-12
+    name: "A11y ausente"
+    sintoma: "SRT sem formato acessivel"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "a11y gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-vc-13
+    name: "Timeout sem fallback"
+    sintoma: "Transcricao lenta"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S03-vc-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S03-vc-15
+    name: "DLQ ausente"
+    sintoma: "Job falhando sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH

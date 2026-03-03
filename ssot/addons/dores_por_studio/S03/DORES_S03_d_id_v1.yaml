@@ -1,0 +1,96 @@
+# DORES_S03_d_id_v1
+studio_id: S03
+api: d-id
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S03-did-01
+    name: "Avatar publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S03-did-02
+    name: "Likeness sem consentimento"
+    sintoma: "Rosto sem permissao"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate"
+    severity: CRITICAL
+  - dor_id: D-S03-did-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S03-did-04
+    name: "Deepfake nao detectado"
+    sintoma: "Rosto manipulado"
+    causa_raiz: "Sem deepfake gate"
+    mitigacao: "Deepfake detection"
+    severity: CRITICAL
+  - dor_id: D-S03-did-05
+    name: "Script com PII"
+    sintoma: "Dado pessoal no roteiro"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-render"
+    severity: CRITICAL
+  - dor_id: D-S03-did-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-did-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S03-did-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S03-did-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S03-did-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S03-did-11
+    name: "Voz clonada sem consentimento"
+    sintoma: "Audio sem permissao"
+    causa_raiz: "Sem voice consent"
+    mitigacao: "Voice consent gate"
+    severity: CRITICAL
+  - dor_id: D-S03-did-12
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual incorreto"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S03-did-13
+    name: "Timeout sem fallback"
+    sintoma: "Geracao lenta"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S03-did-14
+    name: "Watermark ausente"
+    sintoma: "Sem marca dagua"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-did-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

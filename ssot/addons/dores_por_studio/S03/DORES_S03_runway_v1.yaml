@@ -1,0 +1,96 @@
+# DORES_S03_runway_v1
+studio_id: S03
+api: runway
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S03-rw-01
+    name: "Video publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S03-rw-02
+    name: "PII em video gerado"
+    sintoma: "Rosto ou dado pessoal no output"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S03-rw-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S03-rw-04
+    name: "Copyright de input violado"
+    sintoma: "Video de terceiro usado sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate pre-generation"
+    severity: CRITICAL
+  - dor_id: D-S03-rw-05
+    name: "Output sem hash"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio pos-geracao"
+    severity: HIGH
+  - dor_id: D-S03-rw-06
+    name: "Custo sem limite"
+    sintoma: "Geracao sem budget guard"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S03-rw-07
+    name: "Geracao em loop"
+    sintoma: "Job sem criterio de done"
+    causa_raiz: "Sem max_iterations"
+    mitigacao: "Max iterations + done check"
+    severity: HIGH
+  - dor_id: D-S03-rw-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S03-rw-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S03-rw-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S03-rw-11
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual fora do padrao"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S03-rw-12
+    name: "Timeout sem fallback"
+    sintoma: "Geracao lenta sem alternativa"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S03-rw-13
+    name: "Deepfake nao detectado"
+    sintoma: "Rosto real manipulado"
+    causa_raiz: "Sem deepfake gate"
+    mitigacao: "Deepfake detection obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S03-rw-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Video sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S03-rw-15
+    name: "Watermark ausente"
+    sintoma: "Video sem marca dagua"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
