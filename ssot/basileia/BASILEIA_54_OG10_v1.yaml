@@ -1,0 +1,279 @@
+basileia_52_og10:
+  version: OG10_BASILEIA_54_v1
+  total_studios: 54
+  studios:
+    - studio_id: S00
+      name: GammaNotion Core
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S01
+      name: WorGamma
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S02
+      name: IDE 2x1 Builder
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S03
+      name: Video e Cinema
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S04
+      name: Imagem Design e Logo
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S05
+      name: Voz TTS STT dublagem
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S06
+      name: Musica e audio
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S07
+      name: Shorts e Repurpose Factory
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S19
+      name: NcAI G10x
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S21
+      name: Mensageria
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S22
+      name: Social Automation
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S23
+      name: Trafego Pago AdsOps
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S24
+      name: Metrica Viral de Video
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S25
+      name: Captacao e Leads
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S27
+      name: Dominios DNS Deploy Proxy
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S28
+      name: Church 7x
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S29
+      name: Live e Streaming Engine
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S30
+      name: Calls 7x
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S31
+      name: Afiliados Royalties Antifraude
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S32
+      name: Publicacao e Distribuicao
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S34
+      name: Billing e Creditos
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S35
+      name: Pagamentos e Checkout
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S39
+      name: 3D Games e World
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S40
+      name: Marketplaces 3D
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A1
+    - studio_id: S09
+      name: Integracoes
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S11
+      name: Dashboards e Relatorios
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S12
+      name: Biblioteca e Assets
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S13
+      name: Localizacao e Multilingue
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S14
+      name: Cursos e Onboarding
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S15
+      name: Marketplace e Shopping
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S16
+      name: Milhas e Viagens
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S17
+      name: Documentos Pro
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S18
+      name: Comunidades e Assinaturas
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S26
+      name: CRM e Vendas Conversacionais
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S36
+      name: Times e Permissoes
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S37
+      name: Support Tickets e CRM
+      visibility: VISIBLE
+      surface: MENU
+      priority_group: A2
+    - studio_id: S08
+      name: Acessibilidade
+      visibility: INVISIBLE
+      surface: PALETTE_SLASH_MOUSE_VOICE
+      priority_group: B
+    - studio_id: S10
+      name: Automacoes
+      visibility: INVISIBLE
+      surface: PALETTE_SLASH_MOUSE_VOICE
+      priority_group: B
+    - studio_id: S20
+      name: Conta e Privacidade
+      visibility: INVISIBLE
+      surface: PALETTE_SLASH_MOUSE_VOICE
+      priority_group: B
+    - studio_id: S33
+      name: Pesquisa Radar Resumos
+      visibility: INVISIBLE
+      surface: PALETTE_SLASH_MOUSE_VOICE
+      priority_group: B
+    - studio_id: S38
+      name: Acessibilidade Avancada
+      visibility: INVISIBLE
+      surface: PALETTE_SLASH_MOUSE_VOICE
+      priority_group: B
+    - studio_id: S41
+      name: CONNECTORS_REGISTRY
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S42
+      name: ACTION_REGISTRY
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S43
+      name: NO_HOLES_CHECK
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S44
+      name: MCP Factory
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S45
+      name: Router Policy Engine
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S46
+      name: Doctor 1 e Doctor 2
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S47
+      name: Benchmark Lab
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S48
+      name: API History DB
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S49
+      name: Evidence Ledger
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S50
+      name: Cache QUANTUM Redis
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S51
+      name: RAG QUANTUM LTA
+      visibility: CORE
+      surface: CAPO_ABERTO
+      priority_group: C
+    - studio_id: S52
+      name: AI Agents Marketplace
+      visibility: VISIBLE
+      surface: MENU_PALETTE_SLASH_MOUSE_VOICE
+      priority_group: A2
+    - studio_id: S53
+      name: Compliance e Audit
+      visibility: VISIBLE
+      surface: MENU_PALETTE_SLASH_MOUSE_VOICE
+      priority_group: A2
+    - studio_id: S54
+      name: Data Pipelines e ETL
+      visibility: VISIBLE
+      surface: MENU_PALETTE_SLASH_MOUSE_VOICE
+      priority_group: A2
