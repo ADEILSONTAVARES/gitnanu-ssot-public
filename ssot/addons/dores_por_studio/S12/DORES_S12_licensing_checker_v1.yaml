@@ -1,0 +1,96 @@
+# DORES_S12_licensing_checker_v1
+studio_id: S12
+api: licensing.checker
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S12-lc-01
+    name: "Verificacao sem aprovacao"
+    sintoma: "Check automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S12-lc-02
+    name: "PII em relatorio de licenca"
+    sintoma: "Dado pessoal em license report"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S12-lc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S12-lc-04
+    name: "Scope violation"
+    sintoma: "Check acessa repositorio errado"
+    causa_raiz: "Sem repo scope lock"
+    mitigacao: "Repo scope lock"
+    severity: CRITICAL
+  - dor_id: D-S12-lc-05
+    name: "Licenca incompativel ignorada"
+    sintoma: "Asset com licenca GPL distribuido sem gate"
+    causa_raiz: "Sem incompatible license gate"
+    mitigacao: "Incompatible license gate"
+    severity: CRITICAL
+  - dor_id: D-S12-lc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de relatorio"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S12-lc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S12-lc-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S12-lc-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S12-lc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S12-lc-11
+    name: "DB de licencas desatualizado"
+    sintoma: "Licenca verificada com base velha"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S12-lc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S12-lc-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S12-lc-14
+    name: "False positive sem triagem"
+    sintoma: "Licenca valida bloqueada sem revisao"
+    causa_raiz: "Sem false positive gate"
+    mitigacao: "False positive gate"
+    severity: HIGH
+  - dor_id: D-S12-lc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
