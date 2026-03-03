@@ -1,0 +1,55 @@
+# DORES_S10_v1
+studio_id: S10
+studio_name: Automacoes
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S10-01
+    api: n8n
+    name: "Loop infinito em automacao"
+    sintoma: "Trigger disparando a si mesmo"
+    causa_raiz: "Sem loop detection"
+    mitigacao: "Max iterations + loop detection"
+    severity: CRITICAL
+  - dor_id: D-S10-02
+    api: make
+    name: "Cenario sem aprovacao"
+    sintoma: "Automacao critica sem gate"
+    causa_raiz: "Sem aprovacao para alto risco"
+    mitigacao: "CW-202 aprovacao automacoes criticas"
+    severity: HIGH
+  - dor_id: D-S10-03
+    api: zapier
+    name: "Zap duplicando dados"
+    sintoma: "Trigger multiplas vezes"
+    causa_raiz: "Sem idempotency_key"
+    mitigacao: "CW-209 idempotencia obrigatoria"
+    severity: HIGH
+  - dor_id: D-S10-04
+    api: scheduler.cron
+    name: "Job cron sem monitoramento"
+    sintoma: "Falhando silenciosamente"
+    causa_raiz: "Sem health check de cron"
+    mitigacao: "Health check + alerta por cron"
+    severity: HIGH
+  - dor_id: D-S10-05
+    api: dlq.replay
+    name: "DLQ crescendo sem consumo"
+    sintoma: "Mensagens acumulando"
+    causa_raiz: "Sem monitor de DLQ"
+    mitigacao: "DLQ size monitor + alerta"
+    severity: HIGH
+  - dor_id: D-S10-06
+    api: bun.runtime
+    name: "Script fora do escopo"
+    sintoma: "Acessando path nao autorizado"
+    causa_raiz: "Sem scope restriction"
+    mitigacao: "CW-001 pasta autorizada"
+    severity: CRITICAL
+  - dor_id: D-S10-07
+    api: webhooks
+    name: "Webhook sem retry"
+    sintoma: "Request falhou dado perdido"
+    causa_raiz: "Sem retry e sem DLQ"
+    mitigacao: "Retry + DLQ obrigatorio"
+    severity: HIGH

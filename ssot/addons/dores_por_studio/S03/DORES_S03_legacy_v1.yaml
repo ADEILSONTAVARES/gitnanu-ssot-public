@@ -1,0 +1,55 @@
+# DORES_S03_v1
+studio_id: S03
+studio_name: Video e Cinema
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S03-01
+    api: runway.gen45
+    name: "Video com artefatos visuais"
+    sintoma: "Qualidade abaixo do minimo"
+    causa_raiz: "Sem QC visual pos-geracao"
+    mitigacao: "QC visual score 8.0 bloqueante"
+    severity: HIGH
+  - dor_id: D-S03-02
+    api: klingai.v26
+    name: "Motion control ignorando params"
+    sintoma: "Params nao aplicados"
+    causa_raiz: "Sem validacao pre-geracao"
+    mitigacao: "Gate parameter validation pre-submit"
+    severity: HIGH
+  - dor_id: D-S03-03
+    api: luma.dreammachine
+    name: "Timeout sem fallback"
+    sintoma: "Sem alternativa de engine"
+    causa_raiz: "Sem fallback e sem timeout"
+    mitigacao: "Timeout + fallback KlingAI"
+    severity: HIGH
+  - dor_id: D-S03-04
+    api: makereels
+    name: "Reel publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao pre-publish"
+    mitigacao: "CW-202 aprovacao pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S03-05
+    api: creatify
+    name: "Marca dagua incorreta"
+    sintoma: "BrandKit nao aplicado"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "CW-037 BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S03-06
+    api: wan.v26
+    name: "Audio dessincronizado"
+    sintoma: "Drift audio/video"
+    causa_raiz: "Sem AV sync check"
+    mitigacao: "Gate AV sync pos-render"
+    severity: HIGH
+  - dor_id: D-S03-07
+    api: nemo.video
+    name: "Formato incompativel"
+    sintoma: "Codec nao suportado"
+    causa_raiz: "Sem validacao de formato"
+    mitigacao: "Gate formato por plataforma"
+    severity: MEDIUM

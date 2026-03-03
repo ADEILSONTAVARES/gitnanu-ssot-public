@@ -1,0 +1,55 @@
+# DORES_S02_v1
+studio_id: S02
+studio_name: IDE 2x1 Builder
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S02-01
+    api: replit
+    name: "Scaffold sobrescrevendo arquivos"
+    sintoma: "Nao verifica arquivos existentes"
+    causa_raiz: "Sem brownfield detection"
+    mitigacao: "MB-002 greenfield vs brownfield"
+    severity: CRITICAL
+  - dor_id: D-S02-02
+    api: claudecode
+    name: "Reescrita ampla em vez de patch"
+    sintoma: "Agente nao usa diff-first"
+    causa_raiz: "Sem SERENA diff-first"
+    mitigacao: "CW-205 diff-first + MB-019 dry-run"
+    severity: HIGH
+  - dor_id: D-S02-03
+    api: bun
+    name: "Build quebrando sem motivo"
+    sintoma: "Lockfile desatualizado"
+    causa_raiz: "Sem lockfile check pre-build"
+    mitigacao: "MB-006 prereqs + lockfile check"
+    severity: HIGH
+  - dor_id: D-S02-04
+    api: docker
+    name: "Secrets no container"
+    sintoma: "ENV vars commitadas"
+    causa_raiz: "Sem secrets scan pre-build"
+    mitigacao: "CW-212 policy guard + MB-004"
+    severity: CRITICAL
+  - dor_id: D-S02-05
+    api: playwright
+    name: "Testes E2E timeout"
+    sintoma: "Selector instavel"
+    causa_raiz: "Sem retry policy"
+    mitigacao: "Retry + timeout configuravel"
+    severity: MEDIUM
+  - dor_id: D-S02-06
+    api: antigravity
+    name: "Deploy sem staging"
+    sintoma: "Pipeline sem ambiente intermediario"
+    causa_raiz: "Sem staging gate"
+    mitigacao: "Staging obrigatorio pre-producao"
+    severity: CRITICAL
+  - dor_id: D-S02-07
+    api: cursor
+    name: "Contexto de arquivo errado"
+    sintoma: "Arquivo errado no contexto"
+    causa_raiz: "Sem scope validation"
+    mitigacao: "CW-001 pasta autorizada"
+    severity: HIGH

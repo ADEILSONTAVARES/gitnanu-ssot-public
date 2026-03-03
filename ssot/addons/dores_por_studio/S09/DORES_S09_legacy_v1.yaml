@@ -1,0 +1,55 @@
+# DORES_S09_v1
+studio_id: S09
+studio_name: Integracoes
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S09-01
+    api: oauth.google
+    name: "Token OAuth expirado"
+    sintoma: "Access token expirado silencioso"
+    causa_raiz: "Sem token refresh automatico"
+    mitigacao: "Token refresh + health check"
+    severity: HIGH
+  - dor_id: D-S09-02
+    api: webhooks.generic
+    name: "Webhook sem verificacao de assinatura"
+    sintoma: "Payload aceito sem validar origem"
+    causa_raiz: "Sem HMAC verification"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S09-03
+    api: api.key.vault
+    name: "API key em logs"
+    sintoma: "Key logada em debug"
+    causa_raiz: "Sem secrets redaction"
+    mitigacao: "CW-212 + log redaction"
+    severity: CRITICAL
+  - dor_id: D-S09-04
+    api: mcp.discovery
+    name: "Connector sem MCP registrado"
+    sintoma: "Connector sem MCP"
+    causa_raiz: "Sem MCP coverage check"
+    mitigacao: "S43 NO_HOLES_CHECK obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-05
+    api: oauth.meta
+    name: "Permissoes excessivas"
+    sintoma: "Scope maior que necessario"
+    causa_raiz: "Sem minimo privilegio"
+    mitigacao: "Scope minimo por connector"
+    severity: HIGH
+  - dor_id: D-S09-06
+    api: consent.permissions
+    name: "Integracao sem consentimento"
+    sintoma: "Usuario nao confirmou"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate pre-ativacao"
+    severity: CRITICAL
+  - dor_id: D-S09-07
+    api: n8n.bridge
+    name: "Workflow sem DLQ"
+    sintoma: "Job falhou sem reprocessamento"
+    causa_raiz: "Sem DLQ e sem retry"
+    mitigacao: "DLQ + retry obrigatorio"
+    severity: HIGH

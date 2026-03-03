@@ -1,0 +1,55 @@
+# DORES_S04_v1
+studio_id: S04
+studio_name: Imagem Design Logo
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S04-01
+    api: openai.image15
+    name: "Imagem com conteudo inapropriado"
+    sintoma: "Safety filter nao bloqueando"
+    causa_raiz: "Sem content policy check"
+    mitigacao: "Content policy gate pos-geracao"
+    severity: CRITICAL
+  - dor_id: D-S04-02
+    api: flux2.pro
+    name: "Estilo inconsistente entre variantes"
+    sintoma: "Cada variante com estilo diferente"
+    causa_raiz: "Sem style reference lock"
+    mitigacao: "Style reference lock por batch"
+    severity: HIGH
+  - dor_id: D-S04-03
+    api: synthid
+    name: "Imagem sem watermark de proveniencia"
+    sintoma: "SynthID nao aplicado"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "SynthID gate pre-publish"
+    severity: HIGH
+  - dor_id: D-S04-04
+    api: nanobanana.pro
+    name: "Rosto real sem consentimento"
+    sintoma: "Pessoa identificavel no output"
+    causa_raiz: "Sem consent guard para rostos"
+    mitigacao: "CW-213 consent gate CRITICO"
+    severity: CRITICAL
+  - dor_id: D-S04-05
+    api: manus.designview
+    name: "Canvas perdendo camadas"
+    sintoma: "Export destruindo layers"
+    causa_raiz: "Sem layers validation"
+    mitigacao: "Gate layers pre-export"
+    severity: HIGH
+  - dor_id: D-S04-06
+    api: leonardo.blueprints
+    name: "Blueprint em projeto errado"
+    sintoma: "Sem validacao de compatibilidade"
+    causa_raiz: "Sem scope check"
+    mitigacao: "Scope check pre-apply"
+    severity: MEDIUM
+  - dor_id: D-S04-07
+    api: betterpic
+    name: "Foto com identidade errada"
+    sintoma: "Processada para usuario errado"
+    causa_raiz: "Sem user_id validation"
+    mitigacao: "user_id gate pre-process"
+    severity: CRITICAL
