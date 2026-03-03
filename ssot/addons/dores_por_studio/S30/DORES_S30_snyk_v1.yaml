@@ -1,0 +1,96 @@
+# DORES_S30_snyk_v1
+studio_id: S30
+api: snyk
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S30-sn-01
+    name: "Scan executado sem aprovacao"
+    sintoma: "Scan automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S30-sn-02
+    name: "PII em relatorio"
+    sintoma: "Dado pessoal em vulnerability report"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S30-sn-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S30-sn-04
+    name: "Scope violation"
+    sintoma: "Scan em projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S30-sn-05
+    name: "CVE critico ignorado"
+    sintoma: "Vulnerabilidade critica sem bloqueio"
+    causa_raiz: "Sem CVE gate"
+    mitigacao: "CVE gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S30-sn-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de report"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-sn-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S30-sn-08
+    name: "Rollback impossivel"
+    sintoma: "Scan sem historico"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S30-sn-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S30-sn-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S30-sn-11
+    name: "Fix automatico sem review"
+    sintoma: "PR gerado sem aprovacao humana"
+    causa_raiz: "Sem fix review gate"
+    mitigacao: "Fix review gate"
+    severity: HIGH
+  - dor_id: D-S30-sn-12
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-sn-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-sn-14
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S30-sn-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

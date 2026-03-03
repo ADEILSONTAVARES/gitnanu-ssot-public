@@ -1,0 +1,96 @@
+# DORES_S30_vault_hashicorp_v1
+studio_id: S30
+api: vault.hashicorp
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S30-vh-01
+    name: "Secret criado sem aprovacao"
+    sintoma: "Criacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S30-vh-02
+    name: "PII em secret"
+    sintoma: "Dado pessoal em valor de secret"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S30-vh-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S30-vh-04
+    name: "Scope violation"
+    sintoma: "Acesso a path errado"
+    causa_raiz: "Sem path scope lock"
+    mitigacao: "Path scope lock"
+    severity: CRITICAL
+  - dor_id: D-S30-vh-05
+    name: "Secret sem rotacao"
+    sintoma: "Credencial estatica sem politica de rotacao"
+    causa_raiz: "Sem rotation policy gate"
+    mitigacao: "Rotation policy gate"
+    severity: CRITICAL
+  - dor_id: D-S30-vh-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-vh-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S30-vh-08
+    name: "Rollback impossivel"
+    sintoma: "Secret sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S30-vh-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S30-vh-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S30-vh-11
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-vh-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-vh-13
+    name: "Acesso sem MFA"
+    sintoma: "Vault acessivel sem segundo fator"
+    causa_raiz: "Sem MFA enforcement"
+    mitigacao: "MFA enforcement obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S30-vh-14
+    name: "Lease sem renovacao"
+    sintoma: "Secret expira sem aviso"
+    causa_raiz: "Sem lease renewal alert"
+    mitigacao: "Lease renewal alert"
+    severity: HIGH
+  - dor_id: D-S30-vh-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
