@@ -1,0 +1,96 @@
+# DORES_S22_zapier_v1
+studio_id: S22
+api: zapier
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S22-zp-01
+    name: "Zap publicado sem aprovacao"
+    sintoma: "Execucao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S22-zp-02
+    name: "Credencial em log"
+    sintoma: "Secret vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S22-zp-03
+    name: "Scope violation"
+    sintoma: "Zap acessa conta errada"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S22-zp-04
+    name: "Loop infinito"
+    sintoma: "Zap sem exit condition"
+    causa_raiz: "Sem max_iterations"
+    mitigacao: "Max iterations obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S22-zp-05
+    name: "Idempotencia ausente"
+    sintoma: "Re-trigger duplica posts"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S22-zp-06
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S22-zp-07
+    name: "Rollback impossivel"
+    sintoma: "Zap sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S22-zp-08
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S22-zp-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S22-zp-10
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S22-zp-11
+    name: "Webhook sem HMAC"
+    sintoma: "Request nao autenticado"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S22-zp-12
+    name: "PII em payload"
+    sintoma: "Dado pessoal em log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S22-zp-13
+    name: "Timeout sem fallback"
+    sintoma: "Execucao trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S22-zp-14
+    name: "ENV gate ausente"
+    sintoma: "Roda em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S22-zp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

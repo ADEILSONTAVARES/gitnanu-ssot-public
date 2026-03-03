@@ -1,0 +1,96 @@
+# DORES_S22_meta_graph_v1
+studio_id: S22
+api: meta.graph
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S22-mg-01
+    name: "Post publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S22-mg-02
+    name: "PII em post"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-post"
+    severity: CRITICAL
+  - dor_id: D-S22-mg-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S22-mg-04
+    name: "Scope violation"
+    sintoma: "Post em pagina errada"
+    causa_raiz: "Sem page scope lock"
+    mitigacao: "Page scope lock"
+    severity: CRITICAL
+  - dor_id: D-S22-mg-05
+    name: "Copyright violado"
+    sintoma: "Conteudo sem licenca"
+    causa_raiz: "Sem copyright gate"
+    mitigacao: "Copyright gate"
+    severity: CRITICAL
+  - dor_id: D-S22-mg-06
+    name: "Ads-safe gate ausente"
+    sintoma: "Conteudo sensivel em post organico"
+    causa_raiz: "Sem ads-safe gate"
+    mitigacao: "Ads-safe gate"
+    severity: CRITICAL
+  - dor_id: D-S22-mg-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S22-mg-08
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S22-mg-09
+    name: "Rollback impossivel"
+    sintoma: "Post sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S22-mg-10
+    name: "Post sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S22-mg-11
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S22-mg-12
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S22-mg-13
+    name: "Long-lived token sem auditoria"
+    sintoma: "Token de 60 dias sem monitor"
+    causa_raiz: "Sem long-lived token audit"
+    mitigacao: "Long-lived token audit"
+    severity: HIGH
+  - dor_id: D-S22-mg-14
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual incorreto"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S22-mg-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
