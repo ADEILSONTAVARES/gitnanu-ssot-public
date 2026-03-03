@@ -1,0 +1,96 @@
+# DORES_S15_prontuario_digital_v1
+studio_id: S15
+api: prontuario.digital
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S15-pd-01
+    name: "Prontuario acessado sem aprovacao"
+    sintoma: "Acesso automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-02
+    name: "PII em prontuario"
+    sintoma: "Dado sensivel de saude exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-04
+    name: "Scope violation"
+    sintoma: "Acesso a prontuario errado"
+    causa_raiz: "Sem record scope lock"
+    mitigacao: "Record scope lock"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de saude sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de prontuario"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S15-pd-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S15-pd-08
+    name: "Rollback impossivel"
+    sintoma: "Registro sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S15-pd-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de acesso"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S15-pd-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S15-pd-11
+    name: "Dado de saude sem criptografia"
+    sintoma: "Prontuario trafegando sem TLS"
+    causa_raiz: "Sem encryption gate"
+    mitigacao: "Encryption gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S15-pd-13
+    name: "Acesso sem MFA"
+    sintoma: "Usuario acessa sem segundo fator"
+    causa_raiz: "Sem MFA enforcement"
+    mitigacao: "MFA enforcement obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-14
+    name: "Audit trail adulteravel"
+    sintoma: "Log de acesso sem imutabilidade"
+    causa_raiz: "Sem immutability gate"
+    mitigacao: "Immutability gate"
+    severity: CRITICAL
+  - dor_id: D-S15-pd-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
