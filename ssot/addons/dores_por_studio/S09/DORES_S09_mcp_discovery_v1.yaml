@@ -1,0 +1,96 @@
+# DORES_S09_mcp_discovery_v1
+studio_id: S09
+api: mcp.discovery
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S09-md-01
+    name: "MCP ativado sem aprovacao"
+    sintoma: "Ativacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S09-md-02
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S09-md-03
+    name: "Scope violation"
+    sintoma: "MCP acessa recursos fora do workspace"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S09-md-04
+    name: "MCP sem versioning"
+    sintoma: "Versao sem controle"
+    causa_raiz: "Sem versioning"
+    mitigacao: "Versioning obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-md-05
+    name: "Schema invalido"
+    sintoma: "MCP com schema corrompido"
+    causa_raiz: "Sem schema validation"
+    mitigacao: "Schema validation gate"
+    severity: HIGH
+  - dor_id: D-S09-md-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-md-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S09-md-08
+    name: "Rollback impossivel"
+    sintoma: "Ativacao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S09-md-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S09-md-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S09-md-11
+    name: "Auth adapter ausente"
+    sintoma: "MCP sem autenticacao"
+    causa_raiz: "Sem auth adapter"
+    mitigacao: "Auth adapter obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S09-md-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-md-13
+    name: "Timeout sem fallback"
+    sintoma: "Discovery trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S09-md-14
+    name: "No-holes check ausente"
+    sintoma: "MCP sem validacao de cobertura"
+    causa_raiz: "Sem no-holes check"
+    mitigacao: "No-holes check obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-md-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

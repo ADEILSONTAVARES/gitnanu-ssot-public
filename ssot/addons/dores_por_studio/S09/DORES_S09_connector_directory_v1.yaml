@@ -1,0 +1,96 @@
+# DORES_S09_connector_directory_v1
+studio_id: S09
+api: connector.directory
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S09-cd-01
+    name: "Connector ativado sem aprovacao"
+    sintoma: "Ativacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S09-cd-02
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S09-cd-03
+    name: "Connector RESERVED ativado sem gate"
+    sintoma: "RESERVED em producao sem Detetive 7x"
+    causa_raiz: "Sem RESERVED gate"
+    mitigacao: "Detetive 7x gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S09-cd-04
+    name: "Scope violation"
+    sintoma: "Connector acessa recursos externos"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S09-cd-05
+    name: "MCP ausente para connector"
+    sintoma: "Connector sem MCP registrado"
+    causa_raiz: "Sem MCP obrigatorio"
+    mitigacao: "MCP coverage gate"
+    severity: HIGH
+  - dor_id: D-S09-cd-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-cd-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S09-cd-08
+    name: "Rollback impossivel"
+    sintoma: "Ativacao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S09-cd-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S09-cd-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S09-cd-11
+    name: "Versao de connector desatualizada"
+    sintoma: "Connector sem version gate"
+    causa_raiz: "Sem version gate"
+    mitigacao: "Version gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-cd-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-cd-13
+    name: "Timeout sem fallback"
+    sintoma: "Discovery trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S09-cd-14
+    name: "No-holes check ausente"
+    sintoma: "Connector sem validacao de cobertura"
+    causa_raiz: "Sem no-holes check"
+    mitigacao: "No-holes check obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-cd-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

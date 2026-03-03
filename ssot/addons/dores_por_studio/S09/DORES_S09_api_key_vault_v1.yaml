@@ -1,0 +1,96 @@
+# DORES_S09_api_key_vault_v1
+studio_id: S09
+api: api.key.vault
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S09-ak-01
+    name: "Secret acessado sem aprovacao"
+    sintoma: "Leitura automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S09-ak-02
+    name: "Secret em log"
+    sintoma: "Key vazando em audit trail"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S09-ak-03
+    name: "Secret sem rotacao"
+    sintoma: "Credencial nunca rotacionada"
+    causa_raiz: "Sem rotation policy"
+    mitigacao: "Rotation policy obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S09-ak-04
+    name: "Scope violation"
+    sintoma: "Secret acessado fora do workspace"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S09-ak-05
+    name: "Encryption at rest ausente"
+    sintoma: "Secret em plaintext no vault"
+    causa_raiz: "Sem encryption"
+    mitigacao: "Encryption obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S09-ak-06
+    name: "Audit trail ausente"
+    sintoma: "Acesso sem registro"
+    causa_raiz: "Sem audit log"
+    mitigacao: "Audit log obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-ak-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S09-ak-08
+    name: "Rollback impossivel"
+    sintoma: "Rotacao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S09-ak-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S09-ak-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S09-ak-11
+    name: "Secret expirado sem alerta"
+    sintoma: "Credencial vencida em uso"
+    causa_raiz: "Sem expiry alerting"
+    mitigacao: "Expiry alerting obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-ak-12
+    name: "Acesso sem MFA"
+    sintoma: "Secret acessado sem segundo fator"
+    causa_raiz: "Sem MFA gate"
+    mitigacao: "MFA gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-ak-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-ak-14
+    name: "Versioning ausente"
+    sintoma: "Sem historico de versoes do secret"
+    causa_raiz: "Sem versioning"
+    mitigacao: "Versioning obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-ak-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

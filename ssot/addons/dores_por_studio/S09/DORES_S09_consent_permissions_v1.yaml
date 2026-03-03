@@ -1,0 +1,96 @@
+# DORES_S09_consent_permissions_v1
+studio_id: S09
+api: consent.permissions
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S09-cp-01
+    name: "Permissao concedida sem aprovacao"
+    sintoma: "Grant automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S09-cp-02
+    name: "PII em log de consent"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S09-cp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S09-cp-04
+    name: "Scope excessivo concedido"
+    sintoma: "Permissao alem do necessario"
+    causa_raiz: "Sem scope minimization"
+    mitigacao: "Scope minimization obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S09-cp-05
+    name: "Consent sem audit trail"
+    sintoma: "Autorizacao sem registro"
+    causa_raiz: "Sem audit log"
+    mitigacao: "Audit log obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-cp-06
+    name: "Revogacao sem propagacao"
+    sintoma: "Permissao revogada nao propagada"
+    causa_raiz: "Sem revocation propagation"
+    mitigacao: "Revocation propagation obrigatoria"
+    severity: HIGH
+  - dor_id: D-S09-cp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S09-cp-08
+    name: "Rollback impossivel"
+    sintoma: "Grant sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S09-cp-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S09-cp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S09-cp-11
+    name: "LGPD nao atendida"
+    sintoma: "Consent sem conformidade legal"
+    causa_raiz: "Sem LGPD gate"
+    mitigacao: "LGPD gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S09-cp-12
+    name: "Consent expirado sem renovacao"
+    sintoma: "Permissao vencida em uso"
+    causa_raiz: "Sem expiry check"
+    mitigacao: "Expiry check obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-cp-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S09-cp-14
+    name: "Timeout sem fallback"
+    sintoma: "Pipeline trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S09-cp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
