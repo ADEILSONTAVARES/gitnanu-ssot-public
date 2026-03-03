@@ -1,0 +1,96 @@
+# DORES_S11_sentry_metrics_v1
+studio_id: S11
+api: sentry.metrics
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S11-sm-01
+    name: "Alert critico sem aprovacao"
+    sintoma: "Alerta dispara acao sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S11-sm-02
+    name: "PII em stack trace"
+    sintoma: "Dado pessoal em erro"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S11-sm-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S11-sm-04
+    name: "Scope violation"
+    sintoma: "Acesso a projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S11-sm-05
+    name: "Alert storm"
+    sintoma: "Multiplos alertas sem dedup"
+    causa_raiz: "Sem alert dedup"
+    mitigacao: "Alert dedup obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-sm-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-sm-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S11-sm-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S11-sm-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S11-sm-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S11-sm-11
+    name: "SLO baseline ausente"
+    sintoma: "Sem linha de referencia de erro"
+    causa_raiz: "Sem SLO baseline"
+    mitigacao: "SLO baseline obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-sm-12
+    name: "Anomalia nao detectada"
+    sintoma: "Spike de erros sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-sm-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-sm-14
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-sm-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

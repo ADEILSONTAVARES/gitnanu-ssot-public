@@ -1,0 +1,96 @@
+# DORES_S10_pica_os_v1
+studio_id: S10
+api: pica.os
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S10-po-01
+    name: "Acao publicada sem aprovacao"
+    sintoma: "Execucao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S10-po-02
+    name: "Credencial em log"
+    sintoma: "Secret vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S10-po-03
+    name: "Scope violation"
+    sintoma: "Acao acessa recursos externos"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S10-po-04
+    name: "Network nao bloqueada"
+    sintoma: "Egress sem allowlist"
+    causa_raiz: "Sem network off default"
+    mitigacao: "Network off default"
+    severity: CRITICAL
+  - dor_id: D-S10-po-05
+    name: "Idempotencia ausente"
+    sintoma: "Re-execucao duplica efeitos"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: HIGH
+  - dor_id: D-S10-po-06
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S10-po-07
+    name: "Rollback impossivel"
+    sintoma: "Acao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S10-po-08
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S10-po-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S10-po-10
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-po-11
+    name: "Timeout sem killswitch"
+    sintoma: "Acao trava indefinidamente"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout killswitch obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-po-12
+    name: "PII em payload"
+    sintoma: "Dado pessoal em acao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S10-po-13
+    name: "ENV gate ausente"
+    sintoma: "Roda em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S10-po-14
+    name: "Sandbox ausente"
+    sintoma: "Execucao sem isolamento"
+    causa_raiz: "Sem sandbox"
+    mitigacao: "Sandbox obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S10-po-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

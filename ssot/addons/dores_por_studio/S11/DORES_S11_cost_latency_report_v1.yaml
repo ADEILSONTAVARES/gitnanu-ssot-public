@@ -1,0 +1,96 @@
+# DORES_S11_cost_latency_report_v1
+studio_id: S11
+api: cost.latency.report
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S11-cl-01
+    name: "Relatorio publicado sem aprovacao"
+    sintoma: "Export automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S11-cl-02
+    name: "PII em relatorio de custo"
+    sintoma: "Dado pessoal em linha de custo"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S11-cl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S11-cl-04
+    name: "Scope violation"
+    sintoma: "Relatorio acessa dados de outro workspace"
+    causa_raiz: "Sem workspace scope lock"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S11-cl-05
+    name: "Dados desatualizados"
+    sintoma: "Custo com cache velho"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-cl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-cl-07
+    name: "Anomalia de custo nao detectada"
+    sintoma: "Spike sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-cl-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S11-cl-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S11-cl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S11-cl-11
+    name: "p95 latency sem baseline"
+    sintoma: "Latencia sem referencia"
+    causa_raiz: "Sem p95 baseline"
+    mitigacao: "p95 baseline obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-cl-12
+    name: "Budget cap ausente"
+    sintoma: "Gasto sem teto"
+    causa_raiz: "Sem budget cap"
+    mitigacao: "Budget cap obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S11-cl-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-cl-14
+    name: "Timeout sem fallback"
+    sintoma: "Relatorio trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S11-cl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
