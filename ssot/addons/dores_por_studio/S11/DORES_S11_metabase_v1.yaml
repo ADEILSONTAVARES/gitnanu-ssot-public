@@ -1,0 +1,96 @@
+# DORES_S11_metabase_v1
+studio_id: S11
+api: metabase
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S11-mb-01
+    name: "Relatorio publicado sem aprovacao"
+    sintoma: "Publicacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S11-mb-02
+    name: "PII em relatorio"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S11-mb-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S11-mb-04
+    name: "Scope violation"
+    sintoma: "Acesso a database errado"
+    causa_raiz: "Sem database scope lock"
+    mitigacao: "Database scope lock"
+    severity: CRITICAL
+  - dor_id: D-S11-mb-05
+    name: "Dados desatualizados"
+    sintoma: "Relatorio com metricas velhas"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-mb-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-mb-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S11-mb-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S11-mb-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S11-mb-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S11-mb-11
+    name: "SQL injection em query nativa"
+    sintoma: "Query manipulada"
+    causa_raiz: "Sem query sanitization"
+    mitigacao: "Query sanitization gate"
+    severity: CRITICAL
+  - dor_id: D-S11-mb-12
+    name: "Anomalia nao detectada"
+    sintoma: "Metrica fora do range sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-mb-13
+    name: "Permissao excessiva"
+    sintoma: "Relatorio com acesso alem do necessario"
+    causa_raiz: "Sem permission minimization"
+    mitigacao: "Permission minimization"
+    severity: HIGH
+  - dor_id: D-S11-mb-14
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-mb-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

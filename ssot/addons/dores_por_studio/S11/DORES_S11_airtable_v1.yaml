@@ -1,0 +1,96 @@
+# DORES_S11_airtable_v1
+studio_id: S11
+api: airtable
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S11-at-01
+    name: "Base publicada sem aprovacao"
+    sintoma: "Publicacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S11-at-02
+    name: "PII em base"
+    sintoma: "Dado pessoal exposto em record"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S11-at-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S11-at-04
+    name: "Scope violation"
+    sintoma: "Acesso a base errada"
+    causa_raiz: "Sem base scope lock"
+    mitigacao: "Base scope lock"
+    severity: CRITICAL
+  - dor_id: D-S11-at-05
+    name: "Dados desatualizados"
+    sintoma: "Dashboard com records velhos"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-at-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-at-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S11-at-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S11-at-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S11-at-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S11-at-11
+    name: "Schema drift"
+    sintoma: "Campo renomeado sem deteccao"
+    causa_raiz: "Sem schema drift alert"
+    mitigacao: "Schema drift alert"
+    severity: HIGH
+  - dor_id: D-S11-at-12
+    name: "Permissao excessiva"
+    sintoma: "Base com acesso alem do necessario"
+    causa_raiz: "Sem permission minimization"
+    mitigacao: "Permission minimization"
+    severity: HIGH
+  - dor_id: D-S11-at-13
+    name: "Automacao sem gate"
+    sintoma: "Automation dispara sem aprovacao"
+    causa_raiz: "Sem automation gate"
+    mitigacao: "Automation gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-at-14
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-at-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

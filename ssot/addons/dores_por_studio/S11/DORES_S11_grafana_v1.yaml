@@ -1,0 +1,96 @@
+# DORES_S11_grafana_v1
+studio_id: S11
+api: grafana
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S11-gr-01
+    name: "Alert publicado sem aprovacao"
+    sintoma: "Alerta critico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S11-gr-02
+    name: "PII em painel"
+    sintoma: "Dado pessoal em metric label"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S11-gr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S11-gr-04
+    name: "Scope violation"
+    sintoma: "Acesso a datasource errada"
+    causa_raiz: "Sem datasource scope lock"
+    mitigacao: "Datasource scope lock"
+    severity: CRITICAL
+  - dor_id: D-S11-gr-05
+    name: "Alert storm"
+    sintoma: "Multiplos alertas sem dedup"
+    causa_raiz: "Sem alert dedup"
+    mitigacao: "Alert dedup obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-gr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-gr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S11-gr-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S11-gr-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S11-gr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S11-gr-11
+    name: "Dashboard sem SLO baseline"
+    sintoma: "Painel sem linha de referencia"
+    causa_raiz: "Sem SLO baseline"
+    mitigacao: "SLO baseline obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-gr-12
+    name: "Datasource credentials em plaintext"
+    sintoma: "Secret em datasource config"
+    causa_raiz: "Sem secret manager"
+    mitigacao: "Secret manager obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S11-gr-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-gr-14
+    name: "Timeout sem fallback"
+    sintoma: "Query trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S11-gr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

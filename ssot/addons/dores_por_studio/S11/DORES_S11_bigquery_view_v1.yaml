@@ -1,0 +1,96 @@
+# DORES_S11_bigquery_view_v1
+studio_id: S11
+api: bigquery.view
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S11-bq-01
+    name: "View publicada sem aprovacao"
+    sintoma: "Publicacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S11-bq-02
+    name: "PII em view"
+    sintoma: "Dado pessoal exposto em query"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S11-bq-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S11-bq-04
+    name: "Scope violation"
+    sintoma: "Acesso a dataset errado"
+    causa_raiz: "Sem dataset scope lock"
+    mitigacao: "Dataset scope lock"
+    severity: CRITICAL
+  - dor_id: D-S11-bq-05
+    name: "SQL injection em view"
+    sintoma: "Query manipulada"
+    causa_raiz: "Sem query sanitization"
+    mitigacao: "Query sanitization gate"
+    severity: CRITICAL
+  - dor_id: D-S11-bq-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-bq-07
+    name: "Custo sem limite"
+    sintoma: "Query sem budget cap"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard + slot limit"
+    severity: CRITICAL
+  - dor_id: D-S11-bq-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S11-bq-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S11-bq-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S11-bq-11
+    name: "Full table scan"
+    sintoma: "Query sem filtro em tabela grande"
+    causa_raiz: "Sem partition filter gate"
+    mitigacao: "Partition filter gate"
+    severity: HIGH
+  - dor_id: D-S11-bq-12
+    name: "Anomalia nao detectada"
+    sintoma: "Metrica fora do range sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-bq-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-bq-14
+    name: "Timeout sem fallback"
+    sintoma: "Query trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S11-bq-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

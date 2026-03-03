@@ -1,0 +1,96 @@
+# DORES_S11_retool_v1
+studio_id: S11
+api: retool
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S11-rt-01
+    name: "App publicado sem aprovacao"
+    sintoma: "Publicacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S11-rt-02
+    name: "PII em app"
+    sintoma: "Dado pessoal exposto em componente"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S11-rt-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S11-rt-04
+    name: "Scope violation"
+    sintoma: "App acessa recursos externos"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S11-rt-05
+    name: "SQL injection em query"
+    sintoma: "Query manipulada"
+    causa_raiz: "Sem query sanitization"
+    mitigacao: "Query sanitization gate"
+    severity: CRITICAL
+  - dor_id: D-S11-rt-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-rt-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S11-rt-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S11-rt-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S11-rt-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S11-rt-11
+    name: "Acao irreversivel sem gate"
+    sintoma: "Delete sem confirmacao"
+    causa_raiz: "Sem irreversible gate"
+    mitigacao: "Irreversible gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S11-rt-12
+    name: "Permissao excessiva"
+    sintoma: "App com acesso alem do necessario"
+    causa_raiz: "Sem permission minimization"
+    mitigacao: "Permission minimization"
+    severity: HIGH
+  - dor_id: D-S11-rt-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-rt-14
+    name: "ENV gate ausente"
+    sintoma: "App de producao acessado em dev"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S11-rt-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
