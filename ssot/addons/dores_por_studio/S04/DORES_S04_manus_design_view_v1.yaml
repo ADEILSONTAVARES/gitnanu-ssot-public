@@ -1,0 +1,96 @@
+# DORES_S04_manus_design_view_v1
+studio_id: S04
+api: manus.design.view
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S04-md-01
+    name: "Design publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S04-md-02
+    name: "PII em canvas"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S04-md-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S04-md-04
+    name: "Copyright violado"
+    sintoma: "Asset sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate"
+    severity: CRITICAL
+  - dor_id: D-S04-md-05
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual fora do padrao"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-md-06
+    name: "Edicao em area errada"
+    sintoma: "Elemento errado editado no canvas"
+    causa_raiz: "Sem area validation"
+    mitigacao: "Area validation gate"
+    severity: HIGH
+  - dor_id: D-S04-md-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-md-08
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S04-md-09
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S04-md-10
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S04-md-11
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S04-md-12
+    name: "Texto ilegivel"
+    sintoma: "CTA nao legivel no output"
+    causa_raiz: "Sem text quality gate"
+    mitigacao: "Text quality gate"
+    severity: HIGH
+  - dor_id: D-S04-md-13
+    name: "Watermark ausente"
+    sintoma: "Sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-md-14
+    name: "Conteudo NSFW"
+    sintoma: "Imagem inapropriada"
+    causa_raiz: "Sem content policy"
+    mitigacao: "Content policy gate"
+    severity: CRITICAL
+  - dor_id: D-S04-md-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

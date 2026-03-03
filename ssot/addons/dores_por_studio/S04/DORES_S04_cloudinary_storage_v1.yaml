@@ -1,0 +1,96 @@
+# DORES_S04_cloudinary_storage_v1
+studio_id: S04
+api: cloudinary.storage
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S04-cs-01
+    name: "Asset publicado sem aprovacao"
+    sintoma: "Upload direto sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S04-cs-02
+    name: "PII em asset"
+    sintoma: "Dado pessoal em arquivo publico"
+    causa_raiz: "Sem PII scan pre-upload"
+    mitigacao: "PII scan pre-upload"
+    severity: CRITICAL
+  - dor_id: D-S04-cs-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S04-cs-04
+    name: "Path traversal"
+    sintoma: "Upload fora do workspace"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S04-cs-05
+    name: "Asset sem hash"
+    sintoma: "Sem integridade no upload"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-cs-06
+    name: "Custo sem limite"
+    sintoma: "Storage sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S04-cs-07
+    name: "Rollback impossivel"
+    sintoma: "Asset deletado sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S04-cs-08
+    name: "Upload sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S04-cs-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S04-cs-10
+    name: "Transformacao sem validacao"
+    sintoma: "Resize ou crop incorreto"
+    causa_raiz: "Sem transformation validation"
+    mitigacao: "Transformation validation gate"
+    severity: HIGH
+  - dor_id: D-S04-cs-11
+    name: "URL publica sem expiracao"
+    sintoma: "Asset exposto indefinidamente"
+    causa_raiz: "Sem URL expiry policy"
+    mitigacao: "URL expiry policy obrigatoria"
+    severity: HIGH
+  - dor_id: D-S04-cs-12
+    name: "Conteudo NSFW em storage"
+    sintoma: "Imagem inapropriada armazenada"
+    causa_raiz: "Sem content policy gate"
+    mitigacao: "Content policy gate"
+    severity: CRITICAL
+  - dor_id: D-S04-cs-13
+    name: "Watermark ausente"
+    sintoma: "Sem marca no asset"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-cs-14
+    name: "Backup ausente"
+    sintoma: "Asset sem copia de seguranca"
+    causa_raiz: "Sem backup policy"
+    mitigacao: "Backup policy obrigatoria"
+    severity: HIGH
+  - dor_id: D-S04-cs-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem sync receipt"
+    causa_raiz: "Sem sync gate"
+    mitigacao: "Sync receipt"
+    severity: HIGH

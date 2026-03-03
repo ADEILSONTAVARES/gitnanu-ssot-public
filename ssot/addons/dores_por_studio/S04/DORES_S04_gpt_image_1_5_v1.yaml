@@ -1,0 +1,96 @@
+# DORES_S04_gpt_image_1_5_v1
+studio_id: S04
+api: gpt.image.1.5
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S04-gi-01
+    name: "Imagem publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S04-gi-02
+    name: "PII em imagem"
+    sintoma: "Rosto real no output"
+    causa_raiz: "Sem PII detection"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S04-gi-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S04-gi-04
+    name: "Copyright violado"
+    sintoma: "Artista replicado"
+    causa_raiz: "Sem copyright gate"
+    mitigacao: "Copyright gate"
+    severity: CRITICAL
+  - dor_id: D-S04-gi-05
+    name: "Conteudo NSFW"
+    sintoma: "Imagem inapropriada"
+    causa_raiz: "Sem content policy"
+    mitigacao: "Content policy gate"
+    severity: CRITICAL
+  - dor_id: D-S04-gi-06
+    name: "Prompt injection"
+    sintoma: "Prompt manipulado"
+    causa_raiz: "Sem sanitization"
+    mitigacao: "Prompt sanitization"
+    severity: CRITICAL
+  - dor_id: D-S04-gi-07
+    name: "Deepfake gerado"
+    sintoma: "Rosto manipulado"
+    causa_raiz: "Sem deepfake gate"
+    mitigacao: "Deepfake detection"
+    severity: CRITICAL
+  - dor_id: D-S04-gi-08
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-gi-09
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S04-gi-10
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S04-gi-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S04-gi-12
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S04-gi-13
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual incorreto"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S04-gi-14
+    name: "Watermark ausente"
+    sintoma: "Sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-gi-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

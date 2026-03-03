@@ -1,0 +1,96 @@
+# DORES_S04_synthid_provenance_v1
+studio_id: S04
+api: synthid.provenance
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S04-sp-01
+    name: "Watermark nao aplicado"
+    sintoma: "Output sem marca de proveniencia"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S04-sp-02
+    name: "Tamper nao detectado"
+    sintoma: "Watermark removido sem alerta"
+    causa_raiz: "Sem tamper detection"
+    mitigacao: "Tamper detection obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S04-sp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S04-sp-04
+    name: "Target invalido"
+    sintoma: "Watermark em arquivo errado"
+    causa_raiz: "Sem target validation"
+    mitigacao: "Target validation gate"
+    severity: CRITICAL
+  - dor_id: D-S04-sp-05
+    name: "Qualidade degradada pos-watermark"
+    sintoma: "Artefatos visiveis apos marca"
+    causa_raiz: "Sem quality gate pos-watermark"
+    mitigacao: "Quality gate pos-watermark"
+    severity: HIGH
+  - dor_id: D-S04-sp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-sp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S04-sp-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S04-sp-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S04-sp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S04-sp-11
+    name: "Versao sem auditoria"
+    sintoma: "Modelo sem version gate"
+    causa_raiz: "Sem version gate"
+    mitigacao: "Version gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-sp-12
+    name: "Calibracao periodica ausente"
+    sintoma: "Threshold desatualizado"
+    causa_raiz: "Sem calibracao periodica"
+    mitigacao: "Threshold calibration"
+    severity: HIGH
+  - dor_id: D-S04-sp-13
+    name: "Timeout sem fallback"
+    sintoma: "Processo trava sem alternativa"
+    causa_raiz: "Sem timeout + fallback"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S04-sp-14
+    name: "DLQ ausente"
+    sintoma: "Falha silenciosa sem fila"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S04-sp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
