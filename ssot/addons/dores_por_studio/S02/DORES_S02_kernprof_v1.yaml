@@ -1,0 +1,96 @@
+# DORES_S02_kernprof_v1
+studio_id: S02
+api: kernprof
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-kp-01
+    name: "kernprof em producao"
+    sintoma: "Profiling ativo em prod"
+    causa_raiz: "Sem env check"
+    mitigacao: "ENV gate pre-kernprof"
+    severity: CRITICAL
+  - dor_id: D-S02-kp-02
+    name: "Output com PII"
+    sintoma: "Dados sensiveis no profile"
+    causa_raiz: "Sem PII scrubbing"
+    mitigacao: "PII scrubbing obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-kp-03
+    name: "Timeout nao configurado"
+    sintoma: "Profiling travando"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kp-04
+    name: "Resultado sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S02-kp-05
+    name: "Scope nao definido"
+    sintoma: "Profiling fora do modulo alvo"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "Scope lock obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kp-07
+    name: "Report nao publicado"
+    sintoma: "Resultado sem GNDrive"
+    causa_raiz: "Sem publish"
+    mitigacao: "Publish obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kp-08
+    name: "Sem baseline comparativo"
+    sintoma: "Sem referencia anterior"
+    causa_raiz: "Sem baseline"
+    mitigacao: "Baseline storage obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kp-09
+    name: "Overhead ignorado"
+    sintoma: "kernprof afetando medicao"
+    causa_raiz: "Sem overhead check"
+    mitigacao: "Overhead gate pre-benchmark"
+    severity: MEDIUM
+  - dor_id: D-S02-kp-10
+    name: "Profiling sem versao"
+    sintoma: "Sem link ao commit"
+    causa_raiz: "Sem version tag"
+    mitigacao: "Version tag obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-kp-11
+    name: "Resultado nao reproducivel"
+    sintoma: "Variacao entre runs"
+    causa_raiz: "Sem seed lock"
+    mitigacao: "Seed lock obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-kp-12
+    name: "Hotspot sem acao"
+    sintoma: "Gargalo sem remediacao"
+    causa_raiz: "Sem action gate"
+    mitigacao: "Action gate pos-hotspot"
+    severity: HIGH
+  - dor_id: D-S02-kp-13
+    name: "Multiplos profiles em paralelo"
+    sintoma: "Interferencia entre runs"
+    causa_raiz: "Sem concurrency limit"
+    mitigacao: "Concurrency limit"
+    severity: MEDIUM
+  - dor_id: D-S02-kp-14
+    name: "CI timeout ausente"
+    sintoma: "Profile longo sem limite"
+    causa_raiz: "Sem CI timeout"
+    mitigacao: "CI timeout obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-kp-15
+    name: "Profiling sem aprovacao critica"
+    sintoma: "Rota critica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH

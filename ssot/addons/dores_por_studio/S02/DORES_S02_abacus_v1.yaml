@@ -1,0 +1,96 @@
+# DORES_S02_abacus_v1
+studio_id: S02
+api: abacus
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-abacus-01
+    name: "Calculo sem validacao de entrada"
+    sintoma: "Input invalido causando resultado errado"
+    causa_raiz: "Sem input validation"
+    mitigacao: "Input validation gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-abacus-02
+    name: "Resultado sem evidencia"
+    sintoma: "Output sem log auditavel"
+    causa_raiz: "Sem receipt"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-abacus-03
+    name: "Custo sem limite"
+    sintoma: "Job longo sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-abacus-04
+    name: "Overflow nao detectado"
+    sintoma: "Numero muito grande sem tratamento"
+    causa_raiz: "Sem overflow check"
+    mitigacao: "Overflow guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-abacus-05
+    name: "Divisao por zero silenciosa"
+    sintoma: "Erro matematico sem excecao"
+    causa_raiz: "Sem division guard"
+    mitigacao: "Division guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-abacus-06
+    name: "Precisao incorreta"
+    sintoma: "Float com arredondamento errado"
+    causa_raiz: "Sem precision policy"
+    mitigacao: "Precision policy obrigatoria"
+    severity: HIGH
+  - dor_id: D-S02-abacus-07
+    name: "Timeout sem fallback"
+    sintoma: "Calculo longo sem limite"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout obrigatorio por job"
+    severity: HIGH
+  - dor_id: D-S02-abacus-08
+    name: "Resultado nao idempotente"
+    sintoma: "Mesma entrada resultados diferentes"
+    causa_raiz: "Sem determinism lock"
+    mitigacao: "Determinism gate obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-abacus-09
+    name: "Cache de resultado incorreto"
+    sintoma: "Resultado antigo retornado"
+    causa_raiz: "Sem cache invalidation"
+    mitigacao: "Cache invalidation obrigatoria"
+    severity: HIGH
+  - dor_id: D-S02-abacus-10
+    name: "Rollback impossivel"
+    sintoma: "Calculo aplicado sem desfazer"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-abacus-11
+    name: "Output sem hash"
+    sintoma: "Resultado sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-abacus-12
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry policy"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S02-abacus-13
+    name: "Formula sem documentacao"
+    sintoma: "Calculo sem explicacao"
+    causa_raiz: "Sem doc gate"
+    mitigacao: "Doc obrigatoria por formula"
+    severity: MEDIUM
+  - dor_id: D-S02-abacus-14
+    name: "Resultado sem aprovacao para critico"
+    sintoma: "Calculo financeiro sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao para calculos criticos"
+    severity: CRITICAL
+  - dor_id: D-S02-abacus-15
+    name: "Output sem golden path"
+    sintoma: "Fluxo sem harness"
+    causa_raiz: "Sem golden path"
+    mitigacao: "Golden path obrigatorio"
+    severity: HIGH

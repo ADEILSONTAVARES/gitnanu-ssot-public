@@ -1,0 +1,96 @@
+# DORES_S02_kilo_v1
+studio_id: S02
+api: kilo
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-kilo-01
+    name: "Code gerado sem testes"
+    sintoma: "Output sem suite"
+    causa_raiz: "Sem test gate"
+    mitigacao: "Test generation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kilo-02
+    name: "Agente editando fora do scope"
+    sintoma: "Arquivo nao autorizado modificado"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S02-kilo-03
+    name: "Secret hardcoded"
+    sintoma: "Key no codigo"
+    causa_raiz: "Sem secrets scan"
+    mitigacao: "CW-212 secrets scan"
+    severity: CRITICAL
+  - dor_id: D-S02-kilo-04
+    name: "Custo sem controle"
+    sintoma: "Tokens sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-kilo-05
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S02-kilo-06
+    name: "Edicao sem story"
+    sintoma: "Sem rastro"
+    causa_raiz: "Sem story pre-edicao"
+    mitigacao: "MB-014 no story no change"
+    severity: HIGH
+  - dor_id: D-S02-kilo-07
+    name: "Hallucination de API"
+    sintoma: "Usa funcao inexistente"
+    causa_raiz: "Sem verificacao"
+    mitigacao: "context7 verification"
+    severity: CRITICAL
+  - dor_id: D-S02-kilo-08
+    name: "Output sem evidence"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem receipt"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S02-kilo-09
+    name: "Dependencia vulneravel"
+    sintoma: "CVE ativo"
+    causa_raiz: "Sem dep audit"
+    mitigacao: "Dep audit gate"
+    severity: CRITICAL
+  - dor_id: D-S02-kilo-10
+    name: "Edicao sem diff"
+    sintoma: "Mudancas sem revisao"
+    causa_raiz: "Sem diff gate"
+    mitigacao: "CW-205 diff obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kilo-11
+    name: "Conflito de merge ignorado"
+    sintoma: "Edicao sobre conflito"
+    causa_raiz: "Sem conflict check"
+    mitigacao: "Conflict check pre-edit"
+    severity: HIGH
+  - dor_id: D-S02-kilo-12
+    name: "Formatacao inconsistente"
+    sintoma: "Linter ignorado"
+    causa_raiz: "Sem format gate"
+    mitigacao: "Format gate obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-kilo-13
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-kilo-14
+    name: "Deploy sem aprovacao"
+    sintoma: "Direto para producao"
+    causa_raiz: "Sem gate"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S02-kilo-15
+    name: "Execucao sem golden path"
+    sintoma: "Fluxo sem harness"
+    causa_raiz: "Sem golden path"
+    mitigacao: "Golden path obrigatorio"
+    severity: HIGH

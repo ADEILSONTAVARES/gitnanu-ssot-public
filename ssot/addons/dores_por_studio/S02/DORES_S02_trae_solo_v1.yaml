@@ -1,0 +1,96 @@
+# DORES_S02_trae_solo_v1
+studio_id: S02
+api: trae.solo
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-trae-01
+    name: "Agente editando fora do workspace"
+    sintoma: "Arquivo fora do projeto modificado"
+    causa_raiz: "Sem workspace scope lock"
+    mitigacao: "CW-001 workspace scope obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-trae-02
+    name: "Task executada sem story"
+    sintoma: "Nenhum rastro da tarefa"
+    causa_raiz: "Sem story pre-execucao"
+    mitigacao: "MB-014 no story no change"
+    severity: HIGH
+  - dor_id: D-S02-trae-03
+    name: "Agente em loop sem parada"
+    sintoma: "Execucao sem criterio de done"
+    causa_raiz: "Sem max_iterations"
+    mitigacao: "Max iterations + done check"
+    severity: CRITICAL
+  - dor_id: D-S02-trae-04
+    name: "Custo sem controle"
+    sintoma: "Tokens sem budget guard"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-trae-05
+    name: "Secret exposto no output"
+    sintoma: "Key no codigo gerado"
+    causa_raiz: "Sem secrets scan"
+    mitigacao: "CW-212 secrets scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-trae-06
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot pre-execucao"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-trae-07
+    name: "Execucao sem aprovacao humana"
+    sintoma: "Acao critica sem gate"
+    causa_raiz: "Sem aprovacao obrigatoria"
+    mitigacao: "CW-202 aprovacao critica"
+    severity: CRITICAL
+  - dor_id: D-S02-trae-08
+    name: "Dependencia nao auditada"
+    sintoma: "Package sem verificacao"
+    causa_raiz: "Sem dependency audit"
+    mitigacao: "Dependency audit gate"
+    severity: HIGH
+  - dor_id: D-S02-trae-09
+    name: "Hallucination de API"
+    sintoma: "Usa funcao inexistente"
+    causa_raiz: "Sem verificacao de API"
+    mitigacao: "context7 verification"
+    severity: CRITICAL
+  - dor_id: D-S02-trae-10
+    name: "Teste nao gerado"
+    sintoma: "Codigo sem coverage"
+    causa_raiz: "Sem test gate"
+    mitigacao: "Test generation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-trae-11
+    name: "Output sem evidence"
+    sintoma: "Nenhum log do feito"
+    causa_raiz: "Sem receipt"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-trae-12
+    name: "Conflito de merge ignorado"
+    sintoma: "Edicao sobre conflito"
+    causa_raiz: "Sem conflict check"
+    mitigacao: "Conflict check pre-edit"
+    severity: HIGH
+  - dor_id: D-S02-trae-13
+    name: "Rede acessada sem escopo"
+    sintoma: "HTTP call nao autorizada"
+    causa_raiz: "Sem egress allowlist"
+    mitigacao: "Egress allowlist obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-trae-14
+    name: "Formatacao quebrada"
+    sintoma: "Linter nao aplicado"
+    causa_raiz: "Sem format gate"
+    mitigacao: "Format gate pos-edicao"
+    severity: MEDIUM
+  - dor_id: D-S02-trae-15
+    name: "Deploy sem staging"
+    sintoma: "Producao sem ambiente intermediario"
+    causa_raiz: "Sem staging gate"
+    mitigacao: "Staging obrigatorio"
+    severity: CRITICAL

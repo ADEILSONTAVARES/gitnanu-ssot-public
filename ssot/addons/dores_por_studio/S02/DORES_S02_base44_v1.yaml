@@ -1,0 +1,96 @@
+# DORES_S02_base44_v1
+studio_id: S02
+api: base44
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-base44-01
+    name: "App gerado com auth sem seguranca"
+    sintoma: "Auth sem rate limit e sem lockout"
+    causa_raiz: "Sem auth security gate"
+    mitigacao: "Auth security gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-base44-02
+    name: "Database exposto publicamente"
+    sintoma: "Sem RLS configurado"
+    causa_raiz: "Sem RLS enforcement"
+    mitigacao: "RLS obrigatorio no Supabase"
+    severity: CRITICAL
+  - dor_id: D-S02-base44-03
+    name: "Deploy sem staging"
+    sintoma: "Producao sem intermediario"
+    causa_raiz: "Sem staging gate"
+    mitigacao: "Staging obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-base44-04
+    name: "Secret hardcoded"
+    sintoma: "Key no codigo"
+    causa_raiz: "Sem secrets scan"
+    mitigacao: "CW-212 secrets scan"
+    severity: CRITICAL
+  - dor_id: D-S02-base44-05
+    name: "App sem backup"
+    sintoma: "Dados sem copia"
+    causa_raiz: "Sem backup policy"
+    mitigacao: "Backup policy obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-base44-06
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S02-base44-07
+    name: "Custo sem limite"
+    sintoma: "Compute sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-base44-08
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S02-base44-09
+    name: "App sem a11y"
+    sintoma: "Acessibilidade ausente"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "axe gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-base44-10
+    name: "Dependencia vulneravel"
+    sintoma: "CVE ativo"
+    causa_raiz: "Sem dep audit"
+    mitigacao: "Dep audit gate"
+    severity: CRITICAL
+  - dor_id: D-S02-base44-11
+    name: "CORS mal configurado"
+    sintoma: "Qualquer origem aceita"
+    causa_raiz: "Sem CORS policy"
+    mitigacao: "CORS policy obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S02-base44-12
+    name: "Sem rate limit em API"
+    sintoma: "DDoS possivel"
+    causa_raiz: "Sem rate limit"
+    mitigacao: "Rate limit obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-base44-13
+    name: "Sem validacao de input"
+    sintoma: "SQL injection possivel"
+    causa_raiz: "Sem input validation"
+    mitigacao: "Input validation gate"
+    severity: CRITICAL
+  - dor_id: D-S02-base44-14
+    name: "Sem hash de output"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-base44-15
+    name: "App sem golden path"
+    sintoma: "Fluxo sem harness"
+    causa_raiz: "Sem golden path"
+    mitigacao: "Golden path obrigatorio"
+    severity: HIGH

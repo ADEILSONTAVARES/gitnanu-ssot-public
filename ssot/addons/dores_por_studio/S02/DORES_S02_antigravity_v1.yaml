@@ -1,0 +1,96 @@
+# DORES_S02_antigravity_v1
+studio_id: S02
+api: antigravity
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-ag-01
+    name: "Deploy em producao sem staging"
+    sintoma: "Direto para prod"
+    causa_raiz: "Sem staging gate"
+    mitigacao: "Staging obrigatorio pre-producao"
+    severity: CRITICAL
+  - dor_id: D-S02-ag-02
+    name: "Deploy sem aprovacao humana"
+    sintoma: "Action dispara sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S02-ag-03
+    name: "Secret exposto no pipeline"
+    sintoma: "Key em log de deploy"
+    causa_raiz: "Sem secrets masking"
+    mitigacao: "Secrets masking obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-ag-04
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior deployada"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-ag-05
+    name: "Deploy sem smoke test"
+    sintoma: "App deployado sem verificacao"
+    causa_raiz: "Sem smoke test pos-deploy"
+    mitigacao: "Smoke test obrigatorio pos-deploy"
+    severity: HIGH
+  - dor_id: D-S02-ag-06
+    name: "Environment errado usado"
+    sintoma: "Deploy em prod usando config de staging"
+    causa_raiz: "Sem env validation pre-deploy"
+    mitigacao: "ENV validation gate pre-deploy"
+    severity: CRITICAL
+  - dor_id: D-S02-ag-07
+    name: "Deploy sem receipt"
+    sintoma: "Nenhum log do deploy"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-ag-08
+    name: "Versao sem tag"
+    sintoma: "Deploy sem version control"
+    causa_raiz: "Sem version tag"
+    mitigacao: "Version tag obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-ag-09
+    name: "Timeout de deploy nao configurado"
+    sintoma: "Deploy travando indefinidamente"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout obrigatorio por deploy"
+    severity: HIGH
+  - dor_id: D-S02-ag-10
+    name: "Notificacao de deploy ausente"
+    sintoma: "Time sem aviso"
+    causa_raiz: "Sem deploy notification"
+    mitigacao: "Notificacao obrigatoria pos-deploy"
+    severity: MEDIUM
+  - dor_id: D-S02-ag-11
+    name: "Zero downtime nao garantido"
+    sintoma: "Downtime durante deploy"
+    causa_raiz: "Sem blue-green ou rolling"
+    mitigacao: "Blue-green ou rolling obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-ag-12
+    name: "Custo de infra sem limite"
+    sintoma: "Deploy escalando sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-ag-13
+    name: "Dependencia de servico nao verificada"
+    sintoma: "Deploy sem checar dependencias"
+    causa_raiz: "Sem dependency health check"
+    mitigacao: "Dep health check pre-deploy"
+    severity: HIGH
+  - dor_id: D-S02-ag-14
+    name: "Deploy sem hash de artefato"
+    sintoma: "Sem integridade do que foi deployado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio pre-deploy"
+    severity: HIGH
+  - dor_id: D-S02-ag-15
+    name: "Monitoramento pos-deploy ausente"
+    sintoma: "Sem observabilidade apos deploy"
+    causa_raiz: "Sem p95 monitor"
+    mitigacao: "p95 monitor obrigatorio pos-deploy"
+    severity: HIGH

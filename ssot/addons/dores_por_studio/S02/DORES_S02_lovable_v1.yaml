@@ -1,0 +1,96 @@
+# DORES_S02_lovable_v1
+studio_id: S02
+api: lovable
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-lovable-01
+    name: "UI gerada sem responsividade"
+    sintoma: "Layout quebrado em mobile"
+    causa_raiz: "Sem responsive check"
+    mitigacao: "Responsive gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-lovable-02
+    name: "Componente sem acessibilidade"
+    sintoma: "ARIA ausente no output"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "axe gate pos-geracao"
+    severity: HIGH
+  - dor_id: D-S02-lovable-03
+    name: "Deploy automatico sem aprovacao"
+    sintoma: "App publicado sem gate"
+    causa_raiz: "Sem aprovacao pre-deploy"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S02-lovable-04
+    name: "Secret no codigo gerado"
+    sintoma: "API key hardcoded"
+    causa_raiz: "Sem secrets scan"
+    mitigacao: "CW-212 secrets scan"
+    severity: CRITICAL
+  - dor_id: D-S02-lovable-05
+    name: "Estilo fora do BrandKit"
+    sintoma: "Cores e fontes incorretas"
+    causa_raiz: "Sem BrandKit enforcement"
+    mitigacao: "BrandKit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-lovable-06
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-lovable-07
+    name: "Custo sem limite"
+    sintoma: "Geracao sem budget guard"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-lovable-08
+    name: "Componente sem teste"
+    sintoma: "UI sem cobertura"
+    causa_raiz: "Sem test gate"
+    mitigacao: "Test generation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-lovable-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log da geracao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-lovable-10
+    name: "Dependencia vulneravel"
+    sintoma: "Package com CVE"
+    causa_raiz: "Sem dep audit"
+    mitigacao: "Dependency audit gate"
+    severity: CRITICAL
+  - dor_id: D-S02-lovable-11
+    name: "XSS no codigo gerado"
+    sintoma: "Input nao sanitizado"
+    causa_raiz: "Sem security scan"
+    mitigacao: "Security scan pos-geracao"
+    severity: CRITICAL
+  - dor_id: D-S02-lovable-12
+    name: "Rotas sem validacao"
+    sintoma: "Endpoint sem contrato"
+    causa_raiz: "Sem contract gate"
+    mitigacao: "OpenAPI contract obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-lovable-13
+    name: "App sem ENV pattern"
+    sintoma: "Config hardcoded"
+    causa_raiz: "Sem ENV enforcement"
+    mitigacao: "ENV pattern gate"
+    severity: HIGH
+  - dor_id: D-S02-lovable-14
+    name: "Geracao sem hash"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio pos-geracao"
+    severity: HIGH
+  - dor_id: D-S02-lovable-15
+    name: "UI sem golden path"
+    sintoma: "Fluxo critico sem harness"
+    causa_raiz: "Sem golden path"
+    mitigacao: "Golden path harness obrigatorio"
+    severity: HIGH

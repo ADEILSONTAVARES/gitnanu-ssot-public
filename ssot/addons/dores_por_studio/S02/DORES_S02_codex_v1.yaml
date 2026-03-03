@@ -1,0 +1,96 @@
+# DORES_S02_codex_v1
+studio_id: S02
+api: codex
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-codex-01
+    name: "Completion hallucinating API"
+    sintoma: "Sugere funcao que nao existe"
+    causa_raiz: "Sem verificacao de existencia"
+    mitigacao: "context7 verification obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-codex-02
+    name: "Completion com secret inline"
+    sintoma: "Token ou key no codigo sugerido"
+    causa_raiz: "Sem secrets filter"
+    mitigacao: "Secrets filter em completions"
+    severity: CRITICAL
+  - dor_id: D-S02-codex-03
+    name: "Completion de versao errada"
+    sintoma: "Sintaxe de versao incompativel"
+    causa_raiz: "Sem version context"
+    mitigacao: "Version context obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-codex-04
+    name: "Custo de tokens sem limite"
+    sintoma: "Completions longas sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-codex-05
+    name: "Completion sem cache"
+    sintoma: "Mesma query sem reaproveitamento"
+    causa_raiz: "Sem semantic cache"
+    mitigacao: "Semantic cache obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-codex-06
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa por rate limit"
+    causa_raiz: "Sem retry policy"
+    mitigacao: "Retry + backoff obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-codex-07
+    name: "Completion aceitando prompt injection"
+    sintoma: "Input externo manipulando completion"
+    causa_raiz: "Sem injection guard"
+    mitigacao: "Prompt injection guard obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-codex-08
+    name: "Output sem validacao de seguranca"
+    sintoma: "Codigo inseguro aceito"
+    causa_raiz: "Sem security scan pos-completion"
+    mitigacao: "Security scan gate pos-completion"
+    severity: HIGH
+  - dor_id: D-S02-codex-09
+    name: "Completion nao idempotente"
+    sintoma: "Resultados diferentes para mesma query"
+    causa_raiz: "Sem seed/temperature lock"
+    mitigacao: "Temperature lock para reproducibilidade"
+    severity: MEDIUM
+  - dor_id: D-S02-codex-10
+    name: "Completion sem evidence"
+    sintoma: "Nenhum log do que foi sugerido"
+    causa_raiz: "Sem evidence de completion"
+    mitigacao: "CW-206 log de completion"
+    severity: HIGH
+  - dor_id: D-S02-codex-11
+    name: "Completion com codigo deprecated"
+    sintoma: "API antiga sugerida"
+    causa_raiz: "Sem deprecated check"
+    mitigacao: "Deprecated API filter obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-codex-12
+    name: "Timeout sem fallback"
+    sintoma: "Completion lenta sem alternativa"
+    causa_raiz: "Sem timeout e fallback"
+    mitigacao: "Timeout + fallback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-codex-13
+    name: "Completion fora do escopo"
+    sintoma: "Sugestao para arquivo nao autorizado"
+    causa_raiz: "Sem scope enforcement"
+    mitigacao: "Scope lock pre-completion"
+    severity: HIGH
+  - dor_id: D-S02-codex-14
+    name: "Completion sem rollback"
+    sintoma: "Aplicado sem possibilidade de desfazer"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback pre-apply"
+    severity: HIGH
+  - dor_id: D-S02-codex-15
+    name: "Multi-completion sem aprovacao"
+    sintoma: "Batch de sugestoes sem revisao"
+    causa_raiz: "Sem gate de revisao para batch"
+    mitigacao: "Gate revisao para batch obrigatorio"
+    severity: HIGH

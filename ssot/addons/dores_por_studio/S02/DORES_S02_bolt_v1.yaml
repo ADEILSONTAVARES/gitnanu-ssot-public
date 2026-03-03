@@ -1,0 +1,96 @@
+# DORES_S02_bolt_v1
+studio_id: S02
+api: bolt
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-bolt-01
+    name: "App gerado com estrutura quebrada"
+    sintoma: "Componentes sem conexao logica"
+    causa_raiz: "Sem architecture validation"
+    mitigacao: "Architecture gate pos-geracao"
+    severity: HIGH
+  - dor_id: D-S02-bolt-02
+    name: "Codigo gerado sem testes"
+    sintoma: "Output sem suite de teste"
+    causa_raiz: "Sem test generation obrigatorio"
+    mitigacao: "Test generation gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bolt-03
+    name: "Deploy automatico sem aprovacao"
+    sintoma: "App publicado sem gate humano"
+    causa_raiz: "Sem aprovacao pre-deploy"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S02-bolt-04
+    name: "Secret hardcoded no output"
+    sintoma: "API key no codigo gerado"
+    causa_raiz: "Sem secrets scan"
+    mitigacao: "CW-212 secrets scan pos-geracao"
+    severity: CRITICAL
+  - dor_id: D-S02-bolt-05
+    name: "Dependencia vulneravel gerada"
+    sintoma: "Package com CVE no output"
+    causa_raiz: "Sem dependency audit"
+    mitigacao: "Dependency audit gate"
+    severity: CRITICAL
+  - dor_id: D-S02-bolt-06
+    name: "Estilo inconsistente entre componentes"
+    sintoma: "CSS nao seguindo design system"
+    causa_raiz: "Sem design system enforcement"
+    mitigacao: "BrandKit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bolt-07
+    name: "App sem acessibilidade"
+    sintoma: "ARIA e a11y ausentes"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "axe gate obrigatorio pos-geracao"
+    severity: HIGH
+  - dor_id: D-S02-bolt-08
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bolt-09
+    name: "Custo sem limite"
+    sintoma: "Geracao longa sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-bolt-10
+    name: "App sem receipt de geracao"
+    sintoma: "Nenhum log do que foi criado"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bolt-11
+    name: "Componente duplicado gerado"
+    sintoma: "Mesmo componente criado duas vezes"
+    causa_raiz: "Sem dedup check"
+    mitigacao: "Dedup gate pos-geracao"
+    severity: MEDIUM
+  - dor_id: D-S02-bolt-12
+    name: "Rotas nao validadas"
+    sintoma: "Endpoint gerado sem validacao"
+    causa_raiz: "Sem contract validation"
+    mitigacao: "OpenAPI contract gate"
+    severity: HIGH
+  - dor_id: D-S02-bolt-13
+    name: "App sem variavel de ambiente"
+    sintoma: "Config hardcoded em vez de ENV"
+    causa_raiz: "Sem ENV pattern enforcement"
+    mitigacao: "ENV pattern gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bolt-14
+    name: "Output sem hash"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash pos-geracao"
+    mitigacao: "Hash obrigatorio pos-geracao"
+    severity: HIGH
+  - dor_id: D-S02-bolt-15
+    name: "Geracao em loop sem parada"
+    sintoma: "Bolt gerando sem criterio de done"
+    causa_raiz: "Sem definition of done"
+    mitigacao: "CW-093 done definition obrigatorio"
+    severity: HIGH

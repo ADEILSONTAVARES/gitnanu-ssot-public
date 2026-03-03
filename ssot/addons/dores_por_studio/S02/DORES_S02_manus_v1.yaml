@@ -1,0 +1,96 @@
+# DORES_S02_manus_v1
+studio_id: S02
+api: manus
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-manus-01
+    name: "Agente acessando filesystem sem scope"
+    sintoma: "Lendo arquivos fora do workspace"
+    causa_raiz: "Sem scope_root lock"
+    mitigacao: "CW-001 scope_root obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-manus-02
+    name: "Canvas editavel perdendo estado"
+    sintoma: "Edicao perdida sem auto-save"
+    causa_raiz: "Sem auto-save policy"
+    mitigacao: "Auto-save obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-manus-03
+    name: "Acao critica sem aprovacao"
+    sintoma: "Delete ou deploy sem gate"
+    causa_raiz: "Sem aprovacao obrigatoria"
+    mitigacao: "CW-202 aprovacao critica"
+    severity: CRITICAL
+  - dor_id: D-S02-manus-04
+    name: "Secret exposto no output"
+    sintoma: "Key no artefato gerado"
+    causa_raiz: "Sem secrets scan"
+    mitigacao: "CW-212 secrets scan"
+    severity: CRITICAL
+  - dor_id: D-S02-manus-05
+    name: "Tarefa em loop"
+    sintoma: "Execucao sem criterio de done"
+    causa_raiz: "Sem max_iterations"
+    mitigacao: "Max iterations + done check"
+    severity: CRITICAL
+  - dor_id: D-S02-manus-06
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot pre-tarefa"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-manus-07
+    name: "Custo sem controle"
+    sintoma: "Tokens sem budget guard"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-manus-08
+    name: "Rede acessada sem allowlist"
+    sintoma: "HTTP call nao autorizada"
+    causa_raiz: "Sem egress allowlist"
+    mitigacao: "Egress allowlist obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-manus-09
+    name: "Output sem evidence"
+    sintoma: "Nenhum log da execucao"
+    causa_raiz: "Sem receipt"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-manus-10
+    name: "Hallucination de ferramenta"
+    sintoma: "Usa tool inexistente"
+    causa_raiz: "Sem tool verification"
+    mitigacao: "Tool verification gate"
+    severity: CRITICAL
+  - dor_id: D-S02-manus-11
+    name: "Tarefa sem story"
+    sintoma: "Nenhum rastro"
+    causa_raiz: "Sem story pre-execucao"
+    mitigacao: "MB-014 no story no change"
+    severity: HIGH
+  - dor_id: D-S02-manus-12
+    name: "Design view corrompendo layers"
+    sintoma: "Export destruindo estrutura"
+    causa_raiz: "Sem layers validation"
+    mitigacao: "Gate layers pre-export"
+    severity: HIGH
+  - dor_id: D-S02-manus-13
+    name: "Colaboracao sem RBAC"
+    sintoma: "Qualquer usuario editando"
+    causa_raiz: "Sem permissoes"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-manus-14
+    name: "Output sem hash"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-manus-15
+    name: "Deploy sem staging"
+    sintoma: "Producao sem intermediario"
+    causa_raiz: "Sem staging gate"
+    mitigacao: "Staging obrigatorio"
+    severity: CRITICAL

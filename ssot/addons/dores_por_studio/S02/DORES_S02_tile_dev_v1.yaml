@@ -1,0 +1,96 @@
+# DORES_S02_tile_dev_v1
+studio_id: S02
+api: tile.dev
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-tile-01
+    name: "UI tile sem responsividade"
+    sintoma: "Layout quebrado em mobile"
+    causa_raiz: "Sem responsive check"
+    mitigacao: "Responsive gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-tile-02
+    name: "Componente sem acessibilidade"
+    sintoma: "ARIA ausente"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "axe gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-tile-03
+    name: "Deploy automatico sem aprovacao"
+    sintoma: "Publicado sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S02-tile-04
+    name: "Secret no codigo"
+    sintoma: "Key hardcoded"
+    causa_raiz: "Sem secrets scan"
+    mitigacao: "CW-212 secrets scan"
+    severity: CRITICAL
+  - dor_id: D-S02-tile-05
+    name: "Estilo fora do BrandKit"
+    sintoma: "Cores incorretas"
+    causa_raiz: "Sem BrandKit enforcement"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S02-tile-06
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S02-tile-07
+    name: "Custo sem limite"
+    sintoma: "Compute sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S02-tile-08
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S02-tile-09
+    name: "Dependencia vulneravel"
+    sintoma: "CVE ativo"
+    causa_raiz: "Sem dep audit"
+    mitigacao: "Dep audit gate"
+    severity: CRITICAL
+  - dor_id: D-S02-tile-10
+    name: "XSS no output"
+    sintoma: "Input nao sanitizado"
+    causa_raiz: "Sem security scan"
+    mitigacao: "Security scan pos-geracao"
+    severity: CRITICAL
+  - dor_id: D-S02-tile-11
+    name: "Tile sem teste"
+    sintoma: "Componente sem coverage"
+    causa_raiz: "Sem test gate"
+    mitigacao: "Test generation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-tile-12
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-tile-13
+    name: "App sem ENV pattern"
+    sintoma: "Config hardcoded"
+    causa_raiz: "Sem ENV enforcement"
+    mitigacao: "ENV pattern gate"
+    severity: HIGH
+  - dor_id: D-S02-tile-14
+    name: "Geracao em loop"
+    sintoma: "Sem criterio de done"
+    causa_raiz: "Sem done definition"
+    mitigacao: "CW-093 done obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-tile-15
+    name: "UI sem golden path"
+    sintoma: "Fluxo sem harness"
+    causa_raiz: "Sem golden path"
+    mitigacao: "Golden path obrigatorio"
+    severity: HIGH
