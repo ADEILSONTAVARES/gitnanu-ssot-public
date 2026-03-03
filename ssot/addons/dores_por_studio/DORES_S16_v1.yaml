@@ -1,0 +1,55 @@
+# DORES_S16_Milhas_e_Viagens_v1
+studio_id: S16
+studio_name: Milhas e Viagens
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S16-01
+    api: amadeus
+    name: "Oferta expirada sendo exibida"
+    sintoma: "Cache sem TTL correto para tarifas"
+    causa_raiz: "Sem TTL por tarifa e sem freshness check"
+    mitigacao: "TTL curto obrigatorio para tarifas aereas"
+    severity: CRITICAL
+  - dor_id: D-S16-02
+    api: duffel
+    name: "Reserva confirmada sem ticket emitido"
+    sintoma: "PNR criado mas ticketing falhou"
+    causa_raiz: "Sem validacao de ticketing pos-reserva"
+    mitigacao: "Gate ticketing confirmation obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S16-03
+    api: kiwi.tequila
+    name: "Conexao curta demais reservada"
+    sintoma: "Tempo de conexao abaixo do minimo"
+    causa_raiz: "Sem validacao de MCT por aeroporto"
+    mitigacao: "MCT check obrigatorio por aeroporto"
+    severity: HIGH
+  - dor_id: D-S16-04
+    api: booking.hotel
+    name: "Hotel overbooking sem fallback"
+    sintoma: "Reserva aceita sem confirmacao real"
+    causa_raiz: "Sem verificacao de disponibilidade real"
+    mitigacao: "Disponibilidade real time check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S16-05
+    api: voucher.packager
+    name: "Voucher sem dados completos"
+    sintoma: "Informacoes de reserva incompletas"
+    causa_raiz: "Sem validacao de completude pre-emissao"
+    mitigacao: "Gate completude voucher pre-emissao"
+    severity: HIGH
+  - dor_id: D-S16-06
+    api: firecrawl
+    name: "Captura de preco bloqueada por anti-bot"
+    sintoma: "Site bloqueando scraping"
+    causa_raiz: "Sem rotacao de headers e sem fallback"
+    mitigacao: "Header rotation + fallback para API oficial"
+    severity: MEDIUM
+  - dor_id: D-S16-07
+    api: whatsapp.cloud
+    name: "Notificacao de viagem enviada atrasada"
+    sintoma: "Fila de mensagens congestionada"
+    causa_raiz: "Sem priority queue para notificacoes criticas"
+    mitigacao: "Priority queue obrigatorio para viagens"
+    severity: HIGH

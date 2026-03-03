@@ -1,0 +1,55 @@
+# DORES_S18_Comunidades_e_Assinaturas_v1
+studio_id: S18
+studio_name: Comunidades e Assinaturas
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S18-01
+    api: stripe.billing
+    name: "Membro ativo apos cancelamento"
+    sintoma: "Webhook de cancelamento nao processado"
+    causa_raiz: "Sem handler de customer.subscription.deleted"
+    mitigacao: "Handler obrigatorio + revoke access imediato"
+    severity: CRITICAL
+  - dor_id: D-S18-02
+    api: membership.gating
+    name: "Conteudo pago acessivel sem assinatura"
+    sintoma: "Gate de acesso nao verificando status real"
+    causa_raiz: "Sem validacao de entitlement em tempo real"
+    mitigacao: "Entitlement check real-time obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S18-03
+    api: notifications.engine
+    name: "Membro nao notificado de renovacao"
+    sintoma: "Email de renovacao nao enviado"
+    causa_raiz: "Sem dunning e sem reminder policy"
+    mitigacao: "Dunning + reminder 7/3/1 dias antes"
+    severity: HIGH
+  - dor_id: D-S18-04
+    api: community.connector
+    name: "Post privado visivel publicamente"
+    sintoma: "Permissao de visibilidade incorreta"
+    causa_raiz: "Sem gate de visibilidade pre-publicacao"
+    mitigacao: "Gate visibilidade + RBAC check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S18-05
+    api: posthog
+    name: "Metricas de engajamento incorretas"
+    sintoma: "Eventos duplicados sendo contados"
+    causa_raiz: "Sem deduplicacao de eventos"
+    mitigacao: "Event deduplication gate obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S18-06
+    api: support.hooks
+    name: "Ticket de membro sem contexto de assinatura"
+    sintoma: "Suporte sem acesso ao historico"
+    causa_raiz: "Sem enrichment de ticket com dados do membro"
+    mitigacao: "Auto-enrich ticket com subscription data"
+    severity: MEDIUM
+  - dor_id: D-S18-07
+    api: nanucai.gndrive
+    name: "Conteudo de membro sem backup"
+    sintoma: "Arquivos do usuario sem copia"
+    causa_raiz: "Sem policy de backup de conteudo"
+    mitigacao: "Backup policy obrigatorio para conteudo pago"
+    severity: HIGH

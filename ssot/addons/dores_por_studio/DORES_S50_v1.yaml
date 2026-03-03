@@ -1,0 +1,55 @@
+# DORES_S50_Cache_QUANTUM_Redis_v1
+studio_id: S50
+studio_name: Cache QUANTUM Redis
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S50-01
+    api: key.versioning
+    name: "Cache stale sendo servido"
+    sintoma: "Versao antiga de key sendo retornada"
+    causa_raiz: "Sem versionamento de key e sem invalidacao"
+    mitigacao: "Key versioning obrigatorio + invalidacao em cascata"
+    severity: CRITICAL
+  - dor_id: D-S50-02
+    api: anti.stampede
+    name: "Thundering herd derrubando sistema"
+    sintoma: "Multiplas requests rebuilding cache simultaneamente"
+    causa_raiz: "Sem coalescing e sem lock"
+    mitigacao: "Coalescing lock obrigatorio anti-stampede"
+    severity: CRITICAL
+  - dor_id: D-S50-03
+    api: poisoning.guard
+    name: "Cache envenenado servindo dados errados"
+    sintoma: "Dado corrompido cacheado como valido"
+    causa_raiz: "Sem poison detection e sem quarentena"
+    mitigacao: "Poison detect + quarentena + rerun 5pct"
+    severity: CRITICAL
+  - dor_id: D-S50-04
+    api: ttl.classes
+    name: "TTL incorreto por tipo de dado"
+    sintoma: "Dado dinamico com TTL longo ou estatico com TTL curto"
+    causa_raiz: "Sem classificacao de TTL por tipo"
+    mitigacao: "TTL classes: fast/normal/long/infinite"
+    severity: HIGH
+  - dor_id: D-S50-05
+    api: lock.lease.rules
+    name: "Deadlock em cache distribuido"
+    sintoma: "Lock nao liberado apos timeout"
+    causa_raiz: "Sem lease expiry e sem auto-release"
+    mitigacao: "Lease expiry obrigatorio + auto-release"
+    severity: CRITICAL
+  - dor_id: D-S50-06
+    api: cache.learn.rules
+    name: "Cache nao aprendendo com padroes de acesso"
+    sintoma: "Hot paths nao sendo promovidos"
+    causa_raiz: "Sem learn events do micro para macro"
+    mitigacao: "Learn events pipeline L1-L3 para L0"
+    severity: HIGH
+  - dor_id: D-S50-07
+    api: macro.micro.compat
+    name: "Micro nao puxando do macro"
+    sintoma: "Incompatibilidade de schema entre camadas"
+    causa_raiz: "Sem validacao de compatibilidade macro/micro"
+    mitigacao: "Schema compat gate obrigatorio"
+    severity: HIGH

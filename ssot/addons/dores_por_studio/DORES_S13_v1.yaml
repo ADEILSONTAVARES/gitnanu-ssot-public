@@ -1,0 +1,55 @@
+# DORES_S13_Localizacao_e_Multilingue_v1
+studio_id: S13
+studio_name: Localizacao e Multilingue
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S13-01
+    api: deepl
+    name: "Traducao com terminologia de dominio errada"
+    sintoma: "Termos tecnicos ou religiosos traduzidos incorretamente"
+    causa_raiz: "Sem glossario por dominio"
+    mitigacao: "Terminology glossary obrigatorio por dominio"
+    severity: HIGH
+  - dor_id: D-S13-02
+    api: subtitle.aligner
+    name: "Legenda dessincronizada apos traducao"
+    sintoma: "Timing nao recalculado pos-traducao"
+    causa_raiz: "Sem realinhamento de timing obrigatorio"
+    mitigacao: "Gate timing realign pos-traducao"
+    severity: HIGH
+  - dor_id: D-S13-03
+    api: google.translate
+    name: "Fallback para Google sem aviso"
+    sintoma: "DeepL falhou silenciosamente e usou Google"
+    causa_raiz: "Sem log de fallback e sem alerta"
+    mitigacao: "Log obrigatorio de provider usado + alerta"
+    severity: MEDIUM
+  - dor_id: D-S13-04
+    api: locale.pack
+    name: "Locale pack desatualizado em producao"
+    sintoma: "Strings novas sem traducao chegando ao usuario"
+    causa_raiz: "Sem validacao de completude antes de deploy"
+    mitigacao: "Gate completude locale 100% pre-deploy"
+    severity: HIGH
+  - dor_id: D-S13-05
+    api: stt.multiidioma
+    name: "STT confundindo idiomas similares"
+    sintoma: "PT-BR confundido com ES ou PT-PT"
+    causa_raiz: "Sem locale lock pre-transcricao"
+    mitigacao: "Locale lock obrigatorio pre-STT"
+    severity: HIGH
+  - dor_id: D-S13-06
+    api: tts.multiidioma
+    name: "TTS com pronuncia errada para idioma"
+    sintoma: "Voice model errado para o locale"
+    causa_raiz: "Sem validacao de voice_id por locale"
+    mitigacao: "Gate voice_id vs locale obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S13-07
+    api: terminology.glossary
+    name: "Glossario nao versionado"
+    sintoma: "Traducoes antigas sobrescrevendo novas"
+    causa_raiz: "Sem versionamento de glossario"
+    mitigacao: "Glossario versionado + changelog obrigatorio"
+    severity: MEDIUM

@@ -1,0 +1,55 @@
+# DORES_S08_Acessibilidade_v1
+studio_id: S08
+studio_name: Acessibilidade
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S08-01
+    api: playwright.a11y
+    name: "Testes a11y nao executando no CI"
+    sintoma: "Suite nao configurada no pipeline"
+    causa_raiz: "Sem a11y obrigatorio no CI"
+    mitigacao: "playwright a11y gate bloqueante no CI"
+    severity: HIGH
+  - dor_id: D-S08-02
+    api: axe.wcag
+    name: "WCAG AA violado em producao"
+    sintoma: "Componente publicado sem auditoria"
+    causa_raiz: "Sem axe-core pre-deploy"
+    mitigacao: "axe-core gate pre-deploy obrigatorio"
+    severity: HIGH
+  - dor_id: D-S08-03
+    api: google.stt
+    name: "STT nao funcionando para sotaque regional"
+    sintoma: "Modelo nao treinado para variante"
+    causa_raiz: "Sem confidence threshold e sem fallback"
+    mitigacao: "Confidence gate + fallback manual obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S08-04
+    api: caption.pipeline
+    name: "Legenda sem descricao de sons"
+    sintoma: "Audio description ausente"
+    causa_raiz: "Sem audio description pipeline"
+    mitigacao: "Audio description obrigatorio em conteudo video"
+    severity: HIGH
+  - dor_id: D-S08-05
+    api: kokoro.tts
+    name: "TTS com velocidade inadequada"
+    sintoma: "Rate muito alto para usuario com deficiencia"
+    causa_raiz: "Sem controle de speaking rate"
+    mitigacao: "Speaking rate configuravel por usuario"
+    severity: MEDIUM
+  - dor_id: D-S08-06
+    api: deepl
+    name: "Traducao perdendo contexto de acessibilidade"
+    sintoma: "Termos tecnicos de a11y traduzidos errado"
+    causa_raiz: "Sem glossario de acessibilidade"
+    mitigacao: "Terminology glossary a11y obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S08-07
+    api: paninitranslate
+    name: "Idioma de interface nao sincronizado com TTS"
+    sintoma: "UI em PT mas TTS em EN"
+    causa_raiz: "Sem validacao de locale consistency"
+    mitigacao: "Gate locale consistency UI vs TTS"
+    severity: HIGH

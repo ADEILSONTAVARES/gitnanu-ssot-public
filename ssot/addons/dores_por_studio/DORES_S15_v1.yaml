@@ -1,0 +1,55 @@
+# DORES_S15_Marketplace_e_Shopping_v1
+studio_id: S15
+studio_name: Marketplace e Shopping
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S15-01
+    api: amazon.catalog
+    name: "Preco desatualizado exibido"
+    sintoma: "Cache de preco expirado sem TTL correto"
+    causa_raiz: "Sem TTL e sem freshness check"
+    mitigacao: "TTL cache + freshness gate por produto"
+    severity: HIGH
+  - dor_id: D-S15-02
+    api: mercadolivre.catalog
+    name: "Produto indisponivel sendo exibido"
+    sintoma: "Estoque nao verificado antes de exibir"
+    causa_raiz: "Sem stock check em tempo real"
+    mitigacao: "Stock availability gate pre-display"
+    severity: HIGH
+  - dor_id: D-S15-03
+    api: affiliate.link
+    name: "Link de afiliado expirado"
+    sintoma: "Token expirado sem renovacao"
+    causa_raiz: "Sem health check de links"
+    mitigacao: "Link health check + renovacao automatica"
+    severity: HIGH
+  - dor_id: D-S15-04
+    api: price.tracker
+    name: "Historico de preco incorreto"
+    sintoma: "Captura falhando silenciosamente"
+    causa_raiz: "Sem validacao de dados capturados"
+    mitigacao: "Gate validacao de dados pos-captura"
+    severity: MEDIUM
+  - dor_id: D-S15-05
+    api: compare.engine
+    name: "Comparativo com produtos diferentes"
+    sintoma: "SKU nao normalizado entre fontes"
+    causa_raiz: "Sem normalizacao de SKU"
+    mitigacao: "SKU normalization gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S15-06
+    api: reviews.fetch
+    name: "Reviews falsos ou spam exibidos"
+    sintoma: "Sem filtro de qualidade"
+    causa_raiz: "Sem score de confiabilidade por review"
+    mitigacao: "Confidence score + filtro spam obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S15-07
+    api: saasworthy
+    name: "Ferramenta descontinuada sendo recomendada"
+    sintoma: "Status nao verificado antes de exibir"
+    causa_raiz: "Sem freshness check de ferramentas"
+    mitigacao: "Freshness gate + status check periodico"
+    severity: HIGH

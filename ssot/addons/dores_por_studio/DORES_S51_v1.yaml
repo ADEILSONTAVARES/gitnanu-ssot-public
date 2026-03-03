@@ -1,0 +1,55 @@
+# DORES_S51_RAG_QUANTUM_LTA_v1
+studio_id: S51
+studio_name: RAG QUANTUM LTA
+version: 1
+total_dores: 7
+dores:
+  - dor_id: D-S51-01
+    api: rag3.trim.twin.quantum
+    name: "RAG retornando chunks irrelevantes"
+    sintoma: "Retrieval sem threshold de similaridade"
+    causa_raiz: "Sem score minimo de relevancia"
+    mitigacao: "Score minimo 0.75 obrigatorio + rerank"
+    severity: HIGH
+  - dor_id: D-S51-02
+    api: poison.guard.rules
+    name: "Documento envenenado contaminando RAG"
+    sintoma: "Chunk malicioso injetado no index"
+    causa_raiz: "Sem poison detection pre-indexacao"
+    mitigacao: "Poison gate pre-index obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S51-03
+    api: lta.policies
+    name: "LTA crescendo sem limite"
+    sintoma: "Memoria de longo prazo sem TTL ou pruning"
+    causa_raiz: "Sem policy de retencao e pruning"
+    mitigacao: "LTA retention policy + pruning periodico"
+    severity: HIGH
+  - dor_id: D-S51-04
+    api: evidence.aware.retrieval
+    name: "RAG citando sem evidencia"
+    sintoma: "Chunks sem source_ref sendo retornados"
+    causa_raiz: "Sem No Evidence No Claim no retrieval"
+    mitigacao: "Evidence ref obrigatorio por chunk"
+    severity: CRITICAL
+  - dor_id: D-S51-05
+    api: crew.overlay.map
+    name: "Agentes usando RAG sem contexto do crew"
+    sintoma: "Overlay de crew nao aplicado"
+    causa_raiz: "Sem crew context injection pre-retrieval"
+    mitigacao: "Crew overlay obrigatorio pre-retrieval"
+    severity: HIGH
+  - dor_id: D-S51-06
+    api: retrieval.gates
+    name: "Retrieval custoso sem cache"
+    sintoma: "Mesma query reprocessando sem cache hit"
+    causa_raiz: "Sem semantic cache para RAG"
+    mitigacao: "Semantic cache + memoize obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-07
+    api: recipe.reuse.rules
+    name: "Receitas de retrieval nao reaproveitadas"
+    sintoma: "Cada job reinventando a mesma estrategia"
+    causa_raiz: "Sem recipe registry"
+    mitigacao: "Recipe registry + reuse gate obrigatorio"
+    severity: MEDIUM
