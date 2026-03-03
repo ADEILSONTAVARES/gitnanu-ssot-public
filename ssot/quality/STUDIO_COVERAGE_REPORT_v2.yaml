@@ -1,0 +1,58 @@
+# STUDIO_COVERAGE_REPORT_v2 — Cobertura real mapeada
+version: 2
+generated: 2026-03-03
+total_studios: 52
+summary: {pass: 13, partial: 17, fail: 22}
+studios:
+  - {studio_id: S00, group: A1, actions_min: 12, actions_current: 28, status: PASS}
+  - {studio_id: S01, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S02, group: A1, actions_min: 12, actions_current: 11, status: PARTIAL}
+  - {studio_id: S03, group: A1, actions_min: 12, actions_current: 1, status: PARTIAL}
+  - {studio_id: S04, group: A1, actions_min: 12, actions_current: 1, status: PARTIAL}
+  - {studio_id: S05, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S06, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S07, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S08, group: B, actions_min: 5, actions_current: 0, status: FAIL}
+  - {studio_id: S09, group: A2, actions_min: 8, actions_current: 2, status: PARTIAL}
+  - {studio_id: S10, group: B, actions_min: 5, actions_current: 1, status: PARTIAL}
+  - {studio_id: S11, group: A2, actions_min: 8, actions_current: 43, status: PASS}
+  - {studio_id: S12, group: A2, actions_min: 8, actions_current: 24, status: PASS}
+  - {studio_id: S13, group: A2, actions_min: 8, actions_current: 0, status: FAIL}
+  - {studio_id: S14, group: A2, actions_min: 8, actions_current: 3, status: PARTIAL}
+  - {studio_id: S15, group: A2, actions_min: 8, actions_current: 0, status: FAIL}
+  - {studio_id: S16, group: A2, actions_min: 8, actions_current: 0, status: FAIL}
+  - {studio_id: S17, group: A2, actions_min: 8, actions_current: 20, status: PASS}
+  - {studio_id: S18, group: A2, actions_min: 8, actions_current: 0, status: FAIL}
+  - {studio_id: S19, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S20, group: B, actions_min: 5, actions_current: 8, status: PASS}
+  - {studio_id: S21, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S22, group: A1, actions_min: 12, actions_current: 2, status: PARTIAL}
+  - {studio_id: S23, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S24, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S25, group: A1, actions_min: 12, actions_current: 1, status: PARTIAL}
+  - {studio_id: S26, group: A2, actions_min: 8, actions_current: 2, status: PARTIAL}
+  - {studio_id: S27, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S28, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S29, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S30, group: A1, actions_min: 12, actions_current: 1, status: PARTIAL}
+  - {studio_id: S31, group: A1, actions_min: 12, actions_current: 10, status: PARTIAL}
+  - {studio_id: S32, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S33, group: B, actions_min: 5, actions_current: 19, status: PASS}
+  - {studio_id: S34, group: A1, actions_min: 12, actions_current: 23, status: PASS}
+  - {studio_id: S35, group: A1, actions_min: 12, actions_current: 43, status: PASS}
+  - {studio_id: S36, group: A2, actions_min: 8, actions_current: 11, status: PASS}
+  - {studio_id: S37, group: A2, actions_min: 8, actions_current: 2, status: PARTIAL}
+  - {studio_id: S38, group: B, actions_min: 5, actions_current: 0, status: FAIL}
+  - {studio_id: S39, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S40, group: A1, actions_min: 12, actions_current: 0, status: FAIL}
+  - {studio_id: S41, group: C, actions_min: 10, actions_current: 2, status: PARTIAL}
+  - {studio_id: S42, group: C, actions_min: 10, actions_current: 38, status: PASS}
+  - {studio_id: S43, group: C, actions_min: 10, actions_current: 17, status: PASS}
+  - {studio_id: S44, group: C, actions_min: 10, actions_current: 8, status: PARTIAL}
+  - {studio_id: S45, group: C, actions_min: 10, actions_current: 6, status: PARTIAL}
+  - {studio_id: S46, group: C, actions_min: 10, actions_current: 35, status: PASS}
+  - {studio_id: S47, group: C, actions_min: 10, actions_current: 1, status: PARTIAL}
+  - {studio_id: S48, group: C, actions_min: 10, actions_current: 5, status: PARTIAL}
+  - {studio_id: S49, group: C, actions_min: 10, actions_current: 16, status: PASS}
+  - {studio_id: S50, group: C, actions_min: 10, actions_current: 0, status: FAIL}
+  - {studio_id: S51, group: C, actions_min: 10, actions_current: 0, status: FAIL}
