@@ -1,0 +1,96 @@
+# DORES_S28_semantic_release_v1
+studio_id: S28
+api: semantic.release
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S28-sr-01
+    name: "Release publicada sem aprovacao"
+    sintoma: "Bump automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S28-sr-02
+    name: "PII em release notes"
+    sintoma: "Dado pessoal em notas de versao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S28-sr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S28-sr-04
+    name: "Scope violation"
+    sintoma: "Release em repo errado"
+    causa_raiz: "Sem repo scope lock"
+    mitigacao: "Repo scope lock"
+    severity: CRITICAL
+  - dor_id: D-S28-sr-05
+    name: "Acao irreversivel sem gate"
+    sintoma: "Versao major publicada sem aprovacao"
+    causa_raiz: "Sem irreversible gate"
+    mitigacao: "Irreversible gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S28-sr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-sr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S28-sr-08
+    name: "Rollback impossivel"
+    sintoma: "Release sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S28-sr-09
+    name: "Publicacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S28-sr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S28-sr-11
+    name: "Semver incorreto"
+    sintoma: "Tag de versao invalida gerada"
+    causa_raiz: "Sem semver validation"
+    mitigacao: "Semver validation gate"
+    severity: HIGH
+  - dor_id: D-S28-sr-12
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-sr-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-sr-14
+    name: "ENV gate ausente"
+    sintoma: "Release de producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-sr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

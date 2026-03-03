@@ -1,0 +1,96 @@
+# DORES_S28_pre_commit_hooks_v1
+studio_id: S28
+api: pre.commit.hooks
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S28-ph-01
+    name: "Hook executado sem aprovacao de config"
+    sintoma: "Hook automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S28-ph-02
+    name: "PII em diff"
+    sintoma: "Dado pessoal em patch de commit"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-commit"
+    severity: CRITICAL
+  - dor_id: D-S28-ph-03
+    name: "API key em log"
+    sintoma: "Key vazando em output de hook"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S28-ph-04
+    name: "Scope violation"
+    sintoma: "Hook acessa arquivo fora do escopo"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S28-ph-05
+    name: "Secret em commit"
+    sintoma: "Secret detectado mas commit nao bloqueado"
+    causa_raiz: "Sem secret block gate"
+    mitigacao: "Secret block gate"
+    severity: CRITICAL
+  - dor_id: D-S28-ph-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-ph-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S28-ph-08
+    name: "Rollback impossivel"
+    sintoma: "Hook sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S28-ph-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S28-ph-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S28-ph-11
+    name: "Hook bypassado"
+    sintoma: "Commit com --no-verify sem gate"
+    causa_raiz: "Sem no-verify gate"
+    mitigacao: "No-verify gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-ph-12
+    name: "Hook desatualizado"
+    sintoma: "Config sem atualizacao periodica"
+    causa_raiz: "Sem hook version gate"
+    mitigacao: "Hook version gate"
+    severity: HIGH
+  - dor_id: D-S28-ph-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-ph-14
+    name: "Timeout sem fallback"
+    sintoma: "Hook trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S28-ph-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
