@@ -1,0 +1,96 @@
+# DORES_S01_google_slides_v1
+studio_id: S01
+api: google.slides
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-gs-01
+    name: "Slide publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S01-gs-02
+    name: "PII em slide publico"
+    sintoma: "Dados expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S01-gs-03
+    name: "OAuth token em log"
+    sintoma: "Token vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-gs-04
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual fora do padrao"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S01-gs-05
+    name: "Conteudo sobrescrito"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-gs-06
+    name: "Permissao aberta por default"
+    sintoma: "Qualquer um com link editando"
+    causa_raiz: "Sem permission policy"
+    mitigacao: "Private by default"
+    severity: CRITICAL
+  - dor_id: D-S01-gs-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-gs-08
+    name: "Token OAuth expirado"
+    sintoma: "Acesso falhando"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh"
+    severity: HIGH
+  - dor_id: D-S01-gs-09
+    name: "Export sem aprovacao"
+    sintoma: "PDF/PPT sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-gs-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-gs-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-gs-12
+    name: "Slide sem a11y"
+    sintoma: "Alt text ausente"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "a11y gate"
+    severity: HIGH
+  - dor_id: D-S01-gs-13
+    name: "Copyright violado"
+    sintoma: "Imagem sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate"
+    severity: CRITICAL
+  - dor_id: D-S01-gs-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-gs-15
+    name: "Cross-workspace leak"
+    sintoma: "Slide de outro workspace"
+    causa_raiz: "Sem workspace scope"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL

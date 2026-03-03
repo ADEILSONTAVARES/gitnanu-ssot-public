@@ -1,0 +1,96 @@
+# DORES_S01_plagiarism_check_v1
+studio_id: S01
+api: plagiarism.check
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-pc-01
+    name: "Plagio nao detectado"
+    sintoma: "Conteudo copiado aprovado"
+    causa_raiz: "Sem coverage minimo"
+    mitigacao: "Coverage minimo 95 obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S01-pc-02
+    name: "PII em conteudo checado"
+    sintoma: "Dados pessoais enviados externamente"
+    causa_raiz: "Sem PII filter pre-check"
+    mitigacao: "PII filter obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S01-pc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-pc-04
+    name: "Resultado sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-pc-05
+    name: "False negative aceito"
+    sintoma: "Plagio passando como original"
+    causa_raiz: "Threshold permissivo"
+    mitigacao: "Threshold review periodico"
+    severity: CRITICAL
+  - dor_id: D-S01-pc-06
+    name: "Conteudo publicado sem check"
+    sintoma: "Publicacao sem gate de plagio"
+    causa_raiz: "Sem plagiarism gate pre-publish"
+    mitigacao: "Plagiarism gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S01-pc-07
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-pc-08
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-pc-09
+    name: "Custo sem limite"
+    sintoma: "Checks sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S01-pc-10
+    name: "Rollback impossivel"
+    sintoma: "Decisao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-pc-11
+    name: "Resultado desatualizado"
+    sintoma: "Base de comparacao velha"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "Freshness gate de base"
+    severity: HIGH
+  - dor_id: D-S01-pc-12
+    name: "Timeout sem fallback"
+    sintoma: "Check lento sem alternativa"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S01-pc-13
+    name: "DLQ ausente"
+    sintoma: "Job falhando sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-pc-14
+    name: "Resultado sem aprovacao para critico"
+    sintoma: "Conteudo critico sem revisao"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-pc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Resultado sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

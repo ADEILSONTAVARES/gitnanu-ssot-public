@@ -1,0 +1,96 @@
+# DORES_S01_pitch_v1
+studio_id: S01
+api: pitch
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-pt-01
+    name: "Deck publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S01-pt-02
+    name: "PII em deck"
+    sintoma: "Dados expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S01-pt-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-pt-04
+    name: "BrandKit nao aplicado"
+    sintoma: "Visual fora do padrao"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH
+  - dor_id: D-S01-pt-05
+    name: "Conteudo sobrescrito"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-pt-06
+    name: "Hallucination em conteudo"
+    sintoma: "Texto errado"
+    causa_raiz: "Sem fact check"
+    mitigacao: "Fact check pre-publish"
+    severity: HIGH
+  - dor_id: D-S01-pt-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-pt-08
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S01-pt-09
+    name: "Export sem aprovacao"
+    sintoma: "PDF sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-pt-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-pt-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-pt-12
+    name: "Slide sem a11y"
+    sintoma: "Alt text ausente"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "a11y gate"
+    severity: HIGH
+  - dor_id: D-S01-pt-13
+    name: "Copyright violado"
+    sintoma: "Imagem sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate"
+    severity: CRITICAL
+  - dor_id: D-S01-pt-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-pt-15
+    name: "Colaboracao sem RBAC"
+    sintoma: "Qualquer usuario editando"
+    causa_raiz: "Sem RBAC"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH

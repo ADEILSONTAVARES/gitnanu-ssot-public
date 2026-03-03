@@ -1,0 +1,96 @@
+# DORES_S01_brand_kit_v1
+studio_id: S01
+api: brand.kit
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-bk-01
+    name: "BrandKit aplicado em workspace errado"
+    sintoma: "Assets de outra marca usados"
+    causa_raiz: "Sem workspace scope"
+    mitigacao: "Workspace scope lock obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S01-bk-02
+    name: "Cor fora do padrao"
+    sintoma: "HEX incorreto aplicado"
+    causa_raiz: "Sem color validation"
+    mitigacao: "Color validation gate"
+    severity: HIGH
+  - dor_id: D-S01-bk-03
+    name: "Fonte nao aprovada"
+    sintoma: "Tipografia incorreta"
+    causa_raiz: "Sem font validation"
+    mitigacao: "Font allowlist obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-bk-04
+    name: "Logo sem versao correta"
+    sintoma: "Versao antiga aplicada"
+    causa_raiz: "Sem logo version check"
+    mitigacao: "Logo version gate"
+    severity: HIGH
+  - dor_id: D-S01-bk-05
+    name: "BrandKit desatualizado"
+    sintoma: "Assets velhos em producao"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-bk-06
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-bk-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-bk-08
+    name: "Asset publicado sem aprovacao"
+    sintoma: "Upload automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-bk-09
+    name: "Asset deletado sem soft delete"
+    sintoma: "Delete irreversivel"
+    causa_raiz: "Sem soft delete"
+    mitigacao: "Soft delete + DLQ"
+    severity: HIGH
+  - dor_id: D-S01-bk-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-bk-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-bk-12
+    name: "RBAC ausente"
+    sintoma: "Qualquer usuario editando brand"
+    causa_raiz: "Sem RBAC"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-bk-13
+    name: "Copyright de asset violado"
+    sintoma: "Imagem sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate"
+    severity: CRITICAL
+  - dor_id: D-S01-bk-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-bk-15
+    name: "Custo sem limite"
+    sintoma: "Storage sem quota"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH

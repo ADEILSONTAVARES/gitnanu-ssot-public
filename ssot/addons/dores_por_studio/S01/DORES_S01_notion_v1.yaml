@@ -1,0 +1,96 @@
+# DORES_S01_notion_v1
+studio_id: S01
+api: notion
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-nt-01
+    name: "Page criada em workspace errado"
+    sintoma: "Workspace ID nao validado"
+    causa_raiz: "Sem workspace validation"
+    mitigacao: "Gate workspace_id obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-nt-02
+    name: "Page publicada sem aprovacao"
+    sintoma: "Publicacao automatica sem gate"
+    causa_raiz: "Sem aprovacao pre-publish"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S01-nt-03
+    name: "Conteudo sobrescrito"
+    sintoma: "Edicao destruindo versao anterior"
+    causa_raiz: "Sem snapshot pre-edit"
+    mitigacao: "CW-208 rollback pre-edit"
+    severity: CRITICAL
+  - dor_id: D-S01-nt-04
+    name: "PII em page publica"
+    sintoma: "Dados pessoais expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S01-nt-05
+    name: "API key em log"
+    sintoma: "Token Notion vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-nt-06
+    name: "Cross-workspace leak"
+    sintoma: "Page de outro workspace acessivel"
+    causa_raiz: "Sem workspace scope"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S01-nt-07
+    name: "RBAC ausente"
+    sintoma: "Qualquer usuario editando"
+    causa_raiz: "Sem permissoes"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-nt-08
+    name: "Page deletada sem soft delete"
+    sintoma: "Delete irreversivel"
+    causa_raiz: "Sem soft delete"
+    mitigacao: "Soft delete + DLQ"
+    severity: CRITICAL
+  - dor_id: D-S01-nt-09
+    name: "Dado desatualizado entregue"
+    sintoma: "Cache com versao antiga"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "TTL + freshness gate"
+    severity: HIGH
+  - dor_id: D-S01-nt-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-nt-11
+    name: "Token OAuth expirado"
+    sintoma: "Acesso falhando"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-nt-12
+    name: "Webhook sem validacao"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature"
+    mitigacao: "Signature validation"
+    severity: HIGH
+  - dor_id: D-S01-nt-13
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-nt-14
+    name: "Attachment sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-nt-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup externo"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt obrigatorio"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S01_gamma_v1
+studio_id: S01
+api: gamma
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-gm-01
+    name: "Apresentacao publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S01-gm-02
+    name: "PII em slide publico"
+    sintoma: "Dados pessoais expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S01-gm-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-gm-04
+    name: "Conteudo sobrescrito"
+    sintoma: "Edicao sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-gm-05
+    name: "BrandKit nao aplicado"
+    sintoma: "Slide fora do padrao visual"
+    causa_raiz: "Sem BrandKit enforcement"
+    mitigacao: "BrandKit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-gm-06
+    name: "Slide gerado com hallucination"
+    sintoma: "Conteudo factualmente errado"
+    causa_raiz: "Sem fact check gate"
+    mitigacao: "Fact check obrigatorio pre-publish"
+    severity: HIGH
+  - dor_id: D-S01-gm-07
+    name: "Output sem hash"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-gm-08
+    name: "Custo sem limite"
+    sintoma: "Geracao sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S01-gm-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-gm-10
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-gm-11
+    name: "Slide sem acessibilidade"
+    sintoma: "Alt text ausente"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "a11y gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-gm-12
+    name: "Template errado aplicado"
+    sintoma: "Layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate"
+    severity: HIGH
+  - dor_id: D-S01-gm-13
+    name: "Export sem aprovacao"
+    sintoma: "PDF/PPT sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-gm-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-gm-15
+    name: "Colaboracao sem RBAC"
+    sintoma: "Qualquer usuario editando"
+    causa_raiz: "Sem RBAC"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH

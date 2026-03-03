@@ -1,0 +1,96 @@
+# DORES_S01_docx_engine_v1
+studio_id: S01
+api: docx.engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-dx-01
+    name: "Documento publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S01-dx-02
+    name: "PII em documento"
+    sintoma: "Dados expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S01-dx-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-dx-04
+    name: "Template errado aplicado"
+    sintoma: "Layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate"
+    severity: HIGH
+  - dor_id: D-S01-dx-05
+    name: "Conteudo sobrescrito"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-dx-06
+    name: "Documento corrompido entregue"
+    sintoma: "Arquivo invalido"
+    causa_raiz: "Sem integrity check"
+    mitigacao: "Integrity check pos-geracao"
+    severity: HIGH
+  - dor_id: D-S01-dx-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-dx-08
+    name: "Watermark ausente"
+    sintoma: "Sem marca dagua"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-dx-09
+    name: "Export sem aprovacao"
+    sintoma: "PDF sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-dx-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-dx-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-dx-12
+    name: "Documento sem a11y"
+    sintoma: "PDF/UA ausente"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "PDF/UA gate"
+    severity: HIGH
+  - dor_id: D-S01-dx-13
+    name: "Numeracao duplicada"
+    sintoma: "Dois docs com mesmo numero"
+    causa_raiz: "Sem sequence lock"
+    mitigacao: "Sequence lock"
+    severity: HIGH
+  - dor_id: D-S01-dx-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-dx-15
+    name: "Custo sem limite"
+    sintoma: "Geracao sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH

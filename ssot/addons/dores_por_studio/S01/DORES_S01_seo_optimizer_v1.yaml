@@ -1,0 +1,96 @@
+# DORES_S01_seo_optimizer_v1
+studio_id: S01
+api: seo.optimizer
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-seo-01
+    name: "Keyword stuffing gerado"
+    sintoma: "Conteudo com spam de keywords"
+    causa_raiz: "Sem spam check"
+    mitigacao: "Spam check pos-geracao"
+    severity: HIGH
+  - dor_id: D-S01-seo-02
+    name: "Meta tag duplicada"
+    sintoma: "Duas pages com mesmo title"
+    causa_raiz: "Sem dedup check"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-seo-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-seo-04
+    name: "Conteudo publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S01-seo-05
+    name: "Hallucination de keyword"
+    sintoma: "Keyword inventada sem volume real"
+    causa_raiz: "Sem volume validation"
+    mitigacao: "Volume validation gate"
+    severity: HIGH
+  - dor_id: D-S01-seo-06
+    name: "Dado de ranking desatualizado"
+    sintoma: "SERP data velha"
+    causa_raiz: "Sem freshness check"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-seo-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-seo-08
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-seo-09
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-seo-10
+    name: "Custo sem limite"
+    sintoma: "Queries sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S01-seo-11
+    name: "Rollback impossivel"
+    sintoma: "Mudanca sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-seo-12
+    name: "Copyright violado"
+    sintoma: "Conteudo sem licenca"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate"
+    severity: CRITICAL
+  - dor_id: D-S01-seo-13
+    name: "Link quebrado gerado"
+    sintoma: "URL morta no output"
+    causa_raiz: "Sem link validation"
+    mitigacao: "Link validation gate"
+    severity: HIGH
+  - dor_id: D-S01-seo-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-seo-15
+    name: "Schema markup invalido"
+    sintoma: "JSON-LD com erro"
+    causa_raiz: "Sem schema validation"
+    mitigacao: "Schema validation gate"
+    severity: HIGH

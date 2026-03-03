@@ -1,0 +1,96 @@
+# DORES_S01_canva_v1
+studio_id: S01
+api: canva
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-ca-01
+    name: "Design publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S01-ca-02
+    name: "PII em design publico"
+    sintoma: "Dados expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S01-ca-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-ca-04
+    name: "BrandKit nao aplicado"
+    sintoma: "Design fora do padrao"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-ca-05
+    name: "Conteudo sobrescrito"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-ca-06
+    name: "Copyright violado"
+    sintoma: "Imagem sem licenca usada"
+    causa_raiz: "Sem license check"
+    mitigacao: "License gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S01-ca-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-ca-08
+    name: "Custo sem limite"
+    sintoma: "Geracao sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S01-ca-09
+    name: "Export sem aprovacao"
+    sintoma: "PDF/PNG sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-ca-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-ca-11
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-ca-12
+    name: "Design sem acessibilidade"
+    sintoma: "Contraste insuficiente"
+    causa_raiz: "Sem a11y gate"
+    mitigacao: "a11y gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-ca-13
+    name: "Template errado"
+    sintoma: "Layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate"
+    severity: HIGH
+  - dor_id: D-S01-ca-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-ca-15
+    name: "Colaboracao sem RBAC"
+    sintoma: "Qualquer usuario editando"
+    causa_raiz: "Sem RBAC"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH

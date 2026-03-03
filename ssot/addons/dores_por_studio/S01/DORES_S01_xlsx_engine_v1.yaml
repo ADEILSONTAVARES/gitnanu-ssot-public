@@ -1,0 +1,96 @@
+# DORES_S01_xlsx_engine_v1
+studio_id: S01
+api: xlsx.engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-xl-01
+    name: "Planilha publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S01-xl-02
+    name: "PII em planilha publica"
+    sintoma: "Dados expostos"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S01-xl-03
+    name: "Formula errada gerando dado incorreto"
+    sintoma: "Calculo com erro"
+    causa_raiz: "Sem formula validation"
+    mitigacao: "Formula gate pos-geracao"
+    severity: HIGH
+  - dor_id: D-S01-xl-04
+    name: "Conteudo sobrescrito"
+    sintoma: "Sem snapshot"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S01-xl-05
+    name: "Planilha corrompida entregue"
+    sintoma: "Arquivo invalido"
+    causa_raiz: "Sem integrity check"
+    mitigacao: "Integrity check pos-geracao"
+    severity: HIGH
+  - dor_id: D-S01-xl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-xl-07
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S01-xl-08
+    name: "Export sem aprovacao"
+    sintoma: "CSV/XLSX sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S01-xl-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S01-xl-10
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S01-xl-11
+    name: "Overflow de celula"
+    sintoma: "Numero muito grande sem tratamento"
+    causa_raiz: "Sem overflow guard"
+    mitigacao: "Overflow guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-xl-12
+    name: "Template errado"
+    sintoma: "Layout incorreto"
+    causa_raiz: "Sem template validation"
+    mitigacao: "Template gate"
+    severity: HIGH
+  - dor_id: D-S01-xl-13
+    name: "Custo sem limite"
+    sintoma: "Geracao sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S01-xl-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S01-xl-15
+    name: "Macro maliciosa aceita"
+    sintoma: "VBA sem validacao"
+    causa_raiz: "Sem macro scan"
+    mitigacao: "Macro scan obrigatorio"
+    severity: CRITICAL
