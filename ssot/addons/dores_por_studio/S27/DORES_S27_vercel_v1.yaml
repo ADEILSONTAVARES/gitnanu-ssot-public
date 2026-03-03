@@ -1,0 +1,96 @@
+# DORES_S27_vercel_v1
+studio_id: S27
+api: vercel
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S27-ve-01
+    name: "Deploy publicado sem aprovacao"
+    sintoma: "Deploy automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S27-ve-02
+    name: "PII em artefato"
+    sintoma: "Dado pessoal em build"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-deploy"
+    severity: CRITICAL
+  - dor_id: D-S27-ve-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S27-ve-04
+    name: "Scope violation"
+    sintoma: "Deploy em projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S27-ve-05
+    name: "Secret em env"
+    sintoma: "Secret exposto em variavel de ambiente"
+    causa_raiz: "Sem secret scan"
+    mitigacao: "Secret scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S27-ve-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de artefato"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-ve-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S27-ve-08
+    name: "Rollback impossivel"
+    sintoma: "Deploy sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S27-ve-09
+    name: "Deploy sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S27-ve-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S27-ve-11
+    name: "Build sem validacao"
+    sintoma: "Artefato invalido deployado"
+    causa_raiz: "Sem build validation"
+    mitigacao: "Build validation gate"
+    severity: HIGH
+  - dor_id: D-S27-ve-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-ve-13
+    name: "ENV gate ausente"
+    sintoma: "Deploy em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-ve-14
+    name: "Preview sem isolamento"
+    sintoma: "Preview exposto publicamente"
+    causa_raiz: "Sem preview isolation"
+    mitigacao: "Preview isolation gate"
+    severity: HIGH
+  - dor_id: D-S27-ve-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

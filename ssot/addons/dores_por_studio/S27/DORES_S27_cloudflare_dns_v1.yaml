@@ -1,0 +1,96 @@
+# DORES_S27_cloudflare_dns_v1
+studio_id: S27
+api: cloudflare.dns
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S27-cd-01
+    name: "Registro DNS alterado sem aprovacao"
+    sintoma: "Mudanca automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S27-cd-02
+    name: "PII em registro DNS"
+    sintoma: "Dado pessoal em TXT record"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S27-cd-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S27-cd-04
+    name: "Scope violation"
+    sintoma: "Alteracao em zona errada"
+    causa_raiz: "Sem zone scope lock"
+    mitigacao: "Zone scope lock"
+    severity: CRITICAL
+  - dor_id: D-S27-cd-05
+    name: "Acao irreversivel sem gate"
+    sintoma: "Registro deletado sem aprovacao"
+    causa_raiz: "Sem irreversible gate"
+    mitigacao: "Irreversible gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S27-cd-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-cd-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S27-cd-08
+    name: "Rollback impossivel"
+    sintoma: "DNS sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S27-cd-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S27-cd-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S27-cd-11
+    name: "TTL incorreto"
+    sintoma: "Cache de DNS muito longo ou curto"
+    causa_raiz: "Sem TTL validation"
+    mitigacao: "TTL validation gate"
+    severity: HIGH
+  - dor_id: D-S27-cd-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-cd-13
+    name: "ENV gate ausente"
+    sintoma: "Alteracao em producao sem gate"
+    causa_raiz: "Sem ENV gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-cd-14
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-cd-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S27_namecheap_v1
+studio_id: S27
+api: namecheap
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S27-nc-01
+    name: "Dominio registrado sem aprovacao"
+    sintoma: "Compra automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S27-nc-02
+    name: "PII em whois"
+    sintoma: "Dado pessoal exposto em registro"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-register"
+    severity: CRITICAL
+  - dor_id: D-S27-nc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S27-nc-04
+    name: "Scope violation"
+    sintoma: "Alteracao em dominio errado"
+    causa_raiz: "Sem domain scope lock"
+    mitigacao: "Domain scope lock"
+    severity: CRITICAL
+  - dor_id: D-S27-nc-05
+    name: "Acao irreversivel sem gate"
+    sintoma: "Dominio transferido sem aprovacao"
+    causa_raiz: "Sem irreversible gate"
+    mitigacao: "Irreversible gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S27-nc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-nc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S27-nc-08
+    name: "Rollback impossivel"
+    sintoma: "Registro sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S27-nc-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S27-nc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S27-nc-11
+    name: "Expiracao sem alerta"
+    sintoma: "Dominio expira sem renovacao automatica"
+    causa_raiz: "Sem expiry alerting"
+    mitigacao: "Expiry alerting obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-nc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-nc-13
+    name: "DNSSEC ausente"
+    sintoma: "Dominio sem protecao DNSSEC"
+    causa_raiz: "Sem DNSSEC gate"
+    mitigacao: "DNSSEC gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-nc-14
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S27-nc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
