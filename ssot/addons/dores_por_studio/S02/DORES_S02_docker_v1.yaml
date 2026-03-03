@@ -1,0 +1,96 @@
+# DORES_S02_docker_v1
+studio_id: S02
+api: docker
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-docker-01
+    name: "Secrets no ambiente do container"
+    sintoma: "ENV vars com secrets commitadas"
+    causa_raiz: "Sem secrets scan pre-build"
+    mitigacao: "CW-212 + MB-004 env.example"
+    severity: CRITICAL
+  - dor_id: D-S02-docker-02
+    name: "Container com acesso irrestrito a rede"
+    sintoma: "Network nao isolado por default"
+    causa_raiz: "Sem network off default"
+    mitigacao: "network=none default em sandbox"
+    severity: CRITICAL
+  - dor_id: D-S02-docker-03
+    name: "Imagem com vulnerabilidades conhecidas"
+    sintoma: "Base image desatualizada"
+    causa_raiz: "Sem image scan pre-build"
+    mitigacao: "Trivy scan obrigatorio pre-build"
+    severity: CRITICAL
+  - dor_id: D-S02-docker-04
+    name: "Container rodando como root"
+    sintoma: "USER nao definido no Dockerfile"
+    causa_raiz: "Sem non-root user policy"
+    mitigacao: "Non-root user obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-docker-05
+    name: "Volume montando path nao autorizado"
+    sintoma: "Bind mount fora do scope"
+    causa_raiz: "Sem scope de volumes"
+    mitigacao: "CW-001 volume scope obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-docker-06
+    name: "Build sem cache layer"
+    sintoma: "Rebuild completo a cada execucao"
+    causa_raiz: "Sem layer cache strategy"
+    mitigacao: "Layer cache otimizado obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-docker-07
+    name: "Container sem health check"
+    sintoma: "Container morto sem deteccao"
+    causa_raiz: "Sem HEALTHCHECK no Dockerfile"
+    mitigacao: "HEALTHCHECK obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-docker-08
+    name: "Porta exposta desnecessariamente"
+    sintoma: "Porta interna exposta ao host"
+    causa_raiz: "Sem port policy"
+    mitigacao: "Expose apenas portas necessarias"
+    severity: HIGH
+  - dor_id: D-S02-docker-09
+    name: "Imagem sem tag de versao"
+    sintoma: "Usando latest sem controle"
+    causa_raiz: "Sem image versioning"
+    mitigacao: "Tag de versao obrigatoria"
+    severity: HIGH
+  - dor_id: D-S02-docker-10
+    name: "Build sem receipt"
+    sintoma: "Nenhum log do artefato gerado"
+    causa_raiz: "Sem evidence pos-build"
+    mitigacao: "CW-206 receipt + hash image"
+    severity: HIGH
+  - dor_id: D-S02-docker-11
+    name: "Container com recursos ilimitados"
+    sintoma: "CPU e memoria sem limite"
+    causa_raiz: "Sem resource limits"
+    mitigacao: "Resource limits obrigatorios"
+    severity: HIGH
+  - dor_id: D-S02-docker-12
+    name: "Logs do container perdidos"
+    sintoma: "stdout nao capturado"
+    causa_raiz: "Sem log driver configurado"
+    mitigacao: "Log driver obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-docker-13
+    name: "Multi-stage build nao usado"
+    sintoma: "Imagem final com devdeps"
+    causa_raiz: "Sem multi-stage build"
+    mitigacao: "Multi-stage build obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-docker-14
+    name: "Container sem rollback"
+    sintoma: "Sem versao anterior disponivel"
+    causa_raiz: "Sem rollback pack de imagem"
+    mitigacao: "CW-208 rollback de imagem"
+    severity: HIGH
+  - dor_id: D-S02-docker-15
+    name: "Build em producao sem staging"
+    sintoma: "Deploy direto sem ambiente intermediario"
+    causa_raiz: "Sem staging gate"
+    mitigacao: "Staging obrigatorio pre-producao"
+    severity: CRITICAL

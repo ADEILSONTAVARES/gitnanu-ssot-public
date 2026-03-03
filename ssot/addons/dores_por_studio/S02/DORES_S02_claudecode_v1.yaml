@@ -1,0 +1,96 @@
+# DORES_S02_claudecode_v1
+studio_id: S02
+api: claudecode
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-cc-01
+    name: "Reescrita ampla em vez de patch"
+    sintoma: "Agente reescreve arquivo inteiro"
+    causa_raiz: "Sem SERENA diff-first"
+    mitigacao: "CW-205 diff-first + MB-019 dry-run"
+    severity: HIGH
+  - dor_id: D-S02-cc-02
+    name: "Arquivo fora do scope editado"
+    sintoma: "Edita arquivo nao autorizado"
+    causa_raiz: "Sem scope_root enforcement"
+    mitigacao: "CW-001 scope validation obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-cc-03
+    name: "Secret hardcoded no codigo"
+    sintoma: "API key no codigo gerado"
+    causa_raiz: "Sem secrets guard pos-geracao"
+    mitigacao: "CW-212 + MB-004 env.example"
+    severity: CRITICAL
+  - dor_id: D-S02-cc-04
+    name: "Mudanca sem story"
+    sintoma: "Nenhum rastro da mudanca"
+    causa_raiz: "Sem story pre-edicao"
+    mitigacao: "MB-014 no story no change"
+    severity: HIGH
+  - dor_id: D-S02-cc-05
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot pre-edicao"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-cc-06
+    name: "Contexto errado injetado"
+    sintoma: "Arquivo errado no contexto"
+    causa_raiz: "Sem validacao de contexto"
+    mitigacao: "Scope validation pre-context"
+    severity: HIGH
+  - dor_id: D-S02-cc-07
+    name: "Dependencia nao auditada"
+    sintoma: "Package sem auditoria instalado"
+    causa_raiz: "Sem dependency audit"
+    mitigacao: "Dependency audit gate"
+    severity: HIGH
+  - dor_id: D-S02-cc-08
+    name: "Testes nao atualizados"
+    sintoma: "Codigo mudou testes velhos"
+    causa_raiz: "Sem test-update gate"
+    mitigacao: "Gate test update pos-edicao"
+    severity: HIGH
+  - dor_id: D-S02-cc-09
+    name: "Comentarios desatualizados"
+    sintoma: "Comentario nao reflete logica nova"
+    causa_raiz: "Sem doc-sync check"
+    mitigacao: "Doc-sync gate pos-edicao"
+    severity: MEDIUM
+  - dor_id: D-S02-cc-10
+    name: "Importacao circular criada"
+    sintoma: "Dependencia circular gerada"
+    causa_raiz: "Sem circular dep check"
+    mitigacao: "Circular dep check pos-geracao"
+    severity: HIGH
+  - dor_id: D-S02-cc-11
+    name: "Encoding corrompido"
+    sintoma: "UTF-8 corrompido pos-edicao"
+    causa_raiz: "Sem encoding validation"
+    mitigacao: "Encoding gate pos-write"
+    severity: MEDIUM
+  - dor_id: D-S02-cc-12
+    name: "Edicao sem evidencia"
+    sintoma: "Nenhum hash do que foi feito"
+    causa_raiz: "Sem evidence obrigatorio"
+    mitigacao: "CW-206 receipt + hash"
+    severity: HIGH
+  - dor_id: D-S02-cc-13
+    name: "Conflito de merge nao detectado"
+    sintoma: "Edicao sobre arquivo com conflito"
+    causa_raiz: "Sem conflict check pre-edit"
+    mitigacao: "Conflict check pre-edit"
+    severity: HIGH
+  - dor_id: D-S02-cc-14
+    name: "Custo de tokens sem teto"
+    sintoma: "Sessao longa sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-cc-15
+    name: "Hallucination de API"
+    sintoma: "Usa funcao que nao existe"
+    causa_raiz: "Sem validacao de API real"
+    mitigacao: "context7 verification obrigatorio"
+    severity: CRITICAL

@@ -1,0 +1,96 @@
+# DORES_S02_replit_v1
+studio_id: S02
+api: replit
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-replit-01
+    name: "Scaffold sobrescrevendo arquivos"
+    sintoma: "Nao detecta projeto existente"
+    causa_raiz: "Sem brownfield detection"
+    mitigacao: "MB-002 greenfield vs brownfield"
+    severity: CRITICAL
+  - dor_id: D-S02-replit-02
+    name: "Template incompativel aplicado"
+    sintoma: "Template nao validado"
+    causa_raiz: "Sem compatibilidade de template"
+    mitigacao: "Gate template compat pre-apply"
+    severity: HIGH
+  - dor_id: D-S02-replit-03
+    name: "Deps nao instaladas pos-scaffold"
+    sintoma: "Package manager nao rodou"
+    causa_raiz: "Sem post-scaffold install hook"
+    mitigacao: "Post-scaffold install obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-replit-04
+    name: "Secret commitado no scaffold"
+    sintoma: "Placeholder de secret no template"
+    causa_raiz: "Sem secrets scan pos-scaffold"
+    mitigacao: "CW-212 secrets scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-replit-05
+    name: "Scaffold em diretorio errado"
+    sintoma: "Path nao validado"
+    causa_raiz: "Sem scope_root validation"
+    mitigacao: "CW-001 scope_root obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-replit-06
+    name: "Runtime version errada"
+    sintoma: "Node/Python incompativel"
+    causa_raiz: "Sem runtime version check"
+    mitigacao: "MB-006 runtime gate"
+    severity: HIGH
+  - dor_id: D-S02-replit-07
+    name: "Scaffold sem receipt"
+    sintoma: "Nenhum log do criado"
+    causa_raiz: "Sem evidence pos-scaffold"
+    mitigacao: "CW-206 receipt pos-scaffold"
+    severity: HIGH
+  - dor_id: D-S02-replit-08
+    name: "Rollback impossivel"
+    sintoma: "Sem snapshot pre-scaffold"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback pre-scaffold"
+    severity: HIGH
+  - dor_id: D-S02-replit-09
+    name: "Conflito de porta"
+    sintoma: "Porta ja em uso"
+    causa_raiz: "Sem port availability check"
+    mitigacao: "Port check pre-run"
+    severity: MEDIUM
+  - dor_id: D-S02-replit-10
+    name: "Estrutura incompleta"
+    sintoma: "Arquivos essenciais ausentes"
+    causa_raiz: "Sem completeness check"
+    mitigacao: "Completeness gate pos-scaffold"
+    severity: HIGH
+  - dor_id: D-S02-replit-11
+    name: "Hot reload falhando"
+    sintoma: "Watcher nao detecta mudancas"
+    causa_raiz: "Sem health check do watcher"
+    mitigacao: "Watcher health check obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-replit-12
+    name: "Container sem isolamento de rede"
+    sintoma: "Acesso irrestrito a rede"
+    causa_raiz: "Sem network off default"
+    mitigacao: "Docker network off default"
+    severity: CRITICAL
+  - dor_id: D-S02-replit-13
+    name: "Custo sem limite"
+    sintoma: "Compute rodando sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-replit-14
+    name: "Colaboracao sem RBAC"
+    sintoma: "Qualquer usuario editando"
+    causa_raiz: "Sem permissoes por papel"
+    mitigacao: "RBAC obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-replit-15
+    name: "Deploy sem aprovacao"
+    sintoma: "Deploy direto sem gate"
+    causa_raiz: "Sem aprovacao pre-deploy"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL

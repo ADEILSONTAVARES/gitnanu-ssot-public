@@ -1,0 +1,96 @@
+# DORES_S02_bun_v1
+studio_id: S02
+api: bun
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-bun-01
+    name: "Build quebrando por lockfile"
+    sintoma: "Lockfile desatualizado"
+    causa_raiz: "Sem lockfile check pre-build"
+    mitigacao: "MB-006 lockfile check obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bun-02
+    name: "Script acessando path nao autorizado"
+    sintoma: "Lendo arquivo fora do scope"
+    causa_raiz: "Sem filesystem scope restriction"
+    mitigacao: "CW-001 scope_root lock para Bun"
+    severity: CRITICAL
+  - dor_id: D-S02-bun-03
+    name: "Teste flaky nao detectado"
+    sintoma: "Teste passando e falhando aleatorio"
+    causa_raiz: "Sem flaky budget enforcement"
+    mitigacao: "Flaky budget gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bun-04
+    name: "Build sem cache"
+    sintoma: "Rebuild completo sem necessidade"
+    causa_raiz: "Sem cache de build"
+    mitigacao: "Build cache obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-bun-05
+    name: "Erro de tipagem em runtime"
+    sintoma: "TypeScript error nao capturado"
+    causa_raiz: "Sem typecheck pre-build"
+    mitigacao: "tsc typecheck gate pre-build"
+    severity: HIGH
+  - dor_id: D-S02-bun-06
+    name: "Dependencia vulneravel"
+    sintoma: "Package com CVE ativo"
+    causa_raiz: "Sem audit de vulnerabilidades"
+    mitigacao: "bun audit pre-install"
+    severity: CRITICAL
+  - dor_id: D-S02-bun-07
+    name: "Processo travado sem timeout"
+    sintoma: "Script rodando indefinidamente"
+    causa_raiz: "Sem timeout por processo"
+    mitigacao: "Timeout obrigatorio por job"
+    severity: HIGH
+  - dor_id: D-S02-bun-08
+    name: "Output sem hash"
+    sintoma: "Artefato sem integridade"
+    causa_raiz: "Sem hash pos-build"
+    mitigacao: "CW-206 hash obrigatorio pos-build"
+    severity: HIGH
+  - dor_id: D-S02-bun-09
+    name: "ENV ausente em runtime"
+    sintoma: "Script falhando por ENV nao definida"
+    causa_raiz: "Sem ENV validation pre-run"
+    mitigacao: "ENV validation gate pre-run"
+    severity: HIGH
+  - dor_id: D-S02-bun-10
+    name: "Bundle com codigo de debug"
+    sintoma: "console.log em producao"
+    causa_raiz: "Sem strip-debug gate"
+    mitigacao: "Strip-debug gate pre-bundle"
+    severity: MEDIUM
+  - dor_id: D-S02-bun-11
+    name: "Coverage abaixo do minimo"
+    sintoma: "Threshold nao atingido"
+    causa_raiz: "Sem coverage threshold"
+    mitigacao: "Coverage minimo 80pct bloqueante"
+    severity: HIGH
+  - dor_id: D-S02-bun-12
+    name: "Hot reload em producao"
+    sintoma: "Watch mode ativo em prod"
+    causa_raiz: "Sem NODE_ENV validation"
+    mitigacao: "NODE_ENV gate pre-start"
+    severity: CRITICAL
+  - dor_id: D-S02-bun-13
+    name: "CI sem timeout"
+    sintoma: "Build longo sem limite"
+    causa_raiz: "Sem timeout de CI"
+    mitigacao: "CI timeout obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-bun-14
+    name: "Lint silenciado"
+    sintoma: "Erros de lint ignorados"
+    causa_raiz: "Sem lint bloqueante"
+    mitigacao: "Lint gate bloqueante obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-bun-15
+    name: "Build sem receipt"
+    sintoma: "Nenhum log do artefato"
+    causa_raiz: "Sem evidence pos-build"
+    mitigacao: "CW-206 receipt pos-build"
+    severity: HIGH

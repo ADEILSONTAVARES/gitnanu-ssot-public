@@ -1,0 +1,96 @@
+# DORES_S02_sentry_v1
+studio_id: S02
+api: sentry
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-sentry-01
+    name: "Erro silenciado sem alerta"
+    sintoma: "Exception capturada mas nao reportada"
+    causa_raiz: "Sem Sentry capture obrigatorio"
+    mitigacao: "Sentry capture em todos os catch blocks"
+    severity: CRITICAL
+  - dor_id: D-S02-sentry-02
+    name: "PII vazando em error report"
+    sintoma: "Dados pessoais nos logs de erro"
+    causa_raiz: "Sem PII scrubbing"
+    mitigacao: "PII scrubbing obrigatorio no Sentry"
+    severity: CRITICAL
+  - dor_id: D-S02-sentry-03
+    name: "Alert threshold nao configurado"
+    sintoma: "Volume de erros sem alerta"
+    causa_raiz: "Sem alert rules por projeto"
+    mitigacao: "Alert rules obrigatorias por projeto"
+    severity: HIGH
+  - dor_id: D-S02-sentry-04
+    name: "Source maps nao enviados"
+    sintoma: "Stack trace ilegivel em producao"
+    causa_raiz: "Sem source map upload no CI"
+    mitigacao: "Source map upload obrigatorio no CI"
+    severity: HIGH
+  - dor_id: D-S02-sentry-05
+    name: "Ambiente errado no report"
+    sintoma: "Erro de staging reportado como prod"
+    causa_raiz: "Sem environment tag obrigatorio"
+    mitigacao: "Environment tag obrigatorio por deploy"
+    severity: HIGH
+  - dor_id: D-S02-sentry-06
+    name: "Release nao vinculada ao erro"
+    sintoma: "Erro sem versao identificada"
+    causa_raiz: "Sem release tracking"
+    mitigacao: "Release tracking obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-sentry-07
+    name: "Fingerprint incorreto agrupando erros distintos"
+    sintoma: "Erros diferentes agrupados como um"
+    causa_raiz: "Sem fingerprint customizado"
+    mitigacao: "Fingerprint customizado por tipo de erro"
+    severity: MEDIUM
+  - dor_id: D-S02-sentry-08
+    name: "Quota estourada sem alerta"
+    sintoma: "Eventos descartados por quota"
+    causa_raiz: "Sem monitor de quota"
+    mitigacao: "Quota monitor + alerta obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-sentry-09
+    name: "Issue atribuida sem contexto"
+    sintoma: "Desenvolvedor sem informacao suficiente"
+    causa_raiz: "Sem contexto enriquecido"
+    mitigacao: "Breadcrumbs + contexto obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-sentry-10
+    name: "Performance monitoring desativado"
+    sintoma: "Lentidao sem deteccao"
+    causa_raiz: "Sem tracing habilitado"
+    mitigacao: "Tracing obrigatorio para rotas criticas"
+    severity: HIGH
+  - dor_id: D-S02-sentry-11
+    name: "Replay de sessao sem consentimento"
+    sintoma: "Session replay ativo sem aviso"
+    causa_raiz: "Sem consent gate para replay"
+    mitigacao: "CW-213 consent gate para session replay"
+    severity: CRITICAL
+  - dor_id: D-S02-sentry-12
+    name: "Integracao com GitHub nao configurada"
+    sintoma: "Commit nao linkado ao erro"
+    causa_raiz: "Sem GitHub integration"
+    mitigacao: "GitHub integration obrigatoria"
+    severity: MEDIUM
+  - dor_id: D-S02-sentry-13
+    name: "Erro de producao sem ticket gerado"
+    sintoma: "Issue nao criada automaticamente"
+    causa_raiz: "Sem auto-ticket policy"
+    mitigacao: "Auto-ticket para erros CRITICAL"
+    severity: HIGH
+  - dor_id: D-S02-sentry-14
+    name: "DSN exposto no frontend"
+    sintoma: "Sentry DSN visivel no bundle"
+    causa_raiz: "Sem DSN restriction"
+    mitigacao: "DSN restriction obrigatoria"
+    severity: HIGH
+  - dor_id: D-S02-sentry-15
+    name: "Report sem evidencia no GNDrive"
+    sintoma: "Erro sem link de evidencia"
+    causa_raiz: "Sem evidence publish"
+    mitigacao: "CW-206 evidence publish obrigatorio"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S02_context7_v1
+studio_id: S02
+api: context7
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-ctx7-01
+    name: "Docs desatualizados injetados no contexto"
+    sintoma: "Versao antiga da lib sendo usada"
+    causa_raiz: "Sem freshness check de docs"
+    mitigacao: "Freshness gate obrigatorio pre-inject"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-02
+    name: "Lib errada retornada por nome similar"
+    sintoma: "context7 confundindo libs com nomes parecidos"
+    causa_raiz: "Sem exact match validation"
+    mitigacao: "Exact match + version pin obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-03
+    name: "Token de contexto estourado"
+    sintoma: "Docs muito grandes cortando contexto"
+    causa_raiz: "Sem truncation strategy"
+    mitigacao: "Chunking strategy obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-04
+    name: "Custo de lookup sem cache"
+    sintoma: "Mesma doc buscada multiplas vezes"
+    causa_raiz: "Sem cache de docs"
+    mitigacao: "Cache de docs obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-ctx7-05
+    name: "Doc de lib privada exposta"
+    sintoma: "Docs internas acessiveis via context7"
+    causa_raiz: "Sem scope de docs"
+    mitigacao: "Scope de docs por projeto"
+    severity: CRITICAL
+  - dor_id: D-S02-ctx7-06
+    name: "Hallucination nao detectada"
+    sintoma: "Agente usa API que nao existe na doc"
+    causa_raiz: "Sem verificacao pos-sugestao"
+    mitigacao: "Verification gate pos-suggestion"
+    severity: CRITICAL
+  - dor_id: D-S02-ctx7-07
+    name: "Versao incompativel injetada"
+    sintoma: "Doc de v2 injetada em projeto v1"
+    causa_raiz: "Sem version compatibility check"
+    mitigacao: "Version compat gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-08
+    name: "Docs sem hash de integridade"
+    sintoma: "Doc modificada sem deteccao"
+    causa_raiz: "Sem hash de docs"
+    mitigacao: "Hash obrigatorio por doc injetada"
+    severity: MEDIUM
+  - dor_id: D-S02-ctx7-09
+    name: "Lookup lento bloqueando agente"
+    sintoma: "context7 demorando sem timeout"
+    causa_raiz: "Sem timeout de lookup"
+    mitigacao: "Timeout obrigatorio por lookup"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-10
+    name: "Multiplas versoes da mesma lib"
+    sintoma: "Conflict de versoes no contexto"
+    causa_raiz: "Sem deduplication de docs"
+    mitigacao: "Dedup obrigatorio por lib"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-11
+    name: "Exemplo de codigo desatualizado"
+    sintoma: "Snippet usando API deprecated"
+    causa_raiz: "Sem deprecated check"
+    mitigacao: "Deprecated API check pre-inject"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-12
+    name: "Sem fallback quando lib nao encontrada"
+    sintoma: "Agente prossegue sem docs"
+    causa_raiz: "Sem fallback policy"
+    mitigacao: "Fallback obrigatorio quando doc ausente"
+    severity: HIGH
+  - dor_id: D-S02-ctx7-13
+    name: "Privacidade de codigo em lookup"
+    sintoma: "Codigo enviado para indexacao externa"
+    causa_raiz: "Sem data privacy gate"
+    mitigacao: "CW-213 consent gate pre-lookup"
+    severity: CRITICAL
+  - dor_id: D-S02-ctx7-14
+    name: "Rate limit sem retry"
+    sintoma: "Lookup falhando por rate limit"
+    causa_raiz: "Sem retry policy"
+    mitigacao: "Retry + backoff obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S02-ctx7-15
+    name: "Lookup sem evidencia"
+    sintoma: "Nenhum log do que foi injetado"
+    causa_raiz: "Sem evidence de contexto injetado"
+    mitigacao: "CW-206 log de contexto obrigatorio"
+    severity: HIGH

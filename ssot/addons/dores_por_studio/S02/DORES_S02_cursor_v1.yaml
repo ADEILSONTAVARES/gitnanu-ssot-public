@@ -1,0 +1,96 @@
+# DORES_S02_cursor_v1
+studio_id: S02
+api: cursor
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-cursor-01
+    name: "Contexto de arquivo errado injetado"
+    sintoma: "Arquivo errado no contexto do agente"
+    causa_raiz: "Sem scope validation pre-context"
+    mitigacao: "CW-001 scope validation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-cursor-02
+    name: "Autocomplete sugerindo codigo inseguro"
+    sintoma: "Sugestao com vulnerabilidade conhecida"
+    causa_raiz: "Sem security filter em suggestions"
+    mitigacao: "Security gate em autocomplete"
+    severity: HIGH
+  - dor_id: D-S02-cursor-03
+    name: "Refactor quebrando contrato de API"
+    sintoma: "Interface publica alterada silenciosamente"
+    causa_raiz: "Sem contrato check pos-refactor"
+    mitigacao: "Contract check gate pos-refactor"
+    severity: CRITICAL
+  - dor_id: D-S02-cursor-04
+    name: "Edicao sem diff visivel"
+    sintoma: "Mudancas aplicadas sem revisao"
+    causa_raiz: "Sem diff obrigatorio pre-apply"
+    mitigacao: "CW-205 diff obrigatorio pre-apply"
+    severity: HIGH
+  - dor_id: D-S02-cursor-05
+    name: "Multi-file edit sem escopo"
+    sintoma: "Editando arquivos fora do projeto"
+    causa_raiz: "Sem workspace scope lock"
+    mitigacao: "Workspace scope lock obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-cursor-06
+    name: "Historico de edicoes nao rastreavel"
+    sintoma: "Sem log das alteracoes feitas"
+    causa_raiz: "Sem evidence por sessao"
+    mitigacao: "CW-206 receipt por sessao de edicao"
+    severity: HIGH
+  - dor_id: D-S02-cursor-07
+    name: "AI mode consumindo tokens sem limite"
+    sintoma: "Custo crescendo sem controle"
+    causa_raiz: "Sem cost guard por sessao"
+    mitigacao: "CW-214 cost guard obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-cursor-08
+    name: "Sugestao hallucinating biblioteca"
+    sintoma: "Importando lib que nao existe"
+    causa_raiz: "Sem verificacao de existencia"
+    mitigacao: "context7 verification obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-cursor-09
+    name: "Rollback impossivel apos edicao em massa"
+    sintoma: "Sem snapshot pre-edicao"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 rollback pre-edicao em massa"
+    severity: HIGH
+  - dor_id: D-S02-cursor-10
+    name: "Secret exposto em suggestion"
+    sintoma: "Cursor sugerindo secret real"
+    causa_raiz: "Sem secrets filter em suggestions"
+    mitigacao: "Secrets filter obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S02-cursor-11
+    name: "Formatacao inconsistente aplicada"
+    sintoma: "Prettier config ignorada"
+    causa_raiz: "Sem format gate pos-edicao"
+    mitigacao: "Format gate obrigatorio pos-apply"
+    severity: MEDIUM
+  - dor_id: D-S02-cursor-12
+    name: "Teste nao gerado para novo codigo"
+    sintoma: "Codigo sem cobertura de teste"
+    causa_raiz: "Sem test generation gate"
+    mitigacao: "Test generation obrigatorio"
+    severity: HIGH
+  - dor_id: D-S02-cursor-13
+    name: "Edicao em branch errado"
+    sintoma: "Commit na branch errada"
+    causa_raiz: "Sem branch validation pre-edit"
+    mitigacao: "Branch check obrigatorio pre-commit"
+    severity: HIGH
+  - dor_id: D-S02-cursor-14
+    name: "Conflito de merge ignorado"
+    sintoma: "Edicao sobre conflito existente"
+    causa_raiz: "Sem conflict detection"
+    mitigacao: "Conflict detection pre-edit"
+    severity: HIGH
+  - dor_id: D-S02-cursor-15
+    name: "Edicao sem aprovacao para arquivo critico"
+    sintoma: "Arquivo sensivel editado sem gate"
+    causa_raiz: "Sem CODEOWNERS enforcement"
+    mitigacao: "CODEOWNERS gate obrigatorio"
+    severity: CRITICAL
