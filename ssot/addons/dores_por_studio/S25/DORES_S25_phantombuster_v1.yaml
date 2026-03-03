@@ -1,0 +1,96 @@
+# DORES_S25_phantombuster_v1
+studio_id: S25
+api: phantombuster
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S25-pb-01
+    name: "Extracao publicada sem aprovacao"
+    sintoma: "Scraping automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S25-pb-02
+    name: "PII em dado extraido"
+    sintoma: "Dado pessoal sem criptografia"
+    causa_raiz: "Sem PII encryption"
+    mitigacao: "PII encryption obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S25-pb-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S25-pb-04
+    name: "Scope violation"
+    sintoma: "Extracao acessa conta errada"
+    causa_raiz: "Sem scope lock"
+    mitigacao: "CW-001 scope lock"
+    severity: CRITICAL
+  - dor_id: D-S25-pb-05
+    name: "ToS violation"
+    sintoma: "Scraping viola termos da plataforma"
+    causa_raiz: "Sem ToS compliance gate"
+    mitigacao: "ToS compliance gate"
+    severity: CRITICAL
+  - dor_id: D-S25-pb-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-pb-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S25-pb-08
+    name: "Rollback impossivel"
+    sintoma: "Extracao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S25-pb-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S25-pb-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S25-pb-11
+    name: "Deteccao de bot"
+    sintoma: "Conta banida por scraping"
+    causa_raiz: "Sem anti-detection gate"
+    mitigacao: "Anti-detection gate"
+    severity: HIGH
+  - dor_id: D-S25-pb-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-pb-13
+    name: "Timeout sem fallback"
+    sintoma: "Pipeline trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S25-pb-14
+    name: "Lead duplicado"
+    sintoma: "Mesmo lead extraido duas vezes"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-pb-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

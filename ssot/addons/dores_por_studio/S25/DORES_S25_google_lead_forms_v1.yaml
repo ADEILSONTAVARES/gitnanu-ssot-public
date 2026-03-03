@@ -1,0 +1,96 @@
+# DORES_S25_google_lead_forms_v1
+studio_id: S25
+api: google.lead.forms
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S25-gl-01
+    name: "Form publicado sem aprovacao"
+    sintoma: "Publicacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S25-gl-02
+    name: "PII em lead coletado"
+    sintoma: "Dado pessoal sem criptografia"
+    causa_raiz: "Sem PII encryption"
+    mitigacao: "PII encryption obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S25-gl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S25-gl-04
+    name: "Scope violation"
+    sintoma: "Form em conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S25-gl-05
+    name: "RESERVED sem Detetive 7x"
+    sintoma: "API RESERVED ativada sem gate"
+    causa_raiz: "Sem RESERVED gate"
+    mitigacao: "Detetive 7x gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S25-gl-06
+    name: "LGPD nao atendida"
+    sintoma: "Lead coletado sem consentimento"
+    causa_raiz: "Sem LGPD consent gate"
+    mitigacao: "LGPD consent gate"
+    severity: CRITICAL
+  - dor_id: D-S25-gl-07
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-gl-08
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S25-gl-09
+    name: "Rollback impossivel"
+    sintoma: "Lead sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S25-gl-10
+    name: "Captura sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S25-gl-11
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S25-gl-12
+    name: "Lead duplicado"
+    sintoma: "Mesmo lead inserido duas vezes"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-gl-13
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-gl-14
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-gl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

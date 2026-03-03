@@ -1,0 +1,96 @@
+# DORES_S25_wisemind_v1
+studio_id: S25
+api: wisemind
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S25-wm-01
+    name: "Acao publicada sem aprovacao"
+    sintoma: "Automacao sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S25-wm-02
+    name: "PII em perfil de lead"
+    sintoma: "Dado pessoal exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S25-wm-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S25-wm-04
+    name: "Scope violation"
+    sintoma: "Acao em workspace errado"
+    causa_raiz: "Sem workspace scope lock"
+    mitigacao: "Workspace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S25-wm-05
+    name: "LGPD nao atendida"
+    sintoma: "Perfil criado sem consentimento"
+    causa_raiz: "Sem LGPD gate"
+    mitigacao: "LGPD gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S25-wm-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-wm-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S25-wm-08
+    name: "Rollback impossivel"
+    sintoma: "Segmentacao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S25-wm-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S25-wm-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S25-wm-11
+    name: "Lead duplicado"
+    sintoma: "Mesmo lead em dois segmentos"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-wm-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-wm-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-wm-14
+    name: "Anomalia nao detectada"
+    sintoma: "Queda de conversao sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S25-wm-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
