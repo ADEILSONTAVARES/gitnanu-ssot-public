@@ -1,0 +1,96 @@
+# DORES_S19_google_places_v1
+studio_id: S19
+api: google.places
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S19-gp-01
+    name: "Busca executada sem aprovacao"
+    sintoma: "Query automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S19-gp-02
+    name: "PII em query"
+    sintoma: "Dado pessoal em parametro"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-query"
+    severity: CRITICAL
+  - dor_id: D-S19-gp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S19-gp-04
+    name: "Scope violation"
+    sintoma: "Busca acessa regiao fora do workspace"
+    causa_raiz: "Sem region scope lock"
+    mitigacao: "Region scope lock"
+    severity: CRITICAL
+  - dor_id: D-S19-gp-05
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S19-gp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gp-07
+    name: "Rollback impossivel"
+    sintoma: "Busca sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S19-gp-08
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S19-gp-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S19-gp-10
+    name: "Quota estourada"
+    sintoma: "Request bloqueado"
+    causa_raiz: "Sem quota monitor"
+    mitigacao: "Quota monitor obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gp-11
+    name: "POI desatualizado"
+    sintoma: "Local fechado sem deteccao"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gp-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gp-13
+    name: "Timeout sem fallback"
+    sintoma: "Busca trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S19-gp-14
+    name: "Raio de busca excessivo"
+    sintoma: "Request retorna dados fora do escopo"
+    causa_raiz: "Sem radius gate"
+    mitigacao: "Radius gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

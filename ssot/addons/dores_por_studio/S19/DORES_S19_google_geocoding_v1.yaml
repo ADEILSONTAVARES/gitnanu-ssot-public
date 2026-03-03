@@ -1,0 +1,96 @@
+# DORES_S19_google_geocoding_v1
+studio_id: S19
+api: google.geocoding
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S19-gc-01
+    name: "Geocodificacao executada sem aprovacao"
+    sintoma: "Query automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S19-gc-02
+    name: "PII em endereco"
+    sintoma: "Dado pessoal em parametro"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-query"
+    severity: CRITICAL
+  - dor_id: D-S19-gc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S19-gc-04
+    name: "Scope violation"
+    sintoma: "Geocodificacao acessa regiao fora do workspace"
+    causa_raiz: "Sem region scope lock"
+    mitigacao: "Region scope lock"
+    severity: CRITICAL
+  - dor_id: D-S19-gc-05
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S19-gc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gc-07
+    name: "Rollback impossivel"
+    sintoma: "Operacao sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S19-gc-08
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S19-gc-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S19-gc-10
+    name: "Quota estourada"
+    sintoma: "Request bloqueado"
+    causa_raiz: "Sem quota monitor"
+    mitigacao: "Quota monitor obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gc-11
+    name: "Coordenada invalida aceita"
+    sintoma: "Resultado fora do range geografico"
+    causa_raiz: "Sem coordinate validation"
+    mitigacao: "Coordinate validation gate"
+    severity: HIGH
+  - dor_id: D-S19-gc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gc-13
+    name: "Timeout sem fallback"
+    sintoma: "Geocodificacao trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S19-gc-14
+    name: "Cache desatualizado"
+    sintoma: "Coordenadas velhas sem freshness gate"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-gc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

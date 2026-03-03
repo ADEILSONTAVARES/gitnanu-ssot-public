@@ -1,0 +1,96 @@
+# DORES_S19_trends_pipeline_v1
+studio_id: S19
+api: trends.pipeline
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S19-tp-01
+    name: "Relatorio publicado sem aprovacao"
+    sintoma: "Export automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S19-tp-02
+    name: "PII em dado de trend"
+    sintoma: "Dado pessoal em report"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S19-tp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S19-tp-04
+    name: "Scope violation"
+    sintoma: "Trend acessa regiao fora do workspace"
+    causa_raiz: "Sem region scope lock"
+    mitigacao: "Region scope lock"
+    severity: CRITICAL
+  - dor_id: D-S19-tp-05
+    name: "Dados desatualizados"
+    sintoma: "Trend com cache velho"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-tp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-tp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S19-tp-08
+    name: "Rollback impossivel"
+    sintoma: "Export sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S19-tp-09
+    name: "Export sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S19-tp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S19-tp-11
+    name: "Anomalia nao detectada"
+    sintoma: "Spike de trend sem alerta"
+    causa_raiz: "Sem anomaly detection"
+    mitigacao: "Anomaly detection obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-tp-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S19-tp-13
+    name: "Timeout sem fallback"
+    sintoma: "Pipeline trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S19-tp-14
+    name: "Keyword sem validacao"
+    sintoma: "Trend gerado para keyword invalida"
+    causa_raiz: "Sem keyword validation"
+    mitigacao: "Keyword validation gate"
+    severity: HIGH
+  - dor_id: D-S19-tp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
