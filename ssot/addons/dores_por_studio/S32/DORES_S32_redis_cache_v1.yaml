@@ -1,0 +1,96 @@
+# DORES_S32_redis_cache_v1
+studio_id: S32
+api: redis.cache
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S32-rc-01
+    name: "Cache configurado sem aprovacao"
+    sintoma: "Config automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S32-rc-02
+    name: "PII em cache"
+    sintoma: "Dado pessoal em valor cacheado"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-set"
+    severity: CRITICAL
+  - dor_id: D-S32-rc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S32-rc-04
+    name: "Scope violation"
+    sintoma: "Acesso a namespace errado"
+    causa_raiz: "Sem namespace scope lock"
+    mitigacao: "Namespace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S32-rc-05
+    name: "Cache sem TTL"
+    sintoma: "Dado retido indefinidamente"
+    causa_raiz: "Sem TTL gate"
+    mitigacao: "TTL gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-rc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-rc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de memoria"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S32-rc-08
+    name: "Rollback impossivel"
+    sintoma: "Cache sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S32-rc-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S32-rc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S32-rc-11
+    name: "Eviction sem alerta"
+    sintoma: "Dado removido por pressao de memoria"
+    causa_raiz: "Sem eviction alert"
+    mitigacao: "Eviction alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-rc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-rc-13
+    name: "Conexao sem autenticacao"
+    sintoma: "Redis exposto sem senha"
+    causa_raiz: "Sem auth gate"
+    mitigacao: "Auth gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S32-rc-14
+    name: "Timeout sem fallback"
+    sintoma: "Operacao trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S32-rc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

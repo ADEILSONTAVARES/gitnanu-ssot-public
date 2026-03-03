@@ -1,0 +1,96 @@
+# DORES_S32_kafka_pipeline_v1
+studio_id: S32
+api: kafka.pipeline
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S32-kp-01
+    name: "Topico criado sem aprovacao"
+    sintoma: "Criacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S32-kp-02
+    name: "PII em mensagem"
+    sintoma: "Dado pessoal em payload"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-produce"
+    severity: CRITICAL
+  - dor_id: D-S32-kp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S32-kp-04
+    name: "Scope violation"
+    sintoma: "Consumer acessa topico errado"
+    causa_raiz: "Sem topic scope lock"
+    mitigacao: "Topic scope lock"
+    severity: CRITICAL
+  - dor_id: D-S32-kp-05
+    name: "LGPD nao atendida"
+    sintoma: "Mensagem retida alem do prazo"
+    causa_raiz: "Sem retention policy gate"
+    mitigacao: "Retention policy gate"
+    severity: CRITICAL
+  - dor_id: D-S32-kp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de mensagem"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-kp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S32-kp-08
+    name: "Rollback impossivel"
+    sintoma: "Mensagem publicada sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S32-kp-09
+    name: "Execucao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S32-kp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S32-kp-11
+    name: "Consumer lag sem alerta"
+    sintoma: "Atraso de consumo sem notificacao"
+    causa_raiz: "Sem lag alert"
+    mitigacao: "Lag alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-kp-12
+    name: "DLQ ausente"
+    sintoma: "Mensagem com erro sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-kp-13
+    name: "Idempotencia ausente"
+    sintoma: "Mensagem duplicada processada"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S32-kp-14
+    name: "Timeout sem fallback"
+    sintoma: "Producer trava"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S32-kp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

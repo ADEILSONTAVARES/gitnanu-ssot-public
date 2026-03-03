@@ -1,0 +1,96 @@
+# DORES_S32_elasticsearch_v1
+studio_id: S32
+api: elasticsearch
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S32-es-01
+    name: "Indice criado sem aprovacao"
+    sintoma: "Criacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S32-es-02
+    name: "PII em documento indexado"
+    sintoma: "Dado pessoal em campo de indice"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-index"
+    severity: CRITICAL
+  - dor_id: D-S32-es-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S32-es-04
+    name: "Scope violation"
+    sintoma: "Query acessa indice errado"
+    causa_raiz: "Sem index scope lock"
+    mitigacao: "Index scope lock"
+    severity: CRITICAL
+  - dor_id: D-S32-es-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado indexado sem base legal"
+    causa_raiz: "Sem LGPD gate"
+    mitigacao: "LGPD gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S32-es-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-es-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S32-es-08
+    name: "Rollback impossivel"
+    sintoma: "Indice sem snapshot anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S32-es-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S32-es-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S32-es-11
+    name: "Indice publico sem gate"
+    sintoma: "Dado interno exposto"
+    causa_raiz: "Sem index visibility gate"
+    mitigacao: "Index visibility gate"
+    severity: CRITICAL
+  - dor_id: D-S32-es-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-es-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-es-14
+    name: "Schema drift"
+    sintoma: "Mapping alterado sem deteccao"
+    causa_raiz: "Sem mapping drift alert"
+    mitigacao: "Mapping drift alert"
+    severity: HIGH
+  - dor_id: D-S32-es-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
