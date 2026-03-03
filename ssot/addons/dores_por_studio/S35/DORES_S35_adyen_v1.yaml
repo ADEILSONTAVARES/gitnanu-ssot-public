@@ -1,0 +1,96 @@
+# DORES_S35_adyen_v1
+studio_id: S35
+api: adyen
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-adyen-01
+    name: "Webhook sem HMAC"
+    sintoma: "Payload aceito sem validacao"
+    causa_raiz: "Sem HMAC validation"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-02
+    name: "Pagamento duplicado"
+    sintoma: "Mesmo pedido duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-04
+    name: "Chargeback sem evidence"
+    sintoma: "Disputa sem docs"
+    causa_raiz: "Sem evidence pack"
+    mitigacao: "CW-206 evidence pack"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-05
+    name: "Valor incorreto"
+    sintoma: "Amount errado"
+    causa_raiz: "Sem amount validation"
+    mitigacao: "Gate amount pre-charge"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-06
+    name: "Test em producao"
+    sintoma: "Credenciais test em prod"
+    causa_raiz: "Sem env validation"
+    mitigacao: "ENV gate test vs live"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-07
+    name: "3DS nao ativado"
+    sintoma: "Sem autenticacao forte"
+    causa_raiz: "Sem 3DS enforcement"
+    mitigacao: "3DS obrigatorio em mercados EU"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-08
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S35-adyen-09
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S35-adyen-10
+    name: "Moeda errada"
+    sintoma: "Currency incorreta"
+    causa_raiz: "Sem currency validation"
+    mitigacao: "Gate currency"
+    severity: HIGH
+  - dor_id: D-S35-adyen-11
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita aprovada"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Adyen RevenueProtect obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-adyen-12
+    name: "DLQ ausente"
+    sintoma: "Webhook perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-adyen-13
+    name: "Sem alerta de falha"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem alert"
+    mitigacao: "Alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-adyen-14
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-adyen-15
+    name: "PCI DSS violado"
+    sintoma: "Dados de cartao logados"
+    causa_raiz: "Sem PCI guard"
+    mitigacao: "PCI guard obrigatorio"
+    severity: CRITICAL

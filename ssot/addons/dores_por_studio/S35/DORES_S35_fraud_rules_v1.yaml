@@ -1,0 +1,96 @@
+# DORES_S35_fraud_rules_v1
+studio_id: S35
+api: fraud.rules
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-fr-01
+    name: "Regra de fraude nao atualizada"
+    sintoma: "Vetores novos sem cobertura"
+    causa_raiz: "Sem update policy de rules"
+    mitigacao: "Rules update mensal obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-fr-02
+    name: "False positive bloqueando cliente"
+    sintoma: "Transacao legitima bloqueada"
+    causa_raiz: "Threshold muito agressivo"
+    mitigacao: "Threshold tunning + review periodico"
+    severity: HIGH
+  - dor_id: D-S35-fr-03
+    name: "Fraude passando sem deteccao"
+    sintoma: "Score abaixo do threshold real"
+    causa_raiz: "Threshold muito permissivo"
+    mitigacao: "Score review periodico obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-fr-04
+    name: "Regra sem evidence de ativacao"
+    sintoma: "Fraude bloqueada sem log"
+    causa_raiz: "Sem receipt de rule activation"
+    mitigacao: "CW-206 receipt por ativacao"
+    severity: HIGH
+  - dor_id: D-S35-fr-05
+    name: "Velocity check ausente"
+    sintoma: "Multiplas transacoes rapidas aceitas"
+    causa_raiz: "Sem velocity rule"
+    mitigacao: "Velocity rule obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S35-fr-06
+    name: "Device fingerprint nao coletado"
+    sintoma: "Dispositivo sem identificacao"
+    causa_raiz: "Sem device fingerprint"
+    mitigacao: "Device fingerprint obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-fr-07
+    name: "IP em blocklist ignorado"
+    sintoma: "IP banido aceito"
+    causa_raiz: "Sem IP blocklist check"
+    mitigacao: "IP blocklist check obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-fr-08
+    name: "Chargeback sem retroalimentacao"
+    sintoma: "Fraude confirmada nao atualiza regras"
+    causa_raiz: "Sem feedback loop"
+    mitigacao: "Chargeback feedback loop obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-fr-09
+    name: "Regra conflitante nao detectada"
+    sintoma: "Duas regras se contradizendo"
+    causa_raiz: "Sem conflict check"
+    mitigacao: "Conflict check pos-update de rules"
+    severity: HIGH
+  - dor_id: D-S35-fr-10
+    name: "Sem alerta em pico de fraude"
+    sintoma: "Volume alto sem notificacao"
+    causa_raiz: "Sem fraud rate monitor"
+    mitigacao: "Fraud rate monitor + alerta"
+    severity: CRITICAL
+  - dor_id: D-S35-fr-11
+    name: "Review manual sem SLA"
+    sintoma: "Caso em revisao sem prazo"
+    causa_raiz: "Sem SLA de review"
+    mitigacao: "SLA obrigatorio para manual review"
+    severity: HIGH
+  - dor_id: D-S35-fr-12
+    name: "Rollback de regra impossivel"
+    sintoma: "Regra nova sem versao anterior"
+    causa_raiz: "Sem rollback de rules"
+    mitigacao: "CW-208 rollback de rules"
+    severity: HIGH
+  - dor_id: D-S35-fr-13
+    name: "Custo de scoring sem limite"
+    sintoma: "API de score sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S35-fr-14
+    name: "Score sem auditoria"
+    sintoma: "Decisao sem explicabilidade"
+    causa_raiz: "Sem explainability"
+    mitigacao: "Explainability obrigatoria por decisao"
+    severity: HIGH
+  - dor_id: D-S35-fr-15
+    name: "Bias em modelo de fraude"
+    sintoma: "Grupo demografico sendo bloqueado"
+    causa_raiz: "Sem fairness check"
+    mitigacao: "Fairness check periodico obrigatorio"
+    severity: HIGH

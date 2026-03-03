@@ -1,0 +1,96 @@
+# DORES_S35_braintree_paypal_v1
+studio_id: S35
+api: braintree.paypal
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-bt-01
+    name: "Webhook sem verificacao"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem BT-Signature validation"
+    mitigacao: "PAY-018 BT-Signature obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-02
+    name: "Pagamento duplicado"
+    sintoma: "Sem idempotency"
+    causa_raiz: "Sem nonce reuse check"
+    mitigacao: "Nonce single-use obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-03
+    name: "Token vazando em log"
+    sintoma: "BT token exposto"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-04
+    name: "Valor incorreto"
+    sintoma: "Amount errado"
+    causa_raiz: "Sem amount validation"
+    mitigacao: "Gate amount pre-charge"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-05
+    name: "Sandbox em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-06
+    name: "Chargeback sem evidence"
+    sintoma: "Disputa sem docs"
+    causa_raiz: "Sem evidence pack"
+    mitigacao: "CW-206 evidence pack"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-07
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-08
+    name: "Vault sem criptografia"
+    sintoma: "Cartao salvo sem encrypt"
+    causa_raiz: "Sem vault encryption"
+    mitigacao: "Vault encryption obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-09
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S35-bt-10
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Braintree Fraud Tools obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-bt-11
+    name: "DLQ ausente"
+    sintoma: "Evento perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S35-bt-12
+    name: "PCI DSS violado"
+    sintoma: "Dados de cartao logados"
+    causa_raiz: "Sem PCI guard"
+    mitigacao: "PCI guard obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-bt-13
+    name: "Sem alerta de falha"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem alert"
+    mitigacao: "Alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-bt-14
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-bt-15
+    name: "PayPal account sem verificacao"
+    sintoma: "Conta nao verificada aceitando pagamento"
+    causa_raiz: "Sem account verification"
+    mitigacao: "Account verification gate"
+    severity: HIGH

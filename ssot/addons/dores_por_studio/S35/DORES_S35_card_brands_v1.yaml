@@ -1,0 +1,96 @@
+# DORES_S35_card_brands_v1
+studio_id: S35
+api: card.brands
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-cb-01
+    name: "Bandeira nao suportada aceita"
+    sintoma: "Cartao de bandeira nao configurada"
+    causa_raiz: "Sem brand whitelist"
+    mitigacao: "Brand whitelist obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-cb-02
+    name: "BIN lookup falhando"
+    sintoma: "Bandeira nao identificada"
+    causa_raiz: "Sem fallback de BIN"
+    mitigacao: "BIN fallback obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-cb-03
+    name: "Taxa de intercambio errada"
+    sintoma: "Fee calculado com bandeira errada"
+    causa_raiz: "Sem brand-fee matrix"
+    mitigacao: "Brand-fee matrix obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-cb-04
+    name: "Routing mal configurado"
+    sintoma: "Transacao na adquirente errada"
+    causa_raiz: "Sem routing rules por bandeira"
+    mitigacao: "Routing rules por bandeira"
+    severity: HIGH
+  - dor_id: D-S35-cb-05
+    name: "BIN desatualizado"
+    sintoma: "Base de BIN velha"
+    causa_raiz: "Sem freshness check de BIN"
+    mitigacao: "BIN freshness gate mensal"
+    severity: HIGH
+  - dor_id: D-S35-cb-06
+    name: "Limite de transacao ignorado"
+    sintoma: "Valor acima do limite da bandeira"
+    causa_raiz: "Sem limit check"
+    mitigacao: "Limit check por bandeira"
+    severity: HIGH
+  - dor_id: D-S35-cb-07
+    name: "Regra de parcelamento errada"
+    sintoma: "Installments nao permitidos pela bandeira"
+    causa_raiz: "Sem installment rules"
+    mitigacao: "Installment rules por bandeira"
+    severity: HIGH
+  - dor_id: D-S35-cb-08
+    name: "Expiracao de cartao nao verificada"
+    sintoma: "Cartao vencido aceito"
+    causa_raiz: "Sem expiry check"
+    mitigacao: "Expiry check obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-cb-09
+    name: "CVV nao validado"
+    sintoma: "Transacao sem CVV check"
+    causa_raiz: "Sem CVV validation"
+    mitigacao: "CVV validation obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-cb-10
+    name: "Dados de cartao logados"
+    sintoma: "PAN em log"
+    causa_raiz: "Sem PCI guard"
+    mitigacao: "PCI guard obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-cb-11
+    name: "Sem receipt por bandeira"
+    sintoma: "Transacao sem log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-cb-12
+    name: "Chargeback sem evidence"
+    sintoma: "Disputa sem docs"
+    causa_raiz: "Sem evidence pack"
+    mitigacao: "Evidence pack obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-cb-13
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S35-cb-14
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Fraud rules obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-cb-15
+    name: "Compliance por bandeira violado"
+    sintoma: "Regra especifica ignorada"
+    causa_raiz: "Sem compliance gate"
+    mitigacao: "Compliance gate por bandeira"
+    severity: CRITICAL

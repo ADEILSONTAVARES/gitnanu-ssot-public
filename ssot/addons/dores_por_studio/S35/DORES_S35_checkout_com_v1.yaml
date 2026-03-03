@@ -1,0 +1,96 @@
+# DORES_S35_checkout_com_v1
+studio_id: S35
+api: checkout.com
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-co-01
+    name: "Webhook sem assinatura"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem signature validation"
+    mitigacao: "PAY-018 signature obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-co-02
+    name: "Pagamento duplicado"
+    sintoma: "Idempotency ausente"
+    causa_raiz: "Sem idempotency_key"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S35-co-03
+    name: "Secret key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S35-co-04
+    name: "Valor incorreto"
+    sintoma: "Amount errado"
+    causa_raiz: "Sem amount validation"
+    mitigacao: "Gate amount pre-charge"
+    severity: CRITICAL
+  - dor_id: D-S35-co-05
+    name: "Sandbox em prod"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-co-06
+    name: "3DS nao ativado"
+    sintoma: "Sem autenticacao forte"
+    causa_raiz: "Sem 3DS"
+    mitigacao: "3DS obrigatorio EU/UK"
+    severity: CRITICAL
+  - dor_id: D-S35-co-07
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund automatico"
+    causa_raiz: "Sem gate"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S35-co-08
+    name: "Chargeback sem evidence"
+    sintoma: "Disputa sem docs"
+    causa_raiz: "Sem evidence pack"
+    mitigacao: "CW-206 evidence pack"
+    severity: CRITICAL
+  - dor_id: D-S35-co-09
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S35-co-10
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Fraud rules obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-co-11
+    name: "DLQ ausente"
+    sintoma: "Webhook perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S35-co-12
+    name: "Moeda errada"
+    sintoma: "Currency incorreta"
+    causa_raiz: "Sem currency validation"
+    mitigacao: "Gate currency"
+    severity: HIGH
+  - dor_id: D-S35-co-13
+    name: "PCI DSS violado"
+    sintoma: "Dados de cartao logados"
+    causa_raiz: "Sem PCI guard"
+    mitigacao: "PCI guard obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-co-14
+    name: "Sem alerta de falha"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem alert"
+    mitigacao: "Alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-co-15
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH

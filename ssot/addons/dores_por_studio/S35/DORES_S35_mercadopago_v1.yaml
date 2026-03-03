@@ -1,0 +1,96 @@
+# DORES_S35_mercadopago_v1
+studio_id: S35
+api: mercadopago
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-mp-01
+    name: "Pagamento aprovado sem notificacao IPN"
+    sintoma: "IPN nao recebido ou ignorado"
+    causa_raiz: "Sem IPN handler obrigatorio"
+    mitigacao: "IPN handler + retry obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-02
+    name: "IPN sem validacao de origem"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem verificacao de x-signature"
+    mitigacao: "PAY-018 x-signature obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-03
+    name: "Pagamento duplicado"
+    sintoma: "Mesmo pedido pago duas vezes"
+    causa_raiz: "Sem idempotency_key"
+    mitigacao: "CW-209 idempotency_key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-04
+    name: "Chargeback sem evidencia"
+    sintoma: "Disputa sem documentacao"
+    causa_raiz: "Sem evidence pack"
+    mitigacao: "CW-206 evidence pack obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-05
+    name: "Access token exposto em log"
+    sintoma: "Token MP vazando em stdout"
+    causa_raiz: "Sem secrets redaction"
+    mitigacao: "CW-212 + log redaction"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-06
+    name: "Valor em centavos errado"
+    sintoma: "Amount em unidade errada"
+    causa_raiz: "Sem unit validation"
+    mitigacao: "Gate unit validation pre-charge"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-07
+    name: "PIX expirado sem reemissao"
+    sintoma: "QR code vencido sem novo"
+    causa_raiz: "Sem expiry monitor"
+    mitigacao: "Expiry monitor + reemissao auto"
+    severity: HIGH
+  - dor_id: D-S35-mp-08
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund automatico sem gate"
+    causa_raiz: "Sem aprovacao pre-refund"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-09
+    name: "Sandbox usado em producao"
+    sintoma: "Credenciais de teste em prod"
+    causa_raiz: "Sem env validation"
+    mitigacao: "ENV gate sandbox vs prod"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-10
+    name: "Status pending ignorado"
+    sintoma: "Pagamento pendente sem followup"
+    causa_raiz: "Sem pending status handler"
+    mitigacao: "Pending handler + timeout"
+    severity: HIGH
+  - dor_id: D-S35-mp-11
+    name: "Split mal calculado"
+    sintoma: "Marketplace split incorreto"
+    causa_raiz: "Sem split validation"
+    mitigacao: "Gate split validation pre-capture"
+    severity: CRITICAL
+  - dor_id: D-S35-mp-12
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 undo_token obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-mp-13
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita aprovada"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Fraud rules obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-mp-14
+    name: "Sem notificacao de falha"
+    sintoma: "Pagamento falhando silencioso"
+    causa_raiz: "Sem alert"
+    mitigacao: "Alert obrigatorio para falhas"
+    severity: HIGH
+  - dor_id: D-S35-mp-15
+    name: "Conciliacao sem hash"
+    sintoma: "Dados sem integridade"
+    causa_raiz: "Sem hash de transacao"
+    mitigacao: "Hash obrigatorio por transacao"
+    severity: HIGH

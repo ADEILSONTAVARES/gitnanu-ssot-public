@@ -1,0 +1,96 @@
+# DORES_S35_stripe_payments_v1
+studio_id: S35
+api: stripe.payments
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-stripe-01
+    name: "Pagamento processado sem receipt"
+    sintoma: "Webhook recebido sem log auditavel"
+    causa_raiz: "Sem receipt obrigatorio pos-pagamento"
+    mitigacao: "PAY-009 receipt interno obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-02
+    name: "Webhook sem verificacao de assinatura"
+    sintoma: "Payload aceito sem HMAC"
+    causa_raiz: "Sem stripe-signature validation"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-03
+    name: "Pagamento duplicado por retry"
+    sintoma: "Mesmo pagamento processado duas vezes"
+    causa_raiz: "Sem idempotency_key"
+    mitigacao: "CW-209 idempotency_key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-04
+    name: "Chargeback sem evidencia"
+    sintoma: "Disputa sem documentacao"
+    causa_raiz: "Sem evidence pack pre-capture"
+    mitigacao: "CW-206 evidence pack obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-05
+    name: "Secret key exposta em log"
+    sintoma: "sk_live vazando em stdout"
+    causa_raiz: "Sem secrets redaction"
+    mitigacao: "CW-212 + log redaction obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-06
+    name: "Valor incorreto cobrado"
+    sintoma: "Amount calculado errado"
+    causa_raiz: "Sem validacao de amount pre-charge"
+    mitigacao: "Gate amount validation pre-charge"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-07
+    name: "Moeda errada usada"
+    sintoma: "Currency nao validada"
+    causa_raiz: "Sem currency validation"
+    mitigacao: "Gate currency por mercado"
+    severity: HIGH
+  - dor_id: D-S35-stripe-08
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund automatico sem gate"
+    causa_raiz: "Sem aprovacao pre-refund"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-09
+    name: "Webhook nao processado sem DLQ"
+    sintoma: "Evento perdido sem reprocessamento"
+    causa_raiz: "Sem DLQ para webhooks"
+    mitigacao: "DLQ obrigatorio + retry policy"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-10
+    name: "PCI DSS violado"
+    sintoma: "Dados de cartao logados"
+    causa_raiz: "Sem PCI guard"
+    mitigacao: "PCI guard obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-11
+    name: "Rollback de pagamento impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback pack"
+    mitigacao: "CW-208 undo_token obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-stripe-12
+    name: "Teste em producao"
+    sintoma: "sk_test usado em prod"
+    causa_raiz: "Sem env validation"
+    mitigacao: "ENV gate sk_live vs sk_test"
+    severity: CRITICAL
+  - dor_id: D-S35-stripe-13
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita aprovada"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Fraud rules obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-stripe-14
+    name: "Sem notificacao de falha"
+    sintoma: "Pagamento falhando silenciosamente"
+    causa_raiz: "Sem alert de falha"
+    mitigacao: "Alert obrigatorio para payment_failed"
+    severity: HIGH
+  - dor_id: D-S35-stripe-15
+    name: "Conciliacao sem hash"
+    sintoma: "Dados financeiros sem integridade"
+    causa_raiz: "Sem hash de transacao"
+    mitigacao: "Hash obrigatorio por transacao"
+    severity: HIGH

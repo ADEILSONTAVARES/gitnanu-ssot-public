@@ -1,0 +1,96 @@
+# DORES_S35_pagseguro_v1
+studio_id: S35
+api: pagseguro
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-pag-01
+    name: "Notificacao de pagamento perdida"
+    sintoma: "POST de notificacao sem handler"
+    causa_raiz: "Sem notification handler"
+    mitigacao: "Notification handler + retry"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-02
+    name: "Notificacao sem validacao de token"
+    sintoma: "Payload falso aceito"
+    causa_raiz: "Sem token validation"
+    mitigacao: "Token validation obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-03
+    name: "Pagamento duplicado"
+    sintoma: "Mesmo pedido pago duas vezes"
+    causa_raiz: "Sem idempotency"
+    mitigacao: "CW-209 idempotency obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-04
+    name: "Credenciais em log"
+    sintoma: "Token PagSeguro vazando"
+    causa_raiz: "Sem secrets redaction"
+    mitigacao: "CW-212 redaction obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-05
+    name: "Boleto expirado sem reemissao"
+    sintoma: "Boleto vencido sem alternativa"
+    causa_raiz: "Sem expiry handler"
+    mitigacao: "Expiry handler + reemissao"
+    severity: HIGH
+  - dor_id: D-S35-pag-06
+    name: "Valor incorreto cobrado"
+    sintoma: "Amount errado"
+    causa_raiz: "Sem amount validation"
+    mitigacao: "Gate amount pre-charge"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-07
+    name: "Sandbox em producao"
+    sintoma: "Credenciais de teste em prod"
+    causa_raiz: "Sem env validation"
+    mitigacao: "ENV gate sandbox vs prod"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-08
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-09
+    name: "Status pendente ignorado"
+    sintoma: "Pagamento sem followup"
+    causa_raiz: "Sem pending handler"
+    mitigacao: "Pending handler + timeout"
+    severity: HIGH
+  - dor_id: D-S35-pag-10
+    name: "Chargeback sem evidencia"
+    sintoma: "Disputa sem docs"
+    causa_raiz: "Sem evidence pack"
+    mitigacao: "CW-206 evidence pack"
+    severity: CRITICAL
+  - dor_id: D-S35-pag-11
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S35-pag-12
+    name: "Webhook sem DLQ"
+    sintoma: "Evento perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-pag-13
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita aprovada"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Fraud rules obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-pag-14
+    name: "Sem alerta de falha"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem alert"
+    mitigacao: "Alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-pag-15
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH

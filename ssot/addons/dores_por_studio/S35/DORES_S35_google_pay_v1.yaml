@@ -1,0 +1,96 @@
+# DORES_S35_google_pay_v1
+studio_id: S35
+api: google.pay
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S35-gp-01
+    name: "Token sem validacao"
+    sintoma: "Payment token nao verificado"
+    causa_raiz: "Sem token validation"
+    mitigacao: "Google Pay token validation obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-02
+    name: "Merchant nao autenticado"
+    sintoma: "Gateway nao validado"
+    causa_raiz: "Sem gateway validation"
+    mitigacao: "Gateway validation obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-03
+    name: "Pagamento duplicado"
+    sintoma: "Sem idempotency"
+    causa_raiz: "Sem idempotency_key"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-04
+    name: "Token em log"
+    sintoma: "Payment token vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-05
+    name: "Sandbox em producao"
+    sintoma: "Credenciais erradas"
+    causa_raiz: "Sem env gate"
+    mitigacao: "ENV gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-06
+    name: "Valor incorreto"
+    sintoma: "Amount errado"
+    causa_raiz: "Sem amount validation"
+    mitigacao: "Gate amount pre-charge"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-07
+    name: "Reembolso sem aprovacao"
+    sintoma: "Refund sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-08
+    name: "Chargeback sem evidence"
+    sintoma: "Disputa sem docs"
+    causa_raiz: "Sem evidence pack"
+    mitigacao: "CW-206 evidence pack"
+    severity: CRITICAL
+  - dor_id: D-S35-gp-09
+    name: "Rollback impossivel"
+    sintoma: "Sem undo token"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 undo_token"
+    severity: HIGH
+  - dor_id: D-S35-gp-10
+    name: "Fraude nao detectada"
+    sintoma: "Transacao suspeita"
+    causa_raiz: "Sem fraud rules"
+    mitigacao: "Fraud rules obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-gp-11
+    name: "DLQ ausente"
+    sintoma: "Evento perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S35-gp-12
+    name: "Sem alerta de falha"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem alert"
+    mitigacao: "Alert obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-gp-13
+    name: "Conciliacao sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-gp-14
+    name: "API version desatualizada"
+    sintoma: "Usando API deprecada"
+    causa_raiz: "Sem version check"
+    mitigacao: "Version check obrigatorio"
+    severity: HIGH
+  - dor_id: D-S35-gp-15
+    name: "PCI DSS violado"
+    sintoma: "Dados de cartao logados"
+    causa_raiz: "Sem PCI guard"
+    mitigacao: "PCI guard obrigatorio"
+    severity: CRITICAL
