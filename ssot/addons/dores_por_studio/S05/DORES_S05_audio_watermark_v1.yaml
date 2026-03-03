@@ -1,0 +1,96 @@
+# DORES_S05_audio_watermark_v1
+studio_id: S05
+api: audio.watermark
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-aw-01
+    name: "Watermark nao aplicado"
+    sintoma: "Audio sem marca de integridade"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S05-aw-02
+    name: "Watermark removido sem deteccao"
+    sintoma: "Marca apagada"
+    causa_raiz: "Sem tamper detection"
+    mitigacao: "Tamper detection obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S05-aw-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S05-aw-04
+    name: "Watermark em audio errado"
+    sintoma: "Marca em arquivo incorreto"
+    causa_raiz: "Sem target validation"
+    mitigacao: "Target validation gate"
+    severity: HIGH
+  - dor_id: D-S05-aw-05
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-aw-06
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S05-aw-07
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S05-aw-08
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S05-aw-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: MEDIUM
+  - dor_id: D-S05-aw-10
+    name: "Watermark invisivel degradando audio"
+    sintoma: "Qualidade perdida"
+    causa_raiz: "Sem quality check"
+    mitigacao: "Quality gate pos-watermark"
+    severity: HIGH
+  - dor_id: D-S05-aw-11
+    name: "Timeout sem fallback"
+    sintoma: "Processo lento"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S05-aw-12
+    name: "DLQ ausente"
+    sintoma: "Job perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S05-aw-13
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S05-aw-14
+    name: "Versao do watermark desatualizada"
+    sintoma: "Algoritmo vulneravel em uso"
+    causa_raiz: "Sem version check"
+    mitigacao: "Version gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-aw-15
+    name: "False positive em deteccao"
+    sintoma: "Audio original marcado como pirata"
+    causa_raiz: "Threshold incorreto"
+    mitigacao: "Threshold calibration periodica"
+    severity: HIGH

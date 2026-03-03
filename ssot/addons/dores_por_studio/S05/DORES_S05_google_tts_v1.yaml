@@ -1,0 +1,96 @@
+# DORES_S05_google_tts_v1
+studio_id: S05
+api: google.tts
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-gt-01
+    name: "Service account em log"
+    sintoma: "Credencial vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S05-gt-02
+    name: "PII em texto"
+    sintoma: "Dado pessoal no input"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-synthesis"
+    severity: CRITICAL
+  - dor_id: D-S05-gt-03
+    name: "Audio publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S05-gt-04
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-gt-05
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S05-gt-06
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S05-gt-07
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S05-gt-08
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S05-gt-09
+    name: "Idioma errado aplicado"
+    sintoma: "Locale incorreto"
+    causa_raiz: "Sem locale validation"
+    mitigacao: "Locale gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-gt-10
+    name: "Voz nao aprovada"
+    sintoma: "Voice ID fora do allowlist"
+    causa_raiz: "Sem allowlist"
+    mitigacao: "Voice allowlist gate"
+    severity: HIGH
+  - dor_id: D-S05-gt-11
+    name: "Timeout sem fallback"
+    sintoma: "Sintese lenta"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S05-gt-12
+    name: "DLQ ausente"
+    sintoma: "Job perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S05-gt-13
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S05-gt-14
+    name: "Watermark ausente"
+    sintoma: "Audio sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-gt-15
+    name: "SSML injection"
+    sintoma: "Markup malicioso no input"
+    causa_raiz: "Sem SSML sanitization"
+    mitigacao: "SSML sanitization obrigatoria"
+    severity: HIGH

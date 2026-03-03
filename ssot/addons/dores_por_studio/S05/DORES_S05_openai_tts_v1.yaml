@@ -1,0 +1,96 @@
+# DORES_S05_openai_tts_v1
+studio_id: S05
+api: openai.tts
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-ot-01
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S05-ot-02
+    name: "PII em texto enviado"
+    sintoma: "Dado pessoal no input"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-synthesis"
+    severity: CRITICAL
+  - dor_id: D-S05-ot-03
+    name: "Audio publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S05-ot-04
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-ot-05
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S05-ot-06
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S05-ot-07
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S05-ot-08
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S05-ot-09
+    name: "Voz nao aprovada usada"
+    sintoma: "Voice ID fora do allowlist"
+    causa_raiz: "Sem voice allowlist"
+    mitigacao: "Voice allowlist gate"
+    severity: HIGH
+  - dor_id: D-S05-ot-10
+    name: "Timeout sem fallback"
+    sintoma: "Sintese lenta"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S05-ot-11
+    name: "DLQ ausente"
+    sintoma: "Job perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S05-ot-12
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S05-ot-13
+    name: "Watermark ausente"
+    sintoma: "Audio sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-ot-14
+    name: "Modelo errado aplicado"
+    sintoma: "TTS model incorreto"
+    causa_raiz: "Sem model validation"
+    mitigacao: "Model gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-ot-15
+    name: "Conteudo ofensivo sintetizado"
+    sintoma: "Audio com conteudo inapropriado"
+    causa_raiz: "Sem content policy gate"
+    mitigacao: "Content policy gate"
+    severity: CRITICAL

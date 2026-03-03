@@ -1,0 +1,96 @@
+# DORES_S05_suno_v1
+studio_id: S05
+api: suno
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-sn-01
+    name: "Musica publicada sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S05-sn-02
+    name: "Copyright de sample violado"
+    sintoma: "Sample de terceiro sem licenca"
+    causa_raiz: "Sem copyright check"
+    mitigacao: "Copyright gate pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S05-sn-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S05-sn-04
+    name: "PII em letra gerada"
+    sintoma: "Dado pessoal na letra"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S05-sn-05
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-sn-06
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S05-sn-07
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S05-sn-08
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S05-sn-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S05-sn-10
+    name: "Conteudo ofensivo gerado"
+    sintoma: "Letra inapropriada"
+    causa_raiz: "Sem content policy gate"
+    mitigacao: "Content policy gate"
+    severity: HIGH
+  - dor_id: D-S05-sn-11
+    name: "Timeout sem fallback"
+    sintoma: "Geracao lenta"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S05-sn-12
+    name: "DLQ ausente"
+    sintoma: "Job perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S05-sn-13
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S05-sn-14
+    name: "Watermark ausente"
+    sintoma: "Audio sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-sn-15
+    name: "BrandKit nao aplicado"
+    sintoma: "Estilo fora do padrao"
+    causa_raiz: "Sem BrandKit gate"
+    mitigacao: "BrandKit gate"
+    severity: HIGH

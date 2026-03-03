@@ -1,0 +1,96 @@
+# DORES_S05_elevenlabs_v1
+studio_id: S05
+api: elevenlabs
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-el-01
+    name: "Voz clonada sem consentimento"
+    sintoma: "Voice ID de terceiro usado sem permissao"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "CW-213 consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S05-el-02
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S05-el-03
+    name: "PII em texto enviado"
+    sintoma: "Dado pessoal no input de TTS"
+    causa_raiz: "Sem PII scan pre-synthesis"
+    mitigacao: "PII scan obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S05-el-04
+    name: "Audio publicado sem aprovacao"
+    sintoma: "Publicacao automatica"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S05-el-05
+    name: "Output sem hash"
+    sintoma: "Audio sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio pos-synthesis"
+    severity: HIGH
+  - dor_id: D-S05-el-06
+    name: "Custo sem limite"
+    sintoma: "Geracao sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S05-el-07
+    name: "Rollback impossivel"
+    sintoma: "Sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S05-el-08
+    name: "Output sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S05-el-09
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S05-el-10
+    name: "Voice ID errado aplicado"
+    sintoma: "Voz incorreta no output"
+    causa_raiz: "Sem voice_id validation"
+    mitigacao: "voice_id gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-el-11
+    name: "Deepfake de audio"
+    sintoma: "Voz real usada para enganar"
+    causa_raiz: "Sem deepfake detection"
+    mitigacao: "Deepfake detection gate"
+    severity: CRITICAL
+  - dor_id: D-S05-el-12
+    name: "Timeout sem fallback"
+    sintoma: "Sintese lenta sem alternativa"
+    causa_raiz: "Sem timeout"
+    mitigacao: "Timeout + fallback"
+    severity: HIGH
+  - dor_id: D-S05-el-13
+    name: "DLQ ausente"
+    sintoma: "Job perdido"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ + retry"
+    severity: HIGH
+  - dor_id: D-S05-el-14
+    name: "Sync com GNDrive falhando"
+    sintoma: "Audio sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
+  - dor_id: D-S05-el-15
+    name: "Watermark ausente"
+    sintoma: "Audio sem marca"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark obrigatorio"
+    severity: HIGH
