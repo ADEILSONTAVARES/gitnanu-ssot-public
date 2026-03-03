@@ -1,0 +1,96 @@
+# DORES_S13_pagarme_v1
+studio_id: S13
+api: pagarme
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S13-pg-01
+    name: "Cobranca criada sem aprovacao"
+    sintoma: "Charge automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S13-pg-02
+    name: "PII em transacao"
+    sintoma: "Dado pessoal em payment data"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S13-pg-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S13-pg-04
+    name: "Scope violation"
+    sintoma: "Acesso a conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S13-pg-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de pagador sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S13-pg-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S13-pg-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S13-pg-08
+    name: "Rollback impossivel"
+    sintoma: "Cobranca sem undo"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S13-pg-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S13-pg-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S13-pg-11
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "PAY-018 HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S13-pg-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S13-pg-13
+    name: "Idempotencia ausente"
+    sintoma: "Cobranca duplicada"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "CW-209 idempotency"
+    severity: CRITICAL
+  - dor_id: D-S13-pg-14
+    name: "Chargeback sem gate"
+    sintoma: "Estorno sem revisao humana"
+    causa_raiz: "Sem chargeback review gate"
+    mitigacao: "Chargeback review gate"
+    severity: HIGH
+  - dor_id: D-S13-pg-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
