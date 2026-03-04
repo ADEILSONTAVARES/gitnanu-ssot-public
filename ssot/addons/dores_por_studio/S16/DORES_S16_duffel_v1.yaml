@@ -1,0 +1,96 @@
+# DORES_S16_duffel_v1
+studio_id: S16
+api: duffel
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S16-df-01
+    name: "Oferta aceita sem aprovacao"
+    sintoma: "Accept automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S16-df-02
+    name: "PII em oferta NDC"
+    sintoma: "Dado pessoal de passageiro em offer"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S16-df-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S16-df-04
+    name: "Scope violation"
+    sintoma: "Oferta acessa conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S16-df-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de passageiro sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S16-df-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de oferta"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-df-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de bookings"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S16-df-08
+    name: "Rollback impossivel"
+    sintoma: "Order sem cancelamento"
+    causa_raiz: "Sem cancel gate"
+    mitigacao: "Cancel gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-df-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de order"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S16-df-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S16-df-11
+    name: "Oferta expirada aceita"
+    sintoma: "Offer vencida sem gate"
+    causa_raiz: "Sem offer expiry gate"
+    mitigacao: "Offer expiry gate"
+    severity: HIGH
+  - dor_id: D-S16-df-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-df-13
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S16-df-14
+    name: "Idempotencia ausente"
+    sintoma: "Order duplicado sem gate"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "Idempotency key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S16-df-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S16_booking_hotels_v1
+studio_id: S16
+api: booking.hotels
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S16-bh-01
+    name: "Reserva criada sem aprovacao"
+    sintoma: "Create automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S16-bh-02
+    name: "PII em reserva de hotel"
+    sintoma: "Dado pessoal de hospede em booking"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S16-bh-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S16-bh-04
+    name: "Scope violation"
+    sintoma: "Reserva acessa propriedade errada"
+    causa_raiz: "Sem property scope lock"
+    mitigacao: "Property scope lock"
+    severity: CRITICAL
+  - dor_id: D-S16-bh-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de hospede sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S16-bh-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de reserva"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-bh-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de bookings"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S16-bh-08
+    name: "Rollback impossivel"
+    sintoma: "Reserva sem cancelamento"
+    causa_raiz: "Sem cancel gate"
+    mitigacao: "Cancel gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-bh-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de reserva"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S16-bh-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S16-bh-11
+    name: "Disponibilidade desatualizada"
+    sintoma: "Quarto indisponivel aceito sem gate"
+    causa_raiz: "Sem availability gate"
+    mitigacao: "Availability gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-bh-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-bh-13
+    name: "Idempotencia ausente"
+    sintoma: "Reserva duplicada sem gate"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "Idempotency key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S16-bh-14
+    name: "Preco diferente do exibido"
+    sintoma: "Rate bait-and-switch sem gate"
+    causa_raiz: "Sem price lock gate"
+    mitigacao: "Price lock gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S16-bh-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
