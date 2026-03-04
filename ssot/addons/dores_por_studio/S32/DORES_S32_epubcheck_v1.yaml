@@ -1,0 +1,96 @@
+# DORES_S32_epubcheck_v1
+studio_id: S32
+api: epubcheck
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S32-ec-01
+    name: "EPUB publicado sem validacao"
+    sintoma: "Publish sem epubcheck"
+    causa_raiz: "Sem validation gate"
+    mitigacao: "EPUBCheck gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S32-ec-02
+    name: "PII em EPUB"
+    sintoma: "Dado pessoal em arquivo EPUB"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S32-ec-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S32-ec-04
+    name: "Scope violation"
+    sintoma: "Validacao acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S32-ec-05
+    name: "LGPD nao atendida"
+    sintoma: "EPUB com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S32-ec-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resultado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-ec-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de validacoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S32-ec-08
+    name: "Rollback impossivel"
+    sintoma: "EPUB sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S32-ec-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de validacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S32-ec-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S32-ec-11
+    name: "Warning ignorado"
+    sintoma: "EPUB com warnings publicado sem gate"
+    causa_raiz: "Sem warning gate"
+    mitigacao: "Warning gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-ec-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-ec-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-ec-14
+    name: "Versao desatualizada"
+    sintoma: "EPUBCheck desatualizado sem alerta"
+    causa_raiz: "Sem version check gate"
+    mitigacao: "Version check gate"
+    severity: HIGH
+  - dor_id: D-S32-ec-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

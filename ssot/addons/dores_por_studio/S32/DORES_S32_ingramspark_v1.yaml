@@ -1,0 +1,96 @@
+# DORES_S32_ingramspark_v1
+studio_id: S32
+api: ingramspark
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S32-is-01
+    name: "Titulo enviado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S32-is-02
+    name: "PII em conteudo"
+    sintoma: "Dado pessoal em livro publicado"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S32-is-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S32-is-04
+    name: "Scope violation"
+    sintoma: "Titulo acessa conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S32-is-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de autor sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S32-is-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de arquivo"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-is-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de setup fees"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S32-is-08
+    name: "Rollback impossivel"
+    sintoma: "Titulo sem retirada"
+    causa_raiz: "Sem unpublish gate"
+    mitigacao: "Unpublish gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-is-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S32-is-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S32-is-11
+    name: "ISBN invalido"
+    sintoma: "ISBN malformado aceito sem gate"
+    causa_raiz: "Sem ISBN validation gate"
+    mitigacao: "ISBN validation gate"
+    severity: HIGH
+  - dor_id: D-S32-is-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-is-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-is-14
+    name: "Arquivo de capa invalido"
+    sintoma: "Capa fora de especificacao aceita"
+    causa_raiz: "Sem cover spec gate"
+    mitigacao: "Cover spec gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S32-is-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
