@@ -1,0 +1,96 @@
+# DORES_S14_badge_certification_v1
+studio_id: S14
+api: badge.certification
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S14-bc-01
+    name: "Certificado emitido sem aprovacao"
+    sintoma: "Emissao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S14-bc-02
+    name: "PII em certificado"
+    sintoma: "Dado pessoal em badge/cert"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-issue"
+    severity: CRITICAL
+  - dor_id: D-S14-bc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S14-bc-04
+    name: "Scope violation"
+    sintoma: "Certificado acessa curso errado"
+    causa_raiz: "Sem course scope lock"
+    mitigacao: "Course scope lock"
+    severity: CRITICAL
+  - dor_id: D-S14-bc-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de aluno em cert sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S14-bc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de certificado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S14-bc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S14-bc-08
+    name: "Rollback impossivel"
+    sintoma: "Certificado sem revogacao"
+    causa_raiz: "Sem revocation gate"
+    mitigacao: "Revocation gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S14-bc-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de emissao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S14-bc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S14-bc-11
+    name: "Certificado sem validacao de conclusao"
+    sintoma: "Badge emitido sem completar curso"
+    causa_raiz: "Sem completion gate"
+    mitigacao: "Completion gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S14-bc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S14-bc-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S14-bc-14
+    name: "Certificado duplicado"
+    sintoma: "Badge emitido duas vezes sem dedup"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S14-bc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
