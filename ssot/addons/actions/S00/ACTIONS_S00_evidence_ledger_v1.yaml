@@ -1,0 +1,286 @@
+# ACTIONS_S00_evidence_ledger_v1
+studio_id: S00
+api: evidence_ledger
+version: 1
+total_actions: 40
+actions:
+  - action_id: A-S00-el-01
+    name: "validate_pii_in_evidence"
+    type: validate
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Escaneia evidence por PII antes de persistir"
+  - action_id: A-S00-el-02
+    name: "enforce_immutability"
+    type: guard
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Bloqueia mutacao de evidence ja gravada"
+  - action_id: A-S00-el-03
+    name: "enforce_approval_gate"
+    type: guard
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Exige aprovacao antes de publicar evidence"
+  - action_id: A-S00-el-04
+    name: "validate_ledger_scope"
+    type: validate
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Verifica que evidence acessa ledger correto"
+  - action_id: A-S00-el-05
+    name: "enforce_lgpd_consent"
+    type: guard
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Bloqueia sem consentimento LGPD"
+  - action_id: A-S00-el-06
+    name: "enforce_cost_guard"
+    type: guard
+    trigger: on_input
+    gate: CW-214
+    severity: CRITICAL
+    description: "Bloqueia se budget de storage esgotado"
+  - action_id: A-S00-el-07
+    name: "validate_hash_integrity"
+    type: validate
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Verifica hash SHA256 de cada evidence"
+  - action_id: A-S00-el-08
+    name: "emit_operation_receipt"
+    type: audit
+    trigger: on_output
+    gate: CW-206
+    severity: CRITICAL
+    description: "Receipt obrigatorio para toda gravacao"
+  - action_id: A-S00-el-09
+    name: "enforce_evidence_gate_for_high"
+    type: guard
+    trigger: on_input
+    gate: CW-206
+    severity: CRITICAL
+    description: "Exige evidence para toda action HIGH"
+  - action_id: A-S00-el-10
+    name: "enforce_dlq_on_failure"
+    type: route
+    trigger: on_error
+    gate: CW-206
+    severity: CRITICAL
+    description: "DLQ em falha critica de ledger"
+  - action_id: A-S00-el-11
+    name: "hash_ledger_entry"
+    type: transform
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Aplica hash em cada entrada do ledger"
+  - action_id: A-S00-el-12
+    name: "validate_entry_schema"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Valida schema de cada evidence item"
+  - action_id: A-S00-el-13
+    name: "retry_with_backoff"
+    type: route
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Retry em falha de persistencia"
+  - action_id: A-S00-el-14
+    name: "validate_undo_token"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica validade de undo token antes de usar"
+  - action_id: A-S00-el-15
+    name: "enforce_retention_policy"
+    type: guard
+    trigger: on_schedule
+    gate: none
+    severity: HIGH
+    description: "Aplica retention policy em evidencias antigas"
+  - action_id: A-S00-el-16
+    name: "validate_legal_hold"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica legal hold antes de deletar"
+  - action_id: A-S00-el-17
+    name: "validate_pr_linkage"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Confirma vinculo com PR antes de publicar"
+  - action_id: A-S00-el-18
+    name: "log_latency_metric"
+    type: audit
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Registra latencia de gravacao"
+  - action_id: A-S00-el-19
+    name: "validate_timestamp"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica timestamp obrigatorio em cada entry"
+  - action_id: A-S00-el-20
+    name: "emit_cost_metric"
+    type: audit
+    trigger: on_output
+    gate: CW-214
+    severity: HIGH
+    description: "Emite custo de storage por entry"
+  - action_id: A-S00-el-21
+    name: "validate_rate_limit_headroom"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica headroom de rate limit"
+  - action_id: A-S00-el-22
+    name: "sanitize_output_pii"
+    type: transform
+    trigger: on_output
+    gate: CW-212
+    severity: HIGH
+    description: "Remove PII residual do output"
+  - action_id: A-S00-el-23
+    name: "store_hash_tree"
+    type: store
+    trigger: on_output
+    gate: CW-206
+    severity: HIGH
+    description: "Persiste hash tree de cada bundle"
+  - action_id: A-S00-el-24
+    name: "validate_manifest_completeness"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica campos obrigatorios do manifest"
+  - action_id: A-S00-el-25
+    name: "enforce_max_retries"
+    type: guard
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Bloqueia apos max_retries"
+  - action_id: A-S00-el-26
+    name: "notify_on_critical_error"
+    type: notify
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Alerta em erro CRITICAL"
+  - action_id: A-S00-el-27
+    name: "validate_bundle_integrity"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica integridade do bundle exportado"
+  - action_id: A-S00-el-28
+    name: "store_replay_payload"
+    type: store
+    trigger: on_output
+    gate: CW-208
+    severity: HIGH
+    description: "Salva payload para replay"
+  - action_id: A-S00-el-29
+    name: "validate_restore_recipe"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica restore recipe antes de aplicar"
+  - action_id: A-S00-el-30
+    name: "enforce_visibility_gate"
+    type: guard
+    trigger: on_output
+    gate: CW-202
+    severity: HIGH
+    description: "Bloqueia publicacao sem gate"
+  - action_id: A-S00-el-31
+    name: "sync_to_gndrive"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sincroniza ledger com GNDrive"
+  - action_id: A-S00-el-32
+    name: "publish_changelog_entry"
+    type: publish
+    trigger: on_event
+    gate: none
+    severity: MEDIUM
+    description: "Changelog em cada mudanca de ledger"
+  - action_id: A-S00-el-33
+    name: "report_ledger_stats"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Relatorio de estatisticas do ledger"
+  - action_id: A-S00-el-34
+    name: "cleanup_expired_evidence"
+    type: transform
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Remove evidencias expiradas"
+  - action_id: A-S00-el-35
+    name: "validate_version_compatibility"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Verifica versao do ledger"
+  - action_id: A-S00-el-36
+    name: "emit_health_check"
+    type: notify
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Health check periodico"
+  - action_id: A-S00-el-37
+    name: "archive_old_bundles"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Arquiva bundles antigos"
+  - action_id: A-S00-el-38
+    name: "validate_connector_registry"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Confirma connector no registry S41"
+  - action_id: A-S00-el-39
+    name: "emit_audit_summary"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sumario de auditoria diario"
+  - action_id: A-S00-el-40
+    name: "notify_budget_warning"
+    type: notify
+    trigger: on_event
+    gate: CW-214
+    severity: MEDIUM
+    description: "Alerta quando budget atinge 80%"

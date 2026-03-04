@@ -1,0 +1,286 @@
+# ACTIONS_S00_firecrawl_v1
+studio_id: S00
+api: firecrawl
+version: 1
+total_actions: 40
+actions:
+  - action_id: A-S00-fc-01
+    name: "validate_pii_in_crawl"
+    type: validate
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Escaneia URL e parametros por PII"
+  - action_id: A-S00-fc-02
+    name: "redact_api_key_log"
+    type: guard
+    trigger: on_output
+    gate: CW-212
+    severity: CRITICAL
+    description: "Redacta API key em logs de crawl"
+  - action_id: A-S00-fc-03
+    name: "enforce_approval_gate"
+    type: guard
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Bloqueia crawl sem aprovacao"
+  - action_id: A-S00-fc-04
+    name: "validate_url_scope"
+    type: validate
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Verifica que URL esta na whitelist autorizada"
+  - action_id: A-S00-fc-05
+    name: "enforce_lgpd_consent"
+    type: guard
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Bloqueia crawl com dado pessoal sem consentimento"
+  - action_id: A-S00-fc-06
+    name: "enforce_cost_guard"
+    type: guard
+    trigger: on_input
+    gate: CW-214
+    severity: CRITICAL
+    description: "Bloqueia se budget de crawl esgotado"
+  - action_id: A-S00-fc-07
+    name: "enforce_rollback_snapshot"
+    type: store
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Snapshot antes de iniciar crawl"
+  - action_id: A-S00-fc-08
+    name: "emit_operation_receipt"
+    type: audit
+    trigger: on_output
+    gate: CW-206
+    severity: CRITICAL
+    description: "Receipt para cada crawl executado"
+  - action_id: A-S00-fc-09
+    name: "validate_robots_txt"
+    type: validate
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Verifica permissao robots.txt antes de crawlar"
+  - action_id: A-S00-fc-10
+    name: "enforce_dlq_on_failure"
+    type: route
+    trigger: on_error
+    gate: CW-206
+    severity: CRITICAL
+    description: "DLQ em falha critica de crawl"
+  - action_id: A-S00-fc-11
+    name: "hash_crawl_output"
+    type: transform
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Aplica hash em resultado de crawl"
+  - action_id: A-S00-fc-12
+    name: "validate_crawl_depth"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Valida profundidade maxima de crawl"
+  - action_id: A-S00-fc-13
+    name: "retry_with_backoff"
+    type: route
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Retry exponencial em falha de conexao"
+  - action_id: A-S00-fc-14
+    name: "validate_content_type"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica content-type do resultado"
+  - action_id: A-S00-fc-15
+    name: "enforce_crawl_timeout"
+    type: guard
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Cancela crawl apos timeout"
+  - action_id: A-S00-fc-16
+    name: "sanitize_crawled_html"
+    type: transform
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Remove scripts e elementos maliciosos do HTML"
+  - action_id: A-S00-fc-17
+    name: "validate_rate_limit_headroom"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica headroom antes de crawlar"
+  - action_id: A-S00-fc-18
+    name: "log_latency_metric"
+    type: audit
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Registra latencia de crawl"
+  - action_id: A-S00-fc-19
+    name: "validate_ssl_certificate"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica validade do SSL da URL"
+  - action_id: A-S00-fc-20
+    name: "emit_cost_metric"
+    type: audit
+    trigger: on_output
+    gate: CW-214
+    severity: HIGH
+    description: "Emite custo por crawl"
+  - action_id: A-S00-fc-21
+    name: "detect_honeypot_trap"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Detecta armadilhas honeypot antes de crawlar"
+  - action_id: A-S00-fc-22
+    name: "sanitize_output_pii"
+    type: transform
+    trigger: on_output
+    gate: CW-212
+    severity: HIGH
+    description: "Remove PII do conteudo crawlado"
+  - action_id: A-S00-fc-23
+    name: "store_crawl_evidence"
+    type: store
+    trigger: on_output
+    gate: CW-206
+    severity: HIGH
+    description: "Persiste evidencia de cada crawl"
+  - action_id: A-S00-fc-24
+    name: "validate_response_size"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica que resposta nao excede limite"
+  - action_id: A-S00-fc-25
+    name: "enforce_max_retries"
+    type: guard
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Bloqueia apos max_retries"
+  - action_id: A-S00-fc-26
+    name: "notify_on_critical_error"
+    type: notify
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Alerta em erro CRITICAL de crawl"
+  - action_id: A-S00-fc-27
+    name: "validate_proxy_config"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Confirma configuracao de proxy autorizada"
+  - action_id: A-S00-fc-28
+    name: "store_replay_payload"
+    type: store
+    trigger: on_output
+    gate: CW-208
+    severity: HIGH
+    description: "Salva payload para replay"
+  - action_id: A-S00-fc-29
+    name: "validate_domain_whitelist"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica dominio na whitelist"
+  - action_id: A-S00-fc-30
+    name: "enforce_visibility_gate"
+    type: guard
+    trigger: on_output
+    gate: CW-202
+    severity: HIGH
+    description: "Bloqueia publicacao de resultado sem gate"
+  - action_id: A-S00-fc-31
+    name: "sync_to_gndrive"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sincroniza resultados com GNDrive"
+  - action_id: A-S00-fc-32
+    name: "publish_changelog_entry"
+    type: publish
+    trigger: on_event
+    gate: none
+    severity: MEDIUM
+    description: "Changelog em cada mudanca de config"
+  - action_id: A-S00-fc-33
+    name: "report_crawl_stats"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Relatorio de estatisticas de crawl"
+  - action_id: A-S00-fc-34
+    name: "cleanup_expired_cache"
+    type: transform
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Remove cache de crawl expirado"
+  - action_id: A-S00-fc-35
+    name: "validate_version_compatibility"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Verifica versao do firecrawl"
+  - action_id: A-S00-fc-36
+    name: "emit_health_check"
+    type: notify
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Health check periodico"
+  - action_id: A-S00-fc-37
+    name: "archive_old_crawls"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Arquiva crawls antigos"
+  - action_id: A-S00-fc-38
+    name: "validate_connector_registry"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Confirma connector no registry S41"
+  - action_id: A-S00-fc-39
+    name: "emit_audit_summary"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sumario de auditoria diario"
+  - action_id: A-S00-fc-40
+    name: "notify_budget_warning"
+    type: notify
+    trigger: on_event
+    gate: CW-214
+    severity: MEDIUM
+    description: "Alerta quando budget atinge 80%"

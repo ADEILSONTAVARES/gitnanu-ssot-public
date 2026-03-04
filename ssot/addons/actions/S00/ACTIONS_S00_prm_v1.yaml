@@ -1,0 +1,286 @@
+# ACTIONS_S00_prm_v1
+studio_id: S00
+api: prm
+version: 1
+total_actions: 40
+actions:
+  - action_id: A-S00-pr-01
+    name: "validate_pii_in_prm"
+    type: validate
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Escaneia dados de PRM por PII"
+  - action_id: A-S00-pr-02
+    name: "redact_api_key_log"
+    type: guard
+    trigger: on_output
+    gate: CW-212
+    severity: CRITICAL
+    description: "Redacta API key em logs"
+  - action_id: A-S00-pr-03
+    name: "enforce_approval_gate"
+    type: guard
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Exige aprovacao antes de publicar no PRM"
+  - action_id: A-S00-pr-04
+    name: "validate_project_scope"
+    type: validate
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Verifica que PRM acessa projeto correto"
+  - action_id: A-S00-pr-05
+    name: "enforce_lgpd_consent"
+    type: guard
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Bloqueia sem consentimento LGPD"
+  - action_id: A-S00-pr-06
+    name: "enforce_cost_guard"
+    type: guard
+    trigger: on_input
+    gate: CW-214
+    severity: CRITICAL
+    description: "Bloqueia se budget esgotado"
+  - action_id: A-S00-pr-07
+    name: "enforce_rollback_snapshot"
+    type: store
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Snapshot antes de modificar PRM"
+  - action_id: A-S00-pr-08
+    name: "emit_operation_receipt"
+    type: audit
+    trigger: on_output
+    gate: CW-206
+    severity: CRITICAL
+    description: "Receipt para toda operacao de PRM"
+  - action_id: A-S00-pr-09
+    name: "validate_record_integrity"
+    type: validate
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Verifica integridade do registro via hash"
+  - action_id: A-S00-pr-10
+    name: "enforce_dlq_on_failure"
+    type: route
+    trigger: on_error
+    gate: CW-206
+    severity: CRITICAL
+    description: "DLQ em falha critica"
+  - action_id: A-S00-pr-11
+    name: "hash_prm_output"
+    type: transform
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Aplica hash em cada registro"
+  - action_id: A-S00-pr-12
+    name: "validate_record_schema"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Valida schema do registro"
+  - action_id: A-S00-pr-13
+    name: "retry_with_backoff"
+    type: route
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Retry em falha de API"
+  - action_id: A-S00-pr-14
+    name: "validate_relationship_integrity"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica integridade das relacoes entre registros"
+  - action_id: A-S00-pr-15
+    name: "enforce_update_timeout"
+    type: guard
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Cancela update apos timeout"
+  - action_id: A-S00-pr-16
+    name: "sanitize_text_fields"
+    type: transform
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Sanitiza campos de texto livre"
+  - action_id: A-S00-pr-17
+    name: "validate_rate_limit_headroom"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica headroom de rate limit"
+  - action_id: A-S00-pr-18
+    name: "log_latency_metric"
+    type: audit
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Registra latencia de operacao"
+  - action_id: A-S00-pr-19
+    name: "validate_stage_transition"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica transicao valida de stage"
+  - action_id: A-S00-pr-20
+    name: "emit_cost_metric"
+    type: audit
+    trigger: on_output
+    gate: CW-214
+    severity: HIGH
+    description: "Emite custo por operacao"
+  - action_id: A-S00-pr-21
+    name: "validate_duplicate_record"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Detecta registro duplicado"
+  - action_id: A-S00-pr-22
+    name: "sanitize_output_pii"
+    type: transform
+    trigger: on_output
+    gate: CW-212
+    severity: HIGH
+    description: "Remove PII do output"
+  - action_id: A-S00-pr-23
+    name: "store_prm_evidence"
+    type: store
+    trigger: on_output
+    gate: CW-206
+    severity: HIGH
+    description: "Persiste evidencia de cada operacao"
+  - action_id: A-S00-pr-24
+    name: "validate_required_fields"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica campos obrigatorios"
+  - action_id: A-S00-pr-25
+    name: "enforce_max_retries"
+    type: guard
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Bloqueia apos max_retries"
+  - action_id: A-S00-pr-26
+    name: "notify_on_critical_error"
+    type: notify
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Alerta em erro CRITICAL"
+  - action_id: A-S00-pr-27
+    name: "validate_permission_level"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica nivel de permissao para operacao"
+  - action_id: A-S00-pr-28
+    name: "store_replay_payload"
+    type: store
+    trigger: on_output
+    gate: CW-208
+    severity: HIGH
+    description: "Salva payload para replay"
+  - action_id: A-S00-pr-29
+    name: "validate_audit_trail"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica audit trail antes de modificar"
+  - action_id: A-S00-pr-30
+    name: "enforce_visibility_gate"
+    type: guard
+    trigger: on_output
+    gate: CW-202
+    severity: HIGH
+    description: "Bloqueia publicacao sem gate"
+  - action_id: A-S00-pr-31
+    name: "sync_to_gndrive"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sincroniza PRM com GNDrive"
+  - action_id: A-S00-pr-32
+    name: "publish_changelog_entry"
+    type: publish
+    trigger: on_event
+    gate: none
+    severity: MEDIUM
+    description: "Changelog em cada mudanca"
+  - action_id: A-S00-pr-33
+    name: "report_prm_stats"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Relatorio de estatisticas do PRM"
+  - action_id: A-S00-pr-34
+    name: "cleanup_expired_records"
+    type: transform
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Remove registros expirados"
+  - action_id: A-S00-pr-35
+    name: "validate_version_compatibility"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Verifica versao do PRM"
+  - action_id: A-S00-pr-36
+    name: "emit_health_check"
+    type: notify
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Health check periodico"
+  - action_id: A-S00-pr-37
+    name: "archive_old_records"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Arquiva registros antigos"
+  - action_id: A-S00-pr-38
+    name: "validate_connector_registry"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Confirma connector no registry S41"
+  - action_id: A-S00-pr-39
+    name: "emit_audit_summary"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sumario de auditoria diario"
+  - action_id: A-S00-pr-40
+    name: "notify_budget_warning"
+    type: notify
+    trigger: on_event
+    gate: CW-214
+    severity: MEDIUM
+    description: "Alerta quando budget atinge 80%"

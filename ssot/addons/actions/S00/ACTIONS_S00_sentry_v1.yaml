@@ -1,0 +1,286 @@
+# ACTIONS_S00_sentry_v1
+studio_id: S00
+api: sentry
+version: 1
+total_actions: 40
+actions:
+  - action_id: A-S00-se-01
+    name: "validate_pii_in_event"
+    type: validate
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Escaneia evento Sentry por PII antes de enviar"
+  - action_id: A-S00-se-02
+    name: "redact_api_key_in_stacktrace"
+    type: guard
+    trigger: on_output
+    gate: CW-212
+    severity: CRITICAL
+    description: "Redacta API key em stack traces"
+  - action_id: A-S00-se-03
+    name: "enforce_approval_gate"
+    type: guard
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Exige aprovacao para alertas CRITICAL"
+  - action_id: A-S00-se-04
+    name: "validate_project_scope"
+    type: validate
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Verifica que evento acessa projeto correto"
+  - action_id: A-S00-se-05
+    name: "enforce_lgpd_consent"
+    type: guard
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Bloqueia evento com dado pessoal sem consentimento"
+  - action_id: A-S00-se-06
+    name: "enforce_cost_guard"
+    type: guard
+    trigger: on_input
+    gate: CW-214
+    severity: CRITICAL
+    description: "Bloqueia se quota de eventos esgotada"
+  - action_id: A-S00-se-07
+    name: "enforce_rollback_snapshot"
+    type: store
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Snapshot antes de modificar config Sentry"
+  - action_id: A-S00-se-08
+    name: "emit_operation_receipt"
+    type: audit
+    trigger: on_output
+    gate: CW-206
+    severity: CRITICAL
+    description: "Receipt para todo evento critico"
+  - action_id: A-S00-se-09
+    name: "validate_dsn_integrity"
+    type: validate
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Verifica integridade do DSN"
+  - action_id: A-S00-se-10
+    name: "enforce_dlq_on_failure"
+    type: route
+    trigger: on_error
+    gate: CW-206
+    severity: CRITICAL
+    description: "DLQ em falha critica de envio"
+  - action_id: A-S00-se-11
+    name: "hash_event_payload"
+    type: transform
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Aplica hash em payload de evento"
+  - action_id: A-S00-se-12
+    name: "validate_event_schema"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Valida schema do evento Sentry"
+  - action_id: A-S00-se-13
+    name: "retry_with_backoff"
+    type: route
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Retry em falha de envio"
+  - action_id: A-S00-se-14
+    name: "validate_alert_threshold"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica threshold de alerta configurado"
+  - action_id: A-S00-se-15
+    name: "enforce_event_timeout"
+    type: guard
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Cancela envio apos timeout"
+  - action_id: A-S00-se-16
+    name: "sanitize_stacktrace_pii"
+    type: transform
+    trigger: on_output
+    gate: CW-212
+    severity: HIGH
+    description: "Remove PII de stack traces"
+  - action_id: A-S00-se-17
+    name: "validate_rate_limit_headroom"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica headroom de rate limit"
+  - action_id: A-S00-se-18
+    name: "log_latency_metric"
+    type: audit
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Registra latencia de envio"
+  - action_id: A-S00-se-19
+    name: "validate_environment_tag"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica tag de ambiente no evento"
+  - action_id: A-S00-se-20
+    name: "emit_cost_metric"
+    type: audit
+    trigger: on_output
+    gate: CW-214
+    severity: HIGH
+    description: "Emite custo por evento enviado"
+  - action_id: A-S00-se-21
+    name: "validate_fingerprint_rules"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica regras de fingerprint configuradas"
+  - action_id: A-S00-se-22
+    name: "sanitize_output_pii"
+    type: transform
+    trigger: on_output
+    gate: CW-212
+    severity: HIGH
+    description: "Remove PII residual do output"
+  - action_id: A-S00-se-23
+    name: "store_alert_evidence"
+    type: store
+    trigger: on_output
+    gate: CW-206
+    severity: HIGH
+    description: "Persiste evidencia de cada alerta"
+  - action_id: A-S00-se-24
+    name: "validate_release_tag"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica tag de release no evento"
+  - action_id: A-S00-se-25
+    name: "enforce_max_retries"
+    type: guard
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Bloqueia apos max_retries"
+  - action_id: A-S00-se-26
+    name: "notify_on_critical_error"
+    type: notify
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Alerta imediato em erro CRITICAL"
+  - action_id: A-S00-se-27
+    name: "validate_issue_assignment"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica atribuicao de issue"
+  - action_id: A-S00-se-28
+    name: "store_replay_payload"
+    type: store
+    trigger: on_output
+    gate: CW-208
+    severity: HIGH
+    description: "Salva payload para replay"
+  - action_id: A-S00-se-29
+    name: "validate_sampling_rate"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica taxa de amostragem configurada"
+  - action_id: A-S00-se-30
+    name: "enforce_visibility_gate"
+    type: guard
+    trigger: on_output
+    gate: CW-202
+    severity: HIGH
+    description: "Bloqueia publicacao de alerta sem gate"
+  - action_id: A-S00-se-31
+    name: "sync_to_gndrive"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sincroniza alertas com GNDrive"
+  - action_id: A-S00-se-32
+    name: "publish_changelog_entry"
+    type: publish
+    trigger: on_event
+    gate: none
+    severity: MEDIUM
+    description: "Changelog em cada mudanca de config"
+  - action_id: A-S00-se-33
+    name: "report_error_stats"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Relatorio de estatisticas de erros"
+  - action_id: A-S00-se-34
+    name: "cleanup_resolved_issues"
+    type: transform
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Remove issues resolvidas alem da retencao"
+  - action_id: A-S00-se-35
+    name: "validate_version_compatibility"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Verifica versao do SDK Sentry"
+  - action_id: A-S00-se-36
+    name: "emit_health_check"
+    type: notify
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Health check periodico"
+  - action_id: A-S00-se-37
+    name: "archive_old_events"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Arquiva eventos antigos"
+  - action_id: A-S00-se-38
+    name: "validate_connector_registry"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Confirma connector no registry S41"
+  - action_id: A-S00-se-39
+    name: "emit_audit_summary"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sumario de auditoria diario"
+  - action_id: A-S00-se-40
+    name: "notify_budget_warning"
+    type: notify
+    trigger: on_event
+    gate: CW-214
+    severity: MEDIUM
+    description: "Alerta quando quota atinge 80%"

@@ -1,0 +1,286 @@
+# ACTIONS_S00_context7_v1
+studio_id: S00
+api: context7
+version: 1
+total_actions: 40
+actions:
+  - action_id: A-S00-c7-01
+    name: "validate_pii_in_context"
+    type: validate
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Escaneia contexto por PII antes de indexar"
+  - action_id: A-S00-c7-02
+    name: "redact_secrets_in_docs"
+    type: guard
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Redacta secrets em documentos antes de processar"
+  - action_id: A-S00-c7-03
+    name: "enforce_approval_gate"
+    type: guard
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Bloqueia indexacao sem aprovacao"
+  - action_id: A-S00-c7-04
+    name: "validate_namespace_scope"
+    type: validate
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Verifica que context7 acessa namespace correto"
+  - action_id: A-S00-c7-05
+    name: "enforce_lgpd_consent"
+    type: guard
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Bloqueia se consentimento LGPD ausente"
+  - action_id: A-S00-c7-06
+    name: "enforce_cost_guard"
+    type: guard
+    trigger: on_input
+    gate: CW-214
+    severity: CRITICAL
+    description: "Bloqueia se budget de indexacao esgotado"
+  - action_id: A-S00-c7-07
+    name: "enforce_rollback_snapshot"
+    type: store
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Snapshot do indice antes de qualquer mutacao"
+  - action_id: A-S00-c7-08
+    name: "emit_operation_receipt"
+    type: audit
+    trigger: on_output
+    gate: CW-206
+    severity: CRITICAL
+    description: "Receipt para toda operacao de indexacao"
+  - action_id: A-S00-c7-09
+    name: "validate_document_hash"
+    type: validate
+    trigger: on_input
+    gate: CW-206
+    severity: CRITICAL
+    description: "Verifica integridade do documento via hash"
+  - action_id: A-S00-c7-10
+    name: "enforce_dlq_on_failure"
+    type: route
+    trigger: on_error
+    gate: CW-206
+    severity: CRITICAL
+    description: "Envia para DLQ em falha critica"
+  - action_id: A-S00-c7-11
+    name: "hash_index_output"
+    type: transform
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Aplica hash em cada chunk indexado"
+  - action_id: A-S00-c7-12
+    name: "validate_chunk_size"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Valida que chunk esta dentro do limite"
+  - action_id: A-S00-c7-13
+    name: "retry_with_backoff"
+    type: route
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Retry exponencial em falha de API"
+  - action_id: A-S00-c7-14
+    name: "validate_retrieval_relevance"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica score de relevancia do retrieval"
+  - action_id: A-S00-c7-15
+    name: "enforce_index_timeout"
+    type: guard
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Cancela indexacao apos timeout"
+  - action_id: A-S00-c7-16
+    name: "sanitize_doc_encoding"
+    type: transform
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Normaliza encoding de documentos"
+  - action_id: A-S00-c7-17
+    name: "validate_token_budget"
+    type: validate
+    trigger: on_input
+    gate: CW-214
+    severity: HIGH
+    description: "Verifica tokens antes de embedar"
+  - action_id: A-S00-c7-18
+    name: "log_latency_metric"
+    type: audit
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Registra latencia de indexacao"
+  - action_id: A-S00-c7-19
+    name: "validate_embedding_model"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Confirma que modelo de embedding esta autorizado"
+  - action_id: A-S00-c7-20
+    name: "emit_cost_metric"
+    type: audit
+    trigger: on_output
+    gate: CW-214
+    severity: HIGH
+    description: "Emite custo de cada operacao de embed"
+  - action_id: A-S00-c7-21
+    name: "validate_rate_limit_headroom"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica headroom antes de chamar API"
+  - action_id: A-S00-c7-22
+    name: "sanitize_output_pii"
+    type: transform
+    trigger: on_output
+    gate: CW-212
+    severity: HIGH
+    description: "Remove PII residual do output de retrieval"
+  - action_id: A-S00-c7-23
+    name: "store_retrieval_evidence"
+    type: store
+    trigger: on_output
+    gate: CW-206
+    severity: HIGH
+    description: "Persiste evidencia de cada retrieval"
+  - action_id: A-S00-c7-24
+    name: "validate_grounding"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica que resposta tem base no corpus"
+  - action_id: A-S00-c7-25
+    name: "enforce_max_retries"
+    type: guard
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Bloqueia apos max_retries"
+  - action_id: A-S00-c7-26
+    name: "notify_on_critical_error"
+    type: notify
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Alerta em erro CRITICAL"
+  - action_id: A-S00-c7-27
+    name: "validate_corpus_freshness"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica que corpus nao esta desatualizado"
+  - action_id: A-S00-c7-28
+    name: "store_replay_payload"
+    type: store
+    trigger: on_output
+    gate: CW-208
+    severity: HIGH
+    description: "Salva payload para replay"
+  - action_id: A-S00-c7-29
+    name: "validate_poison_guard"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica que documento nao e payload envenenado"
+  - action_id: A-S00-c7-30
+    name: "enforce_visibility_gate"
+    type: guard
+    trigger: on_output
+    gate: CW-202
+    severity: HIGH
+    description: "Bloqueia publicacao de contexto sem gate"
+  - action_id: A-S00-c7-31
+    name: "sync_to_gndrive"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sincroniza indice com GNDrive"
+  - action_id: A-S00-c7-32
+    name: "publish_changelog_entry"
+    type: publish
+    trigger: on_event
+    gate: none
+    severity: MEDIUM
+    description: "Changelog em cada atualizacao de indice"
+  - action_id: A-S00-c7-33
+    name: "report_index_stats"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Relatorio de estatisticas do indice"
+  - action_id: A-S00-c7-34
+    name: "cleanup_expired_chunks"
+    type: transform
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Remove chunks expirados"
+  - action_id: A-S00-c7-35
+    name: "validate_version_compatibility"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Verifica versao do context7"
+  - action_id: A-S00-c7-36
+    name: "emit_health_check"
+    type: notify
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Health check periodico"
+  - action_id: A-S00-c7-37
+    name: "archive_old_index"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Arquiva versoes antigas do indice"
+  - action_id: A-S00-c7-38
+    name: "validate_connector_registry"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Confirma connector no registry S41"
+  - action_id: A-S00-c7-39
+    name: "emit_audit_summary"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sumario de auditoria diario"
+  - action_id: A-S00-c7-40
+    name: "notify_budget_warning"
+    type: notify
+    trigger: on_event
+    gate: CW-214
+    severity: MEDIUM
+    description: "Alerta quando budget atinge 80%"
