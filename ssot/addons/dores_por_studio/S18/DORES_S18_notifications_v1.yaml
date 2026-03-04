@@ -1,0 +1,96 @@
+# DORES_S18_notifications_v1
+studio_id: S18
+api: notifications
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S18-nt-01
+    name: "Notificacao enviada sem aprovacao"
+    sintoma: "Send automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S18-nt-02
+    name: "PII em notificacao"
+    sintoma: "Dado pessoal em mensagem enviada"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S18-nt-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S18-nt-04
+    name: "Scope violation"
+    sintoma: "Notificacao acessa canal errado"
+    causa_raiz: "Sem channel scope lock"
+    mitigacao: "Channel scope lock"
+    severity: CRITICAL
+  - dor_id: D-S18-nt-05
+    name: "LGPD nao atendida"
+    sintoma: "Notificacao sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S18-nt-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de mensagem"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-nt-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de envios"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S18-nt-08
+    name: "Rollback impossivel"
+    sintoma: "Notificacao sem recall"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S18-nt-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de envio"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S18-nt-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S18-nt-11
+    name: "Opt-out ignorado"
+    sintoma: "Usuario descadastrado ainda recebe"
+    causa_raiz: "Sem opt-out gate"
+    mitigacao: "Opt-out gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-nt-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-nt-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-nt-14
+    name: "Notificacao duplicada"
+    sintoma: "Mesmo evento notificado duas vezes"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-nt-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

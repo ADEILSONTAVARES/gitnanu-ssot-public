@@ -1,0 +1,96 @@
+# DORES_S18_payments_checkout_v1
+studio_id: S18
+api: payments.checkout
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S18-pc-01
+    name: "Pagamento processado sem aprovacao"
+    sintoma: "Charge automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S18-pc-02
+    name: "PII em checkout"
+    sintoma: "Dado pessoal de pagador exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S18-pc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S18-pc-04
+    name: "Scope violation"
+    sintoma: "Checkout acessa conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S18-pc-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de pagador sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S18-pc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de transacao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-pc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de taxas"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S18-pc-08
+    name: "Rollback impossivel"
+    sintoma: "Cobranca sem estorno"
+    causa_raiz: "Sem refund gate"
+    mitigacao: "Refund gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-pc-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum recibo"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S18-pc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S18-pc-11
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S18-pc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-pc-13
+    name: "Idempotencia ausente"
+    sintoma: "Cobranca duplicada sem gate"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "Idempotency key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S18-pc-14
+    name: "Preco diferente do exibido"
+    sintoma: "Valor cobrado diferente do mostrado"
+    causa_raiz: "Sem price lock gate"
+    mitigacao: "Price lock gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S18-pc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
