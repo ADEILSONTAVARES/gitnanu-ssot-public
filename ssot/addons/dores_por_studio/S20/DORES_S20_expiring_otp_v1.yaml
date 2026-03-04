@@ -1,0 +1,96 @@
+# DORES_S20_expiring_otp_v1
+studio_id: S20
+api: expiring.otp
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S20-eo-01
+    name: "OTP gerado sem aprovacao"
+    sintoma: "Generate automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S20-eo-02
+    name: "PII em OTP"
+    sintoma: "Dado pessoal em OTP payload"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S20-eo-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S20-eo-04
+    name: "Scope violation"
+    sintoma: "OTP acessa servico errado"
+    causa_raiz: "Sem service scope lock"
+    mitigacao: "Service scope lock"
+    severity: CRITICAL
+  - dor_id: D-S20-eo-05
+    name: "LGPD nao atendida"
+    sintoma: "OTP com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-eo-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de OTP"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-eo-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de envios"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S20-eo-08
+    name: "Rollback impossivel"
+    sintoma: "OTP sem invalidacao"
+    causa_raiz: "Sem invalidate gate"
+    mitigacao: "Invalidate gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-eo-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de OTP"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S20-eo-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S20-eo-11
+    name: "Brute force sem bloqueio"
+    sintoma: "Tentativas multiplas de OTP sem rate limit"
+    causa_raiz: "Sem brute force gate"
+    mitigacao: "Brute force gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-eo-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-eo-13
+    name: "OTP expirado aceito"
+    sintoma: "OTP vencido validado sem gate"
+    causa_raiz: "Sem expiry validation gate"
+    mitigacao: "Expiry validation gate"
+    severity: CRITICAL
+  - dor_id: D-S20-eo-14
+    name: "OTP reusado"
+    sintoma: "Mesmo OTP aceito duas vezes"
+    causa_raiz: "Sem single-use gate"
+    mitigacao: "Single-use gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-eo-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

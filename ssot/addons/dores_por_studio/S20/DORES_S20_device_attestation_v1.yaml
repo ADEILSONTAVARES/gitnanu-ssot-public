@@ -1,0 +1,96 @@
+# DORES_S20_device_attestation_v1
+studio_id: S20
+api: device.attestation
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S20-da-01
+    name: "Atestacao executada sem aprovacao"
+    sintoma: "Execute automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S20-da-02
+    name: "PII em atestacao"
+    sintoma: "Dado pessoal de dispositivo exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S20-da-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S20-da-04
+    name: "Scope violation"
+    sintoma: "Atestacao acessa organizacao errada"
+    causa_raiz: "Sem org scope lock"
+    mitigacao: "Org scope lock"
+    severity: CRITICAL
+  - dor_id: D-S20-da-05
+    name: "LGPD nao atendida"
+    sintoma: "Device fingerprint sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-da-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de atestacao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-da-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S20-da-08
+    name: "Rollback impossivel"
+    sintoma: "Dispositivo bloqueado sem desbloqueio"
+    causa_raiz: "Sem unblock gate"
+    mitigacao: "Unblock gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-da-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de atestacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S20-da-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S20-da-11
+    name: "Atestacao expirada aceita"
+    sintoma: "Certificate vencido aceito sem gate"
+    causa_raiz: "Sem cert expiry gate"
+    mitigacao: "Cert expiry gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-da-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-da-13
+    name: "Dispositivo falso aceito"
+    sintoma: "Emulador aceito sem deteccao"
+    causa_raiz: "Sem emulator detection gate"
+    mitigacao: "Emulator detection gate"
+    severity: HIGH
+  - dor_id: D-S20-da-14
+    name: "API indisponivel sem fallback"
+    sintoma: "Atestacao falha sem rota alternativa"
+    causa_raiz: "Sem fallback gate"
+    mitigacao: "Fallback gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-da-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S20_secure_link_vault_v1
+studio_id: S20
+api: secure.link.vault
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S20-sl-01
+    name: "Link criado sem aprovacao"
+    sintoma: "Create automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S20-sl-02
+    name: "PII em link seguro"
+    sintoma: "Dado pessoal em payload de link"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S20-sl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S20-sl-04
+    name: "Scope violation"
+    sintoma: "Link acessa vault errado"
+    causa_raiz: "Sem vault scope lock"
+    mitigacao: "Vault scope lock"
+    severity: CRITICAL
+  - dor_id: D-S20-sl-05
+    name: "LGPD nao atendida"
+    sintoma: "Link com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-sl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de link"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-sl-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S20-sl-08
+    name: "Rollback impossivel"
+    sintoma: "Link sem revogacao"
+    causa_raiz: "Sem revoke gate"
+    mitigacao: "Revoke gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-sl-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de acesso"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S20-sl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S20-sl-11
+    name: "Link expirado sem remocao"
+    sintoma: "Link vencido ainda ativo"
+    causa_raiz: "Sem expiry gate"
+    mitigacao: "Expiry gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-sl-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-sl-13
+    name: "Acesso multiplo sem gate"
+    sintoma: "Link de uso unico acessado mais de uma vez"
+    causa_raiz: "Sem single-use gate"
+    mitigacao: "Single-use gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-sl-14
+    name: "Encryption ausente"
+    sintoma: "Payload de link sem criptografia"
+    causa_raiz: "Sem encryption gate"
+    mitigacao: "Encryption gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-sl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S20_consent_manager_v1
+studio_id: S20
+api: consent.manager
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S20-cm-01
+    name: "Consentimento registrado sem aprovacao"
+    sintoma: "Register automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S20-cm-02
+    name: "PII em registro de consentimento"
+    sintoma: "Dado pessoal em consent record"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S20-cm-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S20-cm-04
+    name: "Scope violation"
+    sintoma: "Consentimento acessa organizacao errada"
+    causa_raiz: "Sem org scope lock"
+    mitigacao: "Org scope lock"
+    severity: CRITICAL
+  - dor_id: D-S20-cm-05
+    name: "LGPD nao atendida"
+    sintoma: "Consentimento sem base legal documentada"
+    causa_raiz: "Sem legal basis gate"
+    mitigacao: "Legal basis gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-cm-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de registro"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-cm-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S20-cm-08
+    name: "Rollback impossivel"
+    sintoma: "Consentimento sem revogacao"
+    causa_raiz: "Sem revoke gate"
+    mitigacao: "Revoke gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-cm-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de consentimento"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S20-cm-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S20-cm-11
+    name: "Audit trail adulteravel"
+    sintoma: "Registro de consentimento sem imutabilidade"
+    causa_raiz: "Sem immutability gate"
+    mitigacao: "Immutability gate"
+    severity: CRITICAL
+  - dor_id: D-S20-cm-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S20-cm-13
+    name: "Revogacao sem propagacao"
+    sintoma: "Opt-out nao propagado para todos os sistemas"
+    causa_raiz: "Sem propagation gate"
+    mitigacao: "Propagation gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S20-cm-14
+    name: "Versao de politica desatualizada"
+    sintoma: "Consentimento coletado sob politica antiga"
+    causa_raiz: "Sem policy version gate"
+    mitigacao: "Policy version gate"
+    severity: HIGH
+  - dor_id: D-S20-cm-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
