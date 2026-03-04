@@ -1,0 +1,96 @@
+# DORES_S39_mesh_qa_v1
+studio_id: S39
+api: mesh.qa
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S39-mq-01
+    name: "QA executado sem aprovacao"
+    sintoma: "Execute automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S39-mq-02
+    name: "PII em relatorio QA"
+    sintoma: "Dado pessoal em resultado de QA"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S39-mq-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S39-mq-04
+    name: "Scope violation"
+    sintoma: "QA acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S39-mq-05
+    name: "LGPD nao atendida"
+    sintoma: "Relatorio com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S39-mq-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de relatorio"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-mq-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de execucoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S39-mq-08
+    name: "Rollback impossivel"
+    sintoma: "Relatorio sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S39-mq-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de QA"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S39-mq-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S39-mq-11
+    name: "Falha critica ignorada"
+    sintoma: "Mesh com erro critico publicado sem gate"
+    causa_raiz: "Sem critical fail gate"
+    mitigacao: "Critical fail gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-mq-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-mq-13
+    name: "Versao desatualizada"
+    sintoma: "QA engine desatualizado sem alerta"
+    causa_raiz: "Sem version check gate"
+    mitigacao: "Version check gate"
+    severity: HIGH
+  - dor_id: D-S39-mq-14
+    name: "Poligonos acima do limite"
+    sintoma: "Mesh com poly count excessivo aceito"
+    causa_raiz: "Sem poly limit gate"
+    mitigacao: "Poly limit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-mq-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

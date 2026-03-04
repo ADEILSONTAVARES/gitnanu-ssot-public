@@ -1,0 +1,96 @@
+# DORES_S39_export_glb_v1
+studio_id: S39
+api: export.glb
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S39-eg-01
+    name: "Export disparado sem aprovacao"
+    sintoma: "Export automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S39-eg-02
+    name: "PII em GLB exportado"
+    sintoma: "Dado pessoal em metadata de arquivo"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S39-eg-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S39-eg-04
+    name: "Scope violation"
+    sintoma: "Export acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S39-eg-05
+    name: "LGPD nao atendida"
+    sintoma: "Arquivo com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S39-eg-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de arquivo"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-eg-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de exports"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S39-eg-08
+    name: "Rollback impossivel"
+    sintoma: "Export sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S39-eg-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de export"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S39-eg-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S39-eg-11
+    name: "Formato invalido aceito"
+    sintoma: "GLB malformado exportado sem gate"
+    causa_raiz: "Sem format validation gate"
+    mitigacao: "Format validation gate"
+    severity: HIGH
+  - dor_id: D-S39-eg-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-eg-13
+    name: "Licenca sem validacao"
+    sintoma: "Asset exportado sem verificar licenca"
+    causa_raiz: "Sem license gate"
+    mitigacao: "License gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-eg-14
+    name: "Tamanho sem limite"
+    sintoma: "GLB acima do limite aceito sem gate"
+    causa_raiz: "Sem size limit gate"
+    mitigacao: "Size limit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S39-eg-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
