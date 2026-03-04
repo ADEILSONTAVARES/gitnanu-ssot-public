@@ -1,0 +1,96 @@
+# DORES_S47_flaky_budget_v1
+studio_id: S47
+api: flaky.budget
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S47-fb-01
+    name: "Budget alterado sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S47-fb-02
+    name: "PII em flaky log"
+    sintoma: "Dado pessoal em registro de flakiness"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S47-fb-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S47-fb-04
+    name: "Scope violation"
+    sintoma: "Budget acessa suite errada"
+    causa_raiz: "Sem suite scope lock"
+    mitigacao: "Suite scope lock"
+    severity: CRITICAL
+  - dor_id: D-S47-fb-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em flaky log sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S47-fb-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de budget"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-fb-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de reruns"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S47-fb-08
+    name: "Rollback impossivel"
+    sintoma: "Budget sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S47-fb-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S47-fb-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S47-fb-11
+    name: "Budget esgotado sem bloquear"
+    sintoma: "Flaky budget zerado sem parar suite"
+    causa_raiz: "Sem hard stop gate"
+    mitigacao: "Hard stop gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-fb-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-fb-13
+    name: "Caso flaky sem quarentena"
+    sintoma: "Teste flaky sem isolamento automatico"
+    causa_raiz: "Sem quarantine gate"
+    mitigacao: "Quarantine gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-fb-14
+    name: "Versao sem changelog"
+    sintoma: "Budget atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-fb-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

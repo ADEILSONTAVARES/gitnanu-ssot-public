@@ -1,0 +1,96 @@
+# DORES_S47_bench60_global_v1
+studio_id: S47
+api: bench60.global
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S47-b6-01
+    name: "Bench executado sem aprovacao"
+    sintoma: "Execute automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S47-b6-02
+    name: "PII em resultado de bench"
+    sintoma: "Dado pessoal em output de benchmark"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S47-b6-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S47-b6-04
+    name: "Scope violation"
+    sintoma: "Bench acessa modelo errado"
+    causa_raiz: "Sem model scope lock"
+    mitigacao: "Model scope lock"
+    severity: CRITICAL
+  - dor_id: D-S47-b6-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em bench sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S47-b6-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resultado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-b6-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de execucoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S47-b6-08
+    name: "Rollback impossivel"
+    sintoma: "Resultado sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S47-b6-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de bench"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S47-b6-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S47-b6-11
+    name: "Score abaixo do minimo sem alerta"
+    sintoma: "Bench score abaixo do threshold sem notificacao"
+    causa_raiz: "Sem score alert gate"
+    mitigacao: "Score alert gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-b6-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-b6-13
+    name: "Resultado publico sem gate"
+    sintoma: "Score interno exposto publicamente"
+    causa_raiz: "Sem visibility gate"
+    mitigacao: "Visibility gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-b6-14
+    name: "Versao sem changelog"
+    sintoma: "Bench atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-b6-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

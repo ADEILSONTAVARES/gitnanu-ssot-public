@@ -1,0 +1,96 @@
+# DORES_S47_council_triggers_v1
+studio_id: S47
+api: council.triggers
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S47-ct-01
+    name: "Trigger disparado sem aprovacao"
+    sintoma: "Dispatch automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S47-ct-02
+    name: "PII em trigger payload"
+    sintoma: "Dado pessoal em payload de council"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-dispatch"
+    severity: CRITICAL
+  - dor_id: D-S47-ct-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S47-ct-04
+    name: "Scope violation"
+    sintoma: "Trigger acessa modelo errado"
+    causa_raiz: "Sem model scope lock"
+    mitigacao: "Model scope lock"
+    severity: CRITICAL
+  - dor_id: D-S47-ct-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em council sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S47-ct-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resultado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-ct-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de council runs"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S47-ct-08
+    name: "Rollback impossivel"
+    sintoma: "Resultado sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S47-ct-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de council"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S47-ct-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S47-ct-11
+    name: "Quorum invalido"
+    sintoma: "Council com menos de 3 modelos aceito"
+    causa_raiz: "Sem quorum gate"
+    mitigacao: "Quorum gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-ct-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-ct-13
+    name: "Empate sem desempate"
+    sintoma: "Council 1x1x1 sem politica de desempate"
+    causa_raiz: "Sem tiebreaker gate"
+    mitigacao: "Tiebreaker gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-ct-14
+    name: "Versao sem changelog"
+    sintoma: "Trigger atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S47-ct-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
