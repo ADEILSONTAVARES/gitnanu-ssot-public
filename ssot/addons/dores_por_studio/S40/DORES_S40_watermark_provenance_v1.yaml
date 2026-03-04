@@ -1,0 +1,96 @@
+# DORES_S40_watermark_provenance_v1
+studio_id: S40
+api: watermark.provenance
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S40-wp-01
+    name: "Watermark aplicado sem aprovacao"
+    sintoma: "Apply automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S40-wp-02
+    name: "PII em watermark"
+    sintoma: "Dado pessoal de criador em watermark visivel"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-apply"
+    severity: CRITICAL
+  - dor_id: D-S40-wp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S40-wp-04
+    name: "Scope violation"
+    sintoma: "Watermark acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S40-wp-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de criador em watermark sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S40-wp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de arquivo com watermark"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S40-wp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de processamentos"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S40-wp-08
+    name: "Rollback impossivel"
+    sintoma: "Watermark sem remocao"
+    causa_raiz: "Sem remove gate"
+    mitigacao: "Remove gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S40-wp-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de aplicacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S40-wp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S40-wp-11
+    name: "Watermark ausente em preview"
+    sintoma: "Preview distribuido sem marca dagua"
+    causa_raiz: "Sem watermark presence gate"
+    mitigacao: "Watermark presence gate"
+    severity: HIGH
+  - dor_id: D-S40-wp-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S40-wp-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S40-wp-14
+    name: "Proveniencia sem registro"
+    sintoma: "Asset sem cadeia de custódia"
+    causa_raiz: "Sem provenance chain gate"
+    mitigacao: "Provenance chain gate"
+    severity: HIGH
+  - dor_id: D-S40-wp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

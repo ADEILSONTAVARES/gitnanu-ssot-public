@@ -1,0 +1,96 @@
+# DORES_S40_payout_rules_v1
+studio_id: S40
+api: payout.rules
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S40-pr-01
+    name: "Regra ativada sem aprovacao"
+    sintoma: "Ativacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-02
+    name: "PII em regra de payout"
+    sintoma: "Dado bancario de criador em regra"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-04
+    name: "Scope violation"
+    sintoma: "Regra acessa marketplace errado"
+    causa_raiz: "Sem marketplace scope lock"
+    mitigacao: "Marketplace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado bancario sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de regra"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S40-pr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de payouts"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S40-pr-08
+    name: "Rollback impossivel"
+    sintoma: "Payout sem estorno"
+    causa_raiz: "Sem reversal gate"
+    mitigacao: "Reversal gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S40-pr-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de payout"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S40-pr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S40-pr-11
+    name: "Percentual invalido"
+    sintoma: "Split acima de 100 percent aceito"
+    causa_raiz: "Sem percentage validation gate"
+    mitigacao: "Percentage validation gate"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S40-pr-13
+    name: "Idempotencia ausente"
+    sintoma: "Payout duplicado sem gate"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "Idempotency key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-14
+    name: "KYC nao validado"
+    sintoma: "Payout para criador sem KYC"
+    causa_raiz: "Sem KYC gate"
+    mitigacao: "KYC gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S40-pr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
