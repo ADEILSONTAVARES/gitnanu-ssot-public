@@ -1,0 +1,96 @@
+# DORES_S41_connector_naming_v1
+studio_id: S41
+api: connector.naming
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S41-cn-01
+    name: "Connector registrado sem aprovacao"
+    sintoma: "Register automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S41-cn-02
+    name: "PII em connector_id"
+    sintoma: "Dado pessoal em nome de connector"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-register"
+    severity: CRITICAL
+  - dor_id: D-S41-cn-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S41-cn-04
+    name: "Scope violation"
+    sintoma: "Connector acessa registry errado"
+    causa_raiz: "Sem registry scope lock"
+    mitigacao: "Registry scope lock"
+    severity: CRITICAL
+  - dor_id: D-S41-cn-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em metadata de connector"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S41-cn-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de registro"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cn-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de registros"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S41-cn-08
+    name: "Rollback impossivel"
+    sintoma: "Connector sem deregistro"
+    causa_raiz: "Sem deregister gate"
+    mitigacao: "Deregister gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cn-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de registro"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S41-cn-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S41-cn-11
+    name: "ID duplicado"
+    sintoma: "connector_id repetido sem deteccao"
+    causa_raiz: "Sem uniqueness gate"
+    mitigacao: "Uniqueness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cn-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cn-13
+    name: "Versao sem changelog"
+    sintoma: "Connector atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cn-14
+    name: "Naming convention violada"
+    sintoma: "connector_id fora do padrao aceito"
+    causa_raiz: "Sem naming validation gate"
+    mitigacao: "Naming validation gate"
+    severity: HIGH
+  - dor_id: D-S41-cn-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S41_warm_band_v1
+studio_id: S41
+api: warm.band
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S41-wb-01
+    name: "Warm band alterado sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S41-wb-02
+    name: "PII em warm band config"
+    sintoma: "Dado pessoal em configuracao de banda"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S41-wb-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S41-wb-04
+    name: "Scope violation"
+    sintoma: "Warm band acessa connector errado"
+    causa_raiz: "Sem connector scope lock"
+    mitigacao: "Connector scope lock"
+    severity: CRITICAL
+  - dor_id: D-S41-wb-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em warm band sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S41-wb-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de config"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-wb-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de warm calls"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S41-wb-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S41-wb-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S41-wb-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S41-wb-11
+    name: "Banda fora do range"
+    sintoma: "Warm band rate invalido aceito"
+    causa_raiz: "Sem range validation gate"
+    mitigacao: "Range validation gate"
+    severity: HIGH
+  - dor_id: D-S41-wb-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-wb-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-wb-14
+    name: "Versao sem changelog"
+    sintoma: "Config atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-wb-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

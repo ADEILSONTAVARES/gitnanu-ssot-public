@@ -1,0 +1,96 @@
+# DORES_S41_mcp_versioning_v1
+studio_id: S41
+api: mcp.versioning
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S41-mv-01
+    name: "Versao publicada sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S41-mv-02
+    name: "PII em mcp version"
+    sintoma: "Dado pessoal em metadata de versao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S41-mv-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S41-mv-04
+    name: "Scope violation"
+    sintoma: "Versao acessa registry errado"
+    causa_raiz: "Sem registry scope lock"
+    mitigacao: "Registry scope lock"
+    severity: CRITICAL
+  - dor_id: D-S41-mv-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em versao sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S41-mv-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de versao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-mv-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de publicacoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S41-mv-08
+    name: "Rollback impossivel"
+    sintoma: "Versao sem downgrade"
+    causa_raiz: "Sem downgrade gate"
+    mitigacao: "Downgrade gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-mv-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de publicacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S41-mv-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S41-mv-11
+    name: "Breaking change sem gate"
+    sintoma: "Major version sem aprovacao especial"
+    causa_raiz: "Sem major version gate"
+    mitigacao: "Major version gate"
+    severity: CRITICAL
+  - dor_id: D-S41-mv-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-mv-13
+    name: "Semver invalido"
+    sintoma: "Versao fora do padrao semver aceita"
+    causa_raiz: "Sem semver validation gate"
+    mitigacao: "Semver validation gate"
+    severity: HIGH
+  - dor_id: D-S41-mv-14
+    name: "Changelog ausente"
+    sintoma: "Versao publicada sem changelog"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-mv-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

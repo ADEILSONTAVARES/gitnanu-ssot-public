@@ -1,0 +1,96 @@
+# DORES_S41_cost_field_v1
+studio_id: S41
+api: cost.field
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S41-cf-01
+    name: "Cost field alterado sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S41-cf-02
+    name: "PII em cost metadata"
+    sintoma: "Dado pessoal em campo de custo"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S41-cf-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S41-cf-04
+    name: "Scope violation"
+    sintoma: "Cost field acessa connector errado"
+    causa_raiz: "Sem connector scope lock"
+    mitigacao: "Connector scope lock"
+    severity: CRITICAL
+  - dor_id: D-S41-cf-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em custo sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S41-cf-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de cost field"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cf-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget guard no proprio cost field"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S41-cf-08
+    name: "Rollback impossivel"
+    sintoma: "Cost field sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S41-cf-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S41-cf-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S41-cf-11
+    name: "Custo negativo aceito"
+    sintoma: "Valor de custo zero ou negativo sem gate"
+    causa_raiz: "Sem cost validation gate"
+    mitigacao: "Cost validation gate"
+    severity: HIGH
+  - dor_id: D-S41-cf-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cf-13
+    name: "Moeda incorreta"
+    sintoma: "Custo em moeda errada sem gate"
+    causa_raiz: "Sem currency validation gate"
+    mitigacao: "Currency validation gate"
+    severity: HIGH
+  - dor_id: D-S41-cf-14
+    name: "Versao sem changelog"
+    sintoma: "Cost field atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-cf-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

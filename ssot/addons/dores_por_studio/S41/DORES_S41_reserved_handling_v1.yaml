@@ -1,0 +1,96 @@
+# DORES_S41_reserved_handling_v1
+studio_id: S41
+api: reserved.handling
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S41-rh-01
+    name: "RESERVED ativado sem aprovacao"
+    sintoma: "Ativacao automatica sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S41-rh-02
+    name: "PII em RESERVED metadata"
+    sintoma: "Dado pessoal em campo RESERVED"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-activate"
+    severity: CRITICAL
+  - dor_id: D-S41-rh-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S41-rh-04
+    name: "Scope violation"
+    sintoma: "RESERVED acessa registry errado"
+    causa_raiz: "Sem registry scope lock"
+    mitigacao: "Registry scope lock"
+    severity: CRITICAL
+  - dor_id: D-S41-rh-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em RESERVED sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S41-rh-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de RESERVED"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-rh-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de ativacao"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S41-rh-08
+    name: "Rollback impossivel"
+    sintoma: "RESERVED ativado sem rollback"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S41-rh-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de ativacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S41-rh-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S41-rh-11
+    name: "RESERVED sem tombstone"
+    sintoma: "Connector RESERVED sem policy de remocao"
+    causa_raiz: "Sem tombstone gate"
+    mitigacao: "Tombstone gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-rh-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-rh-13
+    name: "Dependencia sem validacao"
+    sintoma: "RESERVED ativado com dependencia nao resolvida"
+    causa_raiz: "Sem dependency gate"
+    mitigacao: "Dependency gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-rh-14
+    name: "Versao sem changelog"
+    sintoma: "RESERVED atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S41-rh-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
