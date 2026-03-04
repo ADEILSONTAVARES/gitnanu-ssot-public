@@ -1,0 +1,96 @@
+# DORES_S45_budget_guard_v1
+studio_id: S45
+api: budget.guard
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S45-bg-01
+    name: "Guard alterado sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S45-bg-02
+    name: "PII em budget config"
+    sintoma: "Dado pessoal em configuracao de budget"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S45-bg-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S45-bg-04
+    name: "Scope violation"
+    sintoma: "Budget acessa conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S45-bg-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em budget sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S45-bg-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de config"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S45-bg-07
+    name: "Custo sem limite"
+    sintoma: "Budget guard sem proprio budget"
+    causa_raiz: "Sem meta cost guard"
+    mitigacao: "Meta cost guard"
+    severity: HIGH
+  - dor_id: D-S45-bg-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S45-bg-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S45-bg-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S45-bg-11
+    name: "Budget esgotado sem bloqueio"
+    sintoma: "Limite atingido sem parar requests"
+    causa_raiz: "Sem hard stop gate"
+    mitigacao: "Hard stop gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S45-bg-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S45-bg-13
+    name: "Alerta sem threshold"
+    sintoma: "Budget sem alerta de 80 percent"
+    causa_raiz: "Sem warning threshold gate"
+    mitigacao: "Warning threshold gate"
+    severity: HIGH
+  - dor_id: D-S45-bg-14
+    name: "Versao sem changelog"
+    sintoma: "Config atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S45-bg-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

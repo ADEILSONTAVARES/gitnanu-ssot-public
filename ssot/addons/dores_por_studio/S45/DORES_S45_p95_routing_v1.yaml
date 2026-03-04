@@ -1,0 +1,96 @@
+# DORES_S45_p95_routing_v1
+studio_id: S45
+api: p95.routing
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S45-p9-01
+    name: "Meta p95 alterada sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S45-p9-02
+    name: "PII em p95 config"
+    sintoma: "Dado pessoal em configuracao de roteamento"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S45-p9-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S45-p9-04
+    name: "Scope violation"
+    sintoma: "p95 acessa router errado"
+    causa_raiz: "Sem router scope lock"
+    mitigacao: "Router scope lock"
+    severity: CRITICAL
+  - dor_id: D-S45-p9-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em config sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S45-p9-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de config"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S45-p9-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S45-p9-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S45-p9-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S45-p9-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S45-p9-11
+    name: "p95 violado sem alerta"
+    sintoma: "Latencia acima do goal sem notificacao"
+    causa_raiz: "Sem p95 alert gate"
+    mitigacao: "P95 alert gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S45-p9-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S45-p9-13
+    name: "Goal invalido"
+    sintoma: "p95 goal abaixo de 0ms aceito"
+    causa_raiz: "Sem goal validation gate"
+    mitigacao: "Goal validation gate"
+    severity: HIGH
+  - dor_id: D-S45-p9-14
+    name: "Versao sem changelog"
+    sintoma: "Config atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S45-p9-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
