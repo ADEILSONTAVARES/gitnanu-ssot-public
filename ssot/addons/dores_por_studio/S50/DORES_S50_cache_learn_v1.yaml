@@ -1,0 +1,96 @@
+# DORES_S50_cache_learn_v1
+studio_id: S50
+api: cache.learn
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S50-cl-01
+    name: "Regra aprendida sem aprovacao"
+    sintoma: "Learn automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S50-cl-02
+    name: "PII em cache learn data"
+    sintoma: "Dado pessoal em dados de aprendizado"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-learn"
+    severity: CRITICAL
+  - dor_id: D-S50-cl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S50-cl-04
+    name: "Scope violation"
+    sintoma: "Learn acessa cache errado"
+    causa_raiz: "Sem cache scope lock"
+    mitigacao: "Cache scope lock"
+    severity: CRITICAL
+  - dor_id: D-S50-cl-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em learn sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S50-cl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de regra aprendida"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-cl-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de aprendizado"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S50-cl-08
+    name: "Rollback impossivel"
+    sintoma: "Regra sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S50-cl-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de learn"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S50-cl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S50-cl-11
+    name: "Aprendizado envenenado"
+    sintoma: "Regra aprendida a partir de dado invalido"
+    causa_raiz: "Sem data quality gate"
+    mitigacao: "Data quality gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S50-cl-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-cl-13
+    name: "Retroalimentacao sem gate"
+    sintoma: "Regra aprendida afeta regra de aprendizado"
+    causa_raiz: "Sem feedback loop gate"
+    mitigacao: "Feedback loop gate"
+    severity: HIGH
+  - dor_id: D-S50-cl-14
+    name: "Versao sem changelog"
+    sintoma: "Regra atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-cl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

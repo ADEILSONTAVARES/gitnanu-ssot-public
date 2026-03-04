@@ -1,0 +1,96 @@
+# DORES_S50_anti_stampede_v1
+studio_id: S50
+api: anti.stampede
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S50-as-01
+    name: "Protecao alterada sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S50-as-02
+    name: "PII em stampede log"
+    sintoma: "Dado pessoal em log de stampede"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S50-as-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S50-as-04
+    name: "Scope violation"
+    sintoma: "Protecao acessa cache errado"
+    causa_raiz: "Sem cache scope lock"
+    mitigacao: "Cache scope lock"
+    severity: CRITICAL
+  - dor_id: D-S50-as-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em config sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S50-as-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de config"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-as-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de recomputacoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S50-as-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S50-as-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de evento"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S50-as-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S50-as-11
+    name: "Stampede nao detectado"
+    sintoma: "Multiplas recomputacoes simultaneas sem gate"
+    causa_raiz: "Sem stampede detection gate"
+    mitigacao: "Stampede detection gate"
+    severity: HIGH
+  - dor_id: D-S50-as-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-as-13
+    name: "Jitter ausente"
+    sintoma: "Recomputacao sem jitter aleatorio"
+    causa_raiz: "Sem jitter gate"
+    mitigacao: "Jitter gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-as-14
+    name: "Versao sem changelog"
+    sintoma: "Config atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-as-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

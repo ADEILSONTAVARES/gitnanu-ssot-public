@@ -1,0 +1,96 @@
+# DORES_S50_ttl_classes_v1
+studio_id: S50
+api: ttl.classes
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S50-tc-01
+    name: "TTL alterado sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S50-tc-02
+    name: "PII em TTL config"
+    sintoma: "Dado pessoal em configuracao de TTL"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S50-tc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S50-tc-04
+    name: "Scope violation"
+    sintoma: "TTL acessa namespace errado"
+    causa_raiz: "Sem namespace scope lock"
+    mitigacao: "Namespace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S50-tc-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em TTL sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S50-tc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de config"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-tc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S50-tc-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S50-tc-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S50-tc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S50-tc-11
+    name: "TTL invalido"
+    sintoma: "TTL zero ou negativo aceito sem gate"
+    causa_raiz: "Sem TTL validation gate"
+    mitigacao: "TTL validation gate"
+    severity: HIGH
+  - dor_id: D-S50-tc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-tc-13
+    name: "Classe errada aplicada"
+    sintoma: "Key com TTL de classe errada"
+    causa_raiz: "Sem class assignment gate"
+    mitigacao: "Class assignment gate"
+    severity: HIGH
+  - dor_id: D-S50-tc-14
+    name: "Versao sem changelog"
+    sintoma: "Classes atualizadas sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-tc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

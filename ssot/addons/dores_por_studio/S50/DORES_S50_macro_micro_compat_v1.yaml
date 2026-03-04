@@ -1,0 +1,96 @@
+# DORES_S50_macro_micro_compat_v1
+studio_id: S50
+api: macro.micro.compat
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S50-mm-01
+    name: "Compatibilidade alterada sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S50-mm-02
+    name: "PII em macro key"
+    sintoma: "Dado pessoal em chave macro"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S50-mm-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S50-mm-04
+    name: "Scope violation"
+    sintoma: "Macro key acessa namespace errado"
+    causa_raiz: "Sem namespace scope lock"
+    mitigacao: "Namespace scope lock"
+    severity: CRITICAL
+  - dor_id: D-S50-mm-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em macro/micro sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S50-mm-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de compat config"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-mm-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S50-mm-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S50-mm-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S50-mm-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S50-mm-11
+    name: "Colisao macro-micro"
+    sintoma: "Macro key sobrescreve micro key sem gate"
+    causa_raiz: "Sem collision gate"
+    mitigacao: "Collision gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-mm-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-mm-13
+    name: "Granularidade incorreta"
+    sintoma: "Micro key usada onde macro e necessaria"
+    causa_raiz: "Sem granularity gate"
+    mitigacao: "Granularity gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-mm-14
+    name: "Versao sem changelog"
+    sintoma: "Compat atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S50-mm-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
