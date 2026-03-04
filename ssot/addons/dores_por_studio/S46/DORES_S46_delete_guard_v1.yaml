@@ -1,0 +1,96 @@
+# DORES_S46_delete_guard_v1
+studio_id: S46
+api: delete.guard
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S46-dg-01
+    name: "Delete executado sem aprovacao"
+    sintoma: "Delete automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-02
+    name: "PII em delete log"
+    sintoma: "Dado pessoal em log de exclusao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-04
+    name: "Scope violation"
+    sintoma: "Delete acessa recurso errado"
+    causa_raiz: "Sem resource scope lock"
+    mitigacao: "Resource scope lock"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-05
+    name: "LGPD nao atendida"
+    sintoma: "Delete sem base legal LGPD"
+    causa_raiz: "Sem LGPD delete gate"
+    mitigacao: "LGPD delete gate"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de log"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-dg-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S46-dg-08
+    name: "Rollback impossivel"
+    sintoma: "Delete irreversivel sem backup"
+    causa_raiz: "Sem soft delete gate"
+    mitigacao: "Soft delete gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de delete"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S46-dg-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S46-dg-11
+    name: "Delete em cascata sem gate"
+    sintoma: "Delete remove dependencias sem confirmacao"
+    causa_raiz: "Sem cascade gate"
+    mitigacao: "Cascade gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-dg-13
+    name: "Periodo de retencao ignorado"
+    sintoma: "Delete executado antes do periodo minimo"
+    causa_raiz: "Sem retention period gate"
+    mitigacao: "Retention period gate"
+    severity: CRITICAL
+  - dor_id: D-S46-dg-14
+    name: "Versao sem changelog"
+    sintoma: "Guard atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-dg-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

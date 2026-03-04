@@ -1,0 +1,96 @@
+# DORES_S46_preflight_checks_v1
+studio_id: S46
+api: preflight.checks
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S46-pf-01
+    name: "Preflight ignorado sem aprovacao"
+    sintoma: "Skip automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S46-pf-02
+    name: "PII em preflight log"
+    sintoma: "Dado pessoal em resultado de check"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S46-pf-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S46-pf-04
+    name: "Scope violation"
+    sintoma: "Preflight acessa pipeline errado"
+    causa_raiz: "Sem pipeline scope lock"
+    mitigacao: "Pipeline scope lock"
+    severity: CRITICAL
+  - dor_id: D-S46-pf-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em preflight sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-pf-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resultado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-pf-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de execucoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S46-pf-08
+    name: "Rollback impossivel"
+    sintoma: "Deploy sem preflight nao revertido"
+    causa_raiz: "Sem rollback gate"
+    mitigacao: "Rollback gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-pf-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de preflight"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S46-pf-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S46-pf-11
+    name: "Check critico falhou sem bloquear"
+    sintoma: "Preflight CRITICAL falhou mas deploy continuou"
+    causa_raiz: "Sem critical block gate"
+    mitigacao: "Critical block gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-pf-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-pf-13
+    name: "Versao desatualizada"
+    sintoma: "Preflight engine desatualizado sem alerta"
+    causa_raiz: "Sem version check gate"
+    mitigacao: "Version check gate"
+    severity: HIGH
+  - dor_id: D-S46-pf-14
+    name: "Versao sem changelog"
+    sintoma: "Check atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-pf-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

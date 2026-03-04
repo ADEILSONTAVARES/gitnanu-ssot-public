@@ -1,0 +1,96 @@
+# DORES_S46_human_approval_v1
+studio_id: S46
+api: human.approval
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S46-ha-01
+    name: "Aprovacao bypassed sem gate"
+    sintoma: "Skip automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S46-ha-02
+    name: "PII em approval request"
+    sintoma: "Dado pessoal em solicitacao de aprovacao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-send"
+    severity: CRITICAL
+  - dor_id: D-S46-ha-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S46-ha-04
+    name: "Scope violation"
+    sintoma: "Aprovacao acessa pipeline errado"
+    causa_raiz: "Sem pipeline scope lock"
+    mitigacao: "Pipeline scope lock"
+    severity: CRITICAL
+  - dor_id: D-S46-ha-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em aprovacao sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-ha-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de decisao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-ha-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S46-ha-08
+    name: "Rollback impossivel"
+    sintoma: "Aprovacao sem revogacao"
+    causa_raiz: "Sem revoke gate"
+    mitigacao: "Revoke gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-ha-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de aprovacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S46-ha-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S46-ha-11
+    name: "Auto-aprovacao sem gate"
+    sintoma: "Solicitante aprova a si mesmo"
+    causa_raiz: "Sem self-approval gate"
+    mitigacao: "Self-approval gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-ha-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-ha-13
+    name: "Timeout sem escalacao"
+    sintoma: "Aprovacao sem resposta sem escalacao automatica"
+    causa_raiz: "Sem escalation gate"
+    mitigacao: "Escalation gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-ha-14
+    name: "Versao sem changelog"
+    sintoma: "Fluxo atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-ha-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

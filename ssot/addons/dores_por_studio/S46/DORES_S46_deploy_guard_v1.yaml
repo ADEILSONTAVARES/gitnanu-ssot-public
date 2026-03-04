@@ -1,0 +1,96 @@
+# DORES_S46_deploy_guard_v1
+studio_id: S46
+api: deploy.guard
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S46-de-01
+    name: "Deploy executado sem aprovacao"
+    sintoma: "Deploy automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S46-de-02
+    name: "PII em deploy log"
+    sintoma: "Dado pessoal em log de deploy"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S46-de-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S46-de-04
+    name: "Scope violation"
+    sintoma: "Deploy acessa ambiente errado"
+    causa_raiz: "Sem env scope lock"
+    mitigacao: "Env scope lock"
+    severity: CRITICAL
+  - dor_id: D-S46-de-05
+    name: "LGPD nao atendida"
+    sintoma: "Deploy com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-de-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de artefato"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-de-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de deploys"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S46-de-08
+    name: "Rollback impossivel"
+    sintoma: "Deploy sem rollback automatico"
+    causa_raiz: "Sem auto rollback gate"
+    mitigacao: "Auto rollback gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-de-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de deploy"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S46-de-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S46-de-11
+    name: "Deploy em producao sem staging"
+    sintoma: "Deploy direto em prod sem gate de staging"
+    causa_raiz: "Sem staging gate"
+    mitigacao: "Staging gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-de-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-de-13
+    name: "Canary sem gate"
+    sintoma: "Canary release sem gate de aprovacao"
+    causa_raiz: "Sem canary gate"
+    mitigacao: "Canary gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-de-14
+    name: "Versao sem changelog"
+    sintoma: "Guard atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-de-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

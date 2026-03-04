@@ -1,0 +1,96 @@
+# DORES_S46_billing_guard_v1
+studio_id: S46
+api: billing.guard
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S46-bg-01
+    name: "Guard desativado sem aprovacao"
+    sintoma: "Disable automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S46-bg-02
+    name: "PII em billing log"
+    sintoma: "Dado pessoal em log de cobranca"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S46-bg-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S46-bg-04
+    name: "Scope violation"
+    sintoma: "Guard acessa conta errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S46-bg-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de pagamento sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S46-bg-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de registro"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-bg-07
+    name: "Custo sem limite"
+    sintoma: "Guard sem proprio budget"
+    causa_raiz: "Sem meta cost guard"
+    mitigacao: "Meta cost guard"
+    severity: HIGH
+  - dor_id: D-S46-bg-08
+    name: "Rollback impossivel"
+    sintoma: "Cobranca sem estorno"
+    causa_raiz: "Sem refund gate"
+    mitigacao: "Refund gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-bg-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de cobranca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S46-bg-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S46-bg-11
+    name: "Anomalia sem alerta"
+    sintoma: "Pico de custo sem notificacao"
+    causa_raiz: "Sem anomaly alert gate"
+    mitigacao: "Anomaly alert gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-bg-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-bg-13
+    name: "Limite diario sem gate"
+    sintoma: "Custo diario acima do limite sem bloqueio"
+    causa_raiz: "Sem daily limit gate"
+    mitigacao: "Daily limit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-bg-14
+    name: "Versao sem changelog"
+    sintoma: "Guard atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S46-bg-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
