@@ -1,0 +1,96 @@
+# DORES_S31_royalties_ledger_v1
+studio_id: S31
+api: royalties.ledger
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S31-rl-01
+    name: "Royalty registrado sem aprovacao"
+    sintoma: "Registro automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S31-rl-02
+    name: "PII em ledger"
+    sintoma: "Dado pessoal de titular em ledger"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S31-rl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S31-rl-04
+    name: "Scope violation"
+    sintoma: "Ledger acessa obra errada"
+    causa_raiz: "Sem work scope lock"
+    mitigacao: "Work scope lock"
+    severity: CRITICAL
+  - dor_id: D-S31-rl-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de titular sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S31-rl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de ledger"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-rl-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de transacoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S31-rl-08
+    name: "Rollback impossivel"
+    sintoma: "Entrada sem estorno"
+    causa_raiz: "Sem reversal gate"
+    mitigacao: "Reversal gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-rl-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de royalty"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S31-rl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S31-rl-11
+    name: "Ledger adulteravel"
+    sintoma: "Entrada sem imutabilidade"
+    causa_raiz: "Sem immutability gate"
+    mitigacao: "Immutability gate"
+    severity: CRITICAL
+  - dor_id: D-S31-rl-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-rl-13
+    name: "Idempotencia ausente"
+    sintoma: "Royalty duplicado sem gate"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "Idempotency key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S31-rl-14
+    name: "Split incorreto"
+    sintoma: "Percentual de royalty calculado errado"
+    causa_raiz: "Sem split validation gate"
+    mitigacao: "Split validation gate"
+    severity: HIGH
+  - dor_id: D-S31-rl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

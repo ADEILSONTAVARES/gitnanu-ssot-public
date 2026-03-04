@@ -1,0 +1,96 @@
+# DORES_S31_hotmart_affiliates_v1
+studio_id: S31
+api: hotmart.affiliates
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S31-ha-01
+    name: "Afiliacao aprovada sem gate"
+    sintoma: "Aprovacao automatica sem revisao"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S31-ha-02
+    name: "PII em dado de afiliado"
+    sintoma: "Dado pessoal de afiliado exposto"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S31-ha-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S31-ha-04
+    name: "Scope violation"
+    sintoma: "Afiliado acessa produto errado"
+    causa_raiz: "Sem product scope lock"
+    mitigacao: "Product scope lock"
+    severity: CRITICAL
+  - dor_id: D-S31-ha-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de afiliado sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S31-ha-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de comissao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-ha-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de comissoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S31-ha-08
+    name: "Rollback impossivel"
+    sintoma: "Comissao sem estorno"
+    causa_raiz: "Sem refund gate"
+    mitigacao: "Refund gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-ha-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de comissao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S31-ha-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S31-ha-11
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S31-ha-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S31-ha-13
+    name: "Idempotencia ausente"
+    sintoma: "Comissao duplicada sem gate"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "Idempotency key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S31-ha-14
+    name: "Fraude de afiliado sem deteccao"
+    sintoma: "Self-referral aceito sem gate"
+    causa_raiz: "Sem self-referral gate"
+    mitigacao: "Self-referral gate"
+    severity: HIGH
+  - dor_id: D-S31-ha-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
