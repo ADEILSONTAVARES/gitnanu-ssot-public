@@ -1,0 +1,96 @@
+# DORES_S44_mcp_template_v1
+studio_id: S44
+api: mcp.template
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S44-mt-01
+    name: "Template publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S44-mt-02
+    name: "PII em template MCP"
+    sintoma: "Dado pessoal em template de conector"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S44-mt-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S44-mt-04
+    name: "Scope violation"
+    sintoma: "Template acessa factory errada"
+    causa_raiz: "Sem factory scope lock"
+    mitigacao: "Factory scope lock"
+    severity: CRITICAL
+  - dor_id: D-S44-mt-05
+    name: "LGPD nao atendida"
+    sintoma: "Template com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S44-mt-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de template"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-mt-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de geracoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S44-mt-08
+    name: "Rollback impossivel"
+    sintoma: "Template sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S44-mt-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de publicacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S44-mt-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S44-mt-11
+    name: "Schema invalido aceito"
+    sintoma: "Template fora de spec aceito sem gate"
+    causa_raiz: "Sem schema validation gate"
+    mitigacao: "Schema validation gate"
+    severity: HIGH
+  - dor_id: D-S44-mt-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-mt-13
+    name: "Breaking change sem gate"
+    sintoma: "Template atualizado com breaking change sem aprovacao"
+    causa_raiz: "Sem breaking change gate"
+    mitigacao: "Breaking change gate"
+    severity: CRITICAL
+  - dor_id: D-S44-mt-14
+    name: "Versao sem changelog"
+    sintoma: "Template atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-mt-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S44_auth_adapter_v1
+studio_id: S44
+api: auth.adapter
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S44-aa-01
+    name: "Adapter publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S44-aa-02
+    name: "PII em auth adapter"
+    sintoma: "Dado pessoal em configuracao de adapter"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S44-aa-03
+    name: "API key em log"
+    sintoma: "Key vazando no adapter"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S44-aa-04
+    name: "Scope violation"
+    sintoma: "Adapter acessa connector errado"
+    causa_raiz: "Sem connector scope lock"
+    mitigacao: "Connector scope lock"
+    severity: CRITICAL
+  - dor_id: D-S44-aa-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em adapter sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S44-aa-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de adapter"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-aa-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S44-aa-08
+    name: "Rollback impossivel"
+    sintoma: "Adapter sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S44-aa-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S44-aa-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S44-aa-11
+    name: "Auth method inseguro"
+    sintoma: "Adapter com Basic auth sem TLS"
+    causa_raiz: "Sem security gate"
+    mitigacao: "Security gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S44-aa-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-aa-13
+    name: "Token refresh ausente"
+    sintoma: "Adapter sem renovacao automatica de token"
+    causa_raiz: "Sem token refresh gate"
+    mitigacao: "Token refresh gate"
+    severity: HIGH
+  - dor_id: D-S44-aa-14
+    name: "Versao sem changelog"
+    sintoma: "Adapter atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-aa-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

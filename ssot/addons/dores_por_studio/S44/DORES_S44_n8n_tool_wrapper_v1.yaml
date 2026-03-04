@@ -1,0 +1,96 @@
+# DORES_S44_n8n_tool_wrapper_v1
+studio_id: S44
+api: n8n.tool.wrapper
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S44-nw-01
+    name: "Wrapper publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S44-nw-02
+    name: "PII em wrapper"
+    sintoma: "Dado pessoal em n8n tool wrapper"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S44-nw-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S44-nw-04
+    name: "Scope violation"
+    sintoma: "Wrapper acessa workflow errado"
+    causa_raiz: "Sem workflow scope lock"
+    mitigacao: "Workflow scope lock"
+    severity: CRITICAL
+  - dor_id: D-S44-nw-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em wrapper sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S44-nw-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de wrapper"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-nw-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de execucoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S44-nw-08
+    name: "Rollback impossivel"
+    sintoma: "Wrapper sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S44-nw-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de execucao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S44-nw-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S44-nw-11
+    name: "Tool sem schema de input"
+    sintoma: "Wrapper sem input schema definido"
+    causa_raiz: "Sem input schema gate"
+    mitigacao: "Input schema gate"
+    severity: HIGH
+  - dor_id: D-S44-nw-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-nw-13
+    name: "Timeout sem alerta"
+    sintoma: "Execucao travada sem notificacao"
+    causa_raiz: "Sem timeout gate"
+    mitigacao: "Timeout gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-nw-14
+    name: "Versao sem changelog"
+    sintoma: "Wrapper atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-nw-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

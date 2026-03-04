@@ -1,0 +1,96 @@
+# DORES_S44_retry_backoff_templates_v1
+studio_id: S44
+api: retry.backoff.templates
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S44-rb-01
+    name: "Template publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S44-rb-02
+    name: "PII em template de retry"
+    sintoma: "Dado pessoal em configuracao de retry"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S44-rb-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S44-rb-04
+    name: "Scope violation"
+    sintoma: "Template acessa connector errado"
+    causa_raiz: "Sem connector scope lock"
+    mitigacao: "Connector scope lock"
+    severity: CRITICAL
+  - dor_id: D-S44-rb-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em retry sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S44-rb-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de template"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-rb-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de retries"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S44-rb-08
+    name: "Rollback impossivel"
+    sintoma: "Template sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S44-rb-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de publicacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S44-rb-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S44-rb-11
+    name: "Retry storm"
+    sintoma: "Template sem backoff exponencial"
+    causa_raiz: "Sem exponential backoff gate"
+    mitigacao: "Exponential backoff gate"
+    severity: HIGH
+  - dor_id: D-S44-rb-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-rb-13
+    name: "Max retries sem limite"
+    sintoma: "Template com retry infinito"
+    causa_raiz: "Sem max retry gate"
+    mitigacao: "Max retry gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-rb-14
+    name: "Versao sem changelog"
+    sintoma: "Template atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S44-rb-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
