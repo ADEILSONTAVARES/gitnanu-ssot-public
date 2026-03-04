@@ -1,0 +1,96 @@
+# DORES_S17_pdf_engine_v1
+studio_id: S17
+api: pdf.engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S17-pe-01
+    name: "PDF gerado sem aprovacao"
+    sintoma: "Generate automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S17-pe-02
+    name: "PII em PDF gerado"
+    sintoma: "Dado pessoal em documento gerado"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-generate"
+    severity: CRITICAL
+  - dor_id: D-S17-pe-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S17-pe-04
+    name: "Scope violation"
+    sintoma: "PDF acessa template errado"
+    causa_raiz: "Sem template scope lock"
+    mitigacao: "Template scope lock"
+    severity: CRITICAL
+  - dor_id: D-S17-pe-05
+    name: "LGPD nao atendida"
+    sintoma: "PDF com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S17-pe-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de documento"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S17-pe-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de geracoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S17-pe-08
+    name: "Rollback impossivel"
+    sintoma: "PDF sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S17-pe-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S17-pe-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S17-pe-11
+    name: "Watermark ausente"
+    sintoma: "PDF distribuido sem marca dagua"
+    causa_raiz: "Sem watermark gate"
+    mitigacao: "Watermark gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S17-pe-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S17-pe-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S17-pe-14
+    name: "Formato invalido aceito"
+    sintoma: "PDF malformado sem validacao"
+    causa_raiz: "Sem format validation gate"
+    mitigacao: "Format validation gate"
+    severity: HIGH
+  - dor_id: D-S17-pe-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

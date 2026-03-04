@@ -1,0 +1,96 @@
+# DORES_S17_pdfelement_v1
+studio_id: S17
+api: pdfelement
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S17-pf-01
+    name: "Documento publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S17-pf-02
+    name: "PII em documento PDF"
+    sintoma: "Dado pessoal em PDF gerado"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S17-pf-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S17-pf-04
+    name: "Scope violation"
+    sintoma: "Documento acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S17-pf-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em documento sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S17-pf-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de documento"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S17-pf-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de licenca"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S17-pf-08
+    name: "Rollback impossivel"
+    sintoma: "Documento sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S17-pf-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de edicao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S17-pf-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S17-pf-11
+    name: "Senha de PDF ignorada"
+    sintoma: "PDF protegido aberto sem gate"
+    causa_raiz: "Sem password gate"
+    mitigacao: "Password gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S17-pf-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S17-pf-13
+    name: "Licenca expirada sem alerta"
+    sintoma: "Software rodando com licenca vencida"
+    causa_raiz: "Sem license expiry gate"
+    mitigacao: "License expiry gate"
+    severity: HIGH
+  - dor_id: D-S17-pf-14
+    name: "Formato invalido aceito"
+    sintoma: "PDF malformado aceito sem gate"
+    causa_raiz: "Sem format validation gate"
+    mitigacao: "Format validation gate"
+    severity: HIGH
+  - dor_id: D-S17-pf-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
