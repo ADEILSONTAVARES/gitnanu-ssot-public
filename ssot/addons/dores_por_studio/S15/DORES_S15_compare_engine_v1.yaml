@@ -1,0 +1,96 @@
+# DORES_S15_compare_engine_v1
+studio_id: S15
+api: compare.engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S15-ce-01
+    name: "Comparacao publicada sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S15-ce-02
+    name: "PII em comparacao"
+    sintoma: "Dado pessoal em compare result"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S15-ce-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S15-ce-04
+    name: "Scope violation"
+    sintoma: "Comparacao acessa categoria errada"
+    causa_raiz: "Sem category scope lock"
+    mitigacao: "Category scope lock"
+    severity: CRITICAL
+  - dor_id: D-S15-ce-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de usuario em compare sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S15-ce-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resultado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S15-ce-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de API calls"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S15-ce-08
+    name: "Rollback impossivel"
+    sintoma: "Comparacao sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S15-ce-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S15-ce-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S15-ce-11
+    name: "Dado desatualizado"
+    sintoma: "Comparacao com preco/spec antigo"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S15-ce-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S15-ce-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S15-ce-14
+    name: "Resultado tendencioso"
+    sintoma: "Comparacao favorecendo produto sem gate"
+    causa_raiz: "Sem bias detection gate"
+    mitigacao: "Bias detection gate"
+    severity: HIGH
+  - dor_id: D-S15-ce-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
