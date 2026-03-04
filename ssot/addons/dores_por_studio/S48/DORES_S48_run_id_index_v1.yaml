@@ -1,0 +1,96 @@
+# DORES_S48_run_id_index_v1
+studio_id: S48
+api: run.id.index
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S48-ri-01
+    name: "Index alterado sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S48-ri-02
+    name: "PII em run_id"
+    sintoma: "Dado pessoal em identificador de run"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S48-ri-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S48-ri-04
+    name: "Scope violation"
+    sintoma: "Index acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S48-ri-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em index sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S48-ri-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de index"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ri-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S48-ri-08
+    name: "Rollback impossivel"
+    sintoma: "Index sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S48-ri-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de indexacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S48-ri-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S48-ri-11
+    name: "run_id duplicado"
+    sintoma: "Dois runs com mesmo ID sem deteccao"
+    causa_raiz: "Sem uniqueness gate"
+    mitigacao: "Uniqueness gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S48-ri-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ri-13
+    name: "Linkagem a PR ausente"
+    sintoma: "run_id sem vinculo a PR correspondente"
+    causa_raiz: "Sem PR linkage gate"
+    mitigacao: "PR linkage gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ri-14
+    name: "Versao sem changelog"
+    sintoma: "Index atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ri-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

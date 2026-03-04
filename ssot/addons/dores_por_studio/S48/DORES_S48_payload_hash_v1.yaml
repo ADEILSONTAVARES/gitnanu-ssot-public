@@ -1,0 +1,96 @@
+# DORES_S48_payload_hash_v1
+studio_id: S48
+api: payload.hash
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S48-ph-01
+    name: "Hash gerado sem aprovacao"
+    sintoma: "Generate automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S48-ph-02
+    name: "PII em payload hashado"
+    sintoma: "Dado pessoal em payload antes do hash"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-hash"
+    severity: CRITICAL
+  - dor_id: D-S48-ph-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S48-ph-04
+    name: "Scope violation"
+    sintoma: "Hash acessa job errado"
+    causa_raiz: "Sem job scope lock"
+    mitigacao: "Job scope lock"
+    severity: CRITICAL
+  - dor_id: D-S48-ph-05
+    name: "LGPD nao atendida"
+    sintoma: "Payload com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S48-ph-06
+    name: "Output sem hash"
+    sintoma: "Hash do hash sem integridade"
+    causa_raiz: "Sem meta hash"
+    mitigacao: "Meta hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ph-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de armazenamento"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S48-ph-08
+    name: "Rollback impossivel"
+    sintoma: "Hash sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S48-ph-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de hash"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S48-ph-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S48-ph-11
+    name: "Algoritmo fraco"
+    sintoma: "Hash com MD5 ou SHA1 aceito"
+    causa_raiz: "Sem algorithm gate"
+    mitigacao: "SHA256+ obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S48-ph-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ph-13
+    name: "Colisao sem deteccao"
+    sintoma: "Hash identico para payloads diferentes"
+    causa_raiz: "Sem collision detection gate"
+    mitigacao: "Collision detection gate"
+    severity: CRITICAL
+  - dor_id: D-S48-ph-14
+    name: "Versao sem changelog"
+    sintoma: "Algoritmo atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ph-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

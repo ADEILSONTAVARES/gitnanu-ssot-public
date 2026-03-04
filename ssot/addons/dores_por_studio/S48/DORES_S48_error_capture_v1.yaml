@@ -1,0 +1,96 @@
+# DORES_S48_error_capture_v1
+studio_id: S48
+api: error.capture
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S48-ec-01
+    name: "Captura alterada sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S48-ec-02
+    name: "PII em stack trace"
+    sintoma: "Dado pessoal em erro capturado"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S48-ec-03
+    name: "API key em log"
+    sintoma: "Key vazando em stack trace"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S48-ec-04
+    name: "Scope violation"
+    sintoma: "Captura acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S48-ec-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em erro sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S48-ec-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de registro de erro"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ec-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S48-ec-08
+    name: "Rollback impossivel"
+    sintoma: "Erro sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S48-ec-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de captura"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S48-ec-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S48-ec-11
+    name: "Erro critico sem alerta"
+    sintoma: "Erro CRITICAL sem notificacao imediata"
+    causa_raiz: "Sem critical alert gate"
+    mitigacao: "Critical alert gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S48-ec-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ec-13
+    name: "Retencao sem politica"
+    sintoma: "Erros retidos indefinidamente"
+    causa_raiz: "Sem retention policy gate"
+    mitigacao: "Retention policy gate"
+    severity: HIGH
+  - dor_id: D-S48-ec-14
+    name: "Versao sem changelog"
+    sintoma: "Captura atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S48-ec-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
