@@ -1,0 +1,286 @@
+# ACTIONS_S01_seo_optimizer_v1
+studio_id: S01
+api: seo_optimizer
+version: 1
+total_actions: 40
+actions:
+  - action_id: A-S01-so-01
+    name: "validate_pii_in_content"
+    type: validate
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Escaneia conteudo por PII antes de otimizar"
+  - action_id: A-S01-so-02
+    name: "redact_api_key_log"
+    type: guard
+    trigger: on_output
+    gate: CW-212
+    severity: CRITICAL
+    description: "Redacta API key em logs"
+  - action_id: A-S01-so-03
+    name: "enforce_approval_gate"
+    type: guard
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Exige aprovacao antes de publicar otimizacao"
+  - action_id: A-S01-so-04
+    name: "validate_content_scope"
+    type: validate
+    trigger: on_input
+    gate: CW-202
+    severity: CRITICAL
+    description: "Verifica escopo do conteudo"
+  - action_id: A-S01-so-05
+    name: "enforce_lgpd_consent"
+    type: guard
+    trigger: on_input
+    gate: CW-212
+    severity: CRITICAL
+    description: "Bloqueia sem consentimento LGPD"
+  - action_id: A-S01-so-06
+    name: "enforce_cost_guard"
+    type: guard
+    trigger: on_input
+    gate: CW-214
+    severity: CRITICAL
+    description: "Bloqueia se budget esgotado"
+  - action_id: A-S01-so-07
+    name: "enforce_rollback_snapshot"
+    type: store
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Snapshot antes de modificar conteudo"
+  - action_id: A-S01-so-08
+    name: "emit_operation_receipt"
+    type: audit
+    trigger: on_output
+    gate: CW-206
+    severity: CRITICAL
+    description: "Receipt para toda otimizacao"
+  - action_id: A-S01-so-09
+    name: "validate_content_integrity"
+    type: validate
+    trigger: on_input
+    gate: CW-208
+    severity: CRITICAL
+    description: "Verifica integridade do conteudo via hash"
+  - action_id: A-S01-so-10
+    name: "enforce_dlq_on_failure"
+    type: route
+    trigger: on_error
+    gate: CW-206
+    severity: CRITICAL
+    description: "DLQ em falha critica"
+  - action_id: A-S01-so-11
+    name: "hash_optimized_output"
+    type: transform
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Aplica hash no conteudo otimizado"
+  - action_id: A-S01-so-12
+    name: "validate_keyword_density"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Valida densidade de palavras-chave"
+  - action_id: A-S01-so-13
+    name: "retry_with_backoff"
+    type: route
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Retry em falha de API"
+  - action_id: A-S01-so-14
+    name: "validate_meta_tags"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica meta tags geradas"
+  - action_id: A-S01-so-15
+    name: "enforce_processing_timeout"
+    type: guard
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Cancela processamento apos timeout"
+  - action_id: A-S01-so-16
+    name: "sanitize_content_input"
+    type: transform
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Sanitiza conteudo de entrada"
+  - action_id: A-S01-so-17
+    name: "validate_rate_limit_headroom"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica headroom de rate limit"
+  - action_id: A-S01-so-18
+    name: "log_latency_metric"
+    type: audit
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Registra latencia de otimizacao"
+  - action_id: A-S01-so-19
+    name: "validate_readability_score"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica score de legibilidade"
+  - action_id: A-S01-so-20
+    name: "emit_cost_metric"
+    type: audit
+    trigger: on_output
+    gate: CW-214
+    severity: HIGH
+    description: "Emite custo por otimizacao"
+  - action_id: A-S01-so-21
+    name: "validate_link_structure"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica estrutura de links internos"
+  - action_id: A-S01-so-22
+    name: "sanitize_output_pii"
+    type: transform
+    trigger: on_output
+    gate: CW-212
+    severity: HIGH
+    description: "Remove PII residual"
+  - action_id: A-S01-so-23
+    name: "store_seo_evidence"
+    type: store
+    trigger: on_output
+    gate: CW-206
+    severity: HIGH
+    description: "Persiste evidencia de cada otimizacao"
+  - action_id: A-S01-so-24
+    name: "validate_schema_markup"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica schema markup gerado"
+  - action_id: A-S01-so-25
+    name: "enforce_max_retries"
+    type: guard
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Bloqueia apos max_retries"
+  - action_id: A-S01-so-26
+    name: "notify_on_critical_error"
+    type: notify
+    trigger: on_error
+    gate: none
+    severity: HIGH
+    description: "Alerta em erro CRITICAL"
+  - action_id: A-S01-so-27
+    name: "validate_canonical_url"
+    type: validate
+    trigger: on_output
+    gate: none
+    severity: HIGH
+    description: "Verifica URL canonical"
+  - action_id: A-S01-so-28
+    name: "store_replay_payload"
+    type: store
+    trigger: on_output
+    gate: CW-208
+    severity: HIGH
+    description: "Salva payload para replay"
+  - action_id: A-S01-so-29
+    name: "validate_content_length"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: HIGH
+    description: "Verifica comprimento do conteudo"
+  - action_id: A-S01-so-30
+    name: "enforce_visibility_gate"
+    type: guard
+    trigger: on_output
+    gate: CW-202
+    severity: HIGH
+    description: "Bloqueia publicacao sem gate"
+  - action_id: A-S01-so-31
+    name: "sync_to_gndrive"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sincroniza resultados com GNDrive"
+  - action_id: A-S01-so-32
+    name: "publish_changelog_entry"
+    type: publish
+    trigger: on_event
+    gate: none
+    severity: MEDIUM
+    description: "Changelog em cada mudanca"
+  - action_id: A-S01-so-33
+    name: "report_seo_stats"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Relatorio de otimizacoes realizadas"
+  - action_id: A-S01-so-34
+    name: "cleanup_expired_reports"
+    type: transform
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Remove relatorios expirados"
+  - action_id: A-S01-so-35
+    name: "validate_version_compatibility"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Verifica versao da API"
+  - action_id: A-S01-so-36
+    name: "emit_health_check"
+    type: notify
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Health check periodico"
+  - action_id: A-S01-so-37
+    name: "archive_old_reports"
+    type: store
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Arquiva relatorios antigos"
+  - action_id: A-S01-so-38
+    name: "validate_connector_registry"
+    type: validate
+    trigger: on_input
+    gate: none
+    severity: MEDIUM
+    description: "Confirma connector no registry S41"
+  - action_id: A-S01-so-39
+    name: "emit_audit_summary"
+    type: audit
+    trigger: on_schedule
+    gate: none
+    severity: MEDIUM
+    description: "Sumario de auditoria diario"
+  - action_id: A-S01-so-40
+    name: "notify_budget_warning"
+    type: notify
+    trigger: on_event
+    gate: CW-214
+    severity: MEDIUM
+    description: "Alerta quando budget atinge 80%"
