@@ -1,0 +1,96 @@
+# DORES_S38_voice_control_v1
+studio_id: S38
+api: voice.control
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S38-vc-01
+    name: "Comando executado sem aprovacao"
+    sintoma: "Execute automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S38-vc-02
+    name: "PII em comando de voz"
+    sintoma: "Dado pessoal em utterance capturado"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S38-vc-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S38-vc-04
+    name: "Scope violation"
+    sintoma: "Comando acessa IDE errada"
+    causa_raiz: "Sem IDE scope lock"
+    mitigacao: "IDE scope lock"
+    severity: CRITICAL
+  - dor_id: D-S38-vc-05
+    name: "LGPD nao atendida"
+    sintoma: "Voz capturada sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S38-vc-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de comando"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S38-vc-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de reconhecimento"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S38-vc-08
+    name: "Rollback impossivel"
+    sintoma: "Comando irreversivel sem gate"
+    causa_raiz: "Sem command rollback gate"
+    mitigacao: "Command rollback gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S38-vc-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de comando"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S38-vc-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S38-vc-11
+    name: "Comando ambiguo executado"
+    sintoma: "Utterance ambiguo executado sem confirmacao"
+    causa_raiz: "Sem ambiguity confirmation gate"
+    mitigacao: "Ambiguity confirmation gate"
+    severity: HIGH
+  - dor_id: D-S38-vc-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S38-vc-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S38-vc-14
+    name: "Ativacao sem wake word"
+    sintoma: "Microfone ativo sem trigger"
+    causa_raiz: "Sem wake word gate"
+    mitigacao: "Wake word gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S38-vc-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
