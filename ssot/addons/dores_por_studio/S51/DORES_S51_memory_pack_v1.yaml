@@ -1,0 +1,96 @@
+# DORES_S51_memory_pack_v1
+studio_id: S51
+api: memory.pack
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S51-mp-01
+    name: "Pack publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S51-mp-02
+    name: "PII em memory pack"
+    sintoma: "Dado pessoal em pack de memoria"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S51-mp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S51-mp-04
+    name: "Scope violation"
+    sintoma: "Pack acessa agente errado"
+    causa_raiz: "Sem agent scope lock"
+    mitigacao: "Agent scope lock"
+    severity: CRITICAL
+  - dor_id: D-S51-mp-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em pack sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S51-mp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de pack"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-mp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S51-mp-08
+    name: "Rollback impossivel"
+    sintoma: "Pack sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S51-mp-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de pack"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S51-mp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S51-mp-11
+    name: "Tamanho sem limite"
+    sintoma: "Pack acima do limite aceito sem gate"
+    causa_raiz: "Sem size limit gate"
+    mitigacao: "Size limit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-mp-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-mp-13
+    name: "Pack expirado sem limpeza"
+    sintoma: "Pack alem do prazo sem remocao"
+    causa_raiz: "Sem expiry cleanup gate"
+    mitigacao: "Expiry cleanup gate"
+    severity: HIGH
+  - dor_id: D-S51-mp-14
+    name: "Versao sem changelog"
+    sintoma: "Pack atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-mp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

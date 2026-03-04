@@ -1,0 +1,96 @@
+# DORES_S51_evidence_retrieval_v1
+studio_id: S51
+api: evidence.retrieval
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S51-er-01
+    name: "Retrieval executado sem aprovacao"
+    sintoma: "Execute automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S51-er-02
+    name: "PII em evidence query"
+    sintoma: "Dado pessoal em query de evidence"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-retrieve"
+    severity: CRITICAL
+  - dor_id: D-S51-er-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S51-er-04
+    name: "Scope violation"
+    sintoma: "Retrieval acessa ledger errado"
+    causa_raiz: "Sem ledger scope lock"
+    mitigacao: "Ledger scope lock"
+    severity: CRITICAL
+  - dor_id: D-S51-er-05
+    name: "LGPD nao atendida"
+    sintoma: "Evidence com dado pessoal sem consentimento de acesso"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S51-er-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resultado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-er-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de retrievals"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S51-er-08
+    name: "Rollback impossivel"
+    sintoma: "Resultado sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S51-er-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de retrieval"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S51-er-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S51-er-11
+    name: "Evidence sem hash verificado"
+    sintoma: "Evidence retornada sem verificacao de integridade"
+    causa_raiz: "Sem integrity check gate"
+    mitigacao: "Integrity check gate"
+    severity: CRITICAL
+  - dor_id: D-S51-er-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-er-13
+    name: "Evidence expirada retornada"
+    sintoma: "Evidence fora de retencao retornada sem gate"
+    causa_raiz: "Sem expiry filter gate"
+    mitigacao: "Expiry filter gate"
+    severity: HIGH
+  - dor_id: D-S51-er-14
+    name: "Versao sem changelog"
+    sintoma: "Retrieval atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-er-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

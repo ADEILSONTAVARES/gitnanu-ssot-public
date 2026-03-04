@@ -1,0 +1,96 @@
+# DORES_S51_rag_familia7_v1
+studio_id: S51
+api: rag.familia7
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S51-rf-01
+    name: "Registry alterado sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S51-rf-02
+    name: "PII em RAG familia config"
+    sintoma: "Dado pessoal em configuracao de familia RAG"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S51-rf-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S51-rf-04
+    name: "Scope violation"
+    sintoma: "Familia acessa corpus errado"
+    causa_raiz: "Sem corpus scope lock"
+    mitigacao: "Corpus scope lock"
+    severity: CRITICAL
+  - dor_id: D-S51-rf-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em familia sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S51-rf-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de registro"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-rf-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de retrievals"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S51-rf-08
+    name: "Rollback impossivel"
+    sintoma: "Registry sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S51-rf-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S51-rf-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S51-rf-11
+    name: "Membro sem corpus"
+    sintoma: "RAG na familia sem corpus associado"
+    causa_raiz: "Sem corpus assignment gate"
+    mitigacao: "Corpus assignment gate"
+    severity: HIGH
+  - dor_id: D-S51-rf-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-rf-13
+    name: "Familia com mais de 7"
+    sintoma: "Familia com mais de 7 membros sem gate"
+    causa_raiz: "Sem size limit gate"
+    mitigacao: "Size limit gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-rf-14
+    name: "Versao sem changelog"
+    sintoma: "Registry atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-rf-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

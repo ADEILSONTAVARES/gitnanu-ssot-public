@@ -1,0 +1,96 @@
+# DORES_S51_lta_policies_v1
+studio_id: S51
+api: lta.policies
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S51-lp-01
+    name: "Policy alterada sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S51-lp-02
+    name: "PII em LTA policy"
+    sintoma: "Dado pessoal em politica de memoria"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S51-lp-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S51-lp-04
+    name: "Scope violation"
+    sintoma: "LTA acessa agente errado"
+    causa_raiz: "Sem agent scope lock"
+    mitigacao: "Agent scope lock"
+    severity: CRITICAL
+  - dor_id: D-S51-lp-05
+    name: "LGPD nao atendida"
+    sintoma: "Memoria de longo prazo com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S51-lp-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de policy"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-lp-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de memoria"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S51-lp-08
+    name: "Rollback impossivel"
+    sintoma: "Policy sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S51-lp-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S51-lp-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S51-lp-11
+    name: "Memoria sem expiracao"
+    sintoma: "LTA retida indefinidamente sem gate"
+    causa_raiz: "Sem expiry policy gate"
+    mitigacao: "Expiry policy gate"
+    severity: HIGH
+  - dor_id: D-S51-lp-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-lp-13
+    name: "Memoria envenenada"
+    sintoma: "Dado invalido persistido em LTA"
+    causa_raiz: "Sem LTA validation gate"
+    mitigacao: "LTA validation gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S51-lp-14
+    name: "Versao sem changelog"
+    sintoma: "Policy atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-lp-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

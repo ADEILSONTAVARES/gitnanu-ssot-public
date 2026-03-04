@@ -1,0 +1,96 @@
+# DORES_S51_crew_overlay_v1
+studio_id: S51
+api: crew.overlay
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S51-co-01
+    name: "Overlay publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S51-co-02
+    name: "PII em crew overlay"
+    sintoma: "Dado pessoal em mapa de crew"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S51-co-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S51-co-04
+    name: "Scope violation"
+    sintoma: "Overlay acessa crew errado"
+    causa_raiz: "Sem crew scope lock"
+    mitigacao: "Crew scope lock"
+    severity: CRITICAL
+  - dor_id: D-S51-co-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em crew sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S51-co-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de overlay"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-co-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de execucoes de crew"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S51-co-08
+    name: "Rollback impossivel"
+    sintoma: "Overlay sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S51-co-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de crew"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S51-co-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S51-co-11
+    name: "Agente sem papel"
+    sintoma: "Membro de crew sem role definido"
+    causa_raiz: "Sem role assignment gate"
+    mitigacao: "Role assignment gate"
+    severity: HIGH
+  - dor_id: D-S51-co-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-co-13
+    name: "Loop de crew"
+    sintoma: "Agente A chama agente B que chama A"
+    causa_raiz: "Sem loop detection gate"
+    mitigacao: "Loop detection gate"
+    severity: CRITICAL
+  - dor_id: D-S51-co-14
+    name: "Versao sem changelog"
+    sintoma: "Overlay atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S51-co-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
