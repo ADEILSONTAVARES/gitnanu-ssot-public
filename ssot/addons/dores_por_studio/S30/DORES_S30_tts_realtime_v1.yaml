@@ -1,0 +1,96 @@
+# DORES_S30_tts_realtime_v1
+studio_id: S30
+api: tts.realtime
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S30-tt-01
+    name: "Audio gerado sem aprovacao"
+    sintoma: "Generate automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S30-tt-02
+    name: "PII em audio realtime"
+    sintoma: "Dado pessoal em naracao ao vivo"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-generate"
+    severity: CRITICAL
+  - dor_id: D-S30-tt-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S30-tt-04
+    name: "Scope violation"
+    sintoma: "Audio acessa sessao errada"
+    causa_raiz: "Sem session scope lock"
+    mitigacao: "Session scope lock"
+    severity: CRITICAL
+  - dor_id: D-S30-tt-05
+    name: "LGPD nao atendida"
+    sintoma: "Audio gerado sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S30-tt-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de audio"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tt-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de caracteres"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S30-tt-08
+    name: "Rollback impossivel"
+    sintoma: "Audio sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S30-tt-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S30-tt-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S30-tt-11
+    name: "Latencia sem alerta"
+    sintoma: "TTS com delay alto sem notificacao"
+    causa_raiz: "Sem latency gate"
+    mitigacao: "Latency gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tt-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tt-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tt-14
+    name: "Voz sem validacao"
+    sintoma: "Voz inadequada para contexto"
+    causa_raiz: "Sem voice validation gate"
+    mitigacao: "Voice validation gate"
+    severity: HIGH
+  - dor_id: D-S30-tt-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

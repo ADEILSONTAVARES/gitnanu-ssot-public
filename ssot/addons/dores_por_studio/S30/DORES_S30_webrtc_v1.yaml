@@ -1,0 +1,96 @@
+# DORES_S30_webrtc_v1
+studio_id: S30
+api: webrtc
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S30-wr-01
+    name: "Sessao iniciada sem aprovacao"
+    sintoma: "Start automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S30-wr-02
+    name: "PII em sessao"
+    sintoma: "Dado pessoal em signaling data"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-session"
+    severity: CRITICAL
+  - dor_id: D-S30-wr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S30-wr-04
+    name: "Scope violation"
+    sintoma: "Sessao acessa room errada"
+    causa_raiz: "Sem room scope lock"
+    mitigacao: "Room scope lock"
+    severity: CRITICAL
+  - dor_id: D-S30-wr-05
+    name: "LGPD nao atendida"
+    sintoma: "Sessao sem consentimento de participante"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S30-wr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de sessao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-wr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de bandwidth"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S30-wr-08
+    name: "Rollback impossivel"
+    sintoma: "Config sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S30-wr-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de sessao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S30-wr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S30-wr-11
+    name: "E2E encryption ausente"
+    sintoma: "Midia sem criptografia ponta a ponta"
+    causa_raiz: "Sem E2E gate"
+    mitigacao: "E2E encryption gate"
+    severity: CRITICAL
+  - dor_id: D-S30-wr-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-wr-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-wr-14
+    name: "ICE leak"
+    sintoma: "IP real vazando via ICE candidate"
+    causa_raiz: "Sem ICE privacy gate"
+    mitigacao: "ICE privacy gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-wr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

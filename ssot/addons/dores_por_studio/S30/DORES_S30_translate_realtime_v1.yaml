@@ -1,0 +1,96 @@
+# DORES_S30_translate_realtime_v1
+studio_id: S30
+api: translate.realtime
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S30-tr-01
+    name: "Traducao iniciada sem aprovacao"
+    sintoma: "Start automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S30-tr-02
+    name: "PII em traducao realtime"
+    sintoma: "Dado pessoal em texto traduzido ao vivo"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S30-tr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S30-tr-04
+    name: "Scope violation"
+    sintoma: "Traducao acessa sessao errada"
+    causa_raiz: "Sem session scope lock"
+    mitigacao: "Session scope lock"
+    severity: CRITICAL
+  - dor_id: D-S30-tr-05
+    name: "LGPD nao atendida"
+    sintoma: "Texto traduzido sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S30-tr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de traducao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de caracteres"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S30-tr-08
+    name: "Rollback impossivel"
+    sintoma: "Traducao sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S30-tr-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S30-tr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S30-tr-11
+    name: "Latencia sem alerta"
+    sintoma: "Traducao com delay alto sem notificacao"
+    causa_raiz: "Sem latency gate"
+    mitigacao: "Latency gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tr-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tr-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S30-tr-14
+    name: "Idioma errado sem deteccao"
+    sintoma: "Traducao no idioma errado sem gate"
+    causa_raiz: "Sem language detection gate"
+    mitigacao: "Language detection gate"
+    severity: HIGH
+  - dor_id: D-S30-tr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
