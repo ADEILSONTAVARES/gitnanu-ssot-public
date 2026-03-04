@@ -1,0 +1,96 @@
+# DORES_S37_freshdesk_v1
+studio_id: S37
+api: freshdesk
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S37-fd-01
+    name: "Ticket criado sem aprovacao"
+    sintoma: "Create automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S37-fd-02
+    name: "PII em ticket"
+    sintoma: "Dado pessoal de cliente em ticket"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S37-fd-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S37-fd-04
+    name: "Scope violation"
+    sintoma: "Ticket acessa portal errado"
+    causa_raiz: "Sem portal scope lock"
+    mitigacao: "Portal scope lock"
+    severity: CRITICAL
+  - dor_id: D-S37-fd-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de cliente sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S37-fd-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de ticket"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-fd-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de agentes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S37-fd-08
+    name: "Rollback impossivel"
+    sintoma: "Ticket sem reabertura"
+    causa_raiz: "Sem reopen gate"
+    mitigacao: "Reopen gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-fd-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S37-fd-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S37-fd-11
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S37-fd-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-fd-13
+    name: "SLA sem alerta"
+    sintoma: "Ticket sem resposta no prazo"
+    causa_raiz: "Sem SLA alert gate"
+    mitigacao: "SLA alert gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-fd-14
+    name: "API indisponivel sem fallback"
+    sintoma: "Freshdesk down sem rota alternativa"
+    causa_raiz: "Sem fallback gate"
+    mitigacao: "Fallback gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-fd-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

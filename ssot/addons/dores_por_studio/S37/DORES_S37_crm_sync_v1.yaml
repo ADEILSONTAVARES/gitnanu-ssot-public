@@ -1,0 +1,96 @@
+# DORES_S37_crm_sync_v1
+studio_id: S37
+api: crm.sync
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S37-cs-01
+    name: "Sync disparado sem aprovacao"
+    sintoma: "Sync automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S37-cs-02
+    name: "PII em CRM sync"
+    sintoma: "Dado pessoal de lead em sync payload"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-sync"
+    severity: CRITICAL
+  - dor_id: D-S37-cs-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S37-cs-04
+    name: "Scope violation"
+    sintoma: "Sync acessa conta CRM errada"
+    causa_raiz: "Sem account scope lock"
+    mitigacao: "Account scope lock"
+    severity: CRITICAL
+  - dor_id: D-S37-cs-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de lead sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S37-cs-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de sync"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-cs-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de API calls"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S37-cs-08
+    name: "Rollback impossivel"
+    sintoma: "Sync sem desfazer"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S37-cs-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de sync"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S37-cs-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S37-cs-11
+    name: "Dado sobrescrito sem gate"
+    sintoma: "Campo CRM sobrescrito sem confirmacao"
+    causa_raiz: "Sem overwrite gate"
+    mitigacao: "Overwrite gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-cs-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-cs-13
+    name: "Idempotencia ausente"
+    sintoma: "Sync duplicado sem gate"
+    causa_raiz: "Sem idempotency key"
+    mitigacao: "Idempotency key obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S37-cs-14
+    name: "Schema drift"
+    sintoma: "Campo CRM renomeado sem alerta"
+    causa_raiz: "Sem schema drift gate"
+    mitigacao: "Schema drift gate"
+    severity: HIGH
+  - dor_id: D-S37-cs-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S37_zendesk_v1
+studio_id: S37
+api: zendesk
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S37-zd-01
+    name: "Ticket criado sem aprovacao"
+    sintoma: "Create automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S37-zd-02
+    name: "PII em ticket"
+    sintoma: "Dado pessoal de cliente em ticket"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S37-zd-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S37-zd-04
+    name: "Scope violation"
+    sintoma: "Ticket acessa org errada"
+    causa_raiz: "Sem org scope lock"
+    mitigacao: "Org scope lock"
+    severity: CRITICAL
+  - dor_id: D-S37-zd-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de cliente em ticket sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S37-zd-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de ticket"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-zd-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de agentes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S37-zd-08
+    name: "Rollback impossivel"
+    sintoma: "Ticket fechado sem reabertura"
+    causa_raiz: "Sem reopen gate"
+    mitigacao: "Reopen gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-zd-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de ticket"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S37-zd-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S37-zd-11
+    name: "Webhook sem HMAC"
+    sintoma: "Notificacao nao autenticada"
+    causa_raiz: "Sem HMAC"
+    mitigacao: "HMAC obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S37-zd-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-zd-13
+    name: "SLA sem alerta"
+    sintoma: "Ticket sem resposta no prazo sem notificacao"
+    causa_raiz: "Sem SLA alert gate"
+    mitigacao: "SLA alert gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-zd-14
+    name: "Escalacao sem gate"
+    sintoma: "Ticket escalonado sem aprovacao"
+    causa_raiz: "Sem escalation gate"
+    mitigacao: "Escalation gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S37-zd-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
