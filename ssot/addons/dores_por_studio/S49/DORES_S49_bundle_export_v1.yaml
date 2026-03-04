@@ -1,0 +1,96 @@
+# DORES_S49_bundle_export_v1
+studio_id: S49
+api: bundle.export
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S49-be-01
+    name: "Bundle publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S49-be-02
+    name: "PII em bundle"
+    sintoma: "Dado pessoal em arquivo de bundle"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S49-be-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S49-be-04
+    name: "Scope violation"
+    sintoma: "Bundle acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S49-be-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em bundle sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-be-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de bundle"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-be-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de exportacoes"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S49-be-08
+    name: "Rollback impossivel"
+    sintoma: "Bundle sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S49-be-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de exportacao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S49-be-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S49-be-11
+    name: "Bundle publico sem gate"
+    sintoma: "Bundle interno exposto publicamente"
+    causa_raiz: "Sem visibility gate"
+    mitigacao: "Visibility gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-be-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-be-13
+    name: "Manifest ausente no bundle"
+    sintoma: "Bundle exportado sem manifest vinculado"
+    causa_raiz: "Sem manifest gate"
+    mitigacao: "Manifest gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-be-14
+    name: "Versao sem changelog"
+    sintoma: "Export atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-be-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

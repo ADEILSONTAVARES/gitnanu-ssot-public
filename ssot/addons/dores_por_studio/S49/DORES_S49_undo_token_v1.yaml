@@ -1,0 +1,96 @@
+# DORES_S49_undo_token_v1
+studio_id: S49
+api: undo.token
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S49-ut-01
+    name: "Token gerado sem aprovacao"
+    sintoma: "Generate automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S49-ut-02
+    name: "PII em undo token"
+    sintoma: "Dado pessoal em token de desfazer"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-generate"
+    severity: CRITICAL
+  - dor_id: D-S49-ut-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S49-ut-04
+    name: "Scope violation"
+    sintoma: "Token acessa operacao errada"
+    causa_raiz: "Sem operation scope lock"
+    mitigacao: "Operation scope lock"
+    severity: CRITICAL
+  - dor_id: D-S49-ut-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em token sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ut-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de token"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ut-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S49-ut-08
+    name: "Rollback impossivel"
+    sintoma: "Token sem revogacao"
+    causa_raiz: "Sem revoke gate"
+    mitigacao: "Revoke gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ut-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de token"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S49-ut-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S49-ut-11
+    name: "Token expirado aceito"
+    sintoma: "Undo apos janela de tempo aceito"
+    causa_raiz: "Sem expiry gate"
+    mitigacao: "Expiry gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ut-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ut-13
+    name: "Token reusado"
+    sintoma: "Mesmo token usado duas vezes sem gate"
+    causa_raiz: "Sem single-use gate"
+    mitigacao: "Single-use gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ut-14
+    name: "Versao sem changelog"
+    sintoma: "Schema atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ut-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

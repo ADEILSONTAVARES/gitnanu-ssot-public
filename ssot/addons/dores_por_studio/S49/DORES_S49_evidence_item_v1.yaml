@@ -1,0 +1,96 @@
+# DORES_S49_evidence_item_v1
+studio_id: S49
+api: evidence.item
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S49-ei-01
+    name: "Evidence publicada sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S49-ei-02
+    name: "PII em evidence item"
+    sintoma: "Dado pessoal em item de evidencia"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S49-ei-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S49-ei-04
+    name: "Scope violation"
+    sintoma: "Evidence acessa ledger errado"
+    causa_raiz: "Sem ledger scope lock"
+    mitigacao: "Ledger scope lock"
+    severity: CRITICAL
+  - dor_id: D-S49-ei-05
+    name: "LGPD nao atendida"
+    sintoma: "Evidence com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ei-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de evidence"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ei-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S49-ei-08
+    name: "Rollback impossivel"
+    sintoma: "Evidence adulterada sem detectar"
+    causa_raiz: "Sem immutability gate"
+    mitigacao: "Immutability gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ei-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de evidence"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S49-ei-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S49-ei-11
+    name: "Evidence ausente em action HIGH"
+    sintoma: "Action HIGH sem evidence obrigatoria"
+    causa_raiz: "Sem evidence gate"
+    mitigacao: "Evidence gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ei-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ei-13
+    name: "Retencao sem politica"
+    sintoma: "Evidence retida indefinidamente"
+    causa_raiz: "Sem retention policy gate"
+    mitigacao: "Retention policy gate"
+    severity: HIGH
+  - dor_id: D-S49-ei-14
+    name: "Versao sem changelog"
+    sintoma: "Schema atualizado sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ei-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

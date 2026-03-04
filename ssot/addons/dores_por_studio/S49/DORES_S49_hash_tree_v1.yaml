@@ -1,0 +1,96 @@
+# DORES_S49_hash_tree_v1
+studio_id: S49
+api: hash.tree
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S49-ht-01
+    name: "Tree publicada sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S49-ht-02
+    name: "PII em hash tree"
+    sintoma: "Dado pessoal em no da arvore"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S49-ht-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S49-ht-04
+    name: "Scope violation"
+    sintoma: "Tree acessa bundle errado"
+    causa_raiz: "Sem bundle scope lock"
+    mitigacao: "Bundle scope lock"
+    severity: CRITICAL
+  - dor_id: D-S49-ht-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em tree sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ht-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de tree"
+    causa_raiz: "Sem root hash"
+    mitigacao: "Root hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ht-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S49-ht-08
+    name: "Rollback impossivel"
+    sintoma: "Tree adulterada sem detectar"
+    causa_raiz: "Sem immutability gate"
+    mitigacao: "Immutability gate"
+    severity: CRITICAL
+  - dor_id: D-S49-ht-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de tree"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S49-ht-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S49-ht-11
+    name: "No orfao"
+    sintoma: "Hash sem pai na tree sem deteccao"
+    causa_raiz: "Sem orphan detection gate"
+    mitigacao: "Orphan detection gate"
+    severity: HIGH
+  - dor_id: D-S49-ht-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ht-13
+    name: "Algoritmo fraco"
+    sintoma: "Tree com MD5 aceito"
+    causa_raiz: "Sem algorithm gate"
+    mitigacao: "SHA256+ obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ht-14
+    name: "Versao sem changelog"
+    sintoma: "Tree atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ht-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

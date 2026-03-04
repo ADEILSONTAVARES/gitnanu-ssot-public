@@ -1,0 +1,96 @@
+# DORES_S49_artifact_retention_v1
+studio_id: S49
+api: artifact.retention
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S49-ar-01
+    name: "Policy alterada sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S49-ar-02
+    name: "PII em artifact retido"
+    sintoma: "Dado pessoal em artifact alem do prazo"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-retain"
+    severity: CRITICAL
+  - dor_id: D-S49-ar-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S49-ar-04
+    name: "Scope violation"
+    sintoma: "Policy acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S49-ar-05
+    name: "LGPD nao atendida"
+    sintoma: "Artifact com dado pessoal sem consentimento de retencao"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ar-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de policy"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ar-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de retencao"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S49-ar-08
+    name: "Rollback impossivel"
+    sintoma: "Policy sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S49-ar-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de retencao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S49-ar-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S49-ar-11
+    name: "Artifact expirado nao removido"
+    sintoma: "Artifact alem do prazo sem exclusao automatica"
+    causa_raiz: "Sem expiry cleanup gate"
+    mitigacao: "Expiry cleanup gate"
+    severity: HIGH
+  - dor_id: D-S49-ar-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ar-13
+    name: "Legal hold ignorado"
+    sintoma: "Artifact com legal hold deletado"
+    causa_raiz: "Sem legal hold gate"
+    mitigacao: "Legal hold gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S49-ar-14
+    name: "Versao sem changelog"
+    sintoma: "Policy atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S49-ar-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
