@@ -1,0 +1,96 @@
+# DORES_S33_youtube_data_v1
+studio_id: S33
+api: youtube.data
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S33-yd-01
+    name: "Video publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S33-yd-02
+    name: "PII em metadata de video"
+    sintoma: "Dado pessoal em titulo ou descricao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-publish"
+    severity: CRITICAL
+  - dor_id: D-S33-yd-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S33-yd-04
+    name: "Scope violation"
+    sintoma: "Acesso a canal errado"
+    causa_raiz: "Sem channel scope lock"
+    mitigacao: "Channel scope lock"
+    severity: CRITICAL
+  - dor_id: D-S33-yd-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de usuario em video sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S33-yd-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de upload"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-yd-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de quota"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S33-yd-08
+    name: "Rollback impossivel"
+    sintoma: "Video sem delete gate"
+    causa_raiz: "Sem unpublish gate"
+    mitigacao: "Unpublish gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-yd-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de upload"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S33-yd-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S33-yd-11
+    name: "Quota diaria sem alerta"
+    sintoma: "Quota excedida sem notificacao previa"
+    causa_raiz: "Sem quota alert gate"
+    mitigacao: "Quota alert gate"
+    severity: HIGH
+  - dor_id: D-S33-yd-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-yd-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-yd-14
+    name: "Visibilidade incorreta"
+    sintoma: "Video publicado como publico sem gate"
+    causa_raiz: "Sem visibility gate"
+    mitigacao: "Visibility gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-yd-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

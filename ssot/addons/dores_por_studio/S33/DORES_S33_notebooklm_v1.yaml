@@ -1,0 +1,96 @@
+# DORES_S33_notebooklm_v1
+studio_id: S33
+api: notebooklm
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S33-nl-01
+    name: "Notebook publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S33-nl-02
+    name: "PII em notebook"
+    sintoma: "Dado pessoal em fonte de notebook"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-ingest"
+    severity: CRITICAL
+  - dor_id: D-S33-nl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S33-nl-04
+    name: "Scope violation"
+    sintoma: "Notebook acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S33-nl-05
+    name: "LGPD nao atendida"
+    sintoma: "Fonte com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S33-nl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resumo"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-nl-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de tokens"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S33-nl-08
+    name: "Rollback impossivel"
+    sintoma: "Notebook sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S33-nl-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de geracao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S33-nl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S33-nl-11
+    name: "Hallucination sem gate"
+    sintoma: "Resumo com informacao incorreta aceito"
+    causa_raiz: "Sem hallucination gate"
+    mitigacao: "Hallucination gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-nl-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-nl-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-nl-14
+    name: "Fonte desatualizada"
+    sintoma: "Notebook com fonte antiga sem alerta"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-nl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

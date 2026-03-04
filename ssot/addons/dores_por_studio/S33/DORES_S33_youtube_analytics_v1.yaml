@@ -1,0 +1,96 @@
+# DORES_S33_youtube_analytics_v1
+studio_id: S33
+api: youtube.analytics
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S33-ya-01
+    name: "Relatorio exportado sem aprovacao"
+    sintoma: "Export automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S33-ya-02
+    name: "PII em relatorio"
+    sintoma: "Dado de viewer em analytics export"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-export"
+    severity: CRITICAL
+  - dor_id: D-S33-ya-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S33-ya-04
+    name: "Scope violation"
+    sintoma: "Relatorio acessa canal errado"
+    causa_raiz: "Sem channel scope lock"
+    mitigacao: "Channel scope lock"
+    severity: CRITICAL
+  - dor_id: D-S33-ya-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de viewer retido sem base legal"
+    causa_raiz: "Sem LGPD gate"
+    mitigacao: "LGPD gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S33-ya-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de relatorio"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-ya-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de quota"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S33-ya-08
+    name: "Rollback impossivel"
+    sintoma: "Relatorio sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S33-ya-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de export"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S33-ya-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S33-ya-11
+    name: "Dado desatualizado"
+    sintoma: "Relatorio com metricas antigas sem alerta"
+    causa_raiz: "Sem freshness gate"
+    mitigacao: "Freshness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-ya-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-ya-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S33-ya-14
+    name: "Quota diaria sem alerta"
+    sintoma: "Quota excedida sem notificacao previa"
+    causa_raiz: "Sem quota alert gate"
+    mitigacao: "Quota alert gate"
+    severity: HIGH
+  - dor_id: D-S33-ya-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
