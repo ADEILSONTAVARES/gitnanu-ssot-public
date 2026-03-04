@@ -1,0 +1,96 @@
+# DORES_S28_presence_qr_v1
+studio_id: S28
+api: presence.qr
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S28-pq-01
+    name: "QR publicado sem aprovacao"
+    sintoma: "Generate automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S28-pq-02
+    name: "PII em QR"
+    sintoma: "Dado pessoal em QR payload"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-generate"
+    severity: CRITICAL
+  - dor_id: D-S28-pq-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S28-pq-04
+    name: "Scope violation"
+    sintoma: "QR acessa evento errado"
+    causa_raiz: "Sem event scope lock"
+    mitigacao: "Event scope lock"
+    severity: CRITICAL
+  - dor_id: D-S28-pq-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de presenca sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S28-pq-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de QR"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-pq-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S28-pq-08
+    name: "Rollback impossivel"
+    sintoma: "QR sem invalidacao"
+    causa_raiz: "Sem revocation gate"
+    mitigacao: "Revocation gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-pq-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de scan"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S28-pq-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S28-pq-11
+    name: "QR reutilizado"
+    sintoma: "Mesmo QR escaneado multiplas vezes"
+    causa_raiz: "Sem single-use gate"
+    mitigacao: "Single-use gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-pq-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-pq-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-pq-14
+    name: "QR expirado aceito"
+    sintoma: "QR vencido ainda valido"
+    causa_raiz: "Sem expiry gate"
+    mitigacao: "Expiry gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-pq-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

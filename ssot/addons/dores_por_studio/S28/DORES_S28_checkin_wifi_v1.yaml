@@ -1,0 +1,96 @@
+# DORES_S28_checkin_wifi_v1
+studio_id: S28
+api: checkin.wifi
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S28-cw-01
+    name: "Checkin ativado sem aprovacao"
+    sintoma: "Checkin automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S28-cw-02
+    name: "PII em checkin"
+    sintoma: "Dado pessoal de membro em checkin log"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-log"
+    severity: CRITICAL
+  - dor_id: D-S28-cw-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S28-cw-04
+    name: "Scope violation"
+    sintoma: "Checkin acessa congregacao errada"
+    causa_raiz: "Sem congregation scope lock"
+    mitigacao: "Congregation scope lock"
+    severity: CRITICAL
+  - dor_id: D-S28-cw-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado de presenca sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S28-cw-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de registro"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-cw-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S28-cw-08
+    name: "Rollback impossivel"
+    sintoma: "Checkin sem desfazer"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S28-cw-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S28-cw-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S28-cw-11
+    name: "Checkin duplicado"
+    sintoma: "Mesmo membro checado duas vezes"
+    causa_raiz: "Sem dedup gate"
+    mitigacao: "Dedup gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-cw-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-cw-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S28-cw-14
+    name: "Rede nao autorizada"
+    sintoma: "Checkin via WiFi nao autorizado"
+    causa_raiz: "Sem network whitelist gate"
+    mitigacao: "Network whitelist gate"
+    severity: HIGH
+  - dor_id: D-S28-cw-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
