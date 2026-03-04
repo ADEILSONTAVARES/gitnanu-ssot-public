@@ -1,0 +1,96 @@
+# DORES_S29_holyrics_v1
+studio_id: S29
+api: holyrics
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S29-hl-01
+    name: "Letra exibida sem aprovacao"
+    sintoma: "Display automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S29-hl-02
+    name: "PII em letra"
+    sintoma: "Dado pessoal em lyric slide"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-display"
+    severity: CRITICAL
+  - dor_id: D-S29-hl-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S29-hl-04
+    name: "Scope violation"
+    sintoma: "Letra acessa biblioteca errada"
+    causa_raiz: "Sem library scope lock"
+    mitigacao: "Library scope lock"
+    severity: CRITICAL
+  - dor_id: D-S29-hl-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em slide sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S29-hl-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de letra"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-hl-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de licenca"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S29-hl-08
+    name: "Rollback impossivel"
+    sintoma: "Letra sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S29-hl-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de exibicao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S29-hl-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S29-hl-11
+    name: "Letra errada exibida"
+    sintoma: "Musica trocada sem gate de confirmacao"
+    causa_raiz: "Sem song match gate"
+    mitigacao: "Song match gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-hl-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-hl-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-hl-14
+    name: "Licenca expirada sem alerta"
+    sintoma: "Software rodando com licenca vencida"
+    causa_raiz: "Sem license expiry gate"
+    mitigacao: "License expiry gate"
+    severity: HIGH
+  - dor_id: D-S29-hl-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S29_easyworship_v1
+studio_id: S29
+api: easyworship
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S29-ew-01
+    name: "Slide publicado sem aprovacao"
+    sintoma: "Display automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S29-ew-02
+    name: "PII em slide"
+    sintoma: "Dado pessoal em apresentacao"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-display"
+    severity: CRITICAL
+  - dor_id: D-S29-ew-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S29-ew-04
+    name: "Scope violation"
+    sintoma: "Slide acessa schedule errado"
+    causa_raiz: "Sem schedule scope lock"
+    mitigacao: "Schedule scope lock"
+    severity: CRITICAL
+  - dor_id: D-S29-ew-05
+    name: "LGPD nao atendida"
+    sintoma: "Slide com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S29-ew-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de apresentacao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ew-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de licenca"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S29-ew-08
+    name: "Rollback impossivel"
+    sintoma: "Schedule sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S29-ew-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de exibicao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S29-ew-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S29-ew-11
+    name: "Slide errado exibido"
+    sintoma: "Item trocado sem gate de confirmacao"
+    causa_raiz: "Sem item match gate"
+    mitigacao: "Item match gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ew-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ew-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ew-14
+    name: "Licenca expirada sem alerta"
+    sintoma: "Software rodando com licenca vencida"
+    causa_raiz: "Sem license expiry gate"
+    mitigacao: "License expiry gate"
+    severity: HIGH
+  - dor_id: D-S29-ew-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

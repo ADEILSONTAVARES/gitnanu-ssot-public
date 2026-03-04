@@ -1,0 +1,96 @@
+# DORES_S29_openLP_v1
+studio_id: S29
+api: openLP
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S29-ol-01
+    name: "Servico iniciado sem aprovacao"
+    sintoma: "Start automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S29-ol-02
+    name: "PII em servico"
+    sintoma: "Dado pessoal em slide de servico"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-display"
+    severity: CRITICAL
+  - dor_id: D-S29-ol-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S29-ol-04
+    name: "Scope violation"
+    sintoma: "Servico acessa tema errado"
+    causa_raiz: "Sem theme scope lock"
+    mitigacao: "Theme scope lock"
+    severity: CRITICAL
+  - dor_id: D-S29-ol-05
+    name: "LGPD nao atendida"
+    sintoma: "Slide com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S29-ol-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de servico"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ol-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S29-ol-08
+    name: "Rollback impossivel"
+    sintoma: "Servico sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S29-ol-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de exibicao"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S29-ol-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S29-ol-11
+    name: "Plugin desatualizado"
+    sintoma: "Plugin OpenLP sem atualizacao"
+    causa_raiz: "Sem version check gate"
+    mitigacao: "Version check gate"
+    severity: HIGH
+  - dor_id: D-S29-ol-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ol-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ol-14
+    name: "Slide ao vivo sem preview"
+    sintoma: "Slide exibido sem revisao"
+    causa_raiz: "Sem preview gate"
+    mitigacao: "Preview gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ol-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

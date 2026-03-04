@@ -1,0 +1,96 @@
+# DORES_S29_obs_websocket_v1
+studio_id: S29
+api: obs.websocket
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S29-ow-01
+    name: "Stream iniciado sem aprovacao"
+    sintoma: "Start automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: CRITICAL
+  - dor_id: D-S29-ow-02
+    name: "PII em stream"
+    sintoma: "Dado pessoal em cena transmitida"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-stream"
+    severity: CRITICAL
+  - dor_id: D-S29-ow-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S29-ow-04
+    name: "Scope violation"
+    sintoma: "Controle acessa cena errada"
+    causa_raiz: "Sem scene scope lock"
+    mitigacao: "Scene scope lock"
+    severity: CRITICAL
+  - dor_id: D-S29-ow-05
+    name: "LGPD nao atendida"
+    sintoma: "Gravacao com dado pessoal sem consentimento"
+    causa_raiz: "Sem recording consent gate"
+    mitigacao: "Recording consent gate"
+    severity: CRITICAL
+  - dor_id: D-S29-ow-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de gravacao"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ow-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de bandwidth"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S29-ow-08
+    name: "Rollback impossivel"
+    sintoma: "Cena sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S29-ow-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de stream"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S29-ow-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S29-ow-11
+    name: "Conexao sem autenticacao"
+    sintoma: "WebSocket exposto sem auth"
+    causa_raiz: "Sem auth gate"
+    mitigacao: "Auth gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S29-ow-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ow-13
+    name: "Token expirado sem renovacao"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem token refresh"
+    mitigacao: "Token refresh obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ow-14
+    name: "Cena ao vivo sem preview"
+    sintoma: "Cena publicada ao vivo sem revisao"
+    causa_raiz: "Sem preview gate"
+    mitigacao: "Preview gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S29-ow-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
