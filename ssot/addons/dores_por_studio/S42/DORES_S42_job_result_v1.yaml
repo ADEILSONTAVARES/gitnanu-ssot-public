@@ -1,0 +1,96 @@
+# DORES_S42_job_result_v1
+studio_id: S42
+api: job.result
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S42-jr-01
+    name: "Resultado publicado sem aprovacao"
+    sintoma: "Publish automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S42-jr-02
+    name: "PII em job result"
+    sintoma: "Dado pessoal em resultado de job"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-store"
+    severity: CRITICAL
+  - dor_id: D-S42-jr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S42-jr-04
+    name: "Scope violation"
+    sintoma: "Resultado acessa projeto errado"
+    causa_raiz: "Sem project scope lock"
+    mitigacao: "Project scope lock"
+    severity: CRITICAL
+  - dor_id: D-S42-jr-05
+    name: "LGPD nao atendida"
+    sintoma: "Resultado com dado pessoal sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S42-jr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de resultado"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-jr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de storage"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S42-jr-08
+    name: "Rollback impossivel"
+    sintoma: "Resultado sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S42-jr-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de resultado"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S42-jr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S42-jr-11
+    name: "Resultado publico sem gate"
+    sintoma: "Output interno exposto publicamente"
+    causa_raiz: "Sem visibility gate"
+    mitigacao: "Visibility gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-jr-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-jr-13
+    name: "Schema invalido aceito"
+    sintoma: "Resultado fora de spec aceito"
+    causa_raiz: "Sem schema validation gate"
+    mitigacao: "Schema validation gate"
+    severity: HIGH
+  - dor_id: D-S42-jr-14
+    name: "Retencao sem politica"
+    sintoma: "Resultado retido indefinidamente"
+    causa_raiz: "Sem retention policy gate"
+    mitigacao: "Retention policy gate"
+    severity: HIGH
+  - dor_id: D-S42-jr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

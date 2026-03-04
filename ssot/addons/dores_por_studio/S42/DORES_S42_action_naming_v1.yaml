@@ -1,0 +1,96 @@
+# DORES_S42_action_naming_v1
+studio_id: S42
+api: action.naming
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S42-an-01
+    name: "Action registrada sem aprovacao"
+    sintoma: "Register automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S42-an-02
+    name: "PII em action_id"
+    sintoma: "Dado pessoal em nome de action"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-register"
+    severity: CRITICAL
+  - dor_id: D-S42-an-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S42-an-04
+    name: "Scope violation"
+    sintoma: "Action acessa registry errado"
+    causa_raiz: "Sem registry scope lock"
+    mitigacao: "Registry scope lock"
+    severity: CRITICAL
+  - dor_id: D-S42-an-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em metadata de action"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S42-an-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de registro"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-an-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de registros"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S42-an-08
+    name: "Rollback impossivel"
+    sintoma: "Action sem deregistro"
+    causa_raiz: "Sem deregister gate"
+    mitigacao: "Deregister gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-an-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de registro"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S42-an-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S42-an-11
+    name: "ID duplicado"
+    sintoma: "action_id repetido sem deteccao"
+    causa_raiz: "Sem uniqueness gate"
+    mitigacao: "Uniqueness gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-an-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-an-13
+    name: "Naming convention violada"
+    sintoma: "action_id fora do padrao aceito"
+    causa_raiz: "Sem naming validation gate"
+    mitigacao: "Naming validation gate"
+    severity: HIGH
+  - dor_id: D-S42-an-14
+    name: "Versao sem changelog"
+    sintoma: "Action atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-an-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH

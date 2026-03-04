@@ -1,0 +1,96 @@
+# DORES_S42_retry_rules_v1
+studio_id: S42
+api: retry.rules
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S42-rr-01
+    name: "Regra alterada sem aprovacao"
+    sintoma: "Update automatico sem gate"
+    causa_raiz: "Sem aprovacao"
+    mitigacao: "CW-202 aprovacao"
+    severity: HIGH
+  - dor_id: D-S42-rr-02
+    name: "PII em retry payload"
+    sintoma: "Dado pessoal em payload de retry"
+    causa_raiz: "Sem PII scan"
+    mitigacao: "PII scan pre-retry"
+    severity: CRITICAL
+  - dor_id: D-S42-rr-03
+    name: "API key em log"
+    sintoma: "Key vazando"
+    causa_raiz: "Sem redaction"
+    mitigacao: "CW-212 redaction"
+    severity: CRITICAL
+  - dor_id: D-S42-rr-04
+    name: "Scope violation"
+    sintoma: "Retry acessa worker errado"
+    causa_raiz: "Sem worker scope lock"
+    mitigacao: "Worker scope lock"
+    severity: CRITICAL
+  - dor_id: D-S42-rr-05
+    name: "LGPD nao atendida"
+    sintoma: "Dado pessoal em retry sem consentimento"
+    causa_raiz: "Sem consent gate"
+    mitigacao: "Consent gate obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S42-rr-06
+    name: "Output sem hash"
+    sintoma: "Sem integridade de regra"
+    causa_raiz: "Sem hash"
+    mitigacao: "Hash obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-rr-07
+    name: "Custo sem limite"
+    sintoma: "Sem budget de retries"
+    causa_raiz: "Sem cost guard"
+    mitigacao: "CW-214 cost guard"
+    severity: HIGH
+  - dor_id: D-S42-rr-08
+    name: "Rollback impossivel"
+    sintoma: "Regra sem versao anterior"
+    causa_raiz: "Sem rollback"
+    mitigacao: "CW-208 rollback"
+    severity: HIGH
+  - dor_id: D-S42-rr-09
+    name: "Operacao sem receipt"
+    sintoma: "Nenhum log de mudanca"
+    causa_raiz: "Sem evidence"
+    mitigacao: "CW-206 receipt"
+    severity: HIGH
+  - dor_id: D-S42-rr-10
+    name: "Rate limit sem retry"
+    sintoma: "Falha silenciosa"
+    causa_raiz: "Sem retry"
+    mitigacao: "Retry + backoff"
+    severity: HIGH
+  - dor_id: D-S42-rr-11
+    name: "Retry storm"
+    sintoma: "Retries sem backoff exponencial"
+    causa_raiz: "Sem exponential backoff gate"
+    mitigacao: "Exponential backoff gate"
+    severity: HIGH
+  - dor_id: D-S42-rr-12
+    name: "DLQ ausente"
+    sintoma: "Falha sem reprocessamento apos max retries"
+    causa_raiz: "Sem DLQ"
+    mitigacao: "DLQ obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-rr-13
+    name: "Max retries sem limite"
+    sintoma: "Retry infinito sem gate"
+    causa_raiz: "Sem max retry gate"
+    mitigacao: "Max retry gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-rr-14
+    name: "Versao sem changelog"
+    sintoma: "Regra atualizada sem nota"
+    causa_raiz: "Sem changelog gate"
+    mitigacao: "Changelog gate obrigatorio"
+    severity: HIGH
+  - dor_id: D-S42-rr-15
+    name: "Sync com GNDrive falhando"
+    sintoma: "Sem backup"
+    causa_raiz: "Sem sync receipt"
+    mitigacao: "Sync receipt"
+    severity: HIGH
