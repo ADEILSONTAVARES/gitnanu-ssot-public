@@ -1,0 +1,2432 @@
+wc -c docs/handsoff/ADDONS_40_15_3_TRAVANDO_CHAT_RAW.txt
+tail -n 3 docs/handsoff/ADDONS_40_15_3_TRAVANDO_CHAT_RAW.txt
+git status -sb
+# 1) você colou COMENTÁRIOS junto. No zsh, linha começando com # pode disparar "sort specifier" por causa do histórico.
+# vamos DESLIGAR expansão de histórico e refazer do jeito certo.
+
+set +H 2>/dev/null || true
+unsetopt HIST_SUBST_PATTERN 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+# 2) AGORA RODE SÓ ESTA LINHA. (sem comentários)
+cat > docs/handsoff/ADDONS_40_15_3_TRAVANDO_CHAT_RAW.txt
+# 3) AGORA COLE O TEXTO (CMD+V) E FINALIZE COM CTRL+D
+# (depois que salvar, rode a prova)
+wc -c docs/handsoff/ADDONS_40_15_3_TRAVANDO_CHAT_RAW.txt
+tail -n 3 docs/handsoff/ADDONS_40_15_3_TRAVANDO_CHAT_RAW.txt
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """ADDONS 15/ 40/ 3
+
+TROUXE DO OUTRO CHAT Q ESTA TRAVANDO. TENHO Q COLAR NO REPO, POREM ESTOU COLANDO E ESTA SUMINDO O Q COLEI.
+
+## Veredito direto (pelo que você mostrou + pelo que está nos seus `.docx`)
+
+### 1) As “15 dores” do Addons 40-15-3 foram materializadas no repo
+
+Sim. Pelo seu próprio log do Terminal, existe `ssot/addons/dores_por_studio/S00..S51/` com 553 arquivos `.yaml` e 8054 ocorrências de `dor_id:`. Isso é dado no disco, versionado, e não só texto de chat.
+
+O que não está “SSOT redondo” ainda não é a existência dos YAMLs. É a consolidação canônica: index, validação e gate bloqueante dizendo “isso é o pacote 15 do 40-15-3 e tem que bater 15 por API, senão FAIL”.
+
+### 2) Tem um problema real de organização nessa pasta (pente fino)
+
+Você rodou `ls ssot/addons/dores_por_studio/ | wc -l` e deu 74. Isso não faz sentido se o esperado é S00..S51 (52). O motivo: tem arquivos soltos no root do diretório `dores_por_studio/` com nomes tipo `DORES_S01_v1.yaml`, `DORES_S05_v1.yaml` etc. Eles não são pastas e quebram contagem e scripts.
+
+Isso precisa de correção, porque qualquer verificador “No Holes” ou “coverage” vai tropeçar nisso.
+
+### 3) Actions 40 por API só estão 100% prontas para S00 e S01
+
+Consistente com o que você colou:
+
+- S00: 12 APIs × 40 actions = 480 actions, commit f07cd9d
+- S01: 14 APIs × 40 actions = 560 actions, commit d8e8590
+- Restante (S02–S51): ainda falta gerar o grosso, ~20.200 actions restantes.
+
+### 4) Benchmark 60/59/60/150/150/100×3: está descrito em documento, mas falta travar no SSOT
+
+Estar escrito em doc é diferente de estar registrado em YAML canônico + validado por script + bloqueando release.
+
+O problema central aqui: existem pedaços, mas falta o “contrato executável”.
+
+## Por que “sumiu” no Terminal
+
+Quando aparece `>....`, o zsh entrou em modo continuação porque algo ficou aberto: aspas, parênteses, colchetes, ou comando incompleto.
+
+O trecho com `\\\"),(\\\"A-S01...` é parte de string. Se cai no shell fora de um contexto (python heredoc completo, por exemplo), o zsh entende como texto perdido e fica esperando fechar. Você dá Enter e “some”, mas na prática nunca executou e nunca gravou arquivo.
+
+## O que está faltando (SSOT de verdade)
+
+A) Falta index canônico do pacote Addons 40-15-3:
+- paths, contagens, regras (15 dores por API, 40 actions por API)
+- proibir YAML solto no root
+- validator que dá FAIL
+
+B) Falta gate bloqueante no Doctor/NoHoles para esse pacote.
+
+C) Falta consolidar benchmark-driven pipeline como policy executável (YAML + scripts + gate).
+
+D) Falta resolver arquivos soltos em `dores_por_studio/`.
+
+## Handoff resumido
+
+Estado:
+1) DORES (15) existem em `ssot/addons/dores_por_studio/S00..S51/` (553 YAML, 8054 dor_id).
+2) Existe sujeira: `DORES_Sxx_v1.yaml` soltos no root.
+3) ACTIONS (40) completas só para S00 e S01; S02–S51 faltam.
+4) Bench90 e 60/59/60/150/150/100×3 existem em doc; falta travar como contrato executável.
+
+Plano:
+1) Criar auditoria executável (15/40 + root spillover).
+2) Gerar `ADDONS_40_15_3_INDEX_OG10.yaml`.
+3) Ligar index no Doctor/NoHoles (gate).
+4) Travar benchmark pipeline em YAML+gate.
+5) Retomar geração de actions por Studio com validação incremental.
+"""
+out.parent.mkdir(parents=True, exist_ok=True)
+out.write_text(text, encoding="utf-8")
+print("OK: wrote", out)
+print("BYTES:", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+# COPIE E COLE EXATAMENTE ISTO (BLOCO INTEIRO). NAO COLE MAIS NADA JUNTO.
+# Isso DESLIGA historico/expansao, REATIVA comentarios no modo interativo,
+# e cria o arquivo via Python (sem você colar texto grande no terminal).
+
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """ADDONS 15/ 40/ 3
+
+TROUXE DO OUTRO CHAT Q ESTA TRAVANDO. TENHO Q COLAR NO REPO, POREM ESTOU COLANDO E ESTA SUMINDO O Q COLEI.
+
+## Veredito direto (pelo que você mostrou + pelo que está nos seus `.docx`)
+
+### 1) As “15 dores” do Addons 40-15-3 foram materializadas no repo
+
+Sim. Pelo seu próprio log do Terminal, existe `ssot/addons/dores_por_studio/S00..S51/` com 553 arquivos `.yaml` e 8054 ocorrências de `dor_id:`. Isso é dado no disco, versionado, e não só texto de chat.
+
+O que não está “SSOT redondo” ainda não é a existência dos YAMLs. É a consolidação canônica: index, validação e gate bloqueante dizendo “isso é o pacote 15 do 40-15-3 e tem que bater 15 por API, senão FAIL”.
+
+### 2) Tem um problema real de organização nessa pasta (pente fino)
+
+Você rodou `ls ssot/addons/dores_por_studio/ | wc -l` e deu 74. Isso não faz sentido se o esperado é S00..S51 (52). O motivo: tem arquivos soltos no root do diretório `dores_por_studio/` com nomes tipo `DORES_S01_v1.yaml`, `DORES_S05_v1.yaml` etc. Eles não são pastas e quebram contagem e scripts.
+
+Isso precisa de correção, porque qualquer verificador “No Holes” ou “coverage” vai tropeçar nisso.
+
+### 3) Actions 40 por API só estão 100% prontas para S00 e S01
+
+Consistente com o que você colou:
+
+- S00: 12 APIs × 40 actions = 480 actions, commit f07cd9d
+- S01: 14 APIs × 40 actions = 560 actions, commit d8e8590
+- Restante (S02–S51): ainda falta gerar o grosso, ~20.200 actions restantes.
+
+### 4) Benchmark 60/59/60/150/150/100×3: está descrito em documento, mas falta travar no SSOT
+
+Estar escrito em doc é diferente de estar registrado em YAML canônico + validado por script + bloqueando release.
+
+O problema central aqui: existem pedaços, mas falta o “contrato executável”.
+
+## Por que “sumiu” no Terminal
+
+Quando aparece `>....`, o zsh entrou em modo continuação porque algo ficou aberto: aspas, parênteses, colchetes, ou comando incompleto.
+
+O trecho com `\\\"),(\\\"A-S01...` é parte de string. Se cai no shell fora de um contexto completo, o zsh entende como texto perdido e fica esperando fechar. Você dá Enter e “some”, mas na prática nunca executou e nunca gravou arquivo.
+
+## O que está faltando (SSOT de verdade)
+
+A) Falta index canônico do pacote Addons 40-15-3:
+- paths, contagens, regras (15 dores por API, 40 actions por API)
+- proibir YAML solto no root
+- validator que dá FAIL
+
+B) Falta gate bloqueante no Doctor/NoHoles para esse pacote.
+
+C) Falta consolidar benchmark-driven pipeline como policy executável (YAML + scripts + gate).
+
+D) Falta resolver arquivos soltos em `dores_por_studio/`.
+
+## Handoff resumido
+
+Estado:
+1) DORES (15) existem em `ssot/addons/dores_por_studio/S00..S51/` (553 YAML, 8054 dor_id).
+2) Existe sujeira: `DORES_Sxx_v1.yaml` soltos no root.
+3) ACTIONS (40) completas só para S00 e S01; S02–S51 faltam.
+4) Bench90 e 60/59/60/150/150/100×3 existem em doc; falta travar como contrato executável.
+
+Plano:
+1) Criar auditoria executável (15/40 + root spillover).
+2) Gerar `ADDONS_40_15_3_INDEX_OG10.yaml`.
+3) Ligar index no Doctor/NoHoles (gate).
+4) Travar benchmark pipeline em YAML+gate.
+5) Retomar geração de actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK: wrote", out)
+print("BYTES:", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """ADDONS 15/40/3 — HANDOFF (travando por colagem no zsh)
+
+Causa do “sumiu”:
+Quando aparece >.... o zsh entrou em modo continuação (algo ficou aberto). E quando dá “unknown sort specifier”, é expansão de histórico (BANG_HIST) pegando algum caractere e tentando interpretar. Resultado: nada grava em arquivo.
+
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """ADDONS 40-15-3 — HANDOFF (SSOT)
+
+O que está faltando (SSOT de verdade)
+
+A) Falta index canônico do pacote Addons 40-15-3:
+- paths, contagens, regras (15 dores por API, 40 actions por API)
+- proibir YAML solto no root
+- validator que dá FAIL
+
+B) Falta gate bloqueante no Doctor/NoHoles para esse pacote.
+
+C) Falta benchmark-driven pipeline como policy executável (YAML + scripts + gate).
+
+D) Falta resolver arquivos soltos em dores_por_studio/.
+
+Handoff resumido
+
+Estado:
+1) DORES (15) existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Existe sujeira: DORES_Sxx_v1.yaml soltos no root.
+3) ACTIONS (40) completas só para S00 e S01; S02–S51 faltam.
+4) Bench90 e 60/59/60/150/150/100×3 existem em doc; falta travar como contrato executável.
+
+Plano:
+1) Criar auditoria executável (15/40 + root spillover).
+2) Gerar ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar index no Doctor/NoHoles (gate).
+4) Travar benchmark pipeline em YAML+gate.
+5) Retomar geração de actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """ADDONS 40-15-3 — HANDOFF (SSOT)
+
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+# COLE ESTE BLOCO ÚNICO. ELE VAI CRIAR O ARQUIVO HANDOFF COM O TEXTO EXATO QUE VOCÊ ACABOU DE MANDAR.
+
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+
+out = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+out.write_text(text, encoding="utf-8")
+print("OK_WROTE", out, "BYTES", out.stat().st_size)
+PY
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+printf '%s\n' \
+"Estado atual:" \
+"1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id)." \
+"2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria)." \
+"3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar." \
+"4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate)." \
+"" \
+"Faltas (SSOT de verdade):" \
+"A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root)." \
+"B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar." \
+"C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate)." \
+"D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/." \
+"" \
+"Plano:" \
+"1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root)." \
+"2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml." \
+"3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato)." \
+"4) Travar benchmarks como gate." \
+"5) Retomar geração Actions por Studio com validação incremental." \
+> docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+printf '%s\n' \
+"Estado atual:" \
+"1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id)." \
+"2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria)." \
+"3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar." \
+"4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate)." \
+"" \
+"Faltas (SSOT de verdade):" \
+"A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root)." \
+"B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar." \
+"C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate)." \
+"D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/." \
+"" \
+"Plano:" \
+"1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root)." \
+"2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml." \
+"3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato)." \
+"4) Travar benchmarks como gate." \
+"5) Retomar geração Actions por Studio com validação incremental." \
+> docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+printf '%s\n' \
+"Estado atual:" \
+"1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id)." \
+"2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria)." \
+"3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar." \
+"4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate)." \
+"" \
+"Faltas (SSOT de verdade):" \
+"A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root)." \
+"B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar." \
+"C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate)." \
+"D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/." \
+"" \
+"Plano:" \
+"1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root)." \
+"2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml." \
+"3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato)." \
+"4) Travar benchmarks como gate." \
+"5) Retomar geração Actions por Studio com validação incremental." \
+> docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+echo "== 1) existe docs/handsoff? =="
+ls -la docs 2>/dev/null || true
+ls -la docs/handsoff 2>/dev/null || true
+
+echo "== 2) existe o arquivo alvo? =="
+F="docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md"
+ls -la "$F" 2>/dev/null || echo "MISSING: $F"
+
+echo "== 3) se existir, mostrar bytes e as 5 ultimas linhas =="
+[ -f "$F" ] && wc -c "$F" && tail -n 5 "$F" || true
+
+echo "== 4) último comando falhou? (exit code do último) =="
+echo "LAST_EXIT=$?"
+
+echo "== 5) zsh tem alias que está quebrando printf/ls? =="
+type printf || true
+type ls || true
+
+echo "== 6) gravar UM TESTE MINIMO (3 linhas) e provar =="
+T="docs/handsoff/__TEST_WRITE__.txt"
+printf '%s\n' "linha1" "linha2" "linha3" > "$T"
+ls -la "$T"
+wc -c "$T"
+cat "$T"
+
+echo "== 7) git status =="
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+# COLE EXATAMENTE ESTE BLOCO. ELE CORRIGE O "Plano:" QUE VOCÊ QUEBROU (Planoia...).
+# Não precisa colar texto manualmente depois.
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 8 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 8 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 8 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# 0) cria o diretório
+mkdir -p docs/handsoff
+
+# 1) APAGA QUALQUER VERSÃO QUEBRADA e REGRAVA LIMPO (texto correto)
+rm -f docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+# 2) PROVA (só pra confirmar que o "Plano" ficou certo)
+echo "== SHOW LAST 12 LINES =="
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+echo "== BYTES =="
+wc -c docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+echo "== GIT STATUS =="
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+rm -f docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+wc -c  docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+rm -f docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+echo "== FILE CONTENT (FULL) =="
+cat docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+echo "== BYTES =="
+wc -c docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+echo "== GIT STATUS =="
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+# 1) regrava limpo (conteúdo correto)
+cat > docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md <<'EOF'
+Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+EOF
+
+# 2) trava como read-only (pra não quebrar sem querer)
+chmod a-w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+# 3) prova
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+p = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+p.write_text(text, encoding="utf-8")
+print("OK_WROTE", p, "BYTES", p.stat().st_size)
+PY
+
+chmod a-w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+python3 - <<'PY'
+from pathlib import Path
+p = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+p.write_text(text, encoding="utf-8")
+print("OK_WROTE", p, "BYTES", p.stat().st_size)
+PY
+
+chmod a-w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+set +H
+unsetopt BANG_HIST 2>/dev/null || true
+setopt INTERACTIVE_COMMENTS 2>/dev/null || true
+
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+# garantir que dá pra regravar (caso já esteja readonly)
+chmod u+w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md 2>/dev/null || true
+
+python3 - <<'PY'
+from pathlib import Path
+p = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+p.write_text(text, encoding="utf-8")
+print("OK_WROTE", p, "BYTES", p.stat().st_size)
+PY
+
+chmod a-w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+chmod u+w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md 2>/dev/null || true
+
+python3 - <<'PY'
+from pathlib import Path
+p = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+p.write_text(text, encoding="utf-8")
+print("OK_WROTE", p, "BYTES", p.stat().st_size)
+PY
+
+chmod a-w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p docs/handsoff
+
+chmod u+w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md 2>/dev/null || true
+
+python3 - <<'PY'
+from pathlib import Path
+p = Path("docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md")
+text = """Estado atual:
+1) DORES (15) já existem em ssot/addons/dores_por_studio/S00..S51/ (553 YAML, 8054 dor_id).
+2) Há sujeira: DORES_Sxx_v1.yaml soltos no root de dores_por_studio/ (contagem vira 74 e quebra auditoria).
+3) ACTIONS (40) completas só para S00 e S01. S02–S51 ainda faltam gerar.
+4) Bench90 e 60/59/60/150/150/100x3 existem em docs, mas falta virar contrato executável (YAML + validator + gate).
+
+Faltas (SSOT de verdade):
+A) Index canônico Addons 40-15-3 (paths, contagens, regras 15/40, proibir YAML solto no root).
+B) Gate bloqueante no Doctor/NoHoles para falhar release se index/auditoria falhar.
+C) Pipeline benchmark-driven como policy executável (YAML + scripts + gate).
+D) Limpeza/movimento dos YAML soltos no root de dores_por_studio/.
+
+Plano:
+1) Criar auditoria executável (15 dores por YAML + 40 actions por YAML + detectar spillover no root).
+2) Gerar ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml.
+3) Ligar no Doctor/NoHoles como gate (FAIL se fora do contrato).
+4) Travar benchmarks como gate.
+5) Retomar geração Actions por Studio com validação incremental.
+"""
+p.write_text(text, encoding="utf-8")
+print("OK_WROTE", p, "BYTES", p.stat().st_size)
+PY
+
+chmod a-w docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 12 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# prova final rápida
+ls -la docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+tail -n 5 docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+
+# commit + push
+git add docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git commit -m "docs(handsoff): addons 40-15-3 ssot gaps + plan (stable handoff)" || true
+git push origin main || true
+
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+git add docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git commit -m "docs(handsoff): addons 40-15-3 ssot gaps + plan (stable handoff)" || true
+git push origin main || true
+
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+git status -sb
+git add docs/handsoff/ADDONS_40_15_3_HANDOFF_TRAVANDO_CHAT.md
+git commit -m "docs(handsoff): addons 40-15-3 ssot gaps + plan (stable handoff)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# 0) confirmar que não tem nada pendente (se estiver limpo, commit anterior foi)
+git status -sb
+
+# 1) criar auditoria executável + gerar INDEX canônico (ADDONS_40_15_3_INDEX_OG10.yaml)
+mkdir -p ssot/registries scripts/ssot
+
+cat > scripts/ssot/audit_addons_40_15_3.sh <<'EOF'
+set -euo pipefail
+
+DORES_ROOT="ssot/addons/dores_por_studio"
+ACTIONS_ROOT="ssot/addons/actions"
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== PWD =="; pwd
+test -d "$DORES_ROOT" || { echo "FAIL: missing $DORES_ROOT"; exit 1; }
+
+# (A) detectar YAML solto no root
+LEGACY="$DORES_ROOT/_legacy_root_files"
+mkdir -p "$LEGACY"
+shopt -s nullglob
+ROOT_YAMLS=("$DORES_ROOT"/DORES_S*.yaml)
+ROOT_SPILL_COUNT="${#ROOT_YAMLS[@]}"
+if [ "$ROOT_SPILL_COUNT" -gt 0 ]; then
+  echo "WARN: root spillover ($ROOT_SPILL_COUNT) -> movendo para $LEGACY"
+  for f in "${ROOT_YAMLS[@]}"; do mv -v "$f" "$LEGACY/"; done
+fi
+
+# (B) contar 15 dores por YAML
+DORES_FILES=0
+DORES_FAIL=0
+DORES_DORID_TOTAL=0
+
+while IFS= read -r f; do
+  DORES_FILES=$((DORES_FILES+1))
+  c="$(grep -c "dor_id:" "$f" 2>/dev/null || true)"
+  DORES_DORID_TOTAL=$((DORES_DORID_TOTAL+c))
+  if [ "$c" -ne 15 ]; then
+    echo "FAIL: dores != 15 -> $f (dor_id=$c)"
+    DORES_FAIL=$((DORES_FAIL+1))
+  fi
+done < <(find "$DORES_ROOT"/S*/ -name "*.yaml" | sort)
+
+# (C) contar 40 actions por YAML (se existir)
+ACTIONS_FILES=0
+ACTIONS_FAIL=0
+ACTIONS_ACTIONID_TOTAL=0
+if [ -d "$ACTIONS_ROOT" ]; then
+  while IFS= read -r f; do
+    ACTIONS_FILES=$((ACTIONS_FILES+1))
+    c="$(grep -c "action_id:" "$f" 2>/dev/null || true)"
+    ACTIONS_ACTIONID_TOTAL=$((ACTIONS_ACTIONID_TOTAL+c))
+    if [ "$c" -ne 40 ]; then
+      echo "WARN: actions != 40 -> $f (action_id=$c)"
+      ACTIONS_FAIL=$((ACTIONS_FAIL+1))
+    fi
+  done < <(find "$ACTIONS_ROOT"/S*/ -name "*.yaml" 2>/dev/null | sort)
+fi
+
+# (D) gerar index canônico
+cat > "$OUT" <<YAML
+version: "og10.addons_40_15_3.index.v1"
+name: "ADDONS_40_15_3_INDEX_OG10"
+paths:
+  dores_root: "$DORES_ROOT"
+  actions_root: "$ACTIONS_ROOT"
+rules:
+  dores_per_api: 15
+  actions_per_api: 40
+  forbid_root_yaml_in_dores_root: true
+audit_snapshot:
+  root_spillover_moved: $ROOT_SPILL_COUNT
+  dores:
+    total_files: $DORES_FILES
+    dor_id_total: $DORES_DORID_TOTAL
+    fails_files_not_15: $DORES_FAIL
+  actions:
+    total_files: $ACTIONS_FILES
+    action_id_total: $ACTIONS_ACTIONID_TOTAL
+    warns_files_not_40: $ACTIONS_FAIL
+gate:
+  # release deve FALHAR se dores != 15
+  fail_if_dores_not_15: true
+YAML
+
+echo "OK: wrote $OUT"
+echo "DORES_FILES=$DORES_FILES DORES_FAIL=$DORES_FAIL ROOT_SPILL_MOVED=$ROOT_SPILL_COUNT"
+echo "ACTIONS_FILES=$ACTIONS_FILES ACTIONS_WARN_NOT_40=$ACTIONS_FAIL"
+
+# gate duro: dores tem que bater 15
+test "$DORES_FAIL" -eq 0 || { echo "FAIL_GATE: dores != 15"; exit 2; }
+
+exit 0
+EOF
+
+bash scripts/ssot/audit_addons_40_15_3.sh
+
+# 2) ver o index gerado
+ls -la ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+tail -n 25 ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+
+# 3) commitar auditoria + index
+git add scripts/ssot/audit_addons_40_15_3.sh ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml ssot/addons/dores_por_studio/_legacy_root_files/ 2>/dev/null || true
+git commit -m "ssot(addons): add audit+index for Addons 40-15-3 (15/40) + fix root spillover" || true
+git push origin main || true
+
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# O PROBLEMA NA SUA TELA: o YAML saiu com variáveis literais ($DORES_FILES etc).
+# Isso acontece quando o heredoc foi '<<YAML' (sem expansão) ou quando a variável não existia no momento.
+# Então vamos REGERAR o index via PYTHON (zero chance de $ virar literal).
+
+python3 - <<'PY'
+from pathlib import Path
+import os, glob, re
+
+DORES_ROOT="ssot/addons/dores_por_studio"
+ACTIONS_ROOT="ssot/addons/actions"
+OUT=Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+# contar spillover
+spill = sorted(glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml")))
+root_spill_count = len(spill)
+
+# contar dores
+d_files = sorted(glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml")))
+dores_files = len(d_files)
+dores_fail = 0
+dores_dorid_total = 0
+
+for f in d_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    dores_dorid_total += c
+    if c != 15:
+        dores_fail += 1
+
+# contar actions (se existir)
+a_files = sorted(glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml")))
+actions_files = len(a_files)
+actions_fail = 0
+actions_actionid_total = 0
+for f in a_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\baction_id:\b", txt))
+    actions_actionid_total += c
+    if c != 40:
+        actions_fail += 1
+
+y = f"""version: "og10.addons_40_15_3.index.v1"
+name: "ADDONS_40_15_3_INDEX_OG10"
+paths:
+  dores_root: "{DORES_ROOT}"
+  actions_root: "{ACTIONS_ROOT}"
+rules:
+  dores_per_api: 15
+  actions_per_api: 40
+  forbid_root_yaml_in_dores_root: true
+audit_snapshot:
+  root_spillover_count: {root_spill_count}
+  dores:
+    total_files: {dores_files}
+    dor_id_total: {dores_dorid_total}
+    fails_files_not_15: {dores_fail}
+  actions:
+    total_files: {actions_files}
+    action_id_total: {actions_actionid_total}
+    warns_files_not_40: {actions_fail}
+gate:
+  fail_if_dores_not_15: true
+"""
+OUT.write_text(y, encoding="utf-8")
+print("OK_WROTE", OUT, "BYTES", OUT.stat().st_size)
+print("SNAP: spill", root_spill_count, "dores_files", dores_files, "dores_fail", dores_fail, "actions_files", actions_files, "actions_warn", actions_fail)
+
+# gate duro local (igual doctor): dores_fail tem que ser 0
+if dores_fail != 0:
+    raise SystemExit(2)
+PY
+
+# provar e commitar só o index corrigido
+tail -n 35 ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+
+git add ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+git commit -m "ssot(addons): fix Addons 40-15-3 index expansion (no literal $ vars)" || true
+git push origin main || true
+
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+python3 - <<'PY'
+from pathlib import Path
+import glob, re, os
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+ACTIONS_ROOT = "ssot/addons/actions"
+OUT = Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+# counts
+spill = sorted(glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml")))
+root_spill_count = len(spill)
+
+d_files = sorted(glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml")))
+dores_files = len(d_files)
+dores_fail = 0
+dores_dorid_total = 0
+for f in d_files:
+  txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+  c = len(re.findall(r"\bdor_id:\b", txt))
+  dores_dorid_total += c
+  if c != 15:
+    dores_fail += 1
+
+a_files = sorted(glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml")))
+actions_files = len(a_files)
+actions_fail = 0
+actions_actionid_total = 0
+for f in a_files:
+  txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+  c = len(re.findall(r"\baction_id:\b", txt))
+  actions_actionid_total += c
+  if c != 40:
+    actions_fail += 1
+
+y = (
+  'version: "og10.addons_40_15_3.index.v1"\n'
+  'name: "ADDONS_40_15_3_INDEX_OG10"\n'
+  'paths:\n'
+  f'  dores_root: "{DORES_ROOT}"\n'
+  f'  actions_root: "{ACTIONS_ROOT}"\n'
+  'rules:\n'
+  '  dores_per_api: 15\n'
+  '  actions_per_api: 40\n'
+  '  forbid_root_yaml_in_dores_root: true\n'
+  'audit_snapshot:\n'
+  f'  root_spillover_count: {root_spill_count}\n'
+  '  dores:\n'
+  f'    total_files: {dores_files}\n'
+  f'    dor_id_total: {dores_dorid_total}\n'
+  f'    fails_files_not_15: {dores_fail}\n'
+  '  actions:\n'
+  f'    total_files: {actions_files}\n'
+  f'    action_id_total: {actions_actionid_total}\n'
+  f'    warns_files_not_40: {actions_fail}\n'
+  'gate:\n'
+  '  fail_if_dores_not_15: true\n'
+)
+OUT.write_text(y, encoding="utf-8")
+
+print("OK_WROTE", str(OUT), "BYTES", OUT.stat().st_size)
+print("SNAP", "spill", root_spill_count, "dores_files", dores_files, "dores_fail", dores_fail, "actions_files", actions_files, "actions_warn", actions_fail)
+
+if dores_fail != 0:
+  raise SystemExit(2)
+PY
+
+echo "== CHECK (must have numbers, no { } and no $ ) =="
+grep -nE '\{|\}|\$' ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml && echo "FAIL: tem placeholder" || echo "OK: sem placeholder"
+tail -n 30 ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+
+git add ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+git commit -m "ssot(addons): rewrite Addons 40-15-3 index with resolved values" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# REESCREVE O INDEX SEM NENHUM { } / $ / PLACEHOLDER. (usa concatenação simples)
+python3 - <<'PY'
+from pathlib import Path
+import glob, re, os
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+ACTIONS_ROOT = "ssot/addons/actions"
+OUT = Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+spill = glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml"))
+root_spill_count = len(spill)
+
+d_files = glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml"))
+dores_files = len(d_files)
+dores_fail = 0
+dores_dorid_total = 0
+for f in d_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    dores_dorid_total += c
+    if c != 15:
+        dores_fail += 1
+
+a_files = glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml"))
+actions_files = len(a_files)
+actions_fail = 0
+actions_actionid_total = 0
+for f in a_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\baction_id:\b", txt))
+    actions_actionid_total += c
+    if c != 40:
+        actions_fail += 1
+
+y = ""
+y += 'version: "og10.addons_40_15_3.index.v1"\n'
+y += 'name: "ADDONS_40_15_3_INDEX_OG10"\n'
+y += "paths:\n"
+y += "  dores_root: " + '"' + DORES_ROOT + '"' + "\n"
+y += "  actions_root: " + '"' + ACTIONS_ROOT + '"' + "\n"
+y += "rules:\n"
+y += "  dores_per_api: 15\n"
+y += "  actions_per_api: 40\n"
+y += "  forbid_root_yaml_in_dores_root: true\n"
+y += "audit_snapshot:\n"
+y += f"  root_spillover_count: {root_spill_count}\n"
+y += "  dores:\n"
+y += f"    total_files: {dores_files}\n"
+y += f"    dor_id_total: {dores_dorid_total}\n"
+y += f"    fails_files_not_15: {dores_fail}\n"
+y += "  actions:\n"
+y += f"    total_files: {actions_files}\n"
+y += f"    action_id_total: {actions_actionid_total}\n"
+y += f"    warns_files_not_40: {actions_fail}\n"
+y += "gate:\n"
+y += "  fail_if_dores_not_15: true\n"
+
+OUT.write_text(y, encoding="utf-8")
+print("OK_WROTE", OUT, "BYTES", OUT.stat().st_size)
+print("SNAP", "spill", root_spill_count, "dores_files", dores_files, "dores_fail", dores_fail, "actions_files", actions_files, "actions_warn", actions_fail)
+PY
+
+# PROVA: não pode ter { } nem $
+echo "== CHECK PLACEHOLDERS =="
+if grep -nE '\{|\}|\$' ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml; then
+  echo "FAIL: ainda tem placeholder"
+  exit 2
+else
+  echo "OK: sem placeholder"
+fi
+
+tail -n 30 ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+
+git add ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+git commit -m "ssot(addons): fix index placeholders (hard rewrite)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+python3 - <<'PY'
+from pathlib import Path
+import glob, re, os
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+ACTIONS_ROOT = "ssot/addons/actions"
+OUT = Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+spill = glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml"))
+root_spillover_count = len(spill)
+
+d_files = glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml"))
+dores_files = len(d_files)
+dores_fail = 0
+dores_dorid_total = 0
+for f in d_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    dores_dorid_total += c
+    if c != 15:
+        dores_fail += 1
+
+a_files = glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml"))
+actions_files = len(a_files)
+actions_fail = 0
+actions_actionid_total = 0
+for f in a_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\baction_id:\b", txt))
+    actions_actionid_total += c
+    if c != 40:
+        actions_fail += 1
+
+y = "\n".join([
+    'version: "og10.addons_40_15_3.index.v1"',
+    'name: "ADDONS_40_15_3_INDEX_OG10"',
+    "paths:",
+    f'  dores_root: "{DORES_ROOT}"',
+    f'  actions_root: "{ACTIONS_ROOT}"',
+    "rules:",
+    "  dores_per_api: 15",
+    "  actions_per_api: 40",
+    "  forbid_root_yaml_in_dores_root: true",
+    "audit_snapshot:",
+    f"  root_spillover_count: {root_spillover_count}",
+    "  dores:",
+    f"    total_files: {dores_files}",
+    f"    dor_id_total: {dores_dorid_total}",
+    f"    fails_files_not_15: {dores_fail}",
+    "  actions:",
+    f"    total_files: {actions_files}",
+    f"    action_id_total: {actions_actionid_total}",
+    f"    warns_files_not_40: {actions_fail}",
+    "gate:",
+    "  fail_if_dores_not_15: true",
+]) + "\n"
+
+OUT.write_text(y, encoding="utf-8")
+print("OK_WROTE", OUT, "BYTES", OUT.stat().st_size)
+PY
+
+echo "== MUST BE CLEAN (no { } and no $) =="
+if grep -nE '\{|\}|\$' ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml; then
+  echo "FAIL: ainda tem placeholder"
+  exit 2
+else
+  echo "OK: limpo"
+fi
+
+tail -n 30 ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p ssot/registries
+
+DORES_ROOT="ssot/addons/dores_por_studio"
+ACTIONS_ROOT="ssot/addons/actions"
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+ROOT_SPILL_COUNT="$(ls -1 "$DORES_ROOT"/DORES_S*.yaml 2>/dev/null | wc -l | tr -d ' ')"
+DORES_FILES="$(find "$DORES_ROOT"/S* -name "*.yaml" 2>/dev/null | wc -l | tr -d ' ')"
+DOR_ID_TOTAL="$(grep -R "dor_id:" "$DORES_ROOT"/S* 2>/dev/null | wc -l | tr -d ' ')"
+
+ACTIONS_FILES="$(find "$ACTIONS_ROOT"/S* -name "*.yaml" 2>/dev/null | wc -l | tr -d ' ')"
+ACTION_ID_TOTAL="$(grep -R "action_id:" "$ACTIONS_ROOT"/S* 2>/dev/null | wc -l | tr -d ' ')"
+
+cat > "$OUT" <<EOF
+version: "og10.addons_40_15_3.index.v1"
+name: "ADDONS_40_15_3_INDEX_OG10"
+paths:
+  dores_root: "$DORES_ROOT"
+  actions_root: "$ACTIONS_ROOT"
+rules:
+  dores_per_api: 15
+  actions_per_api: 40
+  forbid_root_yaml_in_dores_root: true
+audit_snapshot:
+  root_spillover_count: $ROOT_SPILL_COUNT
+  dores:
+    total_files: $DORES_FILES
+    dor_id_total: $DOR_ID_TOTAL
+  actions:
+    total_files: $ACTIONS_FILES
+    action_id_total: $ACTION_ID_TOTAL
+gate:
+  fail_if_dores_not_15: true
+EOF
+
+echo "== CHECK: cannot contain { } or $ =="
+if grep -nE '\{|\}|\$' "$OUT"; then
+  echo "FAIL: placeholder encontrado"
+  exit 2
+else
+  echo "OK: limpo"
+fi
+
+tail -n 25 "$OUT"
+
+git add "$OUT"
+git commit -m "ssot(addons): rebuild Addons 40-15-3 index with resolved values (no placeholders)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p ssot/registries
+
+python3 - <<'PY'
+from pathlib import Path
+import os, glob, re
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+ACTIONS_ROOT = "ssot/addons/actions"
+OUT = Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+root_spill = len(glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml")))
+
+d_files = glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml"))
+dores_files = len(d_files)
+dor_id_total = 0
+dores_fail = 0
+for f in d_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    dor_id_total += c
+    if c != 15:
+        dores_fail += 1
+
+a_files = glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml"))
+actions_files = len(a_files)
+action_id_total = 0
+actions_warn = 0
+for f in a_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\baction_id:\b", txt))
+    action_id_total += c
+    if c != 40:
+        actions_warn += 1
+
+y = (
+    'version: "og10.addons_40_15_3.index.v1"\n'
+    'name: "ADDONS_40_15_3_INDEX_OG10"\n'
+    "paths:\n"
+    '  dores_root: "%s"\n'
+    '  actions_root: "%s"\n'
+    "rules:\n"
+    "  dores_per_api: 15\n"
+    "  actions_per_api: 40\n"
+    "  forbid_root_yaml_in_dores_root: true\n"
+    "audit_snapshot:\n"
+    "  root_spillover_count: %d\n"
+    "  dores:\n"
+    "    total_files: %d\n"
+    "    dor_id_total: %d\n"
+    "    fails_files_not_15: %d\n"
+    "  actions:\n"
+    "    total_files: %d\n"
+    "    action_id_total: %d\n"
+    "    warns_files_not_40: %d\n"
+    "gate:\n"
+    "  fail_if_dores_not_15: true\n"
+) % (DORES_ROOT, ACTIONS_ROOT, root_spill, dores_files, dor_id_total, dores_fail, actions_files, action_id_total, actions_warn)
+
+OUT.write_text(y, encoding="utf-8")
+print("OK_WROTE", OUT, "BYTES", OUT.stat().st_size)
+print("SNAP", "spill", root_spill, "dores_files", dores_files, "dores_fail", dores_fail, "actions_files", actions_files, "actions_warn", actions_warn)
+
+if dores_fail != 0:
+    raise SystemExit(2)
+PY
+
+echo "== CHECK PLACEHOLDERS (must be empty output) =="
+grep -nE '\{|\}|\$' ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml && echo "FAIL: placeholder" || echo "OK: limpo"
+
+tail -n 30 ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# 1) PROVA FINAL: não pode ter { } nem $
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+echo "== CHECK PLACEHOLDERS =="
+if grep -nE '\{|\}|\$' "$OUT"; then
+  echo "FAIL: ainda tem placeholder (NÃO COMMITAR)"
+  exit 2
+else
+  echo "OK: limpo (PODE COMMITAR)"
+fi
+
+# 2) mostrar o YAML real (fim)
+tail -n 35 "$OUT"
+
+# 3) COMMIT + PUSH
+git add "$OUT"
+git commit -m "ssot(addons): finalize Addons 40-15-3 index (resolved values, no placeholders)" || true
+git push origin main || true
+
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# 1) CONFIRMAR SE O INDEX NO SSOT ESTÁ LIMPO (sem { } e sem $)
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== EXISTS? =="
+ls -la "$OUT" || exit 1
+
+echo "== PLACEHOLDER CHECK (must be EMPTY) =="
+if grep -nE '\{|\}|\$' "$OUT"; then
+  echo "FAIL: tem placeholder -> NÃO ESTÁ OK NO SSOT"
+  exit 2
+else
+  echo "OK: limpo -> ESTÁ OK NO SSOT"
+fi
+
+# 2) MOSTRAR O YAML (pra ver números reais)
+echo "== HEAD =="
+head -n 25 "$OUT"
+echo "== TAIL =="
+tail -n 25 "$OUT"
+
+# 3) VER SE JÁ FOI COMMITADO (procura no histórico)
+echo "== GIT LOG (match) =="
+git log -n 10 --oneline -- "$OUT" || true
+
+# 4) SE ESTIVER LIMPO E AINDA NÃO COMMITADO, COMMITAR AGORA
+git status -sb
+git add "$OUT"
+git commit -m "ssot(addons): Addons 40-15-3 index (resolved values, no placeholders)" || true
+git push origin main || true
+
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== 1) EXISTE? =="
+ls -la "$OUT" || exit 1
+
+echo "== 2) CHECK PLACEHOLDERS (não pode ter { } $ e nem %s/%d) =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "FAIL: tem placeholder -> NAO ESTA OK NO SSOT"
+  exit 2
+else
+  echo "OK: sem placeholder -> ESTA OK NO SSOT"
+fi
+
+echo "== 3) TEM QUE TER NUMEROS EM audit_snapshot (root_spillover_count / total_files) =="
+grep -nE 'root_spillover_count: [0-9]+' "$OUT" || { echo "FAIL: root_spillover_count sem numero"; exit 3; }
+grep -nE 'total_files: [0-9]+' "$OUT" | head -n 5 || { echo "FAIL: total_files sem numero"; exit 4; }
+
+echo "== 4) MOSTRAR HEAD/TAIL =="
+head -n 25 "$OUT"
+tail -n 25 "$OUT"
+
+echo "== 5) SE PASSOU, COMMITAR =="
+git status -sb
+git add "$OUT"
+git commit -m "ssot(addons): Addons 40-15-3 index (no placeholders; numeric snapshot)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p ssot/registries
+
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+DORES_ROOT="ssot/addons/dores_por_studio"
+ACTIONS_ROOT="ssot/addons/actions"
+
+ROOT_SPILL="$(ls -1 "$DORES_ROOT"/DORES_S*.yaml 2>/dev/null | wc -l | tr -d ' ')"
+DORES_FILES="$(find "$DORES_ROOT"/S* -name "*.yaml" 2>/dev/null | wc -l | tr -d ' ')"
+DOR_ID_TOTAL="$(grep -R "dor_id:" "$DORES_ROOT"/S* 2>/dev/null | wc -l | tr -d ' ')"
+
+ACTIONS_FILES="$(find "$ACTIONS_ROOT"/S* -name "*.yaml" 2>/dev/null | wc -l | tr -d ' ')"
+ACTION_ID_TOTAL="$(grep -R "action_id:" "$ACTIONS_ROOT"/S* 2>/dev/null | wc -l | tr -d ' ')"
+
+cat > "$OUT" <<EOF
+version: "og10.addons_40_15_3.index.v1"
+name: "ADDONS_40_15_3_INDEX_OG10"
+paths:
+  dores_root: "$DORES_ROOT"
+  actions_root: "$ACTIONS_ROOT"
+rules:
+  dores_per_api: 15
+  actions_per_api: 40
+  forbid_root_yaml_in_dores_root: true
+audit_snapshot:
+  root_spillover_count: $ROOT_SPILL
+  dores:
+    total_files: $DORES_FILES
+    dor_id_total: $DOR_ID_TOTAL
+  actions:
+    total_files: $ACTIONS_FILES
+    action_id_total: $ACTION_ID_TOTAL
+gate:
+  fail_if_dores_not_15: true
+EOF
+
+echo "== CHECK PLACEHOLDERS (must be EMPTY) =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "FAIL: placeholder encontrado (NAO COMMITAR)"
+  exit 2
+else
+  echo "OK: limpo (PODE COMMITAR)"
+fi
+
+echo "== CHECK NUMBERS (must match) =="
+grep -nE 'root_spillover_count: [0-9]+' "$OUT" || exit 3
+grep -nE 'total_files: [0-9]+' "$OUT" | head -n 5 || exit 4
+
+tail -n 35 "$OUT"
+
+git add "$OUT"
+git commit -m "ssot(addons): rebuild Addons 40-15-3 index (numeric, no placeholders)" || true
+git push origin main || true
+git status -sb
+bash -lc 'set -euo pipefail
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p ssot/registries
+
+python3 - <<'"'"'PY'"'"'
+from pathlib import Path
+import glob, re, os
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+ACTIONS_ROOT = "ssot/addons/actions"
+OUT = Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+root_spill = len(glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml")))
+
+d_files = glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml"))
+dores_files = len(d_files)
+dor_id_total = 0
+dores_fail = 0
+for f in d_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    dor_id_total += c
+    if c != 15:
+        dores_fail += 1
+
+a_files = glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml"))
+actions_files = len(a_files)
+action_id_total = 0
+actions_warn = 0
+for f in a_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\baction_id:\b", txt))
+    action_id_total += c
+    if c != 40:
+        actions_warn += 1
+
+y = (
+    'version: "og10.addons_40_15_3.index.v1"\n'
+    'name: "ADDONS_40_15_3_INDEX_OG10"\n'
+    "paths:\n"
+    f'  dores_root: "{DORES_ROOT}"\n'
+    f'  actions_root: "{ACTIONS_ROOT}"\n'
+    "rules:\n"
+    "  dores_per_api: 15\n"
+    "  actions_per_api: 40\n"
+    "  forbid_root_yaml_in_dores_root: true\n"
+    "audit_snapshot:\n"
+    f"  root_spillover_count: {root_spill}\n"
+    "  dores:\n"
+    f"    total_files: {dores_files}\n"
+    f"    dor_id_total: {dor_id_total}\n"
+    f"    fails_files_not_15: {dores_fail}\n"
+    "  actions:\n"
+    f"    total_files: {actions_files}\n"
+    f"    action_id_total: {action_id_total}\n"
+    f"    warns_files_not_40: {actions_warn}\n"
+    "gate:\n"
+    "  fail_if_dores_not_15: true\n"
+)
+
+OUT.write_text(y, encoding="utf-8")
+print("OK_WROTE", OUT, "BYTES", OUT.stat().st_size)
+print("SNAP", "spill", root_spill, "dores_files", dores_files, "dores_fail", dores_fail, "actions_files", actions_files, "actions_warn", actions_warn)
+
+if dores_fail != 0:
+    raise SystemExit(2)
+PY
+
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+echo "== PLACEHOLDER CHECK (must be EMPTY) =="
+if grep -nE "\\{|\\}|\\$|%s|%d" "$OUT"; then
+  echo "FAIL: placeholder encontrado (NAO COMMITAR)"
+  exit 2
+else
+  echo "OK: limpo (PODE COMMITAR)"
+fi
+
+tail -n 25 "$OUT"
+
+git add "$OUT"
+git commit -m "ssot(addons): Addons 40-15-3 index (numeric, no placeholders)" || true
+git push origin main || true
+git status -sb
+'
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+git log -n 20 --oneline -- ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== 0) MOSTRAR O ARQUIVO REAL (se ele tiver { } / $ / %s/%d, está ERRADO) =="
+ls -la "$OUT" || true
+echo "----- HEAD -----"
+head -n 40 "$OUT" 2>/dev/null || true
+echo "----- TAIL -----"
+tail -n 40 "$OUT" 2>/dev/null || true
+
+echo "== 1) CHECK PLACEHOLDERS NO ARQUIVO REAL =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT" 2>/dev/null; then
+  echo "STATUS: ERRADO (tem placeholder) -> VOU REGRAVAR AGORA"
+else
+  echo "STATUS: OK (sem placeholder) -> PODE COMMITAR"
+fi
+
+echo "== 2) REGRAVAR O INDEX 100% NUMÉRICO (sem { } sem $ sem %s/%d) =="
+python3 - <<'PY'
+from pathlib import Path
+import glob, re, os
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+ACTIONS_ROOT = "ssot/addons/actions"
+OUT = Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+root_spill = len(glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml")))
+
+d_files = glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml"))
+dores_files = len(d_files)
+dor_id_total = 0
+dores_fail = 0
+for f in d_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    dor_id_total += c
+    if c != 15:
+        dores_fail += 1
+
+a_files = glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml"))
+actions_files = len(a_files)
+action_id_total = 0
+actions_warn = 0
+for f in a_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\baction_id:\b", txt))
+    action_id_total += c
+    if c != 40:
+        actions_warn += 1
+
+y = (
+'version: "og10.addons_40_15_3.index.v1"\n'
+'name: "ADDONS_40_15_3_INDEX_OG10"\n'
+'paths:\n'
+'  dores_root: "%s"\n'
+'  actions_root: "%s"\n'
+'rules:\n'
+'  dores_per_api: 15\n'
+'  actions_per_api: 40\n'
+'  forbid_root_yaml_in_dores_root: true\n'
+'audit_snapshot:\n'
+'  root_spillover_count: %d\n'
+'  dores:\n'
+'    total_files: %d\n'
+'    dor_id_total: %d\n'
+'    fails_files_not_15: %d\n'
+'  actions:\n'
+'    total_files: %d\n'
+'    action_id_total: %d\n'
+'    warns_files_not_40: %d\n'
+'gate:\n'
+'  fail_if_dores_not_15: true\n'
+) % (DORES_ROOT, ACTIONS_ROOT, root_spill, dores_files, dor_id_total, dores_fail,
+     actions_files, action_id_total, actions_warn)
+
+OUT.write_text(y, encoding="utf-8")
+print("OK_WROTE", OUT, "BYTES", OUT.stat().st_size)
+print("SNAP spill", root_spill, "dores_files", dores_files, "dores_fail", dores_fail, "actions_files", actions_files, "actions_warn", actions_warn)
+
+if dores_fail != 0:
+    raise SystemExit(2)
+PY
+
+echo "== 3) CHECK DE NOVO (agora TEM que ser limpo) =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "FAIL: ainda tem placeholder (PARAR AQUI)"
+  exit 2
+else
+  echo "OK: LIMPO (AGORA PODE COMMITAR)"
+fi
+
+tail -n 35 "$OUT"
+
+echo "== 4) COMMITAR E PUSH =="
+git add "$OUT"
+git commit -m "ssot(addons): fix Addons 40-15-3 index (numeric snapshot; no placeholders)" || true
+git push origin main || true
+
+echo "== 5) HISTÓRICO DO ARQUIVO (pra ver o que escreveu por último) =="
+git log -n 15 --oneline -- "$OUT" || true
+git status -sb
+bash -lc 'set -euo pipefail
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+mkdir -p ssot/registries
+
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+DORES_ROOT="ssot/addons/dores_por_studio"
+ACTIONS_ROOT="ssot/addons/actions"
+
+python3 - <<PY
+from pathlib import Path
+import glob, re, os
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+ACTIONS_ROOT = "ssot/addons/actions"
+OUT = Path("ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml")
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+root_spill = len(glob.glob(os.path.join(DORES_ROOT, "DORES_S*.yaml")))
+
+d_files = glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml"))
+dores_files = len(d_files)
+dor_id_total = 0
+dores_fail = 0
+for f in d_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    dor_id_total += c
+    if c != 15:
+        dores_fail += 1
+
+a_files = glob.glob(os.path.join(ACTIONS_ROOT, "S*", "*.yaml"))
+actions_files = len(a_files)
+action_id_total = 0
+actions_warn = 0
+for f in a_files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\baction_id:\b", txt))
+    action_id_total += c
+    if c != 40:
+        actions_warn += 1
+
+lines = []
+lines.append(\'version: "og10.addons_40_15_3.index.v1"\')
+lines.append(\'name: "ADDONS_40_15_3_INDEX_OG10"\')
+lines.append("paths:")
+lines.append(f\'  dores_root: "{DORES_ROOT}"\')
+lines.append(f\'  actions_root: "{ACTIONS_ROOT}"\')
+lines.append("rules:")
+lines.append("  dores_per_api: 15")
+lines.append("  actions_per_api: 40")
+lines.append("  forbid_root_yaml_in_dores_root: true")
+lines.append("audit_snapshot:")
+lines.append(f"  root_spillover_count: {root_spill}")
+lines.append("  dores:")
+lines.append(f"    total_files: {dores_files}")
+lines.append(f"    dor_id_total: {dor_id_total}")
+lines.append(f"    fails_files_not_15: {dores_fail}")
+lines.append("  actions:")
+lines.append(f"    total_files: {actions_files}")
+lines.append(f"    action_id_total: {action_id_total}")
+lines.append(f"    warns_files_not_40: {actions_warn}")
+lines.append("gate:")
+lines.append("  fail_if_dores_not_15: true")
+
+OUT.write_text("\\n".join(lines) + "\\n", encoding="utf-8")
+print("OK_WROTE", OUT, "BYTES", OUT.stat().st_size)
+print("SNAP", "spill", root_spill, "dores_files", dores_files, "dores_fail", dores_fail, "actions_files", actions_files, "actions_warn", actions_warn)
+
+if dores_fail != 0:
+    raise SystemExit(2)
+PY
+
+echo "== CHECK PLACEHOLDERS (must be EMPTY) =="
+if grep -nE "\\{|\\}|\\$|%s|%d" "$OUT"; then
+  echo "FAIL: placeholder encontrado (NAO COMMITAR)"
+  exit 2
+else
+  echo "OK: limpo (PODE COMMITAR)"
+fi
+
+tail -n 30 "$OUT"
+
+git add "$OUT"
+git commit -m "ssot(addons): Addons 40-15-3 index (numeric snapshot; no placeholders)" || true
+git push origin main || true
+git status -sb
+'
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== PROVA FINAL (arquivo real) =="
+ls -la "$OUT" || exit 1
+
+echo "== PLACEHOLDERS PROIBIDOS: { } $ %s %d =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "FAIL: ainda tem placeholder -> NÃO COMMITAR"
+  exit 2
+else
+  echo "OK: sem placeholder -> COMMITAR AGORA"
+fi
+
+echo "== MOSTRAR TAIL (pra ver números reais) =="
+tail -n 25 "$OUT"
+
+git add "$OUT"
+git commit -m "ssot(addons): Addons 40-15-3 index finalized (numeric, no placeholders)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== MOSTRAR O ARQUIVO REAL (20 linhas do topo e 40 do fim) =="
+ls -la "$OUT" || exit 1
+head -n 20 "$OUT"
+tail -n 40 "$OUT"
+
+echo "== CHECK PLACEHOLDERS PROIBIDOS ({ } $ %s %d) =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "FAIL: placeholder encontrado -> NÃO COMMITAR"
+  exit 2
+else
+  echo "OK: sem placeholder -> COMMITAR"
+fi
+
+git add "$OUT"
+git commit -m "ssot(addons): Addons 40-15-3 index finalized (numeric, no placeholders)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== 1) ARQUIVO REAL =="
+ls -la "$OUT" || exit 1
+
+echo "== 2) PLACEHOLDERS PROIBIDOS ({ } $ %s %d) =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "FAIL: ainda tem placeholder -> NÃO COMMITAR"
+  exit 2
+else
+  echo "OK: sem placeholder"
+fi
+
+echo "== 3) PRECISA TER NÚMEROS =="
+grep -nE 'root_spillover_count: [0-9]+' "$OUT" || { echo "FAIL: sem número"; exit 3; }
+grep -nE 'total_files: [0-9]+' "$OUT" | head -n 5 || { echo "FAIL: sem total_files"; exit 4; }
+
+echo "== 4) HEAD/TAIL DO ARQUIVO REAL =="
+head -n 20 "$OUT"
+tail -n 25 "$OUT"
+
+echo "== 5) JÁ ESTÁ NO GIT? =="
+git log -n 5 --oneline -- "$OUT" || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== FILE =="
+ls -la "$OUT" || exit 1
+
+echo "== PLACEHOLDER CHECK ({ } $ %s %d) =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "RESULT: FAIL (placeholder) -> NÃO ESTÁ OK"
+  exit 2
+else
+  echo "RESULT: OK (sem placeholder)"
+fi
+
+echo "== NUMBERS CHECK =="
+grep -nE 'root_spillover_count: [0-9]+' "$OUT" || { echo "FAIL: sem root_spillover_count numérico"; exit 3; }
+grep -nE 'total_files: [0-9]+' "$OUT" | head -n 5 || { echo "FAIL: sem total_files numérico"; exit 4; }
+
+echo "== HEAD/TAIL =="
+head -n 15 "$OUT"
+tail -n 20 "$OUT"
+
+echo "== GIT LAST COMMITS FOR FILE =="
+git log -n 5 --oneline -- "$OUT" || true
+
+echo "== GIT STATUS =="
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+
+echo "== 1) FILE =="
+ls -la "$OUT" || exit 1
+
+echo "== 2) PLACEHOLDER CHECK ({ } $ %s %d) =="
+if grep -nE '\{|\}|\$|%s|%d' "$OUT"; then
+  echo "RESULT=FAIL_PLACEHOLDER"
+  exit 2
+else
+  echo "RESULT=OK_NO_PLACEHOLDER"
+fi
+
+echo "== 3) NUMBERS CHECK =="
+grep -qE 'root_spillover_count: [0-9]+' "$OUT" && echo "NUMBERS_OK=root_spillover_count" || { echo "RESULT=FAIL_NO_NUMBERS"; exit 3; }
+grep -qE 'total_files: [0-9]+' "$OUT" && echo "NUMBERS_OK=total_files" || { echo "RESULT=FAIL_NO_NUMBERS"; exit 4; }
+
+echo "== 4) GIT STATUS =="
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+git add "$OUT"
+git commit -m "ssot(addons): finalize Addons 40-15-3 index (numeric; no placeholders)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+echo "== FINAL CHECK =="
+git status -sb
+git log -n 3 --oneline -- "$OUT"
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+# 1) cria um gate BLOQUEANTE (sem mexer no run_noholes.sh ainda)
+mkdir -p scripts/ssot
+
+cat > scripts/ssot/gate_addons_40_15_3.sh <<'EOF'
+set -euo pipefail
+
+OUT="ssot/registries/ADDONS_40_15_3_INDEX_OG10.yaml"
+DORES_ROOT="ssot/addons/dores_por_studio"
+ACTIONS_ROOT="ssot/addons/actions"
+
+echo "== GATE: Addons 40-15-3 index (placeholders + números) =="
+
+test -f "$OUT" || { echo "FAIL: missing $OUT"; exit 2; }
+
+# Proibir placeholders
+if grep -nE '\{|\}|\$|%s|%d' "$OUT" >/dev/null; then
+  echo "FAIL: placeholder detectado em $OUT"
+  grep -nE '\{|\}|\$|%s|%d' "$OUT" | head -n 30 || true
+  exit 3
+fi
+
+# Exigir números
+grep -qE 'root_spillover_count: [0-9]+' "$OUT" || { echo "FAIL: root_spillover_count sem número"; exit 4; }
+grep -qE 'total_files: [0-9]+' "$OUT" || { echo "FAIL: total_files sem número"; exit 5; }
+
+# Gate duro: DORES precisam ser 15 por YAML (valida direto no disco)
+python3 - <<'PY'
+from pathlib import Path
+import glob, re, sys, os
+
+DORES_ROOT = "ssot/addons/dores_por_studio"
+files = sorted(glob.glob(os.path.join(DORES_ROOT, "S*", "*.yaml")))
+if not files:
+    print("FAIL: nenhuma dor YAML encontrada em", DORES_ROOT)
+    sys.exit(6)
+
+bad = []
+for f in files:
+    txt = Path(f).read_text(encoding="utf-8", errors="ignore")
+    c = len(re.findall(r"\bdor_id:\b", txt))
+    if c != 15:
+        bad.append((f, c))
+
+if bad:
+    print("FAIL: dores != 15 em", len(bad), "arquivos. Exibindo até 25:")
+    for f,c in bad[:25]:
+        print(" -", f, "dor_id=", c)
+    sys.exit(7)
+
+print("OK: dores=15 por YAML em", len(files), "arquivos")
+PY
+
+echo "OK: gate Addons 40-15-3 PASS"
+EOF
+
+chmod +x scripts/ssot/gate_addons_40_15_3.sh
+
+# 2) cria um runner “NoHoles + AddonsGate” (sem editar seus scripts atuais)
+cat > scripts/ssot/run_noholes_plus_addons.sh <<'EOF'
+set -euo pipefail
+echo "== RUN: run_noholes.sh =="
+bash scripts/ssot/run_noholes.sh
+echo
+echo "== RUN: gate_addons_40_15_3.sh =="
+bash scripts/ssot/gate_addons_40_15_3.sh
+echo
+echo "PASS: run_noholes + addons gate"
+EOF
+
+chmod +x scripts/ssot/run_noholes_plus_addons.sh
+
+# 3) roda agora (prova)
+bash scripts/ssot/run_noholes_plus_addons.sh
+
+# 4) commit + push
+git add scripts/ssot/gate_addons_40_15_3.sh scripts/ssot/run_noholes_plus_addons.sh
+git commit -m "doctor(gate): add Addons 40-15-3 blocking gate + runner (NoHoles+Gate)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+bash scripts/ssot/run_noholes_plus_addons.sh
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+git add scripts/ssot/gate_addons_40_15_3.sh scripts/ssot/run_noholes_plus_addons.sh
+git commit -m "doctor(gate): Addons 40-15-3 blocking gate + runner (NoHoles+Gate)" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+echo "== STATUS =="
+git status -sb
+echo
+echo "== LAST COMMITS (gate/runner) =="
+git log -n 8 --oneline -- scripts/ssot/gate_addons_40_15_3.sh scripts/ssot/run_noholes_plus_addons.sh
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+git log -n 5 --oneline -- scripts/ssot/gate_addons_40_15_3.sh scripts/ssot/run_noholes_plus_addons.sh
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+set -euo pipefail
+
+RUNNER="scripts/ssot/run_noholes_plus_addons.sh"
+
+# 1) escolher alvo (ordem de preferência)
+CANDIDATES=(
+  "scripts/ssot/verify_public_baseline.sh"
+  "scripts/ssot/publish_ssot_public.sh"
+  "scripts/ssot/tag_latest_if_pass.sh"
+  "scripts/ssot/run_noholes.sh"
+)
+
+TARGET=""
+for f in "${CANDIDATES[@]}"; do
+  if [ -f "$f" ]; then TARGET="$f"; break; fi
+done
+
+if [ -z "$TARGET" ]; then
+  echo "FAIL: não achei script alvo em scripts/ssot/. Liste scripts/ssot/ e escolha manual."
+  ls -la scripts/ssot || true
+  exit 2
+fi
+
+echo "TARGET=$TARGET"
+echo "RUNNER=$RUNNER"
+test -f "$RUNNER" || { echo "FAIL: runner não existe ($RUNNER)"; exit 3; }
+
+# 2) backup
+cp -v "$TARGET" "${TARGET}.bak.$(date +%s)"
+
+# 3) inserir hook (idempotente)
+# insere após a linha que chama run_noholes.sh (se existir), senão insere no final
+if grep -q 'run_noholes_plus_addons\.sh' "$TARGET"; then
+  echo "OK: hook já existe no TARGET (nada a fazer)"
+else
+  if grep -q 'bash scripts/ssot/run_noholes\.sh' "$TARGET"; then
+    perl -i -pe '
+      if (!$done && $_ =~ /bash\s+scripts\/ssot\/run_noholes\.sh/) {
+        $done=1;
+        $_ .= "\n# Addons 40-15-3 gate (NoHoles + Addons)\nif [ -x scripts/ssot/run_noholes_plus_addons.sh ]; then\n  bash scripts/ssot/run_noholes_plus_addons.sh\nfi\n";
+      }
+    ' "$TARGET"
+    echo "OK: hook inserido após run_noholes.sh"
+  else
+    cat >> "$TARGET" <<'EOF'
+
+# Addons 40-15-3 gate (NoHoles + Addons)
+if [ -x scripts/ssot/run_noholes_plus_addons.sh ]; then
+  bash scripts/ssot/run_noholes_plus_addons.sh
+fi
+EOF
+    echo "WARN: não achei chamada run_noholes.sh; hook anexado no final"
+  fi
+fi
+
+# 4) sanity
+bash -n "$TARGET" && echo "OK: bash -n passou"
+
+# 5) prova rápida do runner (opcional, mas recomendado)
+bash scripts/ssot/run_noholes_plus_addons.sh
+
+# 6) commit + push
+git add "$TARGET"
+git commit -m "doctor(gate): plug Addons runner into release flow (${TARGET})" || true
+git push origin main || true
+git status -sb
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+echo "== LISTA SCRIPTS (top 60) =="
+find scripts -maxdepth 3 -type f \( -name "*.sh" -o -name "*.py" \) | sort | head -n 60
+
+echo
+echo "== PROCURAR QUEM CHAMA run_noholes OU verify/publish/tag =="
+rg -n "run_noholes_plus_addons|run_noholes\.sh|verify_public|publish_ssot|tag_latest|verify_public_baseline" scripts 2>/dev/null || true
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+echo "== 1) SCRIPTS (top 80) =="
+find scripts -maxdepth 5 -type f \( -name "*.sh" -o -name "*.py" \) | sort | head -n 80
+
+echo
+echo "== 2) WORKFLOWS / MAKEFILES / TASKFILES (se existirem) =="
+ls -la .github/workflows 2>/dev/null || true
+ls -la Makefile justfile Taskfile.yml package.json 2>/dev/null || true
+
+echo
+echo "== 3) QUEM CHAMA run_noholes / verify / publish / tag? =="
+rg -n "run_noholes_plus_addons|run_noholes\.sh|verify_public|verify_baseline|publish_ssot|tag_latest|ssot_public" . 2>/dev/null || true
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+echo "== 1) SCRIPTS (top 80) =="
+find scripts -maxdepth 5 -type f \( -name "*.sh" -o -name "*.py" \) | sort | head -n 80
+
+echo
+echo "== 2) WORKFLOWS / MAKEFILES / TASKFILES (se existirem) =="
+ls -la .github/workflows 2>/dev/null || true
+ls -la Makefile justfile Taskfile.yml package.json 2>/dev/null || true
+
+echo
+echo "== 3) QUEM CHAMA run_noholes / verify / publish / tag? =="
+rg -n "run_noholes_plus_addons|run_noholes\.sh|verify_public|verify_baseline|publish_ssot|tag_latest|ssot_public" . 2>/dev/null || true
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+rg -n "run_noholes_plus_addons|run_noholes\.sh|verify_public|verify_baseline|publish_ssot|tag_latest|ssot_public" . 2>/dev/null || true
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+rg -n --hidden --no-ignore --glob '!.git/*' "run_noholes_plus_addons|run_noholes\.sh|verify_public|verify_baseline|publish_ssot|tag_latest|ssot_public" . | head -n 20
+cd "$HOME/Projects/gitnanu-ssot-public" || exit 1
+
+OUT="/tmp/rg_target_hits.txt"
+: > "$OUT"
+
+# roda o rg "na unha" (sem alias), salva tudo, e mostra só o começo
+command rg -n --hidden --no-ignore --glob '!.git/*' \
+"run_noholes_plus_addons|run_noholes\.sh|verify_public|verify_baseline|publish_ssot|tag_latest|ssot_public" . \
+> "$OUT" 2>&1 || true
+
+echo "== FIRST 20 HITS =="
+sed -n '1,20p' "$OUT"
+
+echo
+echo "== COUNT =="
+wc -l "$OUT"
+OUT="/tmp/rg_target_hits.txt"
+echo "== FIRST 30 =="
+sed -n '1,30p' "$OUT"
+echo
+echo "== COUNT =="
+wc -l "$OUT"
+OUT="/tmp/rg_target_hits.txt"
+
+echo "== EXISTS? =="
+ls -la "$OUT" || exit 1
+
+echo
+echo "== COUNT =="
+wc -l "$OUT"
+
+echo
+echo "== FIRST 30 =="
+sed -n '1,30p' "$OUT"
