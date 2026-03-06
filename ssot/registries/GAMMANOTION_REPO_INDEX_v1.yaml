@@ -1,0 +1,43 @@
+version: 1
+generated_at_utc: 2026-03-06T23:27:28Z
+files_scanned: 686
+matched: 522
+gammanote_actions: 40
+gammanote_dores: 15
+prm_actions: 40
+prm_dores: 15
+core_files:
+  - path: ssot/addons/actions/S00/ACTIONS_S00_gammanote_v1.yaml
+    exists: true
+  - path: ssot/addons/dores_por_studio/S00/DORES_S00_gammanote_v1.yaml
+    exists: true
+  - path: ssot/addons/actions/S00/ACTIONS_S00_prm_v1.yaml
+    exists: true
+  - path: ssot/addons/dores_por_studio/S00/DORES_S00_prm_v1.yaml
+    exists: true
+  - path: ssot/connectors/CONNECTORS_MASTER_v1_S00_S17.yaml
+    exists: true
+  - path: ssot/workflows/WORKFLOW_REGISTRY_v1.yaml
+    exists: true
+  - path: ssot/basileia/BASILEIA_52_v1.yaml
+    exists: true
+  - path: docs/NANUCAI_OG10_SSOT_MESTRE_v9.md
+    exists: true
+missing_refs:
+  - scripts/gates/validate_evidence_pack.ts
+  - ssot/adapters/MOUSEADAPTER_REGISTRY.yaml
+  - ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml
+  - ssot/contracts/EVIDENCE_PACK_TEMPLATE_v2.yaml
+  - ssot/contracts/TEAM_EVIDENCE_EXTENSIONS.yaml
+  - ssot/ide/export_policy.yaml
+  - ssot/ide/ide_build_pipeline.yaml
+  - ssot/ide/mcp_gateway_contract.yaml
+  - ssot/mouse/mouse_actions_registry.yaml
+  - ssot/mouse/mouse_context.schema.json
+  - ssot/policies/SSOT_VS_EVIDENCE_POLICY.yaml
+  - ssot/prm/
+  - ssot/prm/council_verdict.schema.json
+present_refs:
+  - ssot/gndrive/EVIDENCE_CHAIN_SCHEMA_v1.yaml
+  - ssot/gndrive/GNDRIVE_STRUCTURE_SPEC_v1.yaml
+  - ssot/gndrive/PROJECTPACK_SCHEMA_v1.yaml
