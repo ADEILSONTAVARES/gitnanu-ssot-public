@@ -1,0 +1,6 @@
+version: v1
+studio_id: S02
+title: Capo Aberto Exposure Matrix
+direct: [nanucai.prm, nanucai.gammanote, nanucai.gndrive, claudecode, codex, cursor, trae.solo, manus, abacus, lovable, base44, replit]
+grouped: [openai.gpt, anthropic.claude, google.gemini, xai.kimi, minimax.family, runway, kling, sora, veo3, heygen, d_id, capcut, gpt.image, flux, elevenlabs, whisper, suno, udio, google.slides, n8n, make, zapier, cloudflare.workers, hetzner.vps, ga4, stripe, whatsapp.cloud, firecrawl, notebooklm]
+advanced: [cursor.ide, github.copilot, antigravity, codeium, tabnine, github.actions, github.repos, playwright, playwright.test, semgrep, snyk, sonarqube, sentry, docker, docker.build, docker.registry, npm.registry, pypi.registry, dependabot, release.drafter, changelog.generator, line.profiler, kernprof, nanucai.gitnanu, rag3.trim.twin, cache.quantum]

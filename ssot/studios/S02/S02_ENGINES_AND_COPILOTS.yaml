@@ -1,0 +1,20 @@
+version: v1
+studio_id: S02
+title: Engines and Copilots Registry
+engines:
+  - {engine_id: prm, display_name: Professor Mestre, role: orchestrator, mode: [voice_first, dev_first]}
+  - {engine_id: claudecode, display_name: ClaudeCode, role: dev_copilot, mode: [dev_first]}
+  - {engine_id: codex, display_name: Codex, role: dev_copilot, mode: [dev_first]}
+  - {engine_id: cursor, display_name: Cursor, role: ide_surface, mode: [dev_first]}
+  - {engine_id: trae_solo, display_name: Trae Solo, role: ide_surface, mode: [dev_first]}
+  - {engine_id: manus, display_name: Manus, role: builder, mode: [voice_first, dev_first]}
+  - {engine_id: abacus, display_name: Abacus, role: builder, mode: [voice_first, dev_first]}
+  - {engine_id: lovable, display_name: Lovable, role: ui_builder, mode: [dev_first]}
+  - {engine_id: base44, display_name: Base44, role: ui_builder, mode: [dev_first]}
+  - {engine_id: replit, display_name: Replit, role: runtime_builder, mode: [voice_first, dev_first]}
+  - {engine_id: antigravity, display_name: Antigravity, role: experimental_builder, mode: [dev_first]}
+  - {engine_id: google_gemini, display_name: Gemini, role: council_llm, mode: [voice_first, dev_first]}
+  - {engine_id: anthropic_claude, display_name: Claude Family, role: council_llm, mode: [voice_first, dev_first]}
+  - {engine_id: openai_gpt, display_name: GPT Family, role: council_llm, mode: [voice_first, dev_first]}
+  - {engine_id: kimi, display_name: Kimi, role: council_llm, mode: [voice_first, dev_first]}
+  - {engine_id: minimax, display_name: MiniMax, role: council_llm, mode: [voice_first, dev_first]}
