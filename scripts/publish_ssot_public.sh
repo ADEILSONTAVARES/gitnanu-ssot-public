@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# == GATE: NoHoles + Addons (OG10) ==
+echo "== GATE: run_noholes_plus_addons =="
+bash scripts/ssot/run_noholes_plus_addons.sh
+
+
 # Publisher SSOT_PUBLIC (layout-agnostic + receipt local-only)
 PUB_REPO="ADEILSONTAVARES/gitnanu-ssot-public"
 WORK="/tmp/gitnanu-ssot-public"
