@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "mouse_context.schema.json",
+  "title": "MouseContext",
+  "description": "Schema canonico para contexto de sessao do Mouse Inteligente OG10",
+  "type": "object",
+  "required": ["session_id", "mode", "studio", "user_intent", "budget", "surface"],
+  "properties": {
+    "session_id": {"type": "string", "pattern": "^MC-[A-Z0-9]+-[0-9]{4}$"},
+    "mode": {"type": "string", "enum": ["M01_VISUAL_PATCH","M02_MEDIA_PATCH","M03_PROTOTYPE_PATCH","M04_CODE_PATCH","M05_INSPECT","M06_EXPLAIN","M07_PROPAGATION"]},
+    "studio": {"type": "string", "pattern": "^S[0-5][0-9]$"},
+    "user_intent": {"type": "string", "minLength": 5},
+    "budget": {
+      "type": "object",
+      "required": ["l0_pct", "l1_pct"],
+      "properties": {
+        "l0_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "l1_pct": {"type": "number", "minimum": 0, "maximum": 100}
+      }
+    },
+    "surface": {"type": "string"},
+    "engine_hint": {"type": "string", "enum": ["M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13"]},
+    "risk_level": {"type": "string", "enum": ["LOW","MEDIUM","HIGH","CRITICAL"]},
+    "pac_id": {"type": "string"},
+    "timestamp": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
