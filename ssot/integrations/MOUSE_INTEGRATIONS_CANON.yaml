@@ -1,0 +1,89 @@
+integration_id: MOUSE_INTEGRATIONS_CANON
+version: v1
+description: Mapeamento canonico das integracoes do Mouse Inteligente com PrM GammaNotion GNDrive GitNanu TeamsWork10X e CoWork10X
+mouse_ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md
+integrations:
+  PrM:
+    role: super-agente orquestrador soberano
+    relationship: Mouse e subsistema visual do PrM
+    mouse_calls_prm:
+      - {trigger: task_requires_orchestration, call: prm.orchestrate_mouse_patch, layer: L1}
+      - {trigger: studio_routing_needed, call: prm.route_to_studio, layer: L0}
+      - {trigger: subagent_delegation, call: prm.delegate_to_subagent, layer: L1}
+    prm_calls_mouse:
+      - {trigger: visual_patch_needed, call: mouse.execute_patch, mode: M01_VISUAL_PATCH}
+      - {trigger: media_patch_needed, call: mouse.execute_patch, mode: M02_MEDIA_PATCH}
+      - {trigger: prototype_needed, call: mouse.execute_patch, mode: M03_PROTOTYPE_PATCH}
+      - {trigger: code_patch_needed, call: mouse.execute_patch, mode: M04_CODE_PATCH}
+    handoff_rule: PrM e o cerebro - Mouse nunca vira dono da arquitetura
+    studios_shared: [S00,S01,S02,S03,S04,S07,S11,S12,S15,S22,S23]
+  GammaNotion:
+    role: cockpit e contexto do projeto
+    mouse_uses_gammanotion:
+      - {trigger: context_needed, call: service.search.gammanotion, layer: L0, shadow: 0.3-0.6pct}
+      - {trigger: studio_context_lookup, call: service.search.gammanotion, layer: L0}
+      - {trigger: project_policy_check, call: service.search.gammanotion, layer: L0}
+    mouse_never_writes_to: GammaNotion
+    data_written_by: PrM_via_GitNanu
+    studios_primary: [S00,S09,S11,S33]
+  GNDrive:
+    role: vault de evidence e artefatos
+    mouse_uses_gndrive:
+      - {trigger: evidence_tag_needed, call: service.search.gndrive, layer: L0, rule: COCA-COLA-LOCAL-ONLY}
+      - {trigger: context_grounding, call: service.search.gndrive, layer: L0, shadow: 0.3-0.6pct}
+      - {trigger: artifact_store, call: gndrive.write_artifact, layer: L0, rule: pointer_only_in_chat}
+      - {trigger: pac_checkpoint, call: gndrive.save_pac, layer: L0}
+    paths:
+      project_context: GNDRIVE/Projects/{id}/project.context.md
+      job_request: GNDRIVE/Projects/{id}/runs/{run}/job_request.json
+      artifacts: GNDRIVE/Projects/{id}/runs/{run}/artifact_manifest.json
+      evidence: GNDRIVE/Projects/{id}/runs/{run}/evidence_pack.json
+    rule_raw_never_in_chat: true
+    writer: GitNanu_only
+  GitNanu:
+    role: unico escritor autorizado do repo SSOT
+    rules:
+      - GitNanu e o unico writer do gitnanu-ssot-public
+      - Mouse nunca faz git push direto
+      - Toda mudanca de SSOT passa por GitNanu
+      - CI gate obrigatorio antes de merge
+    tribunal_role: true
+    audit_all_mouse_outputs: true
+  TeamsWork10X:
+    role: pipeline de execucao de tarefas do Mouse
+    pipeline_file: ssot/workflows/TEAMSWORK10_MOUSE_PIPELINE.yaml
+    steps_owned: [01_intake,02_route,03_execute,04_score,05_doctor2,06_evidence,07_pac,08_deliver]
+    on_failure: fail_closed
+    on_success: log_to_evidence_ledger
+    mouse_mode_mapping:
+      visual_task: M01_VISUAL_PATCH
+      media_task: M02_MEDIA_PATCH
+      prototype_task: M03_PROTOTYPE_PATCH
+      code_task: M04_CODE_PATCH
+  CoWork10X:
+    role: MCP soberano de desktop e automacao de arquivos
+    mcp_config: cowork10x-mcp/mcp.config.yaml
+    writer: GitNanu
+    mouse_triggered_by_cowork:
+      - {trigger: local_image_edit, call: mouse.execute_patch, mode: M01_VISUAL_PATCH}
+      - {trigger: local_video_edit, call: mouse.execute_patch, mode: M02_MEDIA_PATCH}
+      - {trigger: local_pdf_edit, call: mouse.execute_patch, engine: M10, mode: M01_VISUAL_PATCH}
+    prm_handoff_rule: PrM assume apos 3x pass sem intervencao
+    gate_gitnanu_single_writer: true
+integration_rules:
+  - Mouse nunca escreve direto no GammaNotion
+  - Mouse nunca faz push direto no Git
+  - Evidence sempre vai para GNDrive via pointer
+  - Raw nunca em chat em nenhuma integracao
+  - PrM e o cerebro - Mouse e o executor visual
+  - Doctor2 obrigatorio antes de entregar para qualquer sistema
+  - Score gate 8.5 minimo antes de qualquer integracao receber o output
+sovereignty:
+  brain: PrM
+  visual_executor: Mouse_Inteligente
+  writer_tribunal: GitNanu
+  task_pipeline: TeamsWork10X
+  local_automation: CoWork10X
+  context_cockpit: GammaNotion
+  evidence_vault: GNDrive
+ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md
