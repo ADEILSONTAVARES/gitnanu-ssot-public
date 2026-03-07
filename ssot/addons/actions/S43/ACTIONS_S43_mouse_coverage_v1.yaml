@@ -1,0 +1,46 @@
+studio: S43
+studio_name: NO_HOLES_CHECK
+api: mouse_coverage
+version: v1
+total_actions: 40
+actions:
+  - {id: A-S43-MC-01, name: Verify All 13 Families Present, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-02, name: Verify All 52 Studios Mapped, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-03, name: Verify 520 Functions Total, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-04, name: Verify 3 Universal Skills Present, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-05, name: Verify Schema mouse_context Valid, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-06, name: Verify Schema mouse_patch Valid, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-07, name: Verify Schema evidence_pack Valid, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-08, name: Verify Schema score_record Valid, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-09, name: Verify ENGINE_REGISTRY Complete, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-10, name: Verify STUDIO_ENGINE_MAP 52 Studios, layer: L0, priority: CRITICAL}
+  - {id: A-S43-MC-11, name: Verify Shadow Band per Family, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-12, name: Verify Score Gate Minimum 8.5, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-13, name: Verify Doctor2 Gate Present, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-14, name: Verify PAC Checkpoint Present, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-15, name: Verify Evidence Tag on All Outputs, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-16, name: Verify Raw Never in Chat Rule, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-17, name: Verify COCA-COLA LOCAL ONLY, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-18, name: Verify GitNanu Single Writer, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-19, name: Verify OG10 Formula Correct, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-20, name: Verify 12 Rules Present, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-21, name: Check Surface Coverage 15 Surfaces, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-22, name: Check Video Engine Registry, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-23, name: Check Code Engine Registry, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-24, name: Check Skill L1 Registry, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-25, name: Check Families Registry File, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-26, name: Validate M01 40 Functions, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-27, name: Validate M02 40 Functions, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-28, name: Validate M13 40 Functions, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-29, name: Check CI Gate Active, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-30, name: Check Master SSOT Doc Present, layer: L1, priority: HIGH}
+  - {id: A-S43-MC-31, name: Diff Report vs Previous Version, layer: L1, priority: MEDIUM}
+  - {id: A-S43-MC-32, name: Count Zero Hallucination Violations, layer: L1, priority: MEDIUM}
+  - {id: A-S43-MC-33, name: Count Zero Bug Reports, layer: L1, priority: MEDIUM}
+  - {id: A-S43-MC-34, name: Count Zero Hole Reports, layer: L1, priority: MEDIUM}
+  - {id: A-S43-MC-35, name: Generate Coverage Report, layer: L1, priority: MEDIUM}
+  - {id: A-S43-MC-36, name: Export Coverage Badge, layer: L1, priority: MEDIUM}
+  - {id: A-S43-MC-37, name: Alert on Any Gap Found, layer: L0, priority: MEDIUM}
+  - {id: A-S43-MC-38, name: Lock Branch if Gap Found, layer: L0, priority: MEDIUM}
+  - {id: A-S43-MC-39, name: Log Coverage Run to Evidence, layer: L0, priority: MEDIUM}
+  - {id: A-S43-MC-40, name: PAC Checkpoint Coverage Run, layer: L0, priority: MEDIUM}

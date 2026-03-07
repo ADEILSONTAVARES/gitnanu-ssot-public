@@ -1,0 +1,62 @@
+runbook_id: ANTIGRAVITY_RUNBOOK
+version: v1
+description: Runbook operacional do sistema Antigravity — debug, recovery, escalation
+sections:
+  - id: RB01
+    name: Score Below Minimum
+    trigger: og10 < 8.5
+    steps:
+      - run ANTIGRAVITY_DEBUG_DOCTOR_SKILL
+      - check F V E individually
+      - patch lowest scoring component
+      - rerun and rescore
+      - if still < 8.5 after 3 retries escalate
+  - id: RB02
+    name: Doctor2 Failure
+    trigger: doctor2_passed == false
+    steps:
+      - capture doctor2 error log
+      - identify failure type: quality hallucination evidence
+      - apply targeted fix
+      - rerun doctor2
+      - log result to evidence ledger
+  - id: RB03
+    name: Hallucination Detected
+    trigger: hallucination_flag == true
+    steps:
+      - immediately block output
+      - capture hallucination evidence
+      - trace to source engine and prompt
+      - apply T1-T4 anti-hallucination locks
+      - rerun from scratch
+      - never deliver hallucinated output
+  - id: RB04
+    name: Evidence Missing
+    trigger: evidence_missing == true
+    steps:
+      - block delivery
+      - rerun evidence tagging
+      - verify vault pointer
+      - confirm COCA-COLA LOCAL ONLY compliance
+      - re-deliver with evidence
+  - id: RB05
+    name: Shadow Band Exceeded
+    trigger: shadow_pct > shadow_band_max
+    steps:
+      - log shadow violation
+      - switch to lower-shadow engine
+      - rerun patch
+      - log new shadow value
+  - id: RB06
+    name: CI Gate Failure
+    trigger: github_ci_failed == true
+    steps:
+      - check which validator failed
+      - fix the schema or registry issue
+      - recommit and repush
+      - verify all 10 validators green
+escalation:
+  contact: GitNanu
+  method: issue_on_repo
+  priority: P1
+ssot_pointer: ssot/skills/ANTIGRAVITY_DEBUG_DOCTOR_SKILL.md

@@ -1,0 +1,48 @@
+workflow_id: TEAMSWORK10_MOUSE_PIPELINE
+version: v1
+description: Pipeline TeamsWork10 para execucao do Mouse Inteligente OG10
+trigger: mouse_patch_request
+steps:
+  - step: 01_intake
+    skill: U0
+    layer: L0
+    actions: [parse_request, validate_context, check_budget, assess_risk]
+    gate: context_valid OR block
+  - step: 02_route
+    skill: U0
+    layer: L0
+    actions: [select_mode, select_engine, select_surface]
+    gate: engine_selected OR block
+  - step: 03_execute
+    skill: U1
+    layer: L0_or_L1
+    actions: [run_engine, apply_patch, log_shadow]
+    gate: output_generated OR retry_max_3
+  - step: 04_score
+    skill: U1
+    layer: L0
+    actions: [compute_F, compute_V, compute_E, compute_og10]
+    gate: og10_ge_8.5 OR reject
+  - step: 05_doctor2
+    skill: U2
+    layer: L0
+    actions: [run_doctor2, check_quality, flag_issues]
+    gate: doctor2_passed OR block
+  - step: 06_evidence
+    skill: U2
+    layer: L0
+    actions: [tag_evidence, write_vault_pointer, never_raw_in_chat]
+    gate: evidence_tagged OR block
+  - step: 07_pac
+    skill: U2
+    layer: L0
+    actions: [pac_checkpoint, save_state, log_run]
+    gate: always_pass
+  - step: 08_deliver
+    skill: U2
+    layer: L0
+    actions: [deliver_output, present_pointer, close_patch]
+    gate: always_pass
+on_failure: fail_closed
+on_success: log_to_evidence_ledger
+ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md

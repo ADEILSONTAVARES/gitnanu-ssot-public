@@ -1,0 +1,17 @@
+skill_id: ANTIGRAVITY_DEBUG_DOCTOR_SKILL
+manifest_version: v1
+layer: L0
+auto_trigger:
+  - condition: og10_score < 8.5
+  - condition: doctor2_passed == false
+  - condition: hallucination_flag == true
+  - condition: evidence_missing == true
+max_retries: 3
+escalate_after: 3
+fail_mode: closed
+outputs:
+  - debug_report
+  - corrected_output
+  - new_score
+  - evidence_diff
+ssot_pointer: ssot/skills/ANTIGRAVITY_DEBUG_DOCTOR_SKILL.md

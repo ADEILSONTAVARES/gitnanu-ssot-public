@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "mouse_patch.schema.json",
+  "title": "MousePatch",
+  "description": "Schema canonico para patches do Mouse Inteligente OG10",
+  "type": "object",
+  "required": ["patch_id", "mode", "engine", "surface", "input", "output", "score", "evidence"],
+  "properties": {
+    "patch_id": {"type": "string", "pattern": "^MP-[A-Z0-9]+-[0-9]{4}$"},
+    "mode": {"type": "string", "enum": ["M01_VISUAL_PATCH","M02_MEDIA_PATCH","M03_PROTOTYPE_PATCH","M04_CODE_PATCH","M05_INSPECT","M06_EXPLAIN","M07_PROPAGATION"]},
+    "engine": {"type": "string", "enum": ["M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13"]},
+    "surface": {"type": "string"},
+    "input": {
+      "type": "object",
+      "required": ["type", "pointer"],
+      "properties": {
+        "type": {"type": "string", "enum": ["image","video","pdf","code","text","3d"]},
+        "pointer": {"type": "string", "description": "Raw never in chat — pointer only"}
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["type", "pointer", "format"],
+      "properties": {
+        "type": {"type": "string"},
+        "pointer": {"type": "string"},
+        "format": {"type": "string"}
+      }
+    },
+    "score": {
+      "type": "object",
+      "required": ["F", "V", "E", "og10"],
+      "properties": {
+        "F": {"type": "number", "minimum": 0, "maximum": 10},
+        "V": {"type": "number", "minimum": 0, "maximum": 10},
+        "E": {"type": "number", "minimum": 0, "maximum": 10},
+        "og10": {"type": "number", "minimum": 0, "maximum": 10,
+                 "description": "F*0.45 + V*0.35 + E*0.20"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["tag", "vault_pointer"],
+      "properties": {
+        "tag": {"type": "string"},
+        "vault_pointer": {"type": "string",
+                          "description": "COCA-COLA LOCAL ONLY — never public repo"}
+      }
+    },
+    "shadow_pct": {"type": "string"},
+    "layer": {"type": "string", "enum": ["L0","L1","L2","L3"]},
+    "doctor2_passed": {"type": "boolean"},
+    "timestamp": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
