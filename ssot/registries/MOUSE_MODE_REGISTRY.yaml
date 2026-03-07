@@ -1,10 +1,15 @@
 registry_id: MOUSE_MODE_REGISTRY
-version: '10.0'
+version: v1
+description: Registry canonico de todos os modos do Mouse Inteligente OG10
 modes:
-  M01_VISUAL_PATCH:  {type: central, scope: layout_texto_cor_tipografia_espaco_responsividade_grid}
-  M02_MEDIA_PATCH:   {type: central, scope: imagem_video_audio_timeline_cortes_legendas_thumbnails}
-  M03_PROTOTYPE_PATCH: {type: central, scope: fluxos_interacoes_estados_variantes_navegacao_AB}
-  M04_CODE_PATCH:    {type: central, scope: arquivo_funcao_handler_state_schema_query_rota}
-  M05_INSPECT:       {type: auxiliary, scope: estrutura_dependencias_bindings_lineage_impacto}
-  M06_EXPLAIN:       {type: auxiliary, scope: explicacao_trecho_patch_impacto_risco}
-  M07_PROPAGATION:   {type: auxiliary, scope: corrige_um_corrige_todos_com_policy}
+  central:
+    - {mode_id: M01_VISUAL_PATCH, title: Visual Patch Mode, score_target: 9.8, schema: image_patch.schema.json, layer: L1}
+    - {mode_id: M02_MEDIA_PATCH, title: Media Patch Mode, score_target: 9.8, schema: video_patch.schema.json, layer: L1}
+    - {mode_id: M03_PROTOTYPE_PATCH, title: Prototype Patch Mode, score_target: 9.7, schema: prototype_patch.schema.json, layer: L1}
+    - {mode_id: M04_CODE_PATCH, title: Code Patch Mode, score_target: 9.9, schema: code_patch.schema.json, layer: L1}
+  auxiliary:
+    - {mode_id: M05_INSPECT, title: Inspect Mode, score_target: 9.9, layer: L0}
+    - {mode_id: M06_EXPLAIN, title: Explain Mode, score_target: 9.7, layer: L0}
+    - {mode_id: M07_PROPAGATION, title: Propagation Mode, score_target: 9.8, layer: L1}
+gates_required_all_modes: [G1,G2,G3,G4,G5,G6,G7,G8,G9,G10]
+ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md

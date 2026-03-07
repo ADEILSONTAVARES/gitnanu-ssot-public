@@ -1,30 +1,91 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "mouse_audit_trail.schema.json",
   "title": "MouseAuditTrail",
   "type": "object",
   "required": [
-    "trail_id",
+    "audit_id",
     "session_id",
+    "patch_id",
+    "mode",
+    "studio",
+    "surface",
     "events",
-    "final_state"
+    "verdict"
   ],
   "properties": {
-    "trail_id": {
-      "type": "string"
+    "audit_id": {
+      "type": "string",
+      "pattern": "^AT-[A-Z0-9]+-[0-9]{4}$"
     },
     "session_id": {
       "type": "string"
     },
-    "events": {
-      "type": "array"
+    "patch_id": {
+      "type": "string"
     },
-    "final_state": {
+    "mode": {
       "type": "string",
       "enum": [
-        "COMMITTED",
-        "ROLLED_BACK",
-        "PARTIAL"
+        "M01_VISUAL_PATCH",
+        "M02_MEDIA_PATCH",
+        "M03_PROTOTYPE_PATCH",
+        "M04_CODE_PATCH",
+        "M05_INSPECT",
+        "M06_EXPLAIN",
+        "M07_PROPAGATION"
       ]
+    },
+    "studio": {
+      "type": "string",
+      "pattern": "^S[0-5][0-9]$"
+    },
+    "surface": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ts",
+          "event",
+          "actor"
+        ],
+        "properties": {
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "event": {
+            "type": "string"
+          },
+          "actor": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "PASS_STRICT",
+        "PASS_CI",
+        "FAIL",
+        "FAIL_STRICT",
+        "CONDITIONAL"
+      ]
+    },
+    "evidence_ref": {
+      "type": "string"
+    },
+    "gitnanu_commit": {
+      "type": "string"
     }
-  }
+  },
+  "additionalProperties": false
 }

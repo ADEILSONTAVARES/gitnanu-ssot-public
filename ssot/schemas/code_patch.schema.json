@@ -1,47 +1,106 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "code_patch.schema.json",
   "title": "CodePatch",
   "type": "object",
   "required": [
     "patch_id",
-    "file_path",
-    "engine_id",
+    "mode",
+    "target",
     "operation",
-    "diff_ref",
-    "undo_token_ref",
-    "no_secret_in_diff"
+    "diff_preview",
+    "undo_token"
   ],
   "properties": {
     "patch_id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^CP-[A-Z0-9]+-[0-9]{4}$"
     },
-    "file_path": {
-      "type": "string"
+    "mode": {
+      "type": "string",
+      "enum": [
+        "M04_CODE_PATCH"
+      ]
     },
-    "engine_id": {
-      "type": "string"
+    "target": {
+      "type": "object",
+      "required": [
+        "surface",
+        "studio",
+        "file_path",
+        "line_start",
+        "line_end"
+      ],
+      "properties": {
+        "surface": {
+          "type": "string"
+        },
+        "studio": {
+          "type": "string",
+          "pattern": "^S[0-5][0-9]$"
+        },
+        "file_path": {
+          "type": "string"
+        },
+        "line_start": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "line_end": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
     },
     "operation": {
       "type": "string",
       "enum": [
-        "edit",
-        "refactor",
-        "add",
-        "remove",
-        "replace"
+        "EDIT",
+        "REFACTOR",
+        "ADD",
+        "DELETE",
+        "EXPLAIN",
+        "TEST"
       ]
     },
-    "diff_ref": {
+    "diff_preview": {
+      "type": "object",
+      "required": [
+        "before",
+        "after"
+      ],
+      "properties": {
+        "before": {
+          "type": "string"
+        },
+        "after": {
+          "type": "string"
+        },
+        "lines_changed": {
+          "type": "integer"
+        }
+      }
+    },
+    "undo_token": {
       "type": "string"
     },
-    "undo_token_ref": {
+    "test_ref": {
       "type": "string"
-    },
-    "no_secret_in_diff": {
-      "type": "boolean"
     },
     "risk_level": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "score_target": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
     }
-  }
+  },
+  "additionalProperties": false
 }

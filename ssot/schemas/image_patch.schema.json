@@ -1,50 +1,110 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "image_patch.schema.json",
   "title": "ImagePatch",
   "type": "object",
   "required": [
     "patch_id",
-    "surface_id",
-    "engine_id",
-    "target_element",
+    "mode",
+    "engine",
+    "target",
     "operation",
-    "diff_ref",
-    "undo_token_ref"
+    "diff_preview",
+    "undo_token"
   ],
   "properties": {
     "patch_id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^IP-[A-Z0-9]+-[0-9]{4}$"
     },
-    "surface_id": {
-      "type": "string"
+    "mode": {
+      "type": "string",
+      "enum": [
+        "M01_VISUAL_PATCH"
+      ]
     },
-    "engine_id": {
-      "type": "string"
+    "engine": {
+      "type": "string",
+      "enum": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12",
+        "M13"
+      ]
     },
-    "target_element": {
-      "type": "string"
+    "target": {
+      "type": "object",
+      "required": [
+        "surface",
+        "studio",
+        "element_id"
+      ],
+      "properties": {
+        "surface": {
+          "type": "string"
+        },
+        "studio": {
+          "type": "string",
+          "pattern": "^S[0-5][0-9]$"
+        },
+        "element_id": {
+          "type": "string"
+        }
+      }
     },
     "operation": {
       "type": "string",
       "enum": [
-        "replace",
-        "adjust",
-        "overlay",
-        "remove",
-        "generate"
+        "REPLACE",
+        "ADJUST",
+        "CROP",
+        "RESIZE",
+        "COLOR",
+        "FILTER",
+        "OVERLAY"
       ]
     },
-    "diff_ref": {
-      "type": "string"
+    "diff_preview": {
+      "type": "object",
+      "required": [
+        "before_ref",
+        "after_ref"
+      ],
+      "properties": {
+        "before_ref": {
+          "type": "string"
+        },
+        "after_ref": {
+          "type": "string"
+        }
+      }
     },
-    "undo_token_ref": {
+    "undo_token": {
       "type": "string"
-    },
-    "brand_lock_check": {
-      "type": "boolean"
     },
     "risk_level": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "score_target": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
     }
-  }
+  },
+  "additionalProperties": false
 }

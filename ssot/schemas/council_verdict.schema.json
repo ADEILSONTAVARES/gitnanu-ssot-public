@@ -1,35 +1,116 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "council_verdict.schema.json",
   "title": "CouncilVerdict",
   "type": "object",
   "required": [
     "verdict_id",
-    "task_ref",
-    "judges",
-    "votes",
-    "consensus"
+    "patch_id",
+    "council",
+    "decision",
+    "score_final",
+    "timestamp"
   ],
   "properties": {
     "verdict_id": {
+      "type": "string",
+      "pattern": "^CV-[A-Z0-9]+-[0-9]{4}$"
+    },
+    "patch_id": {
       "type": "string"
     },
-    "task_ref": {
-      "type": "string"
+    "council": {
+      "type": "object",
+      "required": [
+        "J1",
+        "J2",
+        "J3"
+      ],
+      "properties": {
+        "J1": {
+          "type": "object",
+          "required": [
+            "score",
+            "pass"
+          ],
+          "properties": {
+            "score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "pass": {
+              "type": "boolean"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "J2": {
+          "type": "object",
+          "required": [
+            "score",
+            "pass"
+          ],
+          "properties": {
+            "score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "pass": {
+              "type": "boolean"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "J3": {
+          "type": "object",
+          "required": [
+            "score",
+            "pass"
+          ],
+          "properties": {
+            "score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "pass": {
+              "type": "boolean"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      }
     },
-    "judges": {
-      "type": "array",
-      "minItems": 3
-    },
-    "votes": {
-      "type": "object"
-    },
-    "consensus": {
+    "decision": {
       "type": "string",
       "enum": [
-        "UNANIMOUS_PASS",
-        "MAJORITY_PASS",
-        "FAIL"
+        "PASS_STRICT",
+        "PASS_CI",
+        "FAIL",
+        "FAIL_STRICT",
+        "CONDITIONAL"
       ]
+    },
+    "score_final": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_ref": {
+      "type": "string"
     }
-  }
+  },
+  "additionalProperties": false
 }

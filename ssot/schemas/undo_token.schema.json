@@ -1,36 +1,58 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "undo_token.schema.json",
   "title": "UndoToken",
   "type": "object",
   "required": [
     "token_id",
     "patch_id",
-    "mode_id",
-    "checkpoint_ref",
+    "mode",
     "created_at",
-    "rollback_available"
+    "snapshot_ref",
+    "reversible"
   ],
   "properties": {
     "token_id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^UT-[A-Z0-9]+-[0-9]{4}$"
     },
     "patch_id": {
       "type": "string"
     },
-    "mode_id": {
-      "type": "string"
-    },
-    "checkpoint_ref": {
-      "type": "string"
+    "mode": {
+      "type": "string",
+      "enum": [
+        "M01_VISUAL_PATCH",
+        "M02_MEDIA_PATCH",
+        "M03_PROTOTYPE_PATCH",
+        "M04_CODE_PATCH"
+      ]
     },
     "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "snapshot_ref": {
       "type": "string"
     },
-    "rollback_available": {
+    "reversible": {
       "type": "boolean"
     },
     "rollback_plan_ref": {
       "type": "string"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "LOCAL",
+        "SCREEN",
+        "GLOBAL"
+      ]
     }
-  }
+  },
+  "additionalProperties": false
 }

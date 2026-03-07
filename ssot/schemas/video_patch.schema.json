@@ -1,44 +1,101 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "video_patch.schema.json",
   "title": "VideoPatch",
   "type": "object",
   "required": [
     "patch_id",
-    "timeline_ref",
-    "engine_id",
+    "mode",
+    "engine",
+    "target",
     "operation",
-    "diff_ref",
-    "undo_token_ref"
+    "diff_preview",
+    "undo_token"
   ],
   "properties": {
     "patch_id": {
+      "type": "string",
+      "pattern": "^VP-[A-Z0-9]+-[0-9]{4}$"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "M02_MEDIA_PATCH"
+      ]
+    },
+    "engine": {
       "type": "string"
     },
-    "timeline_ref": {
-      "type": "string"
-    },
-    "engine_id": {
-      "type": "string"
+    "target": {
+      "type": "object",
+      "required": [
+        "surface",
+        "studio",
+        "timeline_ref"
+      ],
+      "properties": {
+        "surface": {
+          "type": "string"
+        },
+        "studio": {
+          "type": "string",
+          "pattern": "^S[0-5][0-9]$"
+        },
+        "timeline_ref": {
+          "type": "string"
+        },
+        "start_ms": {
+          "type": "integer"
+        },
+        "end_ms": {
+          "type": "integer"
+        }
+      }
     },
     "operation": {
       "type": "string",
       "enum": [
-        "cut",
-        "replace",
-        "overlay",
-        "subtitle",
-        "audio_sync",
-        "thumbnail"
+        "CUT",
+        "TRIM",
+        "REPLACE_CLIP",
+        "ADD_CAPTION",
+        "ADD_OVERLAY",
+        "COLOR_GRADE",
+        "SPEED"
       ]
     },
-    "diff_ref": {
-      "type": "string"
+    "diff_preview": {
+      "type": "object",
+      "required": [
+        "before_ref",
+        "after_ref"
+      ],
+      "properties": {
+        "before_ref": {
+          "type": "string"
+        },
+        "after_ref": {
+          "type": "string"
+        }
+      }
     },
-    "undo_token_ref": {
+    "undo_token": {
       "type": "string"
     },
     "risk_level": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "score_target": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
     }
-  }
+  },
+  "additionalProperties": false
 }

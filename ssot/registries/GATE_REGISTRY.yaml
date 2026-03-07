@@ -1,0 +1,55 @@
+registry_id: GATE_REGISTRY
+version: v1
+description: Registry canonico dos 10 gates obrigatorios do Mouse Inteligente OG10
+gates:
+  - id: G1
+    name: context_valid
+    description: Selecionado surface studio e target foram resolvidos
+    fail_closed: true
+    validator: validate_mouse_context.ts
+  - id: G2
+    name: mode_valid
+    description: Modo e surface compativeis
+    fail_closed: true
+    validator: validate_mouse_patch.ts
+  - id: G3
+    name: surface_coverage
+    description: Surface existe no registry canonico
+    fail_closed: true
+    validator: validate_surface_coverage.ts
+  - id: G4
+    name: schema_patch_valid
+    description: Patch envelope e schema do modo validos
+    fail_closed: true
+    validator: validate_mouse_patch.ts
+  - id: G5
+    name: undo_token_present
+    description: Undo existe antes do apply
+    fail_closed: true
+    validator: validate_undo_rollback.ts
+  - id: G6
+    name: policy_pass
+    description: Brand lock identity lock risk e budget respeitados
+    fail_closed: true
+    validator: run_coca_gate.ts
+  - id: G7
+    name: doctor_precheck_pass
+    description: Doctor e gates de dominio aprovam
+    fail_closed: true
+    validator: run_doctor1.ts
+  - id: G8
+    name: smoke_pass
+    description: Smoke minimo por modo passou
+    fail_closed: true
+    validator: run_code_test_gate.ts
+  - id: G9
+    name: evidence_pack_complete
+    description: Evidence completo e checksums validos
+    fail_closed: true
+    validator: validate_evidence_pack.ts
+  - id: G10
+    name: score_record_valid
+    description: Score target e measured consistentes
+    fail_closed: true
+    validator: validate_score_record.ts
+ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md

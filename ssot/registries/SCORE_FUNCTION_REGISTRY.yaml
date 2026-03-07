@@ -1,17 +1,30 @@
 registry_id: SCORE_FUNCTION_REGISTRY
-version: '10.0'
+version: v1
+description: Registry das funcoes de score OG10 aplicadas ao Mouse Inteligente
+formula: F*0.45 + V*0.35 + E*0.20
 components:
-  surface_coverage:        {weight: 0.10}
-  patch_safety:            {weight: 0.10}
-  undo_reliability:        {weight: 0.08}
-  rollback_reliability:    {weight: 0.08}
-  propagation_correctness: {weight: 0.10}
-  diff_quality:            {weight: 0.08}
-  context_accuracy:        {weight: 0.08}
-  policy_compliance:       {weight: 0.10}
-  brand_preservation:      {weight: 0.08}
-  code_integrity:          {weight: 0.08}
-  prototype_fidelity:      {weight: 0.08}
-  evidence_completeness:   {weight: 0.12}
-invariant: sum_weights_eq_1.0
-promotion_floor: 9.5
+  F:
+    weight: 0.45
+    label: Funcionalidade
+    min_pass: 8.5
+  V:
+    weight: 0.35
+    label: Velocidade e eficiencia
+    min_pass: 8.5
+  E:
+    weight: 0.20
+    label: Evidencia e governanca
+    min_pass: 8.5
+score_gates:
+  minimum_delivery: 8.5
+  target_og10: 9.6
+  nota_10_threshold: 10.0
+score_states:
+  TARGET: score estimado antes de evidence real
+  MEASURED: score medido com evidence real e CI verde
+rules:
+  - TARGET e MEASURED nunca se misturam
+  - Sem evidence_pack => measured nao existe
+  - Sem measured => sem PASS_STRICT
+  - Sem PASS_STRICT => sem merge
+ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md

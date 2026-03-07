@@ -1,0 +1,46 @@
+registry_id: MOUSE_ACTIONS_REGISTRY
+version: v1
+description: Registry de todas as 40 funcoes core do Mouse Inteligente OG10
+total_functions: 40
+functions:
+  - {id: F01, title: Detectar alvo real da selecao, family: A, pain: P01, score_target: 9.9, layer: L0}
+  - {id: F02, title: Identificar surface e studio, family: A, pain: P01, score_target: 9.8, layer: L0}
+  - {id: F03, title: Mapear componente arquivo linha, family: A, pain: P03, score_target: 9.8, layer: L1}
+  - {id: F04, title: Detectar dependencias e impacto, family: A, pain: P15, score_target: 9.7, layer: L1}
+  - {id: F05, title: Classificar risco da acao, family: A, pain: P10, score_target: 9.9, layer: L0}
+  - {id: F06, title: Mover elementos com grid lock, family: B, pain: P02, score_target: 9.7, layer: L1}
+  - {id: F07, title: Redimensionar com responsividade, family: B, pain: P02, score_target: 9.8, layer: L1}
+  - {id: F08, title: Ajustar spacing gap e alignment, family: B, pain: P02, score_target: 9.7, layer: L1}
+  - {id: F09, title: Trocar cor borda e sombra, family: B, pain: P10, score_target: 9.8, layer: L1}
+  - {id: F10, title: Editar tipografia com regras de brand, family: B, pain: P10, score_target: 9.9, layer: L1}
+  - {id: F11, title: Editar texto inline com preview, family: C, pain: P11, score_target: 9.7, layer: L1}
+  - {id: F12, title: Trocar imagem com preservacao de layout, family: C, pain: P02, score_target: 9.8, layer: L1}
+  - {id: F13, title: Trocar icone midia ou componente, family: C, pain: P03, score_target: 9.7, layer: L1}
+  - {id: F14, title: Atualizar thumbnail e hero visual, family: C, pain: P10, score_target: 9.6, layer: L1}
+  - {id: F15, title: Aplicar variacao de conteudo por tela, family: C, pain: P08, score_target: 9.6, layer: L1}
+  - {id: F16, title: Editar link e destino de navegacao, family: D, pain: P15, score_target: 9.7, layer: L1}
+  - {id: F17, title: Ajustar onClick e bindings, family: D, pain: P09, score_target: 9.8, layer: L1}
+  - {id: F18, title: Alterar permissoes e visibilidade, family: D, pain: P13, score_target: 9.7, layer: L1}
+  - {id: F19, title: Adicionar tracking e analytics, family: D, pain: P12, score_target: 9.6, layer: L1}
+  - {id: F20, title: Trocar rota CTA e fluxo de conversao, family: D, pain: P08, score_target: 9.7, layer: L1}
+  - {id: F21, title: Criar preview instantaneo do patch, family: E, pain: P08, score_target: 9.8, layer: L0}
+  - {id: F22, title: Simular navegacao entre estados, family: E, pain: P08, score_target: 9.7, layer: L1}
+  - {id: F23, title: Salvar variante AB, family: E, pain: P14, score_target: 9.6, layer: L1}
+  - {id: F24, title: Validar consistencia de estados, family: E, pain: P08, score_target: 9.7, layer: L1}
+  - {id: F25, title: Rodar smoke rapido de prototipo, family: E, pain: P14, score_target: 9.8, layer: L1}
+  - {id: F26, title: Abrir arquivo e linha do selecionado, family: F, pain: P03, score_target: 9.9, layer: L0}
+  - {id: F27, title: Gerar diff antes de aplicar, family: F, pain: P04, score_target: 9.9, layer: L0}
+  - {id: F28, title: Editar trecho especifico, family: F, pain: P03, score_target: 9.8, layer: L1}
+  - {id: F29, title: Explicar trecho e efeito da mudanca, family: F, pain: P11, score_target: 9.7, layer: L1}
+  - {id: F30, title: Refatorar trecho com teste minimo, family: F, pain: P13, score_target: 9.8, layer: L1}
+  - {id: F31, title: Criar undo token confiavel, family: G, pain: P05, score_target: 9.9, layer: L0}
+  - {id: F32, title: Criar rollback do patch, family: G, pain: P06, score_target: 9.9, layer: L0}
+  - {id: F33, title: Classificar patch por risco, family: G, pain: P13, score_target: 9.8, layer: L0}
+  - {id: F34, title: Bloquear patch sem schema valido, family: G, pain: P13, score_target: 9.9, layer: L0}
+  - {id: F35, title: Bloquear apply sem evidence minima, family: G, pain: P12, score_target: 9.9, layer: L0}
+  - {id: F36, title: Gerar plano de propagacao, family: H, pain: P07, score_target: 9.8, layer: L1}
+  - {id: F37, title: Aplicar correcao com preview cross-surface, family: H, pain: P07, score_target: 9.8, layer: L1}
+  - {id: F38, title: Gerar Evidence Pack completo, family: H, pain: P12, score_target: 9.9, layer: L0}
+  - {id: F39, title: Registrar score target vs measured, family: H, pain: P12, score_target: 9.8, layer: L0}
+  - {id: F40, title: Emitir verdict de execucao do Mouse, family: H, pain: P12, score_target: 9.9, layer: L0}
+ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md

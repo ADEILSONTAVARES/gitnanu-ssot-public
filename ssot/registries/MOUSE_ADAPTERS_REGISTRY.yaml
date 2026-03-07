@@ -1,0 +1,18 @@
+registry_id: MOUSE_ADAPTERS_REGISTRY
+version: v1
+description: Registry de adapters de engine por modo do Mouse Inteligente
+adapters:
+  - {adapter_id: MA-M01-01, engine: Krea-Realtime, family: M01, mode: M01_VISUAL_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M02-01, engine: Qwen-Image-2512, family: M02, mode: M01_VISUAL_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M06-01, engine: Microsoft-TRELLIS2, family: M06, mode: M01_VISUAL_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M07-01, engine: Luciotion-MotionPath, family: M07, mode: M02_MEDIA_PATCH, layer: L1, status: CANDIDATE_VERIFY}
+  - {adapter_id: MA-M08-01, engine: Arcads-UGC, family: M08, mode: M02_MEDIA_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M09-01, engine: Bloom-AI, family: M09, mode: M02_MEDIA_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M10-01, engine: Wondershare-PDFelement, family: M10, mode: M01_VISUAL_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M11-01, engine: Manos-CapCut-Design, family: M11, mode: M01_VISUAL_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M12-01, engine: Magic-Animator, family: M12, mode: M01_VISUAL_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M13-01, engine: Qwen-Image-Edit-2509, family: M13, mode: M01_VISUAL_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M03-01, engine: Qwen-Angles-3D, family: M03, mode: M03_PROTOTYPE_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M04-01, engine: Qwen-Layered-Control, family: M04, mode: M03_PROTOTYPE_PATCH, layer: L1, status: ACTIVE}
+  - {adapter_id: MA-M05-01, engine: Creen-5.0-Dreamina, family: M05, mode: M01_VISUAL_PATCH, layer: L1, status: CANDIDATE_VERIFY}
+ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md

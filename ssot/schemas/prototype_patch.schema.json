@@ -1,39 +1,96 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "prototype_patch.schema.json",
   "title": "PrototypePatch",
   "type": "object",
   "required": [
     "patch_id",
-    "flow_ref",
+    "mode",
+    "target",
     "operation",
-    "diff_ref",
-    "undo_token_ref"
+    "diff_preview",
+    "undo_token"
   ],
   "properties": {
     "patch_id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^PP-[A-Z0-9]+-[0-9]{4}$"
     },
-    "flow_ref": {
-      "type": "string"
+    "mode": {
+      "type": "string",
+      "enum": [
+        "M03_PROTOTYPE_PATCH"
+      ]
+    },
+    "target": {
+      "type": "object",
+      "required": [
+        "surface",
+        "studio",
+        "flow_id"
+      ],
+      "properties": {
+        "surface": {
+          "type": "string"
+        },
+        "studio": {
+          "type": "string",
+          "pattern": "^S[0-5][0-9]$"
+        },
+        "flow_id": {
+          "type": "string"
+        },
+        "state_id": {
+          "type": "string"
+        }
+      }
     },
     "operation": {
       "type": "string",
       "enum": [
-        "add_state",
-        "remove_state",
-        "add_transition",
-        "modify_variant",
-        "add_ab_variant"
+        "ADD_STATE",
+        "REMOVE_STATE",
+        "LINK_STATES",
+        "EDIT_TRANSITION",
+        "SAVE_VARIANT",
+        "SMOKE_RUN"
       ]
     },
-    "diff_ref": {
+    "diff_preview": {
+      "type": "object",
+      "required": [
+        "before_ref",
+        "after_ref"
+      ],
+      "properties": {
+        "before_ref": {
+          "type": "string"
+        },
+        "after_ref": {
+          "type": "string"
+        }
+      }
+    },
+    "undo_token": {
       "type": "string"
     },
-    "undo_token_ref": {
+    "ab_variant": {
       "type": "string"
     },
     "risk_level": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "score_target": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
     }
-  }
+  },
+  "additionalProperties": false
 }
