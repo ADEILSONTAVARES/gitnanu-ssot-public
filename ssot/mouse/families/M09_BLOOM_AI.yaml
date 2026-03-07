@@ -1,46 +1,47 @@
 family_id: M09_BLOOM_AI
 engine: Bloom-AI
-status: CANDIDATE_VERIFY
+status: ACTIVE
 score_og10: 8.9
-note: Brand assimilation. Le site e kit de marca e padroniza assets.
+shadow_band_default: 0pct
+note: Animacao 2D frame-by-frame. Consistencia de personagem, estilo artistico preservado.
 functions_40:
-  - {id: F001, name: Ler site e extrair brand kit, lane: L1, score: 9.0}
-  - {id: F002, name: Extrair palette de cores do site, lane: L1, score: 9.0}
-  - {id: F003, name: Extrair tipografia dominante, lane: L1, score: 9.0}
-  - {id: F004, name: Extrair estilo visual geral, lane: L1, score: 8.9}
-  - {id: F005, name: Gerar asset padronizado com brand, lane: L1, score: 9.0}
-  - {id: F006, name: Aplicar brand em imagem existente, lane: L1, score: 8.9}
-  - {id: F007, name: Gerar variacao dentro do brand, lane: L1, score: 8.9}
-  - {id: F008, name: Criar pack de assets de campanha, lane: L1, score: 9.0}
-  - {id: F009, name: Padronizar multiplos assets de uma vez, lane: L1, score: 9.0}
-  - {id: F010, name: Validar aderencia ao brand automaticamente, lane: L0, score: 9.1}
-  - {id: F011, name: Gerar guia de estilo simplificado, lane: L1, score: 8.9}
-  - {id: F012, name: Criar thumbnails com brand, lane: L1, score: 8.9}
-  - {id: F013, name: Criar banners com brand, lane: L1, score: 9.0}
-  - {id: F014, name: Criar posts com brand, lane: L1, score: 9.0}
-  - {id: F015, name: Criar stories com brand, lane: L1, score: 9.0}
-  - {id: F016, name: Criar reels cover com brand, lane: L1, score: 8.9}
-  - {id: F017, name: Gerar variacao de formato mantendo brand, lane: L1, score: 8.9}
-  - {id: F018, name: Adaptar asset para dark mode, lane: L1, score: 8.8}
-  - {id: F019, name: Adaptar asset para light mode, lane: L1, score: 8.8}
-  - {id: F020, name: Gerar versao mobile do asset, lane: L1, score: 8.9}
-  - {id: F021, name: Gerar versao desktop do asset, lane: L1, score: 8.9}
-  - {id: F022, name: Criar mockup de produto com brand, lane: L1, score: 9.0}
-  - {id: F023, name: Criar apresentacao com brand, lane: L1, score: 8.9}
-  - {id: F024, name: Criar email marketing com brand, lane: L1, score: 8.9}
-  - {id: F025, name: Criar landing page hero com brand, lane: L1, score: 9.0}
-  - {id: F026, name: Detectar violacao de brand em asset, lane: L0, score: 9.1}
-  - {id: F027, name: Sugerir correcao de brand, lane: L1, score: 8.9}
-  - {id: F028, name: Gerar versao on-brand de asset externo, lane: L1, score: 8.9}
-  - {id: F029, name: Exportar brand kit como YAML, lane: L0, score: 9.0}
-  - {id: F030, name: Virar brand assimilation do Mouse, lane: L0, score: 9.1}
-  - {id: F031, name: Sincronizar brand com SSOT, lane: L0, score: 9.1}
-  - {id: F032, name: Gerar token de cor para design system, lane: L1, score: 9.0}
-  - {id: F033, name: Gerar token de tipografia para design system, lane: L1, score: 9.0}
-  - {id: F034, name: Aplicar brand em video curto, lane: L1, score: 8.8}
-  - {id: F035, name: Criar intro de video com brand, lane: L1, score: 8.8}
-  - {id: F036, name: Criar outro de video com brand, lane: L1, score: 8.8}
-  - {id: F037, name: Gerar asset para ads com brand garantido, lane: L1, score: 9.0}
-  - {id: F038, name: Bloquear brand lock no Mouse automaticamente, lane: L0, score: 9.1}
-  - {id: F039, name: Alertar quando asset foge do brand, lane: L0, score: 9.1}
-  - {id: F040, name: Gerar evidence de brand compliance, lane: L0, score: 9.0}
+  - {id: M09-F01, name: Character Animation 2D, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M09-F02, name: Frame Consistency Lock, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M09-F03, name: Style Preserve Animation, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F04, name: Walk Cycle Generate, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F05, name: Run Cycle Generate, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F06, name: Idle Animation, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F07, name: Jump Animation, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F08, name: Attack Animation, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M09-F09, name: Facial Expression Animate, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M09-F10, name: Lip Sync 2D, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F11, name: Hand Gesture Animate, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F12, name: Object Animate Path, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F13, name: Background Parallax, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F14, name: Scene Transition Animate, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M09-F15, name: Cartoon Style Apply, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M09-F16, name: Anime Style Apply, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F17, name: Sketch Style Apply, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F18, name: Watercolor Style Apply, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M09-F19, name: Frame Rate Control, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M09-F20, name: Loop Animation Export, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M09-F21, name: GIF Export, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M09-F22, name: Sprite Sheet Export, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F23, name: Storyboard Animate, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F24, name: Brand Mascot Animate, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M09-F25, name: Social Sticker Animate, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F26, name: Explainer Scene Animate, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F27, name: Game Character Animate, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M09-F28, name: Emote Pack Generate, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F29, name: Keyframe Interpolation, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M09-F30, name: Onion Skin Preview, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M09-F31, name: Timeline Edit, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M09-F32, name: Color Palette Lock, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M09-F33, name: Character Sheet Input, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M09-F34, name: Multi-Character Scene, layer: L1, shadow: 0.6pct, score: 8.7}
+  - {id: M09-F35, name: Undo Frame Step, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M09-F36, name: PAC Checkpoint Anim, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M09-F37, name: Score Gate Animation, layer: L0, shadow: 0pct, score: 8.9}
+  - {id: M09-F38, name: Evidence Tag Animation, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M09-F39, name: Doctor2 Anim Quality, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M09-F40, name: Export MP4 Anim Final, layer: L0, shadow: 0pct, score: 9.1}

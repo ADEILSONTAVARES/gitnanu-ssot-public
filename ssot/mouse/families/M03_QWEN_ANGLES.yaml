@@ -1,0 +1,47 @@
+family_id: M03_QWEN_ANGLES
+engine: Qwen-Angles-3D
+status: ACTIVE
+score_og10: 9.1
+shadow_band_default: 0.3-0.6pct
+note: Camera multi-angulo com coerencia espacial. Gizmo, slider, turntable.
+functions_40:
+  - {id: M03-F01, name: 2D-to-3D Geometry, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M03-F02, name: Camera Gizmo Control, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M03-F03, name: Frontal View Generate, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M03-F04, name: Lateral View Generate, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M03-F05, name: Top-Down View, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M03-F06, name: 3over4 View Generate, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M03-F07, name: Azimuth Slider, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M03-F08, name: Elevation Slider, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M03-F09, name: Orbital Camera Sim, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M03-F10, name: Character Angle Pack, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M03-F11, name: Product Turntable, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M03-F12, name: Pose Sheet, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M03-F13, name: Silhouette Validation, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M03-F14, name: Storyboard Angle Prep, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M03-F15, name: Character Stability Lock, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M03-F16, name: Object Stability Lock, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M03-F17, name: Scene Preserve on Camera, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M03-F18, name: Framing Adjust, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M03-F19, name: Camera Reposition No Regen, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M03-F20, name: Pre-viz for I2V, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M03-F21, name: Pre-viz for 3D Asset, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M03-F22, name: Perspective Correction, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M03-F23, name: Outfit Angle Consistency, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M03-F24, name: Face Identity Across Angles, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M03-F25, name: Camera-Guided Slider UI, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M03-F26, name: Comparative Angle View, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M03-F27, name: Open-Source Local Run, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M03-F28, name: 360 Angle Export Pack, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M03-F29, name: Dynamic Relight on Angle, layer: L1, shadow: 0.6pct, score: 8.9}
+  - {id: M03-F30, name: AR VR Angle Prep, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M03-F31, name: Brand Mascot Pack, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M03-F32, name: Micro Adjustment Fine-tune, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M03-F33, name: Score Gate Angle, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M03-F34, name: Evidence Tag Angle Pack, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M03-F35, name: Animation Rig Preview, layer: L1, shadow: 0.6pct, score: 8.8}
+  - {id: M03-F36, name: Film Blocking Support, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M03-F37, name: Thumbnail Angle Select, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M03-F38, name: Layout Consistency Check, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M03-F39, name: Diff Visual por Angulo, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M03-F40, name: PAC Checkpoint Angle, layer: L0, shadow: 0pct, score: 9.3}

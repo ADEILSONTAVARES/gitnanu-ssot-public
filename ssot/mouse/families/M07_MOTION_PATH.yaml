@@ -2,45 +2,46 @@ family_id: M07_MOTION_PATH
 engine: Luciotion-MotionPath
 status: CANDIDATE_VERIFY
 score_og10: 9.2
-note: Controle de trajetoria por desenho. Obrigatorio para Mouse virar diretor visual.
+shadow_band_default: 0.5-1.0pct
+note: Trajetoria por desenho. Rabisco vira instrucao de movimento. Zero loteria de prompt.
 functions_40:
-  - {id: F001, name: Desenhar trajetoria do objeto, lane: L1, score: 9.4}
-  - {id: F002, name: Desenhar trajetoria do personagem, lane: L1, score: 9.4}
-  - {id: F003, name: Definir curva de movimento, lane: L1, score: 9.3}
-  - {id: F004, name: Definir entrada do elemento, lane: L1, score: 9.3}
-  - {id: F005, name: Definir saida do elemento, lane: L1, score: 9.3}
-  - {id: F006, name: Definir aceleracao visual, lane: L1, score: 9.2}
-  - {id: F007, name: Definir direcao manual, lane: L1, score: 9.3}
-  - {id: F008, name: Guiar camera por spline, lane: L1, score: 9.3}
-  - {id: F009, name: Guiar braco e mao por trajeto, lane: L1, score: 9.1}
-  - {id: F010, name: Guiar carro por rota, lane: L1, score: 9.2}
-  - {id: F011, name: Guiar produto flutuante em anuncio, lane: L1, score: 9.3}
-  - {id: F012, name: Guiar texto animado, lane: L1, score: 9.3}
-  - {id: F013, name: Sincronizar movimento com layout, lane: L1, score: 9.2}
-  - {id: F014, name: Transformar rabisco em motion path, lane: L0, score: 9.4}
-  - {id: F015, name: Transformar seta em instrucao generativa, lane: L0, score: 9.4}
-  - {id: F016, name: Fazer preview da rota, lane: L0, score: 9.4}
-  - {id: F017, name: Editar rota sem regenerar tudo, lane: L0, score: 9.3}
-  - {id: F018, name: Criar blocking de cena, lane: L1, score: 9.2}
-  - {id: F019, name: Reduzir loteria do prompt, lane: L0, score: 9.3}
-  - {id: F020, name: Transformar direcao em interface, lane: L0, score: 9.4}
-  - {id: F021, name: Gerar motion previsivel, lane: L0, score: 9.3}
-  - {id: F022, name: Permitir storyboarding de movimento, lane: L1, score: 9.2}
-  - {id: F023, name: Exportar key path, lane: L1, score: 9.2}
-  - {id: F024, name: Servir para anuncios, lane: L1, score: 9.3}
-  - {id: F025, name: Servir para cenas de produto, lane: L1, score: 9.3}
-  - {id: F026, name: Servir para videos didaticos, lane: L1, score: 9.2}
-  - {id: F027, name: Servir para UI motion, lane: L1, score: 9.2}
-  - {id: F028, name: Servir para prototipos de filme, lane: L1, score: 9.1}
-  - {id: F029, name: Servir para VSL visual, lane: L1, score: 9.2}
-  - {id: F030, name: Virar controle de trajetoria do Mouse, lane: L0, score: 9.4}
-  - {id: F031, name: Controlar timing de entrada por frame, lane: L1, score: 9.2}
-  - {id: F032, name: Controlar timing de saida por frame, lane: L1, score: 9.2}
-  - {id: F033, name: Gerar loop de movimento, lane: L1, score: 9.1}
-  - {id: F034, name: Sincronizar path com audio, lane: L1, score: 9.0}
-  - {id: F035, name: Criar path para camera cinematica, lane: L1, score: 9.2}
-  - {id: F036, name: Gerar easing customizado, lane: L1, score: 9.1}
-  - {id: F037, name: Exportar como keyframes para After Effects, lane: L1, score: 9.1}
-  - {id: F038, name: Gerar variacao de path com seed, lane: L1, score: 9.1}
-  - {id: F039, name: Aplicar path em multiplos objetos simultaneo, lane: L1, score: 9.1}
-  - {id: F040, name: Habilitar arrastar trajetoria no canvas do Mouse, lane: L0, score: 9.4}
+  - {id: M07-F01, name: Draw-to-Motion Trajectory, layer: L1, shadow: 0.5pct, score: 9.5}
+  - {id: M07-F02, name: Motion Path Curve Edit, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M07-F03, name: Entry Point Define, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F04, name: Exit Point Define, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F05, name: Acceleration Curve, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M07-F06, name: Manual Direction Control, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M07-F07, name: Camera Spline Guide, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F08, name: Character Path Follow, layer: L1, shadow: 0.5pct, score: 9.4}
+  - {id: M07-F09, name: Object Path Follow, layer: L1, shadow: 0.5pct, score: 9.4}
+  - {id: M07-F10, name: Hand Arm Path Guide, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M07-F11, name: Vehicle Path Route, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F12, name: Floating Product Path, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M07-F13, name: Text Animated Path, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M07-F14, name: Motion-Layout Sync, layer: L1, shadow: 0.6pct, score: 9.0}
+  - {id: M07-F15, name: Sketch-to-Motion, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M07-F16, name: Arrow-to-Instruction, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F17, name: Path Preview Before Render, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M07-F18, name: Path Edit No-Regen, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M07-F19, name: Scene Blocking, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F20, name: Lottery Elimination, layer: L0, shadow: 0pct, score: 9.5}
+  - {id: M07-F21, name: Direction UI Interface, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M07-F22, name: Predictable Motion Output, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M07-F23, name: Storyboard Motion, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F24, name: Key Path Export, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M07-F25, name: Ad Motion Control, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M07-F26, name: Explainer Video Path, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M07-F27, name: UI Motion Control, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M07-F28, name: Prototype Film Path, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M07-F29, name: VSL Motion Guide, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F30, name: Mouse Trajectory Director, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M07-F31, name: Loop Motion Path, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M07-F32, name: Parallel Multi-Path, layer: L1, shadow: 0.6pct, score: 8.9}
+  - {id: M07-F33, name: Path Timing Control, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M07-F34, name: PAC Checkpoint Path, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M07-F35, name: Score Gate Motion, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M07-F36, name: Evidence Tag Path, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M07-F37, name: Path Version Diff, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M07-F38, name: Motion Quality Preview, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M07-F39, name: Undo Path Step, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M07-F40, name: Export Motion Metadata, layer: L0, shadow: 0pct, score: 9.1}

@@ -1,46 +1,47 @@
 family_id: M11_CANVAS_EDITOR
-engine: Manos-Canvas-Editor
-status: CANDIDATE_VERIFY
+engine: Manos-CapCut-Design
+status: ACTIVE
 score_og10: 9.1
-note: Editor de canvas visual com IA integrada. Arrastar clicar editar sem codigo.
+shadow_band_default: 0pct
+note: Editor visual drag-and-drop. Templates, brand kit, social formats, resize auto.
 functions_40:
-  - {id: F001, name: Editar layout por clique, lane: L0, score: 9.2}
-  - {id: F002, name: Editar layout por arrasto, lane: L0, score: 9.2}
-  - {id: F003, name: Redimensionar elemento, lane: L0, score: 9.2}
-  - {id: F004, name: Reposicionar elemento, lane: L0, score: 9.2}
-  - {id: F005, name: Trocar cor de elemento, lane: L0, score: 9.2}
-  - {id: F006, name: Trocar fonte de texto, lane: L0, score: 9.1}
-  - {id: F007, name: Editar texto inline, lane: L0, score: 9.2}
-  - {id: F008, name: Adicionar imagem ao canvas, lane: L0, score: 9.1}
-  - {id: F009, name: Remover elemento do canvas, lane: L0, score: 9.1}
-  - {id: F010, name: Alinhar elementos automaticamente, lane: L0, score: 9.1}
-  - {id: F011, name: Distribuir espacamento entre elementos, lane: L0, score: 9.1}
-  - {id: F012, name: Agrupar elementos, lane: L0, score: 9.1}
-  - {id: F013, name: Desagrupar elementos, lane: L0, score: 9.1}
-  - {id: F014, name: Bloquear elemento contra edicao, lane: L0, score: 9.2}
-  - {id: F015, name: Criar componente reutilizavel, lane: L1, score: 9.0}
-  - {id: F016, name: Aplicar template ao canvas, lane: L1, score: 9.1}
-  - {id: F017, name: Exportar canvas como PNG, lane: L0, score: 9.2}
-  - {id: F018, name: Exportar canvas como SVG, lane: L0, score: 9.1}
-  - {id: F019, name: Exportar canvas como PDF, lane: L0, score: 9.1}
-  - {id: F020, name: Gerar variacao de layout por IA, lane: L1, score: 9.1}
-  - {id: F021, name: Sugerir melhoria de layout, lane: L1, score: 9.0}
-  - {id: F022, name: Adaptar para mobile, lane: L1, score: 9.0}
-  - {id: F023, name: Adaptar para desktop, lane: L1, score: 9.0}
-  - {id: F024, name: Adaptar para stories vertical, lane: L1, score: 9.0}
-  - {id: F025, name: Criar grid responsivo, lane: L1, score: 9.0}
-  - {id: F026, name: Aplicar sistema de cor, lane: L1, score: 9.1}
-  - {id: F027, name: Aplicar sistema de tipografia, lane: L1, score: 9.1}
-  - {id: F028, name: Substituir imagem mantendo layout, lane: L1, score: 9.1}
-  - {id: F029, name: Gerar preview antes de exportar, lane: L0, score: 9.2}
-  - {id: F030, name: Virar surface de edicao visual do Mouse, lane: L0, score: 9.2}
-  - {id: F031, name: Receber patch do Mouse via prompt, lane: L0, score: 9.2}
-  - {id: F032, name: Mostrar diff visual antes e depois, lane: L0, score: 9.2}
-  - {id: F033, name: Confirmar patch antes de aplicar, lane: L0, score: 9.2}
-  - {id: F034, name: Registrar historico de edicoes, lane: L0, score: 9.1}
-  - {id: F035, name: Voltar versao anterior, lane: L0, score: 9.1}
-  - {id: F036, name: Criar evidence pack da edicao, lane: L0, score: 9.1}
-  - {id: F037, name: Integrar com SSOT para exportar assets, lane: L0, score: 9.1}
-  - {id: F038, name: Permitir colaboracao em canvas, lane: L1, score: 9.0}
-  - {id: F039, name: Comentar elemento no canvas, lane: L1, score: 9.0}
-  - {id: F040, name: Publicar canvas como asset canonico, lane: L0, score: 9.1}
+  - {id: M11-F01, name: Template Library Select, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M11-F02, name: Drag-Drop Canvas Edit, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M11-F03, name: Brand Kit Apply, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M11-F04, name: Logo Upload Use, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M11-F05, name: Font Brand Apply, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M11-F06, name: Color Palette Brand, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M11-F07, name: Social Post Format, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M11-F08, name: Story Format 9x16, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M11-F09, name: Cover Format, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M11-F10, name: Banner Format, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M11-F11, name: Presentation Format, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M11-F12, name: Auto Resize Format, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M11-F13, name: Text Add Edit, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M11-F14, name: Text Style Apply, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M11-F15, name: Image Upload Insert, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M11-F16, name: Background Remove Quick, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M11-F17, name: Shape Add Edit, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M11-F18, name: Icon Library Insert, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M11-F19, name: Sticker Insert, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M11-F20, name: Grid Layout Apply, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M11-F21, name: Alignment Guide Auto, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M11-F22, name: Spacing Auto Equal, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M11-F23, name: Layer Order Control, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M11-F24, name: Opacity Control, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M11-F25, name: Shadow Effect Add, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M11-F26, name: Glow Effect Add, layer: L1, shadow: 0.4pct, score: 8.9}
+  - {id: M11-F27, name: Gradient Apply, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M11-F28, name: AI Text Generate, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M11-F29, name: AI Image Generate Insert, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M11-F30, name: Animate Element, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M11-F31, name: Animate Page Transition, layer: L1, shadow: 0.4pct, score: 8.9}
+  - {id: M11-F32, name: Export PNG, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M11-F33, name: Export JPG, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M11-F34, name: Export MP4, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M11-F35, name: Export PDF, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M11-F36, name: Share Link Generate, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M11-F37, name: Collaborate Team, layer: L1, shadow: 0.4pct, score: 8.9}
+  - {id: M11-F38, name: PAC Checkpoint Canvas, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M11-F39, name: Score Gate Canvas, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M11-F40, name: Evidence Tag Canvas, layer: L0, shadow: 0pct, score: 9.1}

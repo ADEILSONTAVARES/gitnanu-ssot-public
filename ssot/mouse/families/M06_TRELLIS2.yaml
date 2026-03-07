@@ -2,45 +2,46 @@ family_id: M06_TRELLIS2
 engine: Microsoft-TRELLIS2
 status: ACTIVE
 score_og10: 9.2
-note: 2D para 3D real. Asset de produto, personagem, objeto para game AR VR catalogo.
+shadow_band_default: 0.5-1.0pct
+note: 2D para 3D real. Mesh PBR, topologia complexa, game AR VR catalogo.
 functions_40:
-  - {id: F001, name: Converter imagem em 3D, lane: L1, score: 9.5}
-  - {id: F002, name: Criar mesh a partir de imagem, lane: L1, score: 9.4}
-  - {id: F003, name: Criar material PBR, lane: L1, score: 9.3}
-  - {id: F004, name: Reconstruir topologia complexa, lane: L1, score: 9.2}
-  - {id: F005, name: Manter detalhes finos, lane: L1, score: 9.3}
-  - {id: F006, name: Gerar asset de produto, lane: L1, score: 9.4}
-  - {id: F007, name: Gerar asset de personagem, lane: L1, score: 9.3}
-  - {id: F008, name: Gerar asset de objeto decorativo, lane: L1, score: 9.2}
-  - {id: F009, name: Gerar asset para game, lane: L1, score: 9.3}
-  - {id: F010, name: Gerar asset para AR, lane: L1, score: 9.2}
-  - {id: F011, name: Gerar asset para VR, lane: L1, score: 9.2}
-  - {id: F012, name: Gerar asset para catalogo 3D, lane: L1, score: 9.3}
-  - {id: F013, name: Gerar preview de volume, lane: L0, score: 9.3}
-  - {id: F014, name: Gerar diferentes formatos 3D, lane: L1, score: 9.2}
-  - {id: F015, name: Separar estrutura e material, lane: L1, score: 9.2}
-  - {id: F016, name: Tratar vidro em 3D, lane: L1, score: 9.1}
-  - {id: F017, name: Tratar metal em 3D, lane: L1, score: 9.2}
-  - {id: F018, name: Tratar madeira em 3D, lane: L1, score: 9.1}
-  - {id: F019, name: Tratar tecido em 3D, lane: L1, score: 9.1}
-  - {id: F020, name: Criar base para turntable, lane: L1, score: 9.3}
-  - {id: F021, name: Criar base para animacao, lane: L1, score: 9.2}
-  - {id: F022, name: Criar base para render 3D, lane: L1, score: 9.3}
-  - {id: F023, name: Criar base para mockup interativo, lane: L1, score: 9.2}
-  - {id: F024, name: Reutilizar asset em varias cenas, lane: L0, score: 9.3}
-  - {id: F025, name: Monetizar asset 3D, lane: L1, score: 9.0}
-  - {id: F026, name: Melhorar pipeline de prototipagem, lane: L0, score: 9.3}
-  - {id: F027, name: Permitir inspecao 360, lane: L0, score: 9.4}
-  - {id: F028, name: Permitir integracao com engine 3D, lane: L1, score: 9.2}
-  - {id: F029, name: Permitir pipeline com Gaussian mesh, lane: L1, score: 9.1}
-  - {id: F030, name: Virar 2D para 3D do Mouse, lane: L0, score: 9.5}
-  - {id: F031, name: Sustentar giro real de objeto, lane: L0, score: 9.4}
-  - {id: F032, name: Sustentar camera livre no produto, lane: L0, score: 9.3}
-  - {id: F033, name: Sustentar visualizacao web 3D, lane: L1, score: 9.2}
-  - {id: F034, name: Sustentar export tecnico, lane: L1, score: 9.2}
-  - {id: F035, name: Sustentar estudio 3D dentro da plataforma, lane: L1, score: 9.2}
-  - {id: F036, name: Gerar asset de mascote em 3D, lane: L1, score: 9.2}
-  - {id: F037, name: Gerar asset de embalagem em 3D, lane: L1, score: 9.3}
-  - {id: F038, name: Gerar asset de arquitetura em 3D, lane: L1, score: 9.1}
-  - {id: F039, name: Exportar glTF para web, lane: L1, score: 9.2}
-  - {id: F040, name: Exportar OBJ para pipeline criativo, lane: L1, score: 9.2}
+  - {id: M06-F01, name: 2D-to-3D Conversion, layer: L0, shadow: 0pct, score: 9.5}
+  - {id: M06-F02, name: PBR Material Auto, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M06-F03, name: Complex Topology, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F04, name: Metal Material Separate, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M06-F05, name: Wood Material Separate, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F06, name: Glass Material Separate, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M06-F07, name: Fabric Material Separate, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M06-F08, name: Fur Hair Material, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M06-F09, name: Character Asset Build, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F10, name: Product Asset Build, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M06-F11, name: Decorative Object Asset, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M06-F12, name: Game Asset Export, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F13, name: AR Asset Export, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M06-F14, name: VR Asset Export, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M06-F15, name: Volume Preview, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F16, name: Multi-Format Export, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M06-F17, name: Structure Material Split, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F18, name: Turntable Base, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M06-F19, name: Animation Base Rig, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M06-F20, name: Render 3D Base, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F21, name: Interactive Mockup, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M06-F22, name: Asset Reuse Pipeline, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M06-F23, name: Marketplace Asset Prep, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M06-F24, name: 360 Inspection Web, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M06-F25, name: 3D Engine Integration, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M06-F26, name: Gaussian Splatting Pipeline, layer: L1, shadow: 0.6pct, score: 8.9}
+  - {id: M06-F27, name: Real Object 3D Scan, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M06-F28, name: Open-Source Local Run, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M06-F29, name: High-Poly Mesh Export, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M06-F30, name: Low-Poly Game Mesh, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M06-F31, name: Architectural Element 3D, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M06-F32, name: Material Swap 3D, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M06-F33, name: Scale Normalization, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M06-F34, name: LOD Generator, layer: L1, shadow: 0.6pct, score: 8.9}
+  - {id: M06-F35, name: Shadow Bake, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M06-F36, name: Evidence Tag 3D Asset, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M06-F37, name: Score Gate 3D, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M06-F38, name: Diff Visual 3D, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M06-F39, name: Prototype 3D Mode, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M06-F40, name: PAC Checkpoint 3D, layer: L0, shadow: 0pct, score: 9.3}

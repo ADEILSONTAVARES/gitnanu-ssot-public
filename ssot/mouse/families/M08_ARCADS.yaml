@@ -1,46 +1,47 @@
 family_id: M08_ARCADS
-engine: Arcads
-status: CANDIDATE_VERIFY
+engine: Arcads-UGC
+status: ACTIVE
 score_og10: 9.1
-note: Avatar expressivo e UGC. Personagem controlavel em cenas.
+shadow_band_default: 0.5-1.0pct
+note: Avatar UGC para video ads. Licenciado, sem casting, pronto para veicular.
 functions_40:
-  - {id: F001, name: Criar avatar expressivo, lane: L1, score: 9.2}
-  - {id: F002, name: Controlar emocao do avatar, lane: L1, score: 9.1}
-  - {id: F003, name: Sincronizar lipsync com audio, lane: L1, score: 9.2}
-  - {id: F004, name: Gerar video com avatar falando, lane: L1, score: 9.2}
-  - {id: F005, name: Trocar cenario do avatar, lane: L1, score: 9.1}
-  - {id: F006, name: Manter identidade do avatar entre takes, lane: L1, score: 9.1}
-  - {id: F007, name: Gerar variacao de take, lane: L1, score: 9.0}
-  - {id: F008, name: Exportar video de avatar para ads, lane: L1, score: 9.2}
-  - {id: F009, name: Criar personagem recorrente de campanha, lane: L1, score: 9.1}
-  - {id: F010, name: Usar avatar em multiplos formatos, lane: L1, score: 9.1}
-  - {id: F011, name: Gerar UGC-style com avatar, lane: L1, score: 9.1}
-  - {id: F012, name: Controlar direcao do olhar, lane: L1, score: 9.0}
-  - {id: F013, name: Controlar postura do corpo, lane: L1, score: 9.0}
-  - {id: F014, name: Adicionar gestos ao avatar, lane: L1, score: 9.0}
-  - {id: F015, name: Gerar avatar a partir de foto, lane: L1, score: 9.1}
-  - {id: F016, name: Aplicar estilo visual ao avatar, lane: L1, score: 9.0}
-  - {id: F017, name: Integrar avatar em cena real, lane: L1, score: 9.0}
-  - {id: F018, name: Gerar pack de reacoes do avatar, lane: L1, score: 9.0}
-  - {id: F019, name: Criar hook de ads com avatar, lane: L1, score: 9.1}
-  - {id: F020, name: Criar CTA com avatar, lane: L1, score: 9.1}
-  - {id: F021, name: Gerar depoimento com avatar, lane: L1, score: 9.0}
-  - {id: F022, name: Adaptar avatar para vertical e horizontal, lane: L1, score: 9.0}
-  - {id: F023, name: Gerar variacao de script com mesmo avatar, lane: L1, score: 9.1}
-  - {id: F024, name: Exportar para TikTok Reels YouTube Shorts, lane: L1, score: 9.1}
-  - {id: F025, name: Testar performance de avatar em ads, lane: L1, score: 9.0}
-  - {id: F026, name: Criar avatar de marca, lane: L1, score: 9.1}
-  - {id: F027, name: Escalar producao de videos com avatar, lane: L1, score: 9.2}
-  - {id: F028, name: Reduzir custo de producao de video, lane: L0, score: 9.2}
-  - {id: F029, name: Gerar video sem precisar de ator real, lane: L0, score: 9.2}
-  - {id: F030, name: Manter consistencia de marca no avatar, lane: L1, score: 9.1}
-  - {id: F031, name: Criar avatar multilingual, lane: L1, score: 9.0}
-  - {id: F032, name: Sincronizar legenda com fala do avatar, lane: L1, score: 9.1}
-  - {id: F033, name: Gerar thumbnail com avatar, lane: L1, score: 9.0}
-  - {id: F034, name: Aplicar filtro visual ao avatar, lane: L1, score: 9.0}
-  - {id: F035, name: Controlar velocidade da fala, lane: L1, score: 9.0}
-  - {id: F036, name: Gerar avatar com envelhecimento ou rejuvenescimento, lane: L1, score: 8.9}
-  - {id: F037, name: Criar serie de videos com mesmo avatar, lane: L1, score: 9.1}
-  - {id: F038, name: Integrar avatar com PDFelement para video docs, lane: L1, score: 8.9}
-  - {id: F039, name: Gerar preview de avatar antes de render final, lane: L0, score: 9.1}
-  - {id: F040, name: Virar motor de avatar expressivo do Mouse, lane: L0, score: 9.2}
+  - {id: M08-F01, name: Avatar UGC Generate, layer: L1, shadow: 0.5pct, score: 9.4}
+  - {id: M08-F02, name: Avatar Library Select, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M08-F03, name: Avatar Diversity Pack, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M08-F04, name: Script-to-Video Avatar, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M08-F05, name: Lip Sync Precise, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M08-F06, name: Multilingual Avatar Voiceover, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F07, name: Emotion Expression Control, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F08, name: Background Scene Select, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F09, name: Product Showcase Avatar, layer: L1, shadow: 0.5pct, score: 9.3}
+  - {id: M08-F10, name: Testimonial Style UGC, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M08-F11, name: Hook Intro Variant, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F12, name: CTA Outro Variant, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F13, name: Short Form Ad 15s, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M08-F14, name: Short Form Ad 30s, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M08-F15, name: Short Form Ad 60s, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F16, name: Vertical 9x16 Ad, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M08-F17, name: Square 1x1 Ad, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M08-F18, name: Horizontal 16x9 Ad, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M08-F19, name: Licensed Avatar No Copyright, layer: L0, shadow: 0pct, score: 9.5}
+  - {id: M08-F20, name: Zero Casting Cost, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M08-F21, name: Brand Voice Apply, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F22, name: Subtitle Burn-in, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F23, name: Logo Overlay, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F24, name: Color Grade Ad, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F25, name: Music Bed Sync, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F26, name: A/B Variation Pack, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M08-F27, name: Batch Ad Generation, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F28, name: Platform Adapt TikTok, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F29, name: Platform Adapt Instagram, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F30, name: Platform Adapt YouTube, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F31, name: Persona Consistency Lock, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M08-F32, name: Script Teleprompter Mode, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F33, name: Avatar Age Range Select, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M08-F34, name: Avatar Outfit Select, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M08-F35, name: Export Ready-to-Run Ad, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M08-F36, name: Evidence Tag Ad, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M08-F37, name: Score Gate Ad, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M08-F38, name: PAC Checkpoint Ad, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M08-F39, name: Performance Metadata Tag, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M08-F40, name: Doctor2 Ad Quality Pass, layer: L0, shadow: 0pct, score: 9.3}

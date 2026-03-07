@@ -1,0 +1,47 @@
+family_id: M04_QWEN_LAYERED
+engine: Qwen-Layered-Control
+status: ACTIVE
+score_og10: 9.4
+shadow_band_default: 0.3-0.6pct
+note: Decomposicao em camadas. Separar, recolorir, mover, exportar pack.
+functions_40:
+  - {id: M04-F01, name: Auto Layer Decomposition, layer: L0, shadow: 0pct, score: 9.8}
+  - {id: M04-F02, name: Transparent PNG Export, layer: L0, shadow: 0pct, score: 9.7}
+  - {id: M04-F03, name: Background Isolation, layer: L0, shadow: 0pct, score: 9.6}
+  - {id: M04-F04, name: Person Subject Isolation, layer: L0, shadow: 0pct, score: 9.6}
+  - {id: M04-F05, name: Text Layer Separation, layer: L1, shadow: 0.3pct, score: 9.5}
+  - {id: M04-F06, name: Logo Isolation, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M04-F07, name: Watermark Remove, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M04-F08, name: Object Micro Isolation, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M04-F09, name: Brush-Guided Separation, layer: L1, shadow: 0.4pct, score: 9.5}
+  - {id: M04-F10, name: Layer Recolor, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M04-F11, name: Layer Move, layer: L0, shadow: 0pct, score: 9.5}
+  - {id: M04-F12, name: Layer Hide Show, layer: L0, shadow: 0pct, score: 9.6}
+  - {id: M04-F13, name: Layer Duplicate, layer: L0, shadow: 0pct, score: 9.5}
+  - {id: M04-F14, name: Layer Pack Export, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M04-F15, name: Layer Stack Reorder, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M04-F16, name: Compositing Base Builder, layer: L1, shadow: 0.4pct, score: 9.5}
+  - {id: M04-F17, name: Multi-Element Ad Prep, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M04-F18, name: Collage Builder, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M04-F19, name: Fine Edge Cutout, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M04-F20, name: Parallax Layer Prep, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M04-F21, name: Motion Design Base, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M04-F22, name: Video Layer Prep, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M04-F23, name: Reference Extraction, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M04-F24, name: Layer Hierarchy Preserve, layer: L0, shadow: 0pct, score: 9.5}
+  - {id: M04-F25, name: Micro Drag-and-Drop Edit, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M04-F26, name: Opacity per Layer, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M04-F27, name: Blend Mode per Layer, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M04-F28, name: FG MG BG Split, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M04-F29, name: Brand Asset Extraction, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M04-F30, name: Layer Score Gate, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M04-F31, name: Animation Layer Keyframe, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M04-F32, name: Fruit Food Isolation, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M04-F33, name: Architecture Element Split, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M04-F34, name: Layer Evidence Tag, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M04-F35, name: Undo por Camada, layer: L0, shadow: 0pct, score: 9.5}
+  - {id: M04-F36, name: Layer Version Diff, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M04-F37, name: Poster Layer Separation, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M04-F38, name: Shadow Highlight Layer, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M04-F39, name: Skin Retouch Layer, layer: L1, shadow: 0.5pct, score: 9.2}
+  - {id: M04-F40, name: PAC Checkpoint Layers, layer: L0, shadow: 0pct, score: 9.5}

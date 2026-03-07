@@ -2,45 +2,46 @@ family_id: M10_PDFELEMENT
 engine: Wondershare-PDFelement
 status: ACTIVE
 score_og10: 9.1
-note: Editor de PDF semantico. Edita contrato, proposta, apostila sem quebrar layout.
+shadow_band_default: 0pct
+note: PDF inteligente. OCR, formulario, contrato, assinatura, compressao, batch.
 functions_40:
-  - {id: F001, name: Editar texto em PDF, lane: L0, score: 9.2}
-  - {id: F002, name: Preservar estilo do documento, lane: L0, score: 9.2}
-  - {id: F003, name: Conversar com PDF via IA, lane: L1, score: 9.1}
-  - {id: F004, name: Resumir PDF, lane: L1, score: 9.1}
-  - {id: F005, name: Comparar dois PDFs, lane: L1, score: 9.0}
-  - {id: F006, name: Traduzir PDF mantendo formato, lane: L1, score: 9.1}
-  - {id: F007, name: Detectar dados sensiveis, lane: L0, score: 9.2}
-  - {id: F008, name: Redigir dados sensiveis, lane: L0, score: 9.2}
-  - {id: F009, name: Mascarar PII, lane: L0, score: 9.2}
-  - {id: F010, name: Mascarar dados financeiros, lane: L0, score: 9.2}
-  - {id: F011, name: Mascarar dados medicos, lane: L0, score: 9.2}
-  - {id: F012, name: OCR em documento escaneado, lane: L1, score: 9.1}
-  - {id: F013, name: Editar contrato, lane: L1, score: 9.1}
-  - {id: F014, name: Editar proposta comercial, lane: L1, score: 9.1}
-  - {id: F015, name: Editar apostila e manual, lane: L1, score: 9.0}
-  - {id: F016, name: Extrair trechos especificos, lane: L1, score: 9.1}
-  - {id: F017, name: Responder perguntas sobre lote de PDFs, lane: L1, score: 9.0}
-  - {id: F018, name: Combinar leitura documental com IA, lane: L1, score: 9.0}
-  - {id: F019, name: Trabalhar com varios arquivos simultaneos, lane: L1, score: 9.0}
-  - {id: F020, name: Acelerar revisao juridica, lane: L1, score: 9.1}
-  - {id: F021, name: Acelerar revisao comercial, lane: L1, score: 9.1}
-  - {id: F022, name: Acelerar onboarding de documentos, lane: L1, score: 9.0}
-  - {id: F023, name: Criar fluxo de aprovacao, lane: L1, score: 9.0}
-  - {id: F024, name: Permitir anotacao em PDF, lane: L0, score: 9.1}
-  - {id: F025, name: Permitir conversao de PDF para Word, lane: L0, score: 9.1}
-  - {id: F026, name: Permitir revisao sem quebrar layout, lane: L0, score: 9.2}
-  - {id: F027, name: Clicar em clausula e pedir ajuste, lane: L0, score: 9.2}
-  - {id: F028, name: Ocultar dados sensiveis antes de compartilhar, lane: L0, score: 9.2}
-  - {id: F029, name: Gerar sumario executivo do documento, lane: L1, score: 9.0}
-  - {id: F030, name: Virar editor sem burocracia da plataforma, lane: L0, score: 9.1}
-  - {id: F031, name: Servir ao Mouse em Studio Documentos, lane: L0, score: 9.1}
-  - {id: F032, name: Servir ao PrM em analise documental, lane: L0, score: 9.1}
-  - {id: F033, name: Extrair tabelas de PDF, lane: L1, score: 9.0}
-  - {id: F034, name: Exportar PDF para Excel, lane: L1, score: 9.0}
-  - {id: F035, name: Criar PDF a partir de template, lane: L1, score: 9.0}
-  - {id: F036, name: Assinar PDF digitalmente, lane: L1, score: 9.1}
-  - {id: F037, name: Proteger PDF com senha, lane: L0, score: 9.1}
-  - {id: F038, name: Mesclar multiplos PDFs, lane: L0, score: 9.1}
-  - {id: F039, name: Dividir PDF por capitulo ou pagina, lane: L0, score: 9.1}
-  - {id: F040, name: Gerar evidence de edicao documental, lane: L0, score: 9.1}
+  - {id: M10-F01, name: PDF Create from Scratch, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M10-F02, name: PDF Convert from Word, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M10-F03, name: PDF Convert from Excel, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M10-F04, name: PDF Convert from PPT, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M10-F05, name: PDF Convert from Image, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M10-F06, name: OCR Scanned PDF, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M10-F07, name: OCR Multi-language, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M10-F08, name: Text Edit in PDF, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M10-F09, name: Image Edit in PDF, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M10-F10, name: Form Field Create, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M10-F11, name: Form Fill Auto AI, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M10-F12, name: Form Extract Data, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M10-F13, name: Digital Signature Add, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M10-F14, name: E-sign Workflow, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M10-F15, name: Certificate Sign, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M10-F16, name: Password Protect PDF, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M10-F17, name: Permission Restrict PDF, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M10-F18, name: Redact Sensitive Data, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M10-F19, name: Watermark Add, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M10-F20, name: Watermark Remove, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M10-F21, name: Merge PDF, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M10-F22, name: Split PDF, layer: L0, shadow: 0pct, score: 9.4}
+  - {id: M10-F23, name: Compress PDF, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M10-F24, name: Rotate Pages, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M10-F25, name: Page Reorder, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M10-F26, name: Header Footer Add, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M10-F27, name: Bates Numbering, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M10-F28, name: Batch Process PDF, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M10-F29, name: AI Summary PDF, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M10-F30, name: AI Translate PDF, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M10-F31, name: AI Rewrite Contract, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M10-F32, name: Comment Annotate, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M10-F33, name: Highlight Markup, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M10-F34, name: Bookmark Index, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M10-F35, name: Compare Two PDFs, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M10-F36, name: Export to Word, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M10-F37, name: Export to Excel, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M10-F38, name: PAC Checkpoint PDF, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M10-F39, name: Score Gate PDF, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M10-F40, name: Evidence Tag PDF, layer: L0, shadow: 0pct, score: 9.2}

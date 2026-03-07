@@ -1,0 +1,77 @@
+registry_id: MOUSE_MICRO_SKILLS
+version: '10.0'
+total: 60
+score_floor: 9.6
+micro_skills:
+  M1_contexto:
+    - {id: MS01, name: Detectar elemento canonico, skill: U1, score: 9.9}
+    - {id: MS02, name: Resolver componente pai filho, skill: U1, score: 9.8}
+    - {id: MS03, name: Mapear arquivo linha arvore, skill: U1, score: 9.8}
+    - {id: MS04, name: Identificar studio e surface, skill: U1, score: 9.8}
+    - {id: MS05, name: Detectar impacto dependencias, skill: U1, score: 9.7}
+  M2_layout:
+    - {id: MS06, name: Ajustar grid alinhamento, skill: U2, score: 9.7}
+    - {id: MS07, name: Ajustar spacing responsivo, skill: U2, score: 9.7}
+    - {id: MS08, name: Corrigir padding gap, skill: U2, score: 9.7}
+    - {id: MS09, name: Aplicar token visual correto, skill: U2, score: 9.8}
+    - {id: MS10, name: Preservar consistencia visual, skill: U2/U3, score: 9.8}
+  M3_brand:
+    - {id: MS11, name: Aplicar hierarquia tipografica, skill: U2, score: 9.8}
+    - {id: MS12, name: Garantir contraste legibilidade, skill: U2/U3, score: 9.7}
+    - {id: MS13, name: Respeitar palette token cor, skill: U2, score: 9.8}
+    - {id: MS14, name: Travar identidade visual, skill: U1/U3, score: 9.9}
+    - {id: MS15, name: Validar aderencia brand kit, skill: U3, score: 9.8}
+  M4_conteudo:
+    - {id: MS16, name: Editar copy preview inline, skill: U1/U2, score: 9.7}
+    - {id: MS17, name: Trocar imagem preservando layout, skill: U2, score: 9.8}
+    - {id: MS18, name: Validar asset brand lock, skill: U3, score: 9.8}
+    - {id: MS19, name: Substituir bloco conteudo, skill: U2, score: 9.7}
+    - {id: MS20, name: Gerar variacao conteudo controlada, skill: U2/U3, score: 9.6}
+  M5_acoes:
+    - {id: MS21, name: Editar evento clique, skill: U2, score: 9.7}
+    - {id: MS22, name: Ajustar binding navegacao, skill: U2, score: 9.8}
+    - {id: MS23, name: Alterar permissao elemento, skill: U2, score: 9.7}
+    - {id: MS24, name: Ativar desativar feature flag, skill: U2, score: 9.7}
+    - {id: MS25, name: Vincular tracking analytics, skill: U2/U3, score: 9.6}
+  M6_prototipo:
+    - {id: MS26, name: Criar estado prototipo, skill: U2, score: 9.7}
+    - {id: MS27, name: Simular transicao tela, skill: U2, score: 9.7}
+    - {id: MS28, name: Validar navegacao variantes, skill: U3, score: 9.7}
+    - {id: MS29, name: Salvar snapshot estado, skill: U3, score: 9.6}
+    - {id: MS30, name: Gerar smoke prototipo, skill: U3, score: 9.8}
+  M7_codigo:
+    - {id: MS31, name: Localizar arquivo linha, skill: U1, score: 9.9}
+    - {id: MS32, name: Gerar diff minimo codigo, skill: U2, score: 9.9}
+    - {id: MS33, name: Editar trecho patch cirurgico, skill: U2, score: 9.8}
+    - {id: MS34, name: Rodar teste minimo pos-patch, skill: U3, score: 9.8}
+    - {id: MS35, name: Reverter patch codigo, skill: U3, score: 9.9}
+  M8_governanca:
+    - {id: MS36, name: Classificar risco patch, skill: U1, score: 9.9}
+    - {id: MS37, name: Emitir undo token, skill: U2, score: 9.9}
+    - {id: MS38, name: Criar rollback plan, skill: U2/U3, score: 9.9}
+    - {id: MS39, name: Bloquear operacao proibida, skill: U3, score: 9.9}
+    - {id: MS40, name: Registrar audit trail, skill: U3, score: 9.8}
+  M9_propagacao:
+    - {id: MS41, name: Mapear superficies irmas, skill: U1, score: 9.8}
+    - {id: MS42, name: Simular impacto propagacao, skill: U2, score: 9.8}
+    - {id: MS43, name: Executar propagacao com receipt, skill: U2/U3, score: 9.8}
+    - {id: MS44, name: Gerar receipt propagacao, skill: U3, score: 9.9}
+    - {id: MS45, name: Reverter propagacao global, skill: U3, score: 9.9}
+  M10_evidencia:
+    - {id: MS46, name: Gerar evidence pack completo, skill: U3, score: 9.9}
+    - {id: MS47, name: Registrar score target vs measured, skill: U3, score: 9.8}
+    - {id: MS48, name: Emitir verdict auditavel, skill: U3, score: 9.9}
+    - {id: MS49, name: Calcular custo real patch, skill: U3, score: 9.7}
+    - {id: MS50, name: Gerar checksums lineage, skill: U3, score: 9.8}
+  M11_skills_claude:
+    - {id: MS51, name: Criar skill via SkillSmith, skill: U1/U2, score: 9.8}
+    - {id: MS52, name: Validar skill gerada com eval, skill: U3, score: 9.8}
+    - {id: MS53, name: Revisar gatilhos de skill, skill: U1, score: 9.7}
+    - {id: MS54, name: Promover skill a ACTIVE, skill: U3, score: 9.8}
+    - {id: MS55, name: Deprecar skill obsoleta, skill: U3, score: 9.7}
+  M12_antigravity:
+    - {id: MS56, name: Diagnosticar falha Antigravity, skill: U1, score: 9.8}
+    - {id: MS57, name: Gerar rollback pos-bug, skill: U3, score: 9.8}
+    - {id: MS58, name: Limpar sujeira debug, skill: U3, score: 9.7}
+    - {id: MS59, name: Validar ambiente antes executar, skill: U1, score: 9.8}
+    - {id: MS60, name: Emitir relatorio incidente, skill: U3, score: 9.8}

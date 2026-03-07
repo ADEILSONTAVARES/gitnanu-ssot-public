@@ -1,0 +1,47 @@
+family_id: M05_CREEN_DREAMINA
+engine: Creen-5.0-Dreamina
+status: CANDIDATE_VERIFY
+score_og10: 8.8
+shadow_band_default: 0pct
+note: Geracao rapida web-aware. Mobile-first. Ate 20 geracoes gratis por dia.
+functions_40:
+  - {id: M05-F01, name: Web-Aware Generation, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M05-F02, name: Short Prompt Generate, layer: L0, shadow: 0pct, score: 8.9}
+  - {id: M05-F03, name: Long Prompt Generate, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F04, name: Single Reference Input, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M05-F05, name: Dual Reference Merge, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M05-F06, name: Portrait Nitidez Enhance, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F07, name: Product Photo Quick, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M05-F08, name: Product Label Preserve, layer: L1, shadow: 0.6pct, score: 8.7}
+  - {id: M05-F09, name: Product Variation Pack, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F10, name: Commercial Background Swap, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M05-F11, name: Quick Poster, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F12, name: Social Cover, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F13, name: Thumbnail Fast, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M05-F14, name: Vertical Visual 9x16, layer: L0, shadow: 0pct, score: 8.8}
+  - {id: M05-F15, name: Square Visual 1x1, layer: L0, shadow: 0pct, score: 8.8}
+  - {id: M05-F16, name: Horizontal Visual 16x9, layer: L0, shadow: 0pct, score: 8.8}
+  - {id: M05-F17, name: Ad Style Apply, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F18, name: Editorial Style Apply, layer: L1, shadow: 0.5pct, score: 8.6}
+  - {id: M05-F19, name: Cinematic Style Apply, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F20, name: Scene Layout Recompose, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F21, name: Two-Image Composition, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M05-F22, name: Object Context Preserve, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F23, name: Local Contrast Enhance, layer: L1, shadow: 0.5pct, score: 8.6}
+  - {id: M05-F24, name: Small Detail Refine, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F25, name: Short Video Asset, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F26, name: Ad Asset Pack, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F27, name: Social Adapt Pack, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F28, name: Mobile-First Optimize, layer: L0, shadow: 0pct, score: 8.9}
+  - {id: M05-F29, name: CapCut Native Integration, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F30, name: Quick Variation x4, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F31, name: Mood Board Generator, layer: L1, shadow: 0.5pct, score: 8.6}
+  - {id: M05-F32, name: Icon Sticker Fast, layer: L1, shadow: 0.5pct, score: 8.5}
+  - {id: M05-F33, name: Background Pattern, layer: L1, shadow: 0.5pct, score: 8.6}
+  - {id: M05-F34, name: Upscale Light, layer: L1, shadow: 0.5pct, score: 8.7}
+  - {id: M05-F35, name: Color Palette Suggest, layer: L1, shadow: 0.5pct, score: 8.5}
+  - {id: M05-F36, name: Caption Overlay Fast, layer: L1, shadow: 0.5pct, score: 8.6}
+  - {id: M05-F37, name: Batch Generate x10, layer: L1, shadow: 0.5pct, score: 8.8}
+  - {id: M05-F38, name: PAC Mobile Checkpoint, layer: L0, shadow: 0pct, score: 8.9}
+  - {id: M05-F39, name: Score Gate Mobile, layer: L0, shadow: 0pct, score: 8.7}
+  - {id: M05-F40, name: Evidence Tag Mobile, layer: L0, shadow: 0pct, score: 8.8}

@@ -1,0 +1,47 @@
+family_id: M13_QWEN_IMAGE_EDIT
+engine: Qwen-Image-Edit-2509
+status: ACTIVE
+score_og10: 9.2
+shadow_band_default: 0.3-0.6pct
+note: Edicao instrucional por texto. Mudar roupa, cor, objeto, fundo via prompt preciso.
+functions_40:
+  - {id: M13-F01, name: Text-Instruction Edit, layer: L0, shadow: 0pct, score: 9.6}
+  - {id: M13-F02, name: Outfit Change via Prompt, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M13-F03, name: Hair Color Change, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F04, name: Hair Style Change, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F05, name: Background Replace Prompt, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M13-F06, name: Object Color Change, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F07, name: Object Remove Prompt, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F08, name: Object Add Prompt, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F09, name: Object Replace Prompt, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F10, name: Style Transfer Prompt, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F11, name: Age Adjust Prompt, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M13-F12, name: Expression Change Prompt, layer: L1, shadow: 0.5pct, score: 9.1}
+  - {id: M13-F13, name: Season Change Prompt, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F14, name: Weather Change Prompt, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M13-F15, name: Time of Day Change, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F16, name: Material Texture Swap, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F17, name: Brand Color Apply Prompt, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F18, name: Product Variant Generate, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F19, name: Artistic Style Prompt, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F20, name: Lighting Adjust Prompt, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F21, name: Skin Tone Adjust, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M13-F22, name: Accessory Add Prompt, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M13-F23, name: Accessory Remove Prompt, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M13-F24, name: Text Overlay Edit Prompt, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F25, name: Composition Adjust Prompt, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M13-F26, name: Upscale Enhance Prompt, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F27, name: Restore Old Photo, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F28, name: Colorize BW Photo, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M13-F29, name: Denoise Sharpen Prompt, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M13-F30, name: Inpaint Region Prompt, layer: L1, shadow: 0.4pct, score: 9.4}
+  - {id: M13-F31, name: Outpaint Extend Prompt, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F32, name: Multi-Step Edit Chain, layer: L1, shadow: 0.5pct, score: 9.0}
+  - {id: M13-F33, name: Identity Preserve Edit, layer: L1, shadow: 0.4pct, score: 9.3}
+  - {id: M13-F34, name: Open-Source Local Run, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M13-F35, name: Batch Edit Prompt, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M13-F36, name: Diff Before After, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M13-F37, name: Score Gate Edit, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M13-F38, name: Evidence Tag Edit, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M13-F39, name: PAC Checkpoint Edit, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M13-F40, name: Doctor2 Edit Quality Pass, layer: L0, shadow: 0pct, score: 9.4}

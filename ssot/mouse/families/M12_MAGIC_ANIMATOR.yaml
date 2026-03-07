@@ -1,46 +1,47 @@
 family_id: M12_MAGIC_ANIMATOR
 engine: Magic-Animator
-status: CANDIDATE_VERIFY
+status: ACTIVE
 score_og10: 9.0
-note: Animacao de elementos estaticos. Imagem vira video curto com movimento controlado.
+shadow_band_default: 0pct
+note: Animacao automatica de imagem estatica. Um clique vira video. Particles, zoom, parallax.
 functions_40:
-  - {id: F001, name: Animar imagem estatica, lane: L1, score: 9.1}
-  - {id: F002, name: Animar produto com movimento suave, lane: L1, score: 9.1}
-  - {id: F003, name: Animar personagem com expressao, lane: L1, score: 9.0}
-  - {id: F004, name: Animar background com parallax, lane: L1, score: 9.0}
-  - {id: F005, name: Animar texto com entrada, lane: L1, score: 9.1}
-  - {id: F006, name: Animar texto com saida, lane: L1, score: 9.0}
-  - {id: F007, name: Animar logo com reveal, lane: L1, score: 9.1}
-  - {id: F008, name: Criar loop seamless, lane: L1, score: 9.0}
-  - {id: F009, name: Criar cinemagraph, lane: L1, score: 9.0}
-  - {id: F010, name: Controlar intensidade do movimento, lane: L1, score: 9.0}
-  - {id: F011, name: Controlar direcao do movimento, lane: L1, score: 9.0}
-  - {id: F012, name: Controlar duracao da animacao, lane: L0, score: 9.1}
-  - {id: F013, name: Aplicar easing de entrada, lane: L1, score: 9.0}
-  - {id: F014, name: Aplicar easing de saida, lane: L1, score: 9.0}
-  - {id: F015, name: Aplicar fade in, lane: L0, score: 9.1}
-  - {id: F016, name: Aplicar fade out, lane: L0, score: 9.1}
-  - {id: F017, name: Aplicar zoom in, lane: L0, score: 9.1}
-  - {id: F018, name: Aplicar zoom out, lane: L0, score: 9.1}
-  - {id: F019, name: Aplicar pan horizontal, lane: L0, score: 9.1}
-  - {id: F020, name: Aplicar pan vertical, lane: L0, score: 9.1}
-  - {id: F021, name: Aplicar shake de camera, lane: L1, score: 9.0}
-  - {id: F022, name: Aplicar bounce em elemento, lane: L1, score: 9.0}
-  - {id: F023, name: Aplicar rotacao controlada, lane: L1, score: 9.0}
-  - {id: F024, name: Animar camadas independentes, lane: L1, score: 9.0}
-  - {id: F025, name: Exportar como GIF, lane: L0, score: 9.1}
-  - {id: F026, name: Exportar como MP4, lane: L0, score: 9.1}
-  - {id: F027, name: Exportar como WebM, lane: L0, score: 9.0}
-  - {id: F028, name: Gerar variacao de animacao, lane: L1, score: 9.0}
-  - {id: F029, name: Aplicar preset de animacao rapida, lane: L0, score: 9.1}
-  - {id: F030, name: Virar motor de animacao do Mouse, lane: L0, score: 9.1}
-  - {id: F031, name: Servir para ads animados, lane: L1, score: 9.1}
-  - {id: F032, name: Servir para thumbnails animadas, lane: L1, score: 9.0}
-  - {id: F033, name: Servir para stories animados, lane: L1, score: 9.1}
-  - {id: F034, name: Servir para hero de landing page animado, lane: L1, score: 9.0}
-  - {id: F035, name: Servir para apresentacao animada, lane: L1, score: 9.0}
-  - {id: F036, name: Sincronizar animacao com beat de audio, lane: L1, score: 8.9}
-  - {id: F037, name: Gerar preview de animacao antes de exportar, lane: L0, score: 9.1}
-  - {id: F038, name: Criar sequencia de frames, lane: L1, score: 9.0}
-  - {id: F039, name: Animar infografico, lane: L1, score: 9.0}
-  - {id: F040, name: Gerar evidence de animacao aplicada, lane: L0, score: 9.0}
+  - {id: M12-F01, name: Static to Animate One-Click, layer: L0, shadow: 0pct, score: 9.3}
+  - {id: M12-F02, name: Parallax Depth Effect, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M12-F03, name: Ken Burns Zoom Pan, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F04, name: Particle Effect Add, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F05, name: Wind Effect Apply, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F06, name: Water Ripple Effect, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F07, name: Fire Smoke Effect, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M12-F08, name: Rain Effect Apply, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F09, name: Snow Effect Apply, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F10, name: Light Flare Effect, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F11, name: Glitch Effect Apply, layer: L1, shadow: 0.4pct, score: 8.9}
+  - {id: M12-F12, name: Bokeh Blur Animate, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F13, name: Portrait Breathing Animate, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M12-F14, name: Eye Blink Animate, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F15, name: Hair Cloth Wave, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F16, name: Background Animate Only, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F17, name: Subject Lock Background Animate, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M12-F18, name: Foreground Animate Only, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F19, name: Loop Seamless Export, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M12-F20, name: Duration Control, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M12-F21, name: Speed Control, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M12-F22, name: Intensity Control, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M12-F23, name: Multi-Effect Stack, layer: L1, shadow: 0.5pct, score: 8.9}
+  - {id: M12-F24, name: Product Float Animate, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F25, name: Logo Reveal Animate, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F26, name: Text Entrance Animate, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F27, name: Social Loop Content, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F28, name: Cinemagraph Style, layer: L1, shadow: 0.4pct, score: 9.2}
+  - {id: M12-F29, name: Nature Scene Animate, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F30, name: Architecture Animate, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F31, name: Food Beverage Animate, layer: L1, shadow: 0.4pct, score: 9.1}
+  - {id: M12-F32, name: Fashion Animate, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F33, name: GIF Export Loop, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M12-F34, name: MP4 Export Loop, layer: L0, shadow: 0pct, score: 9.2}
+  - {id: M12-F35, name: Webm Export Loop, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M12-F36, name: Batch Animate Pack, layer: L1, shadow: 0.4pct, score: 9.0}
+  - {id: M12-F37, name: PAC Checkpoint Anim, layer: L0, shadow: 0pct, score: 9.1}
+  - {id: M12-F38, name: Score Gate Anim, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M12-F39, name: Evidence Tag Anim, layer: L0, shadow: 0pct, score: 9.0}
+  - {id: M12-F40, name: Doctor2 Anim Pass, layer: L0, shadow: 0pct, score: 9.1}
