@@ -1,0 +1,55 @@
+# MOUSEADAPTER_REGISTRY
+version: 1
+studio_id: S00
+total_families: 10
+families:
+  - id: M01
+    name: "Realtime Visual Edit"
+    engine: "Krea Realtime"
+    status: active
+    description: "Preview ao vivo - ver mudanca acontecendo na hora"
+  - id: M02
+    name: "High-Fidelity Final Render"
+    engine: "Qwen-Image-2512"
+    status: active
+    description: "Render final - texto forte, produto, banner"
+  - id: M03
+    name: "Identity-Preserved Edit"
+    engine: "Qwen-Image-Edit"
+    status: active
+    description: "Manter rosto, produto, roupa, pose controlada"
+  - id: M04
+    name: "Multi-Angle Camera Control"
+    engine: "Qwen-multiangle-workflows"
+    status: active
+    description: "Trocar camera com coerencia espacial"
+  - id: M05
+    name: "Layered Decomposition"
+    engine: "Qwen-Layered-Control"
+    status: active
+    description: "Separar camadas, arrastar, recolorir, compor"
+  - id: M06
+    name: "2D to 3D"
+    engine: "TRELLIS.2"
+    status: active
+    description: "Criar asset 3D real a partir de imagem"
+  - id: M07
+    name: "Motion Path Control"
+    engine: "PENDING_VALIDATION"
+    status: experimental
+    description: "Desenhar trajetoria e o video obedece"
+  - id: M08
+    name: "Avatar Expressive Character"
+    engine: "PENDING_VALIDATION"
+    status: experimental
+    description: "Emocao, lipsync, avatar controlavel"
+  - id: M09
+    name: "Brand Assimilation"
+    engine: "PENDING_VALIDATION"
+    status: experimental
+    description: "Ler site/kit e padronizar artes"
+  - id: M10
+    name: "PDF Semantic Edit"
+    engine: "PDFelement"
+    status: active
+    description: "Editar PDF como documento vivo, traduzir, redigir dados"

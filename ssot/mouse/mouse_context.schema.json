@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MouseContext",
+  "type": "object",
+  "required": [
+    "canvas_id",
+    "active_family",
+    "active_layer",
+    "session_id"
+  ],
+  "properties": {
+    "canvas_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "active_family": {
+      "type": "string",
+      "enum": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10"
+      ]
+    },
+    "active_layer": {
+      "type": "string"
+    },
+    "identity_locked": {
+      "type": "boolean",
+      "default": false
+    },
+    "seed": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_checkpoint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cost_budget_remaining": {
+      "type": "number"
+    },
+    "pii_cleared": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,286 @@
+# mouse_actions_registry
+studio_id: S00
+api: mouse
+version: 1
+total_actions: 40
+actions:
+  - action_id: A-S00-ms-01
+    name: "detect_entity_on_click"
+    type: detect
+    trigger: on_click
+    severity: CRITICAL
+    family: M01
+    description: "Clica em objeto e detecta entidade visual"
+  - action_id: A-S00-ms-02
+    name: "select_objects_by_box"
+    type: select
+    trigger: on_drag
+    severity: CRITICAL
+    family: M01
+    description: "Seleciona multiplos objetos por caixa"
+  - action_id: A-S00-ms-03
+    name: "enforce_realtime_preview"
+    type: guard
+    trigger: on_edit
+    severity: CRITICAL
+    family: M01
+    description: "Garante preview ao vivo via Krea Realtime"
+  - action_id: A-S00-ms-04
+    name: "validate_canvas_state"
+    type: validate
+    trigger: on_input
+    severity: CRITICAL
+    family: M01
+    description: "Valida estado do canvas antes de editar"
+  - action_id: A-S00-ms-05
+    name: "enforce_layer_isolation"
+    type: guard
+    trigger: on_edit
+    severity: CRITICAL
+    family: M05
+    description: "Isola camada ativa antes de operacao"
+  - action_id: A-S00-ms-06
+    name: "validate_identity_lock"
+    type: validate
+    trigger: on_edit
+    severity: CRITICAL
+    family: M03
+    description: "Valida que rosto/produto esta bloqueado"
+  - action_id: A-S00-ms-07
+    name: "enforce_seed_reproducibility"
+    type: guard
+    trigger: on_generate
+    severity: CRITICAL
+    family: M02
+    description: "Garante seed reproduzivel"
+  - action_id: A-S00-ms-08
+    name: "validate_evidence_receipt"
+    type: validate
+    trigger: on_output
+    severity: CRITICAL
+    family: M01
+    description: "Valida emissao de receipt"
+  - action_id: A-S00-ms-09
+    name: "enforce_cost_guard_per_call"
+    type: guard
+    trigger: on_generate
+    severity: CRITICAL
+    family: M01
+    description: "Bloqueia chamada se custo excede limite"
+  - action_id: A-S00-ms-10
+    name: "validate_pii_in_canvas"
+    type: validate
+    trigger: on_input
+    severity: CRITICAL
+    family: M10
+    description: "Escaneia canvas por PII"
+  - action_id: A-S00-ms-11
+    name: "drag_object_regenerate_scene"
+    type: transform
+    trigger: on_drag
+    severity: HIGH
+    family: M01
+    description: "Arrasta objeto e regenera cena"
+  - action_id: A-S00-ms-12
+    name: "resize_object_coherent"
+    type: transform
+    trigger: on_resize
+    severity: HIGH
+    family: M01
+    description: "Redimensiona objeto mantendo coerencia"
+  - action_id: A-S00-ms-13
+    name: "swap_background"
+    type: transform
+    trigger: on_command
+    severity: HIGH
+    family: M03
+    description: "Troca fundo mantendo sujeito"
+  - action_id: A-S00-ms-14
+    name: "swap_material_local"
+    type: transform
+    trigger: on_command
+    severity: HIGH
+    family: M03
+    description: "Troca material local"
+  - action_id: A-S00-ms-15
+    name: "add_object_by_prompt"
+    type: generate
+    trigger: on_command
+    severity: HIGH
+    family: M02
+    description: "Adiciona objeto por clique + prompt"
+  - action_id: A-S00-ms-16
+    name: "remove_object_by_click"
+    type: transform
+    trigger: on_click
+    severity: HIGH
+    family: M05
+    description: "Remove objeto por clique"
+  - action_id: A-S00-ms-17
+    name: "separate_layers_auto"
+    type: decompose
+    trigger: on_command
+    severity: HIGH
+    family: M05
+    description: "Separa camadas automaticamente"
+  - action_id: A-S00-ms-18
+    name: "control_camera_angle"
+    type: transform
+    trigger: on_drag
+    severity: HIGH
+    family: M04
+    description: "Controla angulo de camera"
+  - action_id: A-S00-ms-19
+    name: "generate_multiangle_pack"
+    type: generate
+    trigger: on_command
+    severity: HIGH
+    family: M04
+    description: "Gera pack de angulos"
+  - action_id: A-S00-ms-20
+    name: "convert_2d_to_3d"
+    type: transform
+    trigger: on_command
+    severity: HIGH
+    family: M06
+    description: "Converte 2D em 3D via TRELLIS.2"
+  - action_id: A-S00-ms-21
+    name: "render_final_quality"
+    type: generate
+    trigger: on_command
+    severity: HIGH
+    family: M02
+    description: "Render final via Qwen-2512"
+  - action_id: A-S00-ms-22
+    name: "preserve_face_identity"
+    type: guard
+    trigger: on_edit
+    severity: HIGH
+    family: M03
+    description: "Preserva identidade facial"
+  - action_id: A-S00-ms-23
+    name: "preserve_product_identity"
+    type: guard
+    trigger: on_edit
+    severity: HIGH
+    family: M03
+    description: "Preserva identidade do produto"
+  - action_id: A-S00-ms-24
+    name: "apply_brush_mask"
+    type: mask
+    trigger: on_brush
+    severity: HIGH
+    family: M05
+    description: "Aplica mascara por pincel"
+  - action_id: A-S00-ms-25
+    name: "auto_segment_mask"
+    type: mask
+    trigger: on_click
+    severity: HIGH
+    family: M05
+    description: "Mascara automatica por segmentacao"
+  - action_id: A-S00-ms-26
+    name: "expand_image_horizontal"
+    type: transform
+    trigger: on_command
+    severity: HIGH
+    family: M02
+    description: "Expande imagem lateralmente"
+  - action_id: A-S00-ms-27
+    name: "expand_image_vertical"
+    type: transform
+    trigger: on_command
+    severity: HIGH
+    family: M02
+    description: "Expande imagem verticalmente"
+  - action_id: A-S00-ms-28
+    name: "transfer_pose_preserve_face"
+    type: transform
+    trigger: on_command
+    severity: HIGH
+    family: M03
+    description: "Transfere pose sem destruir rosto"
+  - action_id: A-S00-ms-29
+    name: "draw_motion_path"
+    type: motion
+    trigger: on_draw
+    severity: HIGH
+    family: M07
+    description: "Desenha trajetoria e gera movimento"
+  - action_id: A-S00-ms-30
+    name: "edit_pdf_semantic"
+    type: transform
+    trigger: on_command
+    severity: HIGH
+    family: M10
+    description: "Edita PDF mantendo estilo"
+  - action_id: A-S00-ms-31
+    name: "swap_color_local"
+    type: transform
+    trigger: on_command
+    severity: MEDIUM
+    family: M01
+    description: "Troca cor local de elemento"
+  - action_id: A-S00-ms-32
+    name: "generate_social_variants"
+    type: generate
+    trigger: on_command
+    severity: MEDIUM
+    family: M02
+    description: "Gera variacoes para formatos sociais"
+  - action_id: A-S00-ms-33
+    name: "export_layer_pack"
+    type: export
+    trigger: on_command
+    severity: MEDIUM
+    family: M05
+    description: "Exporta pack de camadas"
+  - action_id: A-S00-ms-34
+    name: "generate_turntable_reference"
+    type: generate
+    trigger: on_command
+    severity: MEDIUM
+    family: M04
+    description: "Gera turntable 360"
+  - action_id: A-S00-ms-35
+    name: "recolor_layer"
+    type: transform
+    trigger: on_command
+    severity: MEDIUM
+    family: M05
+    description: "Recolore camada especifica"
+  - action_id: A-S00-ms-36
+    name: "fill_empty_area_coherent"
+    type: transform
+    trigger: on_command
+    severity: MEDIUM
+    family: M02
+    description: "Preenche area vazia"
+  - action_id: A-S00-ms-37
+    name: "emit_canvas_operation_log"
+    type: emit
+    trigger: on_output
+    severity: MEDIUM
+    family: M01
+    description: "Emite log de operacao"
+  - action_id: A-S00-ms-38
+    name: "validate_rate_limit_mouse"
+    type: validate
+    trigger: on_generate
+    severity: MEDIUM
+    family: M01
+    description: "Valida rate limit"
+  - action_id: A-S00-ms-39
+    name: "store_canvas_checkpoint"
+    type: store
+    trigger: on_save
+    severity: MEDIUM
+    family: M01
+    description: "Armazena checkpoint do canvas"
+  - action_id: A-S00-ms-40
+    name: "notify_render_complete"
+    type: notify
+    trigger: on_output
+    severity: MEDIUM
+    family: M02
+    description: "Notifica render completo"
