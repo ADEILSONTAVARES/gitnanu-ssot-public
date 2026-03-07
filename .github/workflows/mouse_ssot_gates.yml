@@ -1,0 +1,48 @@
+name: Mouse SSOT Gates v10
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  mouse-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: validate_registries
+        run: |
+          for f in \
+            ssot/mouse/MOUSE_ACTIONS_REGISTRY.yaml \
+            ssot/mouse/MOUSE_UNIVERSAL_SKILLS.yaml \
+            ssot/mouse/MOUSE_PAINS_REGISTRY.yaml \
+            ssot/mouse/MOUSE_14_RULES_CANONICAL.yaml \
+            ssot/registries/GATE_REGISTRY_COMPLETE.yaml \
+            ssot/registries/SCORE_FUNCTION_REGISTRY.yaml \
+            ssot/og10/OG10_SCORE_CANON.yaml \
+            ssot/og10/OG10_FORMULA_POINTER_PUBLIC.yaml \
+            ssot/antigravity/ANTIGRAVITY_REGISTRY.yaml \
+            ssot/adapters/MOUSEADAPTER_REGISTRY.yaml; do
+            [ -f "$f" ] && echo "PASS $f" || (echo "FAIL missing $f" && exit 1)
+          done
+      - name: validate_schemas
+        run: |
+          for f in \
+            ssot/schemas/image_patch.schema.json \
+            ssot/schemas/video_patch.schema.json \
+            ssot/schemas/prototype_patch.schema.json \
+            ssot/schemas/code_patch.schema.json \
+            ssot/schemas/undo_token.schema.json \
+            ssot/schemas/score_record.schema.json \
+            ssot/schemas/evidence_pack.schema.json \
+            ssot/schemas/council_verdict.schema.json \
+            ssot/schemas/mouse_audit_trail.schema.json; do
+            [ -f "$f" ] && echo "PASS $f" || (echo "FAIL missing $f" && exit 1)
+          done
+      - name: validate_no_coca_cola
+        run: |
+          if git diff HEAD~1 --name-only 2>/dev/null | grep -qE 'private/og10|vault/|secrets/'; then
+            echo 'FAIL COCA-COLA violation' && exit 1
+          fi
+          echo 'PASS coca_gate'
+      - name: all_gates_passed
+        run: echo 'PASS_CI++ Mouse SSOT Gates v10 GREEN'

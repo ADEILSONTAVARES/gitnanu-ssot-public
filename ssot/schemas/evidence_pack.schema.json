@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EvidencePack",
+  "type": "object",
+  "required": [
+    "pack_id",
+    "session_id",
+    "mode_id",
+    "required_files",
+    "checksums",
+    "verdict"
+  ],
+  "properties": {
+    "pack_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "mode_id": {
+      "type": "string"
+    },
+    "required_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checksums": {
+      "type": "string"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL"
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+registry_id: GATE_REGISTRY_COMPLETE
+version: '10.0'
+total_gates: 20
+gates:
+  G01: {name: context_valid, fail_closed: true, scope: all}
+  G02: {name: mode_valid, fail_closed: true, scope: all}
+  G03: {name: surface_coverage, fail_closed: true, scope: all}
+  G04: {name: schema_patch_valid, fail_closed: true, scope: all}
+  G05: {name: undo_token_present, fail_closed: true, scope: all}
+  G06: {name: policy_pass, fail_closed: true, scope: all}
+  G07: {name: doctor_precheck_pass, fail_closed: true, scope: all}
+  G08: {name: smoke_pass, fail_closed: true, scope: all}
+  G09: {name: evidence_pack_complete, fail_closed: true, scope: all}
+  G10: {name: score_record_valid, fail_closed: true, scope: all}
+  G11: {name: tests_pass, fail_closed: true, scope: M04_CODE}
+  G12: {name: diff_no_secret, fail_closed: true, scope: M04_CODE}
+  G13: {name: flow_navigable, fail_closed: true, scope: M03_PROTOTYPE}
+  G14: {name: states_accessible, fail_closed: true, scope: M03_PROTOTYPE}
+  G15: {name: asset_lock_respected, fail_closed: true, scope: M02_MEDIA}
+  G16: {name: timeline_not_orphan, fail_closed: true, scope: M02_MEDIA}
+  G17: {name: brand_lock_pass, fail_closed: true, scope: M01_VISUAL}
+  G18: {name: identity_lock_pass, fail_closed: true, scope: M01_VISUAL}
+  G19: {name: propagation_preview, fail_closed: true, scope: M07_PROPAGATION}
+  G20: {name: merge_gate_ci_green, fail_closed: true, scope: CI_CD}

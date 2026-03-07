@@ -1,0 +1,32 @@
+registry_id: MOUSE_UNIVERSAL_SKILLS
+version: '10.0'
+split: 85pct_universais_15pct_micro
+skills:
+  U1_INSPECT_MAP:
+    coverage_target: 0.35
+    score_target: 9.9
+    mission: Entender alvo, escopo, dependencias, risco e contexto minimo antes de qualquer patch.
+    pains: [P01,P03,P09,P15]
+    inputs: [selected_target,current_surface,active_studio,user_intent,project_context_pack]
+    outputs: [target_identity_card,impact_map,dependency_map,risk_level,propagation_scope]
+    pass_criteria: [target_located,file_identified,scope_defined,risk_defined,next_step_clear]
+  U2_PATCH_PROPAGATE:
+    coverage_target: 0.35
+    score_target: 9.8
+    mission: Transformar intencao em mudanca concreta, reversivel e pronta para aplicar ou propagar.
+    pains: [P02,P04,P05,P07,P08]
+    inputs: [mouse_context,desired_change,current_state,brand_rules,propagation_rules]
+    outputs: [patch_envelope,diff_preview,preview_state,undo_token,rollback_plan,propagation_plan]
+    pass_criteria: [patch_schema_valid,diff_generated,undo_created,rollback_created,propagation_preview_ready]
+  U3_VERIFY_RECOVER:
+    coverage_target: 0.15
+    score_target: 9.9
+    mission: Validar a mudanca, medir, registrar evidencia, aprovar ou reverter.
+    pains: [P06,P12,P13,P14]
+    inputs: [patch_result,smoke_matrix,target_metrics,score_policy,evidence_policy]
+    outputs: [smoke_report,score_record,evidence_pack,verdict,rollback_receipt]
+    pass_criteria: [smoke_pass,score_written,evidence_written,verdict_emitted,rollback_available]
+api_band_policy:
+  default: 0.3pct_0.6pct
+  warm: 0.6pct_1.2pct
+  elevated: 1.2pct_2.0pct

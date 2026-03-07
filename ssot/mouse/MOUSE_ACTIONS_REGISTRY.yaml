@@ -1,0 +1,60 @@
+registry_id: MOUSE_ACTIONS_REGISTRY
+version: '10.0'
+total_functions: 40
+families:
+  A_selecao:
+    functions:
+      - {id: F01, name: Detectar alvo real, pains: [P01], score_target: 9.9, score_measured: null}
+      - {id: F02, name: Identificar surface e studio, pains: [P01,P15], score_target: 9.8, score_measured: null}
+      - {id: F03, name: Mapear componente arquivo linha, pains: [P03,P09], score_target: 9.8, score_measured: null}
+      - {id: F04, name: Detectar dependencias e impacto, pains: [P15], score_target: 9.7, score_measured: null}
+      - {id: F05, name: Classificar risco da acao, pains: [P10,P13], score_target: 9.9, score_measured: null}
+  B_visual:
+    functions:
+      - {id: F06, name: Mover elementos grid lock, pains: [P02], score_target: 9.7, score_measured: null}
+      - {id: F07, name: Redimensionar responsividade, pains: [P02], score_target: 9.8, score_measured: null}
+      - {id: F08, name: Ajustar spacing gap, pains: [P02], score_target: 9.7, score_measured: null}
+      - {id: F09, name: Trocar cor borda sombra, pains: [P10], score_target: 9.8, score_measured: null}
+      - {id: F10, name: Editar tipografia brand, pains: [P10], score_target: 9.9, score_measured: null}
+  C_conteudo:
+    functions:
+      - {id: F11, name: Editar texto inline preview, pains: [P11], score_target: 9.7, score_measured: null}
+      - {id: F12, name: Trocar imagem preservando layout, pains: [P02,P10], score_target: 9.8, score_measured: null}
+      - {id: F13, name: Trocar icone midia componente, pains: [P03], score_target: 9.7, score_measured: null}
+      - {id: F14, name: Atualizar thumbnail hero, pains: [P10], score_target: 9.6, score_measured: null}
+      - {id: F15, name: Variacao conteudo por tela, pains: [P08], score_target: 9.6, score_measured: null}
+  D_acao:
+    functions:
+      - {id: F16, name: Editar link navegacao, pains: [P15], score_target: 9.7, score_measured: null}
+      - {id: F17, name: Ajustar onClick bindings, pains: [P09,P13], score_target: 9.8, score_measured: null}
+      - {id: F18, name: Alterar permissoes, pains: [P13], score_target: 9.7, score_measured: null}
+      - {id: F19, name: Adicionar tracking analytics, pains: [P12], score_target: 9.6, score_measured: null}
+      - {id: F20, name: Trocar rota CTA fluxo, pains: [P08,P15], score_target: 9.7, score_measured: null}
+  E_prototipo:
+    functions:
+      - {id: F21, name: Preview instantaneo patch, pains: [P08], score_target: 9.8, score_measured: null}
+      - {id: F22, name: Simular navegacao estados, pains: [P08], score_target: 9.7, score_measured: null}
+      - {id: F23, name: Salvar variante AB, pains: [P14], score_target: 9.6, score_measured: null}
+      - {id: F24, name: Validar consistencia estados, pains: [P08], score_target: 9.7, score_measured: null}
+      - {id: F25, name: Smoke rapido prototipo, pains: [P14], score_target: 9.8, score_measured: null}
+  F_codigo:
+    functions:
+      - {id: F26, name: Abrir arquivo e linha, pains: [P03], score_target: 9.9, score_measured: null}
+      - {id: F27, name: Gerar diff antes de aplicar, pains: [P04], score_target: 9.9, score_measured: null}
+      - {id: F28, name: Editar trecho especifico, pains: [P03,P09], score_target: 9.8, score_measured: null}
+      - {id: F29, name: Explicar trecho e efeito, pains: [P11,P15], score_target: 9.7, score_measured: null}
+      - {id: F30, name: Refatorar com teste minimo, pains: [P13,P14], score_target: 9.8, score_measured: null}
+  G_governanca:
+    functions:
+      - {id: F31, name: Criar undo token confiavel, pains: [P05], score_target: 9.9, score_measured: null}
+      - {id: F32, name: Criar rollback do patch, pains: [P06], score_target: 9.9, score_measured: null}
+      - {id: F33, name: Classificar patch por risco, pains: [P13], score_target: 9.8, score_measured: null}
+      - {id: F34, name: Bloquear patch sem schema, pains: [P13], score_target: 9.9, score_measured: null}
+      - {id: F35, name: Bloquear apply sem evidence, pains: [P12], score_target: 9.9, score_measured: null}
+  H_propagacao:
+    functions:
+      - {id: F36, name: Gerar plano propagacao, pains: [P07], score_target: 9.8, score_measured: null}
+      - {id: F37, name: Corrige um corrige todos, pains: [P07], score_target: 9.8, score_measured: null}
+      - {id: F38, name: Gerar Evidence Pack, pains: [P12], score_target: 9.9, score_measured: null}
+      - {id: F39, name: Score target vs measured, pains: [P12,P14], score_target: 9.8, score_measured: null}
+      - {id: F40, name: Emitir verdict execucao, pains: [P12,P13], score_target: 9.9, score_measured: null}

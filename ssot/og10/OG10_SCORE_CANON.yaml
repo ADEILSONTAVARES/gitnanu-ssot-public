@@ -1,0 +1,20 @@
+registry_id: OG10_SCORE_CANON
+version: '1.0'
+formula: F*0.45 + V*0.35 + E*0.20
+target_composite: 96.0
+classes:
+  CORE_ELITE:       {range: 9.5-10.0, status: ACTIVE}
+  APOIO_FORTE:      {range: 9.0-9.49, status: ACTIVE}
+  CANDIDATE_VERIFY: {range: 8.0-8.99, status: REVIEW}
+  LAB:              {range: <8.0, status: EXPERIMENTAL}
+auto_rules:
+  downgrade:
+    - {condition: 3_consecutive_failures, delta: -0.2}
+    - {condition: visual_regression, delta: -0.3}
+    - {condition: cost_20pct_over_cap, delta: -0.1}
+    - {condition: latency_50pct_over_target, delta: -0.1}
+  upgrade:
+    - {condition: 5_consecutive_positive_evidences, delta: +0.1}
+invariants:
+  - TARGET e MEASURED sao campos separados nunca misturar
+  - audited=true somente quando evidence_pack_real + ci_green + measured_preenchido

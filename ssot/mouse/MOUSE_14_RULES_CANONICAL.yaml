@@ -1,0 +1,17 @@
+registry_id: MOUSE_14_RULES
+version: '10.0'
+rules:
+  R01: {rule: Sem Evidence Pack real nao existe AUDITADO, gate: G09, fail_closed: true}
+  R02: {rule: Sem PASS_STRICT nao existe merge, gate: G20, fail_closed: true}
+  R03: {rule: Sem registry valido nao existe feature ativa, gate: G02, fail_closed: true}
+  R04: {rule: Sem undo e rollback nao existe apply em superficie canonica, gate: G05, fail_closed: true}
+  R05: {rule: Sem diff nao existe patch de codigo, gate: G04, fail_closed: true}
+  R06: {rule: Sem schema nao existe contrato, gate: G04, fail_closed: true}
+  R07: {rule: TARGET e MEASURED sao campos separados nunca misturar, gate: G10, fail_closed: true}
+  R08: {rule: GitNanu e o unico writer canonico para repo, gate: G20, fail_closed: true}
+  R09: {rule: BASILEIA 52 Studios nunca hard-coded 41, gate: G02, fail_closed: true}
+  R10: {rule: Brand lock e identity lock sao inviolaveis, gate: G17, fail_closed: true}
+  R11: {rule: Propagacao sem preview de impacto e proibida, gate: G19, fail_closed: true}
+  R12: {rule: Antigravity subordinado ao PrM nunca opera solto, gate: G06, fail_closed: true}
+  R13: {rule: Claude SkillSmith opera em L1 com budget e contrato, gate: G07, fail_closed: true}
+  R14: {rule: Nota 10 = CI verde + validators + smoke real + Evidence Pack real + measured preenchido, gate: G20, fail_closed: true}

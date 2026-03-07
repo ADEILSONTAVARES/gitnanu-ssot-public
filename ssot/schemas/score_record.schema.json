@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ScoreRecord",
+  "type": "object",
+  "required": [
+    "record_id",
+    "mode_id",
+    "score_target",
+    "audited",
+    "verdict"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string"
+    },
+    "mode_id": {
+      "type": "string"
+    },
+    "audited": {
+      "type": "boolean"
+    },
+    "score_target": {
+      "type": "number"
+    },
+    "score_measured": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "last_latency_ms": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PENDING"
+      ]
+    }
+  }
+}

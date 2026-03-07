@@ -1,0 +1,12 @@
+workflow_id: N8N_PIPELINE_SKILL_CREATOR
+version: '1.0'
+steps:
+  1_trigger:        {type: webhook, endpoint: /run/skill-job, caller: [antigravity,prm]}
+  2_validate:       {checks: [schema_valid,budget_present,allowlist_ok]}
+  3_claude_skillsmith: {engine: claude_sonnet, lane: L1, outputs: [skill.md,manifest.yaml,eval.json]}
+  4_doctor_precheck: {checks: [trigger_defined,forbidden_actions_absent,tests_declared]}
+  5_codex:          {condition: if_code_aux_needed, rule: diff_first_only}
+  6_antigravity:    {actions: [install_skill,run_tests,collect_evidence]}
+  7_doctor_final:   {verdict: PASS_or_FAIL_with_reason}
+  8_publish:        {if_pass: [register_catalog,write_gndrive], if_fail: [generate_report,rollback]}
+  9_notify:         {target: L0, payload: [score,risks,next_steps]}

@@ -1,0 +1,10 @@
+registry_id: MOUSE_MODE_REGISTRY
+version: '10.0'
+modes:
+  M01_VISUAL_PATCH:  {type: central, scope: layout_texto_cor_tipografia_espaco_responsividade_grid}
+  M02_MEDIA_PATCH:   {type: central, scope: imagem_video_audio_timeline_cortes_legendas_thumbnails}
+  M03_PROTOTYPE_PATCH: {type: central, scope: fluxos_interacoes_estados_variantes_navegacao_AB}
+  M04_CODE_PATCH:    {type: central, scope: arquivo_funcao_handler_state_schema_query_rota}
+  M05_INSPECT:       {type: auxiliary, scope: estrutura_dependencias_bindings_lineage_impacto}
+  M06_EXPLAIN:       {type: auxiliary, scope: explicacao_trecho_patch_impacto_risco}
+  M07_PROPAGATION:   {type: auxiliary, scope: corrige_um_corrige_todos_com_policy}

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ImagePatch",
+  "type": "object",
+  "required": [
+    "patch_id",
+    "surface_id",
+    "engine_id",
+    "target_element",
+    "operation",
+    "diff_ref",
+    "undo_token_ref"
+  ],
+  "properties": {
+    "patch_id": {
+      "type": "string"
+    },
+    "surface_id": {
+      "type": "string"
+    },
+    "engine_id": {
+      "type": "string"
+    },
+    "target_element": {
+      "type": "string"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "replace",
+        "adjust",
+        "overlay",
+        "remove",
+        "generate"
+      ]
+    },
+    "diff_ref": {
+      "type": "string"
+    },
+    "undo_token_ref": {
+      "type": "string"
+    },
+    "brand_lock_check": {
+      "type": "boolean"
+    },
+    "risk_level": {
+      "type": "string"
+    }
+  }
+}

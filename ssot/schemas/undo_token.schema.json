@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UndoToken",
+  "type": "object",
+  "required": [
+    "token_id",
+    "patch_id",
+    "mode_id",
+    "checkpoint_ref",
+    "created_at",
+    "rollback_available"
+  ],
+  "properties": {
+    "token_id": {
+      "type": "string"
+    },
+    "patch_id": {
+      "type": "string"
+    },
+    "mode_id": {
+      "type": "string"
+    },
+    "checkpoint_ref": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "rollback_available": {
+      "type": "boolean"
+    },
+    "rollback_plan_ref": {
+      "type": "string"
+    }
+  }
+}

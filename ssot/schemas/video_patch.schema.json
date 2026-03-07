@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VideoPatch",
+  "type": "object",
+  "required": [
+    "patch_id",
+    "timeline_ref",
+    "engine_id",
+    "operation",
+    "diff_ref",
+    "undo_token_ref"
+  ],
+  "properties": {
+    "patch_id": {
+      "type": "string"
+    },
+    "timeline_ref": {
+      "type": "string"
+    },
+    "engine_id": {
+      "type": "string"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "cut",
+        "replace",
+        "overlay",
+        "subtitle",
+        "audio_sync",
+        "thumbnail"
+      ]
+    },
+    "diff_ref": {
+      "type": "string"
+    },
+    "undo_token_ref": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string"
+    }
+  }
+}

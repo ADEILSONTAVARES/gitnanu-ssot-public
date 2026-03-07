@@ -1,0 +1,11 @@
+pointer_id: OG10_FORMULA_POINTER_PUBLIC
+version: '1.0'
+status: ACTIVE
+public_summary:
+  formula: F*0.45 + V*0.35 + E*0.20
+  target_composite: 96.0
+  split_85_15: true
+  shadow_band_default: 0.3pct-0.6pct
+  shadow_band_max: 2.0pct
+private_formula_location: ssot/private/og10/OG10_FORMULA_MASTER_v1.yaml
+private_vault_note: GITIGNORED - COCA-COLA LOCAL ONLY - nunca commitar

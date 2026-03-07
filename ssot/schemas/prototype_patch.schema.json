@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PrototypePatch",
+  "type": "object",
+  "required": [
+    "patch_id",
+    "flow_ref",
+    "operation",
+    "diff_ref",
+    "undo_token_ref"
+  ],
+  "properties": {
+    "patch_id": {
+      "type": "string"
+    },
+    "flow_ref": {
+      "type": "string"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "add_state",
+        "remove_state",
+        "add_transition",
+        "modify_variant",
+        "add_ab_variant"
+      ]
+    },
+    "diff_ref": {
+      "type": "string"
+    },
+    "undo_token_ref": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string"
+    }
+  }
+}

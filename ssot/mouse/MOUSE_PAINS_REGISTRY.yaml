@@ -1,0 +1,19 @@
+registry_id: MOUSE_PAINS_REGISTRY
+version: '10.0'
+total_pains: 15
+pains:
+  P01: {name: Ambiguidade de selecao, skill: U1, severity: Alta, score_target: 9.9, functions: [F01,F02]}
+  P02: {name: Quebra de layout entre superficies, skill: U2, severity: Alta, score_target: 9.8, functions: [F06,F07,F08,F12]}
+  P03: {name: Dependencia excessiva do codigo bruto, skill: U1/U2, severity: Alta, score_target: 9.7, functions: [F03,F13,F26,F28]}
+  P04: {name: Ausencia de diff confiavel, skill: U2, severity: Alta, score_target: 9.8, functions: [F27]}
+  P05: {name: Undo fragil ou inexistente, skill: U2/U3, severity: Critica, score_target: 9.9, functions: [F31]}
+  P06: {name: Falta de rollback completo, skill: U3, severity: Critica, score_target: 9.9, functions: [F32]}
+  P07: {name: Propagacao manual e inconsistente, skill: U2, severity: Alta, score_target: 9.8, functions: [F36,F37]}
+  P08: {name: Prototipo desconectado do produto real, skill: U1/U2, severity: Alta, score_target: 9.7, functions: [F15,F21,F22,F24,F25]}
+  P09: {name: Quebra de ligacao visual com codigo, skill: U1/U2, severity: Critica, score_target: 9.8, functions: [F03,F17,F28]}
+  P10: {name: Violacao de brand e identidade, skill: U1/U3, severity: Alta, score_target: 9.9, functions: [F09,F10,F12,F14]}
+  P11: {name: Baixa explicabilidade, skill: U1, severity: Media, score_target: 9.7, functions: [F11,F29]}
+  P12: {name: Ausencia de evidencia auditavel, skill: U3, severity: Critica, score_target: 9.9, functions: [F35,F38,F39,F40]}
+  P13: {name: Hotfix sem governanca, skill: U2/U3, severity: Alta, score_target: 9.8, functions: [F05,F18,F30,F33,F34,F40]}
+  P14: {name: Teste lento manual e disperso, skill: U3, severity: Alta, score_target: 9.7, functions: [F23,F25,F30,F39]}
+  P15: {name: Impacto invisivel da mudanca, skill: U1, severity: Alta, score_target: 9.8, functions: [F04,F16,F20,F29]}

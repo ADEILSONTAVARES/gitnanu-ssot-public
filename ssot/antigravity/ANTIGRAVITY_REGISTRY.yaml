@@ -1,0 +1,21 @@
+registry_id: ANTIGRAVITY_REGISTRY
+version: '1.0'
+status: ACTIVE
+role: Executor de patches e workflows. Subordinado ao PrM. Nunca opera solto.
+operating_rules:
+  intake_required: true
+  plan_before_edit: true
+  diff_budget_required: true
+  allowlist_required: true
+  cleanup_after_mission: true
+  evidence_per_mission: true
+fail_modes:
+  - {symptom: npx_fails_or_loops, fix: npm_cache_clean_force}
+  - {symptom: skill_not_found, fix: find_and_register_skills_root}
+  - {symptom: skill_wrong_trigger, fix: regenerate_with_skillsmith}
+  - {symptom: code_breaks_build, fix: force_lint_test_before_return}
+  - {symptom: permission_denied, fix: move_to_home_projects}
+subordination:
+  controller: PrM
+  lane: L1_L2
+  budget_ticket_required: true
