@@ -1,0 +1,46 @@
+family_id: M07_MOTION_PATH
+engine: Luciotion-MotionPath
+status: CANDIDATE_VERIFY
+score_og10: 9.2
+note: Controle de trajetoria por desenho. Obrigatorio para Mouse virar diretor visual.
+functions_40:
+  - {id: F001, name: Desenhar trajetoria do objeto, lane: L1, score: 9.4}
+  - {id: F002, name: Desenhar trajetoria do personagem, lane: L1, score: 9.4}
+  - {id: F003, name: Definir curva de movimento, lane: L1, score: 9.3}
+  - {id: F004, name: Definir entrada do elemento, lane: L1, score: 9.3}
+  - {id: F005, name: Definir saida do elemento, lane: L1, score: 9.3}
+  - {id: F006, name: Definir aceleracao visual, lane: L1, score: 9.2}
+  - {id: F007, name: Definir direcao manual, lane: L1, score: 9.3}
+  - {id: F008, name: Guiar camera por spline, lane: L1, score: 9.3}
+  - {id: F009, name: Guiar braco e mao por trajeto, lane: L1, score: 9.1}
+  - {id: F010, name: Guiar carro por rota, lane: L1, score: 9.2}
+  - {id: F011, name: Guiar produto flutuante em anuncio, lane: L1, score: 9.3}
+  - {id: F012, name: Guiar texto animado, lane: L1, score: 9.3}
+  - {id: F013, name: Sincronizar movimento com layout, lane: L1, score: 9.2}
+  - {id: F014, name: Transformar rabisco em motion path, lane: L0, score: 9.4}
+  - {id: F015, name: Transformar seta em instrucao generativa, lane: L0, score: 9.4}
+  - {id: F016, name: Fazer preview da rota, lane: L0, score: 9.4}
+  - {id: F017, name: Editar rota sem regenerar tudo, lane: L0, score: 9.3}
+  - {id: F018, name: Criar blocking de cena, lane: L1, score: 9.2}
+  - {id: F019, name: Reduzir loteria do prompt, lane: L0, score: 9.3}
+  - {id: F020, name: Transformar direcao em interface, lane: L0, score: 9.4}
+  - {id: F021, name: Gerar motion previsivel, lane: L0, score: 9.3}
+  - {id: F022, name: Permitir storyboarding de movimento, lane: L1, score: 9.2}
+  - {id: F023, name: Exportar key path, lane: L1, score: 9.2}
+  - {id: F024, name: Servir para anuncios, lane: L1, score: 9.3}
+  - {id: F025, name: Servir para cenas de produto, lane: L1, score: 9.3}
+  - {id: F026, name: Servir para videos didaticos, lane: L1, score: 9.2}
+  - {id: F027, name: Servir para UI motion, lane: L1, score: 9.2}
+  - {id: F028, name: Servir para prototipos de filme, lane: L1, score: 9.1}
+  - {id: F029, name: Servir para VSL visual, lane: L1, score: 9.2}
+  - {id: F030, name: Virar controle de trajetoria do Mouse, lane: L0, score: 9.4}
+  - {id: F031, name: Controlar timing de entrada por frame, lane: L1, score: 9.2}
+  - {id: F032, name: Controlar timing de saida por frame, lane: L1, score: 9.2}
+  - {id: F033, name: Gerar loop de movimento, lane: L1, score: 9.1}
+  - {id: F034, name: Sincronizar path com audio, lane: L1, score: 9.0}
+  - {id: F035, name: Criar path para camera cinematica, lane: L1, score: 9.2}
+  - {id: F036, name: Gerar easing customizado, lane: L1, score: 9.1}
+  - {id: F037, name: Exportar como keyframes para After Effects, lane: L1, score: 9.1}
+  - {id: F038, name: Gerar variacao de path com seed, lane: L1, score: 9.1}
+  - {id: F039, name: Aplicar path em multiplos objetos simultaneo, lane: L1, score: 9.1}
+  - {id: F040, name: Habilitar arrastar trajetoria no canvas do Mouse, lane: L0, score: 9.4}

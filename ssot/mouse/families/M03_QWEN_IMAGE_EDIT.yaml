@@ -1,0 +1,46 @@
+family_id: M03_QWEN_IMAGE_EDIT
+engine: Qwen-Image-Edit
+status: ACTIVE
+score_og10: 9.7
+note: Edicao consistente. Mantem rosto, produto, roupa, pose controlada.
+functions_40:
+  - {id: F001, name: Preservar identidade facial, lane: L1, score: 9.9}
+  - {id: F002, name: Preservar identidade do produto, lane: L1, score: 9.9}
+  - {id: F003, name: Preservar estilo visual entre variacoes, lane: L1, score: 9.8}
+  - {id: F004, name: Preservar branding entre assets, lane: L1, score: 9.8}
+  - {id: F005, name: Manter personagem em multiplos angulos, lane: L1, score: 9.7}
+  - {id: F006, name: Manter roupa e acessorios consistentes, lane: L1, score: 9.7}
+  - {id: F007, name: Manter iluminacao base entre iteracoes, lane: L1, score: 9.7}
+  - {id: F008, name: Bloquear partes que nao podem mudar, lane: L0, score: 9.9}
+  - {id: F009, name: Usar imagem de referencia como ancora, lane: L1, score: 9.8}
+  - {id: F010, name: Usar multiplas referencias ao mesmo tempo, lane: L1, score: 9.7}
+  - {id: F011, name: Fazer merge de duas imagens com coerencia, lane: L1, score: 9.7}
+  - {id: F012, name: Transferir pose sem destruir rosto, lane: L1, score: 9.8}
+  - {id: F013, name: Transferir composicao sem destruir produto, lane: L1, score: 9.8}
+  - {id: F014, name: Gerar variacoes controladas, lane: L1, score: 9.7}
+  - {id: F015, name: Criar seed reprodutivel, lane: L0, score: 9.8}
+  - {id: F016, name: Voltar versao anterior com diff visual, lane: L0, score: 9.8}
+  - {id: F017, name: Editar fundo mantendo sujeito, lane: L1, score: 9.7}
+  - {id: F018, name: Trocar cenario mantendo personagem, lane: L1, score: 9.7}
+  - {id: F019, name: Ajustar expressao facial, lane: L1, score: 9.6}
+  - {id: F020, name: Ajustar direcao do olhar, lane: L1, score: 9.6}
+  - {id: F021, name: Trocar cor de roupa com consistencia, lane: L1, score: 9.7}
+  - {id: F022, name: Adicionar acessorio sem destruir identidade, lane: L1, score: 9.7}
+  - {id: F023, name: Remover elemento mantendo contexto, lane: L1, score: 9.7}
+  - {id: F024, name: Preencher area vazia com coerencia, lane: L1, score: 9.7}
+  - {id: F025, name: Expandir imagem lateralmente, lane: L1, score: 9.6}
+  - {id: F026, name: Expandir imagem verticalmente, lane: L1, score: 9.6}
+  - {id: F027, name: Aplicar mascara por pincel, lane: L1, score: 9.7}
+  - {id: F028, name: Aplicar mascara automatica por segmentacao, lane: L1, score: 9.7}
+  - {id: F029, name: Redimensionar objeto mantendo coerencia de luz, lane: L1, score: 9.7}
+  - {id: F030, name: Rotacionar objeto em 2D, lane: L1, score: 9.6}
+  - {id: F031, name: Arrastar objeto e regenerar cena, lane: L1, score: 9.7}
+  - {id: F032, name: Trocar material local metal vidro madeira, lane: L1, score: 9.6}
+  - {id: F033, name: Trocar cor local de elemento, lane: L1, score: 9.7}
+  - {id: F034, name: Apagar imperfeicoes locais, lane: L1, score: 9.7}
+  - {id: F035, name: Substituir objeto trocar cadeira por sofa, lane: L1, score: 9.6}
+  - {id: F036, name: Adicionar objeto por clique e prompt curto, lane: L1, score: 9.7}
+  - {id: F037, name: Remover objeto por clique, lane: L1, score: 9.7}
+  - {id: F038, name: Trocar fundo mantendo sujeito, lane: L1, score: 9.7}
+  - {id: F039, name: Reposicionar texto sem quebrar layout, lane: L1, score: 9.7}
+  - {id: F040, name: Gerar pack de variacoes identidade preservada, lane: L1, score: 9.8}

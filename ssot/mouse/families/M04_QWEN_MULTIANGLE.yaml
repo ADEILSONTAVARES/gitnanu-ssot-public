@@ -1,0 +1,46 @@
+family_id: M04_QWEN_MULTIANGLE
+engine: Qwen-Angles-3D
+status: ACTIVE
+score_og10: 9.1
+note: Controle de camera e multiplos angulos com coerencia espacial.
+functions_40:
+  - {id: F001, name: Reconstruir nocao espacial de foto, lane: L1, score: 9.2}
+  - {id: F002, name: Criar nova visao frontal, lane: L1, score: 9.2}
+  - {id: F003, name: Criar nova visao lateral, lane: L1, score: 9.2}
+  - {id: F004, name: Criar nova visao superior, lane: L1, score: 9.1}
+  - {id: F005, name: Criar nova visao 3/4, lane: L1, score: 9.2}
+  - {id: F006, name: Controlar azimute, lane: L1, score: 9.1}
+  - {id: F007, name: Controlar elevacao, lane: L1, score: 9.1}
+  - {id: F008, name: Simular orbita de camera, lane: L1, score: 9.1}
+  - {id: F009, name: Manter personagem estavel em nova camera, lane: L1, score: 9.2}
+  - {id: F010, name: Manter objeto estavel em nova camera, lane: L1, score: 9.2}
+  - {id: F011, name: Preservar cenario ao mudar ponto de vista, lane: L1, score: 9.1}
+  - {id: F012, name: Testar composicao antes de render final, lane: L0, score: 9.2}
+  - {id: F013, name: Ajustar enquadramento, lane: L1, score: 9.1}
+  - {id: F014, name: Reposicionar camera sem redesenhar tudo, lane: L1, score: 9.1}
+  - {id: F015, name: Pre-visualizar pose em outro angulo, lane: L1, score: 9.1}
+  - {id: F016, name: Gerar pack de angulos para personagem, lane: L1, score: 9.2}
+  - {id: F017, name: Gerar turntable de referencia, lane: L1, score: 9.1}
+  - {id: F018, name: Criar folha de poses, lane: L1, score: 9.1}
+  - {id: F019, name: Validar silhueta do personagem, lane: L1, score: 9.1}
+  - {id: F020, name: Comparar angulos lado a lado, lane: L0, score: 9.2}
+  - {id: F021, name: Servir de base para i2v, lane: L1, score: 9.0}
+  - {id: F022, name: Servir de base para 3D asset, lane: L1, score: 9.1}
+  - {id: F023, name: Corrigir perspectiva de item torto, lane: L1, score: 9.1}
+  - {id: F024, name: Reforcar consistencia de cena, lane: L1, score: 9.1}
+  - {id: F025, name: Preservar identidade do rosto, lane: L1, score: 9.2}
+  - {id: F026, name: Preservar roupa em novo angulo, lane: L1, score: 9.1}
+  - {id: F027, name: Preservar acessorios, lane: L1, score: 9.1}
+  - {id: F028, name: Preparar storyboard por angulo, lane: L1, score: 9.1}
+  - {id: F029, name: Gerar camera guiada por slider, lane: L1, score: 9.1}
+  - {id: F030, name: Atuar como camera inteligente do Mouse, lane: L0, score: 9.3}
+  - {id: F031, name: Gerar visao isometrica, lane: L1, score: 9.0}
+  - {id: F032, name: Gerar visao de cima para produto, lane: L1, score: 9.1}
+  - {id: F033, name: Simular lente grande angular, lane: L1, score: 9.0}
+  - {id: F034, name: Simular lente teleobjetiva, lane: L1, score: 9.0}
+  - {id: F035, name: Controlar profundidade de campo, lane: L1, score: 9.0}
+  - {id: F036, name: Gerar angulo dramatico baixo, lane: L1, score: 9.1}
+  - {id: F037, name: Gerar angulo aereo, lane: L1, score: 9.1}
+  - {id: F038, name: Exportar pack multi-angulo para catalogo, lane: L1, score: 9.1}
+  - {id: F039, name: Criar gizmo de camera interativo, lane: L1, score: 9.1}
+  - {id: F040, name: Habilitar arrastar angulo no Mouse, lane: L0, score: 9.3}

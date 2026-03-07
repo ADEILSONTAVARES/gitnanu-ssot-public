@@ -1,0 +1,46 @@
+family_id: M02_QWEN_IMAGE_2512
+engine: Qwen-Image-2512
+status: ACTIVE
+score_og10: 9.6
+note: Render final de qualidade. Texto forte, produto, retrato, banner.
+functions_40:
+  - {id: F001, name: Gerar imagem fotorealista, lane: L0, score: 9.8}
+  - {id: F002, name: Renderizar texto complexo, lane: L0, score: 9.9}
+  - {id: F003, name: Renderizar texto multilinha, lane: L0, score: 9.9}
+  - {id: F004, name: Respeitar layout de texto, lane: L0, score: 9.8}
+  - {id: F005, name: Editar imagem com texto guiado, lane: L1, score: 9.7}
+  - {id: F006, name: Preservar rosto com fidelidade, lane: L1, score: 9.7}
+  - {id: F007, name: Preservar produto com fidelidade, lane: L1, score: 9.8}
+  - {id: F008, name: Criar foto publicitaria, lane: L1, score: 9.7}
+  - {id: F009, name: Criar poster com lettering, lane: L1, score: 9.8}
+  - {id: F010, name: Criar banner com tipografia, lane: L1, score: 9.8}
+  - {id: F011, name: Criar embalagem mockup, lane: L1, score: 9.7}
+  - {id: F012, name: Criar capa de livro, lane: L1, score: 9.7}
+  - {id: F013, name: Criar outdoor, lane: L1, score: 9.7}
+  - {id: F014, name: Criar thumbnail com texto legivel, lane: L1, score: 9.8}
+  - {id: F015, name: Produzir textura de pele realista, lane: L1, score: 9.7}
+  - {id: F016, name: Produzir poros e microdetalhes, lane: L1, score: 9.6}
+  - {id: F017, name: Melhorar natureza e animais, lane: L1, score: 9.6}
+  - {id: F018, name: Gerar imagens para e-commerce, lane: L1, score: 9.8}
+  - {id: F019, name: Gerar imagens para catalogo, lane: L1, score: 9.7}
+  - {id: F020, name: Trocar elementos locais, lane: L1, score: 9.7}
+  - {id: F021, name: Ajustar pose, lane: L1, score: 9.6}
+  - {id: F022, name: Ajustar roupa, lane: L1, score: 9.6}
+  - {id: F023, name: Ajustar fundo, lane: L1, score: 9.7}
+  - {id: F024, name: Ajustar iluminacao, lane: L1, score: 9.7}
+  - {id: F025, name: Fazer inpainting preciso, lane: L1, score: 9.7}
+  - {id: F026, name: Fazer outpainting coerente, lane: L1, score: 9.7}
+  - {id: F027, name: Criar variacoes consistentes, lane: L1, score: 9.7}
+  - {id: F028, name: Trabalhar com seed reprodutivel, lane: L0, score: 9.8}
+  - {id: F029, name: Rodar localmente open source, lane: L0, score: 9.9}
+  - {id: F030, name: Integrar em pipeline proprio, lane: L0, score: 9.8}
+  - {id: F031, name: Servir como render final de qualidade, lane: L0, score: 9.9}
+  - {id: F032, name: Servir como motor barato, lane: L0, score: 9.8}
+  - {id: F033, name: Servir como fallback offline, lane: L0, score: 9.7}
+  - {id: F034, name: Gerar artes com texto melhor que media, lane: L0, score: 9.9}
+  - {id: F035, name: Compor visual editorial, lane: L1, score: 9.7}
+  - {id: F036, name: Compor visual de produto premium, lane: L1, score: 9.8}
+  - {id: F037, name: Gerar variacao de cor de produto, lane: L1, score: 9.7}
+  - {id: F038, name: Criar hero image para landing page, lane: L1, score: 9.7}
+  - {id: F039, name: Gerar asset para anuncio pago, lane: L1, score: 9.8}
+  - {id: F040, name: Fechar render final apos preview Krea, lane: L0, score: 9.9}

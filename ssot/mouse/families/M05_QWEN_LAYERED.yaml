@@ -1,0 +1,46 @@
+family_id: M05_QWEN_LAYERED
+engine: Qwen-Layered-Control
+status: ACTIVE
+score_og10: 9.7
+note: Separacao em camadas e composicao. Modo camadas do Mouse.
+functions_40:
+  - {id: F001, name: Remover fundo, lane: L0, score: 9.8}
+  - {id: F002, name: Separar pessoa do fundo, lane: L0, score: 9.8}
+  - {id: F003, name: Separar texto do fundo, lane: L0, score: 9.7}
+  - {id: F004, name: Separar produto do fundo, lane: L0, score: 9.8}
+  - {id: F005, name: Separar elementos de poster, lane: L1, score: 9.7}
+  - {id: F006, name: Gerar PNG transparente, lane: L0, score: 9.8}
+  - {id: F007, name: Gerar camadas independentes, lane: L0, score: 9.8}
+  - {id: F008, name: Preservar hierarquia visual, lane: L1, score: 9.7}
+  - {id: F009, name: Permitir edicao por camada, lane: L0, score: 9.8}
+  - {id: F010, name: Permitir recolor por camada, lane: L1, score: 9.7}
+  - {id: F011, name: Permitir mover camada, lane: L0, score: 9.8}
+  - {id: F012, name: Permitir ocultar camada, lane: L0, score: 9.8}
+  - {id: F013, name: Permitir duplicar camada, lane: L0, score: 9.7}
+  - {id: F014, name: Permitir exportar pack de layers, lane: L0, score: 9.7}
+  - {id: F015, name: Permitir composicao nova, lane: L1, score: 9.7}
+  - {id: F016, name: Permitir recorte fino, lane: L1, score: 9.7}
+  - {id: F017, name: Brush-guided separation, lane: L1, score: 9.7}
+  - {id: F018, name: Separar foreground e background, lane: L0, score: 9.8}
+  - {id: F019, name: Separar objetos pequenos, lane: L1, score: 9.6}
+  - {id: F020, name: Separar logo, lane: L1, score: 9.7}
+  - {id: F021, name: Separar marca dagua, lane: L1, score: 9.6}
+  - {id: F022, name: Separar fruta objeto cenario, lane: L1, score: 9.7}
+  - {id: F023, name: Preparar montagem complexa, lane: L1, score: 9.7}
+  - {id: F024, name: Facilitar anuncio multi-elemento, lane: L1, score: 9.7}
+  - {id: F025, name: Facilitar criacao de colagem, lane: L1, score: 9.6}
+  - {id: F026, name: Facilitar recorte sem Photoshop, lane: L0, score: 9.8}
+  - {id: F027, name: Ser base para animacao por camadas, lane: L1, score: 9.6}
+  - {id: F028, name: Ser base para parallax, lane: L1, score: 9.6}
+  - {id: F029, name: Ser base para motion design, lane: L1, score: 9.6}
+  - {id: F030, name: Ser base para video curto, lane: L1, score: 9.6}
+  - {id: F031, name: Ser base para editor no Mouse, lane: L0, score: 9.8}
+  - {id: F032, name: Melhorar controle do usuario, lane: L0, score: 9.8}
+  - {id: F033, name: Diminuir retrabalho, lane: L0, score: 9.7}
+  - {id: F034, name: Habilitar microedicao, lane: L1, score: 9.7}
+  - {id: F035, name: Habilitar drag-and-drop sem destruir arte, lane: L0, score: 9.8}
+  - {id: F036, name: Virar modo camadas do Mouse, lane: L0, score: 9.9}
+  - {id: F037, name: Exportar camada como asset independente, lane: L1, score: 9.7}
+  - {id: F038, name: Combinar camadas em render final, lane: L1, score: 9.7}
+  - {id: F039, name: Bloquear camada canonica contra edicao, lane: L0, score: 9.8}
+  - {id: F040, name: Gerar evidence de camadas aplicadas, lane: L0, score: 9.7}

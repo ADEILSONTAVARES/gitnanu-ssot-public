@@ -1,0 +1,46 @@
+family_id: M08_ARCADS
+engine: Arcads
+status: CANDIDATE_VERIFY
+score_og10: 9.1
+note: Avatar expressivo e UGC. Personagem controlavel em cenas.
+functions_40:
+  - {id: F001, name: Criar avatar expressivo, lane: L1, score: 9.2}
+  - {id: F002, name: Controlar emocao do avatar, lane: L1, score: 9.1}
+  - {id: F003, name: Sincronizar lipsync com audio, lane: L1, score: 9.2}
+  - {id: F004, name: Gerar video com avatar falando, lane: L1, score: 9.2}
+  - {id: F005, name: Trocar cenario do avatar, lane: L1, score: 9.1}
+  - {id: F006, name: Manter identidade do avatar entre takes, lane: L1, score: 9.1}
+  - {id: F007, name: Gerar variacao de take, lane: L1, score: 9.0}
+  - {id: F008, name: Exportar video de avatar para ads, lane: L1, score: 9.2}
+  - {id: F009, name: Criar personagem recorrente de campanha, lane: L1, score: 9.1}
+  - {id: F010, name: Usar avatar em multiplos formatos, lane: L1, score: 9.1}
+  - {id: F011, name: Gerar UGC-style com avatar, lane: L1, score: 9.1}
+  - {id: F012, name: Controlar direcao do olhar, lane: L1, score: 9.0}
+  - {id: F013, name: Controlar postura do corpo, lane: L1, score: 9.0}
+  - {id: F014, name: Adicionar gestos ao avatar, lane: L1, score: 9.0}
+  - {id: F015, name: Gerar avatar a partir de foto, lane: L1, score: 9.1}
+  - {id: F016, name: Aplicar estilo visual ao avatar, lane: L1, score: 9.0}
+  - {id: F017, name: Integrar avatar em cena real, lane: L1, score: 9.0}
+  - {id: F018, name: Gerar pack de reacoes do avatar, lane: L1, score: 9.0}
+  - {id: F019, name: Criar hook de ads com avatar, lane: L1, score: 9.1}
+  - {id: F020, name: Criar CTA com avatar, lane: L1, score: 9.1}
+  - {id: F021, name: Gerar depoimento com avatar, lane: L1, score: 9.0}
+  - {id: F022, name: Adaptar avatar para vertical e horizontal, lane: L1, score: 9.0}
+  - {id: F023, name: Gerar variacao de script com mesmo avatar, lane: L1, score: 9.1}
+  - {id: F024, name: Exportar para TikTok Reels YouTube Shorts, lane: L1, score: 9.1}
+  - {id: F025, name: Testar performance de avatar em ads, lane: L1, score: 9.0}
+  - {id: F026, name: Criar avatar de marca, lane: L1, score: 9.1}
+  - {id: F027, name: Escalar producao de videos com avatar, lane: L1, score: 9.2}
+  - {id: F028, name: Reduzir custo de producao de video, lane: L0, score: 9.2}
+  - {id: F029, name: Gerar video sem precisar de ator real, lane: L0, score: 9.2}
+  - {id: F030, name: Manter consistencia de marca no avatar, lane: L1, score: 9.1}
+  - {id: F031, name: Criar avatar multilingual, lane: L1, score: 9.0}
+  - {id: F032, name: Sincronizar legenda com fala do avatar, lane: L1, score: 9.1}
+  - {id: F033, name: Gerar thumbnail com avatar, lane: L1, score: 9.0}
+  - {id: F034, name: Aplicar filtro visual ao avatar, lane: L1, score: 9.0}
+  - {id: F035, name: Controlar velocidade da fala, lane: L1, score: 9.0}
+  - {id: F036, name: Gerar avatar com envelhecimento ou rejuvenescimento, lane: L1, score: 8.9}
+  - {id: F037, name: Criar serie de videos com mesmo avatar, lane: L1, score: 9.1}
+  - {id: F038, name: Integrar avatar com PDFelement para video docs, lane: L1, score: 8.9}
+  - {id: F039, name: Gerar preview de avatar antes de render final, lane: L0, score: 9.1}
+  - {id: F040, name: Virar motor de avatar expressivo do Mouse, lane: L0, score: 9.2}

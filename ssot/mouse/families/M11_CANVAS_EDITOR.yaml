@@ -1,0 +1,46 @@
+family_id: M11_CANVAS_EDITOR
+engine: Manos-Canvas-Editor
+status: CANDIDATE_VERIFY
+score_og10: 9.1
+note: Editor de canvas visual com IA integrada. Arrastar clicar editar sem codigo.
+functions_40:
+  - {id: F001, name: Editar layout por clique, lane: L0, score: 9.2}
+  - {id: F002, name: Editar layout por arrasto, lane: L0, score: 9.2}
+  - {id: F003, name: Redimensionar elemento, lane: L0, score: 9.2}
+  - {id: F004, name: Reposicionar elemento, lane: L0, score: 9.2}
+  - {id: F005, name: Trocar cor de elemento, lane: L0, score: 9.2}
+  - {id: F006, name: Trocar fonte de texto, lane: L0, score: 9.1}
+  - {id: F007, name: Editar texto inline, lane: L0, score: 9.2}
+  - {id: F008, name: Adicionar imagem ao canvas, lane: L0, score: 9.1}
+  - {id: F009, name: Remover elemento do canvas, lane: L0, score: 9.1}
+  - {id: F010, name: Alinhar elementos automaticamente, lane: L0, score: 9.1}
+  - {id: F011, name: Distribuir espacamento entre elementos, lane: L0, score: 9.1}
+  - {id: F012, name: Agrupar elementos, lane: L0, score: 9.1}
+  - {id: F013, name: Desagrupar elementos, lane: L0, score: 9.1}
+  - {id: F014, name: Bloquear elemento contra edicao, lane: L0, score: 9.2}
+  - {id: F015, name: Criar componente reutilizavel, lane: L1, score: 9.0}
+  - {id: F016, name: Aplicar template ao canvas, lane: L1, score: 9.1}
+  - {id: F017, name: Exportar canvas como PNG, lane: L0, score: 9.2}
+  - {id: F018, name: Exportar canvas como SVG, lane: L0, score: 9.1}
+  - {id: F019, name: Exportar canvas como PDF, lane: L0, score: 9.1}
+  - {id: F020, name: Gerar variacao de layout por IA, lane: L1, score: 9.1}
+  - {id: F021, name: Sugerir melhoria de layout, lane: L1, score: 9.0}
+  - {id: F022, name: Adaptar para mobile, lane: L1, score: 9.0}
+  - {id: F023, name: Adaptar para desktop, lane: L1, score: 9.0}
+  - {id: F024, name: Adaptar para stories vertical, lane: L1, score: 9.0}
+  - {id: F025, name: Criar grid responsivo, lane: L1, score: 9.0}
+  - {id: F026, name: Aplicar sistema de cor, lane: L1, score: 9.1}
+  - {id: F027, name: Aplicar sistema de tipografia, lane: L1, score: 9.1}
+  - {id: F028, name: Substituir imagem mantendo layout, lane: L1, score: 9.1}
+  - {id: F029, name: Gerar preview antes de exportar, lane: L0, score: 9.2}
+  - {id: F030, name: Virar surface de edicao visual do Mouse, lane: L0, score: 9.2}
+  - {id: F031, name: Receber patch do Mouse via prompt, lane: L0, score: 9.2}
+  - {id: F032, name: Mostrar diff visual antes e depois, lane: L0, score: 9.2}
+  - {id: F033, name: Confirmar patch antes de aplicar, lane: L0, score: 9.2}
+  - {id: F034, name: Registrar historico de edicoes, lane: L0, score: 9.1}
+  - {id: F035, name: Voltar versao anterior, lane: L0, score: 9.1}
+  - {id: F036, name: Criar evidence pack da edicao, lane: L0, score: 9.1}
+  - {id: F037, name: Integrar com SSOT para exportar assets, lane: L0, score: 9.1}
+  - {id: F038, name: Permitir colaboracao em canvas, lane: L1, score: 9.0}
+  - {id: F039, name: Comentar elemento no canvas, lane: L1, score: 9.0}
+  - {id: F040, name: Publicar canvas como asset canonico, lane: L0, score: 9.1}

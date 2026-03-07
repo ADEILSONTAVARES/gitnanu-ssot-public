@@ -1,0 +1,46 @@
+family_id: M01_KREA_REALTIME
+engine: Krea Realtime
+status: ACTIVE
+score_og10: 9.8
+note: Motor de preview ao vivo. Reflete mudanca instantaneamente.
+functions_40:
+  - {id: F001, name: Editar em tempo real, lane: L0, score: 9.9}
+  - {id: F002, name: Refletir prompt instantaneamente, lane: L0, score: 9.9}
+  - {id: F003, name: Refletir brush em tempo real, lane: L0, score: 9.8}
+  - {id: F004, name: Alterar estilo ao vivo, lane: L0, score: 9.8}
+  - {id: F005, name: Trocar cor ao vivo, lane: L0, score: 9.8}
+  - {id: F006, name: Trocar cenario ao vivo, lane: L0, score: 9.7}
+  - {id: F007, name: Adicionar objeto ao vivo, lane: L1, score: 9.7}
+  - {id: F008, name: Remover objeto ao vivo, lane: L1, score: 9.7}
+  - {id: F009, name: Reposicionar elemento ao vivo, lane: L1, score: 9.7}
+  - {id: F010, name: Testar composicao sem render longo, lane: L0, score: 9.8}
+  - {id: F011, name: Iterar dezenas de vezes rapido, lane: L0, score: 9.9}
+  - {id: F012, name: Usar webcam como entrada, lane: L1, score: 9.6}
+  - {id: F013, name: Usar tela como entrada, lane: L1, score: 9.7}
+  - {id: F014, name: Pintar por cima da imagem, lane: L1, score: 9.7}
+  - {id: F015, name: Guiar geracao por canvas, lane: L1, score: 9.8}
+  - {id: F016, name: Manter consistencia temporal em video, lane: L1, score: 9.6}
+  - {id: F017, name: Gerar feedback imediato, lane: L0, score: 9.9}
+  - {id: F018, name: Explorar direcao criativa, lane: L0, score: 9.7}
+  - {id: F019, name: Congelar frame bom, lane: L0, score: 9.8}
+  - {id: F020, name: Exportar still, lane: L0, score: 9.8}
+  - {id: F021, name: Exportar sequencia, lane: L1, score: 9.7}
+  - {id: F022, name: Exportar video, lane: L1, score: 9.7}
+  - {id: F023, name: Combinar texto e imagem, lane: L1, score: 9.7}
+  - {id: F024, name: Combinar estilo e estrutura, lane: L1, score: 9.7}
+  - {id: F025, name: Acelerar prototipagem visual, lane: L0, score: 9.8}
+  - {id: F026, name: Diminuir custo de tentativa e erro, lane: L0, score: 9.8}
+  - {id: F027, name: Funcionar como scrub editor visual, lane: L0, score: 9.7}
+  - {id: F028, name: Editar produto em tempo real, lane: L1, score: 9.7}
+  - {id: F029, name: Editar conceito em tempo real, lane: L1, score: 9.7}
+  - {id: F030, name: Editar composicao de anuncio, lane: L1, score: 9.7}
+  - {id: F031, name: Mostrar antes depois ao vivo, lane: L0, score: 9.8}
+  - {id: F032, name: Permitir undo redo rapido, lane: L0, score: 9.9}
+  - {id: F033, name: Permitir AB instantaneo, lane: L0, score: 9.8}
+  - {id: F034, name: Permitir sessao colaborativa criativa, lane: L1, score: 9.5}
+  - {id: F035, name: Servir como preview engine do Mouse, lane: L0, score: 9.9}
+  - {id: F036, name: Virar modo ao vivo do Mouse, lane: L0, score: 9.9}
+  - {id: F037, name: Gerar variacao rapida de layout, lane: L1, score: 9.7}
+  - {id: F038, name: Testar paleta de cores instantaneo, lane: L1, score: 9.7}
+  - {id: F039, name: Preview de tipografia ao vivo, lane: L1, score: 9.7}
+  - {id: F040, name: Simular resposta de usuario ao vivo, lane: L1, score: 9.6}

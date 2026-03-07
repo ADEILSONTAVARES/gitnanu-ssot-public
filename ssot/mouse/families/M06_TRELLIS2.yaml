@@ -1,0 +1,46 @@
+family_id: M06_TRELLIS2
+engine: Microsoft-TRELLIS2
+status: ACTIVE
+score_og10: 9.2
+note: 2D para 3D real. Asset de produto, personagem, objeto para game AR VR catalogo.
+functions_40:
+  - {id: F001, name: Converter imagem em 3D, lane: L1, score: 9.5}
+  - {id: F002, name: Criar mesh a partir de imagem, lane: L1, score: 9.4}
+  - {id: F003, name: Criar material PBR, lane: L1, score: 9.3}
+  - {id: F004, name: Reconstruir topologia complexa, lane: L1, score: 9.2}
+  - {id: F005, name: Manter detalhes finos, lane: L1, score: 9.3}
+  - {id: F006, name: Gerar asset de produto, lane: L1, score: 9.4}
+  - {id: F007, name: Gerar asset de personagem, lane: L1, score: 9.3}
+  - {id: F008, name: Gerar asset de objeto decorativo, lane: L1, score: 9.2}
+  - {id: F009, name: Gerar asset para game, lane: L1, score: 9.3}
+  - {id: F010, name: Gerar asset para AR, lane: L1, score: 9.2}
+  - {id: F011, name: Gerar asset para VR, lane: L1, score: 9.2}
+  - {id: F012, name: Gerar asset para catalogo 3D, lane: L1, score: 9.3}
+  - {id: F013, name: Gerar preview de volume, lane: L0, score: 9.3}
+  - {id: F014, name: Gerar diferentes formatos 3D, lane: L1, score: 9.2}
+  - {id: F015, name: Separar estrutura e material, lane: L1, score: 9.2}
+  - {id: F016, name: Tratar vidro em 3D, lane: L1, score: 9.1}
+  - {id: F017, name: Tratar metal em 3D, lane: L1, score: 9.2}
+  - {id: F018, name: Tratar madeira em 3D, lane: L1, score: 9.1}
+  - {id: F019, name: Tratar tecido em 3D, lane: L1, score: 9.1}
+  - {id: F020, name: Criar base para turntable, lane: L1, score: 9.3}
+  - {id: F021, name: Criar base para animacao, lane: L1, score: 9.2}
+  - {id: F022, name: Criar base para render 3D, lane: L1, score: 9.3}
+  - {id: F023, name: Criar base para mockup interativo, lane: L1, score: 9.2}
+  - {id: F024, name: Reutilizar asset em varias cenas, lane: L0, score: 9.3}
+  - {id: F025, name: Monetizar asset 3D, lane: L1, score: 9.0}
+  - {id: F026, name: Melhorar pipeline de prototipagem, lane: L0, score: 9.3}
+  - {id: F027, name: Permitir inspecao 360, lane: L0, score: 9.4}
+  - {id: F028, name: Permitir integracao com engine 3D, lane: L1, score: 9.2}
+  - {id: F029, name: Permitir pipeline com Gaussian mesh, lane: L1, score: 9.1}
+  - {id: F030, name: Virar 2D para 3D do Mouse, lane: L0, score: 9.5}
+  - {id: F031, name: Sustentar giro real de objeto, lane: L0, score: 9.4}
+  - {id: F032, name: Sustentar camera livre no produto, lane: L0, score: 9.3}
+  - {id: F033, name: Sustentar visualizacao web 3D, lane: L1, score: 9.2}
+  - {id: F034, name: Sustentar export tecnico, lane: L1, score: 9.2}
+  - {id: F035, name: Sustentar estudio 3D dentro da plataforma, lane: L1, score: 9.2}
+  - {id: F036, name: Gerar asset de mascote em 3D, lane: L1, score: 9.2}
+  - {id: F037, name: Gerar asset de embalagem em 3D, lane: L1, score: 9.3}
+  - {id: F038, name: Gerar asset de arquitetura em 3D, lane: L1, score: 9.1}
+  - {id: F039, name: Exportar glTF para web, lane: L1, score: 9.2}
+  - {id: F040, name: Exportar OBJ para pipeline criativo, lane: L1, score: 9.2}
