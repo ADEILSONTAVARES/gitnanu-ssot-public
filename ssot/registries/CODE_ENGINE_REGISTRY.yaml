@@ -1,0 +1,45 @@
+registry_id: CODE_ENGINE_REGISTRY
+version: v1
+description: Registry canônico dos engines de codigo do Mouse Inteligente — M04_CODE_PATCH
+engines:
+  - id: CE01
+    engine: Claude-Sonnet
+    specialty: code_generation_refactor
+    layer: L1
+    score_og10: 9.5
+    status: ACTIVE
+  - id: CE02
+    engine: DeepSeek-V3
+    specialty: code_completion_debug
+    layer: L1
+    score_og10: 9.3
+    status: ACTIVE
+  - id: CE03
+    engine: GPT-4o
+    specialty: code_explain_review
+    layer: L1
+    score_og10: 9.2
+    status: ACTIVE
+  - id: CE04
+    engine: Gemini-Pro
+    specialty: code_multimodal_ui
+    layer: L1
+    score_og10: 9.1
+    status: ACTIVE
+  - id: CE05
+    engine: Kimi-K2.5
+    specialty: code_long_context
+    layer: L1
+    score_og10: 9.0
+    status: ACTIVE
+mouse_mode: M04_CODE_PATCH
+routing:
+  - {task: code_generate, engine: CE01}
+  - {task: code_debug, engine: CE02}
+  - {task: code_review, engine: CE03}
+  - {task: code_ui_visual, engine: CE04}
+  - {task: code_long_file, engine: CE05}
+fallback: CE01
+budget_layer: L1
+shadow_band: 0pct
+ssot_pointer: ssot/registries/ENGINE_REGISTRY.yaml

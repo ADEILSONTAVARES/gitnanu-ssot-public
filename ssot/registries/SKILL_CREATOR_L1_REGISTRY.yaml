@@ -1,0 +1,95 @@
+registry_id: SKILL_CREATOR_L1_REGISTRY
+version: v1
+description: Registry canônico de skills L1 do Mouse Inteligente — triggers, engines, condicoes
+skills_l1:
+  - id: SK01
+    name: Photoreal Final Render
+    trigger: task==photoreal_final OR score_preview<9.0
+    engine: M02
+    layer: L1
+    shadow: 0.3pct
+    condition: budget_available AND evidence_ok
+  - id: SK02
+    name: Multi-Angle Pack
+    trigger: task==multi_angle OR client_request==angles
+    engine: M03
+    layer: L1
+    shadow: 0.4pct
+    condition: budget_available
+  - id: SK03
+    name: Layer Separation Pack
+    trigger: task==layer_separation OR output==transparent_png
+    engine: M04
+    layer: L1
+    shadow: 0.4pct
+    condition: budget_available
+  - id: SK04
+    name: 3D Mesh Build
+    trigger: task==3d_mesh OR output==glb OR output==fbx
+    engine: M06
+    layer: L1
+    shadow: 0.5pct
+    condition: budget_available AND score_preview>=8.5
+  - id: SK05
+    name: Motion Path Video
+    trigger: task==motion_path OR client_request==controlled_motion
+    engine: M07
+    layer: L1
+    shadow: 0.5pct
+    condition: budget_available AND status!=CANDIDATE_VERIFY OR override==true
+  - id: SK06
+    name: UGC Avatar Ad
+    trigger: task==ugc_ad OR task==video_ad_avatar
+    engine: M08
+    layer: L1
+    shadow: 0.5pct
+    condition: budget_available
+  - id: SK07
+    name: Animation 2D Frame
+    trigger: task==animation_2d OR output==sprite_sheet
+    engine: M09
+    layer: L1
+    shadow: 0.5pct
+    condition: budget_available
+  - id: SK08
+    name: PDF Document Pro
+    trigger: task==pdf_document OR task==ocr OR task==contract
+    engine: M10
+    layer: L1
+    shadow: 0pct
+    condition: always
+  - id: SK09
+    name: Canvas Design
+    trigger: task==canvas_design OR task==template OR task==social_post
+    engine: M11
+    layer: L1
+    shadow: 0pct
+    condition: always
+  - id: SK10
+    name: Static to Video Animate
+    trigger: task==static_to_video OR output==gif OR output==loop
+    engine: M12
+    layer: L1
+    shadow: 0pct
+    condition: budget_available
+  - id: SK11
+    name: Text Instruction Edit
+    trigger: task==text_instruction_edit OR client_request==change_via_prompt
+    engine: M13
+    layer: L1
+    shadow: 0.4pct
+    condition: budget_available
+  - id: SK12
+    name: Quick Mobile Generate
+    trigger: task==quick_mobile OR budget==tight OR turnaround==fast
+    engine: M05
+    layer: L1
+    shadow: 0pct
+    condition: always
+activation_rules:
+  - L0_first: always run U0 U1 U2 before any L1 skill
+  - budget_gate: check budget before activating L1
+  - shadow_gate: log shadow on every L1 activation
+  - doctor2_gate: run Doctor2 after every L1 output
+  - evidence_required: every L1 output needs evidence tag
+ssot_pointer: ssot/registries/ENGINE_REGISTRY.yaml

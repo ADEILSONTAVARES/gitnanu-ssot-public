@@ -1,0 +1,104 @@
+registry_id: MOUSE_FAMILIES_REGISTRY
+version: v1
+description: Registry canônico das 13 famílias de engines visuais do Mouse Inteligente OG10
+total_families: 13
+families:
+  - id: M01
+    file: ssot/mouse/families/M01_KREA_REALTIME.yaml
+    engine: Krea-Realtime
+    score_og10: 9.4
+    shadow_band: 0.3-0.6pct
+    status: ACTIVE
+    functions: 40
+  - id: M02
+    file: ssot/mouse/families/M02_QWEN_IMAGE_2512.yaml
+    engine: Qwen-Image-2512
+    score_og10: 9.4
+    shadow_band: 0.3-0.6pct
+    status: ACTIVE
+    functions: 40
+  - id: M03
+    file: ssot/mouse/families/M03_QWEN_ANGLES.yaml
+    engine: Qwen-Angles-3D
+    score_og10: 9.1
+    shadow_band: 0.3-0.6pct
+    status: ACTIVE
+    functions: 40
+  - id: M04
+    file: ssot/mouse/families/M04_QWEN_LAYERED.yaml
+    engine: Qwen-Layered-Control
+    score_og10: 9.4
+    shadow_band: 0.3-0.6pct
+    status: ACTIVE
+    functions: 40
+  - id: M05
+    file: ssot/mouse/families/M05_CREEN_DREAMINA.yaml
+    engine: Creen-5.0-Dreamina
+    score_og10: 8.8
+    shadow_band: 0pct
+    status: CANDIDATE_VERIFY
+    functions: 40
+  - id: M06
+    file: ssot/mouse/families/M06_TRELLIS2.yaml
+    engine: Microsoft-TRELLIS2
+    score_og10: 9.2
+    shadow_band: 0.5-1.0pct
+    status: ACTIVE
+    functions: 40
+  - id: M07
+    file: ssot/mouse/families/M07_MOTION_PATH.yaml
+    engine: Luciotion-MotionPath
+    score_og10: 9.2
+    shadow_band: 0.5-1.0pct
+    status: CANDIDATE_VERIFY
+    functions: 40
+  - id: M08
+    file: ssot/mouse/families/M08_ARCADS.yaml
+    engine: Arcads-UGC
+    score_og10: 9.1
+    shadow_band: 0.5-1.0pct
+    status: ACTIVE
+    functions: 40
+  - id: M09
+    file: ssot/mouse/families/M09_BLOOM_AI.yaml
+    engine: Bloom-AI
+    score_og10: 8.9
+    shadow_band: 0pct
+    status: ACTIVE
+    functions: 40
+  - id: M10
+    file: ssot/mouse/families/M10_PDFELEMENT.yaml
+    engine: Wondershare-PDFelement
+    score_og10: 9.1
+    shadow_band: 0pct
+    status: ACTIVE
+    functions: 40
+  - id: M11
+    file: ssot/mouse/families/M11_CANVAS_EDITOR.yaml
+    engine: Manos-CapCut-Design
+    score_og10: 9.1
+    shadow_band: 0pct
+    status: ACTIVE
+    functions: 40
+  - id: M12
+    file: ssot/mouse/families/M12_MAGIC_ANIMATOR.yaml
+    engine: Magic-Animator
+    score_og10: 9.0
+    shadow_band: 0pct
+    status: ACTIVE
+    functions: 40
+  - id: M13
+    file: ssot/mouse/families/M13_QWEN_IMAGE_EDIT.yaml
+    engine: Qwen-Image-Edit-2509
+    score_og10: 9.2
+    shadow_band: 0.3-0.6pct
+    status: ACTIVE
+    functions: 40
+total_functions: 520
+shadow_policy:
+  default: 0.3-0.6pct
+  elevated: 0.5-1.0pct
+  zero: 0pct
+og10_target: 96.0
+formula: F*0.45 + V*0.35 + E*0.20
+ssot_pointer: ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md

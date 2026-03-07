@@ -1,0 +1,54 @@
+registry_id: ENGINE_REGISTRY
+version: v1
+description: Registry canônico de todos os engines do Mouse Inteligente por categoria
+categories:
+  visual_image:
+    - {engine: Krea-Realtime, family: M01, score: 9.4, layer_primary: L0, status: ACTIVE}
+    - {engine: Qwen-Image-2512, family: M02, score: 9.4, layer_primary: L1, status: ACTIVE}
+    - {engine: Qwen-Angles-3D, family: M03, score: 9.1, layer_primary: L1, status: ACTIVE}
+    - {engine: Qwen-Layered-Control, family: M04, score: 9.4, layer_primary: L0, status: ACTIVE}
+    - {engine: Creen-5.0-Dreamina, family: M05, score: 8.8, layer_primary: L1, status: CANDIDATE_VERIFY}
+    - {engine: Qwen-Image-Edit-2509, family: M13, score: 9.2, layer_primary: L1, status: ACTIVE}
+  visual_3d:
+    - {engine: Microsoft-TRELLIS2, family: M06, score: 9.2, layer_primary: L1, status: ACTIVE}
+  visual_motion:
+    - {engine: Luciotion-MotionPath, family: M07, score: 9.2, layer_primary: L1, status: CANDIDATE_VERIFY}
+    - {engine: Magic-Animator, family: M12, score: 9.0, layer_primary: L1, status: ACTIVE}
+  visual_ugc:
+    - {engine: Arcads-UGC, family: M08, score: 9.1, layer_primary: L1, status: ACTIVE}
+  visual_animation:
+    - {engine: Bloom-AI, family: M09, score: 8.9, layer_primary: L1, status: ACTIVE}
+  document:
+    - {engine: Wondershare-PDFelement, family: M10, score: 9.1, layer_primary: L0, status: ACTIVE}
+  design_canvas:
+    - {engine: Manos-CapCut-Design, family: M11, score: 9.1, layer_primary: L0, status: ACTIVE}
+routing_rules:
+  - condition: task==realtime_preview
+    route_to: M01
+  - condition: task==photoreal_final
+    route_to: M02
+  - condition: task==multi_angle
+    route_to: M03
+  - condition: task==layer_separation
+    route_to: M04
+  - condition: task==quick_mobile
+    route_to: M05
+  - condition: task==3d_mesh
+    route_to: M06
+  - condition: task==motion_path
+    route_to: M07
+  - condition: task==video_ad_avatar
+    route_to: M08
+  - condition: task==animation_2d
+    route_to: M09
+  - condition: task==pdf_document
+    route_to: M10
+  - condition: task==canvas_design
+    route_to: M11
+  - condition: task==static_to_video
+    route_to: M12
+  - condition: task==text_instruction_edit
+    route_to: M13
+fallback: M02
+og10_minimum_score: 8.5
+ssot_pointer: ssot/registries/MOUSE_FAMILIES_REGISTRY.yaml

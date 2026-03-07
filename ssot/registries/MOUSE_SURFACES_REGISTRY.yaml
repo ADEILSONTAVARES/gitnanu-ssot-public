@@ -1,0 +1,94 @@
+registry_id: MOUSE_SURFACES_REGISTRY
+version: v1
+description: Registry de superficies de entrega do Mouse Inteligente — onde cada output e exibido
+surfaces:
+  - id: S01
+    name: Social Feed Post
+    formats: [1x1, 4x5, 9x16]
+    engines_primary: [M02, M05, M11]
+    output_type: image
+    max_size_mb: 10
+  - id: S02
+    name: Story Reel
+    formats: [9x16]
+    engines_primary: [M01, M05, M12]
+    output_type: image_or_video
+    max_size_mb: 50
+  - id: S03
+    name: Video Ad Short
+    formats: [9x16, 1x1, 16x9]
+    engines_primary: [M08, M07, M12]
+    output_type: video
+    max_duration_s: 60
+  - id: S04
+    name: Banner Digital
+    formats: [leaderboard, rectangle, skyscraper]
+    engines_primary: [M02, M11, M04]
+    output_type: image
+    max_size_mb: 5
+  - id: S05
+    name: Product Catalog
+    formats: [1x1, 4x3]
+    engines_primary: [M02, M04, M13]
+    output_type: image
+    max_size_mb: 10
+  - id: S06
+    name: 3D Asset Game AR VR
+    formats: [glb, obj, fbx, usdz]
+    engines_primary: [M06]
+    output_type: 3d_model
+    max_size_mb: 100
+  - id: S07
+    name: PDF Document
+    formats: [pdf]
+    engines_primary: [M10]
+    output_type: document
+    max_size_mb: 50
+  - id: S08
+    name: Presentation Deck
+    formats: [16x9, pdf]
+    engines_primary: [M11, M10]
+    output_type: document_or_image
+    max_size_mb: 30
+  - id: S09
+    name: Animation Loop GIF
+    formats: [gif, webm]
+    engines_primary: [M09, M12]
+    output_type: animation
+    max_duration_s: 10
+  - id: S10
+    name: Poster Print
+    formats: [A3, A2, A1, custom]
+    engines_primary: [M02, M11]
+    output_type: image
+    min_dpi: 300
+  - id: S11
+    name: Thumbnail YouTube
+    formats: [16x9, 1280x720]
+    engines_primary: [M02, M11, M13]
+    output_type: image
+    max_size_mb: 2
+  - id: S12
+    name: Multi-Angle Pack
+    formats: [png_pack, zip]
+    engines_primary: [M03]
+    output_type: image_pack
+    views_min: 4
+  - id: S13
+    name: Layer Pack PSD-ready
+    formats: [png_transparent, zip]
+    engines_primary: [M04]
+    output_type: layer_pack
+  - id: S14
+    name: Canvas Design Export
+    formats: [png, jpg, mp4, pdf]
+    engines_primary: [M11]
+    output_type: multi
+  - id: S15
+    name: UGC Video Ad Ready
+    formats: [mp4, 9x16, 1x1, 16x9]
+    engines_primary: [M08]
+    output_type: video
+    ready_to_run: true
+coverage_rule: every_surface_must_have_min_1_engine
+ssot_pointer: ssot/registries/ENGINE_REGISTRY.yaml

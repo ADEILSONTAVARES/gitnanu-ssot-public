@@ -1,0 +1,272 @@
+registry_id: STUDIO_ENGINE_MAP
+version: v1
+description: Mapeamento canônico Mouse Inteligente engines x Studios BASILEIA S00-S51
+mouse_scope: M01-M13 visual engines + U0-U2 universal skills
+studios:
+  S00:
+    name: GammaNode Live Hub
+    mouse_engines: [M01, M11]
+    use_cases: [realtime_preview_hub, canvas_design_hub]
+    mouse_mode: M01_VISUAL_PATCH
+  S01:
+    name: WorGmamma Escrita Conhecimento Publishing
+    mouse_engines: [M02, M11, M13]
+    use_cases: [cover_editorial, thumbnail_artigo, banner_publicacao]
+    mouse_mode: M01_VISUAL_PATCH
+  S02:
+    name: IDE 2x1 Builder App PWA Site
+    mouse_engines: [M11, M04, M02]
+    use_cases: [ui_mockup, icon_asset, banner_app]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S03:
+    name: Video e Cinema 7x
+    mouse_engines: [M07, M08, M12, M09]
+    use_cases: [motion_path_video, ugc_ad, static_to_video, animation_2d]
+    mouse_mode: M02_MEDIA_PATCH
+  S04:
+    name: Imagem Design e Logo 7x
+    mouse_engines: [M01, M02, M03, M04, M13]
+    use_cases: [realtime_edit, photoreal, multi_angle, layer_separation, text_instruction_edit]
+    mouse_mode: M01_VISUAL_PATCH
+  S05:
+    name: Voz TTS STT Dublagem e Emocao 7x
+    mouse_engines: [M08, M11]
+    use_cases: [avatar_voiceover, cover_podcast]
+    mouse_mode: M02_MEDIA_PATCH
+  S06:
+    name: Musica e Audio 7x
+    mouse_engines: [M11, M02]
+    use_cases: [album_cover, social_visual_music]
+    mouse_mode: M01_VISUAL_PATCH
+  S07:
+    name: Shorts e Repurpose Factory 7x
+    mouse_engines: [M08, M07, M12, M05]
+    use_cases: [ugc_short, motion_short, animate_short, quick_mobile]
+    mouse_mode: M02_MEDIA_PATCH
+  S08:
+    name: Acessibilidade 7x
+    mouse_engines: [M11, M13]
+    use_cases: [accessible_visual, high_contrast_edit]
+    mouse_mode: M01_VISUAL_PATCH
+  S09:
+    name: Integracoes Catalogo do usuario
+    mouse_engines: [M11, M02]
+    use_cases: [connector_visual, integration_banner]
+    mouse_mode: M01_VISUAL_PATCH
+  S10:
+    name: Automacoes n8n Make Zapier Bun
+    mouse_engines: [M11, M04]
+    use_cases: [workflow_diagram, automation_visual]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S11:
+    name: Dashboards e Relatorios
+    mouse_engines: [M11, M02]
+    use_cases: [dashboard_visual, report_cover]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S12:
+    name: Biblioteca e Assets
+    mouse_engines: [M04, M02, M03]
+    use_cases: [asset_layer_pack, asset_photoreal, asset_multi_angle]
+    mouse_mode: M01_VISUAL_PATCH
+  S13:
+    name: Localizacao e Multilingue
+    mouse_engines: [M02, M13]
+    use_cases: [multilingual_banner, localized_visual_edit]
+    mouse_mode: M01_VISUAL_PATCH
+  S14:
+    name: Cursos e Onboarding
+    mouse_engines: [M11, M09, M12]
+    use_cases: [course_cover, explainer_animation, lesson_visual]
+    mouse_mode: M01_VISUAL_PATCH
+  S15:
+    name: Marketplace e Shopping
+    mouse_engines: [M02, M04, M03, M13]
+    use_cases: [product_photoreal, product_layers, product_angles, product_edit]
+    mouse_mode: M01_VISUAL_PATCH
+  S16:
+    name: Milhas e Viagens Hotelaria
+    mouse_engines: [M02, M11, M13]
+    use_cases: [destination_visual, hotel_banner, travel_edit]
+    mouse_mode: M01_VISUAL_PATCH
+  S17:
+    name: Documentos Pro PDF OCR Contratos
+    mouse_engines: [M10, M11]
+    use_cases: [pdf_document, contract_visual]
+    mouse_mode: M01_VISUAL_PATCH
+  S18:
+    name: Comunidades e Assinaturas
+    mouse_engines: [M11, M05, M02]
+    use_cases: [community_cover, membership_visual, social_post]
+    mouse_mode: M01_VISUAL_PATCH
+  S19:
+    name: NcAI G10x Search Maps Trends YouTube
+    mouse_engines: [M02, M11, M13]
+    use_cases: [thumbnail_youtube, map_visual, trend_banner]
+    mouse_mode: M01_VISUAL_PATCH
+  S20:
+    name: Conta e Privacidade
+    mouse_engines: [M11]
+    use_cases: [profile_visual, account_banner]
+    mouse_mode: M01_VISUAL_PATCH
+  S21:
+    name: Mensageria 7x
+    mouse_engines: [M05, M11, M12]
+    use_cases: [message_sticker, chat_visual, animated_message]
+    mouse_mode: M01_VISUAL_PATCH
+  S22:
+    name: Social Automation e Distribuicao 7x
+    mouse_engines: [M05, M08, M11, M12]
+    use_cases: [social_post_auto, ugc_auto, canvas_auto, animated_post]
+    mouse_mode: M01_VISUAL_PATCH
+  S23:
+    name: Trafego Pago 7x
+    mouse_engines: [M08, M02, M05, M07]
+    use_cases: [ugc_ad_paid, photoreal_ad, quick_ad, motion_ad]
+    mouse_mode: M02_MEDIA_PATCH
+  S24:
+    name: Metrica Viral de Video 7x
+    mouse_engines: [M08, M07, M12]
+    use_cases: [viral_ugc, viral_motion, viral_animate]
+    mouse_mode: M02_MEDIA_PATCH
+  S25:
+    name: Captacao Costura de Leads 7x
+    mouse_engines: [M08, M02, M11]
+    use_cases: [lead_ugc, lead_visual, lead_canvas]
+    mouse_mode: M02_MEDIA_PATCH
+  S26:
+    name: CRM e Vendas Conversacionais
+    mouse_engines: [M11, M02]
+    use_cases: [crm_visual, sales_banner]
+    mouse_mode: M01_VISUAL_PATCH
+  S27:
+    name: Dominios DNS Deploy Proxy
+    mouse_engines: [M11]
+    use_cases: [deploy_visual, domain_dashboard]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S28:
+    name: Church 7x Igreja App Shell
+    mouse_engines: [M02, M11, M09, M12]
+    use_cases: [church_banner, sermon_visual, worship_animation, church_loop]
+    mouse_mode: M01_VISUAL_PATCH
+  S29:
+    name: Live e Streaming Engine 7x
+    mouse_engines: [M01, M07, M08]
+    use_cases: [live_overlay, stream_motion, stream_ugc]
+    mouse_mode: M02_MEDIA_PATCH
+  S30:
+    name: Calls 7x Realtime STT Translate TTS Avatar
+    mouse_engines: [M01, M08]
+    use_cases: [call_avatar, realtime_call_visual]
+    mouse_mode: M02_MEDIA_PATCH
+  S31:
+    name: Afiliados Royalties Antifraude
+    mouse_engines: [M11, M02]
+    use_cases: [affiliate_banner, royalty_visual]
+    mouse_mode: M01_VISUAL_PATCH
+  S32:
+    name: Publicacao e Distribuicao
+    mouse_engines: [M02, M11, M05]
+    use_cases: [publish_cover, distribution_visual, quick_publish]
+    mouse_mode: M01_VISUAL_PATCH
+  S33:
+    name: Pesquisa Radar Resumos
+    mouse_engines: [M11, M02]
+    use_cases: [research_visual, radar_banner]
+    mouse_mode: M01_VISUAL_PATCH
+  S34:
+    name: Billing e Creditos
+    mouse_engines: [M11]
+    use_cases: [billing_dashboard_visual]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S35:
+    name: Pagamentos e Checkout
+    mouse_engines: [M11, M02]
+    use_cases: [checkout_visual, payment_banner]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S36:
+    name: Times e Permissoes RBAC ABAC SSO
+    mouse_engines: [M11]
+    use_cases: [team_dashboard_visual]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S37:
+    name: Support Tickets CRM
+    mouse_engines: [M11, M02]
+    use_cases: [support_visual, ticket_banner]
+    mouse_mode: M01_VISUAL_PATCH
+  S38:
+    name: Acessibilidade Avancada
+    mouse_engines: [M11, M13]
+    use_cases: [accessible_edit, high_contrast_advanced]
+    mouse_mode: M01_VISUAL_PATCH
+  S39:
+    name: 3D Scene-to-3D Assets Games World
+    mouse_engines: [M06, M03]
+    use_cases: [3d_mesh, multi_angle_3d]
+    mouse_mode: M01_VISUAL_PATCH
+  S40:
+    name: Marketplaces 3D
+    mouse_engines: [M06, M03, M02]
+    use_cases: [3d_marketplace_asset, product_angle, product_photoreal]
+    mouse_mode: M01_VISUAL_PATCH
+  S41:
+    name: CONNECTORS_REGISTRY
+    mouse_engines: [M11]
+    use_cases: [connector_visual_doc]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S42:
+    name: ACTION_REGISTRY
+    mouse_engines: [M11]
+    use_cases: [action_visual_doc]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S43:
+    name: NO_HOLES_CHECK
+    mouse_engines: [M11, M02]
+    use_cases: [coverage_visual, gap_report_visual]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S44:
+    name: MCP Factory 100pct coverage
+    mouse_engines: [M11]
+    use_cases: [mcp_visual_doc]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S45:
+    name: Router Policy Engine
+    mouse_engines: [M11]
+    use_cases: [router_diagram_visual]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S46:
+    name: Doctor 1 Doctor 2
+    mouse_engines: [M11, M02]
+    use_cases: [doctor_report_visual, quality_dashboard]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S47:
+    name: Benchmark Lab Bench54
+    mouse_engines: [M11, M02]
+    use_cases: [benchmark_visual, score_dashboard]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S48:
+    name: API History DB Replay
+    mouse_engines: [M11]
+    use_cases: [api_history_visual]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S49:
+    name: Evidence Ledger GNDrive Publisher
+    mouse_engines: [M11, M02]
+    use_cases: [evidence_visual, ledger_dashboard]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S50:
+    name: Cache QUANTUM Redis Safety Pack
+    mouse_engines: [M11]
+    use_cases: [cache_visual_doc]
+    mouse_mode: M03_PROTOTYPE_PATCH
+  S51:
+    name: RAG QUANTUM LTA Crew Overlay
+    mouse_engines: [M11]
+    use_cases: [rag_visual_doc]
+    mouse_mode: M03_PROTOTYPE_PATCH
+coverage_check:
+  total_studios: 52
+  studios_with_mouse: 52
+  coverage_pct: 100
+  min_engines_per_studio: 1
+  zero_holes: true
+ssot_pointer: ssot/registries/ENGINE_REGISTRY.yaml

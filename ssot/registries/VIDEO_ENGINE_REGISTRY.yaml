@@ -1,0 +1,47 @@
+registry_id: VIDEO_ENGINE_REGISTRY
+version: v1
+description: Registry canônico dos engines de video do Mouse Inteligente
+engines:
+  - id: VE01
+    engine: Luciotion-MotionPath
+    family: M07
+    score_og10: 9.2
+    specialty: motion_path_controlled
+    output: mp4
+    status: CANDIDATE_VERIFY
+  - id: VE02
+    engine: Arcads-UGC
+    family: M08
+    score_og10: 9.1
+    specialty: ugc_avatar_ad
+    output: mp4
+    status: ACTIVE
+  - id: VE03
+    engine: Bloom-AI
+    family: M09
+    score_og10: 8.9
+    specialty: animation_2d_framebyframe
+    output: mp4_gif
+    status: ACTIVE
+  - id: VE04
+    engine: Magic-Animator
+    family: M12
+    score_og10: 9.0
+    specialty: static_to_video_effects
+    output: mp4_gif_webm
+    status: ACTIVE
+  - id: VE05
+    engine: Krea-Realtime
+    family: M01
+    score_og10: 9.4
+    specialty: canvas_to_video_realtime
+    output: mp4_sequence
+    status: ACTIVE
+routing:
+  - {task: motion_path, engine: VE01}
+  - {task: ugc_ad, engine: VE02}
+  - {task: animation_2d, engine: VE03}
+  - {task: static_to_video, engine: VE04}
+  - {task: canvas_video_export, engine: VE05}
+fallback: VE04
+ssot_pointer: ssot/registries/ENGINE_REGISTRY.yaml
