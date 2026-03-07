@@ -1,0 +1,46 @@
+family_id: M13_DREAMINA
+engine: Dreamina-Creen
+status: CANDIDATE_VERIFY
+score_og10: 8.8
+note: Geracao rapida para social e mobile. Alta velocidade, baixo custo, UGC-friendly.
+functions_40:
+  - {id: F001, name: Gerar imagem rapida para social, lane: L0, score: 8.9}
+  - {id: F002, name: Gerar post para Instagram, lane: L0, score: 8.9}
+  - {id: F003, name: Gerar story vertical, lane: L0, score: 8.9}
+  - {id: F004, name: Gerar thumbnail para YouTube, lane: L0, score: 8.9}
+  - {id: F005, name: Gerar cover para TikTok, lane: L0, score: 8.8}
+  - {id: F006, name: Gerar banner para LinkedIn, lane: L0, score: 8.8}
+  - {id: F007, name: Gerar arte para Facebook Ads, lane: L1, score: 8.8}
+  - {id: F008, name: Gerar variacao rapida de conceito, lane: L0, score: 8.9}
+  - {id: F009, name: Gerar multiplas opcoes em paralelo, lane: L0, score: 8.9}
+  - {id: F010, name: Baixo custo por geracao, lane: L0, score: 9.0}
+  - {id: F011, name: Alta velocidade de render, lane: L0, score: 9.0}
+  - {id: F012, name: Iterar rapido antes de render final, lane: L0, score: 8.9}
+  - {id: F013, name: Gerar pack de formatos simultaneo, lane: L1, score: 8.8}
+  - {id: F014, name: Adaptar para mobile first, lane: L0, score: 8.9}
+  - {id: F015, name: Gerar imagem UGC style, lane: L1, score: 8.8}
+  - {id: F016, name: Gerar imagem lifestyle, lane: L1, score: 8.8}
+  - {id: F017, name: Gerar imagem de produto casual, lane: L1, score: 8.8}
+  - {id: F018, name: Criar variacao de cor rapida, lane: L0, score: 8.9}
+  - {id: F019, name: Criar variacao de fundo rapida, lane: L0, score: 8.9}
+  - {id: F020, name: Criar variacao de composicao rapida, lane: L0, score: 8.8}
+  - {id: F021, name: Gerar arte para stories com texto, lane: L1, score: 8.8}
+  - {id: F022, name: Gerar arte para carrossel, lane: L1, score: 8.8}
+  - {id: F023, name: Gerar arte para reels cover, lane: L1, score: 8.8}
+  - {id: F024, name: Gerar arte sazonal natal dia das maes, lane: L1, score: 8.8}
+  - {id: F025, name: Gerar arte promocional rapida, lane: L1, score: 8.9}
+  - {id: F026, name: Reduzir custo de producao de conteudo, lane: L0, score: 9.0}
+  - {id: F027, name: Escalar volume de assets por campanha, lane: L0, score: 8.9}
+  - {id: F028, name: Gerar conceito antes de investir em render premium, lane: L0, score: 8.9}
+  - {id: F029, name: Servir como draft engine do Mouse, lane: L0, score: 8.9}
+  - {id: F030, name: Virar motor de rascunho rapido do Mouse, lane: L0, score: 9.0}
+  - {id: F031, name: Integrar com M01 Krea como camada draft, lane: L0, score: 8.9}
+  - {id: F032, name: Exportar draft para review rapido, lane: L0, score: 8.9}
+  - {id: F033, name: Gerar opcao A e B para teste rapido, lane: L0, score: 8.9}
+  - {id: F034, name: Suportar campanha de alto volume, lane: L1, score: 8.8}
+  - {id: F035, name: Gerar asset para micro influencer, lane: L1, score: 8.8}
+  - {id: F036, name: Gerar asset para equipe de social media, lane: L1, score: 8.8}
+  - {id: F037, name: Gerar imagem com texto overlay simples, lane: L1, score: 8.7}
+  - {id: F038, name: Gerar imagem de evento promocional, lane: L1, score: 8.8}
+  - {id: F039, name: Exportar em alta resolucao para uso final, lane: L1, score: 8.8}
+  - {id: F040, name: Gerar evidence de draft gerado, lane: L0, score: 8.8}
