@@ -1,0 +1,19 @@
+version: 1
+studio_id: S00
+evidence_sources:
+  - path: ssot/addons/actions/S00/ACTIONS_S00_gammanote_v1.yaml
+    exists: true
+  - path: ssot/addons/dores_por_studio/S00/DORES_S00_gammanote_v1.yaml
+    exists: true
+  - path: ssot/addons/actions/S00/ACTIONS_S00_prm_v1.yaml
+    exists: true
+  - path: ssot/addons/dores_por_studio/S00/DORES_S00_prm_v1.yaml
+    exists: true
+  - path: ssot/connectors/CONNECTORS_MASTER_v1_S00_S17.yaml
+    exists: true
+  - path: ssot/workflows/WORKFLOW_REGISTRY_v1.yaml
+    exists: true
+  - path: ssot/basileia/BASILEIA_52_v1.yaml
+    exists: true
+  - path: docs/NANUCAI_OG10_SSOT_MESTRE_v9.md
+    exists: true

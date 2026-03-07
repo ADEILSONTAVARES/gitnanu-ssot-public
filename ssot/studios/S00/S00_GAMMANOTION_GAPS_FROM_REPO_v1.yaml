@@ -1,0 +1,171 @@
+version: 1
+studio_id: S00
+gaps:
+  - kind: file_ref
+    path: docs/DOCS_INDEX.md
+  - kind: file_ref
+    path: docs/adr/ADR_0010_STORAGE_STRATEGY_PHASE0_FILES_OVER_DB.md
+  - kind: file_ref
+    path: docs/runbooks/RUNBOOK_CONFLICT_RESOLUTION.md
+  - kind: file_ref
+    path: docs/runbooks/RUNBOOK_MULTI_DEVICE_SYNC.md
+  - kind: file_ref
+    path: docs/ssot/SSOT_PUBLIC_TOP_INDEX_v1.0.yaml
+  - kind: file_ref
+    path: docs/ssot_public/ARQUIVO.md
+  - kind: file_ref
+    path: docs/ssot_public/BASELINE_REPO_MASTER_INDEX.md
+  - kind: file_ref
+    path: docs/ssot_public/BASELINE_SSOT_PUBLIC_DOCUMENTO_COMPLETO_2026-02-19.md
+  - kind: file_ref
+    path: docs/ssot_public/GATE_STRICT_MARKERS_POLICY.md
+  - kind: file_ref
+    path: docs/ssot_public/MASTER_PLAYBOOK_PUBLIC_v1.md
+  - kind: file_ref
+    path: docs/ssot_public/NEXT_CHAT_HANDOFF_2026-02-19_p0_30.md
+  - kind: file_ref
+    path: docs/ssot_public/NEXT_CHAT_HANDOFF_YYYY-MM-DD_p0_XX.md
+  - kind: file_ref
+    path: docs/ssot_public/README.md
+  - kind: file_ref
+    path: docs/ssot_public/SECURITY_POLICY_DSL_FIREWALL.md
+  - kind: file_ref
+    path: docs/ssot_public/STATUS_2026-02-19_p0_38.md
+  - kind: file_ref
+    path: scripts/audit/og10_reality_audit.sh
+  - kind: file_ref
+    path: scripts/gates/validate_evidence_pack.ts
+  - kind: file_ref
+    path: scripts/ops/smoke_test.sh
+  - kind: file_ref
+    path: scripts/safe_clean.sh
+  - kind: file_ref
+    path: scripts/security/install_hooks.sh
+  - kind: file_ref
+    path: scripts/security/verify_write_lock.sh
+  - kind: file_ref
+    path: scripts/ssot/assert_gitignore_public.sh
+  - kind: file_ref
+    path: scripts/ssot/assert_no_escaped_env.sh
+  - kind: file_ref
+    path: scripts/ssot/assert_public_no_secrets.sh
+  - kind: file_ref
+    path: scripts/ssot/final_gate.sh
+  - kind: file_ref
+    path: scripts/ssot/gate_handoff_for_today_tag.sh
+  - kind: file_ref
+    path: scripts/ssot/no_holes_check_skills.py
+  - kind: file_ref
+    path: scripts/ssot/scan_markers_strict.sh
+  - kind: file_ref
+    path: scripts/ssot/scan_public_docs_examples.sh
+  - kind: file_ref
+    path: scripts/ssot/tag_latest_if_pass.sh
+  - kind: file_ref
+    path: scripts/ssot/verify_public_baseline.sh
+  - kind: file_ref
+    path: scripts/vps/vps_gate.sh
+  - kind: file_ref
+    path: ssot/INDEX_MASTER.yaml
+  - kind: file_ref
+    path: ssot/adapters/MOUSEADAPTER_REGISTRY.yaml
+  - kind: file_ref
+    path: ssot/addons/ADDON_RECEIPT_SCHEMA_v1.yaml
+  - kind: file_ref
+    path: ssot/connectors/CONNECTORS_REGISTRY_PATCH.yaml
+  - kind: file_ref
+    path: ssot/contracts/BILLING_MIN_DB_SCOPE.yaml
+  - kind: file_ref
+    path: ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml
+  - kind: file_ref
+    path: ssot/contracts/EVIDENCE_PACK_TEMPLATE_v2.yaml
+  - kind: file_ref
+    path: ssot/contracts/KILL_SWITCH.schema.json
+  - kind: file_ref
+    path: ssot/contracts/TASK_STATE_MACHINE.yaml
+  - kind: file_ref
+    path: ssot/contracts/TASK_STATE_MACHINE_TEAM.yaml
+  - kind: file_ref
+    path: ssot/contracts/TEAM_DOD_TEMPLATE.yaml
+  - kind: file_ref
+    path: ssot/contracts/TEAM_EVIDENCE_EXTENSIONS.yaml
+  - kind: file_ref
+    path: ssot/contracts/TEAM_SESSION.schema.json
+  - kind: file_ref
+    path: ssot/device/LOCK_POLICY.yaml
+  - kind: file_ref
+    path: ssot/gitnanu/patch_protocol.yaml
+  - kind: file_ref
+    path: ssot/guardrails/GUARDRAILS_POLICIES.yaml
+  - kind: file_ref
+    path: ssot/ide/export_policy.yaml
+  - kind: file_ref
+    path: ssot/ide/ide_build_pipeline.yaml
+  - kind: file_ref
+    path: ssot/ide/mcp_gateway_contract.yaml
+  - kind: file_ref
+    path: ssot/metrics/OG10_TARGET_METRICS_v1.yaml
+  - kind: file_ref
+    path: ssot/metrics/TEAMSWORK10X_METRICS.yaml
+  - kind: file_ref
+    path: ssot/mouse/mouse_actions_registry.yaml
+  - kind: file_ref
+    path: ssot/mouse/mouse_context.schema.json
+  - kind: file_ref
+    path: ssot/noholes/noholes_ui_contract.yaml
+  - kind: file_ref
+    path: ssot/ops/BOOTSTRAP_ORDER.yaml
+  - kind: file_ref
+    path: ssot/packs/MCP_REAL_WORLD_8PLUS_PACK_v1.yaml
+  - kind: file_ref
+    path: ssot/policies/AUTHORITY_HIERARCHY.yaml
+  - kind: file_ref
+    path: ssot/policies/BRANCH_PROTECTION_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/BUDGET_GUARD_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/FILE_INDEXING_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/FILE_LOCK_EXCEPTION_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/KILL_SWITCH_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/PAC_SLICE_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/PUSH_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/SCHEMA_VERSION_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/SSOT_VS_EVIDENCE_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/STORAGE_PHASE_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/TEAM_QUORUM_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/TEAM_ROLES_POLICY.yaml
+  - kind: file_ref
+    path: ssot/policies/redaction_rules.yaml
+  - kind: file_ref
+    path: ssot/prm/council_verdict.schema.json
+  - kind: file_ref
+    path: ssot/protocols/TEAMS_A2A_v1.yaml
+  - kind: file_ref
+    path: ssot/quality/BENCHPACK_54_REGISTRY_v1.yaml
+  - kind: file_ref
+    path: ssot/security/secrets_scan_rules.yaml
+  - kind: file_ref
+    path: ssot/security/typosquatting_denylist.yaml
+  - kind: file_ref
+    path: ssot/skills/SKILLS_REGISTRY.yaml
+  - kind: file_ref
+    path: ssot/studios/BASILEIA_53.yaml
+  - kind: file_ref
+    path: ssot/terminal/TERMINAL_POLICY.yaml
+  - kind: file_ref
+    path: ssot/ui/TEAM_PANEL_MIN_SPEC.yaml
+  - kind: file_ref
+    path: ssot/vps/VPS_SECURITY_TARGETS.yaml
+  - kind: file_ref
+    path: ssot/workflows/N8N_VERSIONING_FLOW.yaml
+  - kind: file_ref
+    path: ssot/workflows/WORKFLOWS_INDEX.yaml
