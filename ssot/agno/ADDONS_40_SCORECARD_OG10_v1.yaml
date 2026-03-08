@@ -1,0 +1,12 @@
+spec_id: ADDONS_40_SCORECARD_OG10_v1
+structure:
+  total_addons_per_studio: 40
+  split: {always_on_L0: 15, triggered_L1_L3: 22, premium_exclusive: 3}
+  premium_budget_pct: 2.0
+skills_universais:
+  U0: {coverage: 60pct, layer: L0, cost: zero}
+  U1: {coverage: 25pct, layer: L1-L2, cost: standard}
+  U2: {coverage: 15pct, layer: L2-L3, cost: premium_2pct}
+dores_canonicas_por_studio: 15
+acoes_por_api: 40
+distribuicao_acoes: {CRITICAL: 10, HIGH: 20, MEDIUM: 10}

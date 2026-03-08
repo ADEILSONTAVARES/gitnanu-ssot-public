@@ -1,0 +1,11 @@
+spec_id: AGNO_BENCHMARK_PIPELINE_OG10_v1
+pipeline: 60-60-60-150-150-100x3
+phases:
+  triage:   {max_ms: 60,  op: SubAgent classifica job e seleciona lane}
+  route:    {max_ms: 60,  op: Router OG10 seleciona modelo e MCP}
+  gate_in:  {max_ms: 60,  op: Doctor Gate valida input}
+  execute:  {max_ms: 150, op: Execucao pelo modelo selecionado}
+  validate: {max_ms: 150, op: Doctor Gate valida output}
+  council:  {max_ms: 100, iterations: 3, op: J1/J2/J3 auditam}
+slo: {p50_ms: 120, p95_ms: 300, p99_ms: 1500, throughput_per_min: 500}
+budget_split: {L0_pct: 85, L1_L3_pct: 15, shadow_band_pct: 0.3-0.6}

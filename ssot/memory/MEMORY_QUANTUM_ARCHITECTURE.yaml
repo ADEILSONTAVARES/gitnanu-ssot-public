@@ -1,0 +1,18 @@
+MEMORY_QUANTUM_ARCHITECTURE:
+  version: "1.0"
+  recall_target_pct: 100
+  precision_target_pct: 99.5
+  planes:
+    HOT:   {backend: Redis,           ttl: 5min,      uso: contexto imediato}
+    WARM:  {backend: Supabase_Vector,  ttl: 24h,       uso: recall semantico}
+    LTA:   {backend: Supabase+GNDrive, ttl: permanent, uso: historico knowledge}
+    TRASH: {backend: GNDrive_local,    ttl: 30d,       uso: logs brutos gzipados}
+  promotion_rules:
+    HOT_to_WARM: accessed>3x OR session_end
+    WARM_to_LTA: age>24h AND accessed>1x
+    TRASH_to_DELETE: age>30d AND not_referenced
+  policy_by_plan:
+    starter:    {hot_ttl: 5min,  lta: false,     vector_search: false}
+    pro:        {hot_ttl: 1h,    lta: 30d,       vector_search: true}
+    business:   {hot_ttl: 4h,    lta: 1y,        vector_search: true}
+    enterprise: {hot_ttl: 24h,   lta: permanent, vector_search: true}

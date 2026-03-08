@@ -1,0 +1,8 @@
+spec_id: SUBAGENT_60_5_SPEC_OG10_v1
+pipeline: 60-5-30
+phases:
+  triage:    {tokens: 60, output: [studio_id, budget_lane, urgency_level]}
+  selection: {functions: 5, locks: [T1_topk, T2_action_id, T3_mcp_domain, T4_bench_gate]}
+  execution: {tokens: 30, output: [job_envelope, evidence_path_reserved]}
+verdicts: [PASS, WARN, FAIL]
+fail_behavior: return FAIL to caller do not execute
