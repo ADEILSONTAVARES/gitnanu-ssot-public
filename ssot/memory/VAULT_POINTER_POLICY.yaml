@@ -1,0 +1,22 @@
+# VAULT_POINTER_POLICY COCA-COLA LOCAL ONLY
+version: "v1.0"
+status: ACTIVE
+coca_cola_rule:
+  raw_never_in_chat: true
+  vault_local_only: true
+  public_safe_only_receives: [invariants, targets, pointers, safe_registries]
+vault_directories:
+  local_only: ["vault_local/bench90/", "vault_local/ledgers/", "vault_local/evidence/", "ssot/private/"]
+  git_blocked: true
+  gitignore_required: true
+pointer_contract:
+  what_enters_context: [artifact_ref, facts_only_200t, pointer_path]
+  what_never_enters: [raw_llm_output, raw_tool_response, api_keys, pii_data]
+enforcement:
+  if_raw_detected_in_context: FAIL_GATE
+  if_vault_committed_to_git: FAIL_BUILD
+  if_pointer_missing_hash: FAIL_GATE
+metrics:
+  ear_evidence_attached_rate: {target_min: 0.95}
+  vault_leak_rate: {target_value: 0.0}
+  raw_in_chat_rate: {target_value: 0.0}

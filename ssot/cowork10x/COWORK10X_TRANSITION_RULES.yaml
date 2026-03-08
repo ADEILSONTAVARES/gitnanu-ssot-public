@@ -1,0 +1,16 @@
+# COWORK10X_TRANSITION_RULES
+version: "v1.0"
+status: ACTIVE
+locks:
+  LOCK1: "Nunca iniciar task sem PAC aberto e run_id gerado"
+  LOCK2: "Nunca fechar task sem evidence_seal e Doctor1_PASS"
+  LOCK3: "Nunca promover LTA sem Doctor2_PASS e evidence_ref"
+  LOCK4: "Nunca commitar sem GitNanu e doctor_gate_PASS"
+  LOCK5: "Nunca misturar TARGET com MEASURED em nenhum output"
+phases:
+  intake: {entry: [pac_open, run_id_gen, risk_assess], exit: [context_loaded, stack_selected]}
+  execute: {entry: [sandbox_ready, doctor1_armed], exit: [diff_generated, tests_pass]}
+  close: {entry: [evidence_sealed, doctor1_pass], exit: [gitnanu_commit, pac_footer_written]}
+handoff_criteria:
+  required: [pac_id, run_id, evidence_ref, cost_est, themes, content_hash]
+  forbidden: [raw_output_in_handoff, missing_evidence, open_loops]

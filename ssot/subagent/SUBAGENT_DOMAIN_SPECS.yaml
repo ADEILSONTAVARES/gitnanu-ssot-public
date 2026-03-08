@@ -1,0 +1,35 @@
+# SUBAGENT_DOMAIN_SPECS
+version: "v1.0"
+status: ACTIVE
+total: 30
+specs:
+  D01: {domain: frontend_ui, bench: [F27,F35,V01], mcps: [P07,P09,N02]}
+  D02: {domain: backend_api, bench: [F27,F28,V01], mcps: [P03,P07,N03]}
+  D03: {domain: database, bench: [F27,F28], mcps: [P03,P07]}
+  D04: {domain: math_hard, bench: [F07,F08,F09,F10], mcps: [P02,P04,N04]}
+  D05: {domain: science_hard, bench: [F10,F48,V13,V14,V15,V16], mcps: [P02,P04]}
+  D06: {domain: long_context, bench: [F22,V04,V05,E12,E13], mcps: [P05,P06]}
+  D07: {domain: web_agentic, bench: [F29,F30,F33], mcps: [N01,N02,P08]}
+  D08: {domain: swe_bench, bench: [F28,V02,E02], mcps: [P03,P07,P09,N03]}
+  D09: {domain: multimodal, bench: [F35,F36,F37,F38], mcps: [P17]}
+  D10: {domain: multilingual, bench: [F19,F20,F21,E16], mcps: [P05]}
+  D11: {domain: reasoning, bench: [F39,F40,F42,F43,F44,E14], mcps: [P02,P14,N04]}
+  D12: {domain: safety, bench: [F23,F24,F25,F26], mcps: [P10,P11]}
+  D13: {domain: code_gen, bench: [F27,F34,E03], mcps: [P03,P07,P09]}
+  D14: {domain: instruction_follow, bench: [F15,E05,E06,E07], mcps: [P10,P11]}
+  D15: {domain: temporal, bench: [F41,V04], mcps: [P16]}
+  D16: {domain: chat_quality, bench: [F16,F17,F18,E08,E09,E10], mcps: [P19,P20]}
+  D17: {domain: memory_ops, bench: [V17,V18,V19,V20], mcps: [P01,P05,P12]}
+  D18: {domain: cost_optimize, bench: [V06,V07,V08,V09], mcps: [P01,P18]}
+  D19: {domain: robustness, bench: [F49,F50,F51,F52,F53,F54,V10], mcps: [P10,P13]}
+  D20: {domain: domain_expert, bench: [F45,F46,F47], mcps: [P02,P05]}
+  D21: {domain: tool_use, bench: [F32,V10,E05], mcps: [P08,P13]}
+  D22: {domain: planning, bench: [F30,F31], mcps: [P08,P14]}
+  D23: {domain: legal, bench: [F47], mcps: [P05,P10]}
+  D24: {domain: finance, bench: [F46], mcps: [P02,P05]}
+  D25: {domain: bio_med, bench: [F45,F48,V16], mcps: [P02,P04]}
+  D26: {domain: vision_code, bench: [F35,F37], mcps: [P17,P07]}
+  D27: {domain: cache_perf, bench: [V08,V09], mcps: [P01,P12,P18]}
+  D28: {domain: terminal_ops, bench: [V01,V12,E01], mcps: [P03,P07]}
+  D29: {domain: evidence_audit, bench: [E_all], mcps: [P10,P11,P20]}
+  D30: {domain: council_tribunal, bench: [E_all], mcps: [P20,P10,P11]}

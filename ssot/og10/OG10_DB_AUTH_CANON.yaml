@@ -1,0 +1,15 @@
+# OG10_DB_AUTH_CANON
+version: "v1.0"
+status: ACTIVE
+db_auth_canon:
+  default_lane: [Supabase_DB, Supabase_Auth]
+  optional: [Supabase_AI_Prompts, Supabase_MCP]
+rules:
+  - "Supabase e o lane padrao de banco e autenticacao"
+  - "RLS deny_by_default nunca deploy sem RLS ativo"
+  - "supabase.vector_lite para RAG e busca semantica"
+  - "Redis para cache quente locks rate_limit idempotency"
+  - "Cloudflare R2 para storage de artifacts e vault"
+supabase: {rls_deny_by_default: true, auth: jwt, vector_lite: true, postgres_p95_ms: 180}
+redis: {features: [hot_cache, locks, rate_limit, idempotency, anti_stampede], hit_rate_l0_min: 0.85}
+cloudflare: {r2_hot: "r2://gn-drive/hot/", workers_p95_ms: 120}

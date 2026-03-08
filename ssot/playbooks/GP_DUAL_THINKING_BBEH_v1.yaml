@@ -1,0 +1,16 @@
+# GP_DUAL_THINKING_BBEH
+version: "v1.0"
+bench_target: [E14_BBEH, E15_HLE_Subset, F03_BBH]
+mcps: [P02_PHDMat, P14_Backtrack_Search, N04_Thinking_OpenAI]
+pick_one: "N04 XOR N05"
+steps:
+  1: "U1 classifica: BBEH vs HLE vs BBH"
+  2: "P14_Backtrack_Search explora arvore de solucoes"
+  3: "P02_PHDMat valida cada no da arvore"
+  4: "Se impasse acionar N04 budget 120s"
+  5: "Cruzar resultado N04 com P14"
+  6: "Doctor1: consensus_2_of_3 obrigatorio"
+  7: "U3 sela evidence com prova e hash"
+anti_hallucination:
+  - "Nunca declarar BBEH_solved sem consensus_2_of_3"
+  - "Thinking chain nunca em contexto"

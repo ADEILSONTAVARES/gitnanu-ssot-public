@@ -1,0 +1,19 @@
+# WORKFLOWS_INDEX
+version: "v1.0"
+status: ACTIVE
+workflows:
+  og10.bench90.run.v1:
+    trigger: manual_or_cron_monthly
+    outputs: [vault_local/bench90/bench90_results.json, vault_local/ledgers/ledger_cost.json, vault_local/evidence/evidence_pack.manifest.json]
+    gates: [Doctor2_pass, schema_validate, hash_sign]
+    status: PLANNED
+  og10.mouse.patch.v1:
+    file: ssot/workflows/TEAMSWORK10_MOUSE_PIPELINE.yaml
+    status: ACTIVE
+  og10.skill_creator.v1:
+    file: ssot/workflows/N8N_PIPELINE_SKILL_CREATOR.yaml
+    status: ACTIVE
+  og10.evidence.seal.v1:
+    trigger: after_any_run
+    gates: [hash_sha256, timestamp, doctor1_pass]
+    status: PLANNED

@@ -1,0 +1,16 @@
+# OG10_NO_HALLUCINATION_RULES
+version: "v1.0"
+status: ACTIVE
+locks:
+  T1: {rule: "NUNCA declarar MEASURED sem artifacts locais validos", gate: fail_if_measured_without_evidence}
+  T2: {rule: "NUNCA colar raw content em chat", gate: fail_if_raw_in_context}
+  T3: {rule: "NUNCA promover claim sem PASS_STRICT", gate: fail_if_no_pass_strict}
+  T4: {rule: "NUNCA misturar target_score com measured_score", gate: fail_if_target_labeled_measured}
+additional_rules:
+  - "Nunca promover benchmark claim sem evidence pack"
+  - "Se duvida sobre fato marcar UNVERIFIED nao inventar"
+  - "Nunca declarar ranking MEASURED sem bench90_results.json assinado"
+evidence_minimum:
+  - "vault_local/bench90/bench90_results.json"
+  - "vault_local/ledgers/ledger_cost.json"
+  - "vault_local/evidence/evidence_pack.manifest.json"

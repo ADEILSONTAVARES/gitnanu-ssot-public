@@ -1,0 +1,14 @@
+# MCP_REAL_WORLD_8PLUS_PACK
+version: "v1.0"
+status: VALIDATED
+total_validated: 9
+pack:
+  - {id: RW01, name: Firecrawl, bench: GAIA_WebArena, gate: MCP_FIRECRAWL_COMPLIANCE}
+  - {id: RW02, name: Playwright, bench: WebArena_Mind2Web, gate: MCP_PLAYWRIGHT_SANDBOX}
+  - {id: RW03, name: Sentry, bench: SWE_Bench_Verified, gate: MCP_SENTRY_AUTH}
+  - {id: RW04, name: Thinking_OpenAI, bench: AIME_BBEH, gate: MCP_THINKING_BUDGET_GATE, exclusive: N04_XOR_N05}
+  - {id: RW05, name: Thinking_Anthropic, bench: AIME_BBEH, gate: MCP_THINKING_BUDGET_GATE, exclusive: N04_XOR_N05}
+  - {id: RW06, name: Redis_L0, bench: V08_TTFT_V17_HitRate, gate: internal_always_on}
+  - {id: RW07, name: PHDMat, bench: F09_AIME_F10_GPQA, gate: internal_always_on}
+  - {id: RW08, name: AutoCura, bench: F27_HumanEval_F28_SWE, gate: internal_always_on}
+  - {id: RW09, name: Doctor_Gate, bench: all_gates, gate: fail_closed}

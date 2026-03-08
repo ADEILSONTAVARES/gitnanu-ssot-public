@@ -1,0 +1,34 @@
+# MEMORY_ARCHITECTURE_CANON
+version: "v1.0"
+status: ACTIVE
+definition:
+  infinite_memory_means:
+    - "Armazenamento ilimitado fora do contexto"
+    - "Contexto sempre pequeno PAC 2k-12k tokens"
+    - "Retomada via checkpoints + replay"
+    - "Recuperacao por referencia nunca colar raw no prompt"
+    - "Promocao controlada LTA so com evidence_ref + verificacao"
+  rule: "Se o LLM esquece o sistema reconstroi. Sem evidence nao existe MEASURED."
+layers:
+  L0_macro: {share: 0.85, components: [U1, U2, U3, Redis_L0, Doctor1]}
+  L1_L3: {share: 0.15, components: [AddonPack_40, PainPack_15]}
+vault_mode:
+  raw_never_in_chat: true
+  allowed_in_context: [facts_only, brief_200t, artifact_ref, pointers]
+rag_quantum:
+  formula: "4x3pQ2 10x10x10(2)"
+  tracks: [Lexical, Vector, Graph, Receipt_Trace]
+  passes: 3
+  quorum: "Q2 item aceito se aparece em 2plus trilhas"
+backends_by_plan:
+  plan_297_plus:
+    cloudflare: {enabled: true, r2_hot: "r2://gn-drive/hot/", r2_trash: "r2://gn-drive/trash/"}
+    supabase_vector_lite: {enabled: true, rls_deny_by_default: true}
+retention_by_plan:
+  plan_69:  {hot_days: 7,   trash_days: 30}
+  plan_99:  {hot_days: 30,  trash_days: 180}
+  plan_297: {hot_days: 90,  trash: infinite}
+  plan_699: {hot_days: 150, trash: infinite}
+  plan_999: {hot_days: 250, trash: infinite}
+no_holes_gate:
+  fail_if: [raw_content_in_context, missing_vault_mode, plan_297plus_missing_backends, measured_without_evidence_ref]

@@ -1,0 +1,17 @@
+# MCP_FIRECRAWL_COMPLIANCE
+version: "v1.0"
+status: ACTIVE
+gate: fail_closed
+rules:
+  - "robots_txt: always_check"
+  - "rate_limit: 1req_per_2s_default"
+  - "no_pii_in_response"
+  - "url_allowlist_required_for_production"
+  - "raw_html_never_in_chat"
+fail_if:
+  - robots_txt_blocked_and_proceed
+  - pii_detected_in_scrape_output
+  - raw_html_in_context
+metrics:
+  compliance_rate: {target_min: 0.99}
+  pii_leak_rate: {target_value: 0.0}

@@ -1,0 +1,10 @@
+# MOUSE_STACK_SELECTION_MATRIX
+version: "v1.0"
+formula: "0.45*fit + 0.35*pain + 0.10*bench + 0.10*runtime"
+stacks:
+  frontend: {fit: 9.8, pain: 9.2, bench: 9.5, runtime: 9.7, score: 9.59, tools: [shadcn_ui, Stitch, AI_Studio]}
+  backend: {fit: 9.7, pain: 9.0, bench: 9.3, runtime: 9.6, score: 9.47, tools: [Supabase, Redis, Cloudflare]}
+  swe: {fit: 9.8, pain: 9.5, bench: 9.2, runtime: 9.5, score: 9.59, tools: [AutoCura, Ralph, TestSprite, Sentry]}
+  math: {fit: 9.9, pain: 8.5, bench: 9.8, runtime: 9.4, score: 9.52, tools: [PHDMat, SymbolicMath, Thinking_Deep]}
+  agentic: {fit: 9.6, pain: 8.8, bench: 9.0, runtime: 9.3, score: 9.38, tools: [AgentZero, Firecrawl, Playwright]}
+  memory: {fit: 9.8, pain: 9.0, bench: 9.5, runtime: 9.8, score: 9.56, tools: [Redis_L0, RAG3TrimTwin, Context7x]}

@@ -1,0 +1,20 @@
+# COWORK10X_SSOT_PATHS
+version: "v1.0"
+status: ACTIVE
+canonical_paths:
+  memory: ssot/memory/
+  og10: ssot/og10/
+  bench: ssot/bench/
+  registries: ssot/registries/
+  gates: ssot/gates/
+  playbooks: ssot/playbooks/
+  subagent: ssot/subagent/
+  addons: ssot/addons/
+  cowork10x: ssot/cowork10x/
+  workflows: ssot/workflows/
+  validators: scripts/gates/
+  docs_ssot: docs/ssot/
+  docs_cowork: docs/cowork10x/
+  vault_local: vault_local/
+total_paths: 14
+vault_local_git_blocked: true

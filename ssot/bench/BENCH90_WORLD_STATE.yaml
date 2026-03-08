@@ -1,0 +1,19 @@
+# BENCH90_WORLD_STATE
+version: "v1.0"
+value_type: TARGET
+rule: "STATUS vira MEASURED somente com 3 artifacts em vault_local."
+bench90_status: TARGET_PENDING_RUNNER
+runner_status: PLANNED
+artifacts_exist: false
+targets_summary:
+  total: 90
+  average_target: 94.2
+  min: 88
+  max: 98
+competitive_rank:
+  rank_target: 1
+  rank_measured: FORBIDDEN_UNTIL_ARTIFACTS_EXIST
+to_become_measured:
+  step1: "Rodar bench90_runner com run_id"
+  step2: "Publicar bench90_results.json assinado"
+  step3: "Publicar ledger_cost.json e evidence_pack assinado"

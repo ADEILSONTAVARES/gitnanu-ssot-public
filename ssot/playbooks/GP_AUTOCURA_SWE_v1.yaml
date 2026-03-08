@@ -1,0 +1,14 @@
+# GP_AUTOCURA_SWE
+version: "v1.0"
+bench_target: [F27_HumanEval, F28_SWE_Bench, E03_LiveCodeBench]
+mcps: [P03_AutoCura, P07_Ralph, P09_TestSprite]
+steps:
+  1: "U1 detecta erro classifica risco"
+  2: "P03_AutoCura gera patch com diff"
+  3: "P07_Ralph valida estilo e lint"
+  4: "P09_TestSprite roda suite completa"
+  5: "Se falha voltar para passo 2 max 3x"
+  6: "Apos 3x escalar para RED + Doctor2"
+  7: "U3 sela evidence: diff + test_results"
+max_retries: 3
+escalation: RED_after_3_failures

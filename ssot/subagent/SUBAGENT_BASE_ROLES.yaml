@@ -1,0 +1,11 @@
+# SUBAGENT_BASE_ROLES
+version: "v1.0"
+status: ACTIVE
+base_roles: 5
+roles:
+  Planner: {id: R01, skills: [C01,C02,C03,C04,C09,C10], layer: L0, always_on: true}
+  Context_Router: {id: R02, skills: [C05,C06,C07,C08,C11,C28], layer: L0, always_on: true}
+  Executor: {id: R03, skills: [C13,C14,C15,C16,C17,C23,C24], layer: L0, always_on: true}
+  Critic: {id: R04, skills: [C37,C38,C39,C40,C41,C46], layer: L1, always_on: false}
+  Auditor: {id: R05, skills: [C33,C34,C44,C45,C47,C48], layer: L1, always_on: false}
+rule: "Planner+Context_Router+Executor sempre ativos. Critic+Auditor trigam por risco."

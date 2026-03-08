@@ -1,0 +1,14 @@
+# BENCH90_MCP_IMPACT_MATRIX
+version: "v1.0"
+F09_AIME: [P02_PHDMat, P04_SymbolicMath, N04_Thinking_OpenAI, N05_Thinking_Anthropic]
+F10_GPQA_Diamond: [P02_PHDMat, P04_SymbolicMath, N04_Thinking_OpenAI]
+F22_LongBench_v2: [P05_RAG3TrimTwin, P06_Context7x, P01_Redis_L0]
+F27_HumanEval: [P03_AutoCura, P07_Ralph, P09_TestSprite, P19_QA_Coringao]
+F28_SWE_Bench: [P03_AutoCura, N03_Sentry, P09_TestSprite, N02_Playwright]
+F29_WebArena: [N01_Firecrawl, N02_Playwright, P08_AgentZero]
+F30_GAIA: [N01_Firecrawl, N02_Playwright, P08_AgentZero, P10_I_Vierne]
+F35_MMMU: [P17_Vision_Expert, P02_PHDMat]
+V01_TerminalStyle: [P03_AutoCura, P07_Ralph, P09_TestSprite, N03_Sentry]
+V08_TTFT_TPS: [P01_Redis_L0, P12_Embedding_Cache, P18_Cache_Optimizer]
+E14_BBEH: [P02_PHDMat, N04_Thinking_OpenAI, N05_Thinking_Anthropic, P15_Backtrack_Search]
+default_all: [P01_Redis_L0, P08_AgentZero, P10_I_Vierne, P13_Loop_Breaker]

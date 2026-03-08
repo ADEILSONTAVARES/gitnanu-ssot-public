@@ -1,0 +1,16 @@
+# GP_MCP_BUGFIX_NO_HALLUCINATION
+version: "v1.0"
+bench_target: [F28_SWE_Bench, V01_TerminalStyle, E02_SWE_Bench_Pro]
+mcps: [P03_AutoCura, P07_Ralph, P09_TestSprite, N03_Sentry]
+steps:
+  1: "U1 classifica risco e mapeia componentes afetados"
+  2: "P03_AutoCura gera patch candidato em sandbox"
+  3: "P07_Ralph faz lint e code_review do patch"
+  4: "P09_TestSprite roda testes de regressao"
+  5: "N03_Sentry verifica se erro sumiu nos logs"
+  6: "Doctor1 valida: patch_ok + tests_pass + no_regression"
+  7: "U3 sela evidence e envia para GitNanu"
+anti_hallucination:
+  - "Nunca declarar bug_fixed sem Sentry confirmar"
+  - "Nunca promover patch sem tests_pass"
+  - "Evidence obrigatoria: diff + test_results + sentry_log"

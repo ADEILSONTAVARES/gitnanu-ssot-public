@@ -1,0 +1,18 @@
+# OG10_FRONTEND_STACK_CANON
+version: "v1.0"
+status: ACTIVE
+frontend_canon:
+  ideation: [Stitch]
+  app_build: [Google_AI_Studio_Build_Mode]
+  design_system: [shadcn_ui]
+  governance: [Claude_Code]
+rules:
+  - "Stitch serve para ideacao e primeira tela"
+  - "AI Studio Build Mode para experimentacao prompt-first"
+  - "shadcn/ui e a base de design system real"
+  - "Claude Code governa skills hooks e refino"
+  - "Mouse tem acesso direto aos codigos pode corrigir a unha"
+mouse_direct_access:
+  can_edit_code: true
+  edit_requires: [sandbox, diff, doctor_gate_pass, evidence]
+  edit_never_bypasses: GitNanu_single_writer

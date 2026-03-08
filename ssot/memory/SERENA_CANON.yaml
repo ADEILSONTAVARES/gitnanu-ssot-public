@@ -1,0 +1,18 @@
+# SERENA_CANON
+version: "v1.0"
+status: ACTIVE
+definition:
+  purpose: "Comprimir contexto mantendo fidelidade total"
+  rule: "Compressao nunca descarta evidence_ref hash ou pointer canonico"
+  compression_target_ratio: 1.2
+compression_modes:
+  BRIEF_FACTS: {max_output_tokens: 200, preserves: [facts, evidence_refs, hashes]}
+  POINTER_ONLY: {max_output_tokens: 50, preserves: [artifact_id, run_id, hash]}
+  TOMBSTONE: {preserves: [title, subtitle, themes, artifact_id], discards: [body]}
+anti_hallucination_rules:
+  - "Nunca sintetizar fatos nao evidenciados"
+  - "Nunca truncar evidence_ref"
+  - "Se duvida marcar UNVERIFIED nao remover"
+integration:
+  triggers: [context_gt_80pct, pac_overflow, long_task_days]
+  always_preserves: [run_id, evidence_ref, hash_sha256, canonical_pointers]

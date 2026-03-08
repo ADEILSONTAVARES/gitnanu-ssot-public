@@ -1,0 +1,19 @@
+# PAC_REGISTRY
+version: "v1.0"
+status: ACTIVE
+definition:
+  purpose: "Contexto deterministico e auditavel nunca explodir tokens"
+  tokens_range: [2000, 12000]
+  rule: "Janela logica pode ser 4M. Execucao SEMPRE em PAC travado."
+pac_sizes_allowed: [2000, 3000, 4000, 5000, 8000, 12000]
+pac_out_of_range: FAIL_BUILD
+numbering: {chat_n: "1,2,3", pack_letter: "A,B,C", example: ["1A","1B","2A"]}
+rollover_policy:
+  when_reach_context_window: open_new_chat_N_plus_1
+  keep_search_global: true
+pac_header_required: [title, subtitle, date_ymd, time_hm, timezone, plan_id, run_id, pac_id]
+pac_footer_required: [addendum, themes, content_hash, artifacts_index, cost_est_usd]
+context_streaming_targets:
+  pac_active_set_size_p50_max: {plan_99: 4, plan_297: 6, plan_999: 8}
+  pac_loads_per_answer_p95_max: {plan_99: 6, plan_297: 10, plan_999: 14}
+  context_thrashing_rate_max: 0.02

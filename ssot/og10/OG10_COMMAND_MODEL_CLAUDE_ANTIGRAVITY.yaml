@@ -1,0 +1,32 @@
+# OG10_COMMAND_MODEL
+version: "v1.0"
+status: ACTIVE
+roles:
+  claude_code:
+    title: "Maestro do OG10"
+    governa: [skill_selection, subagent_delegation, hook_policy, mcp_routing, review_risk]
+    nunca_faz: [autoridade_final_merge, declarar_measured_sem_evidence]
+  antigravity:
+    title: "Executor agentivo"
+    faz: [executar_sandbox, gerar_diff, produzir_evidence, triggrar_ci]
+    nunca_faz: [autoridade_merge, autoridade_score_measured, escrever_ssot_sem_tribunal]
+  gitnanu:
+    title: "Unico writer autorizado"
+    faz: [commit, push, merge_after_pass]
+    nunca_faz: [merge_sem_doctor_gate, escrever_sem_evidence]
+execution_order:
+  step1: "U1 classificar mapear risco decidir stack abrir PAC"
+  step2: "U2 orquestrar patch diff undo rollback"
+  step3: "healing_layer Ralph/TestSprite/QA_Coringao"
+  step4: "guardrail_layer Doctor/AgentZero/PHDMat/I_Vierne"
+  step5: "U3 selar evidence score target vs measured PASS/FAIL"
+universal_skills:
+  U1: {title: "Intake + Inspect + Route", layer: L0, share: 0.40}
+  U2: {title: "Orchestrate + Patch + Propagate", layer: L0, share: 0.28}
+  U3: {title: "Verify + Prove + Close", layer: L0_L1, share: 0.17}
+  legacy_alias: {U0: U1, U1_old: U2, U2_old: U3}
+split_85_15:
+  L0_universal: 0.85
+  L1_L3_specialized: 0.15
+  workers_externos_rate_default: "0.3-0.6pct"
+  workers_externos_max: "2pct por job"

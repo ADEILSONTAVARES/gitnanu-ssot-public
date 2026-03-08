@@ -1,0 +1,19 @@
+# MOUSE_PAIN_SCORE_REGISTRY
+version: "v1.0"
+formula: "0.30*sev + 0.25*freq + 0.20*biz + 0.15*ux + 0.10*audit"
+pains:
+  D01: {title: Codigo_bugs_criticos, score: 9.45, priority: 1}
+  D02: {title: Layout_quebrado, score: 8.90, priority: 2}
+  D03: {title: Integracao_API_falha, score: 8.90, priority: 3}
+  D04: {title: Performance_lenta, score: 8.75, priority: 4}
+  D05: {title: Dados_incorretos, score: 9.15, priority: 2}
+  D06: {title: Deploy_falhou, score: 8.85, priority: 3}
+  D07: {title: Seguranca_vuln, score: 8.65, priority: 4}
+  D08: {title: UX_confusa, score: 8.25, priority: 5}
+  D09: {title: Eventos_nao_rastreados, score: 7.75, priority: 6}
+  D10: {title: Estilo_fora_brand, score: 7.25, priority: 7}
+  D11: {title: Conteudo_desatualizado, score: 7.20, priority: 8}
+  D12: {title: Permissoes_erradas, score: 7.70, priority: 6}
+  D13: {title: Compliance_violado, score: 8.00, priority: 5}
+  D14: {title: Documentacao_ausente, score: 6.30, priority: 9}
+  D15: {title: Dependencias_obsoletas, score: 7.05, priority: 8}

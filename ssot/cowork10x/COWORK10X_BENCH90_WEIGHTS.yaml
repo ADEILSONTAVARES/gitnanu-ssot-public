@@ -1,0 +1,13 @@
+# COWORK10X_BENCH90_WEIGHTS
+version: "v1.0"
+total_points: 780
+breakdown:
+  F_fidelidade: {benchmarks: 54, points_each: 60, total: 60, weight_og10: 0.45}
+  V_velocidade: {benchmarks: 20, points_each: 60, total: 60, weight_og10: 0.35}
+  E_evidencia: {benchmarks: 16, points_each: 60, total: 60, weight_og10: 0.20}
+  gates_pass: {total: 150, requires: [Doctor1, Doctor2, Schema, Hash, Budget]}
+  council_verdict: {total: 150, requires: [J1_PASS, J2_PASS, J3_PASS]}
+  evidence_pack: {total: 300, parts: 3, points_each: 100, requires: [bench90_results, ledger_cost, evidence_manifest]}
+exclusive_bench90_rule: "Nenhum ponto conta sem evidence_pack assinado"
+compressed_to_nota: "780 pontos comprimidos para nota BENCH90 de 0 a 90"
+og10_from_bench90: "F*0.45 + V*0.35 + E*0.20 = 96.0 target"

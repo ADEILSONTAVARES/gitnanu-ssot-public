@@ -1,0 +1,23 @@
+# MEMORIA_INFINITA_GATE
+version: "v1.0"
+status: ACTIVE
+no_holes_memory_harness:
+  fail_if:
+    - missing_MEMORY_ARCHITECTURE_CANON
+    - missing_LTA_REGISTRY
+    - missing_PAC_REGISTRY
+    - missing_SERENA_CANON
+    - missing_TRASH_POLICY
+    - missing_GAMMANOTION_LIVE_REPO_CANON
+    - missing_VAULT_POINTER_POLICY
+    - plan_297_plus_missing_cloudflare
+    - plan_297_plus_missing_supabase_vector_lite
+    - raw_content_in_context_detected
+    - measured_without_evidence_ref
+metrics_required:
+  context_streaming: [pac_active_set_size, pac_loads, pac_evicts, context_thrashing_max_0.02]
+  retrieval_quality: [needle_recall_min_0.98, aggregation_fidelity_min_0.95]
+  memory_backends_health: [cf_r2_p95_ms_250, sb_vector_p95_ms_220, tombstone_integrity_1.0]
+  lta_promotion: [evidence_ref_coverage_min_0.95]
+  quarantine_security: [poison_detect_min_0.90, false_positive_max_0.03]
+verdict: "PASS only when ALL conditions met AND evidence pack exists"

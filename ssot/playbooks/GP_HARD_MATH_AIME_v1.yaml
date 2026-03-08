@@ -1,0 +1,16 @@
+# GP_HARD_MATH_AIME
+version: "v1.0"
+bench_target: [F09_AIME, F10_GPQA_Diamond, E14_BBEH]
+mcps: [P02_PHDMat, P04_SymbolicMath, N04_Thinking_OpenAI]
+pick_one: "N04 XOR N05 — nunca ambos"
+budget_cap_seconds: 120
+steps:
+  1: "U1 classifica problema: AIME vs GPQA vs BBEH"
+  2: "P02_PHDMat tenta solucao numerica"
+  3: "P04_SymbolicMath tenta prova simbolica paralela"
+  4: "Se falhar ambos acionar N04 com budget 120s"
+  5: "Doctor1 verifica: resultado_verificavel + prova_exists"
+  6: "U3 sela evidence com hash da solucao"
+anti_hallucination:
+  - "Nunca declarar AIME_solved sem prova verificavel"
+  - "Resultado numerico requer verificacao simbolica cruzada"

@@ -1,0 +1,20 @@
+# MCP_THINKING_BUDGET_GATE
+version: "v1.0"
+status: ACTIVE
+gate: fail_closed
+budget_seconds: 120
+pick_one_rule: "N04_Thinking_OpenAI XOR N05_Thinking_Anthropic — nunca ambos"
+rules:
+  - "budget_cap: 120s strict"
+  - "pick_one: N04 XOR N05"
+  - "trigger_only_for: [AIME, BBEH, GPQA_Diamond, HLE_Subset]"
+  - "result_vault_pointer_only"
+  - "raw_thinking_chain_never_in_chat"
+fail_if:
+  - N04_and_N05_both_active
+  - budget_exceeded_120s
+  - thinking_chain_in_context
+  - triggered_outside_allowed_benchmarks
+metrics:
+  pick_one_compliance: {target_value: 1.0}
+  budget_compliance: {target_min: 0.99}

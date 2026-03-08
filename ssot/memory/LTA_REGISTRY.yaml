@@ -1,0 +1,16 @@
+# LTA_REGISTRY
+version: "v1.0"
+status: ACTIVE
+definition:
+  purpose: "Memoria de longo prazo auditavel"
+  formula: "4x3pQ2 10x10x10x10(2)"
+  rule: "Sem evidence_ref + Doctor2 PASS promocao para LTA e PROIBIDA"
+promotion_policy:
+  required: [evidence_ref, Doctor2_pass, contradiction_clear, dedupe_clear, hash_verified]
+  forbidden: [promote_raw, promote_without_evidence, worker_externo_writes_lta]
+memory_types:
+  episodic: {index: graph, retention: por_plan}
+  semantic: {index: [vector, lexical], retention: indefinido}
+  procedural: {index: [lexical, graph], retention: indefinido}
+metrics:
+  evidence_ref_coverage: {target_min: 0.95}

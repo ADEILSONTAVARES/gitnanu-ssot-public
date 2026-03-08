@@ -1,0 +1,13 @@
+# SUBAGENT_60_5_30_REGISTRY
+version: "v1.0"
+status: ACTIVE
+structure: "60-5-30"
+catalog_total: 60
+base_roles: 5
+domain_specs: 30
+catalog:
+  lane_intake: [C01_Intent_Classifier, C02_Risk_Assessor, C03_Stack_Selector, C04_PAC_Opener, C05_Context_Loader, C06_Constraint_Mapper, C07_Dep_Scanner, C08_Surface_Detector, C09_Studio_Router, C10_Goal_Decomposer, C11_Evidence_Checker, C12_Duplicate_Detector]
+  lane_execute: [C13_Code_Patcher, C14_UI_Patcher, C15_Data_Transformer, C16_API_Caller, C17_File_Writer, C18_Schema_Validator, C19_Test_Runner, C20_Lint_Fixer, C21_Diff_Generator, C22_Rollback_Handler, C23_Sandbox_Executor, C24_Tool_Caller]
+  lane_memory: [C25_LTA_Promoter, C26_PAC_Manager, C27_Vault_Writer, C28_RAG_Retriever, C29_Embedding_Caller, C30_Cache_Manager, C31_Index_Updater, C32_Tombstone_Writer, C33_Evidence_Sealer, C34_Hash_Verifier, C35_Pointer_Builder, C36_Context_Compressor]
+  lane_quality: [C37_Doctor1_Runner, C38_Doctor2_Runner, C39_QA_Runner, C40_Council_Caller, C41_PASS_Sealer, C42_Score_Calculator, C43_Bench_Runner, C44_Evidence_Packager, C45_Audit_Logger, C46_Contradiction_Checker, C47_Loop_Detector, C48_Budget_Guard]
+  lane_output: [C49_Response_Formatter, C50_Artifact_Builder, C51_Summary_Writer, C52_PAC_Footer_Writer, C53_Cost_Estimator, C54_Handoff_Packager, C55_Notification_Sender, C56_Report_Generator, C57_Changelog_Writer, C58_Commit_Preparer, C59_Deploy_Trigger, C60_Session_Closer]

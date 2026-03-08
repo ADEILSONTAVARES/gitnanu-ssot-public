@@ -1,0 +1,32 @@
+# MCP_REGISTRY — 25 MCPs Elite
+version: "v1.0"
+status: ACTIVE
+total: 25
+rule: "P01-P20 sao MCPs internos. N01-N05 sao workers externos L1-L3 max 2pct/job."
+P01_Redis_L0: {layer: L0, always_on: true, role: "hot_cache locks rate_limit idempotency"}
+P02_PHDMat: {layer: L0, always_on: true, role: "math_hard AIME GPQA symbolic"}
+P03_AutoCura: {layer: L0, always_on: true, role: "self_healing patch rollback SWE"}
+P04_SymbolicMath: {layer: L1, always_on: false, role: "algebra geometry proof"}
+P05_RAG3TrimTwin: {layer: L1, always_on: false, role: "retrieval 3pass quorum dedup"}
+P06_Context7x: {layer: L1, always_on: false, role: "long_context needle 7x window"}
+P07_Ralph: {layer: L1, always_on: false, role: "code_healing lint test fix"}
+P08_AgentZero: {layer: L1, always_on: false, role: "agentic_web planning loop_ctrl"}
+P09_TestSprite: {layer: L1, always_on: false, role: "test_gen coverage mutation"}
+P10_I_Vierne: {layer: L1, always_on: false, role: "guardrail_final audit_evidence"}
+P11_Doctor_Gate: {layer: L0, always_on: true, role: "fail_closed quality_gate PASS/FAIL"}
+P12_Embedding_Cache: {layer: L1, always_on: false, role: "vector_cache embed_dedup"}
+P13_Loop_Breaker: {layer: L0, always_on: true, role: "infinite_loop_detect break_escalate"}
+P14_Backtrack_Search: {layer: L1, always_on: false, role: "tree_search backtrack BBEH"}
+P15_Backtrack_Search2: {layer: L1, always_on: false, role: "beam_search alt_path"}
+P16_Temporal_Aware: {layer: L1, always_on: false, role: "temporal_reasoning date_logic"}
+P17_Vision_Expert: {layer: L1, always_on: false, role: "multimodal MMMU ChartQA DocVQA"}
+P18_Cache_Optimizer: {layer: L1, always_on: false, role: "cache_strat token_eff latency"}
+P19_QA_Coringao: {layer: L1, always_on: false, role: "qa_final regression smoke"}
+P20_Council_Judge: {layer: L1, always_on: false, role: "tribunal J1_J2_J3 verdict"}
+N01_Firecrawl: {layer: L1, always_on: false, role: "web_scrape crawl compliance_gate", external: true, rate: "0.3-0.6pct"}
+N02_Playwright: {layer: L1, always_on: false, role: "browser_automation sandbox", external: true, rate: "0.3-0.6pct"}
+N03_Sentry: {layer: L1, always_on: false, role: "error_monitoring SWE_debug", external: true, rate: "0.3-0.6pct"}
+N04_Thinking_OpenAI: {layer: L2, always_on: false, role: "deep_think AIME BBEH o3", external: true, rate: "0.3-0.6pct"}
+N05_Thinking_Anthropic: {layer: L2, always_on: false, role: "deep_think claude_extended", external: true, rate: "0.3-0.6pct"}
+always_on_L0: [P01_Redis_L0, P02_PHDMat, P03_AutoCura, P11_Doctor_Gate, P13_Loop_Breaker]
+pick_one_rule: "N04 XOR N05 nunca ambos no mesmo job"

@@ -1,0 +1,15 @@
+# GP_WEB_SCRAPING_GAIA
+version: "v1.0"
+bench_target: [F29_WebArena, F30_GAIA, F33_Mind2Web]
+mcps: [N01_Firecrawl, N02_Playwright, P08_AgentZero]
+steps:
+  1: "U1 verifica robots_txt e compliance"
+  2: "N01_Firecrawl tenta scrape compliance_gate"
+  3: "Se falhar N02_Playwright em sandbox"
+  4: "P08_AgentZero orquestra navegacao multi_step"
+  5: "Doctor1 verifica: compliance_ok + pii_clean + data_valid"
+  6: "U3 sela evidence com pointer para vault"
+anti_hallucination:
+  - "Raw HTML nunca em contexto"
+  - "PII detectado bloqueia imediatamente"
+  - "robots_txt bloqueado nao contornar"

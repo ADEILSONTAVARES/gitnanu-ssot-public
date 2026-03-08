@@ -1,0 +1,15 @@
+# COWORK10X_MCP_SPEC
+version: "v1.0"
+status: ACTIVE
+tools:
+  skill_execute: {input: [skill_id, context_pac], output: [result, evidence_ref], gate: Doctor1}
+  addon_call: {input: [addon_id, trigger, context], output: [result, cost_est], gate: budget_guard}
+  bench_evaluate: {input: [bench_id, artifact_ref], output: [score, pass_fail], gate: Doctor2}
+  doctor_gate: {input: [artifact_ref, run_id], output: [PASS_or_FAIL, evidence_ref], gate: fail_closed}
+  evidence_commit: {input: [run_id, artifacts], output: [hash, vault_pointer], gate: hash_verify}
+  prm_handoff: {input: [pac_id, context_summary], output: [handoff_ack], gate: Doctor1}
+rules:
+  - "Todos os tools retornam evidence_ref obrigatorio"
+  - "doctor_gate e fail_closed sempre"
+  - "Raw output nunca retornado direto no contexto"
+  - "prm_handoff requer PAC_footer completo"

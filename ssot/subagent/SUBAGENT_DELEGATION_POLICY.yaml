@@ -1,0 +1,13 @@
+# SUBAGENT_DELEGATION_POLICY
+version: "v1.0"
+status: ACTIVE
+risk_levels:
+  GREEN: {condition: "risco baixo sem dados sensiveis sem side_effects", delegation: auto, doctor_gate: skip}
+  YELLOW: {condition: "risco medio dados ou side_effects limitados", delegation: auto_with_audit, doctor_gate: Doctor1}
+  RED: {condition: "risco alto dados criticos ou side_effects amplos", delegation: requires_human_confirm, doctor_gate: Doctor2}
+escalation_rules:
+  - "Se subagent falha 2x escalar para RED automaticamente"
+  - "Se loop detectado acionar P13_Loop_Breaker imediato"
+  - "Se budget_exceeded acionar P18_Cache_Optimizer"
+  - "Se evidence_missing bloquear promotion LTA"
+evidence_required_for: [RED_delegation, LTA_promotion, MEASURED_claim, PASS_seal]

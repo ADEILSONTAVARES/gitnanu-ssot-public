@@ -1,0 +1,13 @@
+# MOUSE_SCORE_FORMULA_CANON
+version: "v1.0"
+status: ACTIVE
+formulas:
+  og10: "F*0.45 + V*0.35 + E*0.20 = 96.0 target"
+  function_score: "0.35*cap + 0.20*gov + 0.15*rev + 0.10*ev + 0.10*lat + 0.10*cost"
+  pain_score: "0.30*sev + 0.25*freq + 0.20*biz + 0.15*ux + 0.10*audit"
+  stack_selection: "0.45*fit + 0.35*pain + 0.10*bench + 0.10*runtime"
+  bench90_points: "F*60 + V*60 + E*60 + gates*150 + council*150 + evidence*100x3 = 780"
+rules:
+  - "TARGET e TARGET. MEASURED e MEASURED. Nunca misturar."
+  - "Sem evidence_ref nenhum score vira MEASURED"
+  - "Minimo delivery: 8.5. Abaixo disso FAIL_GATE."

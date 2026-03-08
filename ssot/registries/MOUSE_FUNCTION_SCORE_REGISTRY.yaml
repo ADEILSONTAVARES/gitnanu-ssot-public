@@ -1,0 +1,45 @@
+# MOUSE_FUNCTION_SCORE_REGISTRY
+version: "v1.0"
+status: ACTIVE
+formula: "0.35*cap + 0.20*gov + 0.15*rev + 0.10*ev + 0.10*lat + 0.10*cost"
+functions:
+  F01: {title: Detectar_alvo_real, cap: 9.9, gov: 9.8, rev: 9.5, ev: 9.8, lat: 9.9, cost: 9.8, score: 9.83}
+  F02: {title: Identificar_surface_studio, cap: 9.8, gov: 9.7, rev: 9.5, ev: 9.7, lat: 9.8, cost: 9.8, score: 9.75}
+  F03: {title: Mapear_componente_arquivo, cap: 9.8, gov: 9.5, rev: 9.3, ev: 9.5, lat: 9.6, cost: 9.7, score: 9.68}
+  F04: {title: Detectar_dependencias, cap: 9.7, gov: 9.5, rev: 9.2, ev: 9.5, lat: 9.5, cost: 9.6, score: 9.62}
+  F05: {title: Classificar_risco, cap: 9.9, gov: 9.9, rev: 9.7, ev: 9.9, lat: 9.9, cost: 9.8, score: 9.88}
+  F06: {title: Mover_grid_lock, cap: 9.7, gov: 9.3, rev: 9.0, ev: 9.2, lat: 9.5, cost: 9.6, score: 9.54}
+  F07: {title: Redimensionar_responsivo, cap: 9.8, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.6, cost: 9.7, score: 9.62}
+  F08: {title: Ajustar_spacing, cap: 9.7, gov: 9.3, rev: 9.0, ev: 9.2, lat: 9.5, cost: 9.6, score: 9.54}
+  F09: {title: Trocar_cor_borda, cap: 9.8, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.6, cost: 9.7, score: 9.62}
+  F10: {title: Editar_tipografia_brand, cap: 9.9, gov: 9.5, rev: 9.2, ev: 9.4, lat: 9.7, cost: 9.7, score: 9.70}
+  F11: {title: Editar_texto_inline, cap: 9.7, gov: 9.2, rev: 9.0, ev: 9.1, lat: 9.5, cost: 9.5, score: 9.50}
+  F12: {title: Trocar_imagem_layout, cap: 9.8, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.6, cost: 9.6, score: 9.60}
+  F13: {title: Trocar_icone_midia, cap: 9.7, gov: 9.3, rev: 9.0, ev: 9.2, lat: 9.5, cost: 9.5, score: 9.52}
+  F14: {title: Atualizar_thumbnail, cap: 9.6, gov: 9.2, rev: 8.9, ev: 9.1, lat: 9.4, cost: 9.5, score: 9.44}
+  F15: {title: Variacao_conteudo_tela, cap: 9.6, gov: 9.2, rev: 8.9, ev: 9.1, lat: 9.4, cost: 9.5, score: 9.44}
+  F16: {title: Editar_link_navegacao, cap: 9.7, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.5, cost: 9.6, score: 9.57}
+  F17: {title: Ajustar_onClick_bindings, cap: 9.8, gov: 9.5, rev: 9.2, ev: 9.4, lat: 9.6, cost: 9.6, score: 9.64}
+  F18: {title: Alterar_permissoes, cap: 9.7, gov: 9.6, rev: 9.3, ev: 9.5, lat: 9.5, cost: 9.5, score: 9.63}
+  F19: {title: Adicionar_tracking, cap: 9.6, gov: 9.3, rev: 9.0, ev: 9.2, lat: 9.4, cost: 9.4, score: 9.49}
+  F20: {title: Trocar_rota_CTA, cap: 9.7, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.5, cost: 9.5, score: 9.56}
+  F21: {title: Preview_patch, cap: 9.8, gov: 9.5, rev: 9.3, ev: 9.5, lat: 9.8, cost: 9.7, score: 9.68}
+  F22: {title: Simular_navegacao, cap: 9.7, gov: 9.3, rev: 9.0, ev: 9.2, lat: 9.6, cost: 9.6, score: 9.55}
+  F23: {title: Preview_responsivo, cap: 9.8, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.7, cost: 9.7, score: 9.63}
+  F24: {title: Preview_dark_light, cap: 9.7, gov: 9.3, rev: 9.0, ev: 9.2, lat: 9.6, cost: 9.6, score: 9.54}
+  F25: {title: Undo_multi_step, cap: 9.9, gov: 9.8, rev: 9.6, ev: 9.8, lat: 9.9, cost: 9.8, score: 9.86}
+  F26: {title: Rollback_snapshot, cap: 9.9, gov: 9.8, rev: 9.6, ev: 9.8, lat: 9.9, cost: 9.8, score: 9.86}
+  F27: {title: Diff_visual, cap: 9.8, gov: 9.5, rev: 9.3, ev: 9.5, lat: 9.7, cost: 9.7, score: 9.68}
+  F28: {title: Conflict_resolver, cap: 9.7, gov: 9.5, rev: 9.3, ev: 9.5, lat: 9.6, cost: 9.6, score: 9.62}
+  F29: {title: Batch_patch, cap: 9.7, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.6, cost: 9.6, score: 9.57}
+  F30: {title: Smart_propagation, cap: 9.8, gov: 9.5, rev: 9.2, ev: 9.4, lat: 9.7, cost: 9.7, score: 9.64}
+  F31: {title: GitNanu_commit, cap: 9.9, gov: 9.9, rev: 9.8, ev: 9.9, lat: 9.8, cost: 9.7, score: 9.88}
+  F32: {title: Doctor_gate_run, cap: 9.9, gov: 9.9, rev: 9.8, ev: 9.9, lat: 9.8, cost: 9.7, score: 9.88}
+  F33: {title: Evidence_seal, cap: 9.9, gov: 9.9, rev: 9.8, ev: 9.9, lat: 9.8, cost: 9.7, score: 9.88}
+  F34: {title: PASS_FAIL_verdict, cap: 9.9, gov: 9.9, rev: 9.8, ev: 9.9, lat: 9.8, cost: 9.7, score: 9.88}
+  F35: {title: Cost_monitor, cap: 9.6, gov: 9.4, rev: 9.1, ev: 9.3, lat: 9.5, cost: 9.9, score: 9.55}
+  F36: {title: Budget_alert, cap: 9.7, gov: 9.5, rev: 9.2, ev: 9.4, lat: 9.6, cost: 9.9, score: 9.62}
+  F37: {title: LTA_promote, cap: 9.8, gov: 9.7, rev: 9.5, ev: 9.7, lat: 9.6, cost: 9.6, score: 9.74}
+  F38: {title: PAC_manage, cap: 9.8, gov: 9.7, rev: 9.5, ev: 9.7, lat: 9.7, cost: 9.7, score: 9.75}
+  F39: {title: Context_compress, cap: 9.7, gov: 9.5, rev: 9.3, ev: 9.5, lat: 9.7, cost: 9.8, score: 9.65}
+  F40: {title: Session_close_handoff, cap: 9.8, gov: 9.7, rev: 9.5, ev: 9.7, lat: 9.6, cost: 9.6, score: 9.74}

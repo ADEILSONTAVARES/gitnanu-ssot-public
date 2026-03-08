@@ -1,0 +1,53 @@
+# ADDONS_40_15_3_CANON
+version: "v1.0"
+status: ACTIVE
+structure: "40-15-3"
+always_on_L0: 12
+trigger_based_L1_L3: 28
+universals: 3
+universals_list:
+  U1: {title: "Intake Inspect Route", layer: L0, share: 0.40}
+  U2: {title: "Orchestrate Patch Propagate", layer: L0, share: 0.28}
+  U3: {title: "Verify Prove Close", layer: L0_L1, share: 0.17}
+always_on_12:
+  - {id: A01, title: PAC_Manager, layer: L0}
+  - {id: A02, title: Vault_Pointer_Guard, layer: L0}
+  - {id: A03, title: Doctor_Gate_Runner, layer: L0}
+  - {id: A04, title: Loop_Breaker, layer: L0}
+  - {id: A05, title: Budget_Guard, layer: L0}
+  - {id: A06, title: Evidence_Sealer, layer: L0}
+  - {id: A07, title: Redis_Cache_L0, layer: L0}
+  - {id: A08, title: Hash_Verifier, layer: L0}
+  - {id: A09, title: Schema_Validator, layer: L0}
+  - {id: A10, title: Context_Compressor_Serena, layer: L0}
+  - {id: A11, title: Anti_Hallucination_T1T4, layer: L0}
+  - {id: A12, title: Audit_Logger, layer: L0}
+trigger_based_28:
+  - {id: A13, title: PHDMat_Engine, layer: L1, trigger: math_hard}
+  - {id: A14, title: RAG3TrimTwin, layer: L1, trigger: retrieval}
+  - {id: A15, title: AutoCura_Healer, layer: L1, trigger: code_error}
+  - {id: A16, title: Ralph_Lint, layer: L1, trigger: code_review}
+  - {id: A17, title: TestSprite_Gen, layer: L1, trigger: test_needed}
+  - {id: A18, title: AgentZero_Web, layer: L1, trigger: web_task}
+  - {id: A19, title: Firecrawl_Scraper, layer: L1, trigger: scrape_needed}
+  - {id: A20, title: Playwright_Browser, layer: L1, trigger: browser_needed}
+  - {id: A21, title: Vision_Expert, layer: L1, trigger: multimodal}
+  - {id: A22, title: Context7x_Long, layer: L1, trigger: long_context}
+  - {id: A23, title: Thinking_Deep, layer: L2, trigger: aime_bbeh_gpqa}
+  - {id: A24, title: Council_Tribunal, layer: L1, trigger: high_risk_verdict}
+  - {id: A25, title: Sentry_Debug, layer: L1, trigger: swe_error}
+  - {id: A26, title: Temporal_Aware, layer: L1, trigger: date_logic}
+  - {id: A27, title: Backtrack_Search, layer: L1, trigger: search_needed}
+  - {id: A28, title: Embedding_Cache, layer: L1, trigger: vector_search}
+  - {id: A29, title: QA_Coringao, layer: L1, trigger: qa_final}
+  - {id: A30, title: I_Vierne_Guardrail, layer: L1, trigger: audit_final}
+  - {id: A31, title: LTA_Promoter, layer: L1, trigger: lta_candidate}
+  - {id: A32, title: Trash_Manager, layer: L1, trigger: trash_action}
+  - {id: A33, title: Diff_Generator, layer: L1, trigger: patch_needed}
+  - {id: A34, title: Rollback_Handler, layer: L1, trigger: rollback_needed}
+  - {id: A35, title: Cost_Estimator, layer: L1, trigger: cost_check}
+  - {id: A36, title: Report_Generator, layer: L1, trigger: report_needed}
+  - {id: A37, title: Deploy_Trigger, layer: L2, trigger: deploy_ready}
+  - {id: A38, title: Notification_Sender, layer: L1, trigger: notify_needed}
+  - {id: A39, title: Symbolic_Math, layer: L1, trigger: proof_algebra}
+  - {id: A40, title: Cache_Optimizer, layer: L1, trigger: perf_optimize}

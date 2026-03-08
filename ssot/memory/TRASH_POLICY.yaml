@@ -1,0 +1,18 @@
+# TRASH_POLICY
+version: "v1.0"
+status: ACTIVE
+definition:
+  rule: "Nada vai para TRASH sem tombstone gerado primeiro"
+trash_tiers:
+  HOT:   {storage: "r2://gn-drive/hot/",   ttl_by_plan: {plan_99: "30d",  plan_297: "90d",  plan_999: "250d"}}
+  TRASH: {storage: "r2://gn-drive/trash/", ttl_by_plan: {plan_99: "180d", plan_297: infinite, plan_999: infinite}}
+tombstone_contract:
+  required_fields: [title, subtitle, themes, artifact_id, content_hash, archived_at]
+  integrity_target: 1.0
+rescue_policy:
+  rescue_until_days: {plan_297: 150, plan_699: 250, plan_999: 365}
+  rescue_requires: [run_id, user_authorization]
+poison_quarantine:
+  pipeline: [untrusted_input, scanner, quarantine_vault, verify, evidence_check, lta_eligible]
+  false_positive_rate_max: 0.03
+  poison_detect_rate_min: 0.90

@@ -1,0 +1,18 @@
+# MCP_PLAYWRIGHT_SANDBOX
+version: "v1.0"
+status: ACTIVE
+gate: fail_closed
+rules:
+  - "always_run_in_sandbox_container"
+  - "no_credentials_in_browser_context"
+  - "screenshot_vault_pointer_only"
+  - "max_session_minutes: 10"
+  - "js_eval_blocked_by_default"
+fail_if:
+  - credentials_in_browser_context
+  - screenshot_raw_in_chat
+  - sandbox_escape_detected
+  - session_gt_10min
+metrics:
+  sandbox_escape_rate: {target_value: 0.0}
+  session_compliance: {target_min: 1.0}

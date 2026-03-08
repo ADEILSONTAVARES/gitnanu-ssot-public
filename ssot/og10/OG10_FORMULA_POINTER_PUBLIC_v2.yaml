@@ -1,0 +1,25 @@
+# OG10_FORMULA_POINTER_PUBLIC v2
+version: "v2.0"
+status: ACTIVE
+og10_score_formula:
+  composite: "F * 0.45 + V * 0.35 + E * 0.20"
+  F: {name: Fidelidade, weight: 0.45}
+  V: {name: Velocidade_Eficiencia, weight: 0.35}
+  E: {name: Evidencia, weight: 0.20}
+  target: 96.0
+  minimum_delivery: 8.5
+bench90_formula:
+  pipeline: "60-60-60-150-150-100x3"
+  total_points: 780
+  compressed_to: "nota BENCH90 (0-90)"
+subagent_formula: {structure: "60-5-30", catalog: 60, base_roles: 5, domain_specs: 30}
+addons_formula: {structure: "40-15-3", addons: 40, pains: 15, universals: 3}
+cost_model:
+  cpsj_l0_target_usd: 0.000051
+  shadow_warm_band: [0.003, 0.006]
+  budgetguard: true
+anti_hallucination_locks:
+  T1: "No Evidence No Claim"
+  T2: "Raw Never in Chat"
+  T3: "Nota 10 ou nao passa"
+  T4: "Target vs Measured nunca misturar"

@@ -1,0 +1,21 @@
+# PAINS_15_REGISTRY
+version: "v1.0"
+status: ACTIVE
+total: 15
+formula: "0.30*sev + 0.25*freq + 0.20*biz + 0.15*ux + 0.10*audit"
+pains:
+  D01: {title: Codigo_com_bugs_criticos, sev: 10, freq: 9, biz: 10, ux: 8, audit: 9, score: 9.45}
+  D02: {title: Layout_quebrado_em_producao, sev: 9, freq: 8, biz: 9, ux: 10, audit: 7, score: 8.9}
+  D03: {title: Integracao_API_falhando, sev: 9, freq: 8, biz: 10, ux: 7, audit: 9, score: 8.9}
+  D04: {title: Performance_lenta_usuarios, sev: 8, freq: 9, biz: 9, ux: 10, audit: 7, score: 8.75}
+  D05: {title: Dados_incorretos_ou_perdidos, sev: 10, freq: 7, biz: 10, ux: 8, audit: 10, score: 9.15}
+  D06: {title: Deploy_falhou_producao, sev: 10, freq: 6, biz: 10, ux: 7, audit: 9, score: 8.85}
+  D07: {title: Seguranca_vulnerabilidade, sev: 10, freq: 5, biz: 10, ux: 6, audit: 10, score: 8.65}
+  D08: {title: UX_confusa_abandono, sev: 7, freq: 9, biz: 8, ux: 10, audit: 6, score: 8.25}
+  D09: {title: Eventos_nao_rastreados, sev: 7, freq: 8, biz: 8, ux: 6, audit: 9, score: 7.75}
+  D10: {title: Estilo_fora_do_brand, sev: 6, freq: 8, biz: 7, ux: 9, audit: 5, score: 7.25}
+  D11: {title: Conteudo_desatualizado, sev: 6, freq: 9, biz: 7, ux: 8, audit: 5, score: 7.2}
+  D12: {title: Permissoes_erradas, sev: 8, freq: 6, biz: 8, ux: 6, audit: 9, score: 7.7}
+  D13: {title: Compliance_violado, sev: 9, freq: 5, biz: 9, ux: 5, audit: 10, score: 8.0}
+  D14: {title: Documentacao_ausente, sev: 5, freq: 8, biz: 6, ux: 5, audit: 7, score: 6.3}
+  D15: {title: Dependencias_obsoletas, sev: 7, freq: 7, biz: 7, ux: 5, audit: 8, score: 7.05}

@@ -1,0 +1,13 @@
+# MCP_MOUSE_ADAPTER_MAP
+version: "v1.0"
+status: ACTIVE
+mappings:
+  GammaNotion: {mcp: GammaNotion_MCP, access: read_only, write_via: GitNanu}
+  GNDrive: {mcp: GNDrive_MCP, access: vault_pointer_only, raw_blocked: true}
+  GitNanu: {mcp: GitNanu_MCP, access: write_only_authorized, single_writer: true}
+  TeamsWork10X: {mcp: TeamsWork10X_MCP, access: task_patch, doctor_gate: required}
+  CoWork10X: {mcp: CoWork10X_MCP, access: orchestration, tools: [skill_execute, addon_call, bench_evaluate, doctor_gate, evidence_commit, prm_handoff]}
+  PrM: {mcp: PrM_Brain, access: superagent, 250_functions: true, blocks: 10}
+mouse_read_sources: [GammaNotion, GNDrive_pointers, SSOT_public]
+mouse_write_blocked: true
+mouse_write_exception: "Via GitNanu SOMENTE apos Doctor_Gate PASS"

@@ -1,0 +1,17 @@
+# MCP_SENTRY_AUTH
+version: "v1.0"
+status: ACTIVE
+gate: fail_closed
+rules:
+  - "api_key_vault_only_never_in_context"
+  - "org_slug_required"
+  - "project_filter_required"
+  - "raw_stacktrace_vault_pointer_only"
+  - "pii_scrub_before_context"
+fail_if:
+  - api_key_in_context
+  - raw_stacktrace_in_chat
+  - pii_in_sentry_event
+metrics:
+  auth_compliance: {target_min: 1.0}
+  pii_scrub_rate: {target_min: 0.99}

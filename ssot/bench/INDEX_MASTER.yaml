@@ -1,0 +1,18 @@
+# INDEX_MASTER
+version: "v1.0"
+note: "Hashes atualizados pelo CI apos cada commit"
+ssot_files:
+  - {path: ssot/memory/MEMORY_ARCHITECTURE_CANON.yaml, sha256: PENDING_CI}
+  - {path: ssot/memory/LTA_REGISTRY.yaml, sha256: PENDING_CI}
+  - {path: ssot/memory/PAC_REGISTRY.yaml, sha256: PENDING_CI}
+  - {path: ssot/memory/SERENA_CANON.yaml, sha256: PENDING_CI}
+  - {path: ssot/memory/TRASH_POLICY.yaml, sha256: PENDING_CI}
+  - {path: ssot/memory/GAMMANOTION_LIVE_REPO_CANON.yaml, sha256: PENDING_CI}
+  - {path: ssot/memory/VAULT_POINTER_POLICY.yaml, sha256: PENDING_CI}
+  - {path: ssot/memory/MEMORIA_INFINITA_GATE.yaml, sha256: PENDING_CI}
+  - {path: ssot/og10/OG10_COMMAND_MODEL_CLAUDE_ANTIGRAVITY.yaml, sha256: PENDING_CI}
+  - {path: ssot/og10/OG10_FORMULA_POINTER_PUBLIC_v2.yaml, sha256: PENDING_CI}
+  - {path: ssot/og10/OG10_NO_HALLUCINATION_RULES.yaml, sha256: PENDING_CI}
+  - {path: ssot/bench/BENCH90_REGISTRY.yaml, sha256: PENDING_CI}
+  - {path: ssot/bench/BENCH90_MCP_IMPACT_MATRIX_v1.yaml, sha256: PENDING_CI}
+ci_update_command: "python3 scripts/gates/update_index_master.py"

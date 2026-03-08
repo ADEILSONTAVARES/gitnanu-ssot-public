@@ -1,0 +1,33 @@
+# GAMMANOTION_LIVE_REPO_CANON
+version: "v1.0"
+status: ACTIVE
+definition:
+  purpose: "GammaNotion e o cockpit vivo do NANUCAI repositorio+LLM+memoria+evidencia"
+  rule: "GammaNotion e leitura pelo Mouse. Escrita SOMENTE via GitNanu."
+  llm_lives_here: true
+  og10_score_target: 10.0
+architecture:
+  components: [GammaNotion_UI, GNDrive_Vault, PrM_Brain, Memory_OS, Evidence_Ledger]
+  llm_governance:
+    og10_score: 96.0
+    bench90_formula: "60-60-60-150-150-100x3"
+    subagent: "60-5-30"
+    addons: "40-15-3"
+    anti_hallucination_locks: [T1, T2, T3, T4]
+    zero_bugs: true
+    zero_holes: true
+  memory_infinite:
+    enabled: true
+    backends: [cloudflare_r2, supabase_vector_lite, redis_quantum]
+    vault_mode: true
+    raw_never_in_chat: true
+  cost_model:
+    l0_share: 0.85
+    l1_l3_share: 0.15
+    cpsj_l0_target_usd: 0.000051
+single_writer_protocol:
+  writer: GitNanu
+  mouse_access: read_only
+  merge_requires: doctor_gate_pass
+no_holes_gate:
+  fail_if: [gammanotion_write_without_gitnanu, raw_in_context, evidence_missing, og10_score_below_96]
