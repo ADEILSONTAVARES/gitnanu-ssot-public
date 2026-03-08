@@ -1,0 +1,5 @@
+validator_id: PAIN_VALIDATOR_ACTIVATION
+version: v1
+regra_canonical: Skill nunca enxerga catalogo inteiro
+max_por_execucao: 1 primario + 2 auxiliares + 2 pains criticos
+painpack_momento: DEPOIS da geracao nunca na geracao base
