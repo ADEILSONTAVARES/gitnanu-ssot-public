@@ -1,0 +1,14 @@
+spec_id: githubops_prm_spec
+version: 7.1
+internal_only: true
+events:
+  prm_dispatch:
+    trigger: "@prm comment OR workflow_dispatch"
+    outputs: [ack_comment_run_id, artifact_prm_payload_json]
+  council_review:
+    trigger: score_critical OR manual
+    outputs: [GREEN_YELLOW_RED, council_j1_j2_j3_verdicts]
+  evidence_pack:
+    trigger: release_gate
+    required_fields: [commit_sha, python_version, deps_checksum, command, checksums, receipts]
+tenant_rule: user_tenant -> ssot_routes_blocked == true
