@@ -1,0 +1,43 @@
+{
+  "title": "OG10_ENVELOPE_v1",
+  "type": "object",
+  "required": [
+    "job_id",
+    "studio_id",
+    "action_id",
+    "input_hash",
+    "evidence_path",
+    "budget_lane",
+    "created_at"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string"
+    },
+    "studio_id": {
+      "type": "string"
+    },
+    "action_id": {
+      "type": "string"
+    },
+    "input_hash": {
+      "type": "string"
+    },
+    "evidence_path": {
+      "type": "string"
+    },
+    "budget_lane": {
+      "type": "string",
+      "enum": [
+        "CACHE",
+        "FAST",
+        "STANDARD",
+        "DEEP",
+        "THINKING"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    }
+  }
+}
