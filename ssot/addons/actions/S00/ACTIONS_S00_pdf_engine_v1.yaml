@@ -1,308 +1,428 @@
-# ACTIONS_S00_pdf_engine_v1
 studio_id: S00
 api: pdf_engine
-version: 1
-total_actions: 40
 version: 2
+total_actions: 40
 skills_universais:
-  U1_INSPECT_MAP: {mission: Entender alvo escopo dependencias risco, coverage_target: 0.35, score_target: 9.9}
-  U2_PATCH_PROPAGATE: {mission: Transformar intencao em mudanca concreta reversivel, coverage_target: 0.35, score_target: 9.8}
-  U3_VERIFY_RECOVER: {mission: Validar medir registrar evidencia aprovar ou reverter, coverage_target: 0.15, score_target: 9.9}
-micro_skills_aplicadas: [MS01,MS03,MS04,MS36,MS37,MS38,MS39,MS40,MS46,MS47,MS48,MS49,MS50]
+  U1_INSPECT_MAP:
+    mission: Entender alvo escopo dependencias risco
+    coverage_target: 0.35
+    score_target: 9.9
+  U2_PATCH_PROPAGATE:
+    mission: Transformar intencao em mudanca concreta reversivel
+    coverage_target: 0.35
+    score_target: 9.8
+  U3_VERIFY_RECOVER:
+    mission: Validar medir registrar evidencia aprovar ou reverter
+    coverage_target: 0.15
+    score_target: 9.9
+micro_skills_aplicadas:
+- MS01
+- MS03
+- MS04
+- MS36
+- MS37
+- MS38
+- MS39
+- MS40
+- MS46
+- MS47
+- MS48
+- MS49
+- MS50
 dores_resolvidas:
-  P01: {name: Ambiguidade de selecao, severity: Alta, score_target: 9.9, mitigacao: Canonical element detection}
-  P02: {name: Quebra de layout entre superficies, severity: Alta, score_target: 9.8, mitigacao: Diff preview por superficie}
-  P03: {name: Dependencia excessiva do codigo bruto, severity: Alta, score_target: 9.7, mitigacao: Visual-to-code bridge}
-  P04: {name: Ausencia de diff confiavel, severity: Alta, score_target: 9.8, mitigacao: Diff minimo antes de aplicar}
-  P05: {name: Undo fragil ou inexistente, severity: Critica, score_target: 9.9, mitigacao: undo_token obrigatorio}
-  P06: {name: Falta de rollback completo, severity: Critica, score_target: 9.9, mitigacao: rollback_plan junto com patch}
-  P07: {name: Propagacao manual e inconsistente, severity: Alta, score_target: 9.8, mitigacao: propagation_plan automatico}
-  P08: {name: Prototipo desconectado do produto real, severity: Alta, score_target: 9.7, mitigacao: Prototipo vinculado ao estado real}
-  P09: {name: Quebra de ligacao visual com codigo, severity: Critica, score_target: 9.8, mitigacao: Visual-code sync pos-patch}
-  P10: {name: Violacao de brand e identidade, severity: Alta, score_target: 9.9, mitigacao: Brand lock antes de patch}
-  P11: {name: Baixa explicabilidade, severity: Media, score_target: 9.7, mitigacao: impact_map e dependency_map sempre}
-  P12: {name: Ausencia de evidencia auditavel, severity: Critica, score_target: 9.9, mitigacao: evidence_pack sha256 obrigatorio}
-  P13: {name: Hotfix sem governanca, severity: Alta, score_target: 9.8, mitigacao: Doctor Gate em todo hotfix}
-  P14: {name: Teste lento manual e disperso, severity: Alta, score_target: 9.7, mitigacao: Smoke test automatico pos-patch}
-  P15: {name: Impacto invisivel da mudanca, severity: Alta, score_target: 9.8, mitigacao: propagation_scope mapeado antes}
+  P01:
+    name: Ambiguidade de selecao
+    severity: Alta
+    score_target: 9.9
+    mitigacao: Canonical element detection
+  P02:
+    name: Quebra de layout entre superficies
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Diff preview por superficie
+  P03:
+    name: Dependencia excessiva do codigo bruto
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Visual-to-code bridge
+  P04:
+    name: Ausencia de diff confiavel
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Diff minimo antes de aplicar
+  P05:
+    name: Undo fragil ou inexistente
+    severity: Critica
+    score_target: 9.9
+    mitigacao: undo_token obrigatorio
+  P06:
+    name: Falta de rollback completo
+    severity: Critica
+    score_target: 9.9
+    mitigacao: rollback_plan junto com patch
+  P07:
+    name: Propagacao manual e inconsistente
+    severity: Alta
+    score_target: 9.8
+    mitigacao: propagation_plan automatico
+  P08:
+    name: Prototipo desconectado do produto real
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Prototipo vinculado ao estado real
+  P09:
+    name: Quebra de ligacao visual com codigo
+    severity: Critica
+    score_target: 9.8
+    mitigacao: Visual-code sync pos-patch
+  P10:
+    name: Violacao de brand e identidade
+    severity: Alta
+    score_target: 9.9
+    mitigacao: Brand lock antes de patch
+  P11:
+    name: Baixa explicabilidade
+    severity: Media
+    score_target: 9.7
+    mitigacao: impact_map e dependency_map sempre
+  P12:
+    name: Ausencia de evidencia auditavel
+    severity: Critica
+    score_target: 9.9
+    mitigacao: evidence_pack sha256 obrigatorio
+  P13:
+    name: Hotfix sem governanca
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Doctor Gate em todo hotfix
+  P14:
+    name: Teste lento manual e disperso
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Smoke test automatico pos-patch
+  P15:
+    name: Impacto invisivel da mudanca
+    severity: Alta
+    score_target: 9.8
+    mitigacao: propagation_scope mapeado antes
 actions:
-  - action_id: A-S00-pe-01
-    name: "validate_pii_in_pdf"
-    type: validate
-    trigger: on_input
-    gate: CW-212
-    severity: CRITICAL
-    description: "Escaneia PDF por PII antes de processar"
-  - action_id: A-S00-pe-02
-    name: "redact_api_key_log"
-    type: guard
-    trigger: on_output
-    gate: CW-212
-    severity: CRITICAL
-    description: "Redacta API key em logs"
-  - action_id: A-S00-pe-03
-    name: "enforce_approval_gate"
-    type: guard
-    trigger: on_input
-    gate: CW-202
-    severity: CRITICAL
-    description: "Exige aprovacao antes de processar PDF"
-  - action_id: A-S00-pe-04
-    name: "validate_file_scope"
-    type: validate
-    trigger: on_input
-    gate: CW-202
-    severity: CRITICAL
-    description: "Verifica que PDF esta no escopo autorizado"
-  - action_id: A-S00-pe-05
-    name: "enforce_lgpd_consent"
-    type: guard
-    trigger: on_input
-    gate: CW-212
-    severity: CRITICAL
-    description: "Bloqueia sem consentimento LGPD"
-  - action_id: A-S00-pe-06
-    name: "enforce_cost_guard"
-    type: guard
-    trigger: on_input
-    gate: CW-214
-    severity: CRITICAL
-    description: "Bloqueia se budget esgotado"
-  - action_id: A-S00-pe-07
-    name: "enforce_rollback_snapshot"
-    type: store
-    trigger: on_input
-    gate: CW-208
-    severity: CRITICAL
-    description: "Snapshot antes de modificar PDF"
-  - action_id: A-S00-pe-08
-    name: "emit_operation_receipt"
-    type: audit
-    trigger: on_output
-    gate: CW-206
-    severity: CRITICAL
-    description: "Receipt para toda operacao de PDF"
-  - action_id: A-S00-pe-09
-    name: "validate_pdf_integrity"
-    type: validate
-    trigger: on_input
-    gate: CW-208
-    severity: CRITICAL
-    description: "Verifica integridade do PDF via hash"
-  - action_id: A-S00-pe-10
-    name: "enforce_dlq_on_failure"
-    type: route
-    trigger: on_error
-    gate: CW-206
-    severity: CRITICAL
-    description: "DLQ em falha critica de PDF"
-  - action_id: A-S00-pe-11
-    name: "hash_pdf_output"
-    type: transform
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Aplica hash SHA256 no PDF gerado"
-  - action_id: A-S00-pe-12
-    name: "validate_pdf_version"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Valida versao do PDF suportada"
-  - action_id: A-S00-pe-13
-    name: "retry_with_backoff"
-    type: route
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Retry em falha de processamento"
-  - action_id: A-S00-pe-14
-    name: "validate_pdf_structure"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Verifica estrutura valida do PDF gerado"
-  - action_id: A-S00-pe-15
-    name: "enforce_processing_timeout"
-    type: guard
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Cancela processamento apos timeout"
-  - action_id: A-S00-pe-16
-    name: "sanitize_pdf_metadata"
-    type: transform
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Remove metadata sensivel do PDF"
-  - action_id: A-S00-pe-17
-    name: "validate_rate_limit_headroom"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica headroom de rate limit"
-  - action_id: A-S00-pe-18
-    name: "log_latency_metric"
-    type: audit
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Registra latencia de processamento"
-  - action_id: A-S00-pe-19
-    name: "validate_page_count_limit"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica numero de paginas dentro do limite"
-  - action_id: A-S00-pe-20
-    name: "emit_cost_metric"
-    type: audit
-    trigger: on_output
-    gate: CW-214
-    severity: HIGH
-    description: "Emite custo por pagina processada"
-  - action_id: A-S00-pe-21
-    name: "validate_font_embedding"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Verifica que fontes estao embarcadas"
-  - action_id: A-S00-pe-22
-    name: "sanitize_output_pii"
-    type: transform
-    trigger: on_output
-    gate: CW-212
-    severity: HIGH
-    description: "Remove PII residual do PDF"
-  - action_id: A-S00-pe-23
-    name: "store_pdf_evidence"
-    type: store
-    trigger: on_output
-    gate: CW-206
-    severity: HIGH
-    description: "Persiste evidencia de cada PDF gerado"
-  - action_id: A-S00-pe-24
-    name: "validate_file_size_limit"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica tamanho maximo do arquivo"
-  - action_id: A-S00-pe-25
-    name: "enforce_max_retries"
-    type: guard
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Bloqueia apos max_retries"
-  - action_id: A-S00-pe-26
-    name: "notify_on_critical_error"
-    type: notify
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Alerta em erro CRITICAL"
-  - action_id: A-S00-pe-27
-    name: "validate_encryption_policy"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Verifica politica de criptografia do PDF"
-  - action_id: A-S00-pe-28
-    name: "store_replay_payload"
-    type: store
-    trigger: on_output
-    gate: CW-208
-    severity: HIGH
-    description: "Salva payload para replay"
-  - action_id: A-S00-pe-29
-    name: "validate_accessibility_tags"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Verifica tags de acessibilidade no PDF"
-  - action_id: A-S00-pe-30
-    name: "enforce_visibility_gate"
-    type: guard
-    trigger: on_output
-    gate: CW-202
-    severity: HIGH
-    description: "Bloqueia publicacao sem gate"
-  - action_id: A-S00-pe-31
-    name: "sync_to_gndrive"
-    type: store
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Sincroniza PDFs com GNDrive"
-  - action_id: A-S00-pe-32
-    name: "publish_changelog_entry"
-    type: publish
-    trigger: on_event
-    gate: none
-    severity: MEDIUM
-    description: "Changelog em cada mudanca de config"
-  - action_id: A-S00-pe-33
-    name: "report_pdf_stats"
-    type: audit
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Relatorio de estatisticas de PDF"
-  - action_id: A-S00-pe-34
-    name: "cleanup_expired_pdfs"
-    type: transform
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Remove PDFs expirados"
-  - action_id: A-S00-pe-35
-    name: "validate_version_compatibility"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: MEDIUM
-    description: "Verifica versao do PDF engine"
-  - action_id: A-S00-pe-36
-    name: "emit_health_check"
-    type: notify
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Health check periodico"
-  - action_id: A-S00-pe-37
-    name: "archive_old_pdfs"
-    type: store
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Arquiva PDFs antigos"
-  - action_id: A-S00-pe-38
-    name: "validate_connector_registry"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: MEDIUM
-    description: "Confirma connector no registry S41"
-  - action_id: A-S00-pe-39
-    name: "emit_audit_summary"
-    type: audit
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Sumario de auditoria diario"
-  - action_id: A-S00-pe-40
-    name: "notify_budget_warning"
-    type: notify
-    trigger: on_event
-    gate: CW-214
-    severity: MEDIUM
-    description: "Alerta quando budget atinge 80%"
+- action_id: A-S00-pe-01
+  name: validate_pii_in_pdf
+  type: validate
+  trigger: on_input
+  gate: CW-212
+  severity: CRITICAL
+  description: Escaneia PDF por PII antes de processar
+  nota: 9.9
+- action_id: A-S00-pe-02
+  name: redact_api_key_log
+  type: guard
+  trigger: on_output
+  gate: CW-212
+  severity: CRITICAL
+  description: Redacta API key em logs
+  nota: 9.9
+- action_id: A-S00-pe-03
+  name: enforce_approval_gate
+  type: guard
+  trigger: on_input
+  gate: CW-202
+  severity: CRITICAL
+  description: Exige aprovacao antes de processar PDF
+  nota: 9.9
+- action_id: A-S00-pe-04
+  name: validate_file_scope
+  type: validate
+  trigger: on_input
+  gate: CW-202
+  severity: CRITICAL
+  description: Verifica que PDF esta no escopo autorizado
+  nota: 9.9
+- action_id: A-S00-pe-05
+  name: enforce_lgpd_consent
+  type: guard
+  trigger: on_input
+  gate: CW-212
+  severity: CRITICAL
+  description: Bloqueia sem consentimento LGPD
+  nota: 9.9
+- action_id: A-S00-pe-06
+  name: enforce_cost_guard
+  type: guard
+  trigger: on_input
+  gate: CW-214
+  severity: CRITICAL
+  description: Bloqueia se budget esgotado
+  nota: 9.9
+- action_id: A-S00-pe-07
+  name: enforce_rollback_snapshot
+  type: store
+  trigger: on_input
+  gate: CW-208
+  severity: CRITICAL
+  description: Snapshot antes de modificar PDF
+  nota: 9.9
+- action_id: A-S00-pe-08
+  name: emit_operation_receipt
+  type: audit
+  trigger: on_output
+  gate: CW-206
+  severity: CRITICAL
+  description: Receipt para toda operacao de PDF
+  nota: 9.9
+- action_id: A-S00-pe-09
+  name: validate_pdf_integrity
+  type: validate
+  trigger: on_input
+  gate: CW-208
+  severity: CRITICAL
+  description: Verifica integridade do PDF via hash
+  nota: 9.9
+- action_id: A-S00-pe-10
+  name: enforce_dlq_on_failure
+  type: route
+  trigger: on_error
+  gate: CW-206
+  severity: CRITICAL
+  description: DLQ em falha critica de PDF
+  nota: 9.9
+- action_id: A-S00-pe-11
+  name: hash_pdf_output
+  type: transform
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Aplica hash SHA256 no PDF gerado
+  nota: 9.7
+- action_id: A-S00-pe-12
+  name: validate_pdf_version
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Valida versao do PDF suportada
+  nota: 9.7
+- action_id: A-S00-pe-13
+  name: retry_with_backoff
+  type: route
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Retry em falha de processamento
+  nota: 9.7
+- action_id: A-S00-pe-14
+  name: validate_pdf_structure
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Verifica estrutura valida do PDF gerado
+  nota: 9.7
+- action_id: A-S00-pe-15
+  name: enforce_processing_timeout
+  type: guard
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Cancela processamento apos timeout
+  nota: 9.7
+- action_id: A-S00-pe-16
+  name: sanitize_pdf_metadata
+  type: transform
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Remove metadata sensivel do PDF
+  nota: 9.7
+- action_id: A-S00-pe-17
+  name: validate_rate_limit_headroom
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica headroom de rate limit
+  nota: 9.7
+- action_id: A-S00-pe-18
+  name: log_latency_metric
+  type: audit
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Registra latencia de processamento
+  nota: 9.7
+- action_id: A-S00-pe-19
+  name: validate_page_count_limit
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica numero de paginas dentro do limite
+  nota: 9.7
+- action_id: A-S00-pe-20
+  name: emit_cost_metric
+  type: audit
+  trigger: on_output
+  gate: CW-214
+  severity: HIGH
+  description: Emite custo por pagina processada
+  nota: 9.7
+- action_id: A-S00-pe-21
+  name: validate_font_embedding
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Verifica que fontes estao embarcadas
+  nota: 9.7
+- action_id: A-S00-pe-22
+  name: sanitize_output_pii
+  type: transform
+  trigger: on_output
+  gate: CW-212
+  severity: HIGH
+  description: Remove PII residual do PDF
+  nota: 9.7
+- action_id: A-S00-pe-23
+  name: store_pdf_evidence
+  type: store
+  trigger: on_output
+  gate: CW-206
+  severity: HIGH
+  description: Persiste evidencia de cada PDF gerado
+  nota: 9.7
+- action_id: A-S00-pe-24
+  name: validate_file_size_limit
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica tamanho maximo do arquivo
+  nota: 9.7
+- action_id: A-S00-pe-25
+  name: enforce_max_retries
+  type: guard
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Bloqueia apos max_retries
+  nota: 9.7
+- action_id: A-S00-pe-26
+  name: notify_on_critical_error
+  type: notify
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Alerta em erro CRITICAL
+  nota: 9.7
+- action_id: A-S00-pe-27
+  name: validate_encryption_policy
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Verifica politica de criptografia do PDF
+  nota: 9.7
+- action_id: A-S00-pe-28
+  name: store_replay_payload
+  type: store
+  trigger: on_output
+  gate: CW-208
+  severity: HIGH
+  description: Salva payload para replay
+  nota: 9.7
+- action_id: A-S00-pe-29
+  name: validate_accessibility_tags
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Verifica tags de acessibilidade no PDF
+  nota: 9.7
+- action_id: A-S00-pe-30
+  name: enforce_visibility_gate
+  type: guard
+  trigger: on_output
+  gate: CW-202
+  severity: HIGH
+  description: Bloqueia publicacao sem gate
+  nota: 9.7
+- action_id: A-S00-pe-31
+  name: sync_to_gndrive
+  type: store
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Sincroniza PDFs com GNDrive
+  nota: 9.6
+- action_id: A-S00-pe-32
+  name: publish_changelog_entry
+  type: publish
+  trigger: on_event
+  gate: none
+  severity: MEDIUM
+  description: Changelog em cada mudanca de config
+  nota: 9.6
+- action_id: A-S00-pe-33
+  name: report_pdf_stats
+  type: audit
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Relatorio de estatisticas de PDF
+  nota: 9.6
+- action_id: A-S00-pe-34
+  name: cleanup_expired_pdfs
+  type: transform
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Remove PDFs expirados
+  nota: 9.6
+- action_id: A-S00-pe-35
+  name: validate_version_compatibility
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: MEDIUM
+  description: Verifica versao do PDF engine
+  nota: 9.6
+- action_id: A-S00-pe-36
+  name: emit_health_check
+  type: notify
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Health check periodico
+  nota: 9.6
+- action_id: A-S00-pe-37
+  name: archive_old_pdfs
+  type: store
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Arquiva PDFs antigos
+  nota: 9.6
+- action_id: A-S00-pe-38
+  name: validate_connector_registry
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: MEDIUM
+  description: Confirma connector no registry S41
+  nota: 9.6
+- action_id: A-S00-pe-39
+  name: emit_audit_summary
+  type: audit
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Sumario de auditoria diario
+  nota: 9.6
+- action_id: A-S00-pe-40
+  name: notify_budget_warning
+  type: notify
+  trigger: on_event
+  gate: CW-214
+  severity: MEDIUM
+  description: Alerta quando budget atinge 80%
+  nota: 9.6

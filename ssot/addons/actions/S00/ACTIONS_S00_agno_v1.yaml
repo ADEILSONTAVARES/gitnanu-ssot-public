@@ -1,308 +1,428 @@
-# ACTIONS_S00_agno_v1
 studio_id: S00
 api: agno
-version: 1
-total_actions: 40
 version: 2
+total_actions: 40
 skills_universais:
-  U1_INSPECT_MAP: {mission: Entender alvo escopo dependencias risco, coverage_target: 0.35, score_target: 9.9}
-  U2_PATCH_PROPAGATE: {mission: Transformar intencao em mudanca concreta reversivel, coverage_target: 0.35, score_target: 9.8}
-  U3_VERIFY_RECOVER: {mission: Validar medir registrar evidencia aprovar ou reverter, coverage_target: 0.15, score_target: 9.9}
-micro_skills_aplicadas: [MS01,MS03,MS04,MS36,MS37,MS38,MS39,MS40,MS46,MS47,MS48,MS49,MS50]
+  U1_INSPECT_MAP:
+    mission: Entender alvo escopo dependencias risco
+    coverage_target: 0.35
+    score_target: 9.9
+  U2_PATCH_PROPAGATE:
+    mission: Transformar intencao em mudanca concreta reversivel
+    coverage_target: 0.35
+    score_target: 9.8
+  U3_VERIFY_RECOVER:
+    mission: Validar medir registrar evidencia aprovar ou reverter
+    coverage_target: 0.15
+    score_target: 9.9
+micro_skills_aplicadas:
+- MS01
+- MS03
+- MS04
+- MS36
+- MS37
+- MS38
+- MS39
+- MS40
+- MS46
+- MS47
+- MS48
+- MS49
+- MS50
 dores_resolvidas:
-  P01: {name: Ambiguidade de selecao, severity: Alta, score_target: 9.9, mitigacao: Canonical element detection}
-  P02: {name: Quebra de layout entre superficies, severity: Alta, score_target: 9.8, mitigacao: Diff preview por superficie}
-  P03: {name: Dependencia excessiva do codigo bruto, severity: Alta, score_target: 9.7, mitigacao: Visual-to-code bridge}
-  P04: {name: Ausencia de diff confiavel, severity: Alta, score_target: 9.8, mitigacao: Diff minimo antes de aplicar}
-  P05: {name: Undo fragil ou inexistente, severity: Critica, score_target: 9.9, mitigacao: undo_token obrigatorio}
-  P06: {name: Falta de rollback completo, severity: Critica, score_target: 9.9, mitigacao: rollback_plan junto com patch}
-  P07: {name: Propagacao manual e inconsistente, severity: Alta, score_target: 9.8, mitigacao: propagation_plan automatico}
-  P08: {name: Prototipo desconectado do produto real, severity: Alta, score_target: 9.7, mitigacao: Prototipo vinculado ao estado real}
-  P09: {name: Quebra de ligacao visual com codigo, severity: Critica, score_target: 9.8, mitigacao: Visual-code sync pos-patch}
-  P10: {name: Violacao de brand e identidade, severity: Alta, score_target: 9.9, mitigacao: Brand lock antes de patch}
-  P11: {name: Baixa explicabilidade, severity: Media, score_target: 9.7, mitigacao: impact_map e dependency_map sempre}
-  P12: {name: Ausencia de evidencia auditavel, severity: Critica, score_target: 9.9, mitigacao: evidence_pack sha256 obrigatorio}
-  P13: {name: Hotfix sem governanca, severity: Alta, score_target: 9.8, mitigacao: Doctor Gate em todo hotfix}
-  P14: {name: Teste lento manual e disperso, severity: Alta, score_target: 9.7, mitigacao: Smoke test automatico pos-patch}
-  P15: {name: Impacto invisivel da mudanca, severity: Alta, score_target: 9.8, mitigacao: propagation_scope mapeado antes}
+  P01:
+    name: Ambiguidade de selecao
+    severity: Alta
+    score_target: 9.9
+    mitigacao: Canonical element detection
+  P02:
+    name: Quebra de layout entre superficies
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Diff preview por superficie
+  P03:
+    name: Dependencia excessiva do codigo bruto
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Visual-to-code bridge
+  P04:
+    name: Ausencia de diff confiavel
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Diff minimo antes de aplicar
+  P05:
+    name: Undo fragil ou inexistente
+    severity: Critica
+    score_target: 9.9
+    mitigacao: undo_token obrigatorio
+  P06:
+    name: Falta de rollback completo
+    severity: Critica
+    score_target: 9.9
+    mitigacao: rollback_plan junto com patch
+  P07:
+    name: Propagacao manual e inconsistente
+    severity: Alta
+    score_target: 9.8
+    mitigacao: propagation_plan automatico
+  P08:
+    name: Prototipo desconectado do produto real
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Prototipo vinculado ao estado real
+  P09:
+    name: Quebra de ligacao visual com codigo
+    severity: Critica
+    score_target: 9.8
+    mitigacao: Visual-code sync pos-patch
+  P10:
+    name: Violacao de brand e identidade
+    severity: Alta
+    score_target: 9.9
+    mitigacao: Brand lock antes de patch
+  P11:
+    name: Baixa explicabilidade
+    severity: Media
+    score_target: 9.7
+    mitigacao: impact_map e dependency_map sempre
+  P12:
+    name: Ausencia de evidencia auditavel
+    severity: Critica
+    score_target: 9.9
+    mitigacao: evidence_pack sha256 obrigatorio
+  P13:
+    name: Hotfix sem governanca
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Doctor Gate em todo hotfix
+  P14:
+    name: Teste lento manual e disperso
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Smoke test automatico pos-patch
+  P15:
+    name: Impacto invisivel da mudanca
+    severity: Alta
+    score_target: 9.8
+    mitigacao: propagation_scope mapeado antes
 actions:
-  - action_id: A-S00-ag-01
-    name: "validate_pii_input"
-    type: validate
-    trigger: on_input
-    gate: CW-212
-    severity: CRITICAL
-    description: "Escaneia input por PII antes de processar"
-  - action_id: A-S00-ag-02
-    name: "redact_api_key_log"
-    type: guard
-    trigger: on_output
-    gate: CW-212
-    severity: CRITICAL
-    description: "Redacta API keys em qualquer log gerado"
-  - action_id: A-S00-ag-03
-    name: "enforce_approval_gate"
-    type: guard
-    trigger: on_input
-    gate: CW-202
-    severity: CRITICAL
-    description: "Bloqueia execucao sem aprovacao humana"
-  - action_id: A-S00-ag-04
-    name: "validate_scope_lock"
-    type: validate
-    trigger: on_input
-    gate: CW-202
-    severity: CRITICAL
-    description: "Verifica que agno acessa apenas seu namespace"
-  - action_id: A-S00-ag-05
-    name: "enforce_lgpd_consent"
-    type: guard
-    trigger: on_input
-    gate: CW-212
-    severity: CRITICAL
-    description: "Bloqueia se consentimento LGPD ausente"
-  - action_id: A-S00-ag-06
-    name: "enforce_cost_guard"
-    type: guard
-    trigger: on_input
-    gate: CW-214
-    severity: CRITICAL
-    description: "Bloqueia se budget esgotado"
-  - action_id: A-S00-ag-07
-    name: "enforce_rollback_snapshot"
-    type: store
-    trigger: on_input
-    gate: CW-208
-    severity: CRITICAL
-    description: "Cria snapshot antes de qualquer mutacao"
-  - action_id: A-S00-ag-08
-    name: "emit_operation_receipt"
-    type: audit
-    trigger: on_output
-    gate: CW-206
-    severity: CRITICAL
-    description: "Emite receipt para toda operacao"
-  - action_id: A-S00-ag-09
-    name: "validate_idempotency_key"
-    type: validate
-    trigger: on_input
-    gate: CW-202
-    severity: CRITICAL
-    description: "Rejeita job sem idempotency key"
-  - action_id: A-S00-ag-10
-    name: "enforce_dlq_on_failure"
-    type: route
-    trigger: on_error
-    gate: CW-206
-    severity: CRITICAL
-    description: "Envia para DLQ em qualquer falha critica"
-  - action_id: A-S00-ag-11
-    name: "hash_output_payload"
-    type: transform
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Aplica SHA256 em todo output"
-  - action_id: A-S00-ag-12
-    name: "validate_input_schema"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Valida schema do input antes de processar"
-  - action_id: A-S00-ag-13
-    name: "retry_with_backoff"
-    type: route
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Aplica retry exponencial em falhas de rate limit"
-  - action_id: A-S00-ag-14
-    name: "validate_output_schema"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Valida schema do output antes de retornar"
-  - action_id: A-S00-ag-15
-    name: "enforce_timeout"
-    type: guard
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Cancela execucao apos timeout configurado"
-  - action_id: A-S00-ag-16
-    name: "sanitize_input_encoding"
-    type: transform
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Normaliza encoding do input"
-  - action_id: A-S00-ag-17
-    name: "validate_token_budget"
-    type: validate
-    trigger: on_input
-    gate: CW-214
-    severity: HIGH
-    description: "Verifica tokens disponiveis antes de chamar LLM"
-  - action_id: A-S00-ag-18
-    name: "log_latency_metric"
-    type: audit
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Registra latencia de cada chamada"
-  - action_id: A-S00-ag-19
-    name: "validate_model_scope"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Confirma que modelo solicitado esta autorizado"
-  - action_id: A-S00-ag-20
-    name: "emit_cost_metric"
-    type: audit
-    trigger: on_output
-    gate: CW-214
-    severity: HIGH
-    description: "Emite metrica de custo por execucao"
-  - action_id: A-S00-ag-21
-    name: "validate_rate_limit_headroom"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica headroom de rate limit antes de chamar"
-  - action_id: A-S00-ag-22
-    name: "sanitize_output_pii"
-    type: transform
-    trigger: on_output
-    gate: CW-212
-    severity: HIGH
-    description: "Remove PII residual do output"
-  - action_id: A-S00-ag-23
-    name: "store_run_evidence"
-    type: store
-    trigger: on_output
-    gate: CW-206
-    severity: HIGH
-    description: "Persiste evidencia de cada run"
-  - action_id: A-S00-ag-24
-    name: "validate_response_integrity"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Verifica integridade da resposta com hash"
-  - action_id: A-S00-ag-25
-    name: "enforce_max_retries"
-    type: guard
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Bloqueia apos atingir max_retries"
-  - action_id: A-S00-ag-26
-    name: "notify_on_critical_error"
-    type: notify
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Envia alerta em erro CRITICAL"
-  - action_id: A-S00-ag-27
-    name: "validate_crew_assignment"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Confirma que agente esta no crew correto"
-  - action_id: A-S00-ag-28
-    name: "store_replay_payload"
-    type: store
-    trigger: on_output
-    gate: CW-208
-    severity: HIGH
-    description: "Salva payload para replay futuro"
-  - action_id: A-S00-ag-29
-    name: "validate_memory_pack_size"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica que memory pack nao excede limite"
-  - action_id: A-S00-ag-30
-    name: "enforce_visibility_gate"
-    type: guard
-    trigger: on_output
-    gate: CW-202
-    severity: HIGH
-    description: "Bloqueia publicacao sem gate de visibilidade"
-  - action_id: A-S00-ag-31
-    name: "sync_to_gndrive"
-    type: store
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Sincroniza evidencias com GNDrive periodicamente"
-  - action_id: A-S00-ag-32
-    name: "publish_changelog_entry"
-    type: publish
-    trigger: on_event
-    gate: none
-    severity: MEDIUM
-    description: "Publica entrada de changelog em cada mudanca"
-  - action_id: A-S00-ag-33
-    name: "report_token_usage"
-    type: audit
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Relatorio diario de uso de tokens"
-  - action_id: A-S00-ag-34
-    name: "cleanup_expired_snapshots"
-    type: transform
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Remove snapshots alem da retencao"
-  - action_id: A-S00-ag-35
-    name: "validate_version_compatibility"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: MEDIUM
-    description: "Verifica compatibilidade de versao do agno"
-  - action_id: A-S00-ag-36
-    name: "emit_health_check"
-    type: notify
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Emite health check periodico"
-  - action_id: A-S00-ag-37
-    name: "archive_old_evidence"
-    type: store
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Arquiva evidencias antigas conforme retention policy"
-  - action_id: A-S00-ag-38
-    name: "validate_connector_registry"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: MEDIUM
-    description: "Confirma que connector esta no registry S41"
-  - action_id: A-S00-ag-39
-    name: "emit_audit_summary"
-    type: audit
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Emite sumario de auditoria diario"
-  - action_id: A-S00-ag-40
-    name: "notify_budget_warning"
-    type: notify
-    trigger: on_event
-    gate: CW-214
-    severity: MEDIUM
-    description: "Alerta quando budget atinge 80%"
+- action_id: A-S00-ag-01
+  name: validate_pii_input
+  type: validate
+  trigger: on_input
+  gate: CW-212
+  severity: CRITICAL
+  description: Escaneia input por PII antes de processar
+  nota: 9.9
+- action_id: A-S00-ag-02
+  name: redact_api_key_log
+  type: guard
+  trigger: on_output
+  gate: CW-212
+  severity: CRITICAL
+  description: Redacta API keys em qualquer log gerado
+  nota: 9.9
+- action_id: A-S00-ag-03
+  name: enforce_approval_gate
+  type: guard
+  trigger: on_input
+  gate: CW-202
+  severity: CRITICAL
+  description: Bloqueia execucao sem aprovacao humana
+  nota: 9.9
+- action_id: A-S00-ag-04
+  name: validate_scope_lock
+  type: validate
+  trigger: on_input
+  gate: CW-202
+  severity: CRITICAL
+  description: Verifica que agno acessa apenas seu namespace
+  nota: 9.9
+- action_id: A-S00-ag-05
+  name: enforce_lgpd_consent
+  type: guard
+  trigger: on_input
+  gate: CW-212
+  severity: CRITICAL
+  description: Bloqueia se consentimento LGPD ausente
+  nota: 9.9
+- action_id: A-S00-ag-06
+  name: enforce_cost_guard
+  type: guard
+  trigger: on_input
+  gate: CW-214
+  severity: CRITICAL
+  description: Bloqueia se budget esgotado
+  nota: 9.9
+- action_id: A-S00-ag-07
+  name: enforce_rollback_snapshot
+  type: store
+  trigger: on_input
+  gate: CW-208
+  severity: CRITICAL
+  description: Cria snapshot antes de qualquer mutacao
+  nota: 9.9
+- action_id: A-S00-ag-08
+  name: emit_operation_receipt
+  type: audit
+  trigger: on_output
+  gate: CW-206
+  severity: CRITICAL
+  description: Emite receipt para toda operacao
+  nota: 9.9
+- action_id: A-S00-ag-09
+  name: validate_idempotency_key
+  type: validate
+  trigger: on_input
+  gate: CW-202
+  severity: CRITICAL
+  description: Rejeita job sem idempotency key
+  nota: 9.9
+- action_id: A-S00-ag-10
+  name: enforce_dlq_on_failure
+  type: route
+  trigger: on_error
+  gate: CW-206
+  severity: CRITICAL
+  description: Envia para DLQ em qualquer falha critica
+  nota: 9.9
+- action_id: A-S00-ag-11
+  name: hash_output_payload
+  type: transform
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Aplica SHA256 em todo output
+  nota: 9.7
+- action_id: A-S00-ag-12
+  name: validate_input_schema
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Valida schema do input antes de processar
+  nota: 9.7
+- action_id: A-S00-ag-13
+  name: retry_with_backoff
+  type: route
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Aplica retry exponencial em falhas de rate limit
+  nota: 9.7
+- action_id: A-S00-ag-14
+  name: validate_output_schema
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Valida schema do output antes de retornar
+  nota: 9.7
+- action_id: A-S00-ag-15
+  name: enforce_timeout
+  type: guard
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Cancela execucao apos timeout configurado
+  nota: 9.7
+- action_id: A-S00-ag-16
+  name: sanitize_input_encoding
+  type: transform
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Normaliza encoding do input
+  nota: 9.7
+- action_id: A-S00-ag-17
+  name: validate_token_budget
+  type: validate
+  trigger: on_input
+  gate: CW-214
+  severity: HIGH
+  description: Verifica tokens disponiveis antes de chamar LLM
+  nota: 9.7
+- action_id: A-S00-ag-18
+  name: log_latency_metric
+  type: audit
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Registra latencia de cada chamada
+  nota: 9.7
+- action_id: A-S00-ag-19
+  name: validate_model_scope
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Confirma que modelo solicitado esta autorizado
+  nota: 9.7
+- action_id: A-S00-ag-20
+  name: emit_cost_metric
+  type: audit
+  trigger: on_output
+  gate: CW-214
+  severity: HIGH
+  description: Emite metrica de custo por execucao
+  nota: 9.7
+- action_id: A-S00-ag-21
+  name: validate_rate_limit_headroom
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica headroom de rate limit antes de chamar
+  nota: 9.7
+- action_id: A-S00-ag-22
+  name: sanitize_output_pii
+  type: transform
+  trigger: on_output
+  gate: CW-212
+  severity: HIGH
+  description: Remove PII residual do output
+  nota: 9.7
+- action_id: A-S00-ag-23
+  name: store_run_evidence
+  type: store
+  trigger: on_output
+  gate: CW-206
+  severity: HIGH
+  description: Persiste evidencia de cada run
+  nota: 9.7
+- action_id: A-S00-ag-24
+  name: validate_response_integrity
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Verifica integridade da resposta com hash
+  nota: 9.7
+- action_id: A-S00-ag-25
+  name: enforce_max_retries
+  type: guard
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Bloqueia apos atingir max_retries
+  nota: 9.7
+- action_id: A-S00-ag-26
+  name: notify_on_critical_error
+  type: notify
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Envia alerta em erro CRITICAL
+  nota: 9.7
+- action_id: A-S00-ag-27
+  name: validate_crew_assignment
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Confirma que agente esta no crew correto
+  nota: 9.7
+- action_id: A-S00-ag-28
+  name: store_replay_payload
+  type: store
+  trigger: on_output
+  gate: CW-208
+  severity: HIGH
+  description: Salva payload para replay futuro
+  nota: 9.7
+- action_id: A-S00-ag-29
+  name: validate_memory_pack_size
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica que memory pack nao excede limite
+  nota: 9.7
+- action_id: A-S00-ag-30
+  name: enforce_visibility_gate
+  type: guard
+  trigger: on_output
+  gate: CW-202
+  severity: HIGH
+  description: Bloqueia publicacao sem gate de visibilidade
+  nota: 9.7
+- action_id: A-S00-ag-31
+  name: sync_to_gndrive
+  type: store
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Sincroniza evidencias com GNDrive periodicamente
+  nota: 9.6
+- action_id: A-S00-ag-32
+  name: publish_changelog_entry
+  type: publish
+  trigger: on_event
+  gate: none
+  severity: MEDIUM
+  description: Publica entrada de changelog em cada mudanca
+  nota: 9.6
+- action_id: A-S00-ag-33
+  name: report_token_usage
+  type: audit
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Relatorio diario de uso de tokens
+  nota: 9.6
+- action_id: A-S00-ag-34
+  name: cleanup_expired_snapshots
+  type: transform
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Remove snapshots alem da retencao
+  nota: 9.6
+- action_id: A-S00-ag-35
+  name: validate_version_compatibility
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: MEDIUM
+  description: Verifica compatibilidade de versao do agno
+  nota: 9.6
+- action_id: A-S00-ag-36
+  name: emit_health_check
+  type: notify
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Emite health check periodico
+  nota: 9.6
+- action_id: A-S00-ag-37
+  name: archive_old_evidence
+  type: store
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Arquiva evidencias antigas conforme retention policy
+  nota: 9.6
+- action_id: A-S00-ag-38
+  name: validate_connector_registry
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: MEDIUM
+  description: Confirma que connector esta no registry S41
+  nota: 9.6
+- action_id: A-S00-ag-39
+  name: emit_audit_summary
+  type: audit
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Emite sumario de auditoria diario
+  nota: 9.6
+- action_id: A-S00-ag-40
+  name: notify_budget_warning
+  type: notify
+  trigger: on_event
+  gate: CW-214
+  severity: MEDIUM
+  description: Alerta quando budget atinge 80%
+  nota: 9.6

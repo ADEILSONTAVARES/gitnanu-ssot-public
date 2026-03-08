@@ -1,308 +1,428 @@
-# ACTIONS_S01_markdown_engine_v1
 studio_id: S01
 api: markdown_engine
-version: 1
-total_actions: 40
 version: 2
+total_actions: 40
 skills_universais:
-  U1_INSPECT_MAP: {mission: Entender alvo escopo dependencias risco, coverage_target: 0.35, score_target: 9.9}
-  U2_PATCH_PROPAGATE: {mission: Transformar intencao em mudanca concreta reversivel, coverage_target: 0.35, score_target: 9.8}
-  U3_VERIFY_RECOVER: {mission: Validar medir registrar evidencia aprovar ou reverter, coverage_target: 0.15, score_target: 9.9}
-micro_skills_aplicadas: [MS01,MS03,MS04,MS36,MS37,MS38,MS39,MS40,MS46,MS47,MS48,MS49,MS50]
+  U1_INSPECT_MAP:
+    mission: Entender alvo escopo dependencias risco
+    coverage_target: 0.35
+    score_target: 9.9
+  U2_PATCH_PROPAGATE:
+    mission: Transformar intencao em mudanca concreta reversivel
+    coverage_target: 0.35
+    score_target: 9.8
+  U3_VERIFY_RECOVER:
+    mission: Validar medir registrar evidencia aprovar ou reverter
+    coverage_target: 0.15
+    score_target: 9.9
+micro_skills_aplicadas:
+- MS01
+- MS03
+- MS04
+- MS36
+- MS37
+- MS38
+- MS39
+- MS40
+- MS46
+- MS47
+- MS48
+- MS49
+- MS50
 dores_resolvidas:
-  P01: {name: Ambiguidade de selecao, severity: Alta, score_target: 9.9, mitigacao: Canonical element detection}
-  P02: {name: Quebra de layout entre superficies, severity: Alta, score_target: 9.8, mitigacao: Diff preview por superficie}
-  P03: {name: Dependencia excessiva do codigo bruto, severity: Alta, score_target: 9.7, mitigacao: Visual-to-code bridge}
-  P04: {name: Ausencia de diff confiavel, severity: Alta, score_target: 9.8, mitigacao: Diff minimo antes de aplicar}
-  P05: {name: Undo fragil ou inexistente, severity: Critica, score_target: 9.9, mitigacao: undo_token obrigatorio}
-  P06: {name: Falta de rollback completo, severity: Critica, score_target: 9.9, mitigacao: rollback_plan junto com patch}
-  P07: {name: Propagacao manual e inconsistente, severity: Alta, score_target: 9.8, mitigacao: propagation_plan automatico}
-  P08: {name: Prototipo desconectado do produto real, severity: Alta, score_target: 9.7, mitigacao: Prototipo vinculado ao estado real}
-  P09: {name: Quebra de ligacao visual com codigo, severity: Critica, score_target: 9.8, mitigacao: Visual-code sync pos-patch}
-  P10: {name: Violacao de brand e identidade, severity: Alta, score_target: 9.9, mitigacao: Brand lock antes de patch}
-  P11: {name: Baixa explicabilidade, severity: Media, score_target: 9.7, mitigacao: impact_map e dependency_map sempre}
-  P12: {name: Ausencia de evidencia auditavel, severity: Critica, score_target: 9.9, mitigacao: evidence_pack sha256 obrigatorio}
-  P13: {name: Hotfix sem governanca, severity: Alta, score_target: 9.8, mitigacao: Doctor Gate em todo hotfix}
-  P14: {name: Teste lento manual e disperso, severity: Alta, score_target: 9.7, mitigacao: Smoke test automatico pos-patch}
-  P15: {name: Impacto invisivel da mudanca, severity: Alta, score_target: 9.8, mitigacao: propagation_scope mapeado antes}
+  P01:
+    name: Ambiguidade de selecao
+    severity: Alta
+    score_target: 9.9
+    mitigacao: Canonical element detection
+  P02:
+    name: Quebra de layout entre superficies
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Diff preview por superficie
+  P03:
+    name: Dependencia excessiva do codigo bruto
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Visual-to-code bridge
+  P04:
+    name: Ausencia de diff confiavel
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Diff minimo antes de aplicar
+  P05:
+    name: Undo fragil ou inexistente
+    severity: Critica
+    score_target: 9.9
+    mitigacao: undo_token obrigatorio
+  P06:
+    name: Falta de rollback completo
+    severity: Critica
+    score_target: 9.9
+    mitigacao: rollback_plan junto com patch
+  P07:
+    name: Propagacao manual e inconsistente
+    severity: Alta
+    score_target: 9.8
+    mitigacao: propagation_plan automatico
+  P08:
+    name: Prototipo desconectado do produto real
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Prototipo vinculado ao estado real
+  P09:
+    name: Quebra de ligacao visual com codigo
+    severity: Critica
+    score_target: 9.8
+    mitigacao: Visual-code sync pos-patch
+  P10:
+    name: Violacao de brand e identidade
+    severity: Alta
+    score_target: 9.9
+    mitigacao: Brand lock antes de patch
+  P11:
+    name: Baixa explicabilidade
+    severity: Media
+    score_target: 9.7
+    mitigacao: impact_map e dependency_map sempre
+  P12:
+    name: Ausencia de evidencia auditavel
+    severity: Critica
+    score_target: 9.9
+    mitigacao: evidence_pack sha256 obrigatorio
+  P13:
+    name: Hotfix sem governanca
+    severity: Alta
+    score_target: 9.8
+    mitigacao: Doctor Gate em todo hotfix
+  P14:
+    name: Teste lento manual e disperso
+    severity: Alta
+    score_target: 9.7
+    mitigacao: Smoke test automatico pos-patch
+  P15:
+    name: Impacto invisivel da mudanca
+    severity: Alta
+    score_target: 9.8
+    mitigacao: propagation_scope mapeado antes
 actions:
-  - action_id: A-S01-me-01
-    name: "validate_pii_in_content"
-    type: validate
-    trigger: on_input
-    gate: CW-212
-    severity: CRITICAL
-    description: "Escaneia conteudo markdown por PII"
-  - action_id: A-S01-me-02
-    name: "redact_api_key_log"
-    type: guard
-    trigger: on_output
-    gate: CW-212
-    severity: CRITICAL
-    description: "Redacta API key em logs"
-  - action_id: A-S01-me-03
-    name: "enforce_approval_gate"
-    type: guard
-    trigger: on_input
-    gate: CW-202
-    severity: CRITICAL
-    description: "Exige aprovacao antes de publicar"
-  - action_id: A-S01-me-04
-    name: "validate_file_scope"
-    type: validate
-    trigger: on_input
-    gate: CW-202
-    severity: CRITICAL
-    description: "Verifica escopo do arquivo"
-  - action_id: A-S01-me-05
-    name: "enforce_lgpd_consent"
-    type: guard
-    trigger: on_input
-    gate: CW-212
-    severity: CRITICAL
-    description: "Bloqueia sem consentimento LGPD"
-  - action_id: A-S01-me-06
-    name: "enforce_cost_guard"
-    type: guard
-    trigger: on_input
-    gate: CW-214
-    severity: CRITICAL
-    description: "Bloqueia se budget esgotado"
-  - action_id: A-S01-me-07
-    name: "enforce_rollback_snapshot"
-    type: store
-    trigger: on_input
-    gate: CW-208
-    severity: CRITICAL
-    description: "Snapshot antes de modificar"
-  - action_id: A-S01-me-08
-    name: "emit_operation_receipt"
-    type: audit
-    trigger: on_output
-    gate: CW-206
-    severity: CRITICAL
-    description: "Receipt para toda operacao"
-  - action_id: A-S01-me-09
-    name: "validate_content_integrity"
-    type: validate
-    trigger: on_input
-    gate: CW-208
-    severity: CRITICAL
-    description: "Verifica integridade do conteudo via hash"
-  - action_id: A-S01-me-10
-    name: "enforce_dlq_on_failure"
-    type: route
-    trigger: on_error
-    gate: CW-206
-    severity: CRITICAL
-    description: "DLQ em falha critica"
-  - action_id: A-S01-me-11
-    name: "hash_md_output"
-    type: transform
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Aplica hash no markdown gerado"
-  - action_id: A-S01-me-12
-    name: "validate_md_syntax"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Valida sintaxe markdown"
-  - action_id: A-S01-me-13
-    name: "retry_with_backoff"
-    type: route
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Retry em falha"
-  - action_id: A-S01-me-14
-    name: "validate_html_output"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Verifica HTML gerado a partir do markdown"
-  - action_id: A-S01-me-15
-    name: "enforce_processing_timeout"
-    type: guard
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Cancela processamento apos timeout"
-  - action_id: A-S01-me-16
-    name: "sanitize_inline_html"
-    type: transform
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Remove HTML malicioso inline"
-  - action_id: A-S01-me-17
-    name: "validate_rate_limit_headroom"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica headroom de rate limit"
-  - action_id: A-S01-me-18
-    name: "log_latency_metric"
-    type: audit
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Registra latencia"
-  - action_id: A-S01-me-19
-    name: "validate_link_integrity"
-    type: validate
-    trigger: on_output
-    gate: none
-    severity: HIGH
-    description: "Verifica integridade de links"
-  - action_id: A-S01-me-20
-    name: "emit_cost_metric"
-    type: audit
-    trigger: on_output
-    gate: CW-214
-    severity: HIGH
-    description: "Emite custo por operacao"
-  - action_id: A-S01-me-21
-    name: "validate_image_refs"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica referencias de imagens"
-  - action_id: A-S01-me-22
-    name: "sanitize_output_pii"
-    type: transform
-    trigger: on_output
-    gate: CW-212
-    severity: HIGH
-    description: "Remove PII residual"
-  - action_id: A-S01-me-23
-    name: "store_md_evidence"
-    type: store
-    trigger: on_output
-    gate: CW-206
-    severity: HIGH
-    description: "Persiste evidencia de cada arquivo"
-  - action_id: A-S01-me-24
-    name: "validate_file_size_limit"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica tamanho maximo"
-  - action_id: A-S01-me-25
-    name: "enforce_max_retries"
-    type: guard
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Bloqueia apos max_retries"
-  - action_id: A-S01-me-26
-    name: "notify_on_critical_error"
-    type: notify
-    trigger: on_error
-    gate: none
-    severity: HIGH
-    description: "Alerta em erro CRITICAL"
-  - action_id: A-S01-me-27
-    name: "validate_frontmatter_schema"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica schema do frontmatter"
-  - action_id: A-S01-me-28
-    name: "store_replay_payload"
-    type: store
-    trigger: on_output
-    gate: CW-208
-    severity: HIGH
-    description: "Salva payload para replay"
-  - action_id: A-S01-me-29
-    name: "validate_encoding"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: HIGH
-    description: "Verifica encoding do arquivo"
-  - action_id: A-S01-me-30
-    name: "enforce_visibility_gate"
-    type: guard
-    trigger: on_output
-    gate: CW-202
-    severity: HIGH
-    description: "Bloqueia publicacao sem gate"
-  - action_id: A-S01-me-31
-    name: "sync_to_gndrive"
-    type: store
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Sincroniza arquivos com GNDrive"
-  - action_id: A-S01-me-32
-    name: "publish_changelog_entry"
-    type: publish
-    trigger: on_event
-    gate: none
-    severity: MEDIUM
-    description: "Changelog em cada mudanca"
-  - action_id: A-S01-me-33
-    name: "report_usage_stats"
-    type: audit
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Relatorio de uso"
-  - action_id: A-S01-me-34
-    name: "cleanup_expired_files"
-    type: transform
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Remove arquivos expirados"
-  - action_id: A-S01-me-35
-    name: "validate_version_compatibility"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: MEDIUM
-    description: "Verifica versao do engine"
-  - action_id: A-S01-me-36
-    name: "emit_health_check"
-    type: notify
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Health check periodico"
-  - action_id: A-S01-me-37
-    name: "archive_old_files"
-    type: store
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Arquiva arquivos antigos"
-  - action_id: A-S01-me-38
-    name: "validate_connector_registry"
-    type: validate
-    trigger: on_input
-    gate: none
-    severity: MEDIUM
-    description: "Confirma connector no registry S41"
-  - action_id: A-S01-me-39
-    name: "emit_audit_summary"
-    type: audit
-    trigger: on_schedule
-    gate: none
-    severity: MEDIUM
-    description: "Sumario de auditoria diario"
-  - action_id: A-S01-me-40
-    name: "notify_budget_warning"
-    type: notify
-    trigger: on_event
-    gate: CW-214
-    severity: MEDIUM
-    description: "Alerta quando budget atinge 80%"
+- action_id: A-S01-me-01
+  name: validate_pii_in_content
+  type: validate
+  trigger: on_input
+  gate: CW-212
+  severity: CRITICAL
+  description: Escaneia conteudo markdown por PII
+  nota: 9.9
+- action_id: A-S01-me-02
+  name: redact_api_key_log
+  type: guard
+  trigger: on_output
+  gate: CW-212
+  severity: CRITICAL
+  description: Redacta API key em logs
+  nota: 9.9
+- action_id: A-S01-me-03
+  name: enforce_approval_gate
+  type: guard
+  trigger: on_input
+  gate: CW-202
+  severity: CRITICAL
+  description: Exige aprovacao antes de publicar
+  nota: 9.9
+- action_id: A-S01-me-04
+  name: validate_file_scope
+  type: validate
+  trigger: on_input
+  gate: CW-202
+  severity: CRITICAL
+  description: Verifica escopo do arquivo
+  nota: 9.9
+- action_id: A-S01-me-05
+  name: enforce_lgpd_consent
+  type: guard
+  trigger: on_input
+  gate: CW-212
+  severity: CRITICAL
+  description: Bloqueia sem consentimento LGPD
+  nota: 9.9
+- action_id: A-S01-me-06
+  name: enforce_cost_guard
+  type: guard
+  trigger: on_input
+  gate: CW-214
+  severity: CRITICAL
+  description: Bloqueia se budget esgotado
+  nota: 9.9
+- action_id: A-S01-me-07
+  name: enforce_rollback_snapshot
+  type: store
+  trigger: on_input
+  gate: CW-208
+  severity: CRITICAL
+  description: Snapshot antes de modificar
+  nota: 9.9
+- action_id: A-S01-me-08
+  name: emit_operation_receipt
+  type: audit
+  trigger: on_output
+  gate: CW-206
+  severity: CRITICAL
+  description: Receipt para toda operacao
+  nota: 9.9
+- action_id: A-S01-me-09
+  name: validate_content_integrity
+  type: validate
+  trigger: on_input
+  gate: CW-208
+  severity: CRITICAL
+  description: Verifica integridade do conteudo via hash
+  nota: 9.9
+- action_id: A-S01-me-10
+  name: enforce_dlq_on_failure
+  type: route
+  trigger: on_error
+  gate: CW-206
+  severity: CRITICAL
+  description: DLQ em falha critica
+  nota: 9.9
+- action_id: A-S01-me-11
+  name: hash_md_output
+  type: transform
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Aplica hash no markdown gerado
+  nota: 9.7
+- action_id: A-S01-me-12
+  name: validate_md_syntax
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Valida sintaxe markdown
+  nota: 9.7
+- action_id: A-S01-me-13
+  name: retry_with_backoff
+  type: route
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Retry em falha
+  nota: 9.7
+- action_id: A-S01-me-14
+  name: validate_html_output
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Verifica HTML gerado a partir do markdown
+  nota: 9.7
+- action_id: A-S01-me-15
+  name: enforce_processing_timeout
+  type: guard
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Cancela processamento apos timeout
+  nota: 9.7
+- action_id: A-S01-me-16
+  name: sanitize_inline_html
+  type: transform
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Remove HTML malicioso inline
+  nota: 9.7
+- action_id: A-S01-me-17
+  name: validate_rate_limit_headroom
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica headroom de rate limit
+  nota: 9.7
+- action_id: A-S01-me-18
+  name: log_latency_metric
+  type: audit
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Registra latencia
+  nota: 9.7
+- action_id: A-S01-me-19
+  name: validate_link_integrity
+  type: validate
+  trigger: on_output
+  gate: none
+  severity: HIGH
+  description: Verifica integridade de links
+  nota: 9.7
+- action_id: A-S01-me-20
+  name: emit_cost_metric
+  type: audit
+  trigger: on_output
+  gate: CW-214
+  severity: HIGH
+  description: Emite custo por operacao
+  nota: 9.7
+- action_id: A-S01-me-21
+  name: validate_image_refs
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica referencias de imagens
+  nota: 9.7
+- action_id: A-S01-me-22
+  name: sanitize_output_pii
+  type: transform
+  trigger: on_output
+  gate: CW-212
+  severity: HIGH
+  description: Remove PII residual
+  nota: 9.7
+- action_id: A-S01-me-23
+  name: store_md_evidence
+  type: store
+  trigger: on_output
+  gate: CW-206
+  severity: HIGH
+  description: Persiste evidencia de cada arquivo
+  nota: 9.7
+- action_id: A-S01-me-24
+  name: validate_file_size_limit
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica tamanho maximo
+  nota: 9.7
+- action_id: A-S01-me-25
+  name: enforce_max_retries
+  type: guard
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Bloqueia apos max_retries
+  nota: 9.7
+- action_id: A-S01-me-26
+  name: notify_on_critical_error
+  type: notify
+  trigger: on_error
+  gate: none
+  severity: HIGH
+  description: Alerta em erro CRITICAL
+  nota: 9.7
+- action_id: A-S01-me-27
+  name: validate_frontmatter_schema
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica schema do frontmatter
+  nota: 9.7
+- action_id: A-S01-me-28
+  name: store_replay_payload
+  type: store
+  trigger: on_output
+  gate: CW-208
+  severity: HIGH
+  description: Salva payload para replay
+  nota: 9.7
+- action_id: A-S01-me-29
+  name: validate_encoding
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: HIGH
+  description: Verifica encoding do arquivo
+  nota: 9.7
+- action_id: A-S01-me-30
+  name: enforce_visibility_gate
+  type: guard
+  trigger: on_output
+  gate: CW-202
+  severity: HIGH
+  description: Bloqueia publicacao sem gate
+  nota: 9.7
+- action_id: A-S01-me-31
+  name: sync_to_gndrive
+  type: store
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Sincroniza arquivos com GNDrive
+  nota: 9.6
+- action_id: A-S01-me-32
+  name: publish_changelog_entry
+  type: publish
+  trigger: on_event
+  gate: none
+  severity: MEDIUM
+  description: Changelog em cada mudanca
+  nota: 9.6
+- action_id: A-S01-me-33
+  name: report_usage_stats
+  type: audit
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Relatorio de uso
+  nota: 9.6
+- action_id: A-S01-me-34
+  name: cleanup_expired_files
+  type: transform
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Remove arquivos expirados
+  nota: 9.6
+- action_id: A-S01-me-35
+  name: validate_version_compatibility
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: MEDIUM
+  description: Verifica versao do engine
+  nota: 9.6
+- action_id: A-S01-me-36
+  name: emit_health_check
+  type: notify
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Health check periodico
+  nota: 9.6
+- action_id: A-S01-me-37
+  name: archive_old_files
+  type: store
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Arquiva arquivos antigos
+  nota: 9.6
+- action_id: A-S01-me-38
+  name: validate_connector_registry
+  type: validate
+  trigger: on_input
+  gate: none
+  severity: MEDIUM
+  description: Confirma connector no registry S41
+  nota: 9.6
+- action_id: A-S01-me-39
+  name: emit_audit_summary
+  type: audit
+  trigger: on_schedule
+  gate: none
+  severity: MEDIUM
+  description: Sumario de auditoria diario
+  nota: 9.6
+- action_id: A-S01-me-40
+  name: notify_budget_warning
+  type: notify
+  trigger: on_event
+  gate: CW-214
+  severity: MEDIUM
+  description: Alerta quando budget atinge 80%
+  nota: 9.6
