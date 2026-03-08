@@ -1,0 +1,115 @@
+spec_id: ANTI_HALLUCINATION_ADDON_POLICY_OG10_v1
+version: 1.0
+principle: Nunca carregar tudo junto — modularidade e a principal defesa contra alucinacao
+source: Veredito estrategico NANUCAI + doutrina Addons 40-15-3
+
+formula_por_execucao:
+  composicao: U3 + A1 + A2_opcional + P1_P2_critica
+  U3: 3 universais sempre-on — curtos estaveis nao ambiguos
+  A1: addon principal — 1 apenas
+  A2: addon auxiliar — opcional maximo 1
+  P_critica: 1 ou 2 dores criticas — apenas na camada de critica nunca na geracao
+  regra_absoluta: NUNCA mais de 1 addon primario + 2 auxiliares + 2 dores por execucao
+
+universais_U3:
+  U1: interpretar objetivo antes de agir — nunca assumir intencao
+  U2: nao fingir acesso que nao tem — sem evidencia sem certeza
+  U3: distinguir fato inferencia proposta e template — nunca misturar
+
+addons_A40:
+  principio: biblioteca de ativacao sob demanda — nunca contexto fixo
+  cada_addon_tem:
+    - nome_canonico
+    - objetivo
+    - quando_ativar: regras explicitas
+    - quando_nao_ativar: contraexemplos
+    - inputs_obrigatorios
+    - outputs_esperados
+    - tool_allowlist
+    - tool_denylist
+    - limites
+    - falhas_conhecidas
+    - fallback
+  ativacao: por regras explicitas — nunca por feeling do modelo
+  exemplo_ativacao:
+    regra: se tarefa exige comparacao multiopcao com saida estruturada -> ativar addon_compare
+    regra: se houver arquivo tabular -> ativar addon_data_transform
+    regra: se houver interface visual -> ativar addon_design_system
+
+dores_P15:
+  principio: camada de critica e validacao — NUNCA camada de geracao base
+  papel: validador critico semaforo red-team curto pos-checagem
+  sequencia_correta:
+    1_addon_gera: addon executa a tarefa
+    2_pain_valida: dores revisam risco incoerencia excesso de inferencia
+    3_universal_governa: U3 garante postura
+  proibido: misturar dores na geracao base — polui producao com medo ruido contradicao
+
+5_passos_anti_alucinacao:
+  passo_1_router:
+    objetivo: classificar — nao executar ainda
+    outputs: [familia_skill, dominio, addon_principal, dores_relevantes]
+    max_tokens: curto
+  passo_2_plano:
+    objetivo: declarar o que vai usar o que precisa o que vai produzir
+    max_passos: 3 a 7
+    proibido: executar sem declarar plano minimo
+  passo_3_execucao:
+    objetivo: acoes atomicas — nao saltar etapas
+    principio: ActionPack atomico + Addon escolhe familia + Universal governa + Pain revisa
+    proibido: pesquisar+resumir+decidir+escrever+integrar+publicar+validar num salto so
+  passo_4_critica:
+    objetivo: revisao curta antes da saida final
+    checks:
+      - faltou evidencia?
+      - usou addon errado?
+      - inferiu demais?
+      - prometeu acao que nao executou?
+      - pulou input obrigatorio?
+      - confundiu template com dado real?
+  passo_5_recibo:
+    objetivo: rastreabilidade — corta alucinacao silenciosa
+    declara:
+      - o que foi usado
+      - o que nao foi usado
+      - o que foi assumido
+      - o que falta validar
+
+contratos_obrigatorios:
+  input_contract:
+    campos_obrigatorios: [objetivo, tipo_tarefa, dominio, arquivos_disponiveis, conectores_disponiveis, formato_saida_esperado]
+    se_faltar: skill responde entrada_insuficiente — nunca improvisa
+  output_contract:
+    tipo_fechado: true
+    proibido: saida livre demais — causa floracao e invencao de camadas nao pedidas
+  tool_allowlist:
+    cada_addon_declara: [permitidas, proibidas, preferidas, ordem, fallback]
+    exemplos_de_trava:
+      - addon_resumo nao pode usar conector de escrita
+      - addon_pesquisa nao pode afirmar leitura de arquivo sem evidencia
+      - addon_design nao pode dizer que validou responsividade sem teste real
+
+separacao_epistemica:
+  FATO: veio do usuario arquivo ferramenta ou sistema
+  INFERENCIA: conclusao a partir do que existe
+  SUGESTAO: proposta de proximo passo
+  TEMPLATE: exemplo gerado nao verdade do caso
+  regra: skill sempre rotula — nunca mistura como se fossem a mesma coisa
+
+no_evidence_no_claim:
+  nao_encontrou_arquivo: nao diz que leu
+  nao_chamou_ferramenta: nao diz que validou
+  nao_viu_pagina: nao diz que existe
+  nao_recebeu_retorno: nao diz que enviou
+  nao_executou_teste: nao diz que passou
+  violacao: ABORT + evidence_flag + doctor_review
+
+regras_canonicas_og10:
+  RC01: nenhuma Skill pode carregar mais de 1 addon primario + 2 auxiliares + 2 dores por execucao salvo modo auditoria
+  RC02: PainPack nao participa da geracao base — participa apenas da critica e validacao
+  RC03: toda Skill deve declarar evidencia_usada + hipotese_assumida + ferramenta_realmente_acionada
+
+maior_erro_a_evitar:
+  descricao: Skill monolitica com U3 + 40 addons embutidos + 15 dores embutidas + 250 acoes subentendidas
+  sintomas: [excesso de contexto, colisao de regras, competicao entre instrucoes, escolha errada de caminho, falsa confianca]
+  resultado: skill rica no papel e menos confiavel na pratica

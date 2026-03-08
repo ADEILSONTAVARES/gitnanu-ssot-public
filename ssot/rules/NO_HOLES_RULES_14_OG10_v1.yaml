@@ -1,0 +1,184 @@
+spec_id: NO_HOLES_RULES_14_OG10_v1
+version: 1.0
+activation: always_on
+principle: Guard rails sempre ativos — entram no system prompt e ficam la o tempo todo
+purpose: Prevenir falhas reais — cada regra nasceu de erro real em producao
+anatomy_per_rule: [motivo, gatilho, restricoes, few_shot_errado, few_shot_correto, excecoes]
+
+rules:
+
+  R01_SECURITY_ISOLATION:
+    motivo: IA coloca chaves sensiveis no frontend sem regra proibindo explicitamente
+    gatilho: criar/modificar arquivos em app/ components/ qualquer client-side com banco ou API
+    restricoes:
+      - NUNCA service_role_key em /app ou /components sob qualquer pretexto
+      - ZERO escrita direta do frontend — toda mutacao passa por rota API que valida sessao
+      - Todo endpoint novo mantem headers CSP e X-Frame-Options
+      - Autenticacao via Iron Session — nunca sessao exposta no cliente
+    errado: supabaseClient.from(users).delete().eq(id,userId) # direto no frontend
+    correto: POST /api/users/delete -> valida sessao -> extrai user_id da sessao -> executa backend
+    excecao: leitura publica nao sensivel com RLS ativo pode ser direta
+
+  R02_ASYNC_PERFORMANCE:
+    motivo: bibliotecas sincronas bloqueiam servidor a cada operacao — mata escala
+    gatilho: criar/modificar arquivos em backend/api ou backend/services
+    restricoes:
+      - NUNCA time.sleep() ou requests dentro de rotas FastAPI
+      - SEMPRE async/await para banco Redis APIs externas OpenAI Anthropic Gemini
+      - Use httpx.AsyncClient ou aiohttp — nunca requests
+      - Operacoes longas PDF billing treinamento delegadas para Celery Workers standalone
+    errado: def process() -> result = requests.get(url) -> return result.json()
+    correto: async def process() -> async with httpx.AsyncClient() as c -> await c.get(url)
+    excecao: scripts de migration e CLI podem ser sincronos
+
+  R03_MULTITENANT_SHIELD:
+    motivo: agente esquece de vincular company_id em novas tabelas — dados vazam entre clientes
+    gatilho: criar consultas de banco migracoes SQL qualquer codigo de acesso a dados de usuarios/empresas
+    restricoes:
+      - TODO query de banco DEVE incluir filtro por company_id
+      - company_id NUNCA aceito como parametro livre do frontend JSON body
+      - company_id SEMPRE extraido do objeto de sessao autenticada
+      - Novas tabelas SEMPRE com ENABLE ROW LEVEL SECURITY + politica baseada em auth.company_id
+    errado: supabase.from(tasks).select(*) # sem filtro de company
+    correto: supabase.from(tasks).select(*).eq(company_id, session.user.company_id)
+    excecao: tabelas globais sem dado de tenant como planos e paises
+
+  R04_SECRETS_VAULT:
+    motivo: chaves de API de clientes salvas em texto plano no banco sao falha grave
+    gatilho: manipular API keys tokens credenciais ou criar logs que possam conter dados sensiveis
+    restricoes:
+      - API keys de provedores OpenAI Anthropic Shopify SEMPRE criptografadas antes de inserir no banco
+      - PROIBIDO logar variaveis de ambiente sensiveis ou dados PII email CPF chaves
+      - Validacao de chave de criptografia obrigatoria via variavel de ambiente
+      - NUNCA em prompt — apenas via broker MCP — regra COCA-COLA LOCAL ONLY
+    errado: await db.insert(agents, {api_key: userApiKey})
+    correto: encrypted = encryptionService.encrypt(userApiKey) -> db.insert({api_key_encrypted: encrypted})
+    excecao: nenhuma — regra absoluta
+
+  R05_SESSION_HARDENING:
+    motivo: cookies mal configurados sao vetores de ataque XSS e CSRF
+    gatilho: configurar cookies sessoes middleware de autenticacao ou logica de login/logout
+    restricoes:
+      - Todo cookie DEVE ter httpOnly true secure true em producao sameSite lax
+      - Sessoes curtas vs longas com logica de expiracao diferenciada
+      - Middleware deve deletar cookie em sessao invalida ou expirada — sem estado inconsistente
+      - NUNCA limpar middleware sem tratar estado de sessao
+    errado: res.setHeader(Set-Cookie, session= + token)
+    correto: serialize(session, token, {httpOnly true, secure true, sameSite lax, maxAge 3600})
+    excecao: ambiente de desenvolvimento pode omitir secure true
+
+  R06_CLEAN_ARCHITECTURE:
+    motivo: logica de negocio nos arquivos de rota vira spaghetti impossivel de manter
+    gatilho: criar novos arquivos de router service ou adicionar logica de negocio em qualquer camada
+    restricoes:
+      - Servicos logica de negocio calculo de preco RAG processamento ficam em apps/services/
+      - Rotas de API apenas validam input e chamam servicos
+      - DRY obrigatorio — logica repetida em mais de um lugar vira service centralizado
+      - Nunca logica de banco diretamente no handler
+    errado: "@app.post(/invoice) -> tokens = data[tokens]*0.002 -> await db.insert(...)"
+    correto: "@app.post(/invoice) -> invoice = await billing_service.calculate_and_create(data)"
+    excecao: endpoints simples de healthcheck podem ser inline
+
+  R07_CREDENTIAL_HYGIENE:
+    motivo: senhas fracas e tokens previsiveis sao o vetor mais comum de invasao
+    gatilho: implementar cadastro login reset de senha ou qualquer funcao que manipule senhas e tokens
+    restricoes:
+      - Hash de senha SEMPRE bcrypt fator de custo 12 — nunca SHA256 puro
+      - SHA256 legado marcado para migracao imediata no proximo login
+      - Complexidade minima obrigatoria — 8+ chars 1 maiuscula 1 minuscula 1 numero
+      - Tokens de convite e reset usam crypto.getRandomValues() para garantir entropia criptografica
+    errado: hash = crypto.createHash(sha256).update(password).digest(hex)
+    correto: hash = await bcrypt.hash(password, 12)
+    excecao: nenhuma — regra de seguranca absoluta
+
+  R08_ERROR_HANDLING:
+    motivo: agentes sob pressao colocam except vazio para avancar — erro some silenciosamente
+    gatilho: criar/modificar blocos try/catch/except handlers de excecao ou middlewares de erro
+    restricoes:
+      - NUNCA capturar excecao sem logar ou relancar — except pass e PROIBIDO
+      - Toda requisicao HTTP deve carregar X-Request-ID que propaga entre servicos
+      - Mensagem para usuario final amigavel — stack trace completo apenas no log interno
+      - Validar entradas no inicio da funcao — nao processar dados invalidos para falhar depois
+    errado: "try: result = process(data) / except: pass"
+    correto: "except Exception as e: logger.error(f[{request_id}] failed, exc_info=True) -> raise HTTPException"
+    excecao: nenhuma — toda excecao deve ser observavel
+
+  R09_DEPENDENCY_HYGIENE:
+    motivo: pacotes maliciosos ou desatualizados sao vetor de ataque na cadeia de suprimentos
+    gatilho: sugerir npm install pip install cargo add ou qualquer adicao a package.json requirements.txt
+    restricoes:
+      - So sugerir pacotes com ultimo release menor que 12 meses
+      - Preferir pacotes com mais de 1000 downloads semanais npm ou 500+ estrelas GitHub
+      - Executar npm audit pip audit cargo audit antes de adicionar — rejeitar CVEs criticos ou altos
+      - Nao usar dependencia para funcoes triviais implementaveis em 5 linhas
+    errado: npm install left-pad is-odd
+    correto: implementar inline — const padLeft = (str, n) => str.padStart(n, 0)
+    excecao: pacotes core de framework estabelecido podem ter criterio relaxado
+
+  R10_TDD_FIRST:
+    motivo: agente diz que funcionou sem testar — voce descobre o bug horas depois
+    gatilho: usuario pede nova feature endpoint ou funcao de negocio
+    restricoes:
+      - Fluxo obrigatorio RED->GREEN->REFACTOR
+      - Cobertura minima 80% em funcoes novas
+      - Cases obrigatorios — undefined array vazio string vazia limites numericos erro
+      - Pelo menos 1 teste de excecao por funcao que pode falhar
+    errado: implementa direto e diz testa ai
+    correto: escreve teste que FALHA primeiro -> implementa minimo para passar -> refatora mantendo verde
+    excecao: prototipos descartaveis e scripts one-shot
+
+  R11_API_STANDARDIZATION:
+    motivo: APIs inconsistentes impedem integracao e travam novos desenvolvedores
+    gatilho: criar roteadores controllers ou endpoints de API
+    restricoes:
+      - Convencao obrigatoria — listar=GET detalhar=GET/:id criar=POST atualizar=PATCH/:id deletar=DELETE/:id
+      - Resposta de sucesso sempre com data + meta
+      - Resposta de erro sempre com error.code + error.message + error.request_id
+      - Paginacao com cursor — nunca offset em grandes volumes
+    errado: "POST /getTasks / GET /deleteUser?id=123"
+    correto: "GET /tasks -> {data:[...], meta:{total,page}} / DELETE /users/:id -> {data:{deleted:true}}"
+    excecao: webhooks de terceiros podem seguir formato do fornecedor
+
+  R12_COMMIT_STANDARDIZATION:
+    motivo: historico ilegivel impossibilita debug e geracao de changelog automatico
+    gatilho: gerar mensagens de commit ou preparar releases
+    restricoes:
+      - Formato obrigatorio — tipo(escopo) descricao curta
+      - Tipos permitidos — feat fix docs style refactor test chore perf
+      - Corpo do commit explica O QUE e POR QUE — nao como
+      - Breaking changes documentados com BREAKING CHANGE no footer
+    errado: "fix stuff / updates / wip"
+    correto: "feat(billing): adiciona calculo de desconto por plano pro"
+    excecao: commits de WIP em branch pessoal podem ser menos formais
+
+  R13_ENV_ISOLATION:
+    motivo: IA ja apagou banco de producao de empresas por rodar no ambiente errado
+    gatilho: configurar conexoes de banco variaveis de ambiente ou qualquer acesso a infraestrutura
+    restricoes:
+      - Bancos de dados SEPARADOS por ambiente — dev staging prod NUNCA compartilham banco
+      - MCP de banco SEMPRE aponta para banco de teste durante desenvolvimento
+      - Features nao finalizadas SEMPRE atras de feature flags — nunca commitadas direto na main
+      - PROIBIDO hardcode de URL de producao em codigo de desenvolvimento
+    errado: DATABASE_URL=postgresql://prod-server/maindb no .env de desenvolvimento
+    correto: .env.development aponta para localhost — .env.production nunca no repo sempre em secrets manager
+    excecao: nenhuma — regra de seguranca absoluta
+
+  R14_DOCUMENTATION_TRAINER:
+    motivo: projeto com 100+ arquivos sem documentacao e impossivel de manter ou passar adiante
+    gatilho: criar funcoes classes modulos ou arquivos README
+    restricoes:
+      - Nomes descritivos obrigatorios — getUserByEmail nao getUser calculateRevenue nao calc
+      - Toda funcao publica tem docstring com objetivo parametros retorno e excecoes
+      - README vivo com setup exemplos de uso e arquitetura basica
+      - PROIBIDO comentario que repete o codigo — comentario explica INTENCAO
+      - PROIBIDO codigo comentado — use git para historico
+      - Todo TODO deve ter ticket associado — nunca TODO solto
+    errado: "def calc(x,y): return x*y*0.002 # calcula"
+    correto: "def calculate_token_cost(input_tokens, output_tokens): docstring completa + validacao"
+    excecao: funcoes privadas simples podem ter docstring resumido
+
+og10_binding:
+  all_rules_apply_to: [S00, S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22, S23, S24, S25, S26, S27, S28, S29, S30, S31, S32, S33, S34, S35, S36, S37, S38, S39, S40, S41, S42, S43, S44, S45, S46, S47, S48, S49, S50, S51]
+  violation_action: ABORT + evidence_pack + escalate_doctor2
+  audit_log: GNDrive/rules/violations/ imutavel
+  review_cycle: weekly — AAM audita conformidade

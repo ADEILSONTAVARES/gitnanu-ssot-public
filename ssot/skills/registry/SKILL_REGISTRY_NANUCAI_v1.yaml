@@ -1,0 +1,83 @@
+spec_id: SKILL_REGISTRY_NANUCAI_v1
+version: 1.0
+principle: Skills canonicas da NANUCAI — nao dependem de formato de fornecedor
+purpose: Registry nativo com schema proprio — adapters para Claude/Gemini/Cowork sao camada de execucao
+
+skill_schema:
+  skill_id: string unico canonico
+  family: Build|Design|Ops|Knowledge
+  domain: string especifico do dominio
+  goal: objetivo unico e claro
+  inputs:
+    required: [objetivo, tipo_tarefa, dominio, arquivos_disponiveis, conectores_disponiveis, formato_saida]
+    optional: [contexto_adicional, restricoes_especificas]
+  outputs:
+    type: analitica|checklist|json|yaml|markdown|diff|plano|manifesto
+    structure: fechada — nunca livre demais
+  activation_rules: quando ativar — regras explicitas nao feeling
+  tool_allowlist: ferramentas permitidas proibidas preferidas ordem fallback
+  tool_denylist: ferramentas que nunca podem ser usadas nesta skill
+  risk_level: LOW|MEDIUM|HIGH|CRITICAL
+  validation_steps: passos de validacao obrigatorios
+  benchmark_bindings: benchmarks BENCH90 que medem esta skill
+  allowed_studios: studios S00-S51 que podem usar esta skill
+  evidence_requirements: o que deve ser evidenciado obrigatoriamente
+  fallbacks: o que fazer se skill falhar
+  version: semver
+  status: draft|approved|canonical|studio-bound|family-template|deprecated
+
+families:
+  BUILD:
+    purpose: codigo refactor debug teste integracao
+    subagents: [Subagent_Design, Subagent_QA, Subagent_SSOT]
+    addons_primarios: [code_gen, refactor, debug, test_writer, integration]
+  DESIGN:
+    purpose: layout tokens componente microinteracao UI system
+    subagents: [Subagent_Design]
+    addons_primarios: [layout, token_system, component_builder, microinteraction]
+  OPS:
+    purpose: deploy observabilidade manifestos validacao receipts
+    subagents: [Subagent_SSOT, Subagent_Security]
+    addons_primarios: [deploy, observability, manifest, validation, receipt_gen]
+  KNOWLEDGE:
+    purpose: resumo comparacao pesquisa transformacao documentacao
+    subagents: [Subagent_Growth, Subagent_Docs]
+    addons_primarios: [summarize, compare, research, transform, document]
+
+subagents:
+  PrM_Core:       {role: gerente central orquestrador, uses: todas as familias}
+  Subagent_Design: {role: especialista design+build, uses: [DESIGN, BUILD]}
+  Subagent_Data:   {role: especialista dados, uses: [BUILD, OPS]}
+  Subagent_Copy:   {role: especialista texto, uses: [KNOWLEDGE]}
+  Subagent_Growth: {role: especialista crescimento, uses: [KNOWLEDGE, DESIGN]}
+  Subagent_Docs:   {role: especialista documentacao, uses: [KNOWLEDGE, OPS]}
+  Subagent_QA:     {role: especialista qualidade, uses: [BUILD, OPS]}
+  Subagent_SSOT:   {role: especialista ssot/memoria, uses: [KNOWLEDGE, OPS]}
+  Subagent_Security: {role: especialista seguranca, uses: [OPS, BUILD]}
+
+execution_adapters:
+  claude_skills:    {type: adapter, not_sovereign: true}
+  claude_code:      {type: executor, not_sovereign: true}
+  cowork:           {type: executor_scheduled, not_sovereign: true}
+  gemini_agent:     {type: executor, not_sovereign: true}
+  n8n:              {type: orchestrator, not_sovereign: true}
+  mcp_tools:        {type: connector, not_sovereign: true}
+
+pipeline_acquisition:
+  1_collect:   Cowork agenda coleta de referencias externas
+  2_consolidate: pesquisa e consolida padroes
+  3_draft:     gera draft de skill em staging
+  4_classify:  PrM classifica familia e dominio
+  5_validate:  QA Subagent valida
+  6_verify:    Doctor verifica gates
+  7_benchmark: benchmark mede score
+  8_decide:    OG10 decide status final
+  statuses:    [descartada, draft, approved, canonical, studio-bound, family-template]
+
+anti_hallucination_contract:
+  input_contract_required: true
+  output_contract_required: true
+  tool_allowlist_required: true
+  evidence_declaration_required: true
+  fact_vs_inference_separation: obrigatorio
+  no_evidence_no_claim: absoluto
