@@ -1,0 +1,67 @@
+# ACTIONS_S16_loyalty_points_v1
+studio_id: S16
+api: loyalty_points
+version: 2
+total_actions: 40
+skills_universais:
+  U1_INSPECT_MAP: {mission: Entender alvo escopo dependencias risco, coverage_target: 0.35, score_target: 9.9}
+  U2_PATCH_PROPAGATE: {mission: Transformar intencao em mudanca concreta reversivel, coverage_target: 0.35, score_target: 9.8}
+  U3_VERIFY_RECOVER: {mission: Validar medir registrar evidencia aprovar ou reverter, coverage_target: 0.15, score_target: 9.9}
+micro_skills_aplicadas: [MS01,MS03,MS04,MS36,MS37,MS38,MS39,MS40,MS46,MS47,MS48,MS49,MS50]
+dores_resolvidas:
+  P01: {name: Ambiguidade de selecao, severity: Alta, score_target: 9.9, mitigacao: Canonical element detection}
+  P02: {name: Quebra de layout entre superficies, severity: Alta, score_target: 9.8, mitigacao: Diff preview por superficie}
+  P03: {name: Dependencia excessiva do codigo bruto, severity: Alta, score_target: 9.7, mitigacao: Visual-to-code bridge}
+  P04: {name: Ausencia de diff confiavel, severity: Alta, score_target: 9.8, mitigacao: Diff minimo antes de aplicar}
+  P05: {name: Undo fragil ou inexistente, severity: Critica, score_target: 9.9, mitigacao: undo_token obrigatorio}
+  P06: {name: Falta de rollback completo, severity: Critica, score_target: 9.9, mitigacao: rollback_plan junto com patch}
+  P07: {name: Propagacao manual e inconsistente, severity: Alta, score_target: 9.8, mitigacao: propagation_plan automatico}
+  P08: {name: Prototipo desconectado do produto real, severity: Alta, score_target: 9.7, mitigacao: Prototipo vinculado ao estado real}
+  P09: {name: Quebra de ligacao visual com codigo, severity: Critica, score_target: 9.8, mitigacao: Visual-code sync pos-patch}
+  P10: {name: Violacao de brand e identidade, severity: Alta, score_target: 9.9, mitigacao: Brand lock antes de patch}
+  P11: {name: Baixa explicabilidade, severity: Media, score_target: 9.7, mitigacao: impact_map e dependency_map sempre}
+  P12: {name: Ausencia de evidencia auditavel, severity: Critica, score_target: 9.9, mitigacao: evidence_pack sha256 obrigatorio}
+  P13: {name: Hotfix sem governanca, severity: Alta, score_target: 9.8, mitigacao: Doctor Gate em todo hotfix}
+  P14: {name: Teste lento manual e disperso, severity: Alta, score_target: 9.7, mitigacao: Smoke test automatico pos-patch}
+  P15: {name: Impacto invisivel da mudanca, severity: Alta, score_target: 9.8, mitigacao: propagation_scope mapeado antes}
+actions:
+  - {action_id: A-S16-tr-01, name: validate_pii_payload, nota: 9.9, type: validate, trigger: on_input, gate: CW-212, severity: CRITICAL, skill: U1, micro: MS36, description: Escaneia payload por PII}
+  - {action_id: A-S16-tr-02, name: redact_key_log, nota: 9.9, type: validate, trigger: on_input, gate: CW-212, severity: CRITICAL, skill: U1, micro: MS40, description: Redacta chaves em logs}
+  - {action_id: A-S16-tr-03, name: enforce_approval_gate, nota: 9.9, type: validate, trigger: on_input, gate: CW-202, severity: CRITICAL, skill: U1, micro: MS36, description: Gate aprovacao antes de executar}
+  - {action_id: A-S16-tr-04, name: validate_scope, nota: 9.9, type: validate, trigger: on_input, gate: CW-202, severity: CRITICAL, skill: U1, micro: MS04, description: Verifica escopo da operacao}
+  - {action_id: A-S16-tr-05, name: enforce_lgpd_consent, nota: 9.9, type: validate, trigger: on_input, gate: CW-212, severity: CRITICAL, skill: U1, micro: MS36, description: Bloqueia sem consentimento LGPD}
+  - {action_id: A-S16-tr-06, name: enforce_cost_guard, nota: 9.9, type: validate, trigger: on_input, gate: CW-214, severity: CRITICAL, skill: U1, micro: MS36, description: Bloqueia se budget esgotado}
+  - {action_id: A-S16-tr-07, name: enforce_rollback_snapshot, nota: 9.9, type: validate, trigger: on_input, gate: CW-208, severity: CRITICAL, skill: U2, micro: MS38, description: Snapshot antes de modificar}
+  - {action_id: A-S16-tr-08, name: emit_operation_receipt, nota: 9.9, type: validate, trigger: on_input, gate: CW-206, severity: CRITICAL, skill: U3, micro: MS40, description: Receipt auditavel para operacao}
+  - {action_id: A-S16-tr-09, name: validate_integrity_hash, nota: 9.9, type: validate, trigger: on_input, gate: CW-208, severity: CRITICAL, skill: U3, micro: MS50, description: Verifica integridade via sha256}
+  - {action_id: A-S16-tr-10, name: enforce_dlq_on_failure, nota: 9.9, type: validate, trigger: on_input, gate: CW-206, severity: CRITICAL, skill: U3, micro: MS39, description: DLQ em falha critica}
+  - {action_id: A-S16-tr-11, name: hash_output, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS50, description: Hash no output}
+  - {action_id: A-S16-tr-12, name: validate_input_schema, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS03, description: Valida schema do input}
+  - {action_id: A-S16-tr-13, name: retry_with_backoff, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U3, micro: MS39, description: Retry exponencial em falha}
+  - {action_id: A-S16-tr-14, name: validate_response_format, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U3, micro: MS47, description: Verifica formato de resposta}
+  - {action_id: A-S16-tr-15, name: enforce_timeout, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS36, description: Cancela apos timeout}
+  - {action_id: A-S16-tr-16, name: sanitize_input, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U2, micro: MS04, description: Sanitiza conteudo de input}
+  - {action_id: A-S16-tr-17, name: validate_rate_limit, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS36, description: Verifica headroom de rate limit}
+  - {action_id: A-S16-tr-18, name: log_latency_metric, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U3, micro: MS47, description: Registra latencia da operacao}
+  - {action_id: A-S16-tr-19, name: validate_permissions, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS36, description: Verifica permissoes de acesso}
+  - {action_id: A-S16-tr-20, name: emit_cost_metric, nota: 9.7, type: validate, trigger: on_input, gate: CW-214, severity: HIGH, skill: U3, micro: MS49, description: Emite custo por operacao}
+  - {action_id: A-S16-tr-21, name: validate_resource_quota, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS41, description: Verifica quota de recursos}
+  - {action_id: A-S16-tr-22, name: sanitize_output_pii, nota: 9.7, type: validate, trigger: on_input, gate: CW-212, severity: HIGH, skill: U3, micro: MS46, description: Remove PII do output}
+  - {action_id: A-S16-tr-23, name: store_evidence, nota: 9.7, type: validate, trigger: on_input, gate: CW-206, severity: HIGH, skill: U3, micro: MS46, description: Persiste evidence_pack com sha256}
+  - {action_id: A-S16-tr-24, name: validate_output_size, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U3, micro: MS47, description: Verifica tamanho do output}
+  - {action_id: A-S16-tr-25, name: enforce_max_retries, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U3, micro: MS39, description: Bloqueia apos max_retries}
+  - {action_id: A-S16-tr-26, name: notify_on_critical_error, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U3, micro: MS40, description: Alerta em erro CRITICAL}
+  - {action_id: A-S16-tr-27, name: validate_auth_token, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS36, description: Verifica token de autenticacao}
+  - {action_id: A-S16-tr-28, name: store_replay_payload, nota: 9.7, type: validate, trigger: on_input, gate: CW-208, severity: HIGH, skill: U3, micro: MS46, description: Salva payload para replay}
+  - {action_id: A-S16-tr-29, name: validate_idempotency_key, nota: 9.7, type: validate, trigger: on_input, gate: none, severity: HIGH, skill: U1, micro: MS36, description: Verifica chave de idempotencia}
+  - {action_id: A-S16-tr-30, name: enforce_visibility_gate, nota: 9.7, type: validate, trigger: on_input, gate: CW-202, severity: HIGH, skill: U3, micro: MS39, description: Bloqueia output sem gate}
+  - {action_id: A-S16-tr-31, name: sync_to_gndrive, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U3, micro: MS46, description: Sincroniza com GNDrive}
+  - {action_id: A-S16-tr-32, name: publish_changelog_entry, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U3, micro: MS40, description: Changelog em cada mudanca}
+  - {action_id: A-S16-tr-33, name: report_usage_stats, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U3, micro: MS47, description: Relatorio de uso periodico}
+  - {action_id: A-S16-tr-34, name: cleanup_expired_cache, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U2, micro: MS10, description: Remove cache expirado}
+  - {action_id: A-S16-tr-35, name: validate_version_compatibility, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U1, micro: MS03, description: Verifica versao da API}
+  - {action_id: A-S16-tr-36, name: emit_health_check, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U3, micro: MS47, description: Health check periodico}
+  - {action_id: A-S16-tr-37, name: archive_old_artifacts, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U3, micro: MS46, description: Arquiva artifacts antigos}
+  - {action_id: A-S16-tr-38, name: validate_connector_registry, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U1, micro: MS03, description: Confirma connector no registry S41}
+  - {action_id: A-S16-tr-39, name: emit_audit_summary, nota: 9.6, type: validate, trigger: on_input, gate: none, severity: MEDIUM, skill: U3, micro: MS48, description: Sumario de auditoria diario}
+  - {action_id: A-S16-tr-40, name: notify_budget_warning, nota: 9.6, type: validate, trigger: on_input, gate: CW-214, severity: MEDIUM, skill: U3, micro: MS49, description: Alerta quando budget atinge 80pct}
