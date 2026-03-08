@@ -1,0 +1,45 @@
+spec_id: SKILL_ADAPTER_CLAUDE_OG10_v1
+version: 1.0
+purpose: Adapter que traduz Skill canonica NANUCAI para formato Claude Skills
+principle: Skill canonica e da NANUCAI — versao Claude e adapter de execucao
+source: NANUCAI_SKILL_SYSTEM_STRATEGY_OG10_v1.yaml
+
+adapter_claude_skills:
+  input: NANUCAI Skill Registry schema
+  output: formato compativel com Claude Skills folder structure
+  camada: execucao — nao soberania
+
+mapeamento_campos:
+  skill_id: pasta com nome canonico da skill
+  goal: SKILL.md primeiro paragrafo — objetivo claro
+  inputs.required: secao de inputs obrigatorios no SKILL.md
+  outputs.type: secao de formato de saida no SKILL.md
+  activation_rules: quando usar esta skill — secao explicita
+  tool_allowlist: ferramentas permitidas declaradas no SKILL.md
+  evidence_requirements: o que deve ser evidenciado — secao obrigatoria
+  fallbacks: o que fazer se skill falhar — secao obrigatoria
+
+estrutura_pasta_claude:
+  SKILL.md: instrucoes principais — concisas bem estruturadas testadas
+  context.md: contexto adicional opcional
+  examples/: exemplos de uso correto e incorreto
+  regra_anthropic: skills devem ser concisas bem estruturadas e testadas com uso real
+
+restricoes_adapter:
+  - skill NANUCAI nunca pode perder soberania ao ser exportada para Claude
+  - adapter nao pode adicionar dependencia de formato Claude no nucleo NANUCAI
+  - se Claude mudar formato de skill o adapter muda — o nucleo NANUCAI nao muda
+  - versao Claude e read-only derivada — fonte da verdade e sempre o NANUCAI registry
+
+processo_de_exportacao:
+  1_validar: skill NANUCAI tem status canonical ou approved
+  2_gerar: SKILL.md a partir do schema NANUCAI
+  3_testar: validar com uso real antes de ativar
+  4_versionar: manter sync com versao NANUCAI de origem
+  5_evidenciar: receipt de exportacao com hash da skill origem
+
+familias_exportaveis:
+  BUILD: Claude Code — IDE 2x1 Builder — Warp Agent
+  DESIGN: Cowork — Antigravity — Claude Desktop
+  OPS: Claude Code — GitNanu — n8n
+  KNOWLEDGE: Claude.ai — Antigravity — Cowork

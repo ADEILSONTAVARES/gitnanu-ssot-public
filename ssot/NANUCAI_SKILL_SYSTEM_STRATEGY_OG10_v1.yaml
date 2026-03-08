@@ -1,0 +1,93 @@
+spec_id: NANUCAI_SKILL_SYSTEM_STRATEGY_OG10_v1
+version: 1.0
+status: CANONICAL
+purpose: Documento mestre da estrategia de Skills da NANUCAI
+source: Veredito estrategico NANUCAI — Skills Subagents Hooks Anti-Alucinacao
+
+veredito:
+  em_uma_frase: NANUCAI e um sistema operacional de agentes modulares com Skill Registry proprio subagents especializados hooks determiniscos OG10 como governanca soberana e Claude/Gemini como camada de execucao
+  nao_e: plataforma de skills dependente de fornecedor
+  nao_e: superagente unico com tudo dentro
+  e: cerebro proprio + memoria propria + governanca propria usando executores externos como pecas encaixaveis
+
+camadas:
+  1_soberana:
+    nome: PrM + OG10
+    contem: [identidade, memoria_canonica, SSOT, benchmark_governance, doctor_gates, evidencia, roteamento, politica_custo, politica_risco, retencao, canonizacao]
+    principio: PrM pensa OG10 governa
+    regra: nada do que vier de fora substitui esta camada
+    referencia: ssot/agents/AGENTS_REGISTRY_OG10_v7.yaml
+
+  2_competencia:
+    nome: Skill System NANUCAI
+    contem: [skill_registry_nativo, schema_nativo, activation_rules, tool_permission_model, benchmark_bindings, evidence_contract, fallback_contract, score_contract]
+    principio: skill canonica e da NANUCAI — versao Claude ou Gemini e adapter
+    referencia: ssot/skills/registry/SKILL_REGISTRY_NANUCAI_v1.yaml
+    familias: [BUILD, DESIGN, OPS, KNOWLEDGE]
+
+  3_especializacao:
+    nome: Subagents por dominio
+    principio: skill nao substitui subagent — skill e know-how modular subagent e especialista que usa skills
+    subagents: [Subagent_Design, Subagent_Data, Subagent_QA, Subagent_SSOT, Subagent_Security, Subagent_Growth, Subagent_Docs]
+    referencia: ssot/agents/AGENTS_REGISTRY_OG10_v7.yaml
+    mapeamento:
+      Design_Subagent: usa [DESIGN skills, BUILD skills]
+      SSOT_Subagent: usa [KNOWLEDGE skills, OPS skills]
+      QA_Subagent: usa [BUILD skills, OPS skills]
+      Growth_Subagent: usa [KNOWLEDGE skills, DESIGN skills]
+
+  4_deterministica:
+    nome: Hooks + Gates + Doctor
+    principio: nao confiar que agente vai lembrar — enforcement obrigatorio
+    hooks:
+      pre_edit: contexto e permissao
+      pos_edit: formatacao e lint
+      pre_accept: Doctor gate
+      pre_merge: evidencia
+      pre_publish: policy gate
+      pos_complete: manifesto e recibo
+    referencia: ssot/rules/NO_HOLES_RULES_14_OG10_v1.yaml
+    regra: sem hook sem enforcement sem confiabilidade
+
+  5_execucao:
+    nome: Cowork + Claude Code + Antigravity + Gemini Agent Mode
+    principio: executa — nao manda
+    executores_plugaveis: [Claude_Code, Cowork, Antigravity, Gemini_Agent_Mode, MCP_servers, n8n, futuros_conectores]
+    regra: se um executor mudar amanhã a arquitetura continua intacta
+    adapters:
+      claude: ssot/adapters/SKILL_ADAPTER_CLAUDE_OG10_v1.yaml
+      gemini: ssot/adapters/SKILL_ADAPTER_GEMINI_OG10_v1.yaml
+
+pipeline_fabrica_skills:
+  principio: fabrica e pipeline auxiliar de aquisicao e refinamento — nao producao canonica direta
+  fluxo:
+    coleta: Cowork agenda pesquisa e consolida padroes
+    draft: gera draft de skill em staging
+    classificacao: PrM classifica
+    validacao: QA valida Doctor verifica benchmark mede
+    decisao_OG10:
+      - descartada
+      - draft
+      - approved
+      - canonical
+      - studio-bound
+      - family-template
+  alerta: centenas de skills medianas redundantes conflitantes matam a plataforma por dentro
+
+o_que_nao_fazer:
+  - NANUCAI dependente do formato Claude Skill
+  - tudo num unico superagente
+  - autonomia sem hook e gate
+  - fabrica de skills sem governanca
+
+fases_implementacao:
+  fase_1: nucleo nativo — skill registry schema activation_rules tool_permission evidence_contract fallback_contract score_contract
+  fase_2: 4 familias canonicas fortes antes de explodir para centenas
+  fase_3: ligar familias a subagents especializados
+  fase_4: plugar executores externos como adapters
+
+status_atual_og10:
+  fase_1: COMPLETO — ssot/skills/registry/ + ssot/addons/schemas/ + ssot/addons/flows/
+  fase_2: COMPLETO — 4 familias BUILD/DESIGN/OPS/KNOWLEDGE em SKILL_REGISTRY_NANUCAI_v1
+  fase_3: COMPLETO — AGENTS_REGISTRY_OG10_v7 com mapeamento subagent-familia
+  fase_4: EM_ANDAMENTO — adapters Claude e Gemini pendentes

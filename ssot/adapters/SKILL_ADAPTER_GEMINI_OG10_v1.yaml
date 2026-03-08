@@ -1,0 +1,45 @@
+spec_id: SKILL_ADAPTER_GEMINI_OG10_v1
+version: 1.0
+purpose: Adapter que traduz Skill canonica NANUCAI para Gemini Agent Mode via MCP
+principle: Skill canonica e da NANUCAI — versao Gemini e adapter de execucao
+source: NANUCAI_SKILL_SYSTEM_STRATEGY_OG10_v1.yaml
+
+adapter_gemini_agent_mode:
+  input: NANUCAI Skill Registry schema
+  output: MCP server tools compativel com Gemini Agent Mode
+  camada: execucao — nao soberania
+  nota: Gemini Code Assist migrou de tools para agent mode com MCP servers
+
+mapeamento_campos:
+  skill_id: nome do MCP tool
+  goal: descricao do tool — clara e objetiva
+  inputs.required: parametros obrigatorios do MCP tool schema
+  outputs.type: formato de retorno do MCP tool
+  tool_allowlist: MCP servers permitidos para esta skill
+  evidence_requirements: campos obrigatorios no retorno do tool
+
+estrutura_mcp_gemini:
+  tool_name: skill_id canonico em snake_case
+  description: goal da skill NANUCAI
+  parameters: inputs.required mapeados para JSON schema
+  returns: outputs.type com campos de evidencia obrigatorios
+  mcp_server: servidor MCP que hospeda este tool
+
+restricoes_adapter:
+  - skill NANUCAI nunca perde soberania ao ser exportada para Gemini
+  - se Gemini mudar protocolo de agent mode o adapter muda — nucleo NANUCAI nao muda
+  - versao Gemini e read-only derivada — fonte da verdade e sempre o NANUCAI registry
+  - MCP servers usados pelo adapter seguem MCP_FIREWALL_POLICY_OG10_v1
+
+processo_de_exportacao:
+  1_validar: skill NANUCAI tem status canonical ou approved
+  2_gerar: MCP tool schema a partir do schema NANUCAI
+  3_registrar: no MCP server designado para o studio
+  4_testar: validar com agent mode antes de ativar em producao
+  5_evidenciar: receipt de exportacao com hash da skill origem
+
+familias_exportaveis:
+  BUILD: Gemini Code Assist agent mode — diffs inline — auto-approve
+  DESIGN: Gemini agent mode com MCP de design tools
+  OPS: Gemini agent mode — MCP de deploy e observabilidade
+  KNOWLEDGE: Gemini agent mode — MCP de pesquisa e documentacao
