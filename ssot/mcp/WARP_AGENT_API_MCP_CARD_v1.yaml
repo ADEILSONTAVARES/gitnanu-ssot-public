@@ -1,0 +1,11 @@
+mcp_id: warp_agent_api_mcp_v1
+provider: Warp
+internal_only: true
+purpose: Terminal invisivel — executa via Warp Agent API sem expor terminal
+execution_profiles:
+  read_only:     {allowed: [git status, git diff, git log, bun test]}
+  write_limited: {allowed: [git add, git commit, git push, gh pr create]}
+  deploy_blocked: {denylist: [rm -rf, docker system prune, drop database]}
+approvals_required: [merge, deploy, delete, security_changes]
+secrets_rule: only via broker; never in prompt
+freeze_rule: if agente_gelo_level>=2 block writes

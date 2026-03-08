@@ -1,0 +1,16 @@
+spec_id: PREWARM_TARGETS_REGISTRY_OG10_v1
+targets:
+  tier_0_always:
+    - {id: docker_runtime, type: infra,  plans: [starter,pro,business,enterprise]}
+    - {id: bun_runtime,    type: infra,  plans: [starter,pro,business,enterprise]}
+    - {id: n8n_connector,  type: infra,  plans: [starter,pro,business,enterprise]}
+  tier_1_llms:
+    - {id: minimax_m2,    type: llm, plans: [pro,business,enterprise], budget_pct: 0.3}
+    - {id: kimi_k2,       type: llm, plans: [pro,business,enterprise], budget_pct: 0.3}
+    - {id: claude_sonnet, type: llm, plans: [business,enterprise],     budget_pct: 0.5}
+    - {id: deepseek_v3,   type: llm, plans: [business,enterprise],     budget_pct: 0.3}
+  tier_2_mcps:
+    - {id: doctor_stack_mcp,  type: mcp, plans: [pro,business,enterprise]}
+    - {id: router_og10_mcp,   type: mcp, plans: [pro,business,enterprise]}
+    - {id: cache_quantum_mcp, type: mcp, plans: [starter,pro,business,enterprise]}
+plan_69_prewarms_llms: false

@@ -1,0 +1,14 @@
+spec_id: PREWARM_FAILURE_STREAK_POLICY_OG10_v1
+thresholds:
+  warn_streak: 3
+  incident_streak: 5
+  autocura_streak: 7
+  freeze_streak: 10
+actions_on_incident:
+  - create_gammanotion_incident_card
+  - notify_ops_channel
+  - trigger_autocura_review
+  - reduce_prewarm_frequency_by_50pct
+actions_on_freeze:
+  - freeze_target_in_registry
+  - require_human_unfreeze

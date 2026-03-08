@@ -1,0 +1,10 @@
+domain_id: dev_github_min7
+min_score: 7
+mcps:
+  - {id: github_mcp,     score: 10, required: true}
+  - {id: warp_agent_mcp, score: 9,  required: true}
+  - {id: context7_mcp,   score: 10, required: true}
+  - {id: doctor_mcp,     score: 10, required: true}
+  - {id: gitnanu_mcp,    score: 10, required: true}
+  - {id: firecrawl_mcp,  score: 9,  required: false}
+gate: all required MCPs must be active

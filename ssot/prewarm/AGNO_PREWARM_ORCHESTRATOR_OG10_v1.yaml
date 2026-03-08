@@ -1,0 +1,11 @@
+spec_id: AGNO_PREWARM_ORCHESTRATOR_OG10_v1
+commander: Agno
+budget_cap_pct: 2.0
+prompts: sinteticos minimos — NUNCA dados de usuario
+targets_registry: ssot/prewarm/PREWARM_TARGETS_REGISTRY_OG10_v1.yaml
+failure_policy: ssot/prewarm/PREWARM_FAILURE_STREAK_POLICY_OG10_v1.yaml
+cooldown_policy: ssot/prewarm/PREWARM_INCIDENT_COOLDOWN_POLICY_OG10_v1.yaml
+triggers: [schedule_daily, before_peak_hours, manual_button, after_incident_recovery]
+freeze_rules:
+  level_ge_2: block LLM prewarm writes
+  level_ge_3: block all prewarm
