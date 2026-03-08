@@ -1,0 +1,16 @@
+name: CI PASS_STRICT (No Holes)
+on:
+  pull_request:
+    branches: [main, principal]
+  push:
+    branches: [main, principal]
+jobs:
+  pass_strict:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pyyaml
+      - run: python3 scripts/gate_pass_strict.py
