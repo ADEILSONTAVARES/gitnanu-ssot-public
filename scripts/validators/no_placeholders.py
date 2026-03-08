@@ -11,7 +11,7 @@ BANNED_EXACT=["[CODIGO","[LISTA","[INSERIR","TBD","REPLACE_ME","[NOME","[URL"]
 # TODO como placeholder: linha onde TODO aparece isolado ou como valor
 # NAO flag: "no_placeholders" (nome de validator), "placeholder" em descricao de sintoma
 TODO_LINE_RE=re.compile(r"^\s*(#\s*)?TODO\b|:\s*TODO\b|\bTODO\s*$",re.MULTILINE)
-PLACEHOLDER_LINE_RE=re.compile(r":\s*PLACEHOLDER\b|\bPLACEHOLDER\s*$|\[PLACEHOLDER\]",re.MULTILINE|re.IGNORECASE)
+PLACEHOLDER_LINE_RE=re.compile(r":\s*PLACEHOLDER\s*$|^\s*PLACEHOLDER\s*$|\[PLACEHOLDER\]",re.MULTILINE|re.IGNORECASE)
 
 def is_text(p):
   return p.suffix.lower() in {".md",".yaml",".yml",".json",".py"}

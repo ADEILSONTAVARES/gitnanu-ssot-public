@@ -46,7 +46,7 @@ checks:
     description: Sem placeholders vazios em arquivos SSOT
     validates:
       - no_placeholders.py retorna PASS
-      - sem TBD REPLACE_ME [CODIGO [LISTA [INSERIR em yamls canonicos
+      - sem tokens de placeholder vazio em yamls canonicos — usar valores reais ou omitir campo
     fail_action: ABORT + lista de arquivos com placeholder
     severity: HIGH
 
