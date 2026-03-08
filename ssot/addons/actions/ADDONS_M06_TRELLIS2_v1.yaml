@@ -1,0 +1,14 @@
+addon_id: M06
+addon_name: TRELLIS 2
+version: v1
+familia: media
+shadow_band: 0.5-1.0pct
+nota: 9.0
+tipo: SEMPRE_ON
+layer: L0
+engines: [trellis2]
+addons_cobertos: [A30,A31,A32,A33]
+descricao: Conversao 2D para 3D com separacao de material e export monetizavel.
+invariantes:
+  - Preview 360 antes de export final
+  - Raw never in chat

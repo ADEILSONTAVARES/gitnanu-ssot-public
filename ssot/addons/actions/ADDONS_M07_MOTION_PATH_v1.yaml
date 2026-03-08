@@ -1,0 +1,15 @@
+addon_id: M07
+addon_name: Motion Path
+version: v1
+familia: media
+shadow_band: 0.5-1.0pct
+nota: 9.0
+tipo: GATILHO
+layer: L1
+engines: [motion_path]
+addons_cobertos: [A34,A35,A36]
+descricao: Controle de movimento por desenho de caminho. Storyboard cinematico e blocking.
+invariantes:
+  - Caminho desenhado obrigatorio antes de render
+  - Preview de blocking antes de export
+  - Raw never in chat

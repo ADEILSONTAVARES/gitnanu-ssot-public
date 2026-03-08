@@ -1,0 +1,14 @@
+addon_id: M05
+addon_name: Creen Dreamina
+version: v1
+familia: media
+shadow_band: 0pct
+nota: 8.9
+tipo: SEMPRE_ON
+layer: L0
+engines: [creen, dreamina]
+addons_cobertos: [A26,A27,A28,A29]
+descricao: Geracao rapida web-aware para social assets e mobile. Custo zero.
+invariantes:
+  - Usar para geracao leve produto e doc
+  - Raw never in chat

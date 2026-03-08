@@ -1,0 +1,14 @@
+addon_id: M12
+addon_name: Magic Animator
+version: v1
+familia: media
+shadow_band: 0pct
+nota: 8.9
+tipo: GATILHO
+layer: L1
+engines: [magic_animator]
+addons_cobertos: [A40]
+descricao: Converte layout estatico em animacao. Layout-to-animation automatico.
+invariantes:
+  - Preview antes de render final
+  - Raw never in chat

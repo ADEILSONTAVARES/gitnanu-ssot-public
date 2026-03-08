@@ -1,0 +1,15 @@
+addon_id: M13
+addon_name: Qwen Image Edit
+version: v1
+familia: media
+shadow_band: 0.3-0.6pct
+nota: 9.5
+tipo: GATILHO
+layer: L1
+engines: [qwen_image_edit]
+addons_cobertos: []
+descricao: Edicao precisa de imagem existente com instrucao textual.
+invariantes:
+  - Imagem original preservada no GNDrive
+  - undo_token antes de apply
+  - Raw never in chat

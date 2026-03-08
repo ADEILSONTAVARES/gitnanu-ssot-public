@@ -1,0 +1,14 @@
+addon_id: M09
+addon_name: Bloom AI
+version: v1
+familia: media
+shadow_band: 0pct
+nota: 8.9
+tipo: GATILHO
+layer: L1
+engines: [bloom_ai]
+addons_cobertos: []
+descricao: Brand consistency engine. Kit de marca e identidade visual.
+invariantes:
+  - Kit de marca carregado do GNDrive antes de usar
+  - Raw never in chat

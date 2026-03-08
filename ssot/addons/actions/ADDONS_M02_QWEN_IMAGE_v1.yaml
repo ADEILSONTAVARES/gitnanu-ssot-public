@@ -1,0 +1,15 @@
+addon_id: M02
+addon_name: Qwen Image 2512
+version: v1
+familia: media
+shadow_band: 0.3-0.6pct
+nota: 9.5
+tipo: SEMPRE_ON
+layer: L0
+engines: [qwen_image_2512]
+addons_cobertos: [A09,A10,A11,A12,A13,A14,A15,A16]
+descricao: Render fotorrealista com texto perfeito.
+invariantes:
+  - Text-Perfect obrigatorio quando layout tem texto
+  - seed preservado para variantes
+  - Raw never in chat

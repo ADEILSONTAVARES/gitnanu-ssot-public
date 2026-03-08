@@ -1,0 +1,15 @@
+addon_id: M04
+addon_name: Qwen Layered
+version: v1
+familia: media
+shadow_band: 0.3-0.6pct
+nota: 9.5
+tipo: SEMPRE_ON
+layer: L0
+engines: [qwen_layered]
+addons_cobertos: [A21,A22,A23,A24,A25]
+descricao: Decomposicao automatica de camadas para compositing e animacao.
+invariantes:
+  - Minimo 3 camadas por decomposicao
+  - undo_token antes de reorder
+  - Raw never in chat

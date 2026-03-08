@@ -1,0 +1,15 @@
+addon_id: M01
+addon_name: Krea Realtime
+version: v1
+familia: media
+shadow_band: 0.3-0.6pct
+nota: 9.5
+tipo: SEMPRE_ON
+layer: L0
+engines: [krea_realtime]
+addons_cobertos: [A01,A02,A03,A04,A05,A06,A07,A08]
+descricao: Engine de edicao visual em tempo real com preview instantaneo.
+invariantes:
+  - Preview obrigatorio antes de apply_patch
+  - undo_token gerado antes de qualquer mudanca
+  - Raw never in chat

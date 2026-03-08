@@ -1,0 +1,14 @@
+addon_id: M08
+addon_name: Arcads Avatar
+version: v1
+familia: media
+shadow_band: 0.5-1.0pct
+nota: 9.0
+tipo: GATILHO
+layer: L1
+engines: [arcads]
+addons_cobertos: [A37]
+descricao: Avatar expressivo com emocao e presenca. Video de apresentador digital.
+invariantes:
+  - Emocao definida antes de render
+  - Raw never in chat

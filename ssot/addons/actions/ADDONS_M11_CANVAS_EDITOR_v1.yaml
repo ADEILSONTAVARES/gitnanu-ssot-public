@@ -1,0 +1,14 @@
+addon_id: M11
+addon_name: Canvas Editor
+version: v1
+familia: media
+shadow_band: 0pct
+nota: 8.9
+tipo: GATILHO
+layer: L1
+engines: [canvas, capcut]
+addons_cobertos: [A39]
+descricao: Editor interativo de canvas para layouts e apresentacoes.
+invariantes:
+  - undo_token antes de qualquer mudanca
+  - Raw never in chat

@@ -1,0 +1,14 @@
+addon_id: M10
+addon_name: PDFelement
+version: v1
+familia: media
+shadow_band: 0pct
+nota: 8.9
+tipo: GATILHO
+layer: L1
+engines: [pdfelement]
+addons_cobertos: [A38]
+descricao: Editor semantico de PDF sem desconfiguracao de layout.
+invariantes:
+  - Backup do PDF original antes de editar
+  - Raw never in chat

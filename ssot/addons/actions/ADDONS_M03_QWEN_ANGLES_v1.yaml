@@ -1,0 +1,14 @@
+addon_id: M03
+addon_name: Qwen Angles 3D
+version: v1
+familia: media
+shadow_band: 0.3-0.6pct
+nota: 9.5
+tipo: SEMPRE_ON
+layer: L0
+engines: [qwen_angles_3d]
+addons_cobertos: [A17,A18,A19,A20]
+descricao: Controle de camera e angulo 3D a partir de imagem 2D.
+invariantes:
+  - Minimo 3 angulos por pack
+  - Raw never in chat
