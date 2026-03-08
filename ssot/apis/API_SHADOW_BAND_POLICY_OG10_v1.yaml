@@ -1,0 +1,23 @@
+policy_id: API_SHADOW_BAND
+version: v1
+bands:
+  default:
+    range: 0.3-0.6pct
+    apis: [krea, qwen_image, qwen_angles, qwen_layered, qwen_image_edit]
+    nota: 9.5
+  elevado:
+    range: 0.5-1.0pct
+    apis: [trellis2, motion_path, arcads]
+    nota: 9.0
+  worker:
+    range: 0.6-1.2pct
+    apis: [codex, claude_code, council]
+    nota: 9.5
+  exclusiva:
+    range: 1.0-2.0pct
+    apis: [openai_thinking, anthropic_thinking, phdmat, autocura_full]
+    nota: 9.8
+  gratuito:
+    range: 0pct
+    apis: [creen, bloom_ai, pdfelement, canvas, magic_animator]
+    nota: 8.9

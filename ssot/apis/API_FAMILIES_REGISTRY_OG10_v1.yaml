@@ -1,0 +1,10 @@
+registry_id: API_FAMILIES
+version: v1
+familias:
+  llm: [openai, anthropic, google, minimax, kimi, deepseek]
+  media: [krea, qwen_image, trellis, bloom_ai, arcads, heygen, runway, suno]
+  infra: [cloudflare, vercel, railway, supabase, redis]
+  dev: [github, codex, claude_code, playwright, jest]
+  search: [serp, firecrawl, context7, perplexity]
+  payments: [stripe, hotmart, paypal, mercado_pago, revenuecat]
+  comms: [gmail, whatsapp, telegram, slack, discord, twilio]

@@ -1,0 +1,6 @@
+policy_id: API_BUDGET_85_15
+version: v1
+regra: 85pct L0 determinístico custo zero + 15pct micro-skills generativas
+shadow_band_dentro_15pct: true
+effective_total_rate: 0.15 x shadow_rate
+exemplo: shadow 0.6pct effective 0.09pct do total de jobs
