@@ -1,0 +1,39 @@
+version: v1
+studio_id: S22
+title: Capo Aberto
+direct:
+  - nanucai.prm
+  - nanucai.gammanote
+  - nanucai.gndrive
+  - instagram.graph
+  - meta.graph
+  - youtube.data
+  - tiktok.publish
+  - x.api
+  - n8n
+  - utm.shortlink
+grouped:
+  - openai.gpt
+  - anthropic.claude
+  - google.gemini
+  - xai.kimi
+  - minimax.family
+  - runway
+  - kling
+  - sora
+  - veo3
+  - heygen
+  - gpt.image
+  - flux
+  - elevenlabs
+  - suno
+  - stripe
+  - firecrawl
+advanced:
+  - nanucai.gitnanu
+  - doctor.stack
+  - router.og10
+  - rag3.trim.twin
+  - cache.quantum
+  - make.scenarios
+  - zapier.zaps

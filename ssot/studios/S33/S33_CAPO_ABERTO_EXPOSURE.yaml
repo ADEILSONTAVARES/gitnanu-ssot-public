@@ -1,0 +1,39 @@
+version: v1
+studio_id: S33
+title: Capo Aberto
+direct:
+  - nanucai.prm
+  - nanucai.gammanote
+  - nanucai.gndrive
+  - notebooklm
+  - firecrawl
+  - serp.search
+  - youtube.data
+  - youtube.analytics
+  - trends.pipeline
+  - citation.engine
+grouped:
+  - openai.gpt
+  - anthropic.claude
+  - google.gemini
+  - xai.kimi
+  - minimax.family
+  - runway
+  - kling
+  - sora
+  - veo3
+  - heygen
+  - gpt.image
+  - flux
+  - elevenlabs
+  - suno
+  - n8n
+  - stripe
+advanced:
+  - nanucai.gitnanu
+  - doctor.stack
+  - router.og10
+  - rag3.trim.twin
+  - cache.quantum
+  - playwright
+  - pdf.engine

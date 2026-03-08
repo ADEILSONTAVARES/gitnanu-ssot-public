@@ -1,0 +1,37 @@
+version: v1
+studio_id: S06
+title: Capo Aberto
+direct:
+  - nanucai.prm
+  - nanucai.gammanote
+  - nanucai.gndrive
+  - suno
+  - udio
+  - elevenlabs
+  - stem.separation
+  - mix.master
+  - sfx.generator
+  - ffmpeg.audio
+grouped:
+  - openai.gpt
+  - anthropic.claude
+  - google.gemini
+  - xai.kimi
+  - minimax.family
+  - runway
+  - kling
+  - sora
+  - veo3
+  - heygen
+  - gpt.image
+  - flux
+  - n8n
+  - stripe
+  - firecrawl
+advanced:
+  - nanucai.gitnanu
+  - doctor.stack
+  - router.og10
+  - rag3.trim.twin
+  - cache.quantum
+  - audio.watermark

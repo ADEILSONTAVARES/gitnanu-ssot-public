@@ -1,0 +1,40 @@
+version: v1
+studio_id: S50
+title: Capo Aberto
+direct:
+  - nanucai.prm
+  - nanucai.gammanote
+  - nanucai.gndrive
+  - redis.cluster
+  - key.versioner
+  - ttl.manager
+  - lock.manager
+  - stampede.preventer
+  - poison.detector
+  - hot.key.detector
+grouped:
+  - openai.gpt
+  - anthropic.claude
+  - google.gemini
+  - xai.kimi
+  - minimax.family
+  - runway
+  - kling
+  - sora
+  - veo3
+  - heygen
+  - gpt.image
+  - flux
+  - elevenlabs
+  - suno
+  - n8n
+  - stripe
+  - firecrawl
+advanced:
+  - nanucai.gitnanu
+  - doctor.stack
+  - router.og10
+  - rag3.trim.twin
+  - cache.quantum
+  - cloudflare.kv
+  - supabase.db

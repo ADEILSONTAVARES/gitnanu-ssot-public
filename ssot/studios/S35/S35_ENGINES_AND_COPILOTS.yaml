@@ -1,0 +1,21 @@
+version: v1
+studio_id: S35
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: stripe.payments, provider: Stripe, role: payments}
+  - {engine_id: mercadopago, provider: MercadoPago, role: payments}
+  - {engine_id: adyen, provider: Adyen, role: payments}
+  - {engine_id: paypal.braintree, provider: PayPal, role: payments}
+  - {engine_id: apple.pay, provider: Apple, role: payments}
+  - {engine_id: fraud.rules, provider: Generic, role: fraud}
+  - {engine_id: three.ds.auth, provider: Generic, role: auth}
+  - {engine_id: cloudflare.turnstile, provider: Cloudflare, role: security}
+  - {engine_id: supabase.db, provider: Supabase, role: db}

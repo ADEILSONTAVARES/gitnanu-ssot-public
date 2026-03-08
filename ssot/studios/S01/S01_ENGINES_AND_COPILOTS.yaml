@@ -1,0 +1,24 @@
+version: v1
+studio_id: S01
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: docx.engine, provider: PDFEngine, role: doc_engine}
+  - {engine_id: pdf.engine, provider: PDFEngine, role: doc_engine}
+  - {engine_id: ocr.engine, provider: OCR, role: doc_engine}
+  - {engine_id: notebooklm, provider: Google, role: research}
+  - {engine_id: calibre.cli, provider: Calibre, role: publishing}
+  - {engine_id: epubcheck.cli, provider: EPUBCheck, role: publishing}
+  - {engine_id: deepl.translate, provider: DeepL, role: i18n}
+  - {engine_id: google.docs, provider: Google, role: docs}
+  - {engine_id: microsoft.graph, provider: Microsoft, role: docs}
+  - {engine_id: canva, provider: Canva, role: design}
+  - {engine_id: template.engine, provider: Generic, role: template}
+  - {engine_id: export.packager, provider: Generic, role: export}

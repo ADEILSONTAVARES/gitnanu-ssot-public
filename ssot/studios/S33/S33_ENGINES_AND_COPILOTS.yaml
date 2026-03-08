@@ -1,0 +1,21 @@
+version: v1
+studio_id: S33
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: notebooklm, provider: Google, role: research}
+  - {engine_id: firecrawl, provider: Firecrawl, role: scraping}
+  - {engine_id: serp.search, provider: SERP, role: search}
+  - {engine_id: youtube.data, provider: Google, role: video}
+  - {engine_id: youtube.analytics, provider: Google, role: analytics}
+  - {engine_id: trends.pipeline, provider: Google, role: trends}
+  - {engine_id: citation.engine, provider: Generic, role: citation}
+  - {engine_id: playwright, provider: Microsoft, role: browser}
+  - {engine_id: pdf.engine, provider: PDFEngine, role: doc}

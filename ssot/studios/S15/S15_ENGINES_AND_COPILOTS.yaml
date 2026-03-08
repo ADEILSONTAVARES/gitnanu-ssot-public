@@ -1,0 +1,21 @@
+version: v1
+studio_id: S15
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: amazon.catalog, provider: Amazon, role: marketplace}
+  - {engine_id: mercadolivre, provider: MercadoLivre, role: marketplace}
+  - {engine_id: deal.finder, provider: Generic, role: deals}
+  - {engine_id: price.tracker, provider: Generic, role: pricing}
+  - {engine_id: compare.engine, provider: Generic, role: comparison}
+  - {engine_id: offer.builder, provider: Generic, role: offer}
+  - {engine_id: serp.search, provider: SERP, role: search}
+  - {engine_id: affiliate.link, provider: Generic, role: affiliate}
+  - {engine_id: reviews.fetch, provider: Generic, role: reviews}

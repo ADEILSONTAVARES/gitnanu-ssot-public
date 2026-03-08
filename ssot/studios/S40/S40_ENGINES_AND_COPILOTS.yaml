@@ -1,0 +1,21 @@
+version: v1
+studio_id: S40
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: sketchfab, provider: Sketchfab, role: marketplace}
+  - {engine_id: cgtrader, provider: CGTrader, role: marketplace}
+  - {engine_id: turbosquid, provider: TurboSquid, role: marketplace}
+  - {engine_id: cults, provider: Cults, role: marketplace}
+  - {engine_id: publishing.packager, provider: Generic, role: export}
+  - {engine_id: payout.rules, provider: Generic, role: payments}
+  - {engine_id: watermark.prov, provider: Generic, role: watermark}
+  - {engine_id: stripe.payments, provider: Stripe, role: payments}
+  - {engine_id: supabase.db, provider: Supabase, role: db}

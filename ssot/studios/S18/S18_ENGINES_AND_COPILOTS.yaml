@@ -1,0 +1,21 @@
+version: v1
+studio_id: S18
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: stripe.billing, provider: Stripe, role: billing}
+  - {engine_id: stripe.payments, provider: Stripe, role: payments}
+  - {engine_id: membership.gate, provider: Generic, role: membership}
+  - {engine_id: community.connector, provider: Generic, role: community}
+  - {engine_id: notifications, provider: Generic, role: notifications}
+  - {engine_id: content.delivery, provider: Generic, role: delivery}
+  - {engine_id: dunning, provider: Generic, role: billing}
+  - {engine_id: gmail.api, provider: Google, role: messaging}
+  - {engine_id: supabase.db, provider: Supabase, role: db}

@@ -1,0 +1,21 @@
+version: v1
+studio_id: S36
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: rbac.core, provider: Generic, role: rbac}
+  - {engine_id: abac.core, provider: Generic, role: abac}
+  - {engine_id: workos.sso, provider: WorkOS, role: sso}
+  - {engine_id: workos.scim, provider: WorkOS, role: scim}
+  - {engine_id: passkeys.webauthn, provider: Generic, role: auth}
+  - {engine_id: audit.log.engine, provider: NANUCAI, role: audit}
+  - {engine_id: invites.policy, provider: Generic, role: governance}
+  - {engine_id: supabase.auth, provider: Supabase, role: auth}
+  - {engine_id: cloudflare.kv, provider: Cloudflare, role: infra}
