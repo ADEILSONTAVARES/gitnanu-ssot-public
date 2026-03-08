@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoWork10X MCP Cockpit</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0f; color: #e0e0e0; font-family: 'Courier New', monospace; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #1a1a2e, #16213e); padding: 20px 30px; border-bottom: 2px solid #00ff88; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 1.4em; font-weight: bold; color: #00ff88; letter-spacing: 2px; }
+.subtitle { color: #888; font-size: 0.8em; }
+.badge { background: #00ff8822; border: 1px solid #00ff88; color: #00ff88; padding: 4px 12px; border-radius: 20px; font-size: 0.75em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 30px; }
+.card { background: #111122; border: 1px solid #222244; border-radius: 12px; padding: 20px; transition: border-color 0.3s; }
+.card:hover { border-color: #00ff88; }
+.card-title { color: #00ff88; font-size: 0.9em; font-weight: bold; letter-spacing: 1px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #00ff88; display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.tool { background: #0d0d1a; border: 1px solid #1a1a33; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+.tool-name { color: #4488ff; font-size: 0.85em; font-weight: bold; }
+.tool-detail { color: #666; font-size: 0.75em; margin-top: 4px; }
+.tool-gate { color: #ff8844; font-size: 0.7em; margin-top: 4px; }
+.lock { background: #1a0a0a; border: 1px solid #331111; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 0.78em; color: #ff6644; }
+.lock span { color: #ff4422; font-weight: bold; }
+.phase { background: #0a1a0a; border: 1px solid #113311; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+.phase-name { color: #44ff88; font-size: 0.8em; font-weight: bold; margin-bottom: 6px; }
+.phase-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag { background: #0a2a1a; border: 1px solid #1a4a2a; color: #44cc66; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.tag.exit { background: #0a1a2a; border-color: #1a2a4a; color: #4466cc; }
+.path-item { font-size: 0.75em; padding: 6px 0; border-bottom: 1px solid #1a1a2a; color: #888; display: flex; justify-content: space-between; }
+.path-item:last-child { border-bottom: none; }
+.path-key { color: #4488ff; min-width: 100px; }
+.score-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #1a1a2a; font-size: 0.78em; }
+.score-row:last-child { border-bottom: none; }
+.score-label { color: #888; }
+.score-val { color: #00ff88; font-weight: bold; }
+.score-pts { color: #4488ff; font-size: 0.85em; }
+.footer { text-align: center; padding: 20px; color: #333; font-size: 0.75em; border-top: 1px solid #1a1a2a; }
+.status-bar { background: #0d1a0d; border-top: 1px solid #1a3a1a; padding: 10px 30px; display: flex; gap: 30px; font-size: 0.75em; }
+.status-item { display: flex; align-items: center; gap: 6px; }
+.status-ok { color: #00ff88; }
+.status-pending { color: #ffaa00; }
+.formula { background: #0a0a1a; border: 1px solid #1a1a3a; border-radius: 6px; padding: 10px; font-size: 0.8em; color: #aaaaff; margin-bottom: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="logo">⚡ CoWork10X MCP Cockpit</div>
+    <div class="subtitle">NANUCAI OG10 — Governance Layer v1.0</div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <span class="badge">51 files ZERO MISSING</span>
+    <span class="badge" style="border-color:#4488ff;color:#4488ff;background:#4488ff22;">commit a1375a9</span>
+  </div>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-title"><span class="dot"></span> MCP Tools (6)</div>
+    <div class="tool"><div class="tool-name">skill_execute</div><div class="tool-detail">input: skill_id, context_pac → result, evidence_ref</div><div class="tool-gate">gate: Doctor1</div></div>
+    <div class="tool"><div class="tool-name">addon_call</div><div class="tool-detail">input: addon_id, trigger, context → result, cost_est</div><div class="tool-gate">gate: budget_guard</div></div>
+    <div class="tool"><div class="tool-name">bench_evaluate</div><div class="tool-detail">input: bench_id, artifact_ref → score, pass_fail</div><div class="tool-gate">gate: Doctor2</div></div>
+    <div class="tool"><div class="tool-name">doctor_gate</div><div class="tool-detail">input: artifact_ref, run_id → PASS/FAIL, evidence_ref</div><div class="tool-gate">gate: fail_closed ⚠️</div></div>
+    <div class="tool"><div class="tool-name">evidence_commit</div><div class="tool-detail">input: run_id, artifacts → hash, vault_pointer</div><div class="tool-gate">gate: hash_verify</div></div>
+    <div class="tool"><div class="tool-name">prm_handoff</div><div class="tool-detail">input: pac_id, context_summary → handoff_ack</div><div class="tool-gate">gate: Doctor1 + PAC_footer</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#ff4422"></span> 5 Locks de Transição</div>
+    <div class="lock"><span>LOCK1</span> Nunca iniciar task sem PAC aberto e run_id gerado</div>
+    <div class="lock"><span>LOCK2</span> Nunca fechar task sem evidence_seal e Doctor1_PASS</div>
+    <div class="lock"><span>LOCK3</span> Nunca promover LTA sem Doctor2_PASS e evidence_ref</div>
+    <div class="lock"><span>LOCK4</span> Nunca commitar sem GitNanu e doctor_gate_PASS</div>
+    <div class="lock"><span>LOCK5</span> Nunca misturar TARGET com MEASURED em nenhum output</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#44aaff"></span> 3 Fases de Execução</div>
+    <div class="phase">
+      <div class="phase-name">📥 INTAKE</div>
+      <div style="font-size:0.72em;color:#666;">entry:</div>
+      <div class="phase-tags"><span class="tag">pac_open</span><span class="tag">run_id_gen</span><span class="tag">risk_assess</span></div>
+      <div style="font-size:0.72em;color:#666;margin-top:6px;">exit:</div>
+      <div class="phase-tags"><span class="tag exit">context_loaded</span><span class="tag exit">stack_selected</span></div>
+    </div>
+    <div class="phase">
+      <div class="phase-name">⚙️ EXECUTE</div>
+      <div class="phase-tags"><span class="tag">sandbox_ready</span><span class="tag">doctor1_armed</span></div>
+      <div class="phase-tags" style="margin-top:4px;"><span class="tag exit">diff_generated</span><span class="tag exit">tests_pass</span></div>
+    </div>
+    <div class="phase">
+      <div class="phase-name">✅ CLOSE</div>
+      <div class="phase-tags"><span class="tag">evidence_sealed</span><span class="tag">doctor1_pass</span></div>
+      <div class="phase-tags" style="margin-top:4px;"><span class="tag exit">gitnanu_commit</span><span class="tag exit">pac_footer_written</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#ffaa00"></span> Bench90 Weights (780pts)</div>
+    <div class="formula">F×0.45 + V×0.35 + E×0.20 = 96.0 target</div>
+    <div class="score-row"><span class="score-label">F Fidelidade (54 bench)</span><span><span class="score-pts">60pts</span> <span class="score-val">×0.45</span></span></div>
+    <div class="score-row"><span class="score-label">V Velocidade (20 bench)</span><span><span class="score-pts">60pts</span> <span class="score-val">×0.35</span></span></div>
+    <div class="score-row"><span class="score-label">E Evidência (16 bench)</span><span><span class="score-pts">60pts</span> <span class="score-val">×0.20</span></span></div>
+    <div class="score-row"><span class="score-label">Gates PASS</span><span><span class="score-pts">150pts</span></span></div>
+    <div class="score-row"><span class="score-label">Council J1+J2+J3</span><span><span class="score-pts">150pts</span></span></div>
+    <div class="score-row"><span class="score-label">Evidence Pack ×3</span><span><span class="score-pts">300pts</span></span></div>
+    <div class="score-row" style="margin-top:8px;"><span class="score-label" style="color:#00ff88;font-weight:bold;">TOTAL</span><span class="score-val">780pts → nota 0-90</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#aa44ff"></span> 14 SSOT Paths Canônicos</div>
+    <div class="path-item"><span class="path-key">memory</span><span>ssot/memory/</span></div>
+    <div class="path-item"><span class="path-key">og10</span><span>ssot/og10/</span></div>
+    <div class="path-item"><span class="path-key">bench</span><span>ssot/bench/</span></div>
+    <div class="path-item"><span class="path-key">registries</span><span>ssot/registries/</span></div>
+    <div class="path-item"><span class="path-key">gates</span><span>ssot/gates/</span></div>
+    <div class="path-item"><span class="path-key">playbooks</span><span>ssot/playbooks/</span></div>
+    <div class="path-item"><span class="path-key">subagent</span><span>ssot/subagent/</span></div>
+    <div class="path-item"><span class="path-key">addons</span><span>ssot/addons/</span></div>
+    <div class="path-item"><span class="path-key">cowork10x</span><span>ssot/cowork10x/</span></div>
+    <div class="path-item"><span class="path-key">workflows</span><span>ssot/workflows/</span></div>
+    <div class="path-item"><span class="path-key">validators</span><span>scripts/gates/</span></div>
+    <div class="path-item"><span class="path-key">docs_ssot</span><span>docs/ssot/</span></div>
+    <div class="path-item"><span class="path-key">docs_cowork</span><span>docs/cowork10x/</span></div>
+    <div class="path-item"><span class="path-key">vault_local</span><span style="color:#ff4422;">LOCAL ONLY — git blocked</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#ff4488"></span> Anti-Hallucination T1-T4</div>
+    <div class="tool"><div class="tool-name" style="color:#ff4422;">T1 — No Evidence No Claim</div><div class="tool-detail">NUNCA declarar MEASURED sem artifacts locais válidos</div></div>
+    <div class="tool"><div class="tool-name" style="color:#ff4422;">T2 — Raw Never in Chat</div><div class="tool-detail">NUNCA colar raw content em contexto</div></div>
+    <div class="tool"><div class="tool-name" style="color:#ff4422;">T3 — Nota 10 ou não passa</div><div class="tool-detail">NUNCA promover claim sem PASS_STRICT</div></div>
+    <div class="tool"><div class="tool-name" style="color:#ff4422;">T4 — Target ≠ Measured</div><div class="tool-detail">NUNCA misturar target_score com measured_score</div></div>
+  </div>
+
+</div>
+
+<div class="status-bar">
+  <div class="status-item"><span class="status-ok">●</span> 51 files committed</div>
+  <div class="status-item"><span class="status-ok">●</span> GitNanu single-writer</div>
+  <div class="status-item"><span class="status-ok">●</span> COCA-COLA LOCAL ONLY</div>
+  <div class="status-item"><span class="status-pending">●</span> Bench90 TARGET (runner PLANNED)</div>
+  <div class="status-item"><span class="status-ok">●</span> OG10 score target 96.0</div>
+</div>
+
+<div class="footer">NANUCAI OG10 — BrainboxIA — commit a1375a9 — ZERO MISSING ✓</div>
+</body>
+</html>
