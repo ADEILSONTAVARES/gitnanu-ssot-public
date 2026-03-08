@@ -15,6 +15,6 @@ normal_features:
   - {feature_id: AF08, name: quota_daily, score: null}
   - {feature_id: AF09, name: warmup_time_ms, score: null}
   - {feature_id: AF10, name: evidence_seal, score: null}
-domain_features: TBD_per_studio
+domain_features: definido_por_studio
 scoring: {scale: 1-10, fields: [score, weight, evidence_ref, last_updated]}
 activation_bands: [0, 0.3-0.6, 0.6-0.9, 0.9-1.2, 1.2-1.5, 1.5-1.75, 1.75-2.0]

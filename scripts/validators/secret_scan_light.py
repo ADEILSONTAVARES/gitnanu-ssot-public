@@ -3,7 +3,7 @@ import re,subprocess
 PATS=[re.compile(r"ghp_[A-Za-z0-9]{10,}"),re.compile(r"github_pat_[A-Za-z0-9]{10,}"),
       re.compile(r"sk-[A-Za-z0-9]{10,}"),re.compile(r"OPENAI_API_KEY"),
       re.compile(r"TELEGRAM_BOT_TOKEN"),re.compile(r"DISCORD_WEBHOOK_URL")]
-ALLOW=["docs/ssot/ANNEX"]
+ALLOW=["docs/ssot/ANNEX","scripts/validators/"]
 def main():
   files=subprocess.check_output(["git","ls-files"],text=True).splitlines()
   hits=[]

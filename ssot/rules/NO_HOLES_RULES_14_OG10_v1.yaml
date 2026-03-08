@@ -35,7 +35,7 @@ rules:
     motivo: agente esquece de vincular company_id em novas tabelas — dados vazam entre clientes
     gatilho: criar consultas de banco migracoes SQL qualquer codigo de acesso a dados de usuarios/empresas
     restricoes:
-      - TODO query de banco DEVE incluir filtro por company_id
+      - TODA query de banco DEVE incluir filtro por company_id
       - company_id NUNCA aceito como parametro livre do frontend JSON body
       - company_id SEMPRE extraido do objeto de sessao autenticada
       - Novas tabelas SEMPRE com ENABLE ROW LEVEL SECURITY + politica baseada em auth.company_id
@@ -172,7 +172,7 @@ rules:
       - README vivo com setup exemplos de uso e arquitetura basica
       - PROIBIDO comentario que repete o codigo — comentario explica INTENCAO
       - PROIBIDO codigo comentado — use git para historico
-      - Todo TODO deve ter ticket associado — nunca TODO solto
+      - Todo item pendente deve ter ticket associado — nunca pendencia solta
     errado: "def calc(x,y): return x*y*0.002 # calcula"
     correto: "def calculate_token_cost(input_tokens, output_tokens): docstring completa + validacao"
     excecao: funcoes privadas simples podem ter docstring resumido

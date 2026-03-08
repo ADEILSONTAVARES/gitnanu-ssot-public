@@ -1,0 +1,524 @@
+basileia_registry_id: BASILEIA_REGISTRY_OG10_v1
+generated_from: ssot/basileia/BASILEIA_52.yaml
+total_studios: 52
+studios:
+- id: S00
+  name: Studio S00
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S01
+  name: Studio S01
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S02
+  name: Studio S02
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S03
+  name: Studio S03
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S04
+  name: Studio S04
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S05
+  name: Studio S05
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S06
+  name: Studio S06
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S07
+  name: Studio S07
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S08
+  name: Studio S08
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S09
+  name: Studio S09
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S10
+  name: Studio S10
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S11
+  name: Studio S11
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S12
+  name: Studio S12
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S13
+  name: Studio S13
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S14
+  name: Studio S14
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S15
+  name: Studio S15
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S16
+  name: Studio S16
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S17
+  name: Studio S17
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S18
+  name: Studio S18
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S19
+  name: Studio S19
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S20
+  name: Studio S20
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S21
+  name: Studio S21
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S22
+  name: Studio S22
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S23
+  name: Studio S23
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S24
+  name: Studio S24
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S25
+  name: Studio S25
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S26
+  name: Studio S26
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S27
+  name: Studio S27
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S28
+  name: Studio S28
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S29
+  name: Studio S29
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S30
+  name: Studio S30
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S31
+  name: Studio S31
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S32
+  name: Studio S32
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S33
+  name: Studio S33
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S34
+  name: Studio S34
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S35
+  name: Studio S35
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S36
+  name: Studio S36
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S37
+  name: Studio S37
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S38
+  name: Studio S38
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S39
+  name: Studio S39
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S40
+  name: Studio S40
+  layer: product
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S41
+  name: Studio S41
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S42
+  name: Studio S42
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S43
+  name: Studio S43
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S44
+  name: Studio S44
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S45
+  name: Studio S45
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S46
+  name: Studio S46
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S47
+  name: Studio S47
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S48
+  name: Studio S48
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S49
+  name: Studio S49
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S50
+  name: Studio S50
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
+- id: S51
+  name: Studio S51
+  layer: control_plane
+  visibility: invisible
+  modes:
+    sidebar: true
+    palette: true
+    slash: true
+    mouse: true
+    voice: true
