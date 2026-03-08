@@ -1,0 +1,7 @@
+policy_id: GNDRIVE_SAVE
+version: v1
+quando_salvar: apos todo job com score_final maior 9.5
+destino: gndrive://workspace_id/assets/pac_id
+evidence_hash: sha256 obrigatorio
+coca_cola_local_only: [vault, secrets, evidence_raw, raw]
+invariante: Raw never in chat

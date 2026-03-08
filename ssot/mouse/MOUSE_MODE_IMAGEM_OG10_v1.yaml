@@ -1,0 +1,8 @@
+mode_id: MOUSE_MODE_IMAGEM
+version: v1
+studio: S04_imagem
+engine_padrao: M01 Krea Realtime
+preview_obrigatorio: true
+undo_token: true
+addons_ativos: [A01,A09,A17,A21]
+shadow_band: 0.3-0.6pct

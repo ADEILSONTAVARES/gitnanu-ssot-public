@@ -1,0 +1,8 @@
+mode_id: MOUSE_MODE_VIDEO
+version: v1
+studio: S03_video
+engine_padrao: runway
+preview_obrigatorio: true
+undo_token: true
+addons_ativos: [A34,A35,A37]
+shadow_band: 0.5-1.0pct

@@ -1,0 +1,9 @@
+policy_id: TEAMSWORK_10X
+version: v1
+descricao: Politica de times e permissoes para trabalho paralelo no NANUCAI OG10
+regras:
+  - PrM coordena todos os agentes do time
+  - Nenhum agente faz commit direto GitNanu unico writer
+  - Doctor gate obrigatorio antes de merge
+  - Evidence hash em todo output de time
+invariante: Triple-Zero zero buracos zero bugs zero alucinacoes

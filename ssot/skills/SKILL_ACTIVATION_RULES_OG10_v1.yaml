@@ -1,0 +1,8 @@
+skill_id: SKILL_ACTIVATION_RULES
+version: v1
+regra_max: 1 addon primario + 2 auxiliares + 2 pains criticos por execucao
+ativacao_l0: skills U0 U1 U2 sempre ativas shadow 0pct
+ativacao_l1: por gatilho de intencao ou risco
+ativacao_l2: por falha no l1 ou pedido explicito
+ativacao_l3: council thinking phdmat autocura apenas CRITICAL ou DEEP
+invariante: Skill nunca enxerga catalogo inteiro so o ativado

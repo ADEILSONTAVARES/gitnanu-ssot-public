@@ -1,0 +1,6 @@
+adapter_id: COWORK_ADAPTER
+version: v1
+tipo: executor_local_desktop
+melhor_para: [documentos, planilhas, organizacao_pastas, skill_packs_diarios, drafts]
+nunca: [write_ssot_canonico, memoria_soberana, cerebro, merge_sem_gate]
+invariante: Cowork e executor nunca cerebro

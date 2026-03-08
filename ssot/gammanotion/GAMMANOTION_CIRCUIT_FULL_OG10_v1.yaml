@@ -1,0 +1,6 @@
+circuit_id: GAMMANOTION_CIRCUIT
+version: v1
+componentes: [GammaNotion, Mouse, PrM, GNDrive, GitNanu]
+fluxo: GammaNotion -> Mouse -> PrM -> GNDrive -> GitNanu
+invariante: GitNanu unico writer canonico
+coca_cola: vault secrets evidence raw nunca no repo publico

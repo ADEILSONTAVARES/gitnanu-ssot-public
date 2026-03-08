@@ -1,0 +1,9 @@
+protocol_id: SUBAGENT_60_5_30
+version: v1
+descricao: Protocolo de decomposicao para jobs multi-step no NANUCAI OG10
+regra_60: 60pct execucao principal foco no objetivo
+regra_5: 5pct checkpoints de evidencia entre passos
+regra_30: 30pct validacao QA e fechamento
+ativacao: jobs com 3+ passos OR latencia_max_ms maior 5000
+max_subagentes: 5 em paralelo quando sem dependencia de ordem
+invariante: Raw never in chat Evidence obrigatoria em cada checkpoint

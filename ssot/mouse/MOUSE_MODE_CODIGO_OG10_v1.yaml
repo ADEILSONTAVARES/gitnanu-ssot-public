@@ -1,0 +1,8 @@
+mode_id: MOUSE_MODE_CODIGO
+version: v1
+studio: S02_ide
+engine_padrao: claude_code
+preview_obrigatorio: false
+undo_token: true
+addons_ativos: []
+shadow_band: 0.6-1.2pct

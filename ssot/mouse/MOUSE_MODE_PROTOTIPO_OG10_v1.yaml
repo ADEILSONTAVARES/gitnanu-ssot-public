@@ -1,0 +1,8 @@
+mode_id: MOUSE_MODE_PROTOTIPO
+version: v1
+studio: S29_ux
+engine_padrao: figma
+preview_obrigatorio: true
+undo_token: true
+addons_ativos: [A39]
+shadow_band: 0pct
