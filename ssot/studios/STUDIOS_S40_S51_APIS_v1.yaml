@@ -1,39 +1,52 @@
 group: S40-S51
-version: v1
+version: v2
+generated_from: filesystem
 studios:
-  S40_ai_hub:
-    nome: AI Hub e Model Router
-    apis: [openai, anthropic, google, minimax]
-  S41_conn:
-    nome: Connectors Registry
-    apis: [agno, n8n, mcp_factory]
-  S42_action:
-    nome: Action Registry
-    apis: [agno, prm, og10]
-  S43_holes:
-    nome: No Holes Check
-    apis: [doctor1, doctor2, gate_pass_strict]
-  S44_mcp:
-    nome: MCP Factory
-    apis: [mcp_protocol, agno, prm]
-  S45_router:
-    nome: Router Policy Engine
-    apis: [og10, prm, agno]
-  S46_doctor:
-    nome: Doctor 1 + Doctor 2
-    apis: [og10, evidence, gate]
-  S47_bench:
-    nome: Benchmark Lab
-    apis: [benchpack90, subagent, council]
-  S48_hist:
-    nome: API History DB + Replay
-    apis: [supabase, redis, cloudflare]
-  S49_evid:
-    nome: Evidence Ledger + GNDrive Publisher
-    apis: [gndrive, gitnanu, supabase]
-  S50_cache:
-    nome: Cache QUANTUM + Redis Safety Pack
-    apis: [redis, cloudflare, supabase]
-  S51_rag:
-    nome: RAG QUANTUM + LTA + Crew Overlay
-    apis: [supabase_vector, redis, cloudflare]
+  S40:
+    nome: Print on Demand
+    total_apis: 16
+    apis: [cgtrader_connector,cults_connector,gelato_print,gooten,inkthreadable,licensing_checker,payout_rules,printdeal,printful_api,printify,prodigi,publishing_packager,redbubble_api,sketchfab_connector,turbosquid_connector,watermark_provenance]
+  S41:
+    nome: Conectores MCP Health
+    total_apis: 16
+    apis: [api_contract_test,auth_schema,capabilities_schema,connector_deprecator,connector_health,connector_naming,connector_versioning,cost_field,mcp_benchmark,mcp_lint,mcp_versioning,quota_field,reserved_handling,schema_drift_detector,tool_registry_sync,warm_band]
+  S42:
+    nome: Actions Engine
+    total_apis: 16
+    apis: [action_audit_trail,action_canary,action_cost_estimator,action_deduplicator,action_dependency_graph,action_naming,action_rollback_engine,action_simulator,action_validator,evidence_rules,idempotency_rules,job_request,job_result,retry_rules,risk_classification,rollback_hooks]
+  S43:
+    nome: Coverage e Gaps
+    total_apis: 16
+    apis: [build_fail_policy,coverage_dashboard,coverage_enforcer,coverage_reporter,gap_detector,hole_alert,hole_scanner,mouse_coverage,palette_coverage,regression_runner,sidebar_coverage,slash_coverage,smoke_orchestrator,studio_visibility,tombstone_policy,voice_coverage]
+  S44:
+    nome: MCP Registry
+    total_apis: 16
+    apis: [auth_adapter,connector_mcp_map,cost_metering,mcp_canary_deploy,mcp_cost_tracker,mcp_firewall,mcp_health_monitor,mcp_rate_limiter,mcp_registry_sync,mcp_template,n8n_tool_wrapper,observability_hooks,retry_backoff_templates,schema_scaffolding,tool_deprecation_manager,tool_schema_validator]
+  S45:
+    nome: Performance e SLA
+    total_apis: 16
+    apis: [budget_guard,cache_coalescing,circuit_breaker,cost_optimizer,failover_policy,hedge_trigger,latency_monitor,model_fallback_engine,p95_routing,quota_rebalancer,shadow_band_enforcer,shadow_routing,sla_enforcer,solo_locked,throughput_guard,top_selection]
+  S46:
+    nome: Deploy e Governanca
+    total_apis: 16
+    apis: [audit_gate_runner,billing_guard,blast_radius_calculator,change_approval_flow,delete_guard,deploy_guard,deploy_rollback_engine,human_approval,policy_dsl,policy_enforcer,postflight_checks,postflight_verifier,preflight_checks,preflight_validator,secrets_guard,secrets_rotation]
+  S47:
+    nome: Benchmarks e Council
+    total_apis: 16
+    apis: [bench150_domainA,bench150_domainB,bench60_global,bench_report_publisher,bench_runner,benchmark_comparator,council_scorer,council_triggers,domain_sampler,flaky_budget,flaky_test_manager,mcp_coverage,regression_detector,report_pack,score_aggregator,tool_success]
+  S48:
+    nome: Observabilidade
+    total_apis: 16
+    apis: [alert_router,anomaly_detector,cost_capture,error_capture,idempotency_tracking,incident_manager,latency_capture,log_aggregator,metric_dashboard,observability_exporter,payload_hash,rate_limit_tracking,replay_runner,run_id_index,slo_tracker,trace_collector]
+  S49:
+    nome: Evidencias
+    total_apis: 16
+    apis: [artifact_retention,bundle_export,evidence_archiver,evidence_bundle,evidence_diff,evidence_hasher,evidence_item,evidence_publisher,evidence_retriever,evidence_timeline,evidence_verifier,hash_tree,manifest_generator,pr_linkage,timeline_publish,undo_token]
+  S50:
+    nome: Cache e Memoria
+    total_apis: 16
+    apis: [anti_stampede,cache_audit,cache_budget_guard,cache_invalidator,cache_learn,cache_monitor,cache_partitioner,cache_replicator,cache_ttl_optimizer,cache_warmer,hot_cache,key_versioning,lock_lease,macro_micro_compat,poison_guard,ttl_classes]
+  S51:
+    nome: RAG e LTA
+    total_apis: 16
+    apis: [context_compressor,crew_coordinator,crew_overlay,evidence_retrieval,lta_archiver,lta_policies,lta_promoter,memory_pack,rag3_trim_twin,rag_evaluator,rag_familia7,rag_indexer,rag_reranker,rag_retriever,recipe_reuse,retrieval_gates]

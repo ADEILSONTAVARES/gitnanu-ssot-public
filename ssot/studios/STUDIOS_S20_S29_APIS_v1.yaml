@@ -1,33 +1,44 @@
 group: S20-S29
-version: v1
+version: v2
+generated_from: filesystem
 studios:
-  S20_priv:
-    nome: Conta e Privacidade
-    apis: [supabase_auth, clerk, okta]
-  S21_msg:
-    nome: Mensageria 7x
-    apis: [whatsapp, telegram, slack, discord]
-  S22_lead:
-    nome: Lead Capture e Qualificacao
-    apis: [typeform, hubspot, n8n]
-  S23_kb:
-    nome: Knowledge Base e Wiki
-    apis: [notion, confluence, gitbook]
-  S24_ai_train:
-    nome: AI Training e Fine-tuning
-    apis: [openai_ft, anthropic_ft, hugging_face]
-  S25_analytics:
-    nome: Analytics e Produto
-    apis: [mixpanel, posthog, amplitude]
-  S26_crm:
-    nome: CRM e Vendas Conversacionais
-    apis: [hubspot, pipedrive, salesforce]
-  S27_infra:
-    nome: Dominios DNS Deploy Proxy
-    apis: [cloudflare, vercel, railway]
-  S28_3d:
-    nome: 3D AR e Metaverso
-    apis: [trellis, unity, blender]
-  S29_ux:
-    nome: UX Research e Heatmaps
-    apis: [hotjar, maze, figma]
+  S20:
+    nome: Seguranca e Compliance
+    total_apis: 16
+    apis: [access_logs,anomaly_detector_sec,audit_export,breach_notifier,compliance_reporter,consent_manager,device_attestation,expiring_otp,export_packager,ip_reputation,key_rotation,rate_limit_enforcer,secure_link_vault,session_guard,threat_scanner,zero_trust_engine]
+  S21:
+    nome: Comunicacao e Notificacoes
+    total_apis: 18
+    apis: [ab_test_comms,bounce_manager,campaign_scheduler,delivery_tracker,discord,engagement_scorer,firebase_fcm,mailchimp,novu,pushover,resend,sendgrid,slack,telegram_bot,template_builder,twilio,unsubscribe_handler,whatsapp_business]
+  S22:
+    nome: Redes Sociais
+    total_apis: 17
+    apis: [comment_moderator,content_calendar,cross_post_engine,follower_analytics,geelark,hashtag_engine,instagram_graph,make,meta_graph,n8n,post_scheduler,tiktok_publish,utm_shortlink,viral_score,x_api,youtube_data,zapier]
+  S23:
+    nome: Anuncios e Trafego Pago
+    total_apis: 16
+    apis: [audience_builder,bid_manager,budget_optimizer,conversion_tracker,creative_tester,ga4_data,geelark,google_ads,linkedin_marketing,meta_capi,meta_marketing,remarketing_engine,report_exporter,search_console,tiktok_ads,utm_shortlink]
+  S24:
+    nome: Analytics e Insights
+    total_apis: 17
+    apis: [ab_test_analytics,cohort_builder,funnel_analyzer,ga4_data,gpt_image_1_5,heatmap_engine,instagram_insights,kling_variations,nanobanana,retention_dashboard,revenue_attribution,runway_variations,session_recorder,stt_retention,tiktok_insights,youtube_analytics,youtube_data]
+  S25:
+    nome: CRM e Leads
+    total_apis: 18
+    apis: [crm_sync,deal_closer,email_cadences,follow_up_engine,geelark,google_lead_forms,highlevel,lead_scorer,linkedin_lead_gen,meeting_scheduler,meta_lead_ads,phantombuster,pipeline_manager,proposal_generator,salesmartly,tiktok_instant_forms,whatsapp_cloud,wisemind]
+  S26:
+    nome: Vendas e Closers
+    total_apis: 16
+    apis: [call_logger,close_engine,dealism,demo_scheduler,email_cadences,highlevel,inbox_router,king_sender_pro,n8n_pipeline,objection_handler,reply_tracker,salesmartly,sequence_builder,stripe_webhooks,whatsapp_followup,wisemind]
+  S27:
+    nome: Infraestrutura Cloud e DNS
+    total_apis: 16
+    apis: [backup_scheduler,cdn_rules,cloudflare_dns,cloudflare_pages,cloudflare_workers,contabo_vps,ddos_guard,firewall_rules,hetzner_vps,incident_responder,load_balancer,namecheap,netlify,ssl_certbot,uptime_monitor,vercel]
+  S28:
+    nome: Igreja e Comunidade
+    total_apis: 16
+    apis: [app_shell_whitelabel,attendance_tracker,calendar_api,checkin_wifi,donation_tracker,donations_checkout,event_registration,gndrive_media,prayer_request,presence_consolidation,presence_qr,rbac_abac,sermon_archive,small_group_manager,volunteer_manager,whatsapp_cloud]
+  S29:
+    nome: Eventos ao Vivo e Media
+    total_apis: 16
+    apis: [audio_mixer_ctrl,countdown_timer,easyworship,holyrics,lighting_dmx,madmapper,mediashout,obs_websocket,openLP,propresenter,resolume_arena,slide_deck_sync,song_display,stream_switcher,video_player_ctrl,vmix_api]

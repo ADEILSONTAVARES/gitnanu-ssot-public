@@ -1,4 +1,61 @@
 registry_id: STUDIOS_52_MASTER
-version: v1
+version: v2
+generated_from: filesystem
 total_studios: 52
-nota_minima: 10.0
+total_apis: 878
+total_actions: 35120
+nota_minima: 9.6
+gate: PASS_STRICT
+studios_summary:
+  S00: {nome: Core PrM Infraestrutura, total_apis: 17, total_actions: 680}
+  S01: {nome: Documentos e Conteudo, total_apis: 16, total_actions: 640}
+  S02: {nome: IDE 2x1 Builder, total_apis: 41, total_actions: 1640}
+  S03: {nome: Video e Cinema, total_apis: 20, total_actions: 800}
+  S04: {nome: Imagem Design e Logo, total_apis: 16, total_actions: 640}
+  S05: {nome: Voz TTS STT Dublagem, total_apis: 16, total_actions: 640}
+  S06: {nome: Musica Audio e Imagem, total_apis: 16, total_actions: 640}
+  S07: {nome: Avatar e Apresentador Digital, total_apis: 16, total_actions: 640}
+  S08: {nome: Acessibilidade, total_apis: 21, total_actions: 840}
+  S09: {nome: Conectores e APIs, total_apis: 17, total_actions: 680}
+  S10: {nome: Automacao e Orquestracao, total_apis: 18, total_actions: 720}
+  S11: {nome: IA Generativa LLM, total_apis: 16, total_actions: 640}
+  S12: {nome: Storage e Assets, total_apis: 16, total_actions: 640}
+  S13: {nome: Traducao e Localizacao, total_apis: 16, total_actions: 640}
+  S14: {nome: LMS e Educacao, total_apis: 16, total_actions: 640}
+  S15: {nome: Ecommerce e Marketplace, total_apis: 16, total_actions: 640}
+  S16: {nome: Viagens e Turismo, total_apis: 16, total_actions: 640}
+  S17: {nome: Documentos Juridicos e OCR, total_apis: 16, total_actions: 640}
+  S18: {nome: Plataforma e Comunidade, total_apis: 16, total_actions: 640}
+  S19: {nome: Mapas e Geolocalizacao, total_apis: 18, total_actions: 720}
+  S20: {nome: Seguranca e Compliance, total_apis: 16, total_actions: 640}
+  S21: {nome: Comunicacao e Notificacoes, total_apis: 18, total_actions: 720}
+  S22: {nome: Redes Sociais, total_apis: 17, total_actions: 680}
+  S23: {nome: Anuncios e Trafego Pago, total_apis: 16, total_actions: 640}
+  S24: {nome: Analytics e Insights, total_apis: 17, total_actions: 680}
+  S25: {nome: CRM e Leads, total_apis: 18, total_actions: 720}
+  S26: {nome: Vendas e Closers, total_apis: 16, total_actions: 640}
+  S27: {nome: Infraestrutura Cloud e DNS, total_apis: 16, total_actions: 640}
+  S28: {nome: Igreja e Comunidade, total_apis: 16, total_actions: 640}
+  S29: {nome: Eventos ao Vivo e Media, total_apis: 16, total_actions: 640}
+  S30: {nome: Live Streaming, total_apis: 16, total_actions: 640}
+  S31: {nome: Receita e Afiliados, total_apis: 16, total_actions: 640}
+  S32: {nome: Publicacao de Livros, total_apis: 16, total_actions: 640}
+  S33: {nome: SEO e Pesquisa, total_apis: 16, total_actions: 640}
+  S34: {nome: Billing e Metricas, total_apis: 16, total_actions: 640}
+  S35: {nome: Pagamentos Globais, total_apis: 16, total_actions: 640}
+  S36: {nome: Auth e Permissoes, total_apis: 16, total_actions: 640}
+  S37: {nome: Suporte e Tickets, total_apis: 16, total_actions: 640}
+  S38: {nome: Acessibilidade Avancada, total_apis: 16, total_actions: 640}
+  S39: {nome: 3D e Rendering, total_apis: 16, total_actions: 640}
+  S40: {nome: Print on Demand, total_apis: 16, total_actions: 640}
+  S41: {nome: Conectores MCP Health, total_apis: 16, total_actions: 640}
+  S42: {nome: Actions Engine, total_apis: 16, total_actions: 640}
+  S43: {nome: Coverage e Gaps, total_apis: 16, total_actions: 640}
+  S44: {nome: MCP Registry, total_apis: 16, total_actions: 640}
+  S45: {nome: Performance e SLA, total_apis: 16, total_actions: 640}
+  S46: {nome: Deploy e Governanca, total_apis: 16, total_actions: 640}
+  S47: {nome: Benchmarks e Council, total_apis: 16, total_actions: 640}
+  S48: {nome: Observabilidade, total_apis: 16, total_actions: 640}
+  S49: {nome: Evidencias, total_apis: 16, total_actions: 640}
+  S50: {nome: Cache e Memoria, total_apis: 16, total_actions: 640}
+  S51: {nome: RAG e LTA, total_apis: 16, total_actions: 640}

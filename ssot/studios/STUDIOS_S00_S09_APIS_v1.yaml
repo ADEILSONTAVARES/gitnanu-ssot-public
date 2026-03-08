@@ -1,33 +1,44 @@
 group: S00-S09
-version: v1
+version: v2
+generated_from: filesystem
 studios:
-  S00_base:
-    nome: Core
-    apis: [agno, context7, firecrawl, playwright, sentry, serp]
-  S01_docs:
-    nome: WorGamma
-    apis: [google_docs, notion, pdf, slides]
-  S02_ide:
+  S00:
+    nome: Core PrM Infraestrutura
+    total_apis: 17
+    apis: [agno,context7,cowork10x,evidence_ledger,firecrawl,gammanote,gammanotion,gitnanu,gndrive,mouse_inteligente,ocr_engine,pdf_engine,playwright,prm,sentry,serp_websearch,teamswork10x]
+  S01:
+    nome: Documentos e Conteudo
+    total_apis: 16
+    apis: [beautiful_ai,brand_kit,canva,content_calendar,doc_assistant,docx_engine,gamma,google_slides,markdown_engine,notion,pitch,plagiarism_check,presentation_ai,seo_optimizer,tome,xlsx_engine]
+  S02:
     nome: IDE 2x1 Builder
-    apis: [codex, claude_code, github, playwright]
-  S03_video:
+    total_apis: 41
+    apis: [abacus,antigravity,base44,bolt,bun,changelog_generator,claudecode,codeium,codex,context7,coverage_reporter,cursor_ide,cursor,dependabot,docker_build,docker_registry,docker,github_actions,github_copilot,github_repos,ide_2x1,jest_runner,kernprof,kilo,legacy,line_profiler,lovable,manus,npm_registry,playwright_test,playwright,pypi_registry,release_drafter,replit,semgrep,sentry,snyk,sonarqube,tabnine,tile_dev,trae_solo]
+  S03:
     nome: Video e Cinema
-    apis: [runway, kling, sora, heygen]
-  S04_imagem:
+    total_apis: 20
+    apis: [capcut,d_id,ffmpeg,heygen,kling_3,kling_o1,kling,legacy,ltx_studio,luma,manus_meta_ads,pika,runway,seedance,sora2,sora,synthesia,veo3,video_caption,video_thumbnail]
+  S04:
     nome: Imagem Design e Logo
-    apis: [krea, qwen_image, trellis, bloom_ai]
-  S05_voice:
+    total_apis: 16
+    apis: [adobe_firefly,betterpic,bloom_ai,cloudinary_storage,flux_2_pro,gpt_image_1_5,ideogram_ai,legacy,leonardo_ai,lovart_design,manus_design_view,nanobanana_pro,qwen_image_layered,recraft_v3,synthid_provenance,z_image]
+  S05:
     nome: Voz TTS STT Dublagem
-    apis: [elevenlabs, openai_tts, whisper, arcads]
-  S06_audio:
-    nome: Musica e Audio
-    apis: [suno, udio, musicgen]
-  S07_avatar:
+    total_apis: 16
+    apis: [amazon_polly,audio_watermark,azure_tts,bark_tts,cartesia_ai,elevenlabs,google_tts,murf,openai_tts,playht,resemble_ai,speechify,suno,tortoise_tts,udio,whisper]
+  S06:
+    nome: Musica Audio e Imagem
+    total_apis: 16
+    apis: [adobe_firefly_img,clarity_upscaler,dalle,flux,grok_imagine,ideogram_api,krea,lovart,magnific_upscaler,midjourney,nano_banana,qwen_image,recraft_api,seedream,stable_diffusion,z_image]
+  S07:
     nome: Avatar e Apresentador Digital
-    apis: [arcads, heygen, d_id]
-  S08_acess:
+    total_apis: 16
+    apis: [avatar_composer,caption_pipeline,creatify,digital_human_api,face_swap_api,ffmpeg_pipeline,instagram_graph,kling_variations,lip_sync_engine,makereels,motion_capture_api,presenter_engine,runway_edit,tiktok_insights,voice_cloner,youtube_data]
+  S08:
     nome: Acessibilidade
-    apis: [whisper, elevenlabs, playwright]
-  S09_email:
-    nome: Email e Comunicacao
-    apis: [gmail, resend, sendgrid]
+    total_apis: 21
+    apis: [avatar_sinais,axe_core_wcag,braille_converter,caption_pipeline_a11y,cognitive_assist,deepl,elevenlabs_tts,google_stt,google_tts,haptic_feedback,kokoro_tts,locale_pack,openai_stt,openai_tts,panini_translate,playwright_a11y,reading_guide_api,screen_magnifier,sign_language_api,subtitle_aligner,voice_nav_engine]
+  S09:
+    nome: Conectores e APIs
+    total_apis: 17
+    apis: [api_analytics,api_docs_gen,api_gateway,api_key_vault,api_mock_server,api_versioning,connector_directory,consent_permissions,legacy,mcp_discovery,n8n_bridge,oauth_google,oauth_meta,oauth_microsoft,rate_limiter_engine,token_refresh,webhooks_generic]

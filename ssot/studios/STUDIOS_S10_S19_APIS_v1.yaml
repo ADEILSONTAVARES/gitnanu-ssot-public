@@ -1,33 +1,44 @@
 group: S10-S19
-version: v1
+version: v2
+generated_from: filesystem
 studios:
-  S10_auto:
-    nome: Automacoes
-    apis: [n8n, make, zapier]
-  S11_dash:
-    nome: Dashboards e Relatorios
-    apis: [metabase, looker, supabase]
-  S12_ecomm:
-    nome: E-commerce e Catalogo
-    apis: [shopify, stripe, trellis]
-  S13_local:
-    nome: Localizacao e Multilingue
-    apis: [deepl, google_translate, tydi]
-  S14_sched:
-    nome: Agendamento e Calendario
-    apis: [google_calendar, cal_com]
-  S15_bridge:
-    nome: Bridge e Integracao Cross-Studio
-    apis: [n8n, agno, webhooks]
-  S16_media:
-    nome: Midia Social e Publicacao
-    apis: [instagram, youtube, tiktok]
-  S17_docp:
-    nome: Documentos Pro
-    apis: [google_docs, notion, pdf_element]
-  S18_search:
-    nome: Search e Web Intelligence
-    apis: [serp, firecrawl, context7]
-  S19_ncai:
-    nome: NcAI G10x
-    apis: [google_maps, mapbox, geoapify]
+  S10:
+    nome: Automacao e Orquestracao
+    total_apis: 18
+    apis: [bun_runtime,cron_manager,dead_letter_handler,dlq_replay,event_bus,job_scheduler,legacy,make,n8n,pica_os,queues_jobs,redis_cache,retry_manager,scheduler_cron,task_queue,webhooks,workflow_engine,zapier]
+  S11:
+    nome: IA Generativa LLM
+    total_apis: 16
+    apis: [airtable,amplitude,appsmith,bigquery_view,cost_latency_report,ga4_data,google_sheets,grafana,looker_studio,metabase,mixpanel,notion_db,posthog,retool,sentry_metrics,youtube_analytics]
+  S12:
+    nome: Storage e Assets
+    total_apis: 16
+    apis: [asset_optimizer,asset_storage_r2,backup_engine,brandkit_store,cdn_manager,file_compressor,gndrive_packs,image_transformer,licensing_checker,mockup_export,r2_cloudflare,s3_aws,storage_analytics,template_marketplace,video_transcoder,watermark_synthid]
+  S13:
+    nome: Traducao e Localizacao
+    total_apis: 16
+    apis: [auto_subtitle_gen,caption_pipeline,deepl,glossary_sync,google_translate,language_detector,language_validator,locale_pack_manager,multilocale_builder,panini_translate,stt_multi,subtitle_aligner,terminology_glossary,translation_memory,tts_multi,voice_translator]
+  S14:
+    nome: LMS e Educacao
+    total_apis: 16
+    apis: [adaptive_quiz,assessment_builder,badge_certification,certificate_issuer,cohort_manager,content_versioning,coursebox,export_packager,gndrive_delivery,learning_path_engine,lms_connectors,pdf_engine,progress_tracker,quiz_engine,tts_engine,video_hosting]
+  S15:
+    nome: Ecommerce e Marketplace
+    total_apis: 16
+    apis: [affiliate_link,amazon_catalog,cart_engine,checkout_optimizer,compare_engine,coupon_engine,deal_finder,inventory_sync,mercadolivre_catalog,offer_builder,price_tracker,product_recommender,return_manager,reviews_fetch,saasworthy,wishlist_manager]
+  S16:
+    nome: Viagens e Turismo
+    total_apis: 16
+    apis: [amadeus,baggage_rules,booking_hotels,duffel,fare_cache,firecrawl,hotel_rater,itinerary_builder,kiwi_tequila,loyalty_points,playwright,sabre,seat_selector,skyscanner,travel_alert,travelport]
+  S17:
+    nome: Documentos Juridicos e OCR
+    total_apis: 16
+    apis: [deepl,doc_classifier,doc_search,doc_versioning,docx_engine,e_sign,export_packager,form_extractor,merge_engine,ocr_engine,panini_translate,pdf_engine,pdfelement,redaction_engine,signature_validator,template_engine]
+  S18:
+    nome: Plataforma e Comunidade
+    total_apis: 16
+    apis: [analytics_ga4,churn_predictor,community_connector,content_delivery,engagement_wall,invoice_generator,membership_gating,notifications,payments_checkout,plan_migrator,refund_handler,stripe_billing,subscription_engine,support_hooks,trial_manager,upsell_engine]
+  S19:
+    nome: Mapas e Geolocalizacao
+    total_apis: 18
+    apis: [address_validator,distance_calculator,geofence_engine,google_distance_matrix,google_geocoding,google_maps_directions,google_places,here_tomtom,map_exporter,mapbox,openrouteservice,poi_finder,reverse_geocoder,route_optimizer,serp_web_search,trends_pipeline,workspace_atlas,youtube_data]

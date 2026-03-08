@@ -1,33 +1,44 @@
 group: S30-S39
-version: v1
+version: v2
+generated_from: filesystem
 studios:
-  S30_calls:
-    nome: Calls 7x
-    apis: [twilio, zoom, meet, vapi]
-  S31_print:
-    nome: Print e Editorial
-    apis: [canva, affinity, pdf_element]
-  S32_legal:
-    nome: Legal e Compliance
-    apis: [docusign, legal_ai, contract_ai]
-  S33_pesq:
-    nome: Pesquisa Radar Resumos
-    apis: [perplexity, serp, firecrawl]
-  S34_bill:
-    nome: Billing e Creditos
-    apis: [stripe, hotmart, revenuecat]
-  S35_pay:
-    nome: Pagamentos e Checkout
-    apis: [stripe, paypal, mercado_pago]
-  S36_times:
-    nome: Times e Permissoes
-    apis: [supabase_rls, clerk, okta]
-  S37_test:
-    nome: Testes e QA Automatizado
-    apis: [playwright, jest, vitest]
-  S38_obs:
-    nome: Observabilidade e Alertas
-    apis: [sentry, datadog, grafana]
-  S39_ci:
-    nome: CI/CD e DevOps
-    apis: [github_actions, railway, cloudflare]
+  S30:
+    nome: Live Streaming
+    total_apis: 16
+    apis: [avatar_engine,cdn_delivery,chat_moderation,clip_extractor,highlight_reel,latent_sync,live_caption,replay_packager,stream_recorder,stream_scheduler,stt_realtime,translate_realtime,tts_realtime,viewer_analytics,webrtc,zoom_api]
+  S31:
+    nome: Receita e Afiliados
+    total_apis: 16
+    apis: [affiliate_tracker,amazon_associates,commission_calculator,eduzz,fraud_detector_rev,fraud_guard,hotmart_affiliates,kiwify,payout_engine,payout_scheduler,reconciliation_engine,revenue_dashboard,royalties_ledger,split_rules,tax_reporter,utm_shortlink]
+  S32:
+    nome: Publicacao de Livros
+    total_apis: 16
+    apis: [acx_findaway,amazon_kdp,apple_books,cover_designer,distribution_sync,draft2digital,epubcheck,google_play_books,ingramspark,isbn_registrar,kobo,manuscript_formatter,metadata_optimizer,onix_engine,review_aggregator,royalty_calculator]
+  S33:
+    nome: SEO e Pesquisa
+    total_apis: 16
+    apis: [citation_builder,competitor_gap,content_brief,content_freshness,firecrawl,gemini_flash,gndrive_publish,keyword_ranker,notebooklm,playwright,serp_monitor,serp_search,topic_cluster,trend_radar,youtube_analytics,youtube_data]
+  S34:
+    nome: Billing e Metricas
+    total_apis: 16
+    apis: [chargebee,churn_cohort,dunning_engine,evidence_ledger,ltv_calculator,mrr_dashboard,openmetr_metronome,paddle,payment_recovery,receipts_invoices,recurly,revenue_recognizer,stripe_billing,stripe_tax,subscription_analytics,tax_compliance]
+  S35:
+    nome: Pagamentos Globais
+    total_apis: 16
+    apis: [adyen,apple_pay,boleto_engine,braintree_paypal,card_brands,checkout_com,dlocal,fraud_rules,google_pay,installment_engine,mercadopago,pagseguro,payment_link,pix_integration,split_payment,stripe_payments]
+  S36:
+    nome: Auth e Permissoes
+    total_apis: 16
+    apis: [audit_log_trail,clerk,cross_platform_sync,github_teams,google_workspace_admin,highlevel_teams,microsoft_365_admin,notion_members,okta,org_hierarchy,permission_audit,rbac_engine,role_permission_matrix,slack_admin,sso_provider,supabase_rls]
+  S37:
+    nome: Suporte e Tickets
+    total_apis: 16
+    apis: [crisp_chat,crm_sync,email_intake,freshdesk,helpscout,hubspot_tickets,intercom,jira_service,knowledge_base,linear_issues,opsgenie,pagerduty,sentry_alerts,statuspage,survey_monkey,zendesk]
+  S38:
+    nome: Acessibilidade Avancada
+    total_apis: 16
+    apis: [avatar_sinais,axe_core_wcag,caption_pipeline,cognitive_load_api,color_contrast_api,dyslexia_font,focus_trap_lib,i18n_a11y,motion_reducer,playwright_a11y,readability_engine,screen_reader_sim,stt_google,traducao_deepl,tts_elevenlabs,voice_control]
+  S39:
+    nome: 3D e Rendering
+    total_apis: 16
+    apis: [asset_metadata,blender_api,cesium_3d,export_glb,gaussian_splatting,hunyuan_scene3d,hunyuan_worldplay,lidar_processor,mesh_qa,nerf_studio,pbr_texture,point_cloud_api,trellis2,unity_build,unreal_api,viewer3d_web]
