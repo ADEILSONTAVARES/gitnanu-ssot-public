@@ -1,0 +1,91 @@
+spec_id: SKILL_EXECUTION_FLOW_OG10_v1
+version: 1.0
+purpose: Fluxo canonico de execucao anti-alucinacao — 5 passos obrigatorios
+principle: Nenhuma Skill executa sem declarar plano — nenhuma sai sem recibo
+source: veredito estrategico NANUCAI + ANTI_HALLUCINATION_ADDON_POLICY_OG10_v1
+
+formula_de_composicao: U3 + A1 + A2_opcional + P1_P2_critica
+
+passo_1_router:
+  nome: Classificar antes de executar
+  objetivo: entender objetivo dominio familia addon e dores — nao executar ainda
+  inputs_obrigatorios:
+    - objetivo
+    - tipo_tarefa
+    - dominio
+    - arquivos_disponiveis
+    - conectores_disponiveis
+    - formato_saida_esperado
+  outputs:
+    - familia_skill: BUILD|DESIGN|OPS|KNOWLEDGE
+    - studio_id: S00-S51
+    - addon_principal: id do addon ativado
+    - addons_auxiliares: lista de ate 2
+    - dores_relevantes: lista de ate 2
+    - budget_lane: L0|L1|L2|L3
+  tamanho: CURTO — nao e para executar ainda
+  referencia: ADDONS_40_15_3_CANON.yaml triggers
+  se_input_insuficiente: declarar entrada_insuficiente — nunca improvisar
+
+passo_2_plano:
+  nome: Declarar antes de executar
+  objetivo: plano minimo de 3 a 7 passos
+  deve_declarar:
+    - o_que_vai_usar: addons ativos ferramentas permitidas
+    - o_que_precisa: inputs necessarios conectores arquivos
+    - o_que_vai_produzir: formato de saida esperado
+  max_passos: 7
+  proibido: executar sem declarar plano minimo
+  anti_pattern: sair executando sem explicitar o plano
+
+passo_3_execucao:
+  nome: Execucao atomica
+  objetivo: acoes pequenas e observaveis — nao saltos gigantes
+  principio: ActionPack atomico + Addon escolhe familia + Universal governa + Pain revisa
+  referencia: ssot/addons/MICRO_SKILLS_60_REGISTRY.yaml
+  proibido: pesquisar+resumir+decidir+escrever+integrar+publicar+validar num salto so
+  binding: cada acao deve ter evidencia de execucao real
+  lanes_disponiveis: [intake, execute, memory, quality, output]
+
+passo_4_critica:
+  nome: Critica curta pos-geracao
+  objetivo: revisao antes da saida final
+  executor: Pain Validators P1/P2 ativados no passo_1
+  checklist:
+    - faltou_evidencia: sim/nao
+    - usou_addon_errado: sim/nao
+    - inferiu_demais: sim/nao
+    - prometeu_acao_nao_executada: sim/nao
+    - pulou_input_obrigatorio: sim/nao
+    - confundiu_template_com_dado_real: sim/nao
+  tamanho: CURTO — nao e conselho gigante
+  acao_se_falha_critica:
+    CRITICAL: ABORT + escalate_doctor2
+    HIGH: WARN + declarar_hipotese + continuar
+    MEDIUM: nota_no_recibo + continuar
+
+passo_5_recibo:
+  nome: Recibo de rastreabilidade
+  objetivo: cortar alucinacao silenciosa — declarar o que realmente aconteceu
+  deve_declarar:
+    - o_que_foi_usado: addons ferramentas conectores arquivos realmente acessados
+    - o_que_nao_foi_usado: o que estava disponivel mas nao foi acionado
+    - o_que_foi_assumido: hipoteses feitas sem evidencia direta
+    - o_que_falta_validar: pendencias para proxima execucao
+  referencia: ssot/contracts/OG10_ENVELOPE_v1.schema.json
+  obrigatorio: true — nenhuma skill fecha sem recibo
+
+regras_canonicas_og10:
+  RC01: nenhuma Skill carrega mais de 1 addon primario + 2 auxiliares + 2 dores por execucao salvo modo auditoria
+  RC02: PainPack nao participa da geracao base — apenas critica e validacao
+  RC03: toda Skill declara evidencia_usada + hipotese_assumida + ferramenta_realmente_acionada
+  RC04: input insuficiente = declarar lacuna — nunca improvisar
+  RC05: saida fechada por contrato — nunca livre demais
+
+anti_patterns_proibidos:
+  - Skill monolitica com U3 + 40 addons + 15 dores embutidos ao mesmo tempo
+  - Executar sem declarar plano
+  - Sair sem recibo
+  - Assumir acesso a ferramenta sem allowlist declarada
+  - Completar lacuna de input com invencao
+  - Afirmar resultado de teste sem execucao real

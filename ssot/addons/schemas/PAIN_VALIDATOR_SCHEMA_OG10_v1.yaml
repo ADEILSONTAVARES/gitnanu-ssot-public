@@ -1,0 +1,53 @@
+spec_id: PAIN_VALIDATOR_SCHEMA_OG10_v1
+version: 1.0
+purpose: Schema de Pain Validator — dores como camada critica nao de geracao
+principle: PainPack nao participa da geracao base — participa da critica e validacao
+source: DORES_15_REGISTRY_v1.yaml + veredito estrategico NANUCAI
+
+posicao_na_arquitetura:
+  sequencia_correta:
+    1_addon_gera: addon executa a tarefa com inputs declarados
+    2_pain_valida: dores revisam risco incoerencia excesso de inferencia
+    3_universal_governa: U3 garante postura e separacao epistemica
+  proibido: misturar dores na geracao base — polui producao com medo ruido contradicao
+
+schema_por_pain:
+  pain_id: string — ex P01_Evidencia_Ausente
+  categoria: evidencia|inferencia|ferramenta|formato|contrato|seguranca|custo
+  descricao: string — o que esta dor detecta
+  sintoma_tipico: string — como aparece na saida
+  gatilho_de_ativacao:
+    quando: string
+    exemplos:
+      - output contem afirmacao sem fonte declarada
+      - addon prometeu acao que nao executou
+      - saida livre quando contrato exige estruturada
+  checklist_de_validacao:
+    - faltou evidencia?
+    - usou addon errado?
+    - inferiu demais?
+    - prometeu acao que nao executou?
+    - pulou input obrigatorio?
+    - confundiu template com dado real?
+    - misturou fato inferencia proposta?
+  acao_ao_detectar:
+    severo: ABORT + evidence_flag + escalate_doctor2
+    moderado: WARN + declarar_hipotese_assumida + continuar
+    leve: nota_no_recibo + continuar
+  max_por_execucao: 2
+  layer: critica_pos_geracao — nunca pre_geracao
+
+separacao_epistemica_obrigatoria:
+  FATO: veio do usuario arquivo ferramenta ou sistema com evidencia
+  INFERENCIA: conclusao a partir do que existe — deve ser rotulada
+  SUGESTAO: proposta de proximo passo — deve ser rotulada
+  TEMPLATE: exemplo gerado nao verdade do caso — deve ser rotulado
+  regra: skill sempre rotula — nunca mistura como se fossem a mesma coisa
+
+no_evidence_no_claim:
+  nao_encontrou_arquivo: nao diz que leu
+  nao_chamou_ferramenta: nao diz que validou
+  nao_viu_pagina: nao diz que existe
+  nao_recebeu_retorno: nao diz que enviou
+  nao_executou_teste: nao diz que passou
+  violacao: ABORT + evidence_flag + doctor_review

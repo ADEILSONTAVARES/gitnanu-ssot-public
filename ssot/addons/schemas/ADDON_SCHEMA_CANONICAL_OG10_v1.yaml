@@ -1,0 +1,84 @@
+spec_id: ADDON_SCHEMA_CANONICAL_OG10_v1
+version: 1.0
+purpose: Schema canonico para cada addon individual — nao carregar tudo junto
+principle: Addon e biblioteca de ativacao sob demanda — nunca contexto fixo
+source: ADDONS_40_15_3_CANON.yaml + veredito estrategico NANUCAI
+
+schema_por_addon:
+  nome_canonico: string — id unico ex A13_PHDMat_Engine
+  objetivo: string — uma frase clara do que faz
+  quando_ativar:
+    regras_explicitas:
+      - condicao_1: string
+      - condicao_2: string
+    exemplos:
+      - se tarefa exige comparacao multiopcao com saida estruturada
+      - se houver arquivo tabular no input
+      - se dominio for math_hard
+  quando_nao_ativar:
+    contraexemplos:
+      - nao ativar se objetivo for resumo simples
+      - nao ativar se ja houver addon de mesmo dominio ativo
+  inputs_obrigatorios:
+    - objetivo: string
+    - tipo_tarefa: string
+    - dominio: string
+    - arquivos_disponiveis: list
+    - conectores_disponiveis: list
+    - formato_saida_esperado: string
+  inputs_opcionais:
+    - contexto_adicional: string
+    - restricoes_especificas: string
+  outputs_esperados:
+    tipo: analitica|checklist|json|yaml|markdown|diff|plano|manifesto
+    estrutura: fechada — nunca livre demais
+    deve_declarar:
+      - evidencia_usada
+      - hipotese_assumida
+      - ferramenta_realmente_acionada
+  tool_allowlist:
+    permitidas: []
+    preferidas: []
+    ordem_uso: []
+    fallback: []
+  tool_denylist:
+    proibidas: []
+    motivo: string
+  limites:
+    max_tokens_output: integer
+    max_steps: integer
+    timeout_ms: integer
+  falhas_conhecidas:
+    - descricao: string
+      frequencia: LOW|MEDIUM|HIGH
+      mitigacao: string
+  fallback:
+    se_falhar: string
+    escalate_para: string
+  risk_level: LOW|MEDIUM|HIGH|CRITICAL
+  layer: L0|L1|L2|L3
+  trigger: string — condicao de ativacao canonica
+  max_por_execucao: 1
+  pode_ser_auxiliar: true|false
+  version: semver
+  status: draft|approved|canonical|deprecated
+
+regra_de_composicao:
+  formula: U3 + A1_primario + A2_auxiliar_opcional + P1_P2_critica
+  limite_absoluto: nunca mais de 1 addon primario + 2 auxiliares + 2 dores por execucao
+  excecao: modo_auditoria — aprovado pelo Doctor2
+
+exemplos_addon_correto:
+  addon_resumo:
+    tool_allowlist: [read_file, search_index]
+    tool_denylist: [write_file, send_notification, deploy]
+    quando_ativar: tarefa de sintese ou comparacao de documentos
+    quando_nao_ativar: tarefa que exige geracao de codigo ou deploy
+  addon_pesquisa:
+    tool_allowlist: [firecrawl_mcp, search_web, read_file]
+    tool_denylist: [write_file, send_email, git_push]
+    regra: nao pode afirmar leitura de arquivo local sem evidencia de acesso real
+  addon_design:
+    tool_allowlist: [read_figma, read_tokens, generate_component]
+    tool_denylist: [deploy, send_notification]
+    regra: nao pode dizer que validou responsividade sem teste real executado
