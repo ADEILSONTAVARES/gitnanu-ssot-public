@@ -1,0 +1,16 @@
+spec_id: GAMMANOTION_CARD_PREWARM_v1
+version: 1.0
+purpose: Template de card GammaNotion para resultado de prewarm
+card_type: PREWARM_RESULT
+fields:
+  titulo:        "Prewarm {status} — {data}"
+  status:        OK|WARN|FAIL
+  target_id:     string
+  tier:          tier_0|tier_1|tier_2
+  duracao_ms:    integer
+  receipt_path:  string
+  evidence_path: string
+  streak_atual:  integer
+  proximo_step:  retry|reduce|autocura|freeze|ok
+trigger: apos cada execucao de WF_PREWARM_STACK_OG10_v1
+reference: ssot/workflows/WF_PREWARM_STACK_OG10_v1.yaml

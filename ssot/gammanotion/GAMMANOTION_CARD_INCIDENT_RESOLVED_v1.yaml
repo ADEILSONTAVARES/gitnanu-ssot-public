@@ -1,0 +1,14 @@
+spec_id: GAMMANOTION_CARD_INCIDENT_RESOLVED_v1
+version: 1.0
+purpose: Template de card GammaNotion para incidente resolvido
+card_type: PREWARM_INCIDENT_RESOLVED
+fields:
+  titulo:          "RESOLVED {target_id} — {data}"
+  target_id:       string
+  acao_aplicada:   string
+  aprovado_por:    string
+  evidence_path:   string
+  streak_resetado: true
+  proximo_prewarm: datetime
+trigger: apos aplicacao de acao aprovada em INCIDENT card
+reference: ssot/workflows/WF_PREWARM_FAILURE_INCIDENT_AUTOCURA_OG10_v1.yaml

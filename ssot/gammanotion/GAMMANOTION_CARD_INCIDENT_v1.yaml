@@ -1,0 +1,15 @@
+spec_id: GAMMANOTION_CARD_INCIDENT_v1
+version: 1.0
+purpose: Template de card GammaNotion para incidente de prewarm
+card_type: PREWARM_INCIDENT
+fields:
+  titulo:         "INCIDENT {target_id} — streak {streak} — {data}"
+  target_id:      string
+  streak:         integer
+  causa_raiz:     timeout|model_unavailable|budget_exceeded|schema_error|unknown
+  diagnosis_path: string
+  acao_proposta:  ajuste_budget|swap_modelo|freeze_target|investigar
+  status:         OPEN|AGUARDANDO_APROVACAO|RESOLVIDO
+  aprovado_por:   string
+trigger: prewarm_failure_streak >= 5
+reference: ssot/workflows/WF_PREWARM_FAILURE_INCIDENT_AUTOCURA_OG10_v1.yaml

@@ -1,0 +1,11 @@
+spec_id: MCP_FIREWALL_VALIDATOR
+version: 1.0
+purpose: Valida que nenhum MCP fora da allowlist esta sendo referenciado
+reference: ssot/policies/MCP_FIREWALL_POLICY_OG10_v1.yaml
+checks:
+  - nenhum mcp_id fora da lista BENCH90 MCPs ELITE referenciado em workflows
+  - nenhum conector com freeze_flag true em uso ativo
+  - secrets nunca em arquivos yaml do repo — apenas referencias a broker
+  - COCA-COLA LOCAL ONLY — vault secrets evidence raw nao commitados
+fail_action: ABORT + evidence_flag + escalate doctor2
+ci_binding: .github/workflows/ci_pass_strict.yml

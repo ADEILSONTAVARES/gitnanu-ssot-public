@@ -1,0 +1,15 @@
+spec_id: NO_HOLES_CANON_GATE
+version: 1.0
+purpose: Harness canonico de gate No Holes — valida integridade total do repo
+reference: scripts/gate_pass_strict.py
+validators:
+  - scripts/validators/no_placeholders.py
+  - scripts/validators/validate_basileia_52.py
+  - scripts/validators/validate_gateway_bridge_map.py
+  - scripts/validators/validate_runtime_not_committed.py
+  - scripts/validators/secret_scan_light.py
+  - scripts/validators/validate_githubops_minimum.py
+pass_criteria: todos os validators retornam 0
+fail_action: ABORT + lista de falhas + escalate AAM
+ci_binding: .github/workflows/ci_pass_strict.yml
+schedule: pre_commit + weekly + pre_release

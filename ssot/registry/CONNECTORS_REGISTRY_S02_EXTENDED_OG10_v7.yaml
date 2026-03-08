@@ -1,0 +1,38 @@
+spec_id: CONNECTORS_REGISTRY_S02_EXTENDED_OG10_v7
+version: 7.0
+studio: S02
+purpose: Registry de conectores estendido para S02 — desenvolvimento e DevOps
+references:
+  - ssot/mcp/DOMAIN_MIN7_DEV_GITHUB_OG10_v1.yaml
+  - ssot/mcp/WARP_AGENT_API_MCP_CARD_v1.yaml
+  - ssot/policies/MCP_FIREWALL_POLICY_OG10_v1.yaml
+connectors:
+  github_mcp:
+    score: 10
+    required: true
+    domain: dev_github_min7
+    allowlist: [read_repo, create_pr, merge_pr, create_issue, list_branches]
+    denylist: [delete_repo, force_push_main]
+  warp_agent_mcp:
+    score: 9
+    required: true
+    domain: dev_github_min7
+    allowlist: [run_script, git_add, git_commit, git_push, bun_test]
+    denylist: [rm_rf, docker_system_prune, drop_database]
+  context7_mcp:
+    score: 10
+    required: true
+    domain: dev_github_min7
+  gitnanu_mcp:
+    score: 10
+    required: true
+    writer: true
+    note: unico writer autorizado no repo
+  firecrawl_mcp:
+    score: 9
+    required: false
+  doctor_mcp:
+    score: 10
+    required: true
+    applies_to: todos os connectors
+firewall_ref: ssot/policies/MCP_FIREWALL_POLICY_OG10_v1.yaml

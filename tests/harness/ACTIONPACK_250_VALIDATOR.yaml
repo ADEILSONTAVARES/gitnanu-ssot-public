@@ -1,0 +1,11 @@
+spec_id: ACTIONPACK_250_VALIDATOR
+version: 1.0
+purpose: Valida que cada studio tem acoes conforme spec 40-por-api
+reference: ssot/agno/ADDONS_40_SCORECARD_OG10_v1.yaml
+checks:
+  - cada ACTIONS_{studio}_{api}_v1.yaml tem exatamente 40 acoes
+  - distribuicao: 10 CRITICAL + 20 HIGH + 10 MEDIUM
+  - action_id segue padrao A-{studio}-{prefix}-{01..40}
+  - sem placeholders TODO TBD PLACEHOLDER em acoes CRITICAL ou HIGH
+  - todos os 52 studios presentes S00-S51
+fail_action: lista studios/apis com desvio + escalate AAM

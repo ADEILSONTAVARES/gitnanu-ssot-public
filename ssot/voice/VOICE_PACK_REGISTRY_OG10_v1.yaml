@@ -1,0 +1,11 @@
+spec_id: VOICE_PACK_REGISTRY_OG10_v1
+version: 1.0
+purpose: Registry de packs de voz por plano e idioma
+packs:
+  PT_BR_STANDARD: {lang: pt-BR, plan: [starter,pro,business,enterprise], provider: elevenlabs}
+  PT_BR_PREMIUM:  {lang: pt-BR, plan: [business,enterprise], provider: elevenlabs_turbo}
+  EN_US_STANDARD: {lang: en-US, plan: [pro,business,enterprise], provider: elevenlabs}
+rules:
+  - voz nunca processa dados PII diretamente
+  - output de voz vai para GNDrive/voice/ com receipt
+  - plano starter limitado a PT_BR_STANDARD

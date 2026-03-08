@@ -1,0 +1,10 @@
+spec_id: VOICE_DISAMBIGUATION_POLICY_OG10_v1
+version: 1.0
+purpose: Politica para resolver ambiguidade em comandos de voz
+rules:
+  - se confianca < 0.85 pedir confirmacao antes de executar
+  - NUNCA executar acao destrutiva por voz sem confirmacao explicita
+  - comandos de voz nao podem iniciar acoes de escrita em producao
+  - log obrigatorio de todo comando de voz recebido
+  - timeout de confirmacao 30s — apos isso ABORT
+fallback: exibir opcoes na UI para selecao manual

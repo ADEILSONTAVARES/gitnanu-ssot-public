@@ -1,0 +1,26 @@
+spec_id: UI_NO_HOLES_EXPOSURE_MAP_OG10_v1
+version: 1.0
+purpose: Mapa de exposicao da UI — o que cada plano ve e pode fazer
+references:
+  - ssot/rules/NO_HOLES_RULES_14_OG10_v1.yaml
+  - ssot/policies/AUTHORITY_HIERARCHY.yaml
+exposure_rules:
+  starter:
+    visible: [dashboard_basico, tarefas_simples, voz_pt_br]
+    hidden: [council, bench90, subagents, prewarm_manual, evidence_raw]
+    write_blocked: [producao, deploy, config_avancada]
+  pro:
+    visible: [dashboard_completo, tarefas, voz, memory_warm, skills_build]
+    hidden: [council_raw, evidence_raw, admin]
+    write_blocked: [deploy_producao]
+  business:
+    visible: [tudo_exceto_admin_global]
+    hidden: [admin_global]
+  enterprise:
+    visible: [tudo]
+    hidden: []
+security_rules:
+  - NUNCA expor evidence_raw na UI — apenas resumo auditado
+  - NUNCA expor chaves de API na UI — mesmo criptografadas
+  - NUNCA expor company_id de outros tenants
+  - gate Doctor1 obrigatorio antes de qualquer write via UI

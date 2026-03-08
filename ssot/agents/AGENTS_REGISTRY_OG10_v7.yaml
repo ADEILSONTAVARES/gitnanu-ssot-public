@@ -1,0 +1,167 @@
+spec_id: AGENTS_REGISTRY_OG10_v7
+version: 7.0
+evolved_from: AGENTS_REGISTRY_OG10_v1
+references:
+  - ssot/agents/trio_operacional.yaml
+  - ssot/skills/registry/SKILL_REGISTRY_NANUCAI_v1.yaml
+  - ssot/rules/NO_HOLES_RULES_14_OG10_v1.yaml
+  - ssot/agno/SUBAGENT_60_5_SPEC_OG10_v1.yaml
+principle: PrM pensa OG10 governa — agentes sao especialistas nao soberanos
+
+agents:
+
+  PrM_CORE:
+    agent_id: PrM_CORE
+    role: Professor Mestre — orquestrador central
+    status: ACTIVE
+    layer: L0_L3
+    uses_families: [BUILD, DESIGN, OPS, KNOWLEDGE]
+    subagents_managed: [MEMO_1, AAM, AgentMCP_CORE, Subagent_Design, Subagent_Data, Subagent_QA, Subagent_SSOT, Subagent_Security, Subagent_Growth, Subagent_Docs]
+    gates: [Doctor1, Doctor2, AgenteZero]
+    og10_binding: soberano — nunca substituido por fornecedor externo
+
+  AGENT_ROUTER:
+    agent_id: AGENT_ROUTER
+    role: Roteia intencoes para studio lane modelo e MCP corretos
+    status: ACTIVE
+    layer: L0
+    pipeline_ref: ssot/agno/AGNO_BENCHMARK_PIPELINE_60_60_60_150_150_100x3_OG10_v1.yaml
+    max_ms: 60
+    outputs: [studio_id, budget_lane, urgency_level, addon_principal]
+    rules_applied: [R01, R03, R08]
+    freeze_rule: agente_gelo_level >= 2 bloqueia roteamento de escrita
+
+  AGENT_DOCTOR:
+    agent_id: AGENT_DOCTOR
+    role: Gates Doctor1 e Doctor2 — fail-closed
+    status: ACTIVE
+    layer: L0
+    gates:
+      Doctor1: valida input e output de cada acao
+      Doctor2: valida evidencia e score critico
+    fail_behavior: ABORT + evidence_pack — nunca silencioso
+    rules_applied: [R08, R04]
+    references: ssot/quality/DOCTOR1_POLICY_v1.yaml
+
+  AGENT_BUILDER:
+    agent_id: AGENT_BUILDER
+    role: Gera patches de codigo com evidencia e receipt
+    status: ACTIVE
+    layer: L1_L2
+    family: BUILD
+    tool_allowlist: [warp_agent_mcp, github_mcp, context7_mcp]
+    tool_denylist: [producao_db_mcp]
+    rules_applied: [R01, R02, R06, R07, R10, R11, R12]
+    output_contract: diff + receipt + evidence_path
+    gates: [Doctor1_input, Doctor1_output]
+
+  AGENT_VERIFIER:
+    agent_id: AGENT_VERIFIER
+    role: Verifica No Holes — audita 52 studios e camadas
+    status: ACTIVE
+    layer: L0
+    references:
+      - scripts/gate_pass_strict.py
+      - scripts/validators/validate_basileia_52.py
+    checks: [no_placeholders, basileia_52, gateway_bridge, runtime_not_committed, secret_scan, githubops_minimum]
+    fail_behavior: ABORT + lista de buracos + escalate AAM
+    schedule: pre_commit + weekly_audit
+
+  AGENT_DEPLOYER:
+    agent_id: AGENT_DEPLOYER
+    role: Pipeline deploy com receipts e evidence obrigatorios
+    status: ACTIVE
+    layer: L1
+    family: OPS
+    steps: [preflight, gate_in, execute_deploy, gate_out, receipt, gammanote_card]
+    tool_allowlist: [warp_agent_mcp, gitnanu_mcp, gndrive_mcp, gammanote_mcp]
+    freeze_rule: agente_gelo_level >= 2 bloqueia deploy
+    output_contract: deploy_receipt + evidence_pack + gammanote_card_url
+
+  MEMO_1:
+    agent_id: MEMO_1
+    role: Gerencia tipos de memoria e lifecycle HOT->WARM->LTA->Deep
+    status: ACTIVE
+    layer: L0
+    references: ssot/memory/MEMORY_QUANTUM_ARCHITECTURE.yaml
+    mcps_required: [cache_quantum_mcp, supabase_vector_mcp, gndrive_mcp]
+
+  AAM:
+    agent_id: AAM
+    role: Audita No Holes e promove TARGET->MEASURED
+    status: ACTIVE
+    layer: L0
+    references:
+      - ssot/agents/trio_operacional.yaml
+      - scripts/gate_pass_strict.py
+    mcps_required: [gitnanu_mcp, doctor_mcp, gndrive_mcp]
+    schedule: weekly + on_pr_critical
+
+  AgentMCP_CORE:
+    agent_id: AgentMCP_CORE
+    role: Execucao com receipts e evidence via MCP
+    status: ACTIVE
+    layer: L1_L2
+    references:
+      - ssot/agents/trio_operacional.yaml
+      - ssot/contracts/OG10_ENVELOPE_v1.schema.json
+    mcps_required: [doctor_mcp, evidence_ledger_mcp, router_og10_mcp]
+    output_contract: receipt_obrigatorio + evidence_path
+
+  Subagent_Design:
+    agent_id: Subagent_Design
+    role: Especialista design + build — layout tokens componentes
+    status: ACTIVE
+    layer: L1_L2
+    families: [DESIGN, BUILD]
+    skill_ref: ssot/skills/registry/SKILL_REGISTRY_NANUCAI_v1.yaml
+    rules_applied: [R01, R06, R10, R11]
+
+  Subagent_QA:
+    agent_id: Subagent_QA
+    role: Especialista qualidade — BUILD + OPS
+    status: ACTIVE
+    layer: L1
+    families: [BUILD, OPS]
+    rules_applied: [R10, R08, R09]
+    output_contract: test_report + coverage_pct + receipt
+
+  Subagent_SSOT:
+    agent_id: Subagent_SSOT
+    role: Especialista SSOT e memoria — KNOWLEDGE + OPS
+    status: ACTIVE
+    layer: L0_L1
+    families: [KNOWLEDGE, OPS]
+    references:
+      - ssot/policies/AUTHORITY_HIERARCHY.yaml
+      - ssot/policies/BOOTSTRAP_ORDER.yaml
+
+  Subagent_Security:
+    agent_id: Subagent_Security
+    role: Especialista seguranca — OPS + BUILD
+    status: ACTIVE
+    layer: L0
+    families: [OPS, BUILD]
+    rules_applied: [R01, R03, R04, R05, R07, R13]
+    references: ssot/policies/MCP_FIREWALL_POLICY_OG10_v1.yaml
+
+  Subagent_Growth:
+    agent_id: Subagent_Growth
+    role: Especialista crescimento — KNOWLEDGE + DESIGN
+    status: ACTIVE
+    layer: L2_L3
+    families: [KNOWLEDGE, DESIGN]
+
+  Subagent_Docs:
+    agent_id: Subagent_Docs
+    role: Especialista documentacao — KNOWLEDGE + OPS
+    status: ACTIVE
+    layer: L1
+    families: [KNOWLEDGE, OPS]
+    rules_applied: [R14]
+
+governance:
+  all_agents_bound_by: ssot/rules/NO_HOLES_RULES_14_OG10_v1.yaml
+  all_agents_anti_hallucination: ssot/skills/registry/ANTI_HALLUCINATION_ADDON_POLICY_OG10_v1.yaml
+  violation_action: ABORT + evidence_pack + escalate_doctor2
+  audit_cycle: weekly — AAM audita todos os agentes

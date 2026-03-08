@@ -1,0 +1,13 @@
+spec_id: VOICE_PHRASE_PACK_OG10_v1
+version: 1.0
+purpose: Frases canonicas do sistema para output de voz — nunca inventar frases livres
+phrases:
+  TASK_STARTED:    "Tarefa iniciada. Aguarde."
+  TASK_COMPLETED:  "Tarefa concluida com sucesso."
+  TASK_FAILED:     "Tarefa falhou. Verifique o painel."
+  GATE_PASS:       "Gate aprovado."
+  GATE_FAIL:       "Gate reprovado. Acao bloqueada."
+  EVIDENCE_SAVED:  "Evidencia salva com sucesso."
+  PREWARM_OK:      "Pre-aquecimento concluido."
+  PREWARM_FAIL:    "Falha no pre-aquecimento. Autocura iniciada."
+rule: apenas frases do registry — NUNCA geracao livre de voz

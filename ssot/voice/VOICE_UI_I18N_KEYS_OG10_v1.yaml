@@ -1,0 +1,9 @@
+spec_id: VOICE_UI_I18N_KEYS_OG10_v1
+version: 1.0
+purpose: Chaves de internacionalizacao para UI de voz
+keys:
+  voice.status.active:    {pt_BR: "Voz ativa", en_US: "Voice active"}
+  voice.status.inactive:  {pt_BR: "Voz inativa", en_US: "Voice inactive"}
+  voice.error.no_pack:    {pt_BR: "Pack de voz nao disponivel neste plano", en_US: "Voice pack not available on this plan"}
+  voice.gate.blocked:     {pt_BR: "Acao bloqueada pelo gate", en_US: "Action blocked by gate"}
+rule: toda chave nova deve ter pt_BR e en_US — sem excecao
