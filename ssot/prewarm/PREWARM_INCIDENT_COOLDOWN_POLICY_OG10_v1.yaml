@@ -1,0 +1,8 @@
+spec_id: PREWARM_INCIDENT_COOLDOWN_POLICY_OG10_v1
+cooldowns:
+  after_warn:     {minutes: 30,  next: retry}
+  after_incident: {minutes: 120, next: reduced_retry}
+  after_autocura: {minutes: 240, next: human_review}
+  after_freeze:   {minutes: 0,   next: require_unfreeze}
+anti_storm_rule: max 1 incident notification per target per hour
+ramp_up_rule: after recovery increase frequency 10pct per cycle max

@@ -1,0 +1,9 @@
+domain_id: prewarm_min7
+min_score: 7
+mcps:
+  - {id: agno_runtime_mcp,  score: 10, required: true}
+  - {id: cache_quantum_mcp, score: 9,  required: true}
+  - {id: doctor_mcp,        score: 10, required: true}
+  - {id: gndrive_mcp,       score: 10, required: true}
+  - {id: gammanote_mcp,     score: 9,  required: true}
+gate: all required; freeze if domain_score < min_score
