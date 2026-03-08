@@ -1,0 +1,100 @@
+skill_id: U0
+skill_name: "Intake + Router + Budget + Risk"
+version: "v1"
+layer: L0
+shadow_band: "0%"
+nota_minima: 10.0
+tipo: SEMPRE_ON
+budget_pct: 85
+descricao: >
+  Skill Universal U0 — primeiro passo obrigatorio em toda execucao NANUCAI.
+  Classifica intencao, seleciona engine/adapter/familia, decide modo operacional,
+  monta PAC e define todos os caps antes de qualquer acao.
+responsabilidades:
+  - "Classifica pedido: intencao, studio S00-S51, familia API, risco"
+  - Seleciona engine/adapter/familia adequada
+  - "Decide modo: SAFE | ULTRA | CRITICAL | DEEP"
+  - Monta PAC 2k-12k com metadados completos
+  - "Define caps: tokens, USD, latencia"
+  - "Decide: council / thinking / polish necessarios"
+  - "Verifica COCA-COLA: raw never in chat"
+  - Roteia para U1 com contrato fechado
+contrato_entrada:
+  campos_obrigatorios:
+    - intencao_raw: string
+    - workspace_id: string
+    - usuario_id: string
+    - timestamp: ISO8601
+  campos_opcionais:
+    - contexto_anterior: pac_ref
+    - modo_forcado: "SAFE | ULTRA | CRITICAL | DEEP"
+    - budget_override_usd: number
+contrato_saida:
+  campos_obrigatorios:
+    - studio_id: "S00-S51"
+    - familia_api: "llm | media | infra | dev | search | payments | comms"
+    - modo: "SAFE | ULTRA | CRITICAL | DEEP"
+    - engine_id: string
+    - adapter_id: string
+    - pac_id: string
+    - risk_level: "LOW | MEDIUM | HIGH | CRITICAL"
+    - budget_cap_usd: number
+    - shadow_band: "0% | 0.3% | 0.6% | 1.0% | 2.0%"
+    - tokens_cap: integer
+    - latencia_max_ms: integer
+    - council_required: boolean
+    - thinking_required: boolean
+  formato_saida: JSON
+modos_operacionais:
+  SAFE:
+    descricao: "Pedido simples, baixo risco, L0 puro"
+    shadow_band_max: "0.3%"
+    council: false
+    thinking: false
+  ULTRA:
+    descricao: "Alta qualidade, multiplas engines, polish ativo"
+    shadow_band_max: "0.6%"
+    council: false
+    thinking: false
+  CRITICAL:
+    descricao: "Risco alto, Doctor2 obrigatorio, evidence seal"
+    shadow_band_max: "1.0%"
+    council: true
+    thinking: true
+  DEEP:
+    descricao: "Pedido explicito de thinking, PHDMat ou AutoCura Full"
+    shadow_band_max: "2.0%"
+    council: true
+    thinking: true
+classificacao_risco:
+  LOW: "Pedido informativo, sem side-effects externos"
+  MEDIUM: "Geracao de asset, escrita, codigo simples"
+  HIGH: "Deploy, pagamento, dado sensivel, acao irreversivel"
+  CRITICAL: "Multi-sistema, billing, seguranca, dados pessoais"
+pac_spec:
+  tamanho_min_tokens: 2000
+  tamanho_max_tokens: 12000
+  campos_obrigatorios:
+    - pac_id: uuid
+    - timestamp: "dia/hora/mes/ano automatico"
+    - studio_id: string
+    - intencao_classificada: string
+    - engine_selecionada: string
+    - modo: string
+    - budget_cap_usd: number
+    - risk_level: string
+coca_cola_checks:
+  - "raw never in chat"
+  - "secrets nunca no PAC ou log publico"
+  - "evidence raw GNDrive only"
+  - "PII vault mode obrigatorio"
+invariantes:
+  - "U0 executa SEMPRE sem excecao antes de U1"
+  - "PAC gerado por U0 e imutavel U1 e U2 so leem"
+  - "Nota minima 10.0 qualquer falha bloqueia pipeline"
+  - "Shadow band 0% U0 e L0 puro custo zero"
+links:
+  prox_skill: "U1 Orchestrate + Execute"
+  doc_pac: "ssot/contracts/OG10_ENVELOPE_v1.yaml"
+  doc_gateway: "ssot/gateway/GATEWAY_CONFIG_OG10_v1.yaml"
+  doc_budget: "ssot/apis/API_BUDGET_85_15_OG10_v1.yaml"

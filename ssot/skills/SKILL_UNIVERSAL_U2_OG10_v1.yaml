@@ -1,0 +1,8 @@
+skill_id: U2
+skill_name: Prove + Close
+version: v1
+layer: L0
+shadow_band: "0%"
+nota_minima: 10.0
+tipo: SEMPRE_ON
+budget_pct: 85
