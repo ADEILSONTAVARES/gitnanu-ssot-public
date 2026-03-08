@@ -1,0 +1,56 @@
+spec_id: GATEWAY_CONFIG_OG10
+version: 1.0
+purpose: Configuracao do gateway OG10 — bridge entre studios e MCPs
+principle: Todo request passa pelo gateway — nenhum MCP acessado diretamente sem rota declarada
+references:
+  - ssot/policies/MCP_FIREWALL_POLICY_OG10_v1.yaml
+  - ssot/registries/MCP_REGISTRY.yaml
+  - ssot/agents/AGENTS_REGISTRY_OG10_v7.yaml
+
+bridge_map:
+  S00_GammaNotion:
+    mcps_permitidos: [gammanote_mcp, gndrive_mcp, doctor_mcp]
+    rota_padrao: PrM_CORE -> AGENT_ROUTER -> S00 -> mcp
+    budget_lane: L0
+  S01_WorGamma:
+    mcps_permitidos: [notion_mcp, gndrive_mcp, doctor_mcp]
+    rota_padrao: PrM_CORE -> AGENT_ROUTER -> S01 -> mcp
+    budget_lane: L1
+  S02_IDE_Builder:
+    mcps_permitidos: [warp_agent_mcp, github_mcp, context7_mcp, gitnanu_mcp, firecrawl_mcp, doctor_mcp]
+    rota_padrao: PrM_CORE -> AGENT_ROUTER -> S02 -> mcp
+    budget_lane: L1
+  S05_Voz:
+    mcps_permitidos: [elevenlabs_mcp, gndrive_mcp, doctor_mcp]
+    rota_padrao: PrM_CORE -> AGENT_ROUTER -> S05 -> mcp
+    budget_lane: L1
+  S09_Automacao:
+    mcps_permitidos: [n8n_mcp, make_mcp, doctor_mcp]
+    rota_padrao: PrM_CORE -> AGENT_ROUTER -> S09 -> mcp
+    budget_lane: L1
+  S19_NcAI:
+    mcps_permitidos: [doctor_mcp, evidence_ledger_mcp, router_og10_mcp, gitnanu_mcp]
+    rota_padrao: PrM_CORE -> AGENT_ROUTER -> S19 -> mcp
+    budget_lane: L0
+  DEFAULT:
+    mcps_permitidos: [doctor_mcp, gndrive_mcp]
+    rota_padrao: PrM_CORE -> AGENT_ROUTER -> studio -> mcp
+    budget_lane: L1
+
+firewall_rules:
+  - todo_mcp_fora_do_bridge_map: DENIED
+  - mcp_sem_doctor_gate: DENIED
+  - raw_output_no_contexto: DENIED
+  - secret_em_request: DENIED
+  - studio_sem_rota_declarada: usa_DEFAULT
+
+routing_rules:
+  urgency_CRITICAL: L0 lane — max 60ms — doctor_gate obrigatorio
+  urgency_HIGH: L1 lane — max 150ms — doctor_gate obrigatorio
+  urgency_MEDIUM: L2 lane — max 500ms — doctor_gate recomendado
+  urgency_LOW: L3 lane — async — doctor_gate na conclusao
+
+health_check:
+  endpoint: /gateway/health
+  interval_ms: 30000
+  fail_action: freeze_write_ops + escalate_doctor2

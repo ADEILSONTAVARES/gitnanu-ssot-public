@@ -1,15 +1,86 @@
 registry_id: MOUSE_MODE_REGISTRY
-version: v1
-description: Registry canonico de todos os modos do Mouse Inteligente OG10
+version: v2.0
+evolved_from: MOUSE_MODE_REGISTRY_v1_skeleton
+description: Registry canonico completo de todos os modos do Mouse Inteligente OG10
+references:
+  - ssot/mouse/MOUSE_14_RULES_CANONICAL.yaml
+  - ssot/registries/ENGINE_REGISTRY.yaml
+  - ssot/mouse/families/
+
 modes:
   central:
-    - {mode_id: M01_VISUAL_PATCH, title: Visual Patch Mode, score_target: 9.8, schema: image_patch.schema.json, layer: L1}
-    - {mode_id: M02_MEDIA_PATCH, title: Media Patch Mode, score_target: 9.8, schema: video_patch.schema.json, layer: L1}
-    - {mode_id: M03_PROTOTYPE_PATCH, title: Prototype Patch Mode, score_target: 9.7, schema: prototype_patch.schema.json, layer: L1}
-    - {mode_id: M04_CODE_PATCH, title: Code Patch Mode, score_target: 9.9, schema: code_patch.schema.json, layer: L1}
+    M01_VISUAL_PATCH:
+      title: Visual Patch Mode
+      score_target: 9.8
+      schema: image_patch.schema.json
+      layer: L1
+      engines_primarios: [M01_KREA_REALTIME, M02_QWEN_IMAGE_2512]
+      engines_fallback: [M04_QWEN_LAYERED, M13_QWEN_IMAGE_EDIT]
+      inputs_obrigatorios: [context_image, patch_instruction, output_format]
+      outputs: [patched_image, evidence_ref, receipt]
+      gates_required: [G1,G2,G3,G4,G5,G6,G7,G8,G9,G10]
+      casos_de_uso: [edicao_visual_rapida, ajuste_de_layout, correcao_de_imagem]
+
+    M02_MEDIA_PATCH:
+      title: Media Patch Mode
+      score_target: 9.8
+      schema: video_patch.schema.json
+      layer: L1
+      engines_primarios: [M07_MOTION_PATH, M08_ARCADS]
+      engines_fallback: [M09_BLOOM_AI, M12_MAGIC_ANIMATOR]
+      inputs_obrigatorios: [context_media, patch_instruction, output_format, duration_s]
+      outputs: [patched_media, evidence_ref, receipt]
+      gates_required: [G1,G2,G3,G4,G5,G6,G7,G8,G9,G10]
+      casos_de_uso: [edicao_de_video, criacao_ugc, animacao_de_elementos]
+
+    M03_PROTOTYPE_PATCH:
+      title: Prototype Patch Mode
+      score_target: 9.7
+      schema: prototype_patch.schema.json
+      layer: L1
+      engines_primarios: [M06_TRELLIS2, M11_CANVAS_EDITOR]
+      engines_fallback: [M04_QWEN_LAYERED]
+      inputs_obrigatorios: [context_prototype, patch_instruction, target_format]
+      outputs: [patched_prototype, evidence_ref, receipt]
+      gates_required: [G1,G2,G3,G5,G8,G10]
+      casos_de_uso: [prototipagem_3d, criacao_de_canvas, modelagem_visual]
+
+    M04_CODE_PATCH:
+      title: Code Patch Mode
+      score_target: 9.9
+      schema: code_patch.schema.json
+      layer: L1
+      engines_primarios: [warp_agent_mcp, context7_mcp]
+      engines_fallback: [github_mcp]
+      inputs_obrigatorios: [context_code, patch_instruction, target_file, test_required]
+      outputs: [diff_patch, test_result, evidence_ref, receipt]
+      gates_required: [G1,G2,G3,G4,G5,G6,G7,G8,G9,G10]
+      casos_de_uso: [correcao_de_bug, refactor, nova_feature, integracao]
+
   auxiliary:
-    - {mode_id: M05_INSPECT, title: Inspect Mode, score_target: 9.9, layer: L0}
-    - {mode_id: M06_EXPLAIN, title: Explain Mode, score_target: 9.7, layer: L0}
-    - {mode_id: M07_PROPAGATION, title: Propagation Mode, score_target: 9.8, layer: L1}
+    M05_INSPECT:
+      title: Inspect Mode
+      score_target: 9.9
+      layer: L0
+      purpose: Inspecionar contexto atual sem executar patch
+      outputs: [context_summary, anomalias_detectadas, recomendacoes]
+      gates_required: [G1,G5,G10]
+
+    M06_EXPLAIN:
+      title: Explain Mode
+      score_target: 9.7
+      layer: L0
+      purpose: Explicar o que foi feito — rastreabilidade para o usuario
+      outputs: [explicacao_estruturada, evidence_ref, recibo_legivel]
+      gates_required: [G1,G5,G10]
+
+    M07_PROPAGATION:
+      title: Propagation Mode
+      score_target: 9.8
+      layer: L1
+      purpose: Propagar patch para camadas dependentes
+      outputs: [propagation_map, affected_files, evidence_ref, receipt]
+      gates_required: [G1,G2,G3,G4,G5,G8,G9,G10]
+
 gates_required_all_modes: [G1,G2,G3,G4,G5,G6,G7,G8,G9,G10]
-ssot_pointer: docs/ssot/mouse/MOUSE_INTELIGENTE_MASTER_SSOT_v10_1.md
+ssot_pointer: ssot/mouse/MOUSE_14_RULES_CANONICAL.yaml

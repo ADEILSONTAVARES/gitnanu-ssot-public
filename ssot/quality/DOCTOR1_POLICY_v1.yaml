@@ -1,15 +1,96 @@
-# DOCTOR1_POLICY_v1
-version: 1
-gate: doctor1
-description: Verifica integridade minima antes de publicacao
-checks:
-  - check_id: D1_SSOT_FILES
-    description: Arquivos SSOT obrigatorios existem
-  - check_id: D1_NO_SECRETS
-    description: Nenhum segredo ou chave no repo
-  - check_id: D1_NO_HOLES
-    description: Todos studios cobertos no BASILEIA
-  - check_id: D1_IDEMPOTENCY
-    description: Operacoes criticas tem idempotency_record
+spec_id: DOCTOR1_POLICY_v1
+version: 2.0
+evolved_from: DOCTOR1_POLICY_v1_skeleton
+gate: Doctor1
+purpose: Gate de integridade minima — fail-closed — roda antes de toda publicacao
+principle: Sem evidencia sem certeza — sem PASS sem publicacao
+references:
+  - ssot/quality/DOCTOR_CHECKS_REGISTRY_v1.yaml
+  - ssot/rules/NO_HOLES_RULES_14_OG10_v1.yaml
+  - ssot/contracts/OG10_ENVELOPE_v1.schema.json
+
+fail_behavior: ABORT + evidence_pack + escalate_doctor2 — nunca silencioso
 pass_required: true
-blocks: publishable
+blocks: publishable deploy merge_to_main
+
+checks:
+  D1_SSOT_FILES:
+    description: Arquivos SSOT obrigatorios existem e sao validos
+    validates:
+      - registries/basileia_registry.yaml existe e tem 52 studios
+      - ssot/agents/AGENTS_REGISTRY_OG10_v7.yaml existe
+      - ssot/skills/registry/SKILL_REGISTRY_NANUCAI_v1.yaml existe
+      - ssot/rules/NO_HOLES_RULES_14_OG10_v1.yaml existe
+    fail_action: ABORT + lista de arquivos faltando
+    severity: CRITICAL
+
+  D1_NO_SECRETS:
+    description: Nenhum segredo chave ou token no repo
+    validates:
+      - secret_scan_light.py retorna PASS
+      - nenhum arquivo em vault/ ou secrets/ commitado
+      - COCA-COLA LOCAL ONLY respeitado
+    fail_action: ABORT + lista de arquivos com leak
+    severity: CRITICAL
+
+  D1_NO_HOLES:
+    description: Todos os 52 studios cobertos no BASILEIA sem buraco
+    validates:
+      - validate_basileia_52.py retorna PASS
+      - todos S00-S51 presentes com layer correto
+      - S00-S40 layer product — S41-S51 layer control_plane
+    fail_action: ABORT + lista de studios faltando
+    severity: CRITICAL
+
+  D1_NO_PLACEHOLDERS:
+    description: Sem placeholders vazios em arquivos SSOT
+    validates:
+      - no_placeholders.py retorna PASS
+      - sem TBD REPLACE_ME [CODIGO [LISTA [INSERIR em yamls canonicos
+    fail_action: ABORT + lista de arquivos com placeholder
+    severity: HIGH
+
+  D1_IDEMPOTENCY:
+    description: Operacoes criticas tem idempotency_record
+    validates:
+      - toda action CRITICAL tem idempotency_key declarada
+      - receipts de deploy tem hash verificavel
+      - operacoes de escrita em producao tem lock guard
+    fail_action: WARN + lista de operacoes sem idempotency
+    severity: HIGH
+
+  D1_EVIDENCE_CONTRACT:
+    description: Toda execucao tem evidencia rastreavel
+    validates:
+      - output tem evidence_path declarado
+      - evidence_path existe e nao esta vazio
+      - hash de evidencia verificavel
+    fail_action: ABORT + evidence_flag
+    severity: CRITICAL
+
+  D1_BUDGET_GATE:
+    description: Budget dentro dos limites aprovados
+    validates:
+      - custo estimado dentro do budget_lane declarado
+      - shadow_band entre 0.3-0.6 pct
+      - nenhuma action ultrapassa budget exclusivo 2.0 pct sem aprovacao
+    fail_action: ABORT + escalate_budget_guard
+    severity: HIGH
+
+  D1_GATE_REGISTRY:
+    description: Gate registry atualizado e coerente
+    validates:
+      - validate_githubops_minimum.py retorna PASS
+      - validate_runtime_not_committed.py retorna PASS
+    fail_action: ABORT + lista de violacoes
+    severity: CRITICAL
+
+gate_lifecycle:
+  pre_publish: D1_SSOT_FILES + D1_NO_SECRETS + D1_NO_HOLES + D1_NO_PLACEHOLDERS + D1_EVIDENCE_CONTRACT
+  pre_deploy: todos os checks
+  pre_merge_main: D1_SSOT_FILES + D1_NO_SECRETS + D1_NO_HOLES + D1_GATE_REGISTRY
+  on_demand: qualquer check individual via DOCTOR_CHECKS_REGISTRY
+
+escalation:
+  qualquer_CRITICAL_fail: escalate Doctor2 + freeze_write_ops
+  multiplos_HIGH_fail: escalate AAM + audit_cycle_forcado
