@@ -1,0 +1,14 @@
+task_state_machine_version: "1.0"
+states:
+  PENDING:         {next: RUNNING,         recovery: retry_from_PENDING}
+  RUNNING:         {next: TESTSPRITE_PASS,  recovery: retry_from_RUNNING}
+  TESTSPRITE_PASS: {next: RALPH_PASS,       recovery: retry_from_RUNNING}
+  RALPH_PASS:      {next: DOCTOR1_PASS,     recovery: retry_from_TESTSPRITE_PASS}
+  DOCTOR1_PASS:    {next: COMMITTED,        recovery: retry_from_RALPH_PASS}
+  COMMITTED:       {next: DONE,             recovery: retry_from_DOCTOR1_PASS}
+  DONE:            {terminal: true}
+  FAILED:          {next: PENDING,          recovery: analyze_then_retry}
+rules:
+  - retry never resets past TESTSPRITE_PASS
+  - COMMITTED is immutable
+  - FAILED count > 3 requires human review

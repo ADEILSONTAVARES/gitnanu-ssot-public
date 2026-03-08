@@ -1,0 +1,17 @@
+authority_hierarchy_version: "1.0"
+sources:
+  - priority: 1
+    name: git_repo_ssot
+    description: Fonte de verdade final — imutavel, versionado, auditavel
+    always_wins: true
+  - priority: 2
+    name: gammanote
+    description: Fonte de edicao humana — sync com Git
+    sync_rule: gammanote->git nunca auto; human reviews diff first
+  - priority: 3
+    name: n8n_state
+    description: Estado de execucao — read-only
+    never_is_ssot: true
+conflict_resolution:
+  rule: git repo prevalece
+  human_review_required: true

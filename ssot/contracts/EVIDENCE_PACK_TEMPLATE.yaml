@@ -1,0 +1,28 @@
+evidence_pack_version: "1.0"
+job_id: ""
+studio_id: ""
+action_id: ""
+execution:
+  model_used: ""
+  lane: ""
+  tokens_in: 0
+  tokens_out: 0
+  cost_usd: 0.0
+evidence:
+  input_hash: ""
+  output_hash: ""
+  receipt_path: ""
+  git_commit: ""
+gates:
+  doctor_gate_1: PASS
+  doctor_gate_evidence: PASS
+council:
+  j1_fidelity: GREEN
+  j2_completeness: GREEN
+  j3_safety: GREEN
+  consensus: PASS
+score:
+  fidelity: 0.0
+  velocity: 0.0
+  evidence: 0.0
+  composite: 0.0

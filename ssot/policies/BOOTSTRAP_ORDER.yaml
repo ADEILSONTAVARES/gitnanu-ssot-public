@@ -1,0 +1,10 @@
+bootstrap_order_version: "1.0"
+cold_start_target_minutes: 45
+steps:
+  - {step: 1, action: git_clone, validation: git_status_clean}
+  - {step: 2, action: restaurar_GNDrive, validation: sha256_ok}
+  - {step: 3, action: subir_n8n, validation: healthz_200}
+  - {step: 4, action: validar_envelope, validation: schema_PASS}
+  - {step: 5, action: smoke_test, validation: receipt_ok}
+  - {step: 6, action: confirmar_gitnanu_writer, validation: git_log_ok}
+  - {step: 7, action: no_holes_gate, validation: gate_pass_strict_PASS}
