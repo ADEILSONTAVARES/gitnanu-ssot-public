@@ -1,7 +1,7 @@
 adapter_id: ANTIGRAVITY_ADAPTER
 version: v1
 tipo: executor_tecnico_ide
-melhor_para: [codigo, refactor, debug, teste, mcp, terminal, ci]
+melhor_para: code_refactor_debug_teste_mcp_terminal_ci
 nunca: [substituir_og10, decidir_canonico, merge_sem_gate]
 modelo: gemini
 invariante: Antigravity e executor nunca cerebro
