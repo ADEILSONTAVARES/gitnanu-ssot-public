@@ -1,0 +1,23 @@
+link_status:
+  version: v1
+  generated_at: 2026-03-08
+  status: PARTIAL
+
+  function_ids_per_action:
+    status: UNVERIFIED
+    reason: "Nenhum YAML de actions contem function_ids. Vinculo F01-F50 por action nao existe no filesystem. Nao inventar."
+    action_required: "Definir mapeamento action->function em sprint futura com evidence real."
+
+  pain_ids_per_action:
+    status: PARTIAL
+    reason: "YAMLs contem dores_resolvidas P01-P15 (Mouse tecnico). MOUSE_PAIN_SCORE_REGISTRY usa D01-D15 (dores negocio). Sao sistemas distintos."
+    p_series: "P01-P15 = dores tecnicas Mouse (layout, diff, rollback) — presente nos YAMLs"
+    d_series: "D01-D15 = dores negocio (bugs, performance, seguranca) — presente no PAIN_SCORE_REGISTRY"
+    action_required: "Mapear P->D em sprint futura se necessario."
+
+  stack_selection_per_action:
+    status: UNVERIFIED
+    reason: "STACK_SELECTION_MATRIX opera por stack (frontend/backend/swe/math/agentic/memory). Vinculo por action_id nao existe."
+    action_required: "Adicionar stack_hint por action em sprint futura."
+
+  invariant: "No Evidence No Claim — nenhum campo inventado no indice."
