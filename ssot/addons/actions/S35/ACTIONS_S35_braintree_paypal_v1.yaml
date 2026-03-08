@@ -3,6 +3,28 @@ studio_id: S35
 api: braintree_paypal
 version: 1
 total_actions: 40
+version: 2
+skills_universais:
+  U1_INSPECT_MAP: {mission: Entender alvo escopo dependencias risco, coverage_target: 0.35, score_target: 9.9}
+  U2_PATCH_PROPAGATE: {mission: Transformar intencao em mudanca concreta reversivel, coverage_target: 0.35, score_target: 9.8}
+  U3_VERIFY_RECOVER: {mission: Validar medir registrar evidencia aprovar ou reverter, coverage_target: 0.15, score_target: 9.9}
+micro_skills_aplicadas: [MS01,MS03,MS04,MS36,MS37,MS38,MS39,MS40,MS46,MS47,MS48,MS49,MS50]
+dores_resolvidas:
+  P01: {name: Ambiguidade de selecao, severity: Alta, score_target: 9.9, mitigacao: Canonical element detection}
+  P02: {name: Quebra de layout entre superficies, severity: Alta, score_target: 9.8, mitigacao: Diff preview por superficie}
+  P03: {name: Dependencia excessiva do codigo bruto, severity: Alta, score_target: 9.7, mitigacao: Visual-to-code bridge}
+  P04: {name: Ausencia de diff confiavel, severity: Alta, score_target: 9.8, mitigacao: Diff minimo antes de aplicar}
+  P05: {name: Undo fragil ou inexistente, severity: Critica, score_target: 9.9, mitigacao: undo_token obrigatorio}
+  P06: {name: Falta de rollback completo, severity: Critica, score_target: 9.9, mitigacao: rollback_plan junto com patch}
+  P07: {name: Propagacao manual e inconsistente, severity: Alta, score_target: 9.8, mitigacao: propagation_plan automatico}
+  P08: {name: Prototipo desconectado do produto real, severity: Alta, score_target: 9.7, mitigacao: Prototipo vinculado ao estado real}
+  P09: {name: Quebra de ligacao visual com codigo, severity: Critica, score_target: 9.8, mitigacao: Visual-code sync pos-patch}
+  P10: {name: Violacao de brand e identidade, severity: Alta, score_target: 9.9, mitigacao: Brand lock antes de patch}
+  P11: {name: Baixa explicabilidade, severity: Media, score_target: 9.7, mitigacao: impact_map e dependency_map sempre}
+  P12: {name: Ausencia de evidencia auditavel, severity: Critica, score_target: 9.9, mitigacao: evidence_pack sha256 obrigatorio}
+  P13: {name: Hotfix sem governanca, severity: Alta, score_target: 9.8, mitigacao: Doctor Gate em todo hotfix}
+  P14: {name: Teste lento manual e disperso, severity: Alta, score_target: 9.7, mitigacao: Smoke test automatico pos-patch}
+  P15: {name: Impacto invisivel da mudanca, severity: Alta, score_target: 9.8, mitigacao: propagation_scope mapeado antes}
 actions:
   - action_id: A-S35-bp-01
     name: "validate_pii_in_payload"
