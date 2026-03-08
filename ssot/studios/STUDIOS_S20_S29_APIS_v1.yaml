@@ -1,0 +1,33 @@
+group: S20-S29
+version: v1
+studios:
+  S20_priv:
+    nome: Conta e Privacidade
+    apis: [supabase_auth, clerk, okta]
+  S21_msg:
+    nome: Mensageria 7x
+    apis: [whatsapp, telegram, slack, discord]
+  S22_lead:
+    nome: Lead Capture e Qualificacao
+    apis: [typeform, hubspot, n8n]
+  S23_kb:
+    nome: Knowledge Base e Wiki
+    apis: [notion, confluence, gitbook]
+  S24_ai_train:
+    nome: AI Training e Fine-tuning
+    apis: [openai_ft, anthropic_ft, hugging_face]
+  S25_analytics:
+    nome: Analytics e Produto
+    apis: [mixpanel, posthog, amplitude]
+  S26_crm:
+    nome: CRM e Vendas Conversacionais
+    apis: [hubspot, pipedrive, salesforce]
+  S27_infra:
+    nome: Dominios DNS Deploy Proxy
+    apis: [cloudflare, vercel, railway]
+  S28_3d:
+    nome: 3D AR e Metaverso
+    apis: [trellis, unity, blender]
+  S29_ux:
+    nome: UX Research e Heatmaps
+    apis: [hotjar, maze, figma]

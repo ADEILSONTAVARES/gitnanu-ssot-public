@@ -1,0 +1,33 @@
+group: S30-S39
+version: v1
+studios:
+  S30_calls:
+    nome: Calls 7x
+    apis: [twilio, zoom, meet, vapi]
+  S31_print:
+    nome: Print e Editorial
+    apis: [canva, affinity, pdf_element]
+  S32_legal:
+    nome: Legal e Compliance
+    apis: [docusign, legal_ai, contract_ai]
+  S33_pesq:
+    nome: Pesquisa Radar Resumos
+    apis: [perplexity, serp, firecrawl]
+  S34_bill:
+    nome: Billing e Creditos
+    apis: [stripe, hotmart, revenuecat]
+  S35_pay:
+    nome: Pagamentos e Checkout
+    apis: [stripe, paypal, mercado_pago]
+  S36_times:
+    nome: Times e Permissoes
+    apis: [supabase_rls, clerk, okta]
+  S37_test:
+    nome: Testes e QA Automatizado
+    apis: [playwright, jest, vitest]
+  S38_obs:
+    nome: Observabilidade e Alertas
+    apis: [sentry, datadog, grafana]
+  S39_ci:
+    nome: CI/CD e DevOps
+    apis: [github_actions, railway, cloudflare]

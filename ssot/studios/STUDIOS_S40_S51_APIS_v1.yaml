@@ -1,0 +1,39 @@
+group: S40-S51
+version: v1
+studios:
+  S40_ai_hub:
+    nome: AI Hub e Model Router
+    apis: [openai, anthropic, google, minimax]
+  S41_conn:
+    nome: Connectors Registry
+    apis: [agno, n8n, mcp_factory]
+  S42_action:
+    nome: Action Registry
+    apis: [agno, prm, og10]
+  S43_holes:
+    nome: No Holes Check
+    apis: [doctor1, doctor2, gate_pass_strict]
+  S44_mcp:
+    nome: MCP Factory
+    apis: [mcp_protocol, agno, prm]
+  S45_router:
+    nome: Router Policy Engine
+    apis: [og10, prm, agno]
+  S46_doctor:
+    nome: Doctor 1 + Doctor 2
+    apis: [og10, evidence, gate]
+  S47_bench:
+    nome: Benchmark Lab
+    apis: [benchpack90, subagent, council]
+  S48_hist:
+    nome: API History DB + Replay
+    apis: [supabase, redis, cloudflare]
+  S49_evid:
+    nome: Evidence Ledger + GNDrive Publisher
+    apis: [gndrive, gitnanu, supabase]
+  S50_cache:
+    nome: Cache QUANTUM + Redis Safety Pack
+    apis: [redis, cloudflare, supabase]
+  S51_rag:
+    nome: RAG QUANTUM + LTA + Crew Overlay
+    apis: [supabase_vector, redis, cloudflare]

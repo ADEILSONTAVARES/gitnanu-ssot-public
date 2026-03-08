@@ -1,0 +1,33 @@
+group: S00-S09
+version: v1
+studios:
+  S00_base:
+    nome: Core
+    apis: [agno, context7, firecrawl, playwright, sentry, serp]
+  S01_docs:
+    nome: WorGamma
+    apis: [google_docs, notion, pdf, slides]
+  S02_ide:
+    nome: IDE 2x1 Builder
+    apis: [codex, claude_code, github, playwright]
+  S03_video:
+    nome: Video e Cinema
+    apis: [runway, kling, sora, heygen]
+  S04_imagem:
+    nome: Imagem Design e Logo
+    apis: [krea, qwen_image, trellis, bloom_ai]
+  S05_voice:
+    nome: Voz TTS STT Dublagem
+    apis: [elevenlabs, openai_tts, whisper, arcads]
+  S06_audio:
+    nome: Musica e Audio
+    apis: [suno, udio, musicgen]
+  S07_avatar:
+    nome: Avatar e Apresentador Digital
+    apis: [arcads, heygen, d_id]
+  S08_acess:
+    nome: Acessibilidade
+    apis: [whisper, elevenlabs, playwright]
+  S09_email:
+    nome: Email e Comunicacao
+    apis: [gmail, resend, sendgrid]

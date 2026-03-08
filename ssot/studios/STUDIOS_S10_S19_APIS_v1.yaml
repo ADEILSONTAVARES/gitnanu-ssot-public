@@ -1,0 +1,33 @@
+group: S10-S19
+version: v1
+studios:
+  S10_auto:
+    nome: Automacoes
+    apis: [n8n, make, zapier]
+  S11_dash:
+    nome: Dashboards e Relatorios
+    apis: [metabase, looker, supabase]
+  S12_ecomm:
+    nome: E-commerce e Catalogo
+    apis: [shopify, stripe, trellis]
+  S13_local:
+    nome: Localizacao e Multilingue
+    apis: [deepl, google_translate, tydi]
+  S14_sched:
+    nome: Agendamento e Calendario
+    apis: [google_calendar, cal_com]
+  S15_bridge:
+    nome: Bridge e Integracao Cross-Studio
+    apis: [n8n, agno, webhooks]
+  S16_media:
+    nome: Midia Social e Publicacao
+    apis: [instagram, youtube, tiktok]
+  S17_docp:
+    nome: Documentos Pro
+    apis: [google_docs, notion, pdf_element]
+  S18_search:
+    nome: Search e Web Intelligence
+    apis: [serp, firecrawl, context7]
+  S19_ncai:
+    nome: NcAI G10x
+    apis: [google_maps, mapbox, geoapify]
