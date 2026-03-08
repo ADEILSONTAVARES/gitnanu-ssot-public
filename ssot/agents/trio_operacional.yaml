@@ -1,0 +1,25 @@
+TRIO_OPERACIONAL:
+  MEMO_1:
+    role: Gerencia tipos de memoria + lifecycle
+    responsibilities:
+      - HOT->WARM->LTA->Deep promotion
+      - TTL enforcement
+      - Garbage collection
+      - Memory pressure alerts
+    mcps_required: [cache_quantum_mcp, supabase_vector_mcp, gndrive_mcp]
+  AAM:
+    role: Audita No Holes + promove TARGET->MEASURED
+    responsibilities:
+      - Valida 52 studios completos
+      - Checa requisitos de MEASURED
+      - Aprova PRs criticos
+      - Gera relatorios de compliance
+    mcps_required: [gitnanu_mcp, doctor_mcp, gndrive_mcp]
+  AgentMCP_CORE:
+    role: Execucao com receipts + evidence
+    responsibilities:
+      - Executa acoes via MCP
+      - Gera receipts obrigatorios
+      - Coleta evidence paths
+      - Respeita Execution Guard
+    mcps_required: [doctor_mcp, evidence_ledger_mcp, router_og10_mcp]
