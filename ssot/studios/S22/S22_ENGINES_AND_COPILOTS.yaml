@@ -1,0 +1,21 @@
+version: v1
+studio_id: S22
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: instagram.graph, provider: Meta, role: social}
+  - {engine_id: meta.graph, provider: Meta, role: social}
+  - {engine_id: youtube.data, provider: Google, role: social}
+  - {engine_id: tiktok.publish, provider: ByteDance, role: social}
+  - {engine_id: x.api, provider: X, role: social}
+  - {engine_id: n8n, provider: n8n, role: automation}
+  - {engine_id: utm.shortlink, provider: Generic, role: tracking}
+  - {engine_id: make.scenarios, provider: Make, role: automation}
+  - {engine_id: zapier.zaps, provider: Zapier, role: automation}

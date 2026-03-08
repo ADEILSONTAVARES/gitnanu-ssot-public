@@ -1,0 +1,21 @@
+version: v1
+studio_id: S07
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: ffmpeg, provider: FFmpeg, role: video_processing}
+  - {engine_id: clip.selector, provider: Generic, role: clip_analysis}
+  - {engine_id: caption.engine, provider: Generic, role: caption}
+  - {engine_id: youtube.data, provider: Google, role: analytics}
+  - {engine_id: instagram.graph, provider: Meta, role: social}
+  - {engine_id: tiktok.api, provider: ByteDance, role: social}
+  - {engine_id: utm.shortlink, provider: Generic, role: tracking}
+  - {engine_id: kling.variations, provider: KlingAI, role: video_edit}
+  - {engine_id: runway.edit, provider: Runway, role: video_edit}

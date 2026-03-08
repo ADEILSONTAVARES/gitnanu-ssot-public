@@ -1,0 +1,40 @@
+version: v1
+studio_id: S39
+title: Capo Aberto
+direct:
+  - nanucai.prm
+  - nanucai.gammanote
+  - nanucai.gndrive
+  - trellis.2
+  - scene.to.3d
+  - export.glb.fbx
+  - pbr.texture
+  - mesh.qa
+  - web.3d.viewer
+  - gndrive.metadata
+grouped:
+  - openai.gpt
+  - anthropic.claude
+  - google.gemini
+  - xai.kimi
+  - minimax.family
+  - runway
+  - kling
+  - sora
+  - veo3
+  - heygen
+  - gpt.image
+  - flux
+  - elevenlabs
+  - suno
+  - n8n
+  - stripe
+  - firecrawl
+advanced:
+  - nanucai.gitnanu
+  - doctor.stack
+  - router.og10
+  - rag3.trim.twin
+  - cache.quantum
+  - supabase.db
+  - cloudflare.r2

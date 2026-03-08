@@ -1,0 +1,21 @@
+version: v1
+studio_id: S51
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: rag.ingestion, provider: NANUCAI, role: rag}
+  - {engine_id: rag.retrieval, provider: NANUCAI, role: rag}
+  - {engine_id: lta.promoter, provider: NANUCAI, role: memory}
+  - {engine_id: crew.orchestrator, provider: NANUCAI, role: orchestration}
+  - {engine_id: quarantine.scanner, provider: NANUCAI, role: security}
+  - {engine_id: embedding.gen, provider: NANUCAI, role: embeddings}
+  - {engine_id: drift.detector, provider: NANUCAI, role: analysis}
+  - {engine_id: supabase.vector.lite, provider: Supabase, role: db}
+  - {engine_id: cloudflare.r2, provider: Cloudflare, role: storage}

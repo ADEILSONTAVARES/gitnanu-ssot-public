@@ -1,0 +1,22 @@
+version: v1
+studio_id: S16
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: amadeus, provider: Amadeus, role: travel}
+  - {engine_id: duffel, provider: Duffel, role: flights}
+  - {engine_id: kiwi.tequila, provider: Kiwi, role: flights}
+  - {engine_id: booking.hotels, provider: Booking, role: hotels}
+  - {engine_id: skyscanner, provider: Skyscanner, role: search}
+  - {engine_id: google.maps, provider: Google, role: maps}
+  - {engine_id: google.places, provider: Google, role: maps}
+  - {engine_id: sabre, provider: Sabre, role: gds}
+  - {engine_id: firecrawl, provider: Firecrawl, role: scraping}
+  - {engine_id: playwright, provider: Microsoft, role: browser}

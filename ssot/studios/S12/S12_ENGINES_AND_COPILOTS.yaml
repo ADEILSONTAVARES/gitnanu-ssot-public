@@ -1,0 +1,21 @@
+version: v1
+studio_id: S12
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: cloudflare.r2, provider: Cloudflare, role: storage}
+  - {engine_id: s3.aws, provider: Amazon, role: storage}
+  - {engine_id: brandkit.store, provider: Generic, role: brand}
+  - {engine_id: template.marketplace, provider: Generic, role: marketplace}
+  - {engine_id: gndrive.packs, provider: NANUCAI, role: storage}
+  - {engine_id: openai.image, provider: OpenAI, role: image_gen}
+  - {engine_id: licensing.checker, provider: Generic, role: legal}
+  - {engine_id: mockup.export, provider: Generic, role: export}
+  - {engine_id: watermark.synthid, provider: Google, role: watermark}

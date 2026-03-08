@@ -1,0 +1,21 @@
+version: v1
+studio_id: S39
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: trellis.2, provider: Generic, role: 3d_gen}
+  - {engine_id: scene.to.3d, provider: Generic, role: 3d_gen}
+  - {engine_id: export.glb.fbx, provider: Generic, role: 3d_export}
+  - {engine_id: pbr.texture, provider: Generic, role: texture}
+  - {engine_id: mesh.qa, provider: Generic, role: qa_3d}
+  - {engine_id: web.3d.viewer, provider: Generic, role: viewer}
+  - {engine_id: gndrive.metadata, provider: NANUCAI, role: storage}
+  - {engine_id: supabase.db, provider: Supabase, role: db}
+  - {engine_id: cloudflare.r2, provider: Cloudflare, role: storage}

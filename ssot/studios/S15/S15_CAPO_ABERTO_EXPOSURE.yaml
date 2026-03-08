@@ -1,0 +1,40 @@
+version: v1
+studio_id: S15
+title: Capo Aberto
+direct:
+  - nanucai.prm
+  - nanucai.gammanote
+  - nanucai.gndrive
+  - amazon.catalog
+  - mercadolivre
+  - deal.finder
+  - price.tracker
+  - compare.engine
+  - offer.builder
+  - serp.search
+grouped:
+  - openai.gpt
+  - anthropic.claude
+  - google.gemini
+  - xai.kimi
+  - minimax.family
+  - runway
+  - kling
+  - sora
+  - veo3
+  - heygen
+  - gpt.image
+  - flux
+  - elevenlabs
+  - suno
+  - n8n
+  - stripe
+  - firecrawl
+advanced:
+  - nanucai.gitnanu
+  - doctor.stack
+  - router.og10
+  - rag3.trim.twin
+  - cache.quantum
+  - affiliate.link
+  - reviews.fetch

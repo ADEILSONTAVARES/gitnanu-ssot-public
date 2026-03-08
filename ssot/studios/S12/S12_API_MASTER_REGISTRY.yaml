@@ -1,0 +1,39 @@
+version: v1
+studio_id: S12
+studio_name: Biblioteca e Assets
+status: CANONICAL
+apis:
+  - {api_id: nanucai.prm, provider: NANUCAI, family: core_orchestrator, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: nanucai.gammanote, provider: NANUCAI, family: core_memory, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: nanucai.gndrive, provider: NANUCAI, family: storage_evidence_memory, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: nanucai.gitnanu, provider: NANUCAI, family: repo_writer_governance, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: doctor.stack, provider: NANUCAI, family: qa_gates, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: router.og10, provider: NANUCAI, family: routing_lanes, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: rag3.trim.twin, provider: NANUCAI, family: memory_rag, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: cache.quantum, provider: NANUCAI, family: cache_memory, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: cloudflare.r2, provider: Cloudflare, family: storage, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: s3.aws, provider: Amazon, family: storage, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: brandkit.store, provider: Generic, family: brand, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: template.marketplace, provider: Generic, family: marketplace, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: gndrive.packs, provider: NANUCAI, family: storage, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: openai.image, provider: OpenAI, family: image_gen, exposure_level: DIRECT, registry_status: REGISTERED}
+  - {api_id: licensing.checker, provider: Generic, family: legal, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: mockup.export, provider: Generic, family: export, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: watermark.synthid, provider: Google, family: watermark, exposure_level: ADVANCED, registry_status: REGISTERED}
+  - {api_id: openai.gpt, provider: OpenAI, family: llm, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: anthropic.claude, provider: Anthropic, family: llm, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: google.gemini, provider: Google, family: llm, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: xai.kimi, provider: Moonshot, family: llm, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: minimax.family, provider: MiniMax, family: llm, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: runway, provider: Runway, family: video, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: kling, provider: Kling, family: video, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: sora, provider: OpenAI, family: video, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: veo3, provider: Google, family: video, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: heygen, provider: HeyGen, family: video_avatar, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: gpt.image, provider: OpenAI, family: image, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: flux, provider: Flux, family: image, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: elevenlabs, provider: ElevenLabs, family: tts_voice, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: suno, provider: Suno, family: music_audio, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: n8n, provider: n8n, family: automation, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: stripe, provider: Stripe, family: billing, exposure_level: GROUPED, registry_status: REGISTERED}
+  - {api_id: firecrawl, provider: Firecrawl, family: research_search, exposure_level: GROUPED, registry_status: REGISTERED}

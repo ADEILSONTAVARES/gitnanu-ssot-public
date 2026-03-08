@@ -1,0 +1,21 @@
+version: v1
+studio_id: S50
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: redis.cluster, provider: Redis, role: cache}
+  - {engine_id: key.versioner, provider: NANUCAI, role: cache}
+  - {engine_id: ttl.manager, provider: NANUCAI, role: cache}
+  - {engine_id: lock.manager, provider: NANUCAI, role: cache}
+  - {engine_id: stampede.preventer, provider: NANUCAI, role: resilience}
+  - {engine_id: poison.detector, provider: NANUCAI, role: security}
+  - {engine_id: hot.key.detector, provider: NANUCAI, role: analytics}
+  - {engine_id: cloudflare.kv, provider: Cloudflare, role: infra}
+  - {engine_id: supabase.db, provider: Supabase, role: db}

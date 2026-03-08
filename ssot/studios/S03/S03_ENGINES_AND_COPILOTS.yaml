@@ -1,0 +1,23 @@
+version: v1
+studio_id: S03
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: kling, provider: KlingAI, role: video_gen}
+  - {engine_id: runway, provider: Runway, role: video_gen}
+  - {engine_id: sora, provider: OpenAI, role: video_gen}
+  - {engine_id: veo3, provider: Google, role: video_gen}
+  - {engine_id: heygen, provider: HeyGen, role: avatar_video}
+  - {engine_id: d_id, provider: D-ID, role: avatar_video}
+  - {engine_id: luma, provider: Luma, role: video_gen}
+  - {engine_id: capcut, provider: ByteDance, role: video_edit}
+  - {engine_id: ffmpeg, provider: FFmpeg, role: video_processing}
+  - {engine_id: caption.engine, provider: Generic, role: caption}
+  - {engine_id: watermark.synthid, provider: Google, role: watermark}

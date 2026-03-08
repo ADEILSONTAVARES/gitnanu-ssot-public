@@ -1,0 +1,12 @@
+version: v1
+studio_id: S09
+title: Core Orchestrators
+core:
+  - {component_id: nanucai.prm, role: cerebro_operacional}
+  - {component_id: mouse.inteligente, role: edicao_cirurgica}
+  - {component_id: nanucai.gammanote, role: repositorio_vivo}
+  - {component_id: nanucai.gndrive, role: evidencia_e_storage}
+  - {component_id: nanucai.gitnanu, role: writer_unico}
+  - {component_id: doctor.stack, role: gate_de_confianca}
+  - {component_id: router.og10, role: lanes_e_roteamento}
+  - {component_id: rag.memory.family, role: memoria_e_recall}

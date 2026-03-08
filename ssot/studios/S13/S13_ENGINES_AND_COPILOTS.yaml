@@ -1,0 +1,21 @@
+version: v1
+studio_id: S13
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: deepl.translate, provider: DeepL, role: translation}
+  - {engine_id: google.translate, provider: Google, role: translation}
+  - {engine_id: panini.translate, provider: PaniniTranslate, role: translation}
+  - {engine_id: caption.pipeline, provider: Generic, role: caption}
+  - {engine_id: stt.multi, provider: Generic, role: stt}
+  - {engine_id: tts.multi, provider: Generic, role: tts}
+  - {engine_id: subtitle.aligner, provider: Generic, role: caption}
+  - {engine_id: terminology.glossary, provider: Generic, role: glossary}
+  - {engine_id: locale.pack.manager, provider: Generic, role: i18n}

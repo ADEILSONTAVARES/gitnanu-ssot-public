@@ -1,0 +1,21 @@
+version: v1
+studio_id: S37
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: zendesk, provider: Zendesk, role: support}
+  - {engine_id: intercom, provider: Intercom, role: support}
+  - {engine_id: freshdesk, provider: Freshdesk, role: support}
+  - {engine_id: helpscout, provider: HelpScout, role: support}
+  - {engine_id: statuspage, provider: Atlassian, role: monitoring}
+  - {engine_id: email.intake, provider: Generic, role: email}
+  - {engine_id: knowledge.base, provider: Generic, role: kb}
+  - {engine_id: gmail.api, provider: Google, role: email}
+  - {engine_id: sentry.errors, provider: Sentry, role: observability}

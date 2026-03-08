@@ -1,0 +1,21 @@
+version: v1
+studio_id: S29
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: obs.websocket, provider: OBS, role: streaming}
+  - {engine_id: vmix.api, provider: VMix, role: streaming}
+  - {engine_id: propresenter, provider: RenewedVision, role: presentation}
+  - {engine_id: holyrics, provider: Holyrics, role: lyrics}
+  - {engine_id: ndi.tooling, provider: NDI, role: streaming}
+  - {engine_id: rtmp.srt, provider: Generic, role: streaming}
+  - {engine_id: stream.recording, provider: Generic, role: recording}
+  - {engine_id: youtube.live, provider: Google, role: streaming}
+  - {engine_id: n8n.workflow, provider: n8n, role: automation}

@@ -1,0 +1,21 @@
+version: v1
+studio_id: S25
+title: Engines and Copilots
+engines:
+  - {engine_id: nanucai.prm, provider: NANUCAI, role: core_orchestrator}
+  - {engine_id: nanucai.gammanote, provider: NANUCAI, role: core_memory}
+  - {engine_id: nanucai.gndrive, provider: NANUCAI, role: storage_evidence_memory}
+  - {engine_id: nanucai.gitnanu, provider: NANUCAI, role: repo_writer_governance}
+  - {engine_id: doctor.stack, provider: NANUCAI, role: qa_gates}
+  - {engine_id: router.og10, provider: NANUCAI, role: routing_lanes}
+  - {engine_id: rag3.trim.twin, provider: NANUCAI, role: memory_rag}
+  - {engine_id: cache.quantum, provider: NANUCAI, role: cache_memory}
+  - {engine_id: meta.lead.ads, provider: Meta, role: lead_gen}
+  - {engine_id: google.lead.forms, provider: Google, role: lead_gen}
+  - {engine_id: tiktok.forms, provider: ByteDance, role: lead_gen}
+  - {engine_id: landing.builder, provider: Generic, role: landing}
+  - {engine_id: form.engine, provider: Generic, role: forms}
+  - {engine_id: lead.router, provider: Generic, role: routing}
+  - {engine_id: email.cadences, provider: Generic, role: email}
+  - {engine_id: whatsapp.cloud, provider: Meta, role: messaging}
+  - {engine_id: n8n.workflow, provider: n8n, role: automation}
