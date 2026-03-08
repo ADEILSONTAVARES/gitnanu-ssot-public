@@ -7,6 +7,7 @@ VALS=[
   "scripts/validators/validate_runtime_not_committed.py",
   "scripts/validators/secret_scan_light.py",
   "scripts/validators/validate_githubops_minimum.py",
+  "scripts/gates/validate_actions_index.py",
 ]
 def main():
   failed=[]

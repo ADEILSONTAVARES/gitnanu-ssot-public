@@ -1,0 +1,18 @@
+actions_catalog_policy:
+  version: v1
+  canonical_source: ssot/actions/ACTIONS_INDEX_MASTER.yaml
+  builder: scripts/build/build_actions_index.py
+  validator: scripts/gates/validate_actions_index.py
+  generated_views:
+    - ssot/docs/actions_by_studio/
+  rules:
+    - "Nenhum MD manual e fonte da verdade."
+    - "Toda action do indice deve apontar para source_file real."
+    - "Toda nota deve distinguir target de measured."
+    - "score_measured_0_10 null ate evidence_pack assinado."
+    - "Rebuild obrigatorio apos qualquer patch em ACTIONS_*.yaml."
+    - "Validador deve passar com zero erros antes de todo push."
+  invariants:
+    - "action_id unico por (studio_id, api_id, action_id)"
+    - "score_target_0_10 obrigatorio em toda action"
+    - "severity: CRITICAL=9.9 | HIGH=9.7 | MEDIUM=9.6"
