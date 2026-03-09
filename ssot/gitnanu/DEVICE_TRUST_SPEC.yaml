@@ -1,0 +1,39 @@
+ssot_id: DEVICE_TRUST_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "GitNanu Device Trust - Dispositivos Autorizados"
+  sistemas: [GitNanu]
+
+dispositivos_autorizados:
+  mac_adeilson:
+    tipo: "MacBook Pro (desenvolvimento)"
+    papel: "worktree local, preparar commits"
+    permissao: "pull + preparar bundle"
+    nao_pode: "push direto (deve ir via VPS)"
+    alias_vps: "ssh gitnanu-vps"
+
+  vps_gitnanu:
+    tipo: "Hostinger VPS srv1386861"
+    ip: "72.60.142.44"
+    user: "gitnanu"
+    papel: "source of truth + executor de push"
+    permissao: "pull + commit + push (unico autorizado)"
+    dir: "~/Projects/gitnanu-ssot-public"
+
+  github_actions:
+    tipo: "CI runner"
+    papel: "validacao automatica de todo push"
+    permissao: "read + status check"
+    nao_pode: "fazer commits ou push"
+
+ssh_config_mac:
+  alias_vps: "gitnanu-vps"
+  uso: "sempre usar 'ssh gitnanu-vps' (nunca IP direto)"
+
+metricas:
+  unauthorized_push_attempts: {target: "= 0"}
+  ssh_auth_failure_rate: {target: "<= 0.001"}
+  key_rotation_compliance: {target: "= 1.00 (a cada 90 dias)"}
