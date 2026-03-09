@@ -1,0 +1,110 @@
+spec_id: ZERO_DRIFT_RULES
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Zero Drift Rules — Filosofia Triple-Zero OG10"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+philosophy:
+  triple_zero: "Zero Drift + Zero Holes + Zero Trust"
+  principle: "O sistema nunca deriva do estado canonico — toda mudanca e intencional e rastreavel"
+
+zero_drift:
+  definition: "Estado do sistema NUNCA diverge do SSOT sem commit explicito e PASS_STRICT"
+
+  rules:
+    ZD01:
+      rule: "Nenhuma mudanca de estado sem commit no SSOT"
+      gate: "fail_if_state_change_without_commit"
+      critico: true
+
+    ZD02:
+      rule: "SSOT e unica fonte de verdade — runtime nunca sobrescreve SSOT"
+      gate: "fail_if_runtime_committed"
+      critico: true
+
+    ZD03:
+      rule: "Todo commit requer PASS_STRICT antes de push"
+      gate: "fail_if_no_pass_strict"
+      critico: true
+
+    ZD04:
+      rule: "GitNanu e unico writer — qualquer outro push e BLOQUEADO"
+      gate: "fail_if_unauthorized_writer"
+      critico: true
+
+    ZD05:
+      rule: "Version numbers nunca regridem"
+      gate: "fail_if_version_regression"
+      critico: true
+
+    ZD06:
+      rule: "Action IDs nunca reutilizados apos deprecacao"
+      gate: "fail_if_action_id_reuse"
+      critico: false
+
+    ZD07:
+      rule: "Schema version nunca quebra backwards compatibility sem major bump"
+      gate: "warn_if_breaking_schema_change"
+      critico: false
+
+zero_holes:
+  definition: "Nenhum studio, API ou action fica sem cobertura no SSOT"
+
+  rules:
+    ZH01:
+      rule: "52 Studios cobertos — S00-S51 todos presentes no SSOT"
+      gate: "validate_basileia_52"
+      critico: true
+
+    ZH02:
+      rule: "Cada studio tem pelo menos 1 API com 40 actions"
+      gate: "validate_actions_index"
+      critico: true
+
+    ZH03:
+      rule: "Zero placeholders em producao"
+      gate: "no_placeholders"
+      critico: true
+
+    ZH04:
+      rule: "Zero campos UNVERIFIED em artifacts auditados"
+      gate: "fail_if_unverified_in_audited"
+      critico: false
+
+zero_trust:
+  definition: "Nenhum componente confia em outro sem validacao — todo output e verificado"
+
+  rules:
+    ZT01:
+      rule: "PrM nunca aceita input nao validado pelo AgenteZero Preflight"
+      gate: "fail_if_no_preflight"
+      critico: true
+
+    ZT02:
+      rule: "Doctor Gate sempre executado — nunca bypassado"
+      gate: "fail_if_doctor_gate_bypassed"
+      critico: true
+
+    ZT03:
+      rule: "Evidence pack sempre verificado antes de claim MEASURED"
+      gate: "fail_if_measured_without_evidence"
+      critico: true
+
+    ZT04:
+      rule: "Secrets nunca em repo publico"
+      gate: "secret_scan_light"
+      critico: true
+
+    ZT05:
+      rule: "COCA Guard ativo em todo pre-commit"
+      gate: "fail_if_coca_guard_bypassed"
+      critico: true
+
+enforcement:
+  all_critico_rules: "BLOQUEIAM operacao — sem excecao"
+  non_critico_rules: "Emitem WARNING — nao bloqueiam"
+  override_policy: "PROIBIDO — nenhuma regra critica pode ser overridada"
