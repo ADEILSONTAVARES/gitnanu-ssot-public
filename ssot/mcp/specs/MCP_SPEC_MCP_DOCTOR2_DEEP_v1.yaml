@@ -1,0 +1,41 @@
+spec_id: MCP_SPEC_MCP_DOCTOR2_DEEP
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_DOCTOR2_DEEP
+  title: "MCP Spec — MCP_DOCTOR2_DEEP"
+  grupo: governanca_seguranca
+  grupo_desc: "Governanca e Seguranca"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.3
+  F: 9.4
+  V: 9.1
+  E: 9.4
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Deep audit para operacoes criticas S42-S51"
+  trigger: "studios_criticos + breaking_changes"
+  latencia_p95: "2000ms"
+  lock_t: ["T1", "T2", "T3", "T4"]
+  sistemas: ["PrM_CORE", "S42", "S43", "S44", "S45", "S46", "S47", "S48", "S49", "S50", "S51"]
+  checks: ["full_schema_validation", "integration_tests", "blast_radius", "rollback_plan"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.3
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
