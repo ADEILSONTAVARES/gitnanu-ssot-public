@@ -1,0 +1,49 @@
+ssot_id: REDACTION_RULES
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Redaction Rules — regras de redacao de dados sensiveis"
+  sistema: NANUCAI OG10
+
+categorias_redacao:
+
+  secrets:
+    padrao: "[REDACTED_SECRET]"
+    exemplos: ["tokens", "passwords", "api_keys", "private_keys"]
+    acao: "substituir antes de qualquer log ou output"
+
+  pii_brasil:
+    padrao: "[REDACTED_PII]"
+    exemplos: ["CPF", "CNPJ", "RG", "nome completo + data nascimento"]
+    acao: "substituir antes de evidence log"
+
+  dados_financeiros:
+    padrao: "[REDACTED_FINANCIAL]"
+    exemplos: ["numero cartao", "CVV", "conta bancaria"]
+    acao: "nunca logar — bloquear antes do log"
+
+  evidence_medida:
+    padrao: "[MEASURED_IN_VAULT]"
+    exemplos: ["scores reais de benchmark", "latencias reais", "custos reais por job"]
+    acao: "substituir por pointer para vault_local"
+
+regras_output:
+  chat_output:
+    - "Nunca mostrar secrets (T2: Raw Never in Chat)"
+    - "PII sempre redacted"
+    - "MEASURED sempre como pointer"
+  log_output:
+    - "Secrets sempre redacted antes de gravar"
+    - "PII redacted exceto em vault_local encriptado"
+  evidence_pack:
+    - "Dados reais permitidos — mas vault_local apenas"
+    - "Nunca em repo publico"
+
+mcp_responsavel: "MCP_Coca_Guard"
+
+invariants:
+  - "Zero secrets em output — sem excecoes"
+  - "MEASURED nunca em chat (T2 + T4)"
+  - "Redaction e pre-output — nunca pos-output"
