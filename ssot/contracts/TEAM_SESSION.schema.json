@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "ssot_id": "TEAM_SESSION_SCHEMA",
+  "version": "v1",
+  "title": "Team Session Schema",
+  "description": "Schema para sessoes de trabalho em team mode — NANUCAI OG10",
+  "type": "object",
+  "required": ["session_id", "started_at", "operador", "modo", "status"],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "pattern": "^SESSION_[A-Z0-9_]+$",
+      "description": "Identificador unico da sessao"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp ISO8601 de inicio"
+    },
+    "ended_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp ISO8601 de fim (null se ativa)"
+    },
+    "operador": {
+      "type": "string",
+      "description": "Identificador do operador humano"
+    },
+    "modo": {
+      "type": "string",
+      "enum": ["single", "team", "council"],
+      "description": "Modo de operacao da sessao"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "COMPLETED", "FAILED", "KILLED"],
+      "description": "Status atual da sessao"
+    },
+    "jobs": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^JOB_"},
+      "description": "Lista de job_ids executados nesta sessao"
+    },
+    "budget_usado_usd": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Custo total da sessao em USD"
+    },
+    "evidence_ref": {
+      "type": "string",
+      "description": "Pointer para evidence pack da sessao"
+    },
+    "notas": {
+      "type": ["string", "null"],
+      "description": "Notas do operador sobre a sessao"
+    }
+  },
+  "additionalProperties": false
+}
