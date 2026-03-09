@@ -1,0 +1,86 @@
+spec_id: ZERO_TRUST_RULES
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Zero Trust Rules — Modelo de Confianca OG10"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+description: >
+  Regras de Zero Trust para o modelo de seguranca do NANUCAI OG10.
+  Nenhum componente, agente ou usuario recebe confianca implicita.
+  Toda acao requer verificacao explicita.
+
+principles:
+  P1: "Never Trust, Always Verify — todo agente verifica todo input"
+  P2: "Least Privilege — cada componente acessa apenas o necessario"
+  P3: "Assume Breach — sistema opera como se ja comprometido"
+  P4: "Explicit Authorization — nenhuma acao implicita permitida"
+
+trust_model:
+
+  AGENTS:
+    PrM_CORE:
+      trust_level: SOBERANO
+      verification: AgenteZero_Preflight obrigatorio em todo job
+      can_write_ssot: false
+      can_delegate_to: [SubAgents, AGENT_ROUTER]
+
+    GITNANU:
+      trust_level: WRITER_UNICO
+      verification: Doctor1 em todo commit
+      can_write_ssot: true
+      constraint: "Unico componente autorizado a escrever no repo"
+
+    SUBAGENTS:
+      trust_level: ESPECIALISTA
+      verification: PrM_CORE valida todo output de subagent
+      can_write_ssot: false
+      can_delegate_to: []
+
+    MCPs:
+      trust_level: TOOL
+      verification: MCP_SELFTEST_CONTRACT antes de ativar
+      can_write_ssot: false
+      scope: "Apenas acoes dentro do allowlist definido"
+
+  DATA:
+    vault_local:
+      trust_level: PRIVADO
+      access: "Apenas componentes com COCA-COLA LOCAL ONLY clearance"
+      commit_rule: "NUNCA commitado em repo publico"
+
+    ssot_public:
+      trust_level: CANONICO
+      access: "Leitura: todos | Escrita: apenas GitNanu"
+      validation: "PASS_STRICT obrigatorio antes de toda escrita"
+
+    runtime_state:
+      trust_level: EFEMERO
+      access: "Apenas componente que gerou"
+      commit_rule: "NUNCA commitado (validate_runtime_not_committed)"
+
+  EXTERNAL:
+    apis_externas:
+      trust_level: EXTERNO
+      verification: "Output sempre validado por T1 antes de usar"
+      pii_check: "COCA Guard em todo response externo"
+
+    usuarios:
+      trust_level: CLIENTE
+      verification: "Autenticacao obrigatoria, rate limiting ativo"
+      scope: "Acesso apenas ao output processado — nunca ao SSOT raw"
+
+security_gates:
+  pre_action: [AgenteZero_Preflight, COCA_Guard]
+  pre_commit: [Doctor1, secret_scan_light, no_placeholders]
+  pre_deploy: [Doctor2, PASS_STRICT, council_100x3]
+  post_output: [T1_evidence_check, T2_raw_check, T4_target_measured_check]
+
+invariants:
+  - "Zero componentes com acesso irrestrito"
+  - "Zero bypass de security gates"
+  - "Zero secrets em canais nao-vault"
+  - "Zero confianca implicita entre componentes"
