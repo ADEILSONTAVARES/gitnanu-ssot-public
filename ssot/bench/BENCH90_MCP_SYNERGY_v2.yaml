@@ -1,0 +1,162 @@
+spec_id: BENCH90_MCP_SYNERGY_v2
+version: v2.0
+status: CANONICAL
+created_at: "2026-03-09"
+source_doc: "NANUCAI_OG10_BENCH90_MCPs_ELITE_v9.0"
+
+meta:
+  title: "BENCH90 x MCPs Elite — Stack por Benchmark v2"
+  system: NANUCAI OG10
+  total_benchmarks: 90
+  composite_target: 99.2
+  gate_required: PASS_STRICT
+  value_type: TARGET
+  rule: "MEASURED somente com bench90_results.json assinado em vault_local"
+
+# ============================================================
+# BENCHMARKS DESTAQUE (NOTA 10/10)
+# ============================================================
+
+benchmarks_nota_10:
+
+  F09_AIME:
+    categoria: math
+    target: 98.5
+    nota: "10/10"
+    stack: [PHDMat_Full, Thinking_OpenAI, Thinking_Anthropic, Symbolic_Math, Intermediate_Verifier]
+    vantagem: "+1.8 vs o3 (melhor do mundo)"
+    workflow: "PHDMat verifica cada passo -> Thinking dual -> Symbolic_Math valida"
+
+  F28_SWE_Bench_Verified:
+    categoria: swe
+    target: 96.0
+    nota: "10/10"
+    stack: [Sentry_Debug, AutoCura, Playwright_Browser, PHDMat_Full, Ralph_Loop]
+    vantagem: "+26.9 vs o3, +40.2 vs Claude"
+    workflow: "Sentry detecta erro -> CURA_1C root cause -> AutoCura patch -> Playwright valida"
+
+  F29_WebArena:
+    categoria: web
+    target: 95.0
+    nota: "10/10"
+    stack: [Firecrawl_Scraper, Playwright_Browser, AgentZero_Web, Context7x]
+    vantagem: "+19.2 vs o3"
+    workflow: "Firecrawl scrape -> Playwright navega -> AgentZero verifica"
+
+  F30_GAIA:
+    categoria: agentic
+    target: 96.0
+    nota: "10/10"
+    stack: [Firecrawl_Scraper, Context7x, PHDMat_Full, RAG3TrimTwin]
+    vantagem: "+24.1 vs o3"
+    workflow: "RAG recupera contexto -> Firecrawl busca -> PHDMat valida claim"
+
+  F10_GPQA_Diamond:
+    categoria: science
+    target: 97.0
+    nota: "10/10"
+    stack: [PHDMat_Full, Thinking_Anthropic, Thinking_OpenAI, Intermediate_Verifier]
+    vantagem: "Dual thinking + PHDMat verificacao cientifica"
+
+  E14_BBEH:
+    categoria: reasoning
+    target: 92.0
+    nota: "10/10"
+    stack: [Thinking_Anthropic, Thinking_OpenAI, PHDMat_Full, Intermediate_Verifier, I_Vierne]
+    vantagem: "+15 vs o3 (77.0)"
+    workflow: "Thinking_Anthropic gera -> pausa -> PHDMat verifica -> Thinking_OpenAI search se invalido"
+
+# ============================================================
+# BENCHMARKS CORE (F01-F35)
+# ============================================================
+
+benchmarks_core:
+  F01_MMLU:        {target: 96, stack: [Context7x, MCPContext, RAG3TrimTwin]}
+  F02_MMLU_Pro:    {target: 96, stack: [Context7x, PHDMat_Light, RAG3TrimTwin]}
+  F03_BBH:         {target: 92, stack: [Thinking_Anthropic, PHDMat_Full, Intermediate_Verifier]}
+  F04_ARC:         {target: 96, stack: [Context7x, MCPContext]}
+  F05_HellaSwag:   {target: 96, stack: [Context7x, Cache_Quantum]}
+  F06_WinoGrande:  {target: 96, stack: [Context7x, MCPContext]}
+  F07_GSM8K:       {target: 95, stack: [PHDMat_Full, Symbolic_Math]}
+  F08_MATH_500:    {target: 95, stack: [PHDMat_Full, Thinking_OpenAI, Symbolic_Math]}
+  F11_SQuAD2:      {target: 96, stack: [RAG3TrimTwin, Context7x, MCPContext]}
+  F12_QuAC:        {target: 96, stack: [RAG3TrimTwin, Context7x]}
+  F13_HotpotQA:    {target: 96, stack: [RAG3TrimTwin, Firecrawl_Scraper]}
+  F14_NaturalQ:    {target: 96, stack: [RAG3TrimTwin, Context7x]}
+  F15_IFEval:      {target: 95, stack: [AgentZero_Preflight, PHDMat_Light, Ralph_Loop]}
+  F16_MT_Bench:    {target: 94, stack: [MCPContext, Context7x, Cache_Quantum]}
+  F17_AlpacaEval:  {target: 94, stack: [MCPContext, Context7x]}
+  F18_Arena_Hard:  {target: 94, stack: [Thinking_Anthropic, PHDMat_Light]}
+  F19_MMMLU:       {target: 94, stack: [Context7x, RAG3TrimTwin, MCPContext]}
+  F20_TyDiQA:      {target: 94, stack: [Context7x, RAG3TrimTwin]}
+  F21_XNLI:        {target: 94, stack: [Context7x, MCPContext]}
+  F22_LongBench:   {target: 95, stack: [Context7x, RAG3TrimTwin, SERENA_Compress]}
+  F23_TruthfulQA:  {target: 97, stack: [PHDMat_Full, Evidence_Seal, AgentZero_Preflight]}
+  F24_Toxicity:    {target: 97, stack: [Coca_Guard, AgentZero_Preflight, I_Vierne]}
+  F25_BBQ_Bias:    {target: 97, stack: [Coca_Guard, PHDMat_Light]}
+  F26_BOLD_Bias:   {target: 97, stack: [Coca_Guard, AgentZero_Preflight]}
+  F27_HumanEval:   {target: 96, stack: [TestSprite, Ralph_Loop, CURA_1C]}
+  F31_AgentBench:  {target: 90, stack: [AgentZero_Preflight, Context7x, MCPContext]}
+  F32_ToolBench:   {target: 90, stack: [Studio_Route, MCPContext, Cache_Quantum]}
+  F33_Mind2Web:    {target: 90, stack: [Firecrawl_Scraper, Playwright_Browser, Context7x]}
+  F34_InterCode:   {target: 90, stack: [TestSprite, Playwright_Browser, CURA_1C]}
+  F35_MMMU:        {target: 94, stack: [MCPContext, Context7x, Thinking_Anthropic]}
+
+# ============================================================
+# BENCHMARKS EFICIENCIA (V01-V20)
+# ============================================================
+
+benchmarks_eficiencia:
+  V01_CPSJ_L0:     {target: 99.5, stack: [Redis_Quantum_L0, Cache_Quantum, Budget_Guard]}
+  V02_SWE_Pro:     {target: 97.0, stack: [Sentry_Debug, AutoCura, Playwright_Browser]}
+  V03_Latency_P95: {target: 99.0, stack: [Redis_Quantum_L0, Cache_Quantum_Lookup]}
+  V04_Cache_Hit:   {target: 97.0, stack: [Cache_Quantum_Lookup, Cache_Quantum_Store]}
+  V05_Error_Rate:  {target: 99.5, stack: [Ralph_Loop, Doctor1_Gates, AutoCura]}
+  V06_Throughput:  {target: 98.0, stack: [Redis_Quantum_L0, Cache_Quantum, Budget_Guard]}
+  V07_Context_Eff: {target: 97.0, stack: [SERENA_Compress, Context7x, PAC_Manager]}
+  V08_Budget_Adh:  {target: 99.0, stack: [Budget_Guard, Redis_Quantum_L0]}
+  V09_Shadow_Band: {target: 98.0, stack: [Budget_Guard, Redis_Quantum_L0]}
+  V10_Prewarm_Hit: {target: 96.0, stack: [Redis_Quantum_L0, Cache_Quantum]}
+  V11_Rollback_SR: {target: 100.0, stack: [Rollback_Execute, Undo_Token_Create]}
+  V12_Evidence_SR: {target: 100.0, stack: [Evidence_Seal, Evidence_Store_GNDrive]}
+  V13_Doctor_Pass: {target: 99.0, stack: [Doctor1_Gates, Doctor2_Deep, AgentZero_Preflight]}
+  V14_Council_SR:  {target: 99.0, stack: [Council_100x3, PHDMat_Full, Evidence_Seal]}
+  V15_MCP_Uptime:  {target: 99.5, stack: [Sentry_Debug, AutoCura, Ralph_Loop]}
+  V16_RAG_Prec5:   {target: 98.0, stack: [RAG3TrimTwin, Cache_Quantum, Context7x]}
+  V17_Addon_Load:  {target: 99.0, stack: [Redis_Quantum_L0, PAC_Manager]}
+  V18_Secret_Scan: {target: 100.0, stack: [Coca_Guard, AgentZero_Preflight]}
+  V19_Schema_Val:  {target: 99.5, stack: [Schema_Validator, Doctor1_Gates]}
+  V20_GitNanu_SR:  {target: 99.5, stack: [Git_Commit_Smart, Coca_Guard, Evidence_Seal]}
+
+# ============================================================
+# BENCHMARKS EVIDENCIA (E01-E16)
+# ============================================================
+
+benchmarks_evidencia:
+  E01_Evidence_Pack:    {target: 100.0, stack: [Evidence_Seal, Evidence_Store_GNDrive]}
+  E02_Ledger_Cost:      {target: 99.5,  stack: [Budget_Guard, Evidence_Seal]}
+  E03_CI_Green:         {target: 99.5,  stack: [Doctor1_Gates, TestSprite, Ralph_Loop]}
+  E04_Pass_Strict:      {target: 100.0, stack: [AgentZero_Preflight, Doctor1_Gates]}
+  E05_Zero_Secrets:     {target: 100.0, stack: [Coca_Guard, Secret_Scan]}
+  E06_Council_Verdict:  {target: 99.0,  stack: [Council_100x3, PHDMat_Full]}
+  E07_SHA256_Valid:     {target: 100.0, stack: [Evidence_Seal, Hash_Verifier]}
+  E08_Studio_Coverage:  {target: 100.0, stack: [Studio_Route, AgentZero_Preflight]}
+  E09_MCP_Selftest:     {target: 99.5,  stack: [TestSprite, MCP_SELFTEST_CONTRACT]}
+  E10_Audit_Trail:      {target: 100.0, stack: [Evidence_Seal, Recipe_Playback]}
+  E11_UNVERIFIED_Mark:  {target: 100.0, stack: [PHDMat_Full, AgentZero_Preflight]}
+  E12_Runbook_Valid:    {target: 99.0,  stack: [TestSprite, Doctor1_Gates]}
+  E13_Actions_Index:    {target: 100.0, stack: [validate_actions_index]}
+  E14_BBEH:             {target: 92.0,  stack: [Thinking_Anthropic, PHDMat_Full, Thinking_OpenAI]}
+  E15_HLE_Breakthrough: {target: 68.0,  stack: [Thinking_OpenAI, PHDMat_Full, Thinking_Anthropic]}
+  E16_DROP:             {target: 97.0,  stack: [Context7x, PHDMat_Full, Intermediate_Verifier]}
+
+score_final:
+  composite_target: 99.2
+  nota_sistema: "100/100"
+  benchmarks_nota_10: 90
+  percentual_nota_10: "100%"
+  status_atual: TARGET
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json (assinado)"
+    - "vault_local/evidence/evidence_pack.manifest.json"
+    - "council_verdict_bench90.json (J1+J2+J3)"
