@@ -1,0 +1,159 @@
+ssot_id: OG10_SKILLS_U0_U1_U2_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Skills Universais — U0 / U1 / U2"
+  descricao: "As 3 skills que fazem 85% do trabalho em L0"
+  principio: "Simples por fora, poderosa por dentro"
+
+U0_intake_router:
+  id: U0
+  nome: "Intake + Router"
+  camada: L0
+  share_l0: 0.28
+  descricao: "Primeira skill acionada em todo job. Classifica, estima, roteia."
+
+  entradas:
+    - job_request (raw)
+    - user_context (opcional)
+    - session_state (opcional)
+
+  saidas:
+    - routing_decision.json
+    - budget_caps.json
+    - risk_score (0-100)
+    - pac_config.json
+    - studio_id
+    - mode (code|visual|motion|tutor|research)
+
+  passos:
+    1_classificar:
+      descricao: "Identificar studio, tipo, modo"
+      metodo: "rule-based + embedding lookup"
+      custo: "$0"
+    2_estimar_risk:
+      descricao: "Calcular risk_score"
+      fatores: ["domain_sensitivity", "payload_size", "studio_criticality"]
+      output: "risk_score 0-100"
+    3_estimar_budget:
+      descricao: "Definir caps de tokens e custo"
+      output: "budget_caps.json {tokens_max, cost_max, latency_target}"
+    4_montar_pac:
+      descricao: "Empacotar contexto inicial (2k-12k tokens)"
+      opcoes: ["DRAFT 2k", "READY 4k", "APPROVED 8k", "FULL 12k"]
+    5_rotear:
+      descricao: "Definir studio + workers necessários"
+      output: "routing_decision.json"
+
+  invariants:
+    - "NUNCA chamar LLM em U0 — tudo determinístico"
+    - "risk_score obrigatório em todo job"
+    - "budget_caps sempre dentro dos limites OG10"
+
+U1_orchestrate_execute:
+  id: U1
+  nome: "Orchestrate + Execute"
+  camada: L0
+  share_l0: 0.42
+  descricao: "Skill principal. Executa o job com contexto, MCPs, workers."
+
+  entradas:
+    - routing_decision.json (de U0)
+    - budget_caps.json (de U0)
+    - pac_config.json (de U0)
+
+  saidas:
+    - job_result.json
+    - tool_trace.jsonl
+    - memory_pointers[]
+    - partial_evidence[]
+
+  modulos_internos:
+    MCPContext:
+      funcao: "Injetar contexto dos 25 MCPs aprovados"
+      selecao: "apenas MCPs relevantes ao studio atual"
+    Context7x:
+      funcao: "Montar 7 camadas de contexto"
+      camadas:
+        C1: "identity (quem sou)"
+        C2: "goal (o que farei)"
+        C3: "evidence (o que sei)"
+        C4: "constraints (o que não posso)"
+        C5: "tools (o que tenho)"
+        C6: "memory (o que lembro)"
+        C7: "output_format (como entregarei)"
+    RAG3TrimTwin:
+      funcao: "Buscar evidências nas 7 famílias"
+      formula: "4x3pQ2 10x10x10"
+    SubAgent_60_5_30:
+      funcao: "Orquestrar workers quando necessário"
+      trigger: "complexity > threshold"
+    Ralph_Loop:
+      funcao: "Retry inteligente com backoff"
+      max_retries: 3
+    TestSprite:
+      funcao: "Testes rápidos no resultado parcial"
+      gate: "fail → retry automático"
+
+  invariants:
+    - "Context sempre ≤ 12k tokens antes do LLM call"
+    - "RAW_NEVER_IN_CHAT: vault mode ativo"
+    - "tool_trace.jsonl gerado para toda chamada"
+
+U2_prove_close:
+  id: U2
+  nome: "Prove + Close"
+  camada: L0
+  share_l0: 0.30
+  descricao: "Última skill. Valida, sela, registra, promove."
+
+  entradas:
+    - job_result.json (de U1)
+    - partial_evidence[] (de U1)
+    - tool_trace.jsonl (de U1)
+
+  saidas:
+    - evidence_pack.manifest.json
+    - ledger_cost.json
+    - score_card.json
+    - lta_candidate (se elegível)
+
+  passos:
+    1_doctor_gates:
+      descricao: "Rodar Doctor1 e Doctor2 (se crítico)"
+      gate: "fail-closed — job não passa sem PASS"
+    2_score_final:
+      descricao: "Calcular score por dimensão (0-100)"
+      dimensoes: ["quality", "safety", "cost", "latency", "governance"]
+      threshold: 90
+    3_evidence_seal:
+      descricao: "Selar evidence com SHA256 + timestamp"
+      output: "evidence_pack.manifest.json"
+      obrigatorio: true
+    4_ledger_write:
+      descricao: "Registrar custo real vs estimado"
+      output: "ledger_cost.json"
+    5_lta_check:
+      descricao: "Verificar se job é candidato a LTA"
+      condicoes: ["relevancia >= 0.90", "quorum_Q2", "evidence_seal"]
+    6_polish_ciclos:
+      descricao: "3 ciclos de polish antes de fechar"
+      formula: "100 × 3 (draft → refine → final)"
+      threshold_minimo: "+5 pontos vs draft"
+
+  invariants:
+    - "evidence_seal OBRIGATÓRIO — sem seal = job INVALID"
+    - "score < 90 → U2 ativa retry ou escala"
+    - "ledger_cost registrado em todo job sem exceção"
+    - "NOTA_10_OU_NAO_PASSA: polish repete até target"
+
+fluxo_completo:
+  sequencia: "U0 → U1 → U2"
+  custo_total_base: "$0.000120"
+  latencia_base: "≤ 1.5s p50"
+  handoff:
+    u0_para_u1: "routing_decision.json + budget_caps.json"
+    u1_para_u2: "job_result.json + partial_evidence[]"
+    u2_para_mundo: "evidence_pack.manifest.json"
