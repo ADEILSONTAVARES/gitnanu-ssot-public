@@ -1,0 +1,85 @@
+ssot_id: OG10_PIPELINE_60_60_60_150_150_100x3
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Pipeline Canônico"
+  formula: "60-60-60-150-150-100x3"
+  total_tokens_typical: 780
+  total_tokens_critical: 880
+  apply_to: "todos os 52 Studios (S00-S51)"
+
+etapas:
+  - id: E1
+    nome: intake
+    tokens: 60
+    responsavel: "U0 (Intake + Router)"
+    objetivo: "Classificar pedido, estimar risco, rotear para Studio"
+    output: "routing_decision.json"
+    custo_layer: L0
+
+  - id: E2
+    nome: context_build
+    tokens: 60
+    responsavel: "U1 (Context7x + MCPContext)"
+    objetivo: "Montar contexto mínimo necessário (7 camadas)"
+    output: "context_pack.json"
+    custo_layer: L0
+
+  - id: E3
+    nome: retrieval
+    tokens: 60
+    responsavel: "U1 (RAG3TrimTwin)"
+    objetivo: "Buscar evidências nas 7 famílias RAG"
+    output: "retrieval_brief.json"
+    custo_layer: L0
+
+  - id: E4
+    nome: reasoning
+    tokens: 150
+    tokens_critical: 200
+    responsavel: "Worker LLM ou SubAgent 60-5-30"
+    objetivo: "Raciocínio profundo, análise, decisão"
+    output: "job_result.json"
+    custo_layer: L1_L3
+
+  - id: E5
+    nome: validation
+    tokens: 150
+    tokens_critical: 200
+    responsavel: "Doctor1 + TestSprite + QA Coringão"
+    objetivo: "Validar output, rodar gates, testar"
+    output: "validation_report.json"
+    custo_layer: L0
+
+  - id: E6
+    nome: output_polish
+    tokens: 300
+    formula_detalhe: "100 x 3 ciclos (draft → refine → final)"
+    responsavel: "U2 (Prove + Close)"
+    objetivo: "Formatar, selar evidence, finalizar"
+    output: "evidence_pack.manifest.json"
+    custo_layer: L0
+
+regras:
+  - "Etapas E1-E3 e E5-E6 são L0 (determinísticas, custo base)"
+  - "Etapa E4 é L1-L3 (LLM call, shadow band 0.3-0.6%)"
+  - "Studios críticos (S42-S51) usam tokens_critical"
+  - "Polish passa 3 ciclos obrigatórios antes do seal"
+  - "Sem evidence seal (E6) o job não é considerado PASS"
+
+metricas:
+  intake_accuracy: "≥ 0.98"
+  context_completeness: "= 1.00"
+  retrieval_precision_at_5: "≥ 0.95"
+  reasoning_quality_min: 90
+  validation_pass_rate: "≥ 0.95"
+  polish_improvement_min: "+5 pontos"
+  total_tokens_p95: "≤ 850"
+  pipeline_latency_p95: "≤ 3s"
+
+invariants:
+  - "NO_EVIDENCE_NO_CLAIM: sem evidence_seal o job é INVALID"
+  - "RAW_NEVER_IN_CHAT: apenas facts/brief/pointers no contexto"
+  - "NOTA_10_OU_NAO_PASSA: polish repete até score ≥ target"
