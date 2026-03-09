@@ -1,0 +1,35 @@
+ssot_id: EXPORT_POLICY_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Export Policy — Code-Only OG10"
+  lei: "Lei 7 OG10"
+
+regra_principal: "Export e code-only — governanca OG10 nunca exportada"
+
+o_que_exporta:
+  - "Codigo gerado (TypeScript, Python, YAML de produto)"
+  - "Schemas de dados (sem evidence)"
+  - "Configuracoes de infra (sem secrets)"
+
+o_que_nao_exporta:
+  - "Formulas OG10 (COCA-COLA LOCAL ONLY)"
+  - "Evidence packs (vault_local apenas)"
+  - "Tokens e secrets (sempre no vault)"
+  - "Bench90 MEASURED results (local apenas)"
+  - "Council verdicts internos"
+
+modalidades:
+  self_hosted:
+    descricao: "Capo aberto — usuario ve APIs sem ver formula OG10"
+    og10_governance_exported: false
+  hosted_with_us:
+    descricao: "Capo fechado — OG10 por dentro, custo otimizado"
+    og10_governance_exported: false
+    nota: "U2 sela tudo; usuario ve auditoria, nao ve formula"
+
+coca_local_only:
+  paths: ["ssot/private/", "vault_local/", "ssot/private/og10/"]
+  regra: "Nunca commitar em repo publico"
