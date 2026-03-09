@@ -1,12 +1,12 @@
-# BASILEIA_52
+# BASILEIA_52 — SSOT minimo (IDs genericos)
 generated_at: 2026-02-26
 basileia_id: BASILEIA_52
 expected_studios: 52
 studios:
   - studio_id: S00
-    name: Studio S00
-    visibility: invisible
-    overlay: none
+    name: "Studio S00"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -14,9 +14,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S01
-    name: Studio S01
-    visibility: invisible
-    overlay: none
+    name: "Studio S01"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -24,9 +24,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S02
-    name: Studio S02
-    visibility: invisible
-    overlay: none
+    name: "Studio S02"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -34,9 +34,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S03
-    name: Studio S03
-    visibility: invisible
-    overlay: none
+    name: "Studio S03"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -44,9 +44,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S04
-    name: Studio S04
-    visibility: invisible
-    overlay: none
+    name: "Studio S04"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -54,9 +54,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S05
-    name: Studio S05
-    visibility: invisible
-    overlay: none
+    name: "Studio S05"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -64,9 +64,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S06
-    name: Studio S06
-    visibility: invisible
-    overlay: none
+    name: "Studio S06"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -74,9 +74,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S07
-    name: Studio S07
-    visibility: invisible
-    overlay: none
+    name: "Studio S07"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -84,9 +84,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S08
-    name: Studio S08
-    visibility: invisible
-    overlay: none
+    name: "Studio S08"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -94,9 +94,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S09
-    name: Studio S09
-    visibility: invisible
-    overlay: none
+    name: "Studio S09"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -104,9 +104,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S10
-    name: Studio S10
-    visibility: invisible
-    overlay: none
+    name: "Studio S10"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -114,9 +114,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S11
-    name: Studio S11
-    visibility: invisible
-    overlay: none
+    name: "Studio S11"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -124,9 +124,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S12
-    name: Studio S12
-    visibility: invisible
-    overlay: none
+    name: "Studio S12"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -134,9 +134,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S13
-    name: Studio S13
-    visibility: invisible
-    overlay: none
+    name: "Studio S13"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -144,9 +144,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S14
-    name: Studio S14
-    visibility: invisible
-    overlay: none
+    name: "Studio S14"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -154,9 +154,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S15
-    name: Studio S15
-    visibility: invisible
-    overlay: none
+    name: "Studio S15"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -164,9 +164,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S16
-    name: Studio S16
-    visibility: invisible
-    overlay: none
+    name: "Studio S16"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -174,9 +174,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S17
-    name: Studio S17
-    visibility: invisible
-    overlay: none
+    name: "Studio S17"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -184,9 +184,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S18
-    name: Studio S18
-    visibility: invisible
-    overlay: none
+    name: "Studio S18"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -194,9 +194,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S19
-    name: Studio S19
-    visibility: invisible
-    overlay: none
+    name: "Studio S19"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -204,9 +204,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S20
-    name: Studio S20
-    visibility: invisible
-    overlay: none
+    name: "Studio S20"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -214,9 +214,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S21
-    name: Studio S21
-    visibility: invisible
-    overlay: none
+    name: "Studio S21"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -224,9 +224,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S22
-    name: Studio S22
-    visibility: invisible
-    overlay: none
+    name: "Studio S22"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -234,9 +234,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S23
-    name: Studio S23
-    visibility: invisible
-    overlay: none
+    name: "Studio S23"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -244,9 +244,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S24
-    name: Studio S24
-    visibility: invisible
-    overlay: none
+    name: "Studio S24"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -254,9 +254,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S25
-    name: Studio S25
-    visibility: invisible
-    overlay: none
+    name: "Studio S25"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -264,9 +264,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S26
-    name: Studio S26
-    visibility: invisible
-    overlay: none
+    name: "Studio S26"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -274,9 +274,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S27
-    name: Studio S27
-    visibility: invisible
-    overlay: none
+    name: "Studio S27"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -284,9 +284,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S28
-    name: Studio S28
-    visibility: invisible
-    overlay: none
+    name: "Studio S28"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -294,9 +294,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S29
-    name: Studio S29
-    visibility: invisible
-    overlay: none
+    name: "Studio S29"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -304,9 +304,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S30
-    name: Studio S30
-    visibility: invisible
-    overlay: none
+    name: "Studio S30"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -314,9 +314,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S31
-    name: Studio S31
-    visibility: invisible
-    overlay: none
+    name: "Studio S31"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -324,9 +324,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S32
-    name: Studio S32
-    visibility: invisible
-    overlay: none
+    name: "Studio S32"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -334,9 +334,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S33
-    name: Studio S33
-    visibility: invisible
-    overlay: none
+    name: "Studio S33"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -344,9 +344,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S34
-    name: Studio S34
-    visibility: invisible
-    overlay: none
+    name: "Studio S34"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -354,9 +354,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S35
-    name: Studio S35
-    visibility: invisible
-    overlay: none
+    name: "Studio S35"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -364,9 +364,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S36
-    name: Studio S36
-    visibility: invisible
-    overlay: none
+    name: "Studio S36"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -374,9 +374,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S37
-    name: Studio S37
-    visibility: invisible
-    overlay: none
+    name: "Studio S37"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -384,9 +384,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S38
-    name: Studio S38
-    visibility: invisible
-    overlay: none
+    name: "Studio S38"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -394,9 +394,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S39
-    name: Studio S39
-    visibility: invisible
-    overlay: none
+    name: "Studio S39"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -404,9 +404,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S40
-    name: Studio S40
-    visibility: invisible
-    overlay: none
+    name: "Studio S40"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -414,9 +414,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S41
-    name: Studio S41
-    visibility: invisible
-    overlay: none
+    name: "Studio S41"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -424,9 +424,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S42
-    name: Studio S42
-    visibility: invisible
-    overlay: none
+    name: "Studio S42"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -434,9 +434,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S43
-    name: Studio S43
-    visibility: invisible
-    overlay: none
+    name: "Studio S43"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -444,9 +444,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S44
-    name: Studio S44
-    visibility: invisible
-    overlay: none
+    name: "Studio S44"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -454,9 +454,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S45
-    name: Studio S45
-    visibility: invisible
-    overlay: none
+    name: "Studio S45"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -464,9 +464,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S46
-    name: Studio S46
-    visibility: invisible
-    overlay: none
+    name: "Studio S46"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -474,9 +474,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S47
-    name: Studio S47
-    visibility: invisible
-    overlay: none
+    name: "Studio S47"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -484,9 +484,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S48
-    name: Studio S48
-    visibility: invisible
-    overlay: none
+    name: "Studio S48"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -494,9 +494,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S49
-    name: Studio S49
-    visibility: invisible
-    overlay: none
+    name: "Studio S49"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -504,9 +504,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S50
-    name: Studio S50
-    visibility: invisible
-    overlay: none
+    name: "Studio S50"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
@@ -514,9 +514,9 @@ studios:
       mouse: true
       voice: true
   - studio_id: S51
-    name: Studio S51
-    visibility: invisible
-    overlay: none
+    name: "Studio S51"
+    visibility: "invisible"
+    overlay: "none"
     modes:
       sidebar: true
       palette: true
