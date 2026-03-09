@@ -1,0 +1,95 @@
+studio_id: S00
+api: gammanotion
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-gn-01
+    name: "Escrita direta no SSOT sem gate"
+    sintoma: "Pagina canonica alterada sem validacao"
+    causa_raiz: "Write sem Doctor gate — qualquer agente com token pode escrever"
+    mitigacao: "GitNanu unico writer — Notion so recebe via pipeline validada"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-02
+    name: "Pagina duplicada silenciosa"
+    sintoma: "Dois registros canonicos com mesmo conteudo e IDs diferentes"
+    causa_raiz: "Criacao sem verificacao de existencia previa"
+    mitigacao: "Duplicate check por titulo + studio_id antes de criar"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-03
+    name: "Token de acesso exposto em log"
+    sintoma: "API key do Notion visivel em output ou historico"
+    causa_raiz: "Sem secrets guard no pipeline de integracao"
+    mitigacao: "CW-212 redacao de secrets em todo output"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-04
+    name: "Sincronizacao quebrada entre Notion e GNDrive"
+    sintoma: "Versao no Notion diverge do artefato no GNDrive"
+    causa_raiz: "Atualizacao em uma fonte sem propagacao para outra"
+    mitigacao: "Sync atomico: Notion e GNDrive atualizados juntos ou nenhum"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-05
+    name: "Conteudo privado vazado para pagina publica"
+    sintoma: "COCA-COLA LOCAL ONLY exposto em workspace compartilhado"
+    causa_raiz: "Mapeamento incorreto de workspace privado vs publico"
+    mitigacao: "COCA-COLA LOCAL ONLY nunca sincroniza para Notion publico"
+    severity: CRITICAL
+  - dor_id: D-S00-gn-06
+    name: "Rate limit Notion bloqueando pipeline"
+    sintoma: "Pipeline para por 429 durante operacao em lote"
+    causa_raiz: "Bulk write sem controle de rate limit"
+    mitigacao: "Retry exponencial + batch sizing respeitando limites da API"
+    severity: HIGH
+  - dor_id: D-S00-gn-07
+    name: "Propriedade de database incorreta"
+    sintoma: "Campo com tipo errado impede filtragem e automacao"
+    causa_raiz: "Schema do database sem validacao antes de escrever"
+    mitigacao: "Validar schema do database antes de qualquer write"
+    severity: HIGH
+  - dor_id: D-S00-gn-08
+    name: "Pagina orfan sem vinculo a Studio"
+    sintoma: "Registro no Notion sem studio_id ou parent_database"
+    causa_raiz: "Criacao sem metadata obrigatorio"
+    mitigacao: "studio_id + created_at + version obrigatorios em todo registro"
+    severity: HIGH
+  - dor_id: D-S00-gn-09
+    name: "Versao antiga servida como canonica"
+    sintoma: "Agente lendo versao desatualizada do SSOT"
+    causa_raiz: "Cache local sem invalidacao apos atualizacao"
+    mitigacao: "Cache com TTL curto + invalidacao por evento de escrita"
+    severity: HIGH
+  - dor_id: D-S00-gn-10
+    name: "Busca semantica retornando resultado irrelevante"
+    sintoma: "Query retorna pagina errada como SSOT"
+    causa_raiz: "Embedding desatualizado ou query vaga demais"
+    mitigacao: "Reindexar embeddings apos cada atualizacao canonica"
+    severity: HIGH
+  - dor_id: D-S00-gn-11
+    name: "Rollback impossivel apos escrita errada"
+    sintoma: "Conteudo incorreto no Notion sem historico recuperavel"
+    causa_raiz: "Nao uso do historico de versoes do Notion"
+    mitigacao: "Snapshot antes de qualquer atualizacao + rollback plan"
+    severity: HIGH
+  - dor_id: D-S00-gn-12
+    name: "Integracao n8n → Notion com payload mal formado"
+    sintoma: "Workflow falha silenciosamente sem alerta"
+    causa_raiz: "Schema de payload nao validado antes do envio"
+    mitigacao: "Validacao de schema no n8n antes de chamar API Notion"
+    severity: MEDIUM
+  - dor_id: D-S00-gn-13
+    name: "Permissoes de workspace incorretas"
+    sintoma: "Agente sem acesso a pagina necessaria"
+    causa_raiz: "Integration token sem permissao na pagina alvo"
+    mitigacao: "Auditoria de permissoes antes de cada pipeline nova"
+    severity: MEDIUM
+  - dor_id: D-S00-gn-14
+    name: "Conteudo rico perdido na conversao"
+    sintoma: "Tabelas, callouts e blocks perdidos ao sincronizar"
+    causa_raiz: "Serializacao sem suporte a rich text blocks"
+    mitigacao: "Preservar block types na serializacao/deserializacao"
+    severity: MEDIUM
+  - dor_id: D-S00-gn-15
+    name: "Automacao de notificacao sem controle de frequencia"
+    sintoma: "Spam de notificacoes para o time"
+    causa_raiz: "Trigger sem debounce ou rate limit de notificacao"
+    mitigacao: "Debounce de notificacoes + digest diario em vez de individual"
+    severity: MEDIUM
