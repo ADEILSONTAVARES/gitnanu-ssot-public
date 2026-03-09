@@ -1,0 +1,104 @@
+spec_id: INTEGRATIONS_7_SISTEMAS
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Integracoes 7 Sistemas — Canon NANUCAI OG10"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+description: >
+  Mapa canonico das 7 integrações principais do NANUCAI OG10:
+  PrM, Mouse Inteligente, GammaNOTION, GNDrive, TeamsWork10X,
+  Cowork10X, GitNanu.
+
+sistemas:
+
+  PRM_CORE:
+    sistema_id: PrM_CORE
+    nome: "Professor Mestre — Orquestrador Central"
+    tipo: superagent
+    layer: L0_L3
+    studios_managed: "S00-S51 (todos)"
+    subagents: [MEMO_1, AAM, AgentMCP_CORE, Subagent_Design,
+                Subagent_Data, Subagent_QA, Subagent_SSOT,
+                Subagent_Security, Subagent_Growth, Subagent_Docs]
+    gates: [Doctor1, Doctor2, AgenteZero]
+    spec_ref: "ssot/agents/AGENTS_REGISTRY_OG10_v7.yaml"
+    status: ACTIVE
+
+  MOUSE_INTELIGENTE:
+    sistema_id: MOUSE_INTELIGENTE
+    nome: "Mouse Inteligente v8.0"
+    tipo: visual_agent
+    layer: L1_L2
+    missao: "Deteccao e edicao visual de elementos UI com precisao cirurgica"
+    functions: 60
+    pains: 15
+    skills: [U0, U1, U2]
+    spec_ref: "ssot/mouse/"
+    integration_ref: "ssot/integrations/MOUSE_INTEGRATIONS_CANON.yaml"
+    og10_score: 9.8
+    status: ACTIVE
+
+  GAMMANOTION:
+    sistema_id: GAMMANOTION
+    nome: "GammaNOTION — Knowledge Base Inteligente"
+    tipo: knowledge_agent
+    layer: L1_L2
+    missao: "Gestao de conhecimento, docs e tarefas via Notion com IA"
+    mcp_ref: "ssot/mcp/specs/MCP_SPEC_MCP_NOTION_CORE_v1.yaml"
+    spec_ref: "ssot/gammanotion/"
+    og10_score: 9.2
+    status: ACTIVE
+
+  GNDRIVE:
+    sistema_id: GNDRIVE
+    nome: "GNDrive — Google Drive Inteligente"
+    tipo: storage_agent
+    layer: L1
+    missao: "Gestao de arquivos e documentos no Google Drive com IA"
+    mcp_ref: "ssot/mcp/specs/MCP_SPEC_MCP_GOOGLE_DRIVE_GNDR_v1.yaml"
+    spec_ref: "ssot/gndrive/"
+    og10_score: 9.3
+    status: ACTIVE
+
+  TEAMSWORK10X:
+    sistema_id: TEAMSWORK10X
+    nome: "TeamsWork10X — Colaboracao Potencializada"
+    tipo: collaboration_agent
+    layer: L1_L2
+    missao: "Potencializar colaboracao de times com IA integrada"
+    spec_ref: "ssot/teams/TEAMSWORK_10X_POLICY_OG10_v1.yaml"
+    og10_score: 9.1
+    status: ACTIVE
+
+  COWORK10X:
+    sistema_id: COWORK10X
+    nome: "Cowork10X — Workspace Inteligente"
+    tipo: workspace_agent
+    layer: L1_L2
+    missao: "Automacao de tarefas de escritorio e workflows de trabalho"
+    spec_ref: "ssot/cowork10x/"
+    og10_score: 9.0
+    status: ACTIVE
+
+  GITNANU:
+    sistema_id: GITNANU
+    nome: "GitNanu v8.0 — Single Writer Protocol"
+    tipo: repo_agent
+    layer: L0
+    missao: "Unico escritor canonico do repo SSOT — zero drift, zero holes"
+    protocol: single_writer
+    coca_cola_local_only: true
+    spec_ref: "ssot/gitnanu/GITNANU_CANON.yaml"
+    mcp_ref: "ssot/mcp/specs/MCP_SPEC_MCP_GITNANU_OPS_v1.yaml"
+    og10_score: 9.7
+    status: ACTIVE
+
+invariants:
+  - "PrM soberano — nenhum sistema substitui o orquestrador central"
+  - "GitNanu single-writer — nenhum outro sistema faz push direto"
+  - "COCA-COLA LOCAL ONLY — dados sensiveis nunca saem do vault local"
+  - "Todos os sistemas passam pelo Doctor Gate antes de output critico"
