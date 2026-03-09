@@ -1,0 +1,11 @@
+spec_id: skill.autocura.prewarm_review_v1
+internal_only: true
+trigger: prewarm_failure_streak >= autocura_threshold(7)
+steps:
+  1: Coletar ultimos N receipts prewarm FAIL
+  2: Analisar padrao timeout|model_unavailable|budget_exceeded|schema_error
+  3: Gerar diagnostico YAML
+  4: Propor acao ajuste budget | swap modelo | freeze temporario
+  5: Publicar diagnostico no GammaNotion
+  6: Aguardar aprovacao humana
+outputs: [diagnosis_yaml, proposed_action, gammanote_card_url]
