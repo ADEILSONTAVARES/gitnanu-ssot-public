@@ -1,0 +1,95 @@
+studio_id: S07
+api: presenter_engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-presenter_engine-01
+    name: "Avatar desincronizado com slides"
+    sintoma: "Gesto do presenter nao corresponde ao conteudo do slide atual"
+    causa_raiz: "Slide context nao integrado ao comportamento do avatar"
+    mitigacao: "Slide context integration — avatar recebe contexto do slide atual para gestos relevantes"
+    severity: CRITICAL
+  - dor_id: D-S07-presenter_engine-02
+    name: "Presenter sem reacao a perguntas do chat"
+    sintoma: "Avatar continua apresentacao ignorando mensagens do publico"
+    causa_raiz: "Chat nao integrado ao engine"
+    mitigacao: "Chat integration — detectar perguntas e pausar apresentacao para responder"
+    severity: HIGH
+  - dor_id: D-S07-presenter_engine-03
+    name: "Qualidade de video degradada em transmissao ao vivo"
+    sintoma: "Presenter pixelado durante picos de audiencia"
+    causa_raiz: "Encoder nao adaptativo"
+    mitigacao: "Adaptive bitrate encoding — ajustar qualidade baseado na largura de banda disponivel"
+    severity: HIGH
+  - dor_id: D-S07-presenter_engine-04
+    name: "Sincronizacao de audio e video drift ao longo do tempo"
+    sintoma: "Lipsync correto no inicio mas errado apos 10 minutos"
+    causa_raiz: "Clock drift entre audio e video streams"
+    mitigacao: "Clock synchronization — re-sync de audio e video a cada 30 segundos"
+    severity: HIGH
+  - dor_id: D-S07-presenter_engine-05
+    name: "Presenter sem gestos naturais"
+    sintoma: "Avatar estático sem gesticulacao durante a apresentacao"
+    causa_raiz: "Animation library limitada"
+    mitigacao: "Natural gesture library — gestos contextuais baseados no conteudo sendo apresentado"
+    severity: CRITICAL
+  - dor_id: D-S07-presenter_engine-06
+    name: "Falha ao trocar de slide"
+    sintoma: "Transicao de slide congela o presenter"
+    causa_raiz: "Race condition entre slide change e animation state"
+    mitigacao: "Atomic slide transition — garantir que mudanca de slide e animacao ocorram atomicamente"
+    severity: HIGH
+  - dor_id: D-S07-presenter_engine-07
+    name: "Background virtual com artefatos"
+    sintoma: "Borda do presenter com halo ou pixels incorretos"
+    causa_raiz: "Matting impreciso"
+    mitigacao: "Precision matting — modelo de segmentacao de alta precisao para bordas do presenter"
+    severity: MEDIUM
+  - dor_id: D-S07-presenter_engine-08
+    name: "Sem modo de ensaio"
+    sintoma: "Presenter nao consegue ensaiar sem entrar ao vivo"
+    causa_raiz: "Rehearsal mode ausente"
+    mitigacao: "Rehearsal mode — simulacao completa sem transmissao ao vivo"
+    severity: CRITICAL
+  - dor_id: D-S07-presenter_engine-09
+    name: "Ausencia de teleprompter integrado"
+    sintoma: "Apresentador precisa de software externo para script"
+    causa_raiz: "Teleprompter nao integrado"
+    mitigacao: "Integrated teleprompter — overlay de script sincronizado com velocidade de fala"
+    severity: HIGH
+  - dor_id: D-S07-presenter_engine-10
+    name: "Qualidade de audio do presenter ruim"
+    sintoma: "Eco e ruido de fundo no audio"
+    causa_raiz: "Audio processing ausente"
+    mitigacao: "Audio processing pipeline — noise reduction, echo cancellation e normalizacao"
+    severity: MEDIUM
+  - dor_id: D-S07-presenter_engine-11
+    name: "Sem suporte a co-apresentadores"
+    sintoma: "Apenas um presenter suportado por sessao"
+    causa_raiz: "Multi-presenter nao suportado"
+    mitigacao: "Multi-presenter support — ate 4 presenters simultaneos com troca de foco"
+    severity: HIGH
+  - dor_id: D-S07-presenter_engine-12
+    name: "Gravacao sem chapters automaticos"
+    sintoma: "Gravacao longa sem marcadores de topicos"
+    causa_raiz: "Chapter detection ausente"
+    mitigacao: "Automatic chapter detection — detectar transicoes de topico e criar marcadores"
+    severity: MEDIUM
+  - dor_id: D-S07-presenter_engine-13
+    name: "Sem analytics de engajamento"
+    sintoma: "Impossivel saber onde o publico perdeu interesse"
+    causa_raiz: "Engagement analytics ausente"
+    mitigacao: "Engagement analytics — atencao estimada por segmento da apresentacao"
+    severity: HIGH
+  - dor_id: D-S07-presenter_engine-14
+    name: "Avatar sem emocoes adaptativas"
+    sintoma: "Apresentador sempre com a mesma expressao neutra"
+    causa_raiz: "Sentiment nao integrado ao controlador de expressao"
+    mitigacao: "Sentiment-driven emotions — adaptar expressao ao sentimento do conteudo sendo apresentado"
+    severity: MEDIUM
+  - dor_id: D-S07-presenter_engine-15
+    name: "Sem fallback para presenter humano"
+    sintoma: "Falha do avatar nao tem alternativa"
+    causa_raiz: "Fallback nao implementado"
+    mitigacao: "Human fallback — opção de exibir video do presenter humano quando avatar falha"
+    severity: LOW
