@@ -1,0 +1,57 @@
+ssot_id: GUARDRAILS_POLICIES
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Guardrails Policies — OG10 Anti-Hallucination + Safety"
+  sistema: NANUCAI OG10
+  locks: [T1, T2, T3, T4]
+
+locks_anti_alucinacao:
+  T1_no_evidence_no_claim:
+    regra: "Nenhum claim sem evidence_ref"
+    acao_violacao: "BLOCK output + Doctor1 alerta"
+    mcp: "MCP_AgentZero_Preflight"
+
+  T2_raw_never_in_chat:
+    regra: "Raw content nunca vai para contexto de chat"
+    acao_violacao: "QUARANTINE + job pausado"
+    mcp: "MCP_Coca_Guard"
+
+  T3_nota_10_ou_nao_passa:
+    regra: "Nota < 9.0 bloqueia deploy"
+    acao_violacao: "BLOCK commit + Council review"
+    gate: "PASS_STRICT"
+
+  T4_target_vs_measured:
+    regra: "TARGET e MEASURED nunca misturar"
+    acao_violacao: "BLOCK + label correto obrigatorio"
+    validator: "scripts/validators/no_placeholders.py"
+
+politicas_gerais:
+  scope_violation: "kill job + rollback checkpoint"
+  command_blocked: "log incident + alert Doctor1"
+  budget_exceeded: "kill job + notify Budget_Guard"
+  secret_detected: "quarantine + BLOCK output"
+  schema_violation: "BLOCK + Doctor1 gates"
+
+kill_switch:
+  triggers:
+    - scope_violation
+    - command_blocked
+    - path_blocked
+    - budget_exceeded
+    - time_exceeded
+    - network_attempt_runner
+    - signature_invalid
+  acao:
+    - "kill job"
+    - "rollback checkpoint"
+    - "log incident"
+    - "alert Doctor1"
+
+invariants:
+  - "Fail-closed em caso de duvida"
+  - "Zero tolerance para raw em contexto"
+  - "Evidence obrigatoria antes de qualquer claim"
