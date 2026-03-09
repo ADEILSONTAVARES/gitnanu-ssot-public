@@ -1,0 +1,70 @@
+spec_id: ANTIGRAVITY_SPEC
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "AntiGravity — Spec Completa Gemini 3.1 Pro Interface"
+  system: NANUCAI OG10
+  layer: L2_L3
+  gate_required: PASS_STRICT
+
+identity:
+  component_id: ANTIGRAVITY
+  role: Interface com Gemini 3.1 Pro para tarefas visuais, multimodais e long-context
+  principle: "Complementar PrM — nunca substituir. Usado quando tarefa exige visao ou >100k tokens"
+  og10_binding: componente auxiliar — PrM soberano permanece
+
+mission:
+  primary: Processar tarefas visuais, multimodais e long-context via Gemini 3.1 Pro
+  secondary: Fornecer capacidade de analise de imagem, video e documentos longos
+  invariant: "Output sempre passa por T1 (No Evidence No Claim) antes de retornar ao PrM"
+
+model:
+  provider: Google
+  model_id: gemini-3.1-pro
+  context_window: 1000000
+  modalities: [text, image, video, audio, document]
+  language_default: pt-BR
+  interface_language: Portuguese
+
+triggers:
+  - "visual_task — analise de imagem ou screenshot"
+  - "multimodal_task — combinacao de texto + midia"
+  - "long_context > 100k tokens"
+  - "document_analysis — PDF, DOCX longos"
+  - "video_understanding"
+
+integration:
+  called_by: [PrM_CORE, AGENT_ROUTER]
+  pipeline_position: "L2-L3 fallback quando Claude/GPT insuficiente"
+  output_format: "structured JSON com evidence_ref"
+  registry_ref: "ssot/antigravity/ANTIGRAVITY_REGISTRY.yaml"
+  runbook_ref: "ssot/runbooks/ANTIGRAVITY_RUNBOOK.yaml"
+
+locks:
+  T1: "Output nunca declarado como MEASURED sem evidence_pack"
+  T2: "Raw Gemini output nunca em chat — sempre processado pelo PrM"
+  T4: "Target score Gemini != Measured score sistema"
+
+latencia:
+  p50: "1500ms"
+  p95: "3000ms"
+  p99: "5000ms"
+
+cost:
+  model_tier: L2
+  budget_lane: "15% (LLM spend)"
+  shadow_band_exclusion: true
+
+og10_score:
+  nota: 9.6
+  F: 9.7
+  V: 9.5
+  E: 9.6
+  status: CORE_ELITE
+
+status_atual:
+  operational: true
+  configured: true
+  language_interface: pt-BR
