@@ -1,0 +1,113 @@
+ssot_id: OG10_GITNANU_INTEGRATION
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 — Integração com GitNanu v8.0"
+  principio: "GitNanu é o único writer canônico do repo"
+  protocolo: "Single-writer + branch protection + PASS_STRICT obrigatório"
+
+papel_gitnanu:
+  definicao: "GitNanu é o guardião canônico do SSOT"
+  responsabilidades:
+    - "Único agente autorizado a fazer git commit + git push"
+    - "Validar PASS_STRICT antes de todo push"
+    - "Gerar smart commits com evidence vinculada"
+    - "Criar PRs automáticos quando necessário"
+    - "Sync Mac ↔ VPS ↔ GitHub < 2s p95"
+
+writer_unico:
+  regra: "SOMENTE GitNanu faz push para o repo"
+  proibido:
+    - "Push manual sem passar pelo gate"
+    - "Force push em qualquer branch"
+    - "Commit sem evidence_ref"
+    - "Commit de secrets, tokens, raw evidence"
+  enforcement:
+    git_config: "branch protection no GitHub"
+    gate: "gate_pass_strict.py antes de todo push"
+    ci: "GitHub Actions valida todo PR"
+
+gate_pass_strict:
+  arquivo: "scripts/gate_pass_strict.py"
+  executar_antes_de: "todo git push"
+  validators:
+    - no_placeholders.py
+    - validate_basileia_52.py
+    - validate_gateway_bridge_map.py
+    - validate_runtime_not_committed.py
+    - secret_scan_light.py
+    - validate_githubops_minimum.py
+    - validate_actions_index.py
+  resultado_obrigatorio: "PASS_STRICT"
+  acao_em_falha: "ABORT push, logar erro, corrigir antes"
+
+smart_commits:
+  formato: |
+    {tipo}({studio}): {descricao_curta}
+    
+    evidence_ref: {evidence_id}
+    job_id: {job_id}
+    timestamp: {iso8601}
+    score: {score}/100
+    cost: ${custo_job}
+  tipos: ["feat", "fix", "chore", "docs", "refactor", "test", "ci"]
+  regra: "sem evidence_ref = commit rejeitado pelo hook"
+
+pac_system:
+  estados: ["DRAFT", "READY", "REVIEW", "APPROVED", "APPLIED", "MERGED", "PUBLISHED", "ARCHIVED"]
+  fluxo:
+    DRAFT: "rascunho inicial (2k tokens)"
+    READY: "pronto para revisão (4k tokens)"
+    REVIEW: "em revisão pelo Doctor"
+    APPROVED: "aprovado (8k tokens)"
+    APPLIED: "aplicado ao repo"
+    MERGED: "merged na main"
+    PUBLISHED: "publicado (12k tokens)"
+    ARCHIVED: "arquivado no LTA"
+  regra_timestamp: "PAC obrigatório com dia/hora/mês/ano em todo arquivo"
+
+sync_protocol:
+  mac_to_vps:
+    metodo: "bundle-based sync via SSH"
+    comando: "git bundle create /tmp/repo.bundle HEAD && scp /tmp/repo.bundle gitnanu-vps:~/"
+    latencia_target: "< 2s p95"
+  vps_to_github:
+    metodo: "git push origin main (após PASS_STRICT)"
+    verificacao: "GitHub Actions CI confirma"
+  conflito:
+    regra: "VPS é source of truth (não Mac)"
+    resolucao: "Mac sempre faz pull antes de push"
+
+coca_cola_local_only:
+  definicao: "Dados sensíveis ficam APENAS local (nunca no repo público)"
+  aplica_a:
+    - vault/ (secrets, credenciais)
+    - evidence_raw/ (evidências brutas)
+    - .env e .env.* (variáveis de ambiente)
+    - logs/sensitive/ (logs com PII)
+  enforcement:
+    gitignore: "todos os paths acima em .gitignore"
+    coca_guard: "CI bloqueia se detectar pattern de secret"
+    gate: "secret_scan_light.py no gate_pass_strict"
+
+doctor_gates_gitnanu:
+  local_fast:
+    quando: "antes de todo commit"
+    checks: ["syntax", "schema", "no_secrets", "no_placeholders"]
+    latencia: "< 500ms"
+  ci_strict:
+    quando: "todo push no GitHub Actions"
+    checks: ["todos os validators + testes de integração"]
+    latencia: "< 3min"
+  fail_closed:
+    regra: "falha no gate = ABORT, nunca passa com erro"
+
+metricas:
+  sync_latency_p95: "< 2s"
+  gate_pass_rate: "≥ 0.99"
+  commit_evidence_rate: "= 1.00"
+  ci_pass_rate: "≥ 0.98"
+  secret_leak_incidents: "= 0"
+  force_push_incidents: "= 0"
