@@ -1,0 +1,42 @@
+ssot_id: SSOT_PUBLIC_TOP_INDEX
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "SSOT Public Top Index — indice top-level do repositorio publico"
+  sistema: NANUCAI OG10
+  repo: "github.com/ADEILSONTAVARES/gitnanu-ssot-public"
+
+estrutura_top_level:
+  ssot/:
+    descricao: "Definicoes canonicas YAML + JSON schemas"
+    pointer: "ssot/INDEX_MASTER.yaml"
+    arquivos_aprox: 1100
+
+  docs/:
+    descricao: "Documentacao, ADRs, runbooks, playbooks"
+    pointer: "docs/DOCS_INDEX.md"
+    subdirs: [adr, cowork10x, runbooks, ssot, ssot_public]
+
+  scripts/:
+    descricao: "Validators, gates, utilidades"
+    subdirs: [gates, validators, migrations, ops, audit]
+
+  tests/:
+    descricao: "Testes automatizados"
+    subdirs: [harness]
+
+  .github/:
+    descricao: "GitHub Actions e configuracoes de CI"
+
+metricas_repositorio:
+  studios: 52
+  actions: 35120
+  lotes_deploy: "A-O (15 lotes)"
+  pass_strict: "VERDE"
+  errors: 0
+  warnings: 0
+
+gate_principal: "scripts/gate_pass_strict.py"
+writer_canonico: "GitNanu (gitnanu-vps)"
