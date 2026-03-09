@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_PERPLEXITY_SEARCH
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_PERPLEXITY_SEARCH
+  title: "MCP Spec — MCP_PERPLEXITY_SEARCH"
+  grupo: busca_conhecimento
+  grupo_desc: "Busca e Conhecimento"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.2
+  F: 9.3
+  V: 9.1
+  E: 9.2
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Busca semantica e pesquisa com IA"
+  trigger: "knowledge_query + research_task + fact_check"
+  latencia_p95: "1500ms"
+  lock_t: ["T1"]
+  sistemas: ["PrM_CORE", "SubAgent_SSOT"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.2
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
