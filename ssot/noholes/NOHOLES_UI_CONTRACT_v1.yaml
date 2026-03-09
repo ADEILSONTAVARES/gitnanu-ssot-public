@@ -1,0 +1,40 @@
+ssot_id: NOHOLES_UI_CONTRACT_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "No Holes UI Contract — completude obrigatoria de UI"
+  sistema: NANUCAI OG10
+  pointer_ui: "ssot/ui/UI_NO_HOLES_EXPOSURE_MAP_OG10_v1.yaml"
+
+principio: "Todo Studio ACTIVE deve ter UI completa — sem telas vazias, sem placeholders"
+
+contrato_ui:
+  studio_active_requer:
+    - "tela principal funcional"
+    - "acoes mapeadas (min 7 por studio)"
+    - "feedback de erro visivel"
+    - "indicador de custo no painel"
+    - "evidencia de execucao acessivel"
+
+  proibido:
+    - "tela com 'coming soon' em producao"
+    - "botao sem acao mapeada"
+    - "placeholder visivel ao usuario"
+    - "acao sem evidence trail"
+
+  capo_aberto:
+    descricao: "IDE 2x1 mostra APIs e MCPs habilitados no plano"
+    lei: "Lei 6 OG10"
+    paineis_obrigatorios: [connectors, mcps, cost_meter, studio_map]
+
+validacao:
+  script: "scripts/ssot/no_holes_check_skills.py"
+  gate: "PASS_STRICT bloqueia se Studio ACTIVE com UI incompleta"
+  frequencia: "todo commit"
+
+invariants:
+  - "No Holes = zero Studios ACTIVE sem UI funcional"
+  - "Placeholder detectado = BLOCK deploy"
+  - "Evidence trail obrigatoria para toda acao de usuario"
