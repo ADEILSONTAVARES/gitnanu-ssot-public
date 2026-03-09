@@ -1,0 +1,95 @@
+studio_id: S00
+api: teamswork10x
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-tw-01
+    name: "Task sem owner definido"
+    sintoma: "Tarefa criada sem responsavel — ninguem executa"
+    causa_raiz: "Task state machine sem campo owner obrigatorio"
+    mitigacao: "Owner obrigatorio em toda task — rejeitar task sem owner"
+    severity: CRITICAL
+  - dor_id: D-S00-tw-02
+    name: "Task duplicada gerando retrabalho"
+    sintoma: "Dois membros executando a mesma tarefa"
+    causa_raiz: "Ausencia de duplicate check antes de criar task"
+    mitigacao: "Verificar tasks abertas similares antes de criar nova"
+    severity: CRITICAL
+  - dor_id: D-S00-tw-03
+    name: "Quorum de aprovacao nao atingido"
+    sintoma: "Decisao tomada sem minimo de aprovadores"
+    causa_raiz: "TEAM_QUORUM_POLICY nao verificado antes de fechar task"
+    mitigacao: "Quorum check obrigatorio para tasks de nivel CRITICAL"
+    severity: CRITICAL
+  - dor_id: D-S00-tw-04
+    name: "Definition of Done nao atendida"
+    sintoma: "Task marcada como concluida sem evidencias"
+    causa_raiz: "TEAM_DOD_TEMPLATE nao verificado antes de fechar"
+    mitigacao: "Checklist DoD obrigatorio antes de status DONE"
+    severity: CRITICAL
+  - dor_id: D-S00-tw-05
+    name: "Evidence pack de sessao ausente"
+    sintoma: "Sessao de trabalho sem registro auditavel"
+    causa_raiz: "TEAM_SESSION sem evidence pack ao encerrar"
+    mitigacao: "Evidence pack obrigatorio ao encerrar cada sessao"
+    severity: CRITICAL
+  - dor_id: D-S00-tw-06
+    name: "Metrica de performance sem baseline"
+    sintoma: "Score de equipe sem referencia de comparacao"
+    causa_raiz: "TEAMSWORK10X_METRICS sem baseline inicial registrado"
+    mitigacao: "Baseline obrigatorio antes de comecar a medir performance"
+    severity: HIGH
+  - dor_id: D-S00-tw-07
+    name: "Papel de membro mal definido"
+    sintoma: "Membro executando tarefa fora do seu escopo"
+    causa_raiz: "TEAM_ROLES_POLICY sem atribuicao clara de responsabilidades"
+    mitigacao: "Roles e escopos definidos antes de atribuir tasks"
+    severity: HIGH
+  - dor_id: D-S00-tw-08
+    name: "Sessao de trabalho sem horario registrado"
+    sintoma: "Impossivel calcular tempo gasto por membro"
+    causa_raiz: "TEAM_SESSION sem timestamp de inicio e fim"
+    mitigacao: "Start/end timestamp obrigatorio em toda sessao"
+    severity: HIGH
+  - dor_id: D-S00-tw-09
+    name: "Dependencia entre tasks nao mapeada"
+    sintoma: "Task executada antes de prerequisito concluido"
+    causa_raiz: "Grafo de dependencias ausente no planejamento"
+    mitigacao: "Mapear dependencias antes de iniciar sprint"
+    severity: HIGH
+  - dor_id: D-S00-tw-10
+    name: "Notificacao de prazo sem antecedencia suficiente"
+    sintoma: "Membro descobre atraso so quando ja atrasou"
+    causa_raiz: "Alerta apenas no vencimento sem pre-alerta"
+    mitigacao: "Pre-alerta em 80% do prazo + alerta no vencimento"
+    severity: HIGH
+  - dor_id: D-S00-tw-11
+    name: "Task bloqueada sem escalacao"
+    sintoma: "Task parada ha dias sem notificacao ao time"
+    causa_raiz: "Status BLOCKED sem trigger de escalacao automatica"
+    mitigacao: "Escalacao automatica apos 24h em status BLOCKED"
+    severity: HIGH
+  - dor_id: D-S00-tw-12
+    name: "Extensao de evidencia sem aprovacao"
+    sintoma: "Formato de evidencia customizado sem validacao pelo OG10"
+    causa_raiz: "TEAM_EVIDENCE_EXTENSIONS sem gate de aprovacao"
+    mitigacao: "Extensoes de evidencia aprovadas pelo Council antes de uso"
+    severity: MEDIUM
+  - dor_id: D-S00-tw-13
+    name: "Relatorio de performance sem periodo definido"
+    sintoma: "Metrica calculada em janela de tempo incorreta"
+    causa_raiz: "Query de metricas sem filtro de periodo explicito"
+    mitigacao: "Periodo obrigatorio em toda query de metrica"
+    severity: MEDIUM
+  - dor_id: D-S00-tw-14
+    name: "Conflito de prioridade entre tasks simultaneas"
+    sintoma: "Membro nao sabe qual task executar primeiro"
+    causa_raiz: "Tasks com mesma prioridade sem desempate"
+    mitigacao: "Criterio de desempate por prazo + impacto + Studio"
+    severity: MEDIUM
+  - dor_id: D-S00-tw-15
+    name: "Historico de decisoes do time nao registrado"
+    sintoma: "Equipe repete debate ja resolvido anteriormente"
+    causa_raiz: "Ausencia de ADR para decisoes de time"
+    mitigacao: "ADR obrigatorio para decisoes de impacto alto ou irreversiveis"
+    severity: MEDIUM
