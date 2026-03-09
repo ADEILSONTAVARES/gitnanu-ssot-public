@@ -1,0 +1,95 @@
+studio_id: S04
+api: recraft_v3
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S04-recraft_v3-01
+    name: "Vetorizacao com artefatos indesejaveis"
+    sintoma: "SVG gerado contem pontos e curvas desnecessarias"
+    causa_raiz: "Path simplification nao aplicado pos-vetorizacao"
+    mitigacao: "Path simplification gate pos-vetorizacao com threshold configuravel"
+    severity: MEDIUM
+  - dor_id: D-S04-recraft_v3-02
+    name: "Estilo de ilustracao diverge do solicitado"
+    sintoma: "Pedido de flat design resulta em ilustracao com gradientes e sombras"
+    causa_raiz: "Style token nao mapeado corretamente para o modelo"
+    mitigacao: "Style token validation — confirmar mapeamento antes de enviar ao modelo"
+    severity: HIGH
+  - dor_id: D-S04-recraft_v3-03
+    name: "Paleta de marca nao respeitada em ilustracoes"
+    sintoma: "Ilustracao usa cores fora da paleta de marca definida"
+    causa_raiz: "Brand color palette nao injetada como constraint"
+    mitigacao: "Brand palette lock — apenas cores da paleta permitidas na geracao"
+    severity: HIGH
+  - dor_id: D-S04-recraft_v3-04
+    name: "SVG gerado nao responsivo"
+    sintoma: "Ilustracao nao escala corretamente em diferentes tamanhos de tela"
+    causa_raiz: "Viewport e viewBox nao configurados corretamente"
+    mitigacao: "SVG responsiveness validation — viewBox obrigatorio, width/height em %"
+    severity: MEDIUM
+  - dor_id: D-S04-recraft_v3-05
+    name: "Icones gerados sem consistencia visual no set"
+    sintoma: "Set de 20 icones tem estilos, pesos e tamanhos diferentes"
+    causa_raiz: "Style reference do set nao aplicado em geracoes subsequentes"
+    mitigacao: "Icon set style lock — primeiro icone define o estilo de todos os demais"
+    severity: HIGH
+  - dor_id: D-S04-recraft_v3-06
+    name: "Geracao de mascote com proporcoes anatomicas incorretas"
+    sintoma: "Personagem gerado com membros desproporcionais"
+    causa_raiz: "Proportion constraints nao especificados"
+    mitigacao: "Proportion reference obrigatorio para geracoes de personagem"
+    severity: MEDIUM
+  - dor_id: D-S04-recraft_v3-07
+    name: "Asset sem metadados de autoria"
+    sintoma: "Impossivel rastrear qual prompt gerou o asset"
+    causa_raiz: "Provenance metadata nao salvo com o asset"
+    mitigacao: "Metadata obrigatorio — prompt, model, timestamp, session_id"
+    severity: HIGH
+  - dor_id: D-S04-recraft_v3-08
+    name: "Restyle de imagem existente altera elementos protegidos"
+    sintoma: "Restyle muda o logo que devia ser preservado"
+    causa_raiz: "Protected regions nao definidas antes do restyle"
+    mitigacao: "Protected region mask obrigatoria em restyle de assets com elementos fixos"
+    severity: CRITICAL
+  - dor_id: D-S04-recraft_v3-09
+    name: "Custo de API explodindo em iteracoes de design"
+    sintoma: "10 iteracoes de refinamento geram custo inesperado"
+    causa_raiz: "Sem limite de iteracoes por sessao"
+    mitigacao: "Iteration budget por sessao — alerta ao atingir 50% do limite"
+    severity: HIGH
+  - dor_id: D-S04-recraft_v3-10
+    name: "Background nao transparente em asset para web"
+    sintoma: "PNG exportado com background branco em vez de transparente"
+    causa_raiz: "Transparency flag nao especificado no request"
+    mitigacao: "Transparency detectada automaticamente pelo use case — web = transparente por padrao"
+    severity: MEDIUM
+  - dor_id: D-S04-recraft_v3-11
+    name: "Animacao de asset incompativel com destino"
+    sintoma: "GIF animado gerado quando destino e Lottie/CSS"
+    causa_raiz: "Output format nao derivado do destino de uso"
+    mitigacao: "Animation format derivado do destino declarado — Lottie para web, GIF para fallback"
+    severity: MEDIUM
+  - dor_id: D-S04-recraft_v3-12
+    name: "Ilustracao com texto nao editavel"
+    sintoma: "Texto na ilustracao e parte do raster e nao pode ser alterado"
+    causa_raiz: "Texto nao separado em layer proprio"
+    mitigacao: "Text layer separation obrigatoria — texto sempre em objeto separado e editavel"
+    severity: HIGH
+  - dor_id: D-S04-recraft_v3-13
+    name: "Geracao lenta sem cache de style reference"
+    sintoma: "Cada geracao recalcula o style embedding do zero"
+    causa_raiz: "Style reference nao cacheado entre geracoes"
+    mitigacao: "Style embedding cacheado por sessao — reuso em geracoes subsequentes"
+    severity: MEDIUM
+  - dor_id: D-S04-recraft_v3-14
+    name: "Resolucao inadequada para o canal de destino"
+    sintoma: "Asset para outdoor gerado em resolucao web"
+    causa_raiz: "Destino de uso nao mapeia automaticamente para resolucao"
+    mitigacao: "Resolution mapping por canal — outdoor: 300dpi+, web: 72-96dpi, social: 150dpi"
+    severity: HIGH
+  - dor_id: D-S04-recraft_v3-15
+    name: "Ausencia de variante dark mode do asset"
+    sintoma: "Sistema que suporta dark mode recebe apenas versao light"
+    causa_raiz: "Dark mode variant nao gerada automaticamente"
+    mitigacao: "Dark mode variant gerada automaticamente para assets de UI — pares light/dark"
+    severity: MEDIUM
