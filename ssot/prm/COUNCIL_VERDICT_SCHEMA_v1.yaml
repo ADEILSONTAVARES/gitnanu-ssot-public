@@ -1,0 +1,51 @@
+ssot_id: COUNCIL_VERDICT_SCHEMA_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Council Verdict Schema — 100x3 (J1+J2+J3)"
+  sistema: NANUCAI OG10
+  pointer_json: "ssot/schemas/council_verdict.schema.json"
+
+council_100x3:
+  juizes: [J1, J2, J3]
+  total_benchmarks: 100
+  quorum: "2/3 para PASS, 3/3 para BLOCK"
+
+schema_veredicto:
+  job_id: "JOB_{uuid}"
+  studio_id: "S00-S51"
+  timestamp_utc: "ISO8601"
+  juizes:
+    J1: {voto: "PASS | BLOCK | ABSTAIN", score: "0.0-1.0", justificativa: "string"}
+    J2: {voto: "PASS | BLOCK | ABSTAIN", score: "0.0-1.0", justificativa: "string"}
+    J3: {voto: "PASS | BLOCK | ABSTAIN", score: "0.0-1.0", justificativa: "string"}
+  resultado_final: "PASS | BLOCK | ESCALATE"
+  evidence_ref: "vault_local/council/{job_id}/verdict.json"
+  action: "deploy | rollback | escalate | human_review"
+
+criterios_avaliacao:
+  - "No Evidence No Claim (T1)"
+  - "Raw Never in Chat (T2)"
+  - "Nota >= 9.0 (T3)"
+  - "Target vs Measured correto (T4)"
+  - "Blast radius aceitavel"
+  - "Budget dentro do threshold"
+  - "Schema valido"
+  - "Sem secrets expostos"
+
+triggers_council:
+  automatico:
+    - "studios_criticos S42-S51"
+    - "breaking_changes"
+    - "blast_radius_alto"
+    - "budget > threshold * 2"
+  manual:
+    - "operador solicita revisao"
+    - "Doctor2 escala"
+
+invariants:
+  - "Council verdict e imutavel apos emissao"
+  - "Evidence pack obrigatorio no verdict"
+  - "COCA-COLA LOCAL ONLY — vault nao vai para repo publico"
