@@ -1,0 +1,50 @@
+ssot_id: LTA_PROMOTION_POLICY_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "LTA Promotion Policy — Long-Term Archive"
+  sistema: NANUCAI OG10
+  pointer_memoria: "ssot/memoria/LTA_POLICY.yaml"
+
+politica_promocao:
+  condicoes_obrigatorias:
+    - "relevancia >= 0.90 em >= 3 jobs distintos"
+    - "evidence_seal = true (SHA256 + Ed25519)"
+    - "doctor2_pass = true"
+    - "quality_score >= 0.90"
+    - "contradiction_suspected = false"
+    - "poison_detected = false"
+
+  condicoes_bloqueio:
+    - "contradiction_suspected = true => lta_promotion = BLOCKED"
+    - "poison_detected = true => quarantined = true, lta_promotion = BLOCKED"
+    - "evidence_ref ausente => lta_promotion = BLOCKED"
+
+  mcp_responsavel: "MCP_LTA_Promotion"
+  trigger: "U2 (apos evidence_seal)"
+  latencia_p95: "2s"
+
+familias_lta:
+  F1_SSOT:   {descricao: "Arquivos SSOT canonicos", retencao: "permanente"}
+  F2_CODE:   {descricao: "Codigo gerado e validado", retencao: "3 anos"}
+  F3_MCP:    {descricao: "Specs e resultados MCP", retencao: "3 anos"}
+  F4_RUNS:   {descricao: "Historico de execucoes", retencao: "1 ano"}
+  F5_BENCH:  {descricao: "Resultados bench90", retencao: "permanente"}
+  F6_OPS:    {descricao: "Operacoes GitNanu", retencao: "2 anos"}
+  F7_MEDIA:  {descricao: "Artefatos de midia", retencao: "1 ano"}
+
+storage:
+  backend: "GNDrive (Cloudflare R2)"
+  path_pattern: "vault_local/lta/{familia}/{job_id}/{artifact_id}"
+  coca_local_only: true
+  nota: "LTA vault nunca vai para repo publico — COCA-COLA LOCAL ONLY"
+
+invariants:
+  - "Raw Never in LTA sem evidence_seal"
+  - "Contradiction blocks promotion permanentemente"
+  - "LTA e somente leitura apos promocao — imutavel"
+
+formula_rag: "4x3pQ2 10x10x10x10(2)"
+precision_at_5_target: 0.98
