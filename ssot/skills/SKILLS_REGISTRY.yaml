@@ -1,0 +1,77 @@
+ssot_id: SKILLS_REGISTRY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Skills Registry — catalogo completo de skills OG10"
+  sistema: NANUCAI OG10
+  pointer_template: "ssot/skills/templates/SKILL_TEMPLATE_CANON_v1.yaml"
+
+tiers:
+  U0: {nome: "Intake + Inspect + Route", tokens_max: 60, camada: L0, custo: "zero LLM"}
+  U1: {nome: "Execute + Enrich", tokens_max: 500, camada: "L1-L2", custo: "baixo"}
+  U2: {nome: "Seal + Store + Report", tokens_max: 200, camada: "L2-L3", custo: "medio"}
+
+skills_core:
+
+  SK_PATCH_FIRST:
+    nome: "Patch-First Edit"
+    tier: U1
+    studio: "S02"
+    descricao: "str_replace cirurgico — max 50 linhas, 3 arquivos, 500 tokens"
+    mcps: [MCP_Patch_Generate, MCP_Undo_Token_Create, MCP_Patch_Apply]
+    score: 9.5
+
+  SK_CONTEXT_ENRICH:
+    nome: "Context Enrichment"
+    tier: U1
+    studio: "S00"
+    descricao: "Enriquece contexto com docs, MCPs e cache"
+    mcps: [MCP_Context7x, MCP_MCPContext, MCP_Cache_Quantum_Lookup]
+    score: 9.3
+
+  SK_EVIDENCE_SEAL:
+    nome: "Evidence Seal"
+    tier: U2
+    studio: "S00"
+    descricao: "Sela evidence pack no vault apos execucao"
+    mcps: [MCP_Evidence_Seal, MCP_Evidence_Store_GNDrive]
+    score: 10.0
+
+  SK_RESEARCH_WEB:
+    nome: "Web Research"
+    tier: U1
+    studio: "S05"
+    descricao: "Pesquisa web estruturada com Firecrawl + Brave"
+    mcps: [MCP_Firecrawl, MCP_Brave_Search, MCP_Evidence_Seal]
+    score: 9.4
+
+  SK_TEST_GENERATE:
+    nome: "Test Generation"
+    tier: U1
+    studio: "S02"
+    descricao: "Gera e executa testes automatizados"
+    mcps: [MCP_TestSprite, MCP_Ralph_Loop]
+    score: 9.5
+
+  SK_COUNCIL_REVIEW:
+    nome: "Council Review"
+    tier: U2
+    studio: "S00"
+    descricao: "Submete artefato para Council 100x3"
+    mcps: [MCP_Thinking_Anthropic, MCP_Thinking_OpenAI, MCP_Evidence_Seal]
+    score: 10.0
+
+  SK_MEMORY_STORE:
+    nome: "Memory Store LTA"
+    tier: U2
+    studio: "S01"
+    descricao: "Armazena memoria de longo prazo via PHDMat"
+    mcps: [MCP_PHDMat_Full, MCP_Context_Compressor_Serena]
+    score: 10.0
+
+invariants:
+  - "Todo skill tem tier U0/U1/U2 obrigatorio"
+  - "Score < 8.5 nao entra no registry de producao"
+  - "U0 nunca chama LLM — deterministic only"
