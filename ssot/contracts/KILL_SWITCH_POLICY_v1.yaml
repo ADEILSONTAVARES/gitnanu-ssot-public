@@ -1,0 +1,38 @@
+ssot_id: KILL_SWITCH_POLICY_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Kill Switch Policy — parada emergencial"
+  sistema: NANUCAI OG10
+  pointer: "ssot/guardrails/GUARDRAILS_POLICIES.yaml"
+
+triggers:
+  automaticos:
+    - "scope_violation detectada"
+    - "secret_detected em output"
+    - "budget_exceeded (job_cost > max * 1.5)"
+    - "time_exceeded (timeout)"
+    - "network_attempt em runner isolado"
+    - "signature_invalid em evidence"
+
+  manuais:
+    - "comando explícito do operador"
+    - "Council 100x3 veredito BLOCK"
+    - "Doctor2 blast_radius_alto"
+
+acoes_kill:
+  sequencia:
+    1: "kill job imediato"
+    2: "rollback para ultimo checkpoint"
+    3: "quarantine artifacts suspeitos"
+    4: "log incident em vault_local/incidents/"
+    5: "notificar Doctor1 + operador"
+
+  preserva: "dados do cliente (nunca deletar)"
+  coca_local_only: true
+
+retomada:
+  condicao: "revisao manual + Council aprovacao"
+  evidence_obrigatoria: true
