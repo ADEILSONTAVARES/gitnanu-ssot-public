@@ -1,0 +1,44 @@
+ssot_id: PUSH_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Push Policy — politica de escrita no repositorio"
+  sistema: NANUCAI OG10
+
+single_writer:
+  writer: "GitNanu (gitnanu-vps)"
+  regra: "UNICO com permissao de push para main"
+  outros_devices: "pull apenas — nunca push direto"
+
+branch_protection:
+  main:
+    force_push: "BLOQUEADO"
+    delete: "BLOQUEADO"
+    requer_pass_strict: true
+    requer_review: false
+    nota: "GitNanu e owner — review nao necessario pois gate e automatico"
+
+pre_push_obrigatorio:
+  1: "PASS_STRICT local antes de qualquer push"
+  2: "Sem secrets detectados (secret_scan_light)"
+  3: "Sem placeholders (no_placeholders)"
+  4: "Actions index valido (35120 actions, 0 errors)"
+
+fluxo_mac_para_github:
+  1: "Mac edita arquivos localmente"
+  2: "Mac roda gate local"
+  3: "Mac cria bundle ou usa deploy script"
+  4: "VPS/GitNanu recebe e faz push"
+  5: "GitHub atualizado"
+
+emergencia:
+  condicao: "GitNanu offline"
+  alternativa: "Mac pode usar deploy scripts via GitHub API"
+  nota: "API REST e equivalente ao push — PASS_STRICT ainda obrigatorio"
+
+invariants:
+  - "Zero pushes sem PASS_STRICT"
+  - "Force push nunca permitido em main"
+  - "Single writer — sem excecoes"
