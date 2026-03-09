@@ -1,0 +1,95 @@
+studio_id: S05
+api: playht
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-playht-01
+    name: "Clone de voz com apenas 5 segundos de audio resulta em qualidade ruim"
+    sintoma: "Voz clonada soando artificial com poucos dados"
+    causa_raiz: "Amostra insuficiente para clonagem de qualidade"
+    mitigacao: "Minimum sample duration enforced — alertar se amostra < 30s"
+    severity: HIGH
+  - dor_id: D-S05-playht-02
+    name: "Voz premium cobrada sem aviso de custo"
+    sintoma: "Usuario usa voz premium sem saber do custo adicional"
+    causa_raiz: "Sem indicador de custo por voz na selecao"
+    mitigacao: "Cost indicator obrigatorio na selecao de voz — exibir custo por 1000 chars"
+    severity: CRITICAL
+  - dor_id: D-S05-playht-03
+    name: "Geracao lenta em horario de pico"
+    sintoma: "Latencia de 10s para sintetizar 200 palavras"
+    causa_raiz: "Sem priorizacao de requests por SLA"
+    mitigacao: "Request prioritization — SLA tiers com filas separadas"
+    severity: HIGH
+  - dor_id: D-S05-playht-04
+    name: "Audio exportado com formato errado"
+    sintoma: "FLAC entregue quando sistema aceita apenas WAV"
+    causa_raiz: "Output format nao validado contra destino"
+    mitigacao: "Format validation gate — verificar compatibilidade antes de exportar"
+    severity: HIGH
+  - dor_id: D-S05-playht-05
+    name: "Voz inconsistente em textos com codigos"
+    sintoma: "Trechos de codigo lidos letra por letra"
+    causa_raiz: "Texto tecnico nao preprocessado"
+    mitigacao: "Code block detection — substituir por descricao falavel antes de sintetizar"
+    severity: CRITICAL
+  - dor_id: D-S05-playht-06
+    name: "Emocao errada em pontuacao ambigua"
+    sintoma: "Ponto de interrogacao em afirmacao causa entonacao estranha"
+    causa_raiz: "SSML nao inferido da pontuacao"
+    mitigacao: "SSML inference da pontuacao — mapear sinais de pontuacao para prosody"
+    severity: HIGH
+  - dor_id: D-S05-playht-07
+    name: "Limite de caracteres por request nao documentado"
+    sintoma: "Request falha silenciosamente em textos longos"
+    causa_raiz: "Limite nao exposto na API"
+    mitigacao: "Character limit validation pre-request — alertar e chunkar automaticamente"
+    severity: MEDIUM
+  - dor_id: D-S05-playht-08
+    name: "Audio de preview diferente do audio final"
+    sintoma: "Qualidade do preview nao representa o output real"
+    causa_raiz: "Preview usa modelo de qualidade reduzida"
+    mitigacao: "Preview quality parity — usar mesmo modelo do output final"
+    severity: HIGH
+  - dor_id: D-S05-playht-09
+    name: "Falta de suporte offline"
+    sintoma: "Sintese falha quando conexao cai"
+    causa_raiz: "Sem cache de vozes para uso offline"
+    mitigacao: "Offline cache — cachear vozes frequentes para uso sem conexao"
+    severity: MEDIUM
+  - dor_id: D-S05-playht-10
+    name: "Geracao sem historico auditavel"
+    sintoma: "Impossivel saber quais textos foram sintetizados"
+    causa_raiz: "Sem audit log de requisicoes"
+    mitigacao: "Audit log obrigatorio — texto, voz, timestamp, usuario, custo"
+    severity: CRITICAL
+  - dor_id: D-S05-playht-11
+    name: "Erro 429 sem informacao de retry-after"
+    sintoma: "Rate limit sem indicar quando tentar novamente"
+    causa_raiz: "Header retry-after nao incluido na resposta"
+    mitigacao: "Retry-after header obrigatorio em toda resposta 429"
+    severity: HIGH
+  - dor_id: D-S05-playht-12
+    name: "Pronuncia de numeros inconsistente"
+    sintoma: "1000 lido como 'um zero zero zero' em vez de 'mil'"
+    causa_raiz: "Number normalization nao implementada"
+    mitigacao: "Number normalization gate — converter numeros para forma por extenso antes de sintetizar"
+    severity: MEDIUM
+  - dor_id: D-S05-playht-13
+    name: "Audio gerado sem tag de idioma"
+    sintoma: "Player nao sabe o idioma para configurar acessibilidade"
+    causa_raiz: "Language metadata nao incluido no output"
+    mitigacao: "Language tag obrigatorio no metadata do output — ISO 639-1"
+    severity: HIGH
+  - dor_id: D-S05-playht-14
+    name: "Silencio excessivo entre paragrafos"
+    sintoma: "Pausa de 3s entre paragrafos causa experiencia ruim"
+    causa_raiz: "Silence padding nao configuravel"
+    mitigacao: "Silence padding configuravel — padrao 500ms, customizavel por use case"
+    severity: MEDIUM
+  - dor_id: D-S05-playht-15
+    name: "Sem suporte a multiplos locutores no mesmo audio"
+    sintoma: "Dialogo entre dois personagens usa mesma voz"
+    causa_raiz: "Multi-speaker nao implementado"
+    mitigacao: "Multi-speaker SSML — tags de speaker para alternar vozes no mesmo texto"
+    severity: LOW
