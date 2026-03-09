@@ -1,0 +1,95 @@
+studio_id: S00
+api: mouse_inteligente
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-mi-01
+    name: "Elemento canonico nao detectado"
+    sintoma: "Mouse seleciona elemento errado ou nao encontra alvo"
+    causa_raiz: "Canonical element detection sem fallback"
+    mitigacao: "MS01 Detect elemento canonico com fallback por selector alternativo"
+    severity: CRITICAL
+  - dor_id: D-S00-mi-02
+    name: "Patch sem undo token"
+    sintoma: "Alteracao aplicada sem possibilidade de reverter"
+    causa_raiz: "MS37 Emitir undo token ausente antes do patch"
+    mitigacao: "Undo token obrigatorio antes de qualquer mutacao"
+    severity: CRITICAL
+  - dor_id: D-S00-mi-03
+    name: "Propagacao sem rollback plan"
+    sintoma: "Mudanca propagada para superficies irmas sem plano de reversao"
+    causa_raiz: "MS38 Criar rollback plan nao executado antes da propagacao"
+    mitigacao: "Rollback plan obrigatorio junto com propagation plan"
+    severity: CRITICAL
+  - dor_id: D-S00-mi-04
+    name: "Brand lock violado"
+    sintoma: "Cor, tipografia ou token visual fora do brand kit aplicado"
+    causa_raiz: "MS14 Travar identidade visual nao verificado antes do patch"
+    mitigacao: "Brand lock check antes de qualquer patch visual"
+    severity: CRITICAL
+  - dor_id: D-S00-mi-05
+    name: "Evidence pack ausente pos-patch"
+    sintoma: "Patch aplicado sem registro auditavel"
+    causa_raiz: "MS46 Gerar evidence pack nao executado"
+    mitigacao: "Evidence pack com SHA256 obrigatorio em todo patch"
+    severity: CRITICAL
+  - dor_id: D-S00-mi-06
+    name: "Diff visivel nao gerado antes do patch"
+    sintoma: "Alteracao aplicada sem preview do que mudou"
+    causa_raiz: "MS32 Gerar diff minimo ausente"
+    mitigacao: "Diff preview obrigatorio — sem diff sem patch"
+    severity: HIGH
+  - dor_id: D-S00-mi-07
+    name: "Dependencia de componente pai ignorada"
+    sintoma: "Patch em filho quebra layout do pai"
+    causa_raiz: "MS02 Resolver componente pai-filho nao verificado"
+    mitigacao: "Mapear dependencias pai-filho antes de qualquer edicao"
+    severity: HIGH
+  - dor_id: D-S00-mi-08
+    name: "Surface irma nao mapeada"
+    sintoma: "Mudanca em desktop nao propagada para mobile"
+    causa_raiz: "MS41 Mapear superficies irmas ignorado"
+    mitigacao: "Surface map obrigatorio antes de patch em superficie principal"
+    severity: HIGH
+  - dor_id: D-S00-mi-09
+    name: "Risco de patch nao classificado"
+    sintoma: "Patch critico aplicado sem aprovacao humana"
+    causa_raiz: "MS36 Classificar risco patch ausente"
+    mitigacao: "Risk score obrigatorio; patches CRITICAL exigem aprovacao"
+    severity: HIGH
+  - dor_id: D-S00-mi-10
+    name: "Teste minimo pos-patch ausente"
+    sintoma: "Regressao visual nao detectada apos edicao"
+    causa_raiz: "MS34 Rodar teste minimo pos-patch nao executado"
+    mitigacao: "Smoke test visual obrigatorio apos qualquer patch de UI"
+    severity: HIGH
+  - dor_id: D-S00-mi-11
+    name: "Score target vs measured misturado"
+    sintoma: "Relatorio mostra TARGET como se fosse resultado real"
+    causa_raiz: "MS47 Registrar score target vs measured violando T4"
+    mitigacao: "TARGET e MEASURED nunca misturados — Lock T4"
+    severity: HIGH
+  - dor_id: D-S00-mi-12
+    name: "Feature flag ativada sem tracking"
+    sintoma: "Feature ligada sem registro de quando e por quem"
+    causa_raiz: "MS24 sem audit trail"
+    mitigacao: "Toda ativacao de feature flag gera audit entry"
+    severity: MEDIUM
+  - dor_id: D-S00-mi-13
+    name: "Prototipo desconectado do estado real"
+    sintoma: "Simulacao nao reflete comportamento do produto"
+    causa_raiz: "MS26 Criar estado prototipo sem vinculo ao estado real"
+    mitigacao: "Prototipo sempre vinculado ao estado canonico atual"
+    severity: MEDIUM
+  - dor_id: D-S00-mi-14
+    name: "Custo real do patch nao calculado"
+    sintoma: "Impacto financeiro da edicao desconhecido"
+    causa_raiz: "MS49 Calcular custo real patch ausente"
+    mitigacao: "Custo estimado emitido junto com o evidence pack"
+    severity: MEDIUM
+  - dor_id: D-S00-mi-15
+    name: "Checksum de lineage ausente"
+    sintoma: "Impossivel rastrear origem do elemento editado"
+    causa_raiz: "MS50 Gerar checksums lineage nao executado"
+    mitigacao: "Checksums de lineage obrigatorios em todo patch commitado"
+    severity: MEDIUM
