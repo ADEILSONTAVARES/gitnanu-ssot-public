@@ -1,0 +1,150 @@
+spec_id: BENCHPACK_90_REGISTRY_v1
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "BenchPack 90 — Registry Completo de Benchmarks"
+  system: NANUCAI OG10
+  total_benchmarks: 90
+  pipeline: "60-60-60-150-150-100x3"
+  total_points: 780
+  compressed_to: "nota BENCH90 (0-90)"
+  gate_required: PASS_STRICT
+
+formula:
+  pipeline: "60-60-60-150-150-100x3"
+  sections:
+    F_fidelidade:   {points: 60, weight: 0.45, benchmarks: 20}
+    V_velocidade:   {points: 60, weight: 0.35, benchmarks: 20}
+    E_evidencia:    {points: 60, weight: 0.20, benchmarks: 20}
+    integration:    {points: 150, benchmarks: 15}
+    stress:         {points: 150, benchmarks: 10}
+    council_3x:     {points: "100x3=300", benchmarks: 5}
+  total_raw_points: 780
+  compressed_scale: "0-90 (divisao por 8.67)"
+
+benchmarks:
+
+  # --- SECAO F: FIDELIDADE (20 benchmarks, 60pts) ---
+  fidelidade:
+    BF01: {nome: "Claim rastreavel a evidence_pack", pts: 3, critico: true}
+    BF02: {nome: "Zero alucinacao em output estruturado", pts: 3, critico: true}
+    BF03: {nome: "YAML schema valido apos geracao", pts: 3, critico: true}
+    BF04: {nome: "Sem placeholders em producao", pts: 3, critico: true}
+    BF05: {nome: "Invariantes T1-T4 preservados", pts: 3, critico: true}
+    BF06: {nome: "Studio ID correto no contexto", pts: 3}
+    BF07: {nome: "Action ID formato correto A-SXX-PREFIX-NN", pts: 3}
+    BF08: {nome: "Dores P01-P15 mapeadas corretamente", pts: 3}
+    BF09: {nome: "Skills U0/U1/U2 atribuidas corretamente", pts: 3}
+    BF10: {nome: "Familia API correta (llm/media/infra/dev/search/payments/comms)", pts: 3}
+    BF11: {nome: "Budget lane correto (L0/L1/L2/L3)", pts: 3}
+    BF12: {nome: "COCA-COLA LOCAL ONLY respeitado", pts: 3}
+    BF13: {nome: "GitNanu single-writer preservado", pts: 3}
+    BF14: {nome: "Raw content nunca em chat (T2)", pts: 3}
+    BF15: {nome: "Target vs Measured separados (T4)", pts: 3}
+    BF16: {nome: "Nota 9.6 minimo por action", pts: 3}
+    BF17: {nome: "Zero gaps em studio coverage", pts: 3}
+    BF18: {nome: "Doctor Gates fail-closed", pts: 3}
+    BF19: {nome: "PASS_STRICT antes de todo push", pts: 3}
+    BF20: {nome: "Evidence pack sha256 valido", pts: 3}
+
+  # --- SECAO V: VELOCIDADE (20 benchmarks, 60pts) ---
+  velocidade:
+    BV01: {nome: "Latencia P95 L0 <= 60ms", pts: 3, critico: true}
+    BV02: {nome: "Latencia P95 L1 <= 150ms", pts: 3, critico: true}
+    BV03: {nome: "Latencia P95 L2 <= 500ms", pts: 3}
+    BV04: {nome: "Latencia P95 L3 <= 2000ms", pts: 3}
+    BV05: {nome: "CPSJ L0 <= USD 0.000051", pts: 3, critico: true}
+    BV06: {nome: "Shadow band 0.3-0.6% respeitado", pts: 3}
+    BV07: {nome: "BudgetGuard ativo e funcional", pts: 3}
+    BV08: {nome: "Prewarm cache hit >= 80%", pts: 3}
+    BV09: {nome: "Router decisao <= 60ms", pts: 3}
+    BV10: {nome: "SERENA compressao <= 200ms", pts: 3}
+    BV11: {nome: "AGNO orquestracao overhead <= 30ms", pts: 3}
+    BV12: {nome: "PAC load <= 50ms", pts: 3}
+    BV13: {nome: "Doctor1 gate <= 500ms", pts: 3}
+    BV14: {nome: "Doctor2 deep <= 2000ms", pts: 3}
+    BV15: {nome: "Council 100x3 <= 500ms", pts: 3}
+    BV16: {nome: "Throughput >= 100 req/s L0", pts: 3}
+    BV17: {nome: "Memory RAG query <= 100ms", pts: 3}
+    BV18: {nome: "Addon L0 always-on <= 10ms overhead", pts: 3}
+    BV19: {nome: "GitNanu write <= 5s", pts: 3}
+    BV20: {nome: "Custo total sistema <= cap 85/15 split", pts: 3}
+
+  # --- SECAO E: EVIDENCIA (20 benchmarks, 60pts) ---
+  evidencia:
+    BE01: {nome: "bench90_results.json existe e assinado", pts: 3, critico: true}
+    BE02: {nome: "ledger_cost.json atualizado", pts: 3, critico: true}
+    BE03: {nome: "evidence_pack.manifest.json presente", pts: 3, critico: true}
+    BE04: {nome: "CI green no ultimo commit", pts: 3, critico: true}
+    BE05: {nome: "PASS_STRICT 7/7 validators", pts: 3, critico: true}
+    BE06: {nome: "audited=true somente com evidencia real", pts: 3}
+    BE07: {nome: "Measured fields preenchidos (nao TARGET)", pts: 3}
+    BE08: {nome: "SHA256 de todos evidence files validos", pts: 3}
+    BE09: {nome: "Council verdict assinado por J1+J2+J3", pts: 3}
+    BE10: {nome: "Zero secrets em repo publico", pts: 3}
+    BE11: {nome: "UNVERIFIED marcado onde sem evidencia", pts: 3}
+    BE12: {nome: "Runbooks executaveis e testados", pts: 3}
+    BE13: {nome: "Actions Index 0 erros 0 warnings", pts: 3}
+    BE14: {nome: "Studio coverage 52/52 completo", pts: 3}
+    BE15: {nome: "MCP selftest contract passing", pts: 3}
+    BE16: {nome: "COCA Guard scan clean", pts: 3}
+    BE17: {nome: "Basileia 52 validator PASS", pts: 3}
+    BE18: {nome: "Gateway bridge map validator PASS", pts: 3}
+    BE19: {nome: "Runtime not committed validator PASS", pts: 3}
+    BE20: {nome: "Secret scan light validator PASS", pts: 3}
+
+  # --- SECAO INTEGRATION (15 benchmarks, 150pts) ---
+  integration:
+    BI01: {nome: "PrM -> Router -> Studio fluxo completo", pts: 10, critico: true}
+    BI02: {nome: "PAC 2k/4k/8k/12k todos funcionais", pts: 10}
+    BI03: {nome: "SERENA compressao sem perda semantica", pts: 10}
+    BI04: {nome: "Doctor1 bloqueia commit invalido", pts: 10, critico: true}
+    BI05: {nome: "Doctor2 deep audit funcional", pts: 10}
+    BI06: {nome: "GitNanu rejeita push nao-autorizado", pts: 10, critico: true}
+    BI07: {nome: "COCA Guard detecta secret em pre-commit", pts: 10, critico: true}
+    BI08: {nome: "Memory RAG recupera contexto correto", pts: 10}
+    BI09: {nome: "Addons L0 ativados sem configuracao", pts: 10}
+    BI10: {nome: "Addons L1-L3 ativados por trigger", pts: 10}
+    BI11: {nome: "n8n workflow AG_GATEWAY_002 funcional", pts: 10}
+    BI12: {nome: "Supabase Vector Lite operacional", pts: 10}
+    BI13: {nome: "Stripe billing integrado", pts: 10}
+    BI14: {nome: "AntiGravity (Gemini) responsivo", pts: 10}
+    BI15: {nome: "Council 100x3 consenso correto", pts: 10}
+
+  # --- SECAO STRESS (10 benchmarks, 150pts) ---
+  stress:
+    BS01: {nome: "100 req/s sustentado por 60s sem degradacao", pts: 15, critico: true}
+    BS02: {nome: "Burst 500 req em 10s sem timeout", pts: 15}
+    BS03: {nome: "Shadow band mantida sob carga", pts: 15}
+    BS04: {nome: "Memory RAG consistente sob concorrencia", pts: 15}
+    BS05: {nome: "Doctor Gates funcional sob carga", pts: 15}
+    BS06: {nome: "BudgetGuard corta quando cap atingido", pts: 15, critico: true}
+    BS07: {nome: "Prewarm mantido sob carga", pts: 15}
+    BS08: {nome: "GitNanu single-writer sob concorrencia", pts: 15}
+    BS09: {nome: "SERENA latencia mantida sob carga", pts: 15}
+    BS10: {nome: "Failover gracioso quando MCP indisponivel", pts: 15}
+
+  # --- SECAO COUNCIL 100x3 (5 benchmarks, 300pts) ---
+  council:
+    BC01: {nome: "Consenso correto em claim valido", pts: 60, critico: true}
+    BC02: {nome: "Bloqueio correto em claim sem evidencia", pts: 60, critico: true}
+    BC03: {nome: "J1+J2+J3 independentes sem vazamento", pts: 60}
+    BC04: {nome: "Verdict assinado e rastreavel", pts: 60}
+    BC05: {nome: "Tempo council <= SLA 500ms", pts: 60}
+
+scoring_rules:
+  benchmark_critico_fail: "BLOQUEIA nota — nao ha compensacao"
+  benchmark_normal_fail: "Desconto proporcional aos pontos"
+  nota_minima_aprovacao: 9.6
+  formula_nota: "soma_pontos_obtidos / 780 * 90"
+
+status_atual:
+  nota: UNVERIFIED
+  measured: null
+  target: 90.0
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
+    - "council_verdict_bench90.json"
