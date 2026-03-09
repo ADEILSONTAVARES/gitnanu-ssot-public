@@ -1,0 +1,90 @@
+spec_id: GATEWAY_BRIDGE_MAP
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Gateway Bridge Map — Mapeamento de Rotas e Bridges"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+description: >
+  Mapa de todas as bridges entre o Gateway central e os 52 Studios.
+  Cada entry define o studio_id, lane, modelo_default e limites de budget.
+
+gateway_config_ref: "ssot/gateway/GATEWAY_CONFIG_OG10.yaml"
+
+bridges:
+
+  # --- LAYER L0 (deterministic, custo minimo) ---
+  L0_BRIDGE:
+    lane: L0
+    model_default: minimax-m2
+    max_tokens: 512
+    latencia_target_ms: 60
+    budget_pct: 85
+    studios: [S00, S01, S02, S03, S04, S05, S06, S07, S08, S09,
+              S10, S11, S12, S13, S14, S15, S16, S17, S18, S19,
+              S20, S21, S22, S23, S24, S25, S26, S27, S28, S29,
+              S30, S31, S32, S33, S34, S35, S36, S37, S38, S39,
+              S40, S41, S42, S43, S44, S45, S46, S47, S48, S49,
+              S50, S51]
+    fallback: L1_BRIDGE
+    doctor_gate: Doctor1
+
+  # --- LAYER L1 (LLM leve) ---
+  L1_BRIDGE:
+    lane: L1
+    model_default: kimi-k2.5
+    max_tokens: 2048
+    latencia_target_ms: 150
+    budget_pct: 10
+    fallback: L2_BRIDGE
+    doctor_gate: Doctor1
+
+  # --- LAYER L2 (LLM medio) ---
+  L2_BRIDGE:
+    lane: L2
+    model_default: claude-sonnet
+    max_tokens: 8192
+    latencia_target_ms: 500
+    budget_pct: 4
+    fallback: L3_BRIDGE
+    doctor_gate: Doctor2
+
+  # --- LAYER L3 (LLM pesado) ---
+  L3_BRIDGE:
+    lane: L3
+    model_default: deepseek-v3
+    max_tokens: 32768
+    latencia_target_ms: 2000
+    budget_pct: 1
+    fallback: null
+    doctor_gate: Doctor2
+
+  # --- BRIDGE ESPECIAL: AntiGravity (visual/multimodal) ---
+  ANTIGRAVITY_BRIDGE:
+    lane: L2_L3
+    model: gemini-3.1-pro
+    triggers: [visual_task, multimodal, long_context_100k]
+    latencia_target_ms: 3000
+    budget_lane: "incluido no 15% LLM"
+    doctor_gate: Doctor2
+
+  # --- BRIDGE ESPECIAL: GitNanu (operacoes repo) ---
+  GITNANU_BRIDGE:
+    lane: L0
+    type: tool_call
+    target: GitNanu
+    operations: [git_push, git_pull, file_create, file_update]
+    single_writer: true
+    latencia_target_ms: 5000
+    doctor_gate: Doctor1
+
+routing_rules_ref: "ssot/gateway/GATEWAY_ROUTING_RULES.yaml"
+
+invariants:
+  - "L0 sempre tentado primeiro — fallback apenas se L0 insuficiente"
+  - "Budget 85/15 split respeitado em toda rota"
+  - "Doctor Gate obrigatorio em toda transicao de lane"
+  - "COCA-COLA LOCAL ONLY — dados sensiveis nunca roteados para fora"
