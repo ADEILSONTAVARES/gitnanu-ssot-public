@@ -1,0 +1,95 @@
+studio_id: S01
+api: presentation_ai
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-presentation_ai-01
+    name: "Slide com texto excessivo"
+    sintoma: "IA gera slides com paragrafos inteiros em vez de bullet points"
+    causa_raiz: "Sem constraint de densidade de texto por slide"
+    mitigacao: "Max words per slide definido como hard limit (ex: 30 palavras)"
+    severity: HIGH
+  - dor_id: D-S01-presentation_ai-02
+    name: "Identidade visual ignorada"
+    sintoma: "Cores e fontes geradas nao seguem o branding do cliente"
+    causa_raiz: "Brand kit nao injetado como constraint"
+    mitigacao: "Brand lock obrigatorio — colors/fonts do brand kit aplicados antes da geracao"
+    severity: HIGH
+  - dor_id: D-S01-presentation_ai-03
+    name: "Ordem de slides incoerente com narrativa"
+    sintoma: "Fluxo da apresentacao nao segue logica problema-solucao-resultado"
+    causa_raiz: "Estrutura de slides gerada sem outline previo"
+    mitigacao: "Outline approval obrigatorio antes de gerar slides individuais"
+    severity: MEDIUM
+  - dor_id: D-S01-presentation_ai-04
+    name: "Imagens geradas sem relacao com o conteudo"
+    sintoma: "Slide sobre financas exibe imagem de natureza"
+    causa_raiz: "Prompt de imagem nao deriva do contexto do slide"
+    mitigacao: "Image prompt gerado a partir do titulo e bullet points do slide"
+    severity: MEDIUM
+  - dor_id: D-S01-presentation_ai-05
+    name: "Dados numericos sem fonte"
+    sintoma: "Slide exibe percentuais e metricas sem referencia"
+    causa_raiz: "Geracao sem grounding em evidencia verificada"
+    mitigacao: "Todo dado numerico exige fonte — evidencia obrigatoria (T1)"
+    severity: CRITICAL
+  - dor_id: D-S01-presentation_ai-06
+    name: "Export PPTX com layout quebrado"
+    sintoma: "Apresentacao abre com elementos sobrepostos no PowerPoint"
+    causa_raiz: "Coordenadas de posicionamento calculadas incorretamente"
+    mitigacao: "Layout validation gate pos-geracao antes do export"
+    severity: HIGH
+  - dor_id: D-S01-presentation_ai-07
+    name: "Slide de abertura sem contexto do publico-alvo"
+    sintoma: "Apresentacao generica nao adaptada ao nivel do audiencia"
+    causa_raiz: "Audience profile nao definido antes da geracao"
+    mitigacao: "Audience definition obrigatoria no preflight da sessao"
+    severity: MEDIUM
+  - dor_id: D-S01-presentation_ai-08
+    name: "Animacoes inacessiveis"
+    sintoma: "Transicoes rapidas dificultam leitura para usuarios com deficiencias cognitivas"
+    causa_raiz: "Sem accessibility check nas animacoes"
+    mitigacao: "Animation accessibility gate — reduced motion por padrao"
+    severity: MEDIUM
+  - dor_id: D-S01-presentation_ai-09
+    name: "Regeneracao de slide apaga notas do apresentador"
+    sintoma: "Speaker notes escritas manualmente sao perdidas na regeneracao"
+    causa_raiz: "Regeneracao sobrescreve o slide inteiro incluindo metadados"
+    mitigacao: "Speaker notes preservadas em campo separado imune a regeneracao"
+    severity: HIGH
+  - dor_id: D-S01-presentation_ai-10
+    name: "Numero de slides diferente do solicitado"
+    sintoma: "Pedido de 10 slides gera 18"
+    causa_raiz: "Sem hard constraint no numero de slides"
+    mitigacao: "Slide count como hard limit — nao expandir sem aprovacao"
+    severity: MEDIUM
+  - dor_id: D-S01-presentation_ai-11
+    name: "Slide de CTA sem acao clara"
+    sintoma: "Ultimo slide nao direciona o audiencia para proximo passo"
+    causa_raiz: "CTA nao definido como campo obrigatorio no template"
+    mitigacao: "CTA obrigatorio no ultimo slide — campo required no schema"
+    severity: MEDIUM
+  - dor_id: D-S01-presentation_ai-12
+    name: "Conteudo duplicado entre slides"
+    sintoma: "Mesmo ponto aparece em slides diferentes com variacoes minimas"
+    causa_raiz: "Sem deduplicacao de conteudo durante geracao"
+    mitigacao: "Content dedup check entre slides antes do export"
+    severity: LOW
+  - dor_id: D-S01-presentation_ai-13
+    name: "Apresentacao nao adaptada ao tempo disponivel"
+    sintoma: "30 slides para apresentacao de 10 minutos"
+    causa_raiz: "Duracao da apresentacao nao definida como constraint"
+    mitigacao: "Duration constraint — calcular slides maximos por tempo (1 slide/2min)"
+    severity: MEDIUM
+  - dor_id: D-S01-presentation_ai-14
+    name: "Graficos gerados com dados incorretos"
+    sintoma: "Barra chart exibe valores diferentes da tabela de dados"
+    causa_raiz: "Dados para chart extraidos incorretamente"
+    mitigacao: "Chart data validation — comparar valores do chart com fonte antes do export"
+    severity: CRITICAL
+  - dor_id: D-S01-presentation_ai-15
+    name: "Idioma misturado entre slides"
+    sintoma: "Alguns slides em PT-BR e outros em EN na mesma apresentacao"
+    causa_raiz: "Language lock nao aplicado em toda a sessao"
+    mitigacao: "Language constraint aplicado globalmente — sem excecoes por slide"
+    severity: HIGH
