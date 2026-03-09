@@ -1,0 +1,95 @@
+studio_id: S07
+api: lip_sync_engine
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-lip_sync_engine-01
+    name: "Sincronizacao visivel fora do beat em alta velocidade"
+    sintoma: "Fala rapida com labios atrasados"
+    causa_raiz: "Pipeline de audio-to-viseme com latencia alta"
+    mitigacao: "Viseme pipeline otimizado — latencia < 16ms para 60fps"
+    severity: CRITICAL
+  - dor_id: D-S07-lip_sync_engine-02
+    name: "Bocas distorcidas em angulos de perfil"
+    sintoma: "Sincronizacao funciona apenas de frente"
+    causa_raiz: "Pose estimation nao aplicado"
+    mitigacao: "Multi-angle lipsync — adaptar visemes ao angulo do rosto detectado"
+    severity: HIGH
+  - dor_id: D-S07-lip_sync_engine-03
+    name: "Audio e video dessincronizados apos compressao"
+    sintoma: "Sync correto no master, errado no export"
+    causa_raiz: "Timecode nao preservado na compressao"
+    mitigacao: "Timecode preservation — embedding de sync markers antes da compressao"
+    severity: HIGH
+  - dor_id: D-S07-lip_sync_engine-04
+    name: "Sincronizacao ruim em idiomas nao-latinos"
+    sintoma: "Japones e arabe com labios incorretos"
+    causa_raiz: "Phoneme set limitado a idiomas ocidentais"
+    mitigacao: "Multilingual phoneme support — viseme sets para CJK, arabe e outros idiomas"
+    severity: HIGH
+  - dor_id: D-S07-lip_sync_engine-05
+    name: "Dentes gerados incorretamente"
+    sintoma: "Dentes multiplos ou formato errado"
+    causa_raiz: "Teeth generation sem constraint anatomico"
+    mitigacao: "Anatomical teeth constraint — modelo de dentes normativo como baseline"
+    severity: CRITICAL
+  - dor_id: D-S07-lip_sync_engine-06
+    name: "Expressao facial congelada durante lipsync"
+    sintoma: "Sobrancelhas e olhos parados enquanto boca se move"
+    causa_raiz: "Lipsync isolado de outras animacoes faciais"
+    mitigacao: "Full face integration — lipsync coexistindo com animacoes de olhos e sobrancelhas"
+    severity: HIGH
+  - dor_id: D-S07-lip_sync_engine-07
+    name: "Qualidade reduzida em compressao de video"
+    sintoma: "Artefatos de compressao nas areas de boca"
+    causa_raiz: "Keyframe inadequado em areas de movimento"
+    mitigacao: "Adaptive bitrate nas areas de movimento — garantir qualidade suficiente em regioes de labios"
+    severity: MEDIUM
+  - dor_id: D-S07-lip_sync_engine-08
+    name: "Falha em detectar inicio da fala"
+    sintoma: "Primeiras palavras sem sincronizacao"
+    causa_raiz: "VAD threshold incorreto"
+    mitigacao: "Voice Activity Detection calibrado — threshold adaptativo por nivel de ruido ambiental"
+    severity: CRITICAL
+  - dor_id: D-S07-lip_sync_engine-09
+    name: "Sem suporte a vozes off-screen"
+    sintoma: "Personagem fora de cena gera lipsync em personagem errado"
+    causa_raiz: "Speaker diarization ausente"
+    mitigacao: "Speaker diarization — identificar quem esta falando antes de aplicar lipsync"
+    severity: HIGH
+  - dor_id: D-S07-lip_sync_engine-10
+    name: "Performance degradada em video 4K"
+    sintoma: "Processamento de 4K 4x mais lento que 1080p"
+    causa_raiz: "Pipeline nao otimizado para alta resolucao"
+    mitigacao: "Resolution-adaptive pipeline — processar em resolucao reduzida e upscalar resultado"
+    severity: MEDIUM
+  - dor_id: D-S07-lip_sync_engine-11
+    name: "Artefatos em labios com batom ou caracterizacao"
+    sintoma: "Maquiagem alterando deteccao de labios"
+    causa_raiz: "Makeup interference nao tratada"
+    mitigacao: "Makeup-robust detection — treinar detector em rostos com caracterizacao"
+    severity: HIGH
+  - dor_id: D-S07-lip_sync_engine-12
+    name: "Ausencia de controle de intensidade"
+    sintoma: "Lipsync sempre na intensidade maxima"
+    causa_raiz: "Intensity parameter ausente"
+    mitigacao: "Intensity control — parametro de 0 a 1 para intensidade do movimento labial"
+    severity: MEDIUM
+  - dor_id: D-S07-lip_sync_engine-13
+    name: "Sem modo de preview sem renderizacao"
+    sintoma: "Preview de sync demora tanto quanto o render final"
+    causa_raiz: "Draft preview ausente"
+    mitigacao: "Draft lipsync preview — overlay 2D rapido antes do render final"
+    severity: HIGH
+  - dor_id: D-S07-lip_sync_engine-14
+    name: "Falha em multiplos falantes simultaneos"
+    sintoma: "Cena com dois personagens falando ao mesmo tempo"
+    causa_raiz: "Multi-speaker sync nao suportado"
+    mitigacao: "Multi-speaker sync — sincronizar multiplos rostos independentemente no mesmo frame"
+    severity: MEDIUM
+  - dor_id: D-S07-lip_sync_engine-15
+    name: "Output sem metadata de sync quality"
+    sintoma: "Impossivel saber a qualidade do sync sem assistir"
+    causa_raiz: "Quality score ausente no output"
+    mitigacao: "Sync quality score — metrica de confianca por segmento no output"
+    severity: LOW
