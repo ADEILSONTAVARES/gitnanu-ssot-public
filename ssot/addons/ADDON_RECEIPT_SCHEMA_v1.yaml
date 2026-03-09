@@ -1,0 +1,66 @@
+ssot_id: ADDON_RECEIPT_SCHEMA_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Addon Receipt Schema — recibo de execucao de addon"
+  sistema: NANUCAI OG10
+  pointer_addons: "ssot/addons/actions/"
+
+schema_recibo:
+  job_id:
+    tipo: "string"
+    formato: "JOB_{uuid}"
+    obrigatorio: true
+
+  addon_id:
+    tipo: "string"
+    formato: "A-{studio}-{prefix}-{01..40}"
+    obrigatorio: true
+
+  studio_id:
+    tipo: "string"
+    valores: "S00-S51"
+    obrigatorio: true
+
+  tier:
+    tipo: "string"
+    valores: [L0, L1, L2, L3]
+    obrigatorio: true
+
+  status:
+    tipo: "string"
+    valores: [PASS, FAIL, QUARANTINE, SKIP]
+    obrigatorio: true
+
+  latencia_ms:
+    tipo: "integer"
+    unidade: "milissegundos"
+    obrigatorio: true
+
+  custo_usd:
+    tipo: "float"
+    precisao: 6
+    obrigatorio: true
+
+  evidence_ref:
+    tipo: "string"
+    formato: "vault_local/evidence/{job_id}/{addon_id}.json"
+    obrigatorio_se: "status == PASS e tier >= L1"
+
+  timestamp_utc:
+    tipo: "string"
+    formato: "ISO8601"
+    obrigatorio: true
+
+  mcp_usados:
+    tipo: "array"
+    items: "mcp_id string"
+    obrigatorio: false
+
+invariants:
+  - "L1-L3 sempre tem evidence_ref se PASS"
+  - "custo_usd nunca negativo"
+  - "QUARANTINE bloqueia job inteiro"
+  - "Recibo imutavel apos emissao"
