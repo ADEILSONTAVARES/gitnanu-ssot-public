@@ -77,7 +77,7 @@ dores:
     severity: MEDIUM
   - dor_id: D-S01-doc_assistant-13
     name: "Placeholder nao substituido no documento final"
-    sintoma: "Cliente recebe documento com [NOME_EMPRESA] literal"
+    sintoma: "Cliente recebe documento com NOME_EMPRESA literal"
     causa_raiz: "Substituicao de variaveis nao executada antes do export"
     mitigacao: "Variable substitution gate antes de qualquer export"
     severity: CRITICAL
