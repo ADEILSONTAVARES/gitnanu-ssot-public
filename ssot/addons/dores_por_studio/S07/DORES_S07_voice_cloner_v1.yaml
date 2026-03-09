@@ -1,0 +1,95 @@
+studio_id: S07
+api: voice_cloner
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-voice_cloner-01
+    name: "Clone de voz sem autorizacao do titular"
+    sintoma: "Voz de pessoa publica clonada sem consentimento"
+    causa_raiz: "Identity verification ausente"
+    mitigacao: "Biometric consent verification — titular deve autenticar antes de qualquer clonagem"
+    severity: CRITICAL
+  - dor_id: D-S07-voice_cloner-02
+    name: "Qualidade ruim com amostra de baixa qualidade"
+    sintoma: "Clone robotico quando amostra tem ruido"
+    causa_raiz: "Sample quality nao validada"
+    mitigacao: "Sample quality gate — SNR minimo de 20dB e duracao minima de 30s"
+    severity: HIGH
+  - dor_id: D-S07-voice_cloner-03
+    name: "Clone vaza caracteristicas de saude do speaker"
+    sintoma: "Condicao medica inferivel da voz clonada"
+    causa_raiz: "Privacy de atributos sensiveis nao protegida"
+    mitigacao: "Sensitive attribute scrubbing — remover informacoes de saude e idade do modelo"
+    severity: HIGH
+  - dor_id: D-S07-voice_cloner-04
+    name: "Clone inconsistente em emocoes extremas"
+    sintoma: "Voz clonada soa diferente ao expressar raiva intensa"
+    causa_raiz: "Emotion generalization insuficiente"
+    mitigacao: "Emotion-robust cloning — validar consistencia em range emocional completo"
+    severity: HIGH
+  - dor_id: D-S07-voice_cloner-05
+    name: "Sem controle de envelhecimento de voz"
+    sintoma: "Clone sempre soa como amostra original independente do contexto"
+    causa_raiz: "Age variation nao suportada"
+    mitigacao: "Age variation parameter — ajustar parametros de envelhecimento da voz"
+    severity: CRITICAL
+  - dor_id: D-S07-voice_cloner-06
+    name: "Custo de armazenamento de modelos sem visibilidade"
+    sintoma: "100 clones armazenados sem informacao de custo"
+    causa_raiz: "Storage metering ausente"
+    mitigacao: "Storage metering — custo por modelo exibido no dashboard com opcao de deletar"
+    severity: HIGH
+  - dor_id: D-S07-voice_cloner-07
+    name: "Clone detectavel por sistemas anti-deepfake"
+    sintoma: "Voice clone detectado e bloqueado em plataformas"
+    causa_raiz: "Naturalness insuficiente"
+    mitigacao: "Naturalness enhancement — tornar clone indistinguivel de voz humana para sistemas de deteccao"
+    severity: MEDIUM
+  - dor_id: D-S07-voice_cloner-08
+    name: "Sem expiracão de consentimento"
+    sintoma: "Consentimento dado uma vez usado indefinidamente"
+    causa_raiz: "TTL de consentimento ausente"
+    mitigacao: "Consent TTL — revalidar consentimento periodicamente ou definir data de expiracao"
+    severity: CRITICAL
+  - dor_id: D-S07-voice_cloner-09
+    name: "Latencia alta na primeira geracao com clone"
+    sintoma: "Primeira sintese com clone demora 3s para carregar modelo"
+    causa_raiz: "Model cold start nao otimizado"
+    mitigacao: "Model warm-up — pre-carregar clones frequentes em memoria para eliminar cold start"
+    severity: HIGH
+  - dor_id: D-S07-voice_cloner-10
+    name: "Clone sem suporte a idiomas adicionais"
+    sintoma: "Clone criado em PT-BR nao fala EN corretamente"
+    causa_raiz: "Cross-lingual cloning nao suportado"
+    mitigacao: "Cross-lingual cloning — treinar modelo para preservar timbre em multiplos idiomas"
+    severity: MEDIUM
+  - dor_id: D-S07-voice_cloner-11
+    name: "Ausencia de modo de teste de clone"
+    sintoma: "Impossivel validar qualidade sem sintetizar texto real"
+    causa_raiz: "Clone preview ausente"
+    mitigacao: "Clone preview — sintetizar frase padrao para validar qualidade antes de aprovar"
+    severity: HIGH
+  - dor_id: D-S07-voice_cloner-12
+    name: "Sem rastreabilidade de uso do clone"
+    sintoma: "Impossivel auditar onde e quando o clone foi usado"
+    causa_raiz: "Usage tracking ausente"
+    mitigacao: "Clone usage log — registrar todo uso com timestamp, texto e destinatario"
+    severity: MEDIUM
+  - dor_id: D-S07-voice_cloner-13
+    name: "Clone com artefatos em fricativas"
+    sintoma: "Sons como 's' e 'f' com sibilancia excessiva"
+    causa_raiz: "Fricativa handling insuficiente"
+    mitigacao: "Fricative calibration — ajustar parametros de alta frequencia para fricativas naturais"
+    severity: HIGH
+  - dor_id: D-S07-voice_cloner-14
+    name: "Sem suporte a clonagem incremental"
+    sintoma: "Novo treinamento do zero quando amostra nova disponivel"
+    causa_raiz: "Incremental learning ausente"
+    mitigacao: "Incremental clone update — adicionar novas amostras sem retreinar do zero"
+    severity: MEDIUM
+  - dor_id: D-S07-voice_cloner-15
+    name: "Distribuicao nao autorizada de clone"
+    sintoma: "Clone compartilhado entre usuarios sem controle"
+    causa_raiz: "Access control insuficiente"
+    mitigacao: "Clone access control — clones privados por padrao, compartilhamento requer autorizacao explicita"
+    severity: LOW
