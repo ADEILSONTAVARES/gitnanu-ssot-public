@@ -1,0 +1,66 @@
+ssot_id: BENCH90_CANON_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Bench90 Canon — 90 benchmarks estrutura canonica OG10"
+  sistema: NANUCAI OG10
+  pointer_registry: "ssot/bench/BENCHPACK_90_REGISTRY_v1.yaml"
+  pointer_synergy: "ssot/bench/BENCH90_MCP_SYNERGY_v2.yaml"
+
+estrutura_90:
+  total: 90
+  secoes:
+    F_fidelidade:
+      count: 54
+      peso_formula: 0.45
+      subdivisoes:
+        F1_core: {count: 20, descricao: "benchmarks fundamentais"}
+        F2_mcp: {count: 20, descricao: "integracao MCP"}
+        F3_edge: {count: 14, descricao: "edge cases e stress"}
+      pointer: "ssot/quality/BENCHPACK_54_REGISTRY_v1.yaml"
+
+    V_velocidade:
+      count: 20
+      peso_formula: 0.35
+      subdivisoes:
+        V1_latencia: {count: 10, descricao: "latencia p50/p95/p99"}
+        V2_throughput: {count: 10, descricao: "throughput e concorrencia"}
+
+    E_economia:
+      count: 16
+      peso_formula: 0.20
+      subdivisoes:
+        E1_custo: {count: 8, descricao: "custo por job e por token"}
+        E2_eficiencia: {count: 8, descricao: "cache hit rate, L0 vs L1-L3"}
+
+slas_target:
+  latencia_p50: "120ms"
+  latencia_p95: "500ms"
+  latencia_p99: "1000ms"
+  cache_hit_l0: ">= 85%"
+  custo_job_normal: "<= 0.05 USD"
+  score_minimo: ">= 9.0"
+
+processo_medicao:
+  frequencia: "por sessao de producao"
+  storage: "vault_local/bench90/ (COCA-COLA LOCAL ONLY)"
+  publicado: "apenas TARGET scores — MEASURED no vault"
+  validador: "scripts/gates/validate_bench90_seal.ts"
+
+anti_alucinacao:
+  lock_T4: "TARGET e MEASURED nunca misturados"
+  evidencia: "obrigatoria para qualquer MEASURED publicado"
+
+composite_score:
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  target: ">= 9.0"
+  nota_10: "10.0 (maximo absoluto)"
+  referencia: "ssot/og10/OG10_FORMULA_CANON_v1.yaml"
+
+invariants:
+  - "90 benchmarks sao imutaveis sem Council unanime"
+  - "MEASURED sempre no vault — nunca no repo publico"
+  - "Score TARGET pode ser publicado — MEASURED nunca"
+  - "Bench90 e a unica fonte de verdade para scoring OG10"
