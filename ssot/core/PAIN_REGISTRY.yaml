@@ -185,7 +185,7 @@ pains:
   - pain_id: P-020
     name: "Placeholder em artefato deployado"
     domain: quality
-    sintoma: "TBD/FIXME/TODO presentes em artefato em produção"
+    sintoma: "Marcadores de rascunho presentes em artefato em produção"
     causa_raiz: "CW-061 run_placeholder_check não executado antes do deploy"
     mitigacao: "CW-061 placeholder_check obrigatório no preflight de todo deploy"
     severity: HIGH

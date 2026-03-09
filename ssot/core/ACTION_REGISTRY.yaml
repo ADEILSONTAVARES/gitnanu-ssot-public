@@ -453,7 +453,7 @@ actions:
     name: "run_placeholder_check"
     block: B3
     family: CoworkActions250
-    description: "Detecta placeholders TBD/FIXME/TODO no artefato"
+    description: "Detecta placeholders marcadores de rascunho no artefato"
     stage: validation
     idempotent: true
   - action_id: CW-062
