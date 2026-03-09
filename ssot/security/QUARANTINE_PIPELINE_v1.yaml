@@ -1,0 +1,54 @@
+ssot_id: QUARANTINE_PIPELINE_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Quarantine Pipeline — Isolamento de conteudo suspeito"
+  sistema: NANUCAI OG10
+  integra_com: [MCP_Coca_Guard, Doctor1_Gates, RAG3TrimTwin]
+
+triggers_quarentena:
+  - "poison_detected = true"
+  - "secret_pattern_match = true (sk-, ghp_, AKIA, CPF, SSN)"
+  - "contradiction_score >= 0.80"
+  - "schema_violation = true"
+  - "blast_radius_alto = true (Doctor2)"
+
+pipeline:
+  passo_1_detect:
+    agente: "MCP_Coca_Guard"
+    acao: "scan patterns + secrets"
+    latencia: "10ms"
+    resultado: "{poison: bool, patterns: [], confidence: float}"
+
+  passo_2_isolate:
+    condicao: "poison = true OR confidence >= 0.80"
+    acao: "quarantine_flag = true, side_effects = BLOCKED"
+    storage: "vault_local/quarantine/{timestamp}/{artifact_id}"
+    nota: "COCA-COLA LOCAL ONLY — nunca vai para repo publico"
+
+  passo_3_notify:
+    acao: "Doctor1 recebe alerta + job pausado"
+    canal: "MCP_Notification_Sender"
+    urgencia: "HIGH"
+
+  passo_4_review:
+    agente: "Council_100x3 (J1+J2+J3)"
+    condicao: "quarantine confirmada"
+    prazo: "revisao manual em 24h"
+    resultado: "{approve_release | permanent_block}"
+
+  passo_5_resolve:
+    se_aprovado: "quarantine_flag = false, poison_detected = false, pipeline resume"
+    se_bloqueado: "artifact permanentemente isolado, lta_promotion = BLOCKED"
+
+testes_harness:
+  RQ04_POISON_QUARANTINE: "poison_detected => quarantined = true AND side_effects = BLOCKED"
+  RQ01_RAW_NEVER_IN_CHAT: "raw_content_detected_in_context = false"
+
+invariants:
+  - "Quarantine e fail-closed — duvida = bloqueia"
+  - "Side effects BLOQUEADOS durante quarentena"
+  - "Evidence obrigatoria para release"
+  - "Vault quarantine nunca vai para repo publico"
