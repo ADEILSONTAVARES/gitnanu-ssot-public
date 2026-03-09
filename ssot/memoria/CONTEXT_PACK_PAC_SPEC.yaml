@@ -1,0 +1,41 @@
+ssot_id: CONTEXT_PACK_PAC_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "PAC - Context Pack System (2k-12k tokens)"
+  descricao: "Sistema de empacotamento de contexto para jobs OG10"
+  max_tokens: 12000
+  sistemas: [PrM, U0, U1, GNDrive, GammaNOTION]
+
+estados_pac:
+  DRAFT:    {tokens: 2000,  gate: "nenhum",       proximo: READY}
+  READY:    {tokens: 4000,  gate: "U0 completo",  proximo: REVIEW}
+  REVIEW:   {tokens: 6000,  gate: "Doctor1",      proximo: APPROVED}
+  APPROVED: {tokens: 8000,  gate: "Controller",   proximo: APPLIED}
+  APPLIED:  {tokens: 10000, gate: "U2 score>=90", proximo: MERGED}
+  MERGED:   {tokens: 11000, gate: "evidence_seal",proximo: PUBLISHED}
+  PUBLISHED:{tokens: 12000, gate: "ledger_write", proximo: ARCHIVED}
+  ARCHIVED: {tokens: 3000,  gate: "LTA_check",    proximo: null}
+
+regras_transicao:
+  DRAFT_to_READY: "U0 completa routing e budget"
+  READY_to_REVIEW: "U1 completa RAG e context_7x"
+  REVIEW_to_APPROVED: "Doctor1 PASS"
+  APPROVED_to_APPLIED: "job execution completo"
+  APPLIED_to_MERGED: "validacao PASS"
+  MERGED_to_PUBLISHED: "evidence_seal + ledger_write"
+  PUBLISHED_to_ARCHIVED: "U2 LTA check aprovado"
+
+overflow_prevention:
+  trigger: "tokens > 10000"
+  acao: "SERENA compressao automatica"
+  target_pos_compressao: "<= 8000 tokens"
+  invariant: "zero perda de fatos criticos"
+
+metricas:
+  pac_creation_latency_p95: {target: "<= 100ms"}
+  overflow_rate: {target: "<= 0.05"}
+  compression_trigger_rate: {target: "~10% dos jobs"}
+  timestamp_compliance: {target: "= 1.00"}
