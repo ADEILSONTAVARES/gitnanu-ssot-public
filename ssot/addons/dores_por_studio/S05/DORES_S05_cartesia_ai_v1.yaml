@@ -1,0 +1,95 @@
+studio_id: S05
+api: cartesia_ai
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-cartesia_ai-01
+    name: "Latencia acima do SLA em pico de carga"
+    sintoma: "p95 acima de 100ms em horario de pico"
+    causa_raiz: "Sem auto-scaling configurado"
+    mitigacao: "Auto-scaling ativo — escalar replicas quando p95 > 80ms"
+    severity: HIGH
+  - dor_id: D-S05-cartesia_ai-02
+    name: "Voz clonada sem consentimento do titular"
+    sintoma: "Clone de voz de pessoa real sem autorizacao"
+    causa_raiz: "Sem verificacao de consentimento para voice cloning"
+    mitigacao: "Consent verification obrigatoria antes de qualquer voice cloning"
+    severity: CRITICAL
+  - dor_id: D-S05-cartesia_ai-03
+    name: "Streaming interrompido por instabilidade de rede"
+    sintoma: "Audio cortado no meio da frase"
+    causa_raiz: "Buffer insuficiente para variacoes de rede"
+    mitigacao: "Adaptive buffer — aumentar buffer automaticamente quando RTT > threshold"
+    severity: HIGH
+  - dor_id: D-S05-cartesia_ai-04
+    name: "Qualidade de voz degradada em baixa largura de banda"
+    sintoma: "Voz robotica em conexoes lentas"
+    causa_raiz: "Bitrate fixo independente da qualidade de rede"
+    mitigacao: "Adaptive bitrate — reduzir qualidade graciosamente antes de cortar"
+    severity: HIGH
+  - dor_id: D-S05-cartesia_ai-05
+    name: "Sincronizacao labial incorreta em video"
+    sintoma: "Audio e video desalinhados em apresentacoes"
+    causa_raiz: "Audio offset nao calibrado para o destino"
+    mitigacao: "Lip sync calibration — offset configuravel por destino de uso"
+    severity: CRITICAL
+  - dor_id: D-S05-cartesia_ai-06
+    name: "Limite de taxa atingido sem fallback"
+    sintoma: "Request bloqueado sem alternativa quando rate limit atingido"
+    causa_raiz: "Sem fallback para provider alternativo"
+    mitigacao: "Rate limit fallback — redirecionar para provider secundario automaticamente"
+    severity: HIGH
+  - dor_id: D-S05-cartesia_ai-07
+    name: "Voz inconsistente entre sessoes"
+    sintoma: "Mesma configuracao produz timbres diferentes em dias diferentes"
+    causa_raiz: "Modelo atualizado sem versioning"
+    mitigacao: "Model version lock — fixar versao do modelo por projeto"
+    severity: MEDIUM
+  - dor_id: D-S05-cartesia_ai-08
+    name: "Geracao de conteudo ofensivo via prompt injection"
+    sintoma: "Input malicioso faz a API sintetizar conteudo inapropriado"
+    causa_raiz: "Sanitizacao de input insuficiente"
+    mitigacao: "Input sanitization gate — remover instrucoes de sistema do texto de entrada"
+    severity: HIGH
+  - dor_id: D-S05-cartesia_ai-09
+    name: "Audio sem watermark para rastreabilidade"
+    sintoma: "Impossivel verificar origem de audio gerado"
+    causa_raiz: "Watermarking nao implementado"
+    mitigacao: "Audio watermark obrigatorio — embedding invisivel com session_id e timestamp"
+    severity: MEDIUM
+  - dor_id: D-S05-cartesia_ai-10
+    name: "Falha em caracteres de idiomas nao-latinos"
+    sintoma: "Texto em japones ou arabe causa erros de sintese"
+    causa_raiz: "Encoding nao normalizado para UTF-8"
+    mitigacao: "Unicode normalization obrigatoria — garantir UTF-8 antes de enviar ao modelo"
+    severity: CRITICAL
+  - dor_id: D-S05-cartesia_ai-11
+    name: "Timeout sem retry em conexao instavel"
+    sintoma: "Request falha apos 5s sem tentar novamente"
+    causa_raiz: "Sem retry com backoff"
+    mitigacao: "Retry com exponential backoff — 3 tentativas antes de falhar definitivamente"
+    severity: HIGH
+  - dor_id: D-S05-cartesia_ai-12
+    name: "Output format incompativel com player"
+    sintoma: "WAV gerado quando player aceita apenas MP3"
+    causa_raiz: "Output format nao derivado do destino"
+    mitigacao: "Format derivado do destino — web: MP3, broadcast: WAV, mobile: AAC"
+    severity: MEDIUM
+  - dor_id: D-S05-cartesia_ai-13
+    name: "Ausencia de metricas de qualidade pos-sintese"
+    sintoma: "Nenhum score de qualidade retornado com o audio"
+    causa_raiz: "Quality scoring nao implementado"
+    mitigacao: "MOS score estimado pos-sintese — alertar se abaixo de threshold"
+    severity: HIGH
+  - dor_id: D-S05-cartesia_ai-14
+    name: "Log de uso sem granularidade por projeto"
+    sintoma: "Impossivel auditar custo por cliente"
+    causa_raiz: "Sem tagging de requests por projeto"
+    mitigacao: "Project tagging obrigatorio em todo request — usado para billing e auditoria"
+    severity: MEDIUM
+  - dor_id: D-S05-cartesia_ai-15
+    name: "Sem suporte a pausa e retomada de streaming"
+    sintoma: "Usuario nao consegue pausar audio em tempo real"
+    causa_raiz: "Pause/resume nao implementado no protocolo"
+    mitigacao: "Pause/resume protocol — ACK de controle no stream de audio"
+    severity: LOW
