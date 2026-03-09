@@ -1,0 +1,113 @@
+ssot_id: OG10_MEMORIA_INFINITA_RAG
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Memória Infinita — RAG3TrimTwin Quantum"
+  formula: "4x3pQ2 10x10x10"
+  lta_formula: "4x3pQ2 10x10x10x10(2)"
+  context_max: "12k tokens p95"
+  familias: 7
+
+rag3trimtwin:
+  descricao: "4 trilhas, 3 passagens, Quorum Q2 (2 de 3 concordam)"
+  trilhas_4:
+    T1_semantic: "busca por similaridade semântica"
+    T2_keyword: "busca por keywords exatas"
+    T3_structural: "busca por estrutura do documento"
+    T4_temporal: "busca por recência e timestamp"
+  passagens_3:
+    P1_broad: "top-100 candidatos por trilha"
+    P2_trim: "top-10 após reranking cruzado"
+    P3_twin: "verificação twin (duplicata/contradição)"
+  quorum_Q2:
+    regra: "resultado válido se ≥ 2 trilhas concordam"
+    conflito: "escalar para Controller se trilhas divergem"
+  formula_10x10x10:
+    dim1: "10 chunks por passagem"
+    dim2: "10 tokens de contexto por chunk (em centenas)"
+    dim3: "10 evidências máximas no output"
+
+familias_7:
+  F1_SSOT:
+    descricao: "Documentos canônicos, specs, playbooks"
+    storage: "ssot/ (repo)"
+    ttl: "permanente"
+    indices: ["ssot_id", "version", "studio"]
+
+  F2_CODE:
+    descricao: "Código fonte, patches, diffs, scripts"
+    storage: "ssot/addons/ + LTA"
+    ttl: "180 dias"
+    indices: ["studio", "action_id", "language"]
+
+  F3_MCP:
+    descricao: "Resultados de chamadas MCP, tool traces"
+    storage: "LTA (se relevante)"
+    ttl: "30 dias"
+    indices: ["mcp_id", "studio", "timestamp"]
+
+  F4_RUNS:
+    descricao: "Histórico de execuções, jobs, pipelines"
+    storage: "LTA"
+    ttl: "90 dias"
+    indices: ["job_id", "studio", "status", "timestamp"]
+
+  F5_BENCH:
+    descricao: "Resultados de benchmarks, scores, métricas"
+    storage: "ssot/bench/ (repo)"
+    ttl: "permanente"
+    indices: ["bench_id", "score", "timestamp"]
+
+  F6_OPS:
+    descricao: "Logs operacionais, alertas, incidentes"
+    storage: "LTA"
+    ttl: "60 dias"
+    indices: ["severity", "studio", "timestamp"]
+
+  F7_MEDIA:
+    descricao: "Assets de media, metadados de conteúdo"
+    storage: "LTA"
+    ttl: "365 dias"
+    indices: ["media_type", "studio", "rights_status"]
+
+lta_long_term_archive:
+  formula: "4x3pQ2 10x10x10x10(2)"
+  dim_extra: "10 (profundidade histórica, 2 níveis de compressão)"
+  promocao_condicoes:
+    - "relevância >= 0.90 em ≥ 3 jobs distintos"
+    - "evidence_seal = true"
+    - "quorum_Q2 confirmado"
+    - "aprovado por U2 Prove+Close"
+  retencao: "3 anos (após LTA inativo)"
+  compressao: "SERENA context compression ativo"
+
+vault_mode:
+  regra: "RAW_NEVER_IN_CHAT"
+  o_que_vai_para_contexto:
+    - "facts (resumo em 1-3 frases)"
+    - "brief (sumário estruturado, max 500 tokens)"
+    - "artifact_ref (ponteiro para arquivo)"
+  o_que_NUNCA_vai_para_contexto:
+    - "raw evidence completa"
+    - "secrets ou PII"
+    - "dados de vault local"
+    - "tokens ou credenciais"
+
+context_explosion_prevention:
+  max_context: "12k tokens p95"
+  estrategias:
+    - "SERENA: compressão semântica de contexto antigo"
+    - "PAC: empacotar contexto em 2k-12k packs estruturados"
+    - "Pointer fetch: referenciar, não copiar grandes blobs"
+    - "Trim automático: remover chunks com relevância < 0.70"
+  alarme: "context > 10k → ativar SERENA imediatamente"
+
+metricas:
+  retrieval_precision_at_5: "≥ 0.95"
+  retrieval_recall: "≥ 0.90"
+  context_utilization: "≤ 12k tokens p95"
+  lta_promotion_rate: "~3% dos jobs"
+  vault_compliance: "= 1.00 (zero raw em chat)"
+  compression_ratio_serena: "≥ 0.40"
