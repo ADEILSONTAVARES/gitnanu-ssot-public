@@ -1,0 +1,32 @@
+ssot_id: PAC_SLICE_POLICY_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "PAC Slice Policy — Context Pack fatiamento"
+  sistema: NANUCAI OG10
+
+pac_tamanhos:
+  micro:  {tokens: 2000,  uso: "respostas rapidas L0"}
+  small:  {tokens: 4000,  uso: "tarefas simples"}
+  medium: {tokens: 8000,  uso: "tarefas medias"}
+  large:  {tokens: 12000, uso: "tarefas complexas L1-L3"}
+  max:    {tokens: 12000, regra: "NUNCA exceder 12k tokens em contexto"}
+
+regras_fatiamento:
+  - "Raw content NUNCA entra no PAC — apenas facts e pointers"
+  - "Vault pointer substitui conteudo bruto"
+  - "SERENA comprime se PAC > 8k antes de enviar"
+  - "LTA pointer para conteudo arquivado"
+
+serena_compress:
+  trigger: "PAC > 8000 tokens"
+  mcp: "MCP_Context_Compressor_Serena"
+  target: "reduzir para <= 8000 mantendo semantica"
+  latencia_p95: "500ms"
+
+invariants:
+  - "PAC max 12k tokens — nunca exceder"
+  - "Raw Never in PAC (T2)"
+  - "SERENA obrigatoria se PAC > 8k"
