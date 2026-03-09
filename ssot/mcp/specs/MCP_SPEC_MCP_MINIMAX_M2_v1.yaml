@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_MINIMAX_M2
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_MINIMAX_M2
+  title: "MCP Spec — MCP_MINIMAX_M2"
+  grupo: ia_llm
+  grupo_desc: "IA e LLM"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.1
+  F: 9.2
+  V: 9.2
+  E: 8.9
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "LLM custo-eficiente para tarefas L0-L1"
+  trigger: "routing_L0 + simple_tasks + high_volume"
+  latencia_p95: "100ms"
+  lock_t: ["T4"]
+  sistemas: ["AGENT_ROUTER"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.1
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
