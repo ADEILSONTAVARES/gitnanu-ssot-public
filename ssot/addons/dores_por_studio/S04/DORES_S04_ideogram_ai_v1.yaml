@@ -1,0 +1,95 @@
+studio_id: S04
+api: ideogram_ai
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S04-ideogram_ai-01
+    name: "Texto renderizado com erros ortograficos"
+    sintoma: "Imagem gerada com texto contem palavras incorretas ou ilegíveis"
+    causa_raiz: "Text rendering sem validacao ortografica pos-geracao"
+    mitigacao: "OCR pos-geracao comparando texto solicitado vs texto renderizado"
+    severity: CRITICAL
+  - dor_id: D-S04-ideogram_ai-02
+    name: "Tipografia inconsistente com a marca"
+    sintoma: "Fonte usada na imagem difere do brand guideline"
+    causa_raiz: "Font constraint nao aplicado na geracao"
+    mitigacao: "Font specification obrigatoria no prompt para projetos com brand guideline"
+    severity: HIGH
+  - dor_id: D-S04-ideogram_ai-03
+    name: "Logos gerados com distorcoes"
+    sintoma: "Variante de logo gerada perde proporcoes originais"
+    causa_raiz: "Aspect ratio nao preservado na geracao"
+    mitigacao: "Aspect ratio lock para geracoes baseadas em logos existentes"
+    severity: HIGH
+  - dor_id: D-S04-ideogram_ai-04
+    name: "Geracao de texto em idioma errado"
+    sintoma: "Prompt em PT-BR gera imagem com texto em EN"
+    causa_raiz: "Language nao especificada no request"
+    mitigacao: "Language field obrigatorio derivado do locale da sessao"
+    severity: MEDIUM
+  - dor_id: D-S04-ideogram_ai-05
+    name: "Paleta de cores diverge do solicitado"
+    sintoma: "Imagem usa cores que contradizem o prompt de cor"
+    causa_raiz: "Color specification insuficientemente precisa"
+    mitigacao: "Hex codes obrigatorios para cores criticas — evitar termos subjetivos"
+    severity: MEDIUM
+  - dor_id: D-S04-ideogram_ai-06
+    name: "Custo por geracao nao rastreado"
+    sintoma: "Uso excessivo da API sem visibilidade de custo"
+    causa_raiz: "Sem metering por request"
+    mitigacao: "Cost metering por request + alerta quando atingir threshold do budget"
+    severity: HIGH
+  - dor_id: D-S04-ideogram_ai-07
+    name: "Conteudo de marca concorrente gerado"
+    sintoma: "Imagem gerada inclui elementos visuais de marca concorrente"
+    causa_raiz: "Competitor brand filter ausente"
+    mitigacao: "Competitor brand blocklist aplicado no preflight do prompt"
+    severity: CRITICAL
+  - dor_id: D-S04-ideogram_ai-08
+    name: "Geracao sem evidencia de aprovacao de conteudo"
+    sintoma: "Asset publicado sem registro de quem aprovou"
+    causa_raiz: "Approval workflow nao integrado ao pipeline de geracao"
+    mitigacao: "Approval gate obrigatorio antes de qualquer publicacao"
+    severity: HIGH
+  - dor_id: D-S04-ideogram_ai-09
+    name: "Variacao de estilo nao reproduzivel"
+    sintoma: "Nao e possivel recriar o mesmo estilo de uma geracao anterior"
+    causa_raiz: "Style parameters nao armazenados com o asset"
+    mitigacao: "Style parameters salvos como metadata do asset para reproducibilidade"
+    severity: MEDIUM
+  - dor_id: D-S04-ideogram_ai-10
+    name: "Timeout sem retry em geracao lenta"
+    sintoma: "Request falha apos timeout sem tentar novamente"
+    causa_raiz: "Sem retry logic com backoff"
+    mitigacao: "Retry com exponential backoff — 3 tentativas antes de falhar definitivamente"
+    severity: MEDIUM
+  - dor_id: D-S04-ideogram_ai-11
+    name: "Multiplas geracoes sem comparacao de qualidade"
+    sintoma: "Usuario recebe 4 opcoes sem rankeamento de qualidade"
+    causa_raiz: "Quality scoring nao aplicado em batch generation"
+    mitigacao: "Quality scorer pos-geracao — ranquear opcoes antes de exibir ao usuario"
+    severity: LOW
+  - dor_id: D-S04-ideogram_ai-12
+    name: "Output sem verificacao de acessibilidade de contraste"
+    sintoma: "Texto sobre background com contraste insuficiente"
+    causa_raiz: "Contrast ratio nao verificado pos-geracao"
+    mitigacao: "WCAG contrast check pos-geracao — minimo 4.5:1 para texto normal"
+    severity: MEDIUM
+  - dor_id: D-S04-ideogram_ai-13
+    name: "Imagem gerada com elementos culturalmente sensiveis"
+    sintoma: "Output contem simbolo ou gesto ofensivo em determinada cultura"
+    causa_raiz: "Cultural sensitivity filter ausente"
+    mitigacao: "Cultural sensitivity check — lista de simbolos sensiveis por mercado alvo"
+    severity: HIGH
+  - dor_id: D-S04-ideogram_ai-14
+    name: "Falha na geracao nao reportada ao usuario"
+    sintoma: "API retorna erro 500 e usuario ve tela em branco"
+    causa_raiz: "Error handling nao implementado no cliente"
+    mitigacao: "Graceful error handling — mensagem clara + opcao de retry para o usuario"
+    severity: HIGH
+  - dor_id: D-S04-ideogram_ai-15
+    name: "Geracao de imagem de pessoa real sem consentimento"
+    sintoma: "Rosto de pessoa publica gerado sem base em uso legitimo"
+    causa_raiz: "Person generation sem filtro de identidade real"
+    mitigacao: "Real person filter — bloquear geracao de rostos de pessoas identificaveis"
+    severity: CRITICAL
