@@ -1,0 +1,95 @@
+ssot_id: LLM_PRICING_1M_TOKENS
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+value_type: TARGET
+rule: "Valores TARGET — MEASURED requer ledger_cost.json assinado em vault_local"
+
+meta:
+  title: "LLM Pricing — USD por 1M tokens (public-safe)"
+  as_of: "2026-03-09"
+  note:
+    - "Este arquivo e public-safe: contem targets e referencias, nao segredos"
+    - "OG10 nunca declara MEASURED sem artifacts locais em vault_local/"
+    - "Revalidar precos mensalmente nas fontes oficiais"
+
+sources_public:
+  openai_pricing: "https://openai.com/api/pricing/"
+  anthropic_pricing: "https://www.anthropic.com/pricing"
+  google_gemini_pricing: "https://ai.google.dev/pricing"
+  openrouter_minimax: "https://openrouter.ai/minimax/minimax-m2.1"
+  openrouter_kimi: "https://openrouter.ai/moonshotai/kimi-k2.5"
+
+models:
+  minimax_m2_1:
+    input_usd_1m: 0.27
+    output_usd_1m: 1.10
+    tier: L0_primary
+    shadow_band: "0.3-0.6%"
+    note: "LLM primario L0 OG10"
+
+  kimi_k2_5:
+    input_usd_1m: 0.60
+    cached_input_usd_1m: 0.10
+    output_usd_1m: 3.00
+    tier: L0_secondary
+    shadow_band: "0.3-0.6%"
+
+  deepseek_v3:
+    input_usd_1m: 0.27
+    output_usd_1m: 1.10
+    tier: L0_fallback
+    shadow_band: "0.3-0.6%"
+
+  claude_sonnet_4_6:
+    input_usd_1m: 3.00
+    output_usd_1m: 15.00
+    tier: L1_orchestrator
+    shadow_band: "0.6-1.2%"
+    note: "Antigravity + Cowork10X"
+
+  claude_opus_4_6:
+    input_usd_1m: 5.00
+    output_usd_1m: 25.00
+    tier: L2_heavy
+    shadow_band: "1.2-2.0%"
+
+  gemini_2_5_flash_lite:
+    input_usd_1m: 0.10
+    output_usd_1m: 0.40
+    tier: L0_media
+    shadow_band: "0.3-0.6%"
+    note: "Output inclui thinking"
+
+  gpt_5_2:
+    input_usd_1m: 1.75
+    cached_input_usd_1m: 0.175
+    output_usd_1m: 14.00
+    tier: L1_heavy
+    shadow_band: "0.6-1.2%"
+
+micro_call_cost_usd:
+  formula: "(2000/1e6)*input + (400/1e6)*output"
+  note: "2k input + 400 output tokens — chamada curta tipica L0"
+  by_model:
+    minimax_m2_1:    0.00098
+    kimi_k2_5:       0.00240
+    deepseek_v3:     0.00098
+    gemini_flash_lite: 0.00036
+    claude_sonnet:   0.01200
+    claude_opus:     0.02000
+    gpt_5_2:         0.00910
+
+job_cost_targets:
+  l0_turbo_min_usd: 0.000051
+  l0_realistic_usd: 0.000141
+  l1_l3_max_pct_of_job: 0.15
+  shadow_band_default: "0.3-0.6% dentro do 15%"
+  effective_total_formula: "effective_total = 0.15 * shadow_rate"
+  prewarm_exclusive_pct: "1-2% apenas L1-L3"
+
+og10_compliance:
+  split_85_15: {L0: 0.85, L1_L3: 0.15}
+  raw_never_in_chat: true
+  measured_requires_local_artifacts: true
+  vault_path: "vault_local/ledger/ledger_cost.json"
