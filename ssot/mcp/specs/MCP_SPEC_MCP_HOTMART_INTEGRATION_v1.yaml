@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_HOTMART_INTEGRATION
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_HOTMART_INTEGRATION
+  title: "MCP Spec — MCP_HOTMART_INTEGRATION"
+  grupo: dados_bi
+  grupo_desc: "Dados e BI"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.1
+  F: 9.2
+  V: 9.0
+  E: 9.1
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Integracao com Hotmart para produtos digitais"
+  trigger: "purchase_event + affiliate_tracking + product_delivery"
+  latencia_p95: "800ms"
+  lock_t: ["T2"]
+  sistemas: ["S42_billing"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.1
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
