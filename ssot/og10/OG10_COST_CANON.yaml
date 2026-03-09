@@ -1,0 +1,120 @@
+ssot_id: OG10_COST_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Cost Canon — Orçamento e Custo por Job"
+  cost_target_p95: "$0.000141"
+  cost_measured_atual: "$0.00004827"
+  margem_sobre_target: "66% abaixo do target"
+
+custo_por_componente:
+  U0_intake_router:
+    custo: "$0.000000"
+    tipo: "determinístico L0"
+    tokens: 0
+
+  U1_context_build:
+    custo: "$0.000008"
+    tipo: "L0 (MCPs, RAG, Context7x)"
+    tokens_avg: 60
+
+  U1_retrieval:
+    custo: "$0.000004"
+    tipo: "L0 (RAG lookup)"
+    tokens_avg: 60
+
+  E4_reasoning_llm:
+    custo: "$0.000028"
+    tipo: "L1-L3 (LLM call)"
+    tokens_avg: 150
+    modelo_default: "claude-sonnet-4-5"
+
+  E5_validation:
+    custo: "$0.000006"
+    tipo: "L0 (Doctor, TestSprite)"
+    tokens_avg: 150
+
+  U2_polish_seal:
+    custo: "$0.000002"
+    tipo: "L0 (determinístico)"
+    tokens: 0
+
+  total_base:
+    custo: "$0.000048"
+    tokens_total: 780
+    margem_ate_target: "$0.000093 disponível"
+
+caps_por_tipo_job:
+  simples:
+    studios: "S00-S09"
+    cost_max: "$0.000090"
+    tokens_max: 600
+    latency_max: "1.5s"
+
+  tecnico:
+    studios: "S10-S29"
+    cost_max: "$0.000141"
+    tokens_max: 850
+    latency_max: "3.0s"
+
+  criativo:
+    studios: "S30-S41"
+    cost_max: "$0.000141"
+    tokens_max: 900
+    latency_max: "5.0s"
+
+  critico:
+    studios: "S42-S51"
+    cost_max: "$0.000180"
+    tokens_max: 1000
+    latency_max: "8.0s"
+    shadow_band_exclusivo: "até 2%"
+
+ledger:
+  formato: "ledger_cost_{job_id}.json"
+  campos_obrigatorios:
+    - job_id
+    - studio_id
+    - timestamp_start
+    - timestamp_end
+    - cost_estimated
+    - cost_actual
+    - tokens_used
+    - models_called[]
+    - cache_hits
+    - addons_triggered[]
+    - evidence_seal
+  storage: "F4_RUNS (LTA)"
+  retencao: "90 dias"
+
+alertas:
+  warn: "$0.000120 (85% do target)"
+  halt: "$0.000180 (28% acima do target)"
+  shadow_band_warn: "> 0.006 por 3 jobs consecutivos"
+  acoes:
+    warn: "notificar I-Vierne Watch, logar"
+    halt: "bloquear job, escalar Controller"
+    shadow_band_warn: "revisar addons + pain triggers"
+
+otimizacoes_ativas:
+  cache_hit_rate:
+    target: "≥ 0.70"
+    economia: "≈ 30% do custo total"
+  l0_ratio:
+    target: "≥ 0.85"
+    economia: "principal alavanca de custo"
+  modelo_routing:
+    estrategia: "menor modelo suficiente"
+    economia: "≈ 40% vs usar Sonnet sempre"
+
+metricas:
+  cost_per_job_p50: "$0.000048"
+  cost_per_job_p95: "$0.000141"
+  cost_per_job_p99: "$0.000180"
+  l0_ratio: "≥ 0.85"
+  shadow_band: "0.3-0.6%"
+  cache_savings_pct: "≥ 30%"
+  ledger_accuracy: "= 1.00"
+  cost_forecast_error: "≤ 5%"
