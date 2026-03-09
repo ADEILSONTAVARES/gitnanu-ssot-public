@@ -1,0 +1,51 @@
+ssot_id: FILE_INDEXING_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "File Indexing Policy — regras de indexacao de arquivos"
+  sistema: NANUCAI OG10
+
+convencoes_nomenclatura:
+  yaml_canonico: "{NOME_MAIUSCULO}_v{N}.yaml"
+  yaml_config: "{nome_minusculo}.yaml"
+  schema_json: "{NOME}_v{N}.schema.json"
+  actions: "ACTIONS_{studio}_{api}_v1.yaml"
+
+estrutura_paths:
+  ssot_canonico: "ssot/{dominio}/{ARQUIVO}_v{N}.yaml"
+  schemas: "ssot/schemas/{ARQUIVO}_v{N}.schema.json"
+  actions: "ssot/addons/actions/{studio}/ACTIONS_{studio}_{api}_v1.yaml"
+  studios: "ssot/studios/{studio}/{ARQUIVO}_v{N}.yaml"
+
+index_master:
+  arquivo: "ssot/INDEX_MASTER.yaml"
+  regra: "Todo novo diretorio deve ter entrada no INDEX_MASTER"
+  manutencao: "GitNanu atualiza a cada novo dir"
+
+ssot_id_obrigatorio:
+  regra: "Todo YAML canonico deve ter campo ssot_id na primeira linha"
+  formato: "ssot_id: {NOME_SEM_EXTENSAO}"
+  excecoes: "nenhuma para arquivos em ssot/"
+
+version_obrigatorio:
+  regra: "Todo YAML canonico deve ter campo version"
+  formato: "version: v{N}"
+
+status_obrigatorio:
+  valores: [CANONICAL, RESERVED, DEPRECATED, DRAFT]
+  regra: "DRAFT nao entra em producao"
+  deploy_permitido: [CANONICAL, RESERVED]
+
+actions_index:
+  arquivo: "ssot/addons/actions/INDEX.yaml"
+  validador: "scripts/gates/validate_actions_index.py"
+  total_esperado: 35120
+  erros_permitidos: 0
+
+invariants:
+  - "ssot_id obrigatorio em todo YAML canonico"
+  - "Nomenclatura padrao sem excecoes"
+  - "INDEX_MASTER atualizado a cada novo dir"
+  - "Actions index sempre 0 erros"
