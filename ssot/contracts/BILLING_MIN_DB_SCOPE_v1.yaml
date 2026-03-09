@@ -1,0 +1,48 @@
+ssot_id: BILLING_MIN_DB_SCOPE_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Billing Minimum DB Scope — Stripe + Hotmart"
+  sistema: NANUCAI OG10
+  studio: S34
+
+tabelas_minimas:
+  webhook_events:
+    campos: [id, provider, event_type, payload_hash, processed_at, idempotency_key]
+    regra: "idempotency_key previne duplicatas"
+
+  transactions:
+    campos: [id, tenant_id, amount_cents, currency, provider, status, created_at]
+
+  balances:
+    campos: [tenant_id, credits_remaining, plan_id, updated_at]
+
+  audit_log:
+    campos: [id, action, actor, target, timestamp, evidence_ref]
+    retencao: "7 anos (compliance)"
+
+  entitlements:
+    campos: [tenant_id, feature, enabled, plan_id, expires_at]
+    funcao: "can_access(tenant_id, feature) -> bool"
+
+planos:
+  p69:  {preco_brl: 69,  features_base: true, council: false, prewarm: false}
+  p99:  {preco_brl: 99,  features_base: true, council: false, prewarm: "0.3%"}
+  p297: {preco_brl: 297, features_base: true, council: false, prewarm: "0.6%"}
+  p699: {preco_brl: 699, features_base: true, council: true,  prewarm: "1.2%"}
+  p999: {preco_brl: 999, features_base: true, council: true,  prewarm: "2.0%", og10_full: true}
+
+provedores:
+  stripe:
+    uso: "cartao de credito internacional"
+    webhooks: [payment_intent.succeeded, customer.subscription.deleted, invoice.payment_failed]
+  hotmart:
+    uso: "mercado brasileiro + boleto"
+    webhooks: [PURCHASE_APPROVED, PURCHASE_CANCELED, PURCHASE_REFUNDED]
+
+invariants:
+  - "Idempotency key obrigatoria em todos os webhooks"
+  - "Ledger imutavel — audit_log nunca deletado"
+  - "Evidence ref obrigatoria para toda transacao"
