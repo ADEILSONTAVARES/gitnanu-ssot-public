@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_WARP_AGENT_API
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_WARP_AGENT_API
+  title: "MCP Spec — MCP_WARP_AGENT_API"
+  grupo: infra_devops
+  grupo_desc: "Infra e DevOps"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.0
+  F: 9.1
+  V: 9.0
+  E: 9.0
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Terminal inteligente e execucao de comandos via Warp"
+  trigger: "terminal_task + bash_execution + dev_workflow"
+  latencia_p95: "200ms"
+  lock_t: ["T2"]
+  sistemas: ["GitNanu", "CI_CD"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.0
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
