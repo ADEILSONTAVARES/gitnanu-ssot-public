@@ -1,0 +1,95 @@
+studio_id: S06
+api: adobe_firefly_img
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S06-adobe_firefly_img-01
+    name: "Imagem gerada fora das diretrizes de marca"
+    sintoma: "Output ignora paleta e estilo definidos no brand kit"
+    causa_raiz: "Brand kit nao injetado como constraint"
+    mitigacao: "Brand kit lock — cores e estilos do Adobe Brand Kit aplicados antes da geracao"
+    severity: CRITICAL
+  - dor_id: D-S06-adobe_firefly_img-02
+    name: "Conteudo gerado viola politica de uso comercial"
+    sintoma: "Asset usado comercialmente sem verificar licenca"
+    causa_raiz: "Content credentials nao verificados"
+    mitigacao: "Content credentials check obrigatorio — verificar licenca antes de qualquer uso comercial"
+    severity: HIGH
+  - dor_id: D-S06-adobe_firefly_img-03
+    name: "Geracao lenta por falta de cache de style reference"
+    sintoma: "Cada geracao recalcula o style embedding"
+    causa_raiz: "Style cache nao implementado"
+    mitigacao: "Style embedding cache por projeto — reusar em geracoes subsequentes"
+    severity: HIGH
+  - dor_id: D-S06-adobe_firefly_img-04
+    name: "Elemento de marca distorcido na composicao"
+    sintoma: "Logo aparece deformado quando composto com fundo gerado"
+    causa_raiz: "Sem mask protection para elementos fixos"
+    mitigacao: "Protected element mask — logo e assets fixos protegidos durante composicao"
+    severity: HIGH
+  - dor_id: D-S06-adobe_firefly_img-05
+    name: "Output sem integracao com Creative Cloud"
+    sintoma: "Asset gerado nao aparece automaticamente no CC Libraries"
+    causa_raiz: "CC Libraries sync nao implementado"
+    mitigacao: "CC Libraries auto-sync — assets gerados enviados automaticamente para biblioteca do projeto"
+    severity: MEDIUM
+  - dor_id: D-S06-adobe_firefly_img-06
+    name: "Imagem gerada com pessoas sem consentimento"
+    sintoma: "Rosto reconhecivel gerado sem base em uso legitimo"
+    causa_raiz: "Person generation sem filtro"
+    mitigacao: "Real person filter — bloquear geracao de rostos identificaveis"
+    severity: CRITICAL
+  - dor_id: D-S06-adobe_firefly_img-07
+    name: "Resolucao inadequada para o destino"
+    sintoma: "Asset para impressao gerado em 72dpi"
+    causa_raiz: "Resolucao nao derivada do destino"
+    mitigacao: "Destination-based resolution — print: 300dpi, web: 96dpi, billboard: 600dpi"
+    severity: HIGH
+  - dor_id: D-S06-adobe_firefly_img-08
+    name: "Custo de credits nao rastreado por projeto"
+    sintoma: "Credits consumidos sem visibilidade por cliente"
+    causa_raiz: "Sem credit metering por projeto"
+    mitigacao: "Credit metering obrigatorio — custo por projeto exibido em tempo real"
+    severity: HIGH
+  - dor_id: D-S06-adobe_firefly_img-09
+    name: "Geracao repetitiva sem variacao suficiente"
+    sintoma: "10 geracoes com o mesmo prompt retornam imagens quase identicas"
+    causa_raiz: "Seed fixo ou diversidade baixa"
+    mitigacao: "Diversity enforcement — seed randomization e guidance scale variavel em batch"
+    severity: MEDIUM
+  - dor_id: D-S06-adobe_firefly_img-10
+    name: "Asset gerado sem historico de prompt"
+    sintoma: "Impossivel recriar ou rastrear o asset"
+    causa_raiz: "Prompt nao salvo no metadata do arquivo"
+    mitigacao: "Prompt metadata obrigatorio — salvo no EXIF e no sistema de assets"
+    severity: HIGH
+  - dor_id: D-S06-adobe_firefly_img-11
+    name: "Falta de suporte a camadas editaveis"
+    sintoma: "Output e raster flat sem camadas separadas"
+    causa_raiz: "Geracao sem layer separation"
+    mitigacao: "Layer-aware generation — elementos gerados em camadas separadas quando possivel"
+    severity: MEDIUM
+  - dor_id: D-S06-adobe_firefly_img-12
+    name: "Geracao de conteudo sensivel sem filtro adequado"
+    sintoma: "Output contem conteudo violento ou sexualmente explicito"
+    causa_raiz: "Content safety insuficiente"
+    mitigacao: "Content safety gate obrigatorio — multiplas camadas de filtro pre e pos geracao"
+    severity: CRITICAL
+  - dor_id: D-S06-adobe_firefly_img-13
+    name: "Integracao com Photoshop quebrando em updates"
+    sintoma: "Plugin para nao funciona apos update do Photoshop"
+    causa_raiz: "Sem versioning de compatibilidade de plugin"
+    mitigacao: "Plugin versioning — compatibilidade declarada e testada para cada versao do PS"
+    severity: HIGH
+  - dor_id: D-S06-adobe_firefly_img-14
+    name: "Ausencia de undo apos geracao indesejada"
+    sintoma: "Usuario nao consegue reverter geracao que substituiu camada"
+    causa_raiz: "Undo nao integrado ao historico do Adobe"
+    mitigacao: "Native undo integration — geracao registrada no historico de undo do aplicativo"
+    severity: MEDIUM
+  - dor_id: D-S06-adobe_firefly_img-15
+    name: "Geracao sem suporte a modo escuro de interface"
+    sintoma: "Preview sempre em fundo branco independente do tema"
+    causa_raiz: "Tema de interface nao respeitado no preview"
+    mitigacao: "Theme-aware preview — adaptar background do preview ao tema ativo"
+    severity: LOW
