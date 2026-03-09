@@ -1,0 +1,117 @@
+ssot_id: OG10_SUBAGENT_60_5_30
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 SubAgent System — 60-5-30"
+  formula: "Main 60% + Controller 5% + Workers 30%"
+  overhead: "5% (routing + coordination)"
+  apply_to: "jobs com complexidade > threshold ou multi-studio"
+
+agentes:
+  main_agent:
+    share: 0.60
+    nome: "PrM (Professor Mestre)"
+    modelo: "claude-sonnet-4-5"
+    responsabilidades:
+      - "Coordenar todo o fluxo do job"
+      - "Interpretar pedido e criar execution plan"
+      - "Distribuir tasks para workers"
+      - "Agregar resultados parciais"
+      - "Acionar Controller em decisões críticas"
+    limites:
+      context_max: "12k tokens"
+      timeout: "30s"
+      tool_calls_max: 20
+    modelo_fallback: "claude-opus-4-6"
+
+  controller_agent:
+    share: 0.05
+    nome: "I-Vierne (Controller)"
+    modelo: "o3"
+    responsabilidades:
+      - "Decisões críticas que Main não resolve"
+      - "Desempate em conflitos de workers"
+      - "Aprovação final em operações de alto risco"
+      - "Escalação quando confidence < 0.80"
+    trigger_condicoes:
+      - "confidence < 0.80"
+      - "risk_score >= 80"
+      - "worker_conflict = true"
+      - "critical_domain = true"
+    limites:
+      invocacoes_max_por_job: 3
+      timeout: "15s"
+
+  workers:
+    share: 0.30
+    tipos:
+      code_worker:
+        id: W1
+        especialidade: "Geração e análise de código"
+        modelo: "claude-sonnet-4-5"
+        mcps_especializados: [Patch_Generate, Patch_Apply, CURA_1C]
+        timeout: "20s"
+
+      research_worker:
+        id: W2
+        especialidade: "Pesquisa, RAG, busca de evidências"
+        modelo: "gemini-flash-lite"
+        mcps_especializados: [RAG3TrimTwin, Context7x, MCPContext]
+        timeout: "15s"
+
+      creative_worker:
+        id: W3
+        especialidade: "Geração de conteúdo, textos, media"
+        modelo: "gpt-5-2"
+        mcps_especializados: [Style_Bundle, Image_Optimize, Subtitle_Generate]
+        timeout: "25s"
+
+      data_worker:
+        id: W4
+        especialidade: "Análise de dados, métricas, relatórios"
+        modelo: "claude-sonnet-4-5"
+        mcps_especializados: [Evidence_Store, Cache_Lookup, BENCH90]
+        timeout: "20s"
+
+      validation_worker:
+        id: W5
+        especialidade: "Validação, testes, quality gates"
+        modelo: "claude-sonnet-4-5"
+        mcps_especializados: [Doctor1, TestSprite, Ralph_Loop]
+        timeout: "15s"
+
+orchestration:
+  activation_threshold:
+    min_studios: 2
+    min_complexity: 7
+    min_tools_required: 5
+    or_if_risk_score: "≥ 60"
+
+  fluxo_basico:
+    - "1. Main recebe job e cria execution_plan"
+    - "2. Main distribui sub-tasks para Workers paralelos"
+    - "3. Workers executam e retornam parciais"
+    - "4. Main agrega resultados"
+    - "5. Controller valida se crítico"
+    - "6. U2 sela evidence"
+
+  paralelismo:
+    workers_max_paralelo: 3
+    timeout_total: "45s"
+    quorum_minimo: 2
+
+  falha_e_retry:
+    worker_timeout: "substituir por worker alternativo"
+    worker_conflict: "escalar para Controller"
+    controller_timeout: "usar melhor resultado disponível + warn"
+    max_retries: 2
+
+metricas:
+  task_completion_rate: "≥ 0.97"
+  coordination_overhead: "≤ 5%"
+  worker_utilization: "≥ 0.70"
+  parallel_efficiency: "≥ 0.80"
+  controller_invocation_rate: "≤ 0.15 (raro)"
+  avg_workers_per_job: "1.8"
