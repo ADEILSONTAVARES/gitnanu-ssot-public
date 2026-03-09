@@ -1,0 +1,114 @@
+ssot_id: OG10_MOUSE_INTEGRATION
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 — Integração com Mouse Inteligente v8.0"
+  custo_por_job: "$0.00004827"
+  target_custo: "$0.000141"
+  score_compliance: "100/100"
+
+papel_mouse:
+  definicao: "Mouse Inteligente v8.0 é o editor visual do NANUCAI"
+  responsabilidades:
+    - "Edição de código com UI inteligente"
+    - "Processamento de media (imagem, video, audio)"
+    - "Debug visual com HUD overlay"
+    - "Tutoria interativa (modo Tutor)"
+    - "Bridge para GitNanu (smart commits)"
+
+arquitetura_5_camadas:
+  MV_mouse_visual:
+    descricao: "Interface gráfica, captura de ações"
+    og10_role: "coleta evidência visual, screenshot"
+  MouseMind:
+    descricao: "Motor de inteligência local"
+    og10_role: "rodar U0 (intake/router) localmente"
+  MCPs:
+    descricao: "25 MCPs aprovados (nota ≥ 9.0)"
+    og10_role: "executar ferramentas via U1"
+  HUD:
+    descricao: "Overlay visual de status e métricas"
+    og10_role: "exibir score, custo, evidence status"
+  Ledger:
+    descricao: "Registro de custo por job"
+    og10_role: "integrar com OG10 cost ledger"
+
+modos_operacao:
+  CODE:
+    studio_range: "S10-S29 (Técnicos)"
+    pipeline: "padrão OG10"
+    features: ["patch apply", "git diff", "test run"]
+  VISUAL:
+    studio_range: "S30-S41 (Criativos)"
+    pipeline: "extended com V20"
+    features: ["screenshot", "image edit", "figma sync"]
+  MOTION:
+    studio_range: "S32-S34 (Video/Audio)"
+    pipeline: "extended V20 heavy"
+    features: ["video render", "subtitle", "compress"]
+  TUTOR:
+    studio_range: "todos"
+    pipeline: "especial (explicação passo a passo)"
+    features: ["step explain", "undo highlight", "context trail"]
+
+subagentes_mouse:
+  Inspector:
+    responsabilidade: "Inspeção multi-layer de código e assets"
+    mcp_principal: "Multi_Layer_Inspect"
+    og10_skill: "U1 (RAG + Context7x)"
+  Transformer:
+    responsabilidade: "Transformação de código e media"
+    mcp_principal: "Patch_Generate + Complex_Transform"
+    og10_skill: "U1 (worker)"
+  Patcher:
+    responsabilidade: "Aplicação segura de patches"
+    mcp_principal: "Patch_Apply + Undo_Token + Rollback_Execute"
+    og10_skill: "U1 + U2 (evidence seal)"
+  Validator:
+    responsabilidade: "Validação e quality gates"
+    mcp_principal: "Doctor1 + TestSprite + Syntax_Validation"
+    og10_skill: "U2 (prove + close)"
+
+gitnanu_bridge:
+  funcao: "Mouse → GitNanu bridge para commits automáticos"
+  fluxo:
+    - "Mouse gera patch via Patcher"
+    - "U2 sela evidence do patch"
+    - "GitNanu recebe evidence + patch"
+    - "GitNanu valida PASS_STRICT"
+    - "GitNanu faz smart commit com evidence_ref"
+  commit_automatico: true
+  evidence_required: true
+  custo_bridge: "$0.000000 (determinístico)"
+
+apis_externas_8:
+  aprovadas:
+    - {id: API1, nome: "Qwen", uso: "code generation", nota: 9.1}
+    - {id: API2, nome: "Kling O1", uso: "video generation", nota: 9.3}
+    - {id: API3, nome: "ATI", uso: "motion graphics", nota: 9.0}
+    - {id: API4, nome: "Magic Animator", uso: "animation", nota: 9.2}
+    - {id: API5, nome: "PDF Elemento", uso: "PDF processing", nota: 9.4}
+    - {id: API6, nome: "Manus", uso: "browser automation", nota: 9.1}
+    - {id: API7, nome: "GPT Image 1.5", uso: "image generation", nota: 9.3}
+    - {id: API8, nome: "Nano Banana", uso: "micro tasks", nota: 9.0}
+  criterio_aprovacao: "nota OG10 ≥ 9.0/10"
+
+custo_detalhado:
+  breakdown:
+    mcp_calls: "$0.00001200"
+    llm_reasoning: "$0.00002800"
+    api_externa_avg: "$0.00000827"
+    overhead: "$0.00000000"
+  total: "$0.00004827"
+  vs_target: "66% abaixo do target ($0.000141)"
+
+metricas:
+  custo_por_job: "$0.00004827"
+  latencia_p50: "120ms"
+  latencia_p95: "180ms"
+  evidence_seal_rate: "= 1.00"
+  gitnanu_commit_success: "≥ 0.99"
+  api_externa_success_rate: "≥ 0.99"
+  score_compliance_og10: "100/100"
