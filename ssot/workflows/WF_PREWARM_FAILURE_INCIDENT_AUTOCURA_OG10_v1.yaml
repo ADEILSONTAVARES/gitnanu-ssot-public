@@ -1,0 +1,17 @@
+wf_id: WF_PREWARM_FAILURE_INCIDENT_AUTOCURA_OG10_v1
+trigger: prewarm_failure_streak >= 5 OR Doctor1_output FAIL em WF_PREWARM_STACK
+freeze_rule: agente_gelo_level >= 3 blocks this workflow
+cooldown_policy: ssot/prewarm/PREWARM_INCIDENT_COOLDOWN_POLICY_OG10_v1.yaml
+anti_storm: max 1 incident notification per target per hour
+steps:
+  1: {op: coletar ultimos 10 receipts FAIL do target, mcp: gndrive_mcp, receipt: required}
+  2: {op: analisar padrao timeout|model_unavailable|budget_exceeded|schema_error, mcp: doctor_mcp}
+  3: {op: gerar diagnosis_yaml com causa_raiz + proposta, mcp: doctor_mcp, output: diagnosis.yaml}
+  4: {op: Doctor Gate 1 valida diagnosis.yaml, gate: Doctor1, fail: escalate_human}
+  5: {op: criar GammaNotion card INCIDENT com diagnosis, mcp: gammanote_mcp, receipt: required}
+  6: {op: aguardar aprovacao humana — SEM AUTO-APPLY estrutural, human_gate: required}
+  7: {op: aplicar acao aprovada ajuste_budget|swap_modelo|freeze_target, mcp: agno_runtime_mcp}
+  8: {op: evidence_pack -> GNDrive/incidents/, mcp: gndrive_mcp, receipt: required}
+  9: {op: GammaNotion card INCIDENT_RESOLVED, mcp: gammanote_mcp}
+autocura_threshold_streak: 7
+outputs: [diagnosis_yaml, incident_card_url, resolved_card_url, evidence_pack_path]
