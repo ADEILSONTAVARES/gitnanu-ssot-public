@@ -1,0 +1,83 @@
+ssot_id: MEMORIA_INFINITA_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "Memoria Infinita NANUCAI OG10 - Canon Mestre"
+  descricao: "Sistema de memoria em 3 camadas: STM, MTM, LTA"
+  formula_rag: "4x3pQ2 10x10x10"
+  formula_lta: "4x3pQ2 10x10x10x10(2)"
+  context_max_p95: "12k tokens"
+  familias_rag: 7
+  sistemas_integrados: [PrM, GNDrive, GammaNOTION, GitNanu]
+
+camadas_memoria:
+  STM_short_term:
+    descricao: "Memoria de curto prazo - contexto do job atual"
+    tamanho_max: "12k tokens"
+    duracao: "duracao do job"
+    storage: "contexto LLM (PAC)"
+    gerenciado_por: "U0 + U1 (Context7x)"
+    compressao: "SERENA ativa quando > 10k tokens"
+
+  MTM_medium_term:
+    descricao: "Memoria de medio prazo - sessao e historico recente"
+    tamanho_max: "100k tokens comprimidos"
+    duracao: "30 dias"
+    storage: "Cache (Redis/Supabase Vector)"
+    gerenciado_por: "U1 (Cache_Lookup + Cache_Store)"
+    familias: [F3_MCP, F4_RUNS, F6_OPS]
+
+  LTA_long_term:
+    descricao: "Memoria de longo prazo - conhecimento permanente"
+    tamanho_max: "ilimitado"
+    duracao: "3 anos minimo"
+    storage: "GNDrive + ssot/ repo"
+    gerenciado_por: "U2 (LTA Promotion)"
+    familias: [F1_SSOT, F2_CODE, F5_BENCH, F7_MEDIA]
+    formula: "4x3pQ2 10x10x10x10(2)"
+
+rag3trimtwin_quantum:
+  formula: "4x3pQ2 10x10x10"
+  trilhas_4:
+    T1_semantic: "similaridade semantica via embeddings"
+    T2_keyword: "busca exata por termos"
+    T3_structural: "matching por estrutura YAML/JSON"
+    T4_temporal: "priorizacao por recencia"
+  passagens_3:
+    P1_broad: "top-100 candidatos por trilha"
+    P2_trim: "reranking cruzado -> top-10"
+    P3_twin: "deduplicacao e verificacao de contradicao"
+  quorum_Q2:
+    regra: ">= 2 trilhas devem concordar"
+    em_conflito: "escalar para I-Vierne Controller"
+
+familias_7:
+  F1_SSOT: {storage: "ssot/ repo", ttl: "permanente", sistemas: [GitNanu, GNDrive]}
+  F2_CODE: {storage: "ssot/addons/ + LTA", ttl: "180 dias", sistemas: [Mouse, GitNanu]}
+  F3_MCP:  {storage: "LTA (se relevante)", ttl: "30 dias", sistemas: [PrM]}
+  F4_RUNS: {storage: "LTA", ttl: "90 dias", sistemas: [PrM, TeamAsWork10x]}
+  F5_BENCH:{storage: "ssot/bench/ repo", ttl: "permanente", sistemas: [PrM, GitNanu]}
+  F6_OPS:  {storage: "LTA", ttl: "60 dias", sistemas: [PrM]}
+  F7_MEDIA:{storage: "LTA + GNDrive", ttl: "365 dias", sistemas: [Mouse, GNDrive]}
+
+serena_compression:
+  trigger: "contexto > 10k tokens"
+  ratio_minimo: 0.40
+  output: "contexto comprimido <= 8k tokens"
+  invariant: "zero perda de fatos criticos"
+
+vault_mode:
+  regra: "RAW_NEVER_IN_CHAT"
+  permitido_no_contexto: ["facts", "brief (<=500 tokens)", "artifact_ref"]
+  proibido_no_contexto: ["raw evidence", "secrets", "PII", "tokens", "credenciais"]
+  enforcement: "U0 filtra antes de montar PAC"
+
+metricas:
+  retrieval_precision_at_5: {target: ">= 0.95"}
+  retrieval_recall: {target: ">= 0.90"}
+  context_utilization_p95: {target: "<= 12k tokens"}
+  lta_promotion_rate: {target: "~3% dos jobs"}
+  vault_compliance: {target: "= 1.00"}
+  compression_ratio: {target: ">= 0.40"}
