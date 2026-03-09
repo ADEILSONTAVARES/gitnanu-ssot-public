@@ -1,0 +1,95 @@
+studio_id: S04
+api: adobe_firefly
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S04-adobe_firefly-01
+    name: "Imagem gerada viola direitos autorais"
+    sintoma: "Output contem elementos reconheciveis de obra protegida"
+    causa_raiz: "Prompt sem filtro de copyright"
+    mitigacao: "Copyright filter ativo — bloquear prompts com nomes de artistas especificos"
+    severity: CRITICAL
+  - dor_id: D-S04-adobe_firefly-02
+    name: "Estilo visual inconsistente entre assets do mesmo projeto"
+    sintoma: "Imagens do mesmo projeto tem paletas e estilos diferentes"
+    causa_raiz: "Style reference nao aplicado entre geracoes"
+    mitigacao: "Style reference obrigatorio — primeira imagem define o estilo do projeto"
+    severity: HIGH
+  - dor_id: D-S04-adobe_firefly-03
+    name: "Resolucao insuficiente para impressao"
+    sintoma: "Asset gerado em 72dpi quando necessita 300dpi"
+    causa_raiz: "Output resolution nao especificada no request"
+    mitigacao: "Resolution definida como campo obrigatorio baseado no use case"
+    severity: HIGH
+  - dor_id: D-S04-adobe_firefly-04
+    name: "Elemento de marca incorretamente representado"
+    sintoma: "Logo ou produto da marca aparece distorcido na imagem"
+    causa_raiz: "Brand asset nao fornecido como reference image"
+    mitigacao: "Brand reference obrigatorio para qualquer geracao com elementos de marca"
+    severity: CRITICAL
+  - dor_id: D-S04-adobe_firefly-05
+    name: "Geracao repetida do mesmo conceito sem variacao"
+    sintoma: "Multiplas geracoes retornam imagens quase identicas"
+    causa_raiz: "Seed fixo ou prompt sem variacao"
+    mitigacao: "Seed randomization + prompt variation obrigatorios em batch generation"
+    severity: MEDIUM
+  - dor_id: D-S04-adobe_firefly-06
+    name: "Custo de API nao monitorado em geracao em lote"
+    sintoma: "Batch de 100 imagens gera custo inesperado"
+    causa_raiz: "Sem budget guard em batch requests"
+    mitigacao: "BudgetGuard ativo — limite de custo por sessao com alerta antes de exceder"
+    severity: HIGH
+  - dor_id: D-S04-adobe_firefly-07
+    name: "Imagem gerada sem modelo de licenca definido"
+    sintoma: "Asset gerado com licenca desconhecida para uso comercial"
+    causa_raiz: "Content credentials nao verificados no output"
+    mitigacao: "Content credentials verification pos-geracao — licenca obrigatoria no metadata"
+    severity: HIGH
+  - dor_id: D-S04-adobe_firefly-08
+    name: "Prompt injection via campo de descricao"
+    sintoma: "Usuario injeta instrucoes maliciosas no campo de prompt"
+    causa_raiz: "Sanitizacao insuficiente do input"
+    mitigacao: "Prompt sanitization gate — remover instrucoes de sistema antes de enviar"
+    severity: CRITICAL
+  - dor_id: D-S04-adobe_firefly-09
+    name: "Formato de saida incompativel com destino"
+    sintoma: "Imagem gerada em JPEG quando necessita PNG com transparencia"
+    causa_raiz: "Output format nao derivado do use case"
+    mitigacao: "Output format definido automaticamente pelo use case — PNG para web, TIFF para print"
+    severity: MEDIUM
+  - dor_id: D-S04-adobe_firefly-10
+    name: "Geracao de conteudo inapropriado"
+    sintoma: "Output contem conteudo violento ou sexualmente explicito"
+    causa_raiz: "Content safety filter desativado ou insuficiente"
+    mitigacao: "Content safety gate obrigatorio — bloquear antes do output"
+    severity: CRITICAL
+  - dor_id: D-S04-adobe_firefly-11
+    name: "Latencia alta em geracao de imagem grande"
+    sintoma: "Geracao de 4K demora mais de 30 segundos sem feedback"
+    causa_raiz: "Sem progress indicator nem timeout definido"
+    mitigacao: "Progress feedback obrigatorio + timeout configuravel por tamanho"
+    severity: MEDIUM
+  - dor_id: D-S04-adobe_firefly-12
+    name: "Asset gerado nao armazenado com metadata de proveniencia"
+    sintoma: "Impossivel rastrear quando, por quem e com qual prompt foi gerado"
+    causa_raiz: "Metadata de proveniencia nao anexado ao asset"
+    mitigacao: "Provenance metadata obrigatorio — prompt, timestamp, model version, author"
+    severity: HIGH
+  - dor_id: D-S04-adobe_firefly-13
+    name: "Regeneracao sem preservar elementos aprovados"
+    sintoma: "Regenerar parte da imagem altera areas que estavam aprovadas"
+    causa_raiz: "Inpainting sem mask protection"
+    mitigacao: "Mask obrigatoria em inpainting — areas aprovadas protegidas"
+    severity: HIGH
+  - dor_id: D-S04-adobe_firefly-14
+    name: "Output sem suporte a acessibilidade"
+    sintoma: "Imagem gerada sem alt-text ou descricao de acessibilidade"
+    causa_raiz: "Alt-text nao gerado automaticamente"
+    mitigacao: "Alt-text auto-gerado pos-geracao — campo obrigatorio no asset"
+    severity: MEDIUM
+  - dor_id: D-S04-adobe_firefly-15
+    name: "Falha silenciosa em geracao de lote"
+    sintoma: "Batch de 50 imagens retorna 45 sem notificar as 5 que falharam"
+    causa_raiz: "Error handling insuficiente em batch mode"
+    mitigacao: "Batch completion report obrigatorio — lista de sucessos e falhas com motivo"
+    severity: HIGH
