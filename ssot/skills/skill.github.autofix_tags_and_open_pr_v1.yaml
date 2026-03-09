@@ -1,0 +1,15 @@
+spec_id: skill.github.autofix_tags_and_open_pr_v1
+internal_only: true
+purpose: Normaliza tags alias->canonico e abre PR via Warp
+steps:
+  1: AgenteZero preflight
+  2: checkout repo + branch chore/autofix-tags
+  3: scripts/autofix_council_tags.py --apply --report /tmp/report.json
+  4: if no changes stop with receipt
+  5: git commit -m chore(council) normalize tags
+  6: gh pr create + attach evidence_refs
+  7: Doctor Gate 1 on PR
+  8: GammaNotion card AutoFix Tags PR
+  9: receipts -> GNDrive
+outputs: [pr_url, evidence_pack, receipt_path]
+gates: [AgenteZero, Doctor1]
