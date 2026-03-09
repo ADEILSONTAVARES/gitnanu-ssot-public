@@ -1,0 +1,69 @@
+ssot_id: TEAM_ROLES_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Team Roles Policy — papeis e permissoes no sistema"
+  sistema: NANUCAI OG10
+
+papeis:
+
+  PrM:
+    nome: "Professor Mestre"
+    tipo: "superagent cerebro"
+    permissoes:
+      - "orquestrar todos os studios"
+      - "delegar para SubAgents"
+      - "aprovar artefatos"
+      - "escalar para Council"
+    restricoes:
+      - "nunca executa diretamente (sempre delega)"
+      - "nunca acessa vault_local diretamente"
+
+  SubAgent:
+    nome: "SubAgent executor"
+    tipo: "agente executor subordinado"
+    permissoes:
+      - "executar tasks delegadas por PrM"
+      - "acessar MCPs da allowlist"
+      - "gerar evidence_ref"
+    restricoes:
+      - "max 5 steps por task"
+      - "nao delega para outro SubAgent sem PrM"
+      - "sandbox isolada sem egress"
+
+  GitNanu:
+    nome: "GitNanu writer"
+    tipo: "agente de escrita canonica"
+    permissoes:
+      - "unico push para main"
+      - "criar/editar arquivos SSOT"
+    restricoes:
+      - "nunca executa codigo de produto"
+      - "nunca acessa dados de usuario"
+
+  Council_J1_J2_J3:
+    nome: "Council 100x3"
+    tipo: "juizes de qualidade"
+    permissoes:
+      - "emitir veredictos PASS/BLOCK"
+      - "aprovar mudancas criticas"
+    restricoes:
+      - "nao executam — apenas julgam"
+      - "veredicto imutavel apos emissao"
+
+  Operador_Humano:
+    nome: "Adeilson (operador)"
+    tipo: "humano autorizado"
+    permissoes:
+      - "todas as permissoes"
+      - "ativar kill_switch manual"
+      - "aprovar mudancas unanimes"
+    restricoes:
+      - "deve seguir o mesmo PASS_STRICT"
+
+invariants:
+  - "Papeis sao imutaveis sem Council unanime"
+  - "PrM nunca e executor — sempre cerebro"
+  - "GitNanu nunca e cerebro — sempre writer"
