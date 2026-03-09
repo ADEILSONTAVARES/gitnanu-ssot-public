@@ -1,0 +1,11 @@
+pack_id: SKILLIS_PREWARM_STACK_OG10_v1
+version: 1.0
+skills:
+  - skill.autocura.prewarm_review_v1
+  - skill.prewarm.run_targets_v1
+  - skill.prewarm.incident_report_v1
+domain_required: prewarm_min7
+mcp_required: [agno_runtime_mcp, cache_quantum_mcp, doctor_mcp, gndrive_mcp]
+schedule: daily + on_failure_streak
+autocura_threshold_streak: 7
+freeze_rule: domain_score < 7 blocks all prewarm writes
