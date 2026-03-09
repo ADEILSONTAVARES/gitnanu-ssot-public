@@ -1,0 +1,74 @@
+spec_id: DEPLOY_RUNBOOK
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Deploy Runbook — Procedimento Padrao de Deploy NANUCAI OG10"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+description: >
+  Runbook padrao para todo deploy de arquivos YAML no SSOT.
+  Cobre geracao de scripts, deploy via GitHub API, validacao e
+  sincronizacao.
+
+pre_requisites:
+  - "Python 3.x instalado no Mac"
+  - "pyyaml instalado: pip3 install pyyaml --break-system-packages"
+  - "Token GitHub valido com scope repo"
+  - "Repo clonado em ~/Projects/gitnanu-ssot-public"
+
+deploy_workflow:
+
+  STEP_1_AUDITORIA:
+    nome: "Auditar gaps antes de gerar"
+    comandos:
+      - "ls ssot/{dir}/ para cada diretorio suspeito"
+      - "find ssot/ -name '*.yaml' | wc -l"
+    output_esperado: "Lista exata de arquivos faltando"
+    principio: "Sem evidencia do gap, nao gerar — Zero Alucinacao"
+
+  STEP_2_GERACAO:
+    nome: "Gerar script de deploy"
+    formato: "Script Python autocontido com FILES dict"
+    estrutura:
+      - "REPO e BRANCH no topo"
+      - "github_put() function"
+      - "FILES dict com path -> content"
+      - "main() com loop e report"
+    validacao: "python3 -c 'import ast; ast.parse(open(script).read())'"
+
+  STEP_3_DEPLOY:
+    nome: "Executar deploy"
+    comandos:
+      - "chmod +x ~/Documents/script.py"
+      - "python3 ~/Documents/script.py TOKEN"
+    output_esperado: "N OK | 0 ERRO"
+    se_erro: "Ver mensagem de erro — corrigir e re-rodar"
+
+  STEP_4_SYNC:
+    nome: "Sincronizar e validar"
+    comandos:
+      - "git pull"
+      - "python3 scripts/gate_pass_strict.py"
+    output_esperado: "PASS: PASS_STRICT"
+    se_fail: "Ver validator que falhou — corrigir arquivo e re-deploy"
+
+  STEP_5_CONFIRM:
+    nome: "Confirmar estado final"
+    comandos:
+      - "git log --oneline -3"
+      - "find ssot/ -name '*.yaml' | wc -l"
+    output_esperado: "Commit recente visivel, contagem correta de arquivos"
+
+lote_naming:
+  convencao: "Lote A, B, C, D... — cada lote agrupa arquivos relacionados"
+  max_por_lote: 30
+  commit_message: "feat(lote-X): descricao dos arquivos"
+
+invariants:
+  - "STEP_1 obrigatorio — nunca gerar sem auditar"
+  - "STEP_4 obrigatorio — nunca encerrar sem PASS_STRICT"
+  - "Zero alucinacao — apenas arquivos confirmados como faltando"
+  - "Script sempre baixado antes de rodar"
