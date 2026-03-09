@@ -1,0 +1,70 @@
+ssot_id: INDEX_MASTER
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "SSOT Index Master — mapa completo do repositorio OG10"
+  sistema: NANUCAI OG10
+  total_dirs: 55
+  total_arquivos_aprox: 1100
+
+estrutura_principal:
+  og10:        {descricao: "Arquitetura OG10 core", pointer: "ssot/og10/"}
+  studios:     {descricao: "52 Studios S00-S51", pointer: "ssot/studios/"}
+  addons:      {descricao: "Actions 40/API por studio", pointer: "ssot/addons/"}
+  agents:      {descricao: "Agentes e subagentes", pointer: "ssot/agents/"}
+  mcp:         {descricao: "MCPs Elite 25 + specs", pointer: "ssot/mcp/"}
+  bench:       {descricao: "Bench90 + synergy", pointer: "ssot/bench/"}
+  quality:     {descricao: "Quality gates e validators", pointer: "ssot/quality/"}
+  metrics:     {descricao: "Metricas OG10 + TeamsWork10X", pointer: "ssot/metrics/"}
+  memoria:     {descricao: "Thalk + LTA + memoria", pointer: "ssot/memoria/"}
+  gitnanu:     {descricao: "GitNanu writer protocol", pointer: "ssot/gitnanu/"}
+  skills:      {descricao: "Skills registry + templates", pointer: "ssot/skills/"}
+  schemas:     {descricao: "JSON schemas validacao", pointer: "ssot/schemas/"}
+  registries:  {descricao: "Registros globais", pointer: "ssot/registries/"}
+  mouse:       {descricao: "Mouse Inteligente + families", pointer: "ssot/mouse/"}
+  protocols:   {descricao: "Protocolos A2A + Universal", pointer: "ssot/protocols/"}
+  security:    {descricao: "Security policies + scans", pointer: "ssot/security/"}
+  guardrails:  {descricao: "Anti-hallucination locks T1-T4", pointer: "ssot/guardrails/"}
+  contracts:   {descricao: "Contratos bilaterais SSOT", pointer: "ssot/contracts/"}
+  policies:    {descricao: "Politicas operacionais", pointer: "ssot/policies/"}
+  cost:        {descricao: "Pricing e custo OG10", pointer: "ssot/cost/"}
+  lta:         {descricao: "Long-Term Archive policy", pointer: "ssot/lta/"}
+  prm:         {descricao: "Professor Mestre schemas", pointer: "ssot/prm/"}
+  ide:         {descricao: "IDE build + export policy", pointer: "ssot/ide/"}
+  vps:         {descricao: "VPS security targets", pointer: "ssot/vps/"}
+  device:      {descricao: "Device lock + sync policy", pointer: "ssot/device/"}
+  noholes:     {descricao: "No Holes UI contract", pointer: "ssot/noholes/"}
+  terminal:    {descricao: "Terminal policy", pointer: "ssot/terminal/"}
+  ops:         {descricao: "Bootstrap + operacoes", pointer: "ssot/ops/"}
+  packs:       {descricao: "MCP real-world packs", pointer: "ssot/packs/"}
+  pipeline:    {descricao: "Pipeline CI/CD", pointer: "ssot/pipeline/"}
+  agno:        {descricao: "Agno framework runtime", pointer: "ssot/agno/"}
+  basileia:    {descricao: "Basileia 52 API map", pointer: "ssot/basileia/"}
+  apis:        {descricao: "API definitions", pointer: "ssot/apis/"}
+  gates:       {descricao: "Doctor Gates", pointer: "ssot/gates/"}
+  voice:       {descricao: "Voice interface", pointer: "ssot/voice/"}
+  adapters:    {descricao: "Mouse adapters", pointer: "ssot/adapters/"}
+  connectors:  {descricao: "Connectors registry", pointer: "ssot/connectors/"}
+  cowork10x:   {descricao: "Cowork10X spec", pointer: "ssot/cowork10x/"}
+  gammanotion: {descricao: "GammaNOTION integration", pointer: "ssot/gammanotion/"}
+  gndrive:     {descricao: "GNDrive cloud storage", pointer: "ssot/gndrive/"}
+  playbooks:   {descricao: "Playbooks operacionais", pointer: "ssot/playbooks/"}
+  prewarm:     {descricao: "Prewarm policy por plano", pointer: "ssot/prewarm/"}
+  workflows:   {descricao: "N8N workflows", pointer: "ssot/workflows/"}
+  antigravity: {descricao: "Google Antigravity", pointer: "ssot/antigravity/"}
+  gateway:     {descricao: "AG_GATEWAY_002", pointer: "ssot/gateway/"}
+  integrations:{descricao: "Integracoes externas", pointer: "ssot/integrations/"}
+  overlays:    {descricao: "Model overlays", pointer: "ssot/overlays/"}
+  rules:       {descricao: "Regras operacionais", pointer: "ssot/rules/"}
+  runbooks:    {descricao: "Runbooks execucao", pointer: "ssot/runbooks/"}
+  memory:      {descricao: "Memory system", pointer: "ssot/memory/"}
+  subagent:    {descricao: "SubAgent 60-5-30", pointer: "ssot/subagent/"}
+  ui:          {descricao: "UI exposure map", pointer: "ssot/ui/"}
+  private:     {descricao: "COCA-COLA LOCAL ONLY — vazio no repo", pointer: "ssot/private/"}
+
+invariants:
+  - "ssot/private/ SEMPRE vazio no repo publico"
+  - "INDEX_MASTER e atualizado a cada novo dir criado"
+  - "Todo novo dir requer entrada aqui antes de PASS_STRICT"
