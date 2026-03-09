@@ -1,0 +1,184 @@
+ssot_id: OG10_ADDONS_40_15_3_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Addons System — 40-15-3"
+  formula: "40 Addons + 15 Pains + 3 Skills Universais"
+  split: "85% L0 (3 Universais) + 15% L1-L3 (40+15)"
+
+skills_universais_3:
+  split_l0: 0.85
+  descricao: "Fazem 85% do trabalho em L0, custo base"
+
+  U0_intake_router:
+    share_dentro_l0: 0.28
+    responsabilidades:
+      - "Classificar pedido (studio, modo, risco)"
+      - "Estimar budget (tokens, custo, latência)"
+      - "Decidir se aciona addon ou pain"
+      - "Montar PAC (2k-12k tokens)"
+    outputs: ["routing_decision.json", "budget_caps.json", "risk_score"]
+    custo: "$0.000000 (determinístico)"
+
+  U1_orchestrate_execute:
+    share_dentro_l0: 0.42
+    responsabilidades:
+      - "MCPContext + Context7x injection"
+      - "RAG3TrimTwin retrieval"
+      - "Parallel MCP execution"
+      - "SubAgent orchestration (60-5-30)"
+      - "Ralph loop (retry inteligente)"
+      - "TestSprite (tests rápidos)"
+    outputs: ["job_result.json", "tool_trace.jsonl", "memory_pointers"]
+    custo: "$0.000051 (base L0)"
+
+  U2_prove_close:
+    share_dentro_l0: 0.30
+    responsabilidades:
+      - "Doctor gates execution"
+      - "Evidence seal (SHA256 + timestamp)"
+      - "Cost ledger write"
+      - "Score 0-100 por dimensão"
+      - "LTA promotion (quando elegível)"
+    outputs: ["evidence_pack.manifest.json", "ledger_cost.json", "score_card.json"]
+    custo: "$0.000000 (determinístico)"
+
+addons_40:
+  split_l1_l3: 0.15
+  shadow_band: "0.003-0.006"
+
+  always_on_l0_12:
+    descricao: "Sempre ativos em L0, custo O(1)"
+    lista:
+      - A01_Multi_Layer_Inspect
+      - A02_Style_Bundle_Capture
+      - A03_Screenshot_Capture
+      - A04_Patch_Preview
+      - A05_Rollback_Safety
+      - A06_Evidence_Chain
+      - A07_Cache_Lookup
+      - A08_Syntax_Validation
+      - A09_Contrast_Check
+      - A10_Git_Diff_Generate
+      - A11_Performance_Monitor_Lite
+      - A12_Context_Shaper
+
+  triggered_l1_l3_28:
+    descricao: "Só acionados por gatilho, dentro shadow band"
+    categoria_editing:
+      count: 8
+      ids: [A13, A14, A15, A16, A17, A18, A19, A20]
+      nomes:
+        - A13_Complex_Transform
+        - A14_AST_Refactor
+        - A15_Multi_File_Patch
+        - A16_Dependency_Update
+        - A17_Import_Reorganize
+        - A18_Code_Minify
+        - A19_Bundle_Optimize
+        - A20_Tree_Shake
+    categoria_validation:
+      count: 6
+      ids: [A21, A22, A23, A24, A25, A26]
+      nomes:
+        - A21_Deep_Security_Scan
+        - A22_Compliance_Check
+        - A23_License_Audit
+        - A24_Blast_Radius_Analysis
+        - A25_Regression_Suite
+        - A26_Load_Test
+    categoria_intelligence:
+      count: 8
+      ids: [A27, A28, A29, A30, A31, A32, A33, A34]
+      nomes:
+        - A27_Council_Diagnosis
+        - A28_Recipe_Generation
+        - A29_Pattern_Detection
+        - A30_Anomaly_Detection
+        - A31_Predictive_Preload
+        - A32_Smart_Merge
+        - A33_Conflict_Resolution
+        - A34_Auto_Documentation
+    categoria_media:
+      count: 6
+      ids: [A35, A36, A37, A38, A39, A40]
+      nomes:
+        - A35_Image_Optimize
+        - A36_Video_Compress
+        - A37_Audio_Normalize
+        - A38_Subtitle_Generate
+        - A39_Thumbnail_Extract
+        - A40_Watermark_Apply
+
+pains_15:
+  descricao: "Dores que acionam workers especializados em L1-L3"
+  lista:
+    - id: P01
+      nome: Low_Confidence_Detected
+      trigger: "confidence < 0.80"
+      action: "Aciona o3 ou PHDMat"
+    - id: P02
+      nome: Complex_Reasoning_Required
+      trigger: "reasoning_depth > 3"
+      action: "Aciona o3 reasoning mode"
+    - id: P03
+      nome: High_Risk_Operation
+      trigger: "risk_score >= 80"
+      action: "Doctor2 + Double Approval"
+    - id: P04
+      nome: Critical_Domain
+      trigger: "studio in [S42, S43, S44, S45, S46, S47, S48, S49, S50, S51]"
+      action: "PHDMat + Evidence extended"
+    - id: P05
+      nome: Memory_Intensive
+      trigger: "context > 100k tokens"
+      action: "LTA lookup + Pointer fetch"
+    - id: P06
+      nome: Multi_Studio_Coordination
+      trigger: "studios_involved >= 3"
+      action: "SubAgent 60-5-30 completo"
+    - id: P07
+      nome: Real_Time_Constraint
+      trigger: "latency_target < 500ms"
+      action: "Cache aggressive + speculative"
+    - id: P08
+      nome: Cost_Sensitive
+      trigger: "budget_tight"
+      action: "Gemini Flash-Lite first"
+    - id: P09
+      nome: Quality_Critical
+      trigger: "output_quality_target >= 95"
+      action: "Polish 3x + Opus review"
+    - id: P10
+      nome: Data_Heavy
+      trigger: "payload > 10MB"
+      action: "Streaming + chunking"
+    - id: P11
+      nome: Concurrent_Users
+      trigger: "concurrent_users > 100"
+      action: "Rate limit + queue"
+    - id: P12
+      nome: Breaking_Change
+      trigger: "schema_change_detected"
+      action: "Rollback tested + ADR"
+    - id: P13
+      nome: Security_Alert
+      trigger: "secrets_or_pii_detected"
+      action: "Coca-Guard block + quarantine"
+    - id: P14
+      nome: Performance_Degradation
+      trigger: "latency_spike > 2x_baseline"
+      action: "I-Vierne investigate"
+    - id: P15
+      nome: Error_Storm
+      trigger: "error_rate > 0.05 (1min window)"
+      action: "Circuit breaker + AutoCura"
+
+metricas:
+  addon_utilization_always_on: "100% (obrigatório)"
+  addon_utilization_triggered: "15-25% dos jobs"
+  pain_trigger_rate: "5-15% dos jobs"
+  addon_cost_per_job: "< $0.00002"
+  pain_resolution_success: "≥ 0.95"
