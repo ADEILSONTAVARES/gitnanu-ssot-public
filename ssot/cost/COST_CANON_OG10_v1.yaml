@@ -1,0 +1,44 @@
+ssot_id: COST_CANON_OG10_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Cost Canon OG10 — Regras de custo e shadow band"
+  pointer_og10: "ssot/og10/OG10_COST_CANON.yaml"
+  pointer_pricing: "ssot/cost/LLM_PRICING_1M_TOKENS.yaml"
+
+formula_split_85_15:
+  L0_deterministic: 0.85
+  L1_L3_llm: 0.15
+  shadow_band_dentro_15pct: "0.3-0.6%"
+  prewarm_exclusivo: "1-2% apenas L1-L3"
+  effective_total_formula: "effective_total = 0.15 * shadow_rate"
+  exemplo:
+    shadow_rate_0_003: "effective = 0.15 * 0.003 = 0.00045 do job total"
+    shadow_rate_0_006: "effective = 0.15 * 0.006 = 0.00090 do job total"
+
+targets_por_job:
+  l0_turbo_min_usd:  0.000051
+  l0_realistic_usd:  0.000141
+  l0_max_usd:        0.000200
+  l1_l3_adicional:   "ate 15% do job"
+
+regras_custo:
+  - "L0 roda 85% do trabalho — modelos baratos (MiniMax, Kimi, DeepSeek)"
+  - "L1-L3 so ativado por trigger — modelos pesados quando necessario"
+  - "Shadow band 0.3-0.6% dentro do 15% — nunca sobre o total"
+  - "Prewarm exclusivo 1-2% apenas para L1-L3, nunca L0"
+  - "Custo MEASURED requer ledger_cost.json assinado em vault_local"
+  - "Target vs Measured NUNCA misturar (Lock T4)"
+
+monitoramento:
+  ledger_path: "vault_local/ledger/ledger_cost.json"
+  mcp_budget_guard: "MCP_Budget_Guard"
+  alerta_threshold: "job_cost > l0_max_usd * 1.5"
+  coca_local_only: true
+
+og10_compliance:
+  lock_t4: "Target vs Measured NUNCA misturar"
+  raw_never_in_chat: true
+  nota_sistema: "100/100 dentro do target"
