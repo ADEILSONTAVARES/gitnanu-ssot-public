@@ -1,0 +1,46 @@
+ssot_id: SKILLS_UNIVERSAIS_U0_U1_U2_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "Skills Universais U0/U1/U2 - Registry Canonico"
+  total_skills: 3
+  share_l0: 0.85
+  descricao: "As 3 skills que fazem 85% do trabalho em L0"
+  sistemas_integrados: [PrM, Mouse, GammaNOTION, GNDrive, TeamAsWork10x, Cowork10x, GitNanu]
+
+registry:
+  U0:
+    id: U0
+    nome: "Intake + Router"
+    camada: L0
+    share: 0.28
+    studios: "S00-S51 (todos)"
+    outputs: [routing_decision.json, budget_caps.json, risk_score, pac_config.json]
+    invariant: "NUNCA chamar LLM - tudo deterministico"
+
+  U1:
+    id: U1
+    nome: "Orchestrate + Execute"
+    camada: L0
+    share: 0.42
+    studios: "S00-S51 (todos)"
+    outputs: [job_result.json, tool_trace.jsonl, memory_pointers, partial_evidence]
+    modulos: [MCPContext, Context7x, RAG3TrimTwin, SubAgent_60_5_30, Ralph_Loop, TestSprite]
+    invariant: "Context <= 12k tokens antes do LLM call"
+
+  U2:
+    id: U2
+    nome: "Prove + Close"
+    camada: L0
+    share: 0.30
+    studios: "S00-S51 (todos)"
+    outputs: [evidence_pack.manifest.json, ledger_cost.json, score_card.json]
+    passos: [doctor_gates, score_final, evidence_seal, ledger_write, lta_check, polish_3x]
+    invariant: "evidence_seal OBRIGATORIO - sem seal = job INVALID"
+
+fluxo_canonical:
+  sequencia: "U0 -> U1 -> U2"
+  custo_total: "$0.000120 (base)"
+  latencia_base: "<= 1.5s p50"
