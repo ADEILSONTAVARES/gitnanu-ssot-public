@@ -1,0 +1,47 @@
+ssot_id: BENCHPACK_54_REGISTRY_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "BenchPack 54 Registry — 54 benchmarks F (Fidelidade)"
+  sistema: NANUCAI OG10
+  pointer_bench90: "ssot/bench/BENCH90_CANON_v1.yaml"
+  secao: "F — Fidelidade (peso 0.45 na formula OG10)"
+
+bench_f_54:
+  total: 54
+  peso_formula: 0.45
+  subdivisoes:
+    F1_core: {count: 20, descricao: "benchmarks fundamentais de fidelidade"}
+    F2_mcp: {count: 20, descricao: "benchmarks MCP integration"}
+    F3_edge: {count: 14, descricao: "benchmarks edge cases e stress"}
+
+  exemplos_f1_core:
+    BF01: {nome: "No Evidence No Claim", lock: T1, peso: HIGH}
+    BF02: {nome: "Raw Never in Chat", lock: T2, peso: HIGH}
+    BF03: {nome: "Schema Valido", peso: HIGH}
+    BF04: {nome: "Nota >= 9.0", lock: T3, peso: HIGH}
+    BF05: {nome: "Target vs Measured separados", lock: T4, peso: HIGH}
+    BF06: {nome: "PASS_STRICT obrigatorio", peso: HIGH}
+    BF07: {nome: "GitNanu single writer", peso: HIGH}
+    BF08: {nome: "COCA-COLA LOCAL ONLY", peso: CRITICAL}
+    BF09: {nome: "Doctor Gate fail-closed", peso: HIGH}
+    BF10: {nome: "Budget 85/15 respeitado", peso: MEDIUM}
+
+  exemplos_f2_mcp:
+    BF21: {nome: "MCP fora allowlist bloqueado", peso: HIGH}
+    BF22: {nome: "MCP timeout 30s handled", peso: MEDIUM}
+    BF23: {nome: "Cache hit antes de chamada", peso: MEDIUM}
+    BF24: {nome: "Ralph Loop max 3 retries", peso: MEDIUM}
+    BF25: {nome: "Evidence Seal pos execucao L1+", peso: HIGH}
+
+  score_agregado:
+    formula: "media ponderada dos 54 benchmarks"
+    target: ">= 9.0"
+    fonte: "ssot/bench/BENCH90_CANON_v1.yaml#secao_F"
+
+invariants:
+  - "54 benchmarks F sao imutaveis apos aprovacao Council"
+  - "MEASURED results vao para vault_local (COCA-COLA LOCAL ONLY)"
+  - "TARGET publicado — MEASURED nunca no repo"
