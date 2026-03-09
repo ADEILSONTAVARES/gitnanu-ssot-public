@@ -1,0 +1,35 @@
+ssot_id: SYNC_ENGINE_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "GitNanu Sync Engine - Mac <-> VPS <-> GitHub"
+  latencia_target: "< 2s p95"
+  protocolo: "bundle-based + SSH"
+  sistemas: [GitNanu, GNDrive, Mouse]
+
+fluxo_mac_to_vps:
+  passo_1: "git bundle create /tmp/repo.bundle HEAD main"
+  passo_2: "scp /tmp/repo.bundle gitnanu-vps:~/sync/"
+  passo_3: "ssh gitnanu-vps 'git bundle unbundle ~/sync/repo.bundle main'"
+  latencia_p95: "< 2s"
+  conflito: "VPS e SOT - Mac sempre faz pull antes de push"
+
+fluxo_vps_to_github:
+  passo_1: "python3 scripts/gate_pass_strict.py"
+  passo_2: "git push origin main"
+  passo_3: "GitHub Actions CI valida"
+  pre_requisito: "PASS_STRICT obrigatorio"
+
+source_of_truth:
+  primario: "VPS (gitnanu@72.60.142.44)"
+  backup: "GitHub (gitnanu-ssot-public)"
+  local_mac: "worktree temporario (nunca SOT)"
+  regra: "em caso de conflito, VPS ganha"
+
+metricas:
+  mac_to_vps_latency_p95: {target: "< 2s"}
+  vps_to_github_latency_p95: {target: "< 10s"}
+  sync_success_rate: {target: ">= 0.999"}
+  conflict_rate: {target: "<= 0.001"}
