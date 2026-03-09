@@ -1,0 +1,44 @@
+ssot_id: TERMINAL_POLICY_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Terminal Policy — uso seguro do terminal OG10"
+  sistema: NANUCAI OG10
+
+regras_terminal:
+  comandos_permitidos:
+    - "git pull / git push (via GitNanu)"
+    - "python3 scripts/*.py"
+    - "bash scripts/*.sh"
+    - "ls / cat / head / grep (leitura)"
+    - "chmod +x"
+
+  comandos_bloqueados:
+    - "rm -rf sem confirmacao"
+    - "curl / wget para dominios fora da allowlist"
+    - "sudo sem justificativa logada"
+    - "git push --force (bloqueado por branch protection)"
+    - "cat com secrets em output"
+
+  zpaste_limites:
+    tool: "zpaste_on 180"
+    limite_chars: "~3000 chars por paste"
+    solucao_overflow: "dividir em batches numerados"
+
+  deploy_scripts:
+    destino_download: "~/Documents/ (nao ~/Downloads/)"
+    formato_token: "ghp_TOKEN_REAL (nunca literal SEU_TOKEN)"
+    sequencia: "chmod +x -> python3 -> git pull -> gate"
+
+  paths_proibidos_em_output:
+    - "vault_local/"
+    - "ssot/private/"
+    - ".env"
+    - "*.pem"
+
+invariants:
+  - "Nenhum secret aparece em output de terminal"
+  - "Scripts de deploy sempre em ~/Documents/"
+  - "Token GitHub regenerar a cada 7 dias"
