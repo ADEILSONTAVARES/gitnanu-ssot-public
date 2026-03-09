@@ -1,0 +1,58 @@
+ssot_id: N8N_VERSIONING_FLOW
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "N8N Versioning Flow — versionamento de workflows n8n"
+  sistema: NANUCAI OG10
+  pointer_workflows: "ssot/workflows/WORKFLOWS_INDEX.yaml"
+
+politica_versioning:
+  formato_versao: "v{major}.{minor}.{patch}"
+  storage: "GNDrive/n8n/workflows/{nome}_v{version}.json"
+  repo_publico: false
+  nota: "Workflows n8n nunca comitados no repo publico"
+
+fluxo_deploy_workflow:
+  passo_1: "Exportar workflow do n8n como JSON"
+  passo_2: "Versionar: nome_v1.2.3.json"
+  passo_3: "Salvar em GNDrive (nao no GitHub)"
+  passo_4: "Atualizar pointer aqui com nova versao"
+  passo_5: "Doctor1 valida funcionamento"
+
+workflows_registrados:
+  AG_GATEWAY_002:
+    versao_atual: "v1.0.0"
+    tipo: "stateful job queue via HTTP webhook"
+    storage: "GNDrive/n8n/AG_GATEWAY_002_v1.0.0.json"
+    status: "ACTIVE"
+
+  AG_WORKER_001:
+    versao_atual: "v1.0.0"
+    tipo: "stateless polling worker 10s"
+    storage: "GNDrive/n8n/AG_WORKER_001_v1.0.0.json"
+    status: "ACTIVE"
+
+  SHELL_001:
+    versao_atual: "v1.0.0"
+    tipo: "job processor shell"
+    storage: "GNDrive/n8n/SHELL_001_v1.0.0.json"
+    status: "ACTIVE"
+
+  STRIPE_WEBHOOK_HANDLER:
+    versao_atual: "v1.0.0"
+    tipo: "billing webhook idempotente"
+    storage: "GNDrive/n8n/STRIPE_WEBHOOK_HANDLER_v1.0.0.json"
+    status: "RESERVED"
+
+  DUNNING_SCHEDULER:
+    versao_atual: "v1.0.0"
+    tipo: "dunning diario 10am"
+    storage: "GNDrive/n8n/DUNNING_SCHEDULER_v1.0.0.json"
+    status: "RESERVED"
+
+invariants:
+  - "Workflows n8n nunca no repo publico (COCA-COLA)"
+  - "Toda nova versao passa por Doctor1"
+  - "Rollback via versao anterior no GNDrive"
