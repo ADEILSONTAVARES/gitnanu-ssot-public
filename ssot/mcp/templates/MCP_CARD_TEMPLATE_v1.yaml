@@ -1,0 +1,37 @@
+# Template padrao para MCP Cards NANUCAI OG10
+# Uso: copiar e preencher — nao usar placeholders em producao
+spec_id: MCP_CARD_TEMPLATE_v1
+version: v1.0
+status: TEMPLATE
+created_at: "2026-03-09"
+
+meta:
+  title: "MCP Card Template"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+fields_required:
+  mcp_id: "ID unico — ex: MCP_GITHUB_OPS"
+  name: "Nome legivel"
+  grupo: "governanca_seguranca | gestao_projetos | comunicacao | infra_devops | dados_bi | busca_conhecimento | ia_llm"
+  nota: "float — calculada via F*0.45 + V*0.35 + E*0.20"
+  F: "float 0.0-10.0 — Fidelidade"
+  V: "float 0.0-10.0 — Velocidade/Eficiencia"
+  E: "float 0.0-10.0 — Evidencia"
+  status: "CORE_ELITE | APOIO_FORTE | CANDIDATE_VERIFY | LAB"
+  uso: "descricao do uso principal"
+  trigger: "quando este MCP e ativado"
+  latencia_p95: "ex: 200ms"
+  sistemas: "lista de sistemas que usam este MCP"
+  lock_t: "lista de locks T1-T4 aplicaveis"
+
+fields_optional:
+  formula: "formula especifica de avaliacao"
+  checks: "lista de verificacoes"
+  patterns: "padroes detectados (para security MCPs)"
+  integrations: "integracoes externas"
+
+invariants:
+  - "nota >= 9.0 para status ACTIVE em producao"
+  - "audited=true somente com evidence_pack real"
+  - "Nunca marcar MEASURED sem bench90_results.json assinado"
