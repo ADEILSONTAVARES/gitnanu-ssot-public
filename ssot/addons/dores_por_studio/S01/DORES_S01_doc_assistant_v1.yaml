@@ -1,0 +1,95 @@
+studio_id: S01
+api: doc_assistant
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S01-doc_assistant-01
+    name: "Documento gerado sem contexto do projeto"
+    sintoma: "Assistente ignora arquivos existentes e gera do zero"
+    causa_raiz: "Contexto RAG nao injetado antes da geracao"
+    mitigacao: "RAG preflight obrigatorio antes de qualquer geracao"
+    severity: HIGH
+  - dor_id: D-S01-doc_assistant-02
+    name: "Formatacao inconsistente entre secoes"
+    sintoma: "Titulos, fontes e espacamento variam no mesmo documento"
+    causa_raiz: "Template nao aplicado como constraint na geracao"
+    mitigacao: "Template lock — estilo vinculado ao inicio da sessao"
+    severity: MEDIUM
+  - dor_id: D-S01-doc_assistant-03
+    name: "Revisao sobrescreve versao aprovada"
+    sintoma: "Edicao subsequente apaga conteudo ja validado"
+    causa_raiz: "Sem controle de versao por secao"
+    mitigacao: "Section-level versioning com diff antes de sobrescrever"
+    severity: CRITICAL
+  - dor_id: D-S01-doc_assistant-04
+    name: "Referencias cruzadas quebradas apos edicao"
+    sintoma: "Links internos apontam para secoes renomeadas ou removidas"
+    causa_raiz: "Referencias nao atualizadas automaticamente"
+    mitigacao: "Reference resolver pos-edicao obrigatorio"
+    severity: HIGH
+  - dor_id: D-S01-doc_assistant-05
+    name: "Conteudo alucinado em secao tecnica"
+    sintoma: "Numeros, datas ou nomes incorretos no documento final"
+    causa_raiz: "Geracao sem grounding em fonte verificada"
+    mitigacao: "Evidencia obrigatoria para qualquer dado factual (T1)"
+    severity: CRITICAL
+  - dor_id: D-S01-doc_assistant-06
+    name: "Exportacao perdendo formatacao"
+    sintoma: "PDF ou DOCX exportado difere do preview"
+    causa_raiz: "Renderer nao suporta todos os elementos do template"
+    mitigacao: "Export validation gate — comparar preview vs output"
+    severity: MEDIUM
+  - dor_id: D-S01-doc_assistant-07
+    name: "Colaboracao simultanea gerando conflitos"
+    sintoma: "Dois editores salvam ao mesmo tempo e um perde mudancas"
+    causa_raiz: "Sem lock otimista ou merge strategy"
+    mitigacao: "Optimistic lock + diff-merge antes de salvar"
+    severity: HIGH
+  - dor_id: D-S01-doc_assistant-08
+    name: "Sumario automatico desatualizado"
+    sintoma: "Table of contents nao reflete secoes atuais"
+    causa_raiz: "TOC gerado uma vez e nao reprocessado"
+    mitigacao: "TOC rebuild triggerado em toda edicao de heading"
+    severity: LOW
+  - dor_id: D-S01-doc_assistant-09
+    name: "Imagens inseridas sem alt-text"
+    sintoma: "Documento inacessivel para leitores de tela"
+    causa_raiz: "Pipeline de insercao nao solicita alt-text"
+    mitigacao: "Alt-text obrigatorio no momento de insercao de imagem"
+    severity: MEDIUM
+  - dor_id: D-S01-doc_assistant-10
+    name: "Documento excede limite de tokens na revisao"
+    sintoma: "Assistente trunca conteudo ao revisar documentos longos"
+    causa_raiz: "Documento inteiro enviado sem chunking"
+    mitigacao: "Chunking por secao com context window management"
+    severity: HIGH
+  - dor_id: D-S01-doc_assistant-11
+    name: "Historico de edicoes nao auditavel"
+    sintoma: "Impossivel rastrear quem alterou o que e quando"
+    causa_raiz: "Sem audit trail de mudancas"
+    mitigacao: "Audit log obrigatorio para toda edicao com timestamp e autor"
+    severity: MEDIUM
+  - dor_id: D-S01-doc_assistant-12
+    name: "Idioma inconsistente no mesmo documento"
+    sintoma: "Partes em PT-BR e partes em EN no mesmo arquivo"
+    causa_raiz: "Geracao sem language lock"
+    mitigacao: "Language constraint definido no inicio e aplicado em toda geracao"
+    severity: MEDIUM
+  - dor_id: D-S01-doc_assistant-13
+    name: "Placeholder nao substituido no documento final"
+    sintoma: "Cliente recebe documento com [NOME_EMPRESA] literal"
+    causa_raiz: "Substituicao de variaveis nao executada antes do export"
+    mitigacao: "Variable substitution gate antes de qualquer export"
+    severity: CRITICAL
+  - dor_id: D-S01-doc_assistant-14
+    name: "Documento gerado mais longo que o solicitado"
+    sintoma: "Relatorio de 5 paginas vira 20 sem controle"
+    causa_raiz: "Sem length constraint na geracao"
+    mitigacao: "Length target definido como hard constraint na requisicao"
+    severity: LOW
+  - dor_id: D-S01-doc_assistant-15
+    name: "Dados sensiveis expostos em documento compartilhado"
+    sintoma: "PII ou informacao confidencial aparece em documento publico"
+    causa_raiz: "Sem PII scan antes de export/share"
+    mitigacao: "PII scanner obrigatorio antes de qualquer compartilhamento"
+    severity: CRITICAL
