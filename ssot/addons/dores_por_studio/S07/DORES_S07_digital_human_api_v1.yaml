@@ -1,0 +1,95 @@
+studio_id: S07
+api: digital_human_api
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-digital_human_api-01
+    name: "Uncanny valley em expressoes faciais"
+    sintoma: "Expressoes quase reais mas com algo errado perturbando o usuario"
+    causa_raiz: "Qualidade de blend shapes insuficiente"
+    mitigacao: "High-fidelity blend shapes — 52+ FACS action units para expressoes naturais"
+    severity: CRITICAL
+  - dor_id: D-S07-digital_human_api-02
+    name: "Sincronizacao labial imprecisa"
+    sintoma: "Labios nao correspondem ao audio em tempo real"
+    causa_raiz: "Latencia de lipsync acima de 50ms"
+    mitigacao: "Lipsync latency < 30ms — pipeline de audio-to-viseme otimizado"
+    severity: HIGH
+  - dor_id: D-S07-digital_human_api-03
+    name: "Olhos sem life — stare fixo"
+    sintoma: "Olhar robotico sem micro-movimentos naturais"
+    causa_raiz: "Eye animation simplificada"
+    mitigacao: "Eye animation naturalness — saccades, blinks e micro-movimentos por padrao"
+    severity: HIGH
+  - dor_id: D-S07-digital_human_api-04
+    name: "Performance degrada com multiplos usuarios"
+    sintoma: "10 usuarios simultaneos causam frame drops"
+    causa_raiz: "Sem otimizacao de instanciamento"
+    mitigacao: "GPU instancing — reusar meshes e shaders entre instancias do mesmo humano digital"
+    severity: HIGH
+  - dor_id: D-S07-digital_human_api-05
+    name: "Cabelo nao se move com a cabeca"
+    sintoma: "Cabelo estatico quando cabeca vira"
+    causa_raiz: "Hair skinning incorreto"
+    mitigacao: "Dynamic hair skinning — cabelo segue rotacao da cabeca e tem fisica basica"
+    severity: CRITICAL
+  - dor_id: D-S07-digital_human_api-06
+    name: "Humano digital sem personalizacao de voz"
+    sintoma: "Voz fixa nao se adapta ao personagem"
+    causa_raiz: "Voice customization nao exposta"
+    mitigacao: "Voice customization API — pitch, timbre e estilo como parametros"
+    severity: HIGH
+  - dor_id: D-S07-digital_human_api-07
+    name: "Sem suporte a multilingual em tempo real"
+    sintoma: "Troca de idioma causa delay perceptivel"
+    causa_raiz: "Language model sem pre-loading"
+    mitigacao: "Multilingual pre-loading — carregar modelos dos idiomas configurados antecipadamente"
+    severity: MEDIUM
+  - dor_id: D-S07-digital_human_api-08
+    name: "Background bleeding through do humano"
+    sintoma: "Fundo visivel atraves do modelo em areas finas"
+    causa_raiz: "Alpha compositing incorreto"
+    mitigacao: "Alpha compositing fix — matting preciso para cabelo e bordas do modelo"
+    severity: CRITICAL
+  - dor_id: D-S07-digital_human_api-09
+    name: "Custo de streaming nao monitorado"
+    sintoma: "Sessao de 1h de humano digital custa inesperadamente"
+    causa_raiz: "Sem metering de custo por sessao"
+    mitigacao: "Session cost metering — exibir custo acumulado em tempo real"
+    severity: HIGH
+  - dor_id: D-S07-digital_human_api-10
+    name: "Sem graceful degradation em hardware fraco"
+    sintoma: "App crasha em dispositivos medios"
+    causa_raiz: "Sem LOD adaptativo por hardware"
+    mitigacao: "Adaptive LOD — detectar capacidade do hardware e ajustar qualidade automaticamente"
+    severity: MEDIUM
+  - dor_id: D-S07-digital_human_api-11
+    name: "Animacao de maos rudimentar"
+    sintoma: "Dedos rigidos durante gestos"
+    causa_raiz: "Finger animation simplificada"
+    mitigacao: "Full hand animation — IK de dedos com 26 juntas por mao"
+    severity: HIGH
+  - dor_id: D-S07-digital_human_api-12
+    name: "Sem auditoria de uso do humano digital"
+    sintoma: "Impossivel saber quantas sessoes foram realizadas"
+    causa_raiz: "Audit trail ausente"
+    mitigacao: "Session audit log — timestamp, duracao, usuario e custo por sessao"
+    severity: MEDIUM
+  - dor_id: D-S07-digital_human_api-13
+    name: "Latencia alta na primeira carga"
+    sintoma: "Primeiro load do humano digital demora 8s"
+    causa_raiz: "Assets nao pre-carregados"
+    mitigacao: "Asset preloading — pre-carregar modelo e texturas na inicializacao do contexto"
+    severity: HIGH
+  - dor_id: D-S07-digital_human_api-14
+    name: "Expressao de emocao nao corresponde ao texto"
+    sintoma: "Humano sorrindo ao dizer algo triste"
+    causa_raiz: "Sentiment nao integrado ao controlador de expressao"
+    mitigacao: "Sentiment-driven expression — detectar sentimento do texto e aplicar expressao correspondente"
+    severity: MEDIUM
+  - dor_id: D-S07-digital_human_api-15
+    name: "Sem suporte a interrupcao de fala"
+    sintoma: "Usuario nao consegue interromper o humano digital falando"
+    causa_raiz: "Barge-in nao implementado"
+    mitigacao: "Barge-in support — detectar inicio de fala do usuario e interromper imediatamente"
+    severity: LOW
