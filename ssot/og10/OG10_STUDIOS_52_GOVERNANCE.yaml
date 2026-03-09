@@ -1,0 +1,127 @@
+ssot_id: OG10_STUDIOS_52_GOVERNANCE
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Governança dos 52 Studios (S00-S51)"
+  total_studios: 52
+  acoes_por_api: 40
+  acoes_total: 35120
+
+classificacao_studios:
+  SIMPLES:
+    range: "S00-S09"
+    count: 10
+    pipeline: "padrão (E1-E6 base)"
+    gates: "Doctor1 only"
+    subagent: "raramente"
+    cost_max: "$0.000090"
+    latency_max: "1.5s"
+    tokens_max: 600
+
+  TECNICO:
+    range: "S10-S29"
+    count: 20
+    pipeline: "padrão com extended reasoning"
+    gates: "Doctor1 + TestSprite"
+    subagent: "quando complexity > 6"
+    cost_max: "$0.000141"
+    latency_max: "3.0s"
+    tokens_max: 850
+
+  CRIATIVO:
+    range: "S30-S41"
+    count: 12
+    pipeline: "extended com V20 heavy"
+    gates: "Doctor1 + rights_check"
+    subagent: "quando multi-media"
+    cost_max: "$0.000141"
+    latency_max: "5.0s"
+    tokens_max: 900
+    extra: "rights_check obrigatório"
+
+  CRITICO:
+    range: "S42-S51"
+    count: 10
+    pipeline: "extended + double validation"
+    gates: "Doctor1 + Doctor2 + PHDMat"
+    subagent: "sempre (60-5-30 completo)"
+    cost_max: "$0.000180"
+    latency_max: "8.0s"
+    tokens_max: 1000
+    extras:
+      - "PHDMat obrigatório"
+      - "ADR (Architecture Decision Record) obrigatório"
+      - "Controller approval obrigatório"
+      - "shadow_band exclusivo até 2%"
+
+studios_registro:
+  S00: {nome: "Core Engine", tipo: SIMPLES}
+  S01: {nome: "Auth & Identity", tipo: SIMPLES}
+  S02: {nome: "Router & Gateway", tipo: SIMPLES}
+  S03: {nome: "Cache & Memory", tipo: SIMPLES}
+  S04: {nome: "Logging & Metrics", tipo: SIMPLES}
+  S05: {nome: "Config & Env", tipo: SIMPLES}
+  S06: {nome: "Scheduler & Queue", tipo: SIMPLES}
+  S07: {nome: "Notifications", tipo: SIMPLES}
+  S08: {nome: "File Storage", tipo: SIMPLES}
+  S09: {nome: "Health & Status", tipo: SIMPLES}
+  S10: {nome: "Code Generation", tipo: TECNICO}
+  S11: {nome: "Code Review", tipo: TECNICO}
+  S12: {nome: "Debugging", tipo: TECNICO}
+  S13: {nome: "Testing", tipo: TECNICO}
+  S14: {nome: "CI/CD Pipeline", tipo: TECNICO}
+  S15: {nome: "Database Operations", tipo: TECNICO}
+  S16: {nome: "API Integration", tipo: TECNICO}
+  S17: {nome: "Security Scanning", tipo: TECNICO}
+  S18: {nome: "Performance Profiling", tipo: TECNICO}
+  S19: {nome: "Dependency Management", tipo: TECNICO}
+  S20: {nome: "Architecture Design", tipo: TECNICO}
+  S21: {nome: "Documentation", tipo: TECNICO}
+  S22: {nome: "Data Pipeline", tipo: TECNICO}
+  S23: {nome: "ML Training", tipo: TECNICO}
+  S24: {nome: "ML Inference", tipo: TECNICO}
+  S25: {nome: "Vector DB", tipo: TECNICO}
+  S26: {nome: "Search Engine", tipo: TECNICO}
+  S27: {nome: "Web Scraping", tipo: TECNICO}
+  S28: {nome: "Browser Automation", tipo: TECNICO}
+  S29: {nome: "Workflow Orchestration", tipo: TECNICO}
+  S30: {nome: "Image Generation", tipo: CRIATIVO}
+  S31: {nome: "Image Editing", tipo: CRIATIVO}
+  S32: {nome: "Video Generation", tipo: CRIATIVO}
+  S33: {nome: "Video Editing", tipo: CRIATIVO}
+  S34: {nome: "Audio Processing", tipo: CRIATIVO}
+  S35: {nome: "Music Generation", tipo: CRIATIVO}
+  S36: {nome: "Text to Speech", tipo: CRIATIVO}
+  S37: {nome: "Content Writing", tipo: CRIATIVO}
+  S38: {nome: "Translation", tipo: CRIATIVO}
+  S39: {nome: "Presentation Design", tipo: CRIATIVO}
+  S40: {nome: "Logo & Brand", tipo: CRIATIVO}
+  S41: {nome: "Animation", tipo: CRIATIVO}
+  S42: {nome: "Financial Analysis", tipo: CRITICO}
+  S43: {nome: "Legal Review", tipo: CRITICO}
+  S44: {nome: "Medical Information", tipo: CRITICO}
+  S45: {nome: "Compliance & Audit", tipo: CRITICO}
+  S46: {nome: "Security Incident Response", tipo: CRITICO}
+  S47: {nome: "Infrastructure Critical", tipo: CRITICO}
+  S48: {nome: "Data Privacy", tipo: CRITICO}
+  S49: {nome: "Billing & Payments", tipo: CRITICO}
+  S50: {nome: "Identity Verification", tipo: CRITICO}
+  S51: {nome: "Risk Assessment", tipo: CRITICO}
+
+regras_universais:
+  - "Todo studio usa Skills U0/U1/U2 obrigatoriamente"
+  - "Evidence seal obrigatório em todo job de todo studio"
+  - "Custo registrado no ledger em todo job"
+  - "Doctor1 obrigatório em todos os 52 studios"
+  - "GitNanu como único writer canônico"
+  - "COCA-COLA LOCAL ONLY para vault, secrets, evidence raw"
+
+metricas_por_studio:
+  actions_per_studio: 40
+  apis_per_studio_avg: 8
+  acoes_criticas: 10
+  acoes_high: 20
+  acoes_medium: 10
+  coverage_target: "= 1.00 (52/52 studios)"
