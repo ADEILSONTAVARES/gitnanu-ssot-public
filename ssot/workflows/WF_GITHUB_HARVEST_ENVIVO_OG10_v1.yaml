@@ -1,0 +1,10 @@
+wf_id: WF_GITHUB_HARVEST_ENVIVO_OG10_v1
+trigger: schedule_weekly OR manual
+steps:
+  1: {op: git fetch all branches, mcp: github_mcp}
+  2: {op: extrair issues+PRs abertos, mcp: github_mcp}
+  3: {op: gerar harvest_report.yaml, mcp: warp_agent_mcp}
+  4: {op: salvar em GNDrive/harvest/, mcp: gndrive_mcp}
+  5: {op: atualizar card GammaNotion, mcp: gammanote_mcp}
+  6: {op: receipt obrigatorio, mcp: evidence_ledger_mcp}
+outputs: [harvest_report_yaml, gammanote_card_url, receipt_path]
