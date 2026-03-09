@@ -1,0 +1,37 @@
+ssot_id: VAULT_MODE_RULES
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "Vault Mode - Regras COCA-COLA LOCAL ONLY"
+  principio: "RAW_NEVER_IN_CHAT"
+  nivel: CRITICAL
+  compliance_target: "= 1.00 (zero violacoes)"
+  sistemas: [PrM, Mouse, GitNanu, GNDrive]
+
+coca_cola_local_only:
+  definicao: "Dados sensiveis ficam APENAS local, nunca no repo publico"
+  aplica_a:
+    - "vault/ (secrets, credenciais, API keys)"
+    - "evidence_raw/ (evidencias brutas nao processadas)"
+    - ".env e .env.* (variaveis de ambiente)"
+    - "logs/sensitive/ (logs com PII)"
+    - "keys/ e certs/ (certificados)"
+
+raw_never_in_chat:
+  o_que_PODE_ir_para_contexto:
+    facts: {descricao: "resumo em 1-3 frases", max_tokens: 100}
+    brief: {descricao: "sumario estruturado", max_tokens: 500}
+    artifact_ref: {descricao: "ponteiro para o arquivo", max_tokens: 50}
+  o_que_NUNCA_vai_para_contexto:
+    - "raw evidence completa"
+    - "secrets, tokens, API keys"
+    - "dados de PII (nome, email, CPF, etc)"
+    - "credenciais de banco ou infra"
+    - "conteudo de .env"
+
+metricas:
+  T2_violation_rate: {target: "= 0.00"}
+  secret_leak_incidents: {target: "= 0"}
+  redaction_accuracy: {target: ">= 0.999"}
