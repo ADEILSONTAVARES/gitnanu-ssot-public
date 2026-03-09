@@ -1,0 +1,74 @@
+spec_id: OVERLAYS_REGISTRY
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Overlays Registry — Camadas de Customizacao OG10"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+description: >
+  Registry de overlays — customizacoes e extensoes aplicadas
+  sobre o comportamento base dos Studios sem alterar o SSOT canonical.
+  Overlays sao aplicados em runtime, nunca commitados como estado base.
+
+overlay_policy:
+  apply_order: "base_studio -> overlay -> output"
+  commit_rule: "Overlays NAO sao commitados no SSOT publico"
+  vault_rule: "Overlays sensiveis ficam em vault_local (COCA-COLA LOCAL ONLY)"
+  revert_rule: "Overlay pode ser removido sem afetar base"
+
+overlay_types:
+
+  PERSONA_OVERLAY:
+    tipo: persona
+    descricao: "Customiza tom, estilo e identidade do agente para cliente especifico"
+    escopo: [PrM_CORE, SubAgents]
+    exemplo: "Tom formal para cliente corporativo vs casual para startup"
+    commit: false
+    vault: true
+
+  BUDGET_OVERLAY:
+    tipo: budget
+    descricao: "Sobrescreve budget lane para cliente ou contexto especifico"
+    escopo: [AGENT_ROUTER, BudgetGuard]
+    exemplo: "Cliente premium com budget L2 sempre vs default L0"
+    commit: false
+    vault: true
+
+  LANGUAGE_OVERLAY:
+    tipo: language
+    descricao: "Forca idioma de output para lingua especifica"
+    escopo: [PrM_CORE, todos_studios]
+    exemplo: "Output em ingles para cliente internacional"
+    default: "pt-BR"
+    commit: false
+    vault: false
+
+  STUDIO_OVERRIDE:
+    tipo: studio_config
+    descricao: "Customiza parametros de studio especifico sem alterar SSOT"
+    escopo: [studios_S00_S51]
+    exemplo: "S15 com latencia_target diferente para plano enterprise"
+    commit: false
+    vault: true
+
+  ADDON_OVERLAY:
+    tipo: addon
+    descricao: "Ativa ou desativa addons especificos fora do padrao"
+    escopo: [Addons_40]
+    exemplo: "Desativar addon de brand_check para white-label"
+    commit: false
+    vault: true
+
+overlay_registry:
+  total_tipos: 5
+  active_overlays: []
+  nota: "Overlays ativos sao registrados em runtime — nao no SSOT publico"
+
+invariants:
+  - "Overlays nunca alteram SSOT canonical"
+  - "Overlays sensiveis sempre em vault_local"
+  - "Overlay removido = sistema volta ao comportamento base imediatamente"
+  - "Doctor Gate valida output mesmo com overlay ativo"
