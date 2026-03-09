@@ -1,0 +1,44 @@
+ssot_id: GITNANU_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "GitNanu v8.0 - Canon Mestre"
+  principio: "GitNanu e o unico writer canonico do SSOT"
+  score: "100/100"
+  sistemas_servidos: [PrM, Mouse, GammaNOTION, GNDrive, TeamAsWork10x, Cowork10x]
+
+identidade:
+  nome: "GitNanu"
+  versao: "8.0"
+  papel: "Guardian canonico do repo SSOT"
+  repositorio: "git@github.com:ADEILSONTAVARES/gitnanu-ssot-public.git"
+  vps: "gitnanu@72.60.142.44 (alias: ssh gitnanu-vps)"
+  dir_vps: "~/Projects/gitnanu-ssot-public"
+
+arquitetura_5_camadas:
+  L1_mobile_terminal: {funcao: "Entrada de comandos git remotos", conecta_a: "VPS via SSH"}
+  L2_gndrive_sync: {funcao: "Receber assets e docs para commit", latencia_target: "< 2s p95"}
+  L3_desktop_executor: {funcao: "git add + gate + commit + push", ferramentas: [git, python3, gate_pass_strict.py]}
+  L4_repo_ssot: {funcao: "Source of truth canonico e publico", single_writer: "GitNanu only"}
+  L5_ci_validation: {funcao: "Validacao automatica de todo push", latencia: "< 3min"}
+
+writer_unico:
+  regra: "SOMENTE GitNanu faz push para o repo"
+  proibido: ["Push manual sem gate", "Force push", "Commit sem evidence_ref", "Commit de secrets ou PII"]
+  enforcement:
+    gate: "gate_pass_strict.py (PASS_STRICT obrigatorio)"
+    ci: "GitHub Actions valida tudo"
+
+fluxo_canonico:
+  Mac_to_VPS: "git bundle create /tmp/repo.bundle HEAD"
+  VPS_gate: "python3 scripts/gate_pass_strict.py"
+  VPS_push: "git push origin main"
+  source_of_truth: "VPS e SOT, nao o Mac"
+
+metricas:
+  sync_latency_p95: {target: "< 2s"}
+  gate_pass_rate: {target: ">= 0.99"}
+  commit_evidence_rate: {target: "= 1.00"}
+  secret_leak_incidents: {target: "= 0"}
