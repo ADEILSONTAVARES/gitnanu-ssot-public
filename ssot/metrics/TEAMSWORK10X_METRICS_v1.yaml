@@ -1,0 +1,71 @@
+ssot_id: TEAMSWORK10X_METRICS_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "TeamsWork10X Metrics — metricas de produtividade de time"
+  sistema: NANUCAI OG10
+  pointer_master: "docs/cowork10x/TEAMSWORK10X_MASTER_v1.md"
+
+dimensoes_metricas:
+
+  velocidade:
+    M_TW01:
+      nome: "Tasks concluidas por sprint"
+      target: ">= 90% do planejado"
+      unidade: "percentual"
+    M_TW02:
+      nome: "Cycle time medio"
+      target: "<= 4 horas por task media"
+      unidade: "horas"
+
+  qualidade:
+    M_TW03:
+      nome: "Taxa de retrabalho"
+      target: "<= 5%"
+      unidade: "percentual"
+    M_TW04:
+      nome: "Evidence completude"
+      target: "100% tasks DONE com evidence_ref"
+      unidade: "percentual"
+
+  colaboracao:
+    M_TW05:
+      nome: "Quorum atingido em acoes criticas"
+      target: "100%"
+      unidade: "percentual"
+    M_TW06:
+      nome: "Tempo medio para Council verdict"
+      target: "<= 30 minutos"
+      unidade: "minutos"
+
+  custo:
+    M_TW07:
+      nome: "Custo por task concluida"
+      target: "<= $0.05 USD por task media"
+      unidade: "USD"
+    M_TW08:
+      nome: "Budget utilizado vs planejado"
+      target: "<= 110% (max 10% overage)"
+      unidade: "percentual"
+
+  seguranca:
+    M_TW09:
+      nome: "Incidentes de seguranca por sprint"
+      target: "0"
+      unidade: "count"
+    M_TW10:
+      nome: "PASS_STRICT rate"
+      target: "100% commits"
+      unidade: "percentual"
+
+agregacao_og10:
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  target_composite: ">= 9.0 (nota 10 = 10.0)"
+  pointer: "ssot/og10/OG10_FORMULA_CANON_v1.yaml"
+
+invariants:
+  - "Metricas TARGET nunca misturar com MEASURED (T4)"
+  - "MEASURED vai para vault_local — nunca no repo publico"
+  - "Dashboard mostra TARGET — evidence pack tem MEASURED"
