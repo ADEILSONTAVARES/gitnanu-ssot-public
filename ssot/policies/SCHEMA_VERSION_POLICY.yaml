@@ -1,0 +1,40 @@
+ssot_id: SCHEMA_VERSION_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Schema Version Policy — versionamento de schemas"
+  sistema: NANUCAI OG10
+
+formato_versao:
+  ssot_yaml: "version: v{N} (ex: v1, v2)"
+  json_schema: "version campo obrigatorio"
+  breaking_change: "major bump obrigatorio"
+
+regras_versionamento:
+  adicao_campo_opcional: "minor bump — retrocompativel"
+  adicao_campo_obrigatorio: "major bump — breaking change"
+  remocao_campo: "major bump + Council aprovacao"
+  renomear_campo: "major bump + migration script"
+
+migration:
+  obrigatorio_para: "major bumps"
+  formato: "scripts/migrations/migrate_{schema}_{v_old}_to_{v_new}.py"
+  gate: "Doctor1 valida migration antes de deploy"
+
+deprecacao:
+  aviso_antecipado: "2 sprints antes da remocao"
+  campo_deprecated: "adicionar deprecated: true + removal_version"
+  remocao: "Council aprovacao obrigatoria"
+
+schemas_atuais:
+  OG10_ENVELOPE: "v1 — ssot/schemas/OG10_ENVELOPE_v1.schema.json"
+  EVIDENCE_PACK: "v1 — ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml"
+  COUNCIL_VERDICT: "v1 — ssot/prm/COUNCIL_VERDICT_SCHEMA_v1.yaml"
+  ADDON_RECEIPT: "v1 — ssot/addons/ADDON_RECEIPT_SCHEMA_v1.yaml"
+
+invariants:
+  - "Breaking changes sempre com major bump"
+  - "Migration script obrigatorio para major"
+  - "Schema nunca deletado — apenas deprecated depois removido"
