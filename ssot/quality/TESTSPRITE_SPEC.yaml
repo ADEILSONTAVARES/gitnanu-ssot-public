@@ -1,0 +1,32 @@
+ssot_id: TESTSPRITE_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "TestSprite - Testes Rapidos em Linha"
+  tipo: "MCP aprovado (nota 9.0/10)"
+  quando: "durante U1 (apos cada tool call critico)"
+  sistemas: [PrM, Mouse, GitNanu]
+
+funcao:
+  descricao: "Suite de testes rapidos que roda inline durante execucao"
+  gate: "fail -> retry automatico (Ralph Loop)"
+
+tipos_de_teste:
+  smoke_tests: {latencia: "<= 10ms"}
+  schema_tests: {latencia: "<= 20ms"}
+  invariant_tests: {latencia: "<= 30ms"}
+  regression_tests: {latencia: "<= 50ms", trigger: "apenas se existe run anterior no cache"}
+
+fluxo:
+  trigger: "apos cada tool_call critico ou apos E4 (reasoning)"
+  execucao: "paralelo (todos os tipos em paralelo)"
+  timeout: "100ms total"
+  resultado_fail: "acionar Ralph Loop (retry)"
+
+metricas:
+  test_pass_rate: {target: ">= 0.97"}
+  false_fail_rate: {target: "<= 0.01"}
+  latencia_total_p95: {target: "<= 100ms"}
+  retry_trigger_rate: {target: "<= 0.05"}
