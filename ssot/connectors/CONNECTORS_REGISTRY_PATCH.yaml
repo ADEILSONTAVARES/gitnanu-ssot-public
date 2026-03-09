@@ -1,0 +1,51 @@
+ssot_id: CONNECTORS_REGISTRY_PATCH
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Connectors Registry Patch — correcoes e addons ao registry principal"
+  sistema: NANUCAI OG10
+  pointer_principal: "ssot/connectors/"
+
+patches:
+
+  PATCH_001:
+    tipo: "adicao"
+    connector_id: "CONN_STRIPE_WEBHOOK"
+    descricao: "Stripe webhook handler — billing S34"
+    studio: "S34"
+    status: "ACTIVE"
+    endpoints: ["/api/webhooks/stripe"]
+    auth: "webhook_secret no vault"
+
+  PATCH_002:
+    tipo: "adicao"
+    connector_id: "CONN_HOTMART_WEBHOOK"
+    descricao: "Hotmart webhook handler — billing Brasil"
+    studio: "S34"
+    status: "ACTIVE"
+    endpoints: ["/api/webhooks/hotmart"]
+    auth: "webhook_secret no vault"
+
+  PATCH_003:
+    tipo: "adicao"
+    connector_id: "CONN_SENTRY_EVENTS"
+    descricao: "Sentry error tracking — MCP_Sentry_Debug"
+    studio: "S00"
+    status: "ACTIVE"
+    mcp: "MCP_Sentry_Debug"
+    auth: "DSN no vault"
+
+  PATCH_004:
+    tipo: "correcao"
+    connector_id: "CONN_SUPABASE_VECTOR"
+    campo: "endpoint"
+    antes: "supabase.io"
+    depois: "projeto.supabase.co"
+    motivo: "URL correta do projeto"
+
+politica_patch:
+  aprovacao: "Doctor1 Gates + PASS_STRICT"
+  rollback: "MCP_Rollback_Execute"
+  evidencia: "obrigatoria para patches tipo correcao"
