@@ -1,0 +1,42 @@
+ssot_id: PHDMAT_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "PHDMat - Validador de Metricas e Precisao Matematica"
+  tipo: "MCP aprovado (nota 9.3/10)"
+  quando: "Studios criticos S42-S51 + toda metrica no output"
+  sistemas: [PrM, U2]
+
+funcao:
+  descricao: "Validador especializado em precisao matematica e dados quantitativos"
+  obrigatorio_em: "Studios S42-S51 (CRITICO)"
+  opcional_em: "qualquer job com metricas numericas"
+
+validacoes:
+  target_vs_measured:
+    checks:
+      - "campos 'target' e 'measured' distintos (T3)"
+      - "campo 'gap' = target - measured (calculado)"
+      - "campo 'status' = PASS|WARN|FAIL (derivado)"
+  formula_check:
+    checks:
+      - "formulas declaradas batem com resultados"
+      - "soma de pesos = 1.00 (ex: 0.45+0.35+0.20=1.00)"
+      - "percentuais somam 100%"
+  consistency_check:
+    checks:
+      - "p50 <= p95 <= p99"
+      - "cost_actual <= cost_max"
+      - "l0_ratio + l1_l3_ratio = 1.00"
+
+acao_em_falha:
+  studios_S42_S51: "job BLOCKED ate correcao"
+  outros_studios: "WARN no score_card (nao bloqueia)"
+
+metricas:
+  validation_accuracy: {target: ">= 0.999"}
+  false_positive_rate: {target: "<= 0.005"}
+  latencia_p95: {target: "<= 200ms"}
+  cobertura_studios_criticos: {target: "= 1.00 (S42-S51)"}
