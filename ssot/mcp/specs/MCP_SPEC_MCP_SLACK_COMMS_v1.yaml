@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_SLACK_COMMS
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_SLACK_COMMS
+  title: "MCP Spec — MCP_SLACK_COMMS"
+  grupo: comunicacao
+  grupo_desc: "Comunicacao"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.0
+  F: 9.1
+  V: 9.0
+  E: 9.0
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Comunicacao e notificacoes via Slack"
+  trigger: "alert_send + team_notify + incident_escalation"
+  latencia_p95: "300ms"
+  lock_t: ["T2"]
+  sistemas: ["PrM_CORE", "Monitor"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.0
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
