@@ -1,0 +1,16 @@
+# REGRESSION_BUDGET_POLICY_v1
+version: 1
+policy:
+  max_regression_per_domain: 2.0
+  max_regression_total: 5.0
+  measurement: score_delta vs previous_run
+  on_exceed: block_deploy + escalate_to_doctor2
+  rolling_window: last_5_runs
+  domains:
+    - knowledge
+    - math
+    - reasoning
+    - agentic
+    - performance
+    - reliability
+    - cost
