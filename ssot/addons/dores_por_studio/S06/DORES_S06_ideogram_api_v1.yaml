@@ -1,0 +1,95 @@
+studio_id: S06
+api: ideogram_api
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S06-ideogram_api-01
+    name: "Texto renderizado incorretamente na imagem"
+    sintoma: "Palavras com erros ortograficos na imagem final"
+    causa_raiz: "OCR pos-geracao nao implementado"
+    mitigacao: "OCR validation pos-geracao — comparar texto solicitado vs texto detectado na imagem"
+    severity: CRITICAL
+  - dor_id: D-S06-ideogram_api-02
+    name: "Fontes incompativeis com a identidade visual"
+    sintoma: "Fonte sans-serif quando a marca usa serif"
+    causa_raiz: "Font specification nao suportada"
+    mitigacao: "Font family specification — suporte a nomes de fontes como parametro do prompt"
+    severity: HIGH
+  - dor_id: D-S06-ideogram_api-03
+    name: "Layout de texto quebrando em imagens estreitas"
+    sintoma: "Texto cortado em imagens formato portrait"
+    causa_raiz: "Text flow nao adaptado ao aspect ratio"
+    mitigacao: "Text layout adaptation — calcular area de texto disponivel por aspect ratio"
+    severity: HIGH
+  - dor_id: D-S06-ideogram_api-04
+    name: "Geracao de texto em idioma errado"
+    sintoma: "Prompt em PT-BR gera texto em EN na imagem"
+    causa_raiz: "Language nao especificada no request"
+    mitigacao: "Language field obrigatorio derivado do locale configurado"
+    severity: HIGH
+  - dor_id: D-S06-ideogram_api-05
+    name: "Caracteres especiais renderizados incorretamente"
+    sintoma: "Acentos e cedilha aparecem como simbolos"
+    causa_raiz: "Encoding nao normalizado antes da geracao"
+    mitigacao: "Unicode normalization — garantir UTF-8 e normalizacao NFC antes de enviar"
+    severity: MEDIUM
+  - dor_id: D-S06-ideogram_api-06
+    name: "Custo elevado em iteracoes de refinamento"
+    sintoma: "10 iteracoes para acertar o texto consome budget"
+    causa_raiz: "Sem preview de baixo custo"
+    mitigacao: "Low-cost preview mode — geracao de baixa resolucao para validar texto antes da final"
+    severity: CRITICAL
+  - dor_id: D-S06-ideogram_api-07
+    name: "Imagem gerada sem area de texto predefinida"
+    sintoma: "Texto sobrepoe elementos visuais importantes"
+    causa_raiz: "Text area nao definida no layout"
+    mitigacao: "Text area constraint — definir regiao de texto antes da geracao do background"
+    severity: HIGH
+  - dor_id: D-S06-ideogram_api-08
+    name: "Geracao repetitiva sem variacao de composicao"
+    sintoma: "Mesmo prompt sempre posiciona texto no centro"
+    causa_raiz: "Composicao sem diversidade"
+    mitigacao: "Composition diversity — variar posicionamento de texto entre geracoes do mesmo prompt"
+    severity: HIGH
+  - dor_id: D-S06-ideogram_api-09
+    name: "Rate limit sem informacao de retry"
+    sintoma: "API retorna 429 sem indicar quando tentar novamente"
+    causa_raiz: "retry-after header ausente"
+    mitigacao: "retry-after header obrigatorio em todo response 429"
+    severity: MEDIUM
+  - dor_id: D-S06-ideogram_api-10
+    name: "Output sem suporte a animacao de texto"
+    sintoma: "Sistema precisa de texto animado mas API retorna apenas estatico"
+    causa_raiz: "Animated text nao suportado"
+    mitigacao: "Animated text output — suporte a GIF e Lottie com texto animado"
+    severity: HIGH
+  - dor_id: D-S06-ideogram_api-11
+    name: "Imagem com texto e fundo de baixo contraste"
+    sintoma: "Texto legivel no prompt mas invisivel na imagem"
+    causa_raiz: "Contraste texto/fundo nao verificado"
+    mitigacao: "Contrast validation pos-geracao — WCAG AA minimo para texto em imagem"
+    severity: MEDIUM
+  - dor_id: D-S06-ideogram_api-12
+    name: "Sem suporte a texto multilinha justificado"
+    sintoma: "Texto alinhado a esquerda sempre mesmo com justification especificada"
+    causa_raiz: "Text alignment nao suportado"
+    mitigacao: "Text alignment control — left, center, right, justify como parametros"
+    severity: CRITICAL
+  - dor_id: D-S06-ideogram_api-13
+    name: "Geracao de logo com texto distorcido"
+    sintoma: "Letras do logo deformadas em variantes geradas"
+    causa_raiz: "Character fidelity baixa em geracoes de logo"
+    mitigacao: "Logo text mode — modo especializado para geracao de texto em logos"
+    severity: HIGH
+  - dor_id: D-S06-ideogram_api-14
+    name: "Falta de modo de editar apenas o texto"
+    sintoma: "Refazer o background para mudar apenas o texto"
+    causa_raiz: "Inpainting de texto nao disponivel"
+    mitigacao: "Text inpainting — editar apenas regiao de texto preservando o resto da imagem"
+    severity: MEDIUM
+  - dor_id: D-S06-ideogram_api-15
+    name: "Output sem historico de versao"
+    sintoma: "Impossivel voltar para versao anterior do design"
+    causa_raiz: "Version history nao implementado"
+    mitigacao: "Version history — salvar cada geracao com diff do prompt para rollback"
+    severity: LOW
