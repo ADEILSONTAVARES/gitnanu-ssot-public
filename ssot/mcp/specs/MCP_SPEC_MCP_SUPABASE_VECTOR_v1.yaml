@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_SUPABASE_VECTOR
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_SUPABASE_VECTOR
+  title: "MCP Spec — MCP_SUPABASE_VECTOR"
+  grupo: dados_bi
+  grupo_desc: "Dados e BI"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.4
+  F: 9.5
+  V: 9.3
+  E: 9.4
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Vector store para memoria semantica e RAG"
+  trigger: "memory_query + semantic_search + context_retrieval"
+  latencia_p95: "100ms"
+  lock_t: ["T1", "T2"]
+  sistemas: ["MEMO_1", "PrM_CORE", "SubAgent_SSOT"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.4
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
