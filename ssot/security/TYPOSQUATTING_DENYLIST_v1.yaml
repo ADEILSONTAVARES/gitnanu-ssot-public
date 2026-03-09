@@ -1,0 +1,35 @@
+ssot_id: TYPOSQUATTING_DENYLIST_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Typosquatting Denylist — pacotes e dominios maliciosos"
+  sistema: NANUCAI OG10
+
+principio: "Prevenir instalacao de pacotes com nomes similares a dependencias legítimas"
+
+npm_denylist:
+  - {nome: "nanucai", motivo: "typosquatting do projeto"}
+  - {nome: "brainbox-ia", motivo: "variante do projeto"}
+  - {nome: "og10", motivo: "variante do sistema"}
+  - {nome: "gitnanu", motivo: "variante do writer"}
+  - {nome: "antrophic", motivo: "typo de anthropic"}
+  - {nome: "opeanai", motivo: "typo de openai"}
+
+pip_denylist:
+  - {nome: "nanucai", motivo: "typosquatting"}
+  - {nome: "brainboxia", motivo: "variante"}
+
+dominios_denylist:
+  - {dominio: "nanucai.io", motivo: "nao e o dominio oficial"}
+  - {dominio: "brainbox-ia.com", motivo: "nao e o dominio oficial"}
+
+processo_denylist:
+  adicionar: "Doctor2 aprova + Council review"
+  remover: "Council 100x3 unanime"
+  frequencia_revisao: "mensal"
+
+integracao:
+  ci_check: ".github/workflows/security-scan.yml (referencia)"
+  mcp: "MCP_Coca_Guard"
