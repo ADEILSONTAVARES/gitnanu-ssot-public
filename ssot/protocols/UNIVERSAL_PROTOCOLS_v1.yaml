@@ -1,0 +1,76 @@
+ssot_id: UNIVERSAL_PROTOCOLS_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Universal Protocols OG10 — UCP + AP2 + A2A + Firewall"
+  sistema: NANUCAI OG10
+
+# ============================================================
+# UCP — Universal Context Protocol
+# ============================================================
+ucp_universal_context_protocol:
+  formato: "context_handle"
+  schema:
+    context_id: "CTX_{YYYY}_{MM}_{DD}_{SEQ}"
+    studio_id: "S00-S51"
+    job_id: "JOB_{uuid}"
+    pac_tokens: "2000-12000"
+    vault_pointer: "vault_local/{tipo}/{job_id}/"
+    evidence_ref: "vault_local/evidence/{job_id}/evidence_pack.json"
+  invariants:
+    - "Raw Never in Context (apenas facts + pointers)"
+    - "PAC max 12k tokens"
+    - "Vault pointer obrigatorio para qualquer artifact"
+
+# ============================================================
+# AP2 — Agent Protocol 2 (comunicacao entre agentes)
+# ============================================================
+ap2_agent_protocol:
+  formato: "message_envelope"
+  schema:
+    sender: "agent_id"
+    receiver: "agent_id"
+    job_id: "JOB_{uuid}"
+    payload_type: "task | result | error | gate_check"
+    evidence_ref: "opcional — obrigatorio se payload contem claim"
+    timestamp_utc: "ISO8601"
+  regras:
+    - "Nenhum agente faz claim sem evidence_ref"
+    - "Erros sempre retornam para orquestrador (PrM)"
+    - "Gate checks sao sincrono e fail-closed"
+
+# ============================================================
+# A2A — Agent to Agent (delegacao)
+# ============================================================
+a2a_agent_to_agent:
+  politica: "SubAgent 60-5-30"
+  delegacao:
+    fase_60: "PrM triage + routing (60 tokens max)"
+    fase_5:  "SubAgent executa (5 steps max por delegacao)"
+    fase_30: "Validate + evidence + seal (30 tokens max)"
+  regras:
+    - "SubAgent nao pode delegar para outro SubAgent sem PrM aprovacao"
+    - "Resultado sempre volta para PrM com evidence_ref"
+    - "Falha em SubAgent => Ralph loop ate 3 retries => escalate Council"
+
+# ============================================================
+# MCP FIREWALL — controle de acesso MCP
+# ============================================================
+mcp_firewall:
+  politica: "allowlist estrita — nao listado = BLOCK"
+  allowlist_categorias:
+    llm: [minimax_m2_1, kimi_k2_5, claude_sonnet, claude_opus, gemini_flash, deepseek_v3]
+    infra: [redis, supabase_vector, cloudflare_r2]
+    dev: [github_ops, n8n_workflow]
+    search: [perplexity, tavily, firecrawl]
+    payments: [stripe, hotmart]
+    comms: [slack, gmail, notion]
+    media: [antigravity_gemini, minimax_video]
+  regras:
+    - "MCP fora da allowlist = BLOCK automatico"
+    - "Novo MCP requer Doctor2 aprovacao antes de allowlist"
+    - "MCP com nota < 9.0 nao entra na allowlist"
+  validator: "scripts/validators/validate_githubops_minimum.py"
+  gate: "MCP_FIREWALL_POLICY_OG10_v1.yaml"
