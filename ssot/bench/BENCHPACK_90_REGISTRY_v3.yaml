@@ -1,0 +1,117 @@
+version: benchpack90.v3.1
+name: BENCHPACK_90_REGISTRY_v3_FROM_ELITE_v9
+status: ACTIVE
+source_v1: ssot/bench/BENCHPACK_90_REGISTRY_v1.yaml
+composite_score_target: 96.5
+composite_score_actual: 95.9736
+threshold_release_block: 94.0
+created_at: "2026-03-09"
+
+sections_weight:
+  F: 0.45
+  V: 0.35
+  E: 0.20
+
+sections_meta:
+  F: {benches: 54, score_avg: 96.713, contribution: 43.521}
+  V: {benches: 20, score_avg: 96.115, contribution: 33.640}
+  E: {benches: 16, score_avg: 94.063, contribution: 18.813}
+
+composite_formula: "score_F*0.45 + score_V*0.35 + score_E*0.20"
+
+# Scores OG10 por bench (fonte: BENCHPACK_90_NOTA100_v4)
+benches_F:
+  - {bench_id: F01, og10_score: 97.0, gate: WARN}
+  - {bench_id: F02, og10_score: 95.0, gate: WARN}
+  - {bench_id: F03, og10_score: 96.0, gate: WARN}
+  - {bench_id: F04, og10_score: 98.0, gate: WARN}
+  - {bench_id: F05, og10_score: 96.5, gate: WARN}
+  - {bench_id: F06, og10_score: 95.0, gate: WARN}
+  - {bench_id: F07, og10_score: 99.5, gate: BLOCK_RELEASE}
+  - {bench_id: F08, og10_score: 98.5, gate: WARN}
+  - {bench_id: F09, og10_score: 98.5, gate: WARN}
+  - {bench_id: F10, og10_score: 97.0, gate: WARN}
+  - {bench_id: F11, og10_score: 97.0, gate: WARN}
+  - {bench_id: F12, og10_score: 92.0, gate: WARN}
+  - {bench_id: F13, og10_score: 98.0, gate: WARN}
+  - {bench_id: F14, og10_score: 95.0, gate: WARN}
+  - {bench_id: F15, og10_score: 98.0, gate: BLOCK_RELEASE}
+  - {bench_id: F16, og10_score: 96.0, gate: WARN}
+  - {bench_id: F17, og10_score: 96.0, gate: WARN}
+  - {bench_id: F18, og10_score: 97.0, gate: WARN}
+  - {bench_id: F19, og10_score: 97.0, gate: WARN}
+  - {bench_id: F20, og10_score: 95.0, gate: WARN}
+  - {bench_id: F21, og10_score: 96.0, gate: WARN}
+  - {bench_id: F22, og10_score: 98.0, gate: BLOCK_RELEASE}
+  - {bench_id: F23, og10_score: 98.0, gate: BLOCK_RELEASE}
+  - {bench_id: F24, og10_score: 99.5, gate: BLOCK_RELEASE}
+  - {bench_id: F25, og10_score: 95.0, gate: BLOCK_RELEASE}
+  - {bench_id: F26, og10_score: 96.0, gate: WARN}
+  - {bench_id: F27, og10_score: 99.5, gate: BLOCK_RELEASE}
+  - {bench_id: F28, og10_score: 96.0, gate: BLOCK_RELEASE}
+  - {bench_id: F29, og10_score: 95.0, gate: BLOCK_RELEASE}
+  - {bench_id: F30, og10_score: 96.0, gate: BLOCK_RELEASE}
+  - {bench_id: F31, og10_score: 96.0, gate: BLOCK_RELEASE}
+  - {bench_id: F32, og10_score: 96.0, gate: BLOCK_RELEASE}
+  - {bench_id: F33, og10_score: 95.0, gate: WARN}
+  - {bench_id: F34, og10_score: 97.0, gate: WARN}
+  - {bench_id: F35, og10_score: 96.0, gate: WARN}
+  - {bench_id: F36, og10_score: 98.5, gate: WARN}
+  - {bench_id: F37, og10_score: 97.0, gate: WARN}
+  - {bench_id: F38, og10_score: 97.0, gate: WARN}
+  - {bench_id: F39, og10_score: 98.0, gate: WARN}
+  - {bench_id: F40, og10_score: 96.0, gate: WARN}
+  - {bench_id: F41, og10_score: 97.0, gate: WARN}
+  - {bench_id: F42, og10_score: 96.0, gate: WARN}
+  - {bench_id: F43, og10_score: 95.0, gate: WARN}
+  - {bench_id: F44, og10_score: 96.0, gate: WARN}
+  - {bench_id: F45, og10_score: 96.0, gate: WARN}
+  - {bench_id: F46, og10_score: 98.0, gate: WARN}
+  - {bench_id: F47, og10_score: 95.0, gate: WARN}
+  - {bench_id: F48, og10_score: 99.0, gate: WARN}
+  - {bench_id: F49, og10_score: 98.0, gate: WARN}
+  - {bench_id: F50, og10_score: 96.0, gate: WARN}
+  - {bench_id: F51, og10_score: 97.0, gate: WARN}
+  - {bench_id: F52, og10_score: 98.0, gate: BLOCK_RELEASE}
+  - {bench_id: F53, og10_score: 98.0, gate: WARN}
+  - {bench_id: F54, og10_score: 96.0, gate: WARN}
+
+benches_V:
+  - {bench_id: V01, og10_score: 95.0, gate: BLOCK_RELEASE}
+  - {bench_id: V02, og10_score: 97.0, gate: BLOCK_RELEASE}
+  - {bench_id: V03, og10_score: 95.0, gate: BLOCK_RELEASE}
+  - {bench_id: V04, og10_score: 99.0, gate: BLOCK_RELEASE}
+  - {bench_id: V05, og10_score: 92.0, gate: BLOCK_RELEASE}
+  - {bench_id: V06, og10_score: 100.0, gate: WARN}
+  - {bench_id: V07, og10_score: 98.8, gate: WARN}
+  - {bench_id: V08, og10_score: 95.0, gate: BLOCK_RELEASE}
+  - {bench_id: V09, og10_score: 84.0, gate: BLOCK_RELEASE, coringa: C02_CACHE_SUPREMO}
+  - {bench_id: V10, og10_score: 98.5, gate: BLOCK_RELEASE}
+  - {bench_id: V11, og10_score: 97.0, gate: BLOCK_RELEASE}
+  - {bench_id: V12, og10_score: 98.0, gate: BLOCK_RELEASE}
+  - {bench_id: V13, og10_score: 95.5, gate: WARN}
+  - {bench_id: V14, og10_score: 99.5, gate: BLOCK_RELEASE}
+  - {bench_id: V15, og10_score: 92.0, gate: WARN}
+  - {bench_id: V16, og10_score: 94.0, gate: BLOCK_RELEASE}
+  - {bench_id: V17, og10_score: 99.0, gate: WARN}
+  - {bench_id: V18, og10_score: 97.0, gate: BLOCK_RELEASE}
+  - {bench_id: V19, og10_score: 96.0, gate: WARN}
+  - {bench_id: V20, og10_score: 100.0, gate: BLOCK_RELEASE}
+
+benches_E:
+  - {bench_id: E01, og10_score: 95.0, gate: WARN}
+  - {bench_id: E02, og10_score: 97.0, gate: WARN}
+  - {bench_id: E03, og10_score: 95.0, gate: WARN}
+  - {bench_id: E04, og10_score: 88.0, gate: WARN, coringa: C08_LIVEBENCH_REFRESH}
+  - {bench_id: E05, og10_score: 98.0, gate: BLOCK_RELEASE}
+  - {bench_id: E06, og10_score: 96.0, gate: WARN}
+  - {bench_id: E07, og10_score: 96.0, gate: WARN}
+  - {bench_id: E08, og10_score: 95.0, gate: WARN}
+  - {bench_id: E09, og10_score: 97.0, gate: WARN}
+  - {bench_id: E10, og10_score: 98.0, gate: WARN}
+  - {bench_id: E11, og10_score: 97.0, gate: BLOCK_RELEASE}
+  - {bench_id: E12, og10_score: 98.0, gate: WARN}
+  - {bench_id: E13, og10_score: 94.0, gate: WARN}
+  - {bench_id: E14, og10_score: 68.0, gate: WARN, coringa: C01_DEPTH_INFINITY}
+  - {bench_id: E15, og10_score: 96.0, gate: WARN}
+  - {bench_id: E16, og10_score: 97.0, gate: WARN}
