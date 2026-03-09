@@ -1,0 +1,37 @@
+ssot_id: FILE_LOCK_EXCEPTION_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "File Lock Exception Policy — excecoes ao lock de arquivos"
+  sistema: NANUCAI OG10
+
+arquivos_sempre_locked:
+  - "ssot/og10/OG10_FORMULA_CANON_v1.yaml"
+  - "ssot/guardrails/GUARDRAILS_POLICIES.yaml"
+  - "ssot/gitnanu/DEVICE_TRUST_SPEC.yaml"
+  - ".github/branch-protection.json"
+
+definicao_lock:
+  locked: "requer Council 100x3 unanime para modificar"
+  semi_locked: "requer Doctor1 + quorum qualificado"
+  normal: "PASS_STRICT suficiente"
+
+processo_excecao:
+  passo_1: "Submeter request com justificativa e evidence"
+  passo_2: "Council 100x3 delibera (max 30 min)"
+  passo_3: "Se unanime PASS: modificacao permitida com evidence_seal"
+  passo_4: "Se qualquer BLOCK: modificacao negada"
+  passo_5: "Resultado logado em vault_local/decisions/"
+
+arquivos_semi_locked:
+  - "ssot/schemas/*.schema.json"
+  - "scripts/gate_pass_strict.py"
+  - "scripts/gates/validate_actions_index.py"
+  - "ssot/INDEX_MASTER.yaml"
+
+invariants:
+  - "Locked nunca modificado sem Council unanime"
+  - "Excecao aprovada sempre tem evidence_seal"
+  - "Historico de excecoes em vault_local (imutavel)"
