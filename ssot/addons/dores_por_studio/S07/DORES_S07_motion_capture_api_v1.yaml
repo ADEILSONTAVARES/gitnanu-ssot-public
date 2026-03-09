@@ -1,0 +1,95 @@
+studio_id: S07
+api: motion_capture_api
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-motion_capture_api-01
+    name: "Retargeting com proporcoes erradas"
+    sintoma: "Personagem alto recebe animacao de personagem baixo sem ajuste"
+    causa_raiz: "Proportional retargeting ausente"
+    mitigacao: "Proportional retargeting — normalizar animacao para as proporcoes do personagem alvo"
+    severity: CRITICAL
+  - dor_id: D-S07-motion_capture_api-02
+    name: "Jitter excessivo nas articulacoes"
+    sintoma: "Movimentos tremidos mesmo com performer estavel"
+    causa_raiz: "Filtragem de sinal insuficiente"
+    mitigacao: "Kalman filter pos-captura — suavizar jitter preservando movimentos intencionais"
+    severity: HIGH
+  - dor_id: D-S07-motion_capture_api-03
+    name: "Pés penetrando o chao"
+    sintoma: "Personagem com pés abaixo do plano de chao"
+    causa_raiz: "IK de pés nao implementado"
+    mitigacao: "Foot IK — manter contato correto com o chao independente da altura do personagem"
+    severity: HIGH
+  - dor_id: D-S07-motion_capture_api-04
+    name: "Captura falhando com oclusao de joints"
+    sintoma: "Brace ou roupa coberta causando perda de rastreamento"
+    causa_raiz: "Occlusion recovery ausente"
+    mitigacao: "Occlusion recovery — interpolar joints perdidos usando historico de movimento"
+    severity: HIGH
+  - dor_id: D-S07-motion_capture_api-05
+    name: "Movimentos rapidos com artefatos de ghosting"
+    sintoma: "Soco rapido com rastro de fantasma"
+    causa_raiz: "Sample rate insuficiente"
+    mitigacao: "High sample rate mode — 120fps minimo para captura de movimentos rapidos"
+    severity: CRITICAL
+  - dor_id: D-S07-motion_capture_api-06
+    name: "Retargeting quebrando em poses extremas"
+    sintoma: "Pose de ioga extrema deforma o personagem alvo"
+    causa_raiz: "Pose constraints nao aplicados"
+    mitigacao: "Pose constraints — limites anatomicos de rotacao por articulacao no retargeting"
+    severity: HIGH
+  - dor_id: D-S07-motion_capture_api-07
+    name: "Formato de exportacao incompativel"
+    sintoma: "BVH exportado nao importa corretamente no Blender"
+    causa_raiz: "Sem validacao de compatibilidade"
+    mitigacao: "Compatibility validation — testar importacao no software alvo antes de entregar"
+    severity: MEDIUM
+  - dor_id: D-S07-motion_capture_api-08
+    name: "Captura de dedo imprecisa"
+    sintoma: "Movimentos de mao e dedo grosseiros"
+    causa_raiz: "Resolucao insuficiente para extremidades"
+    mitigacao: "Hand tracking specialization — modelo separado de alta precisao para maos"
+    severity: CRITICAL
+  - dor_id: D-S07-motion_capture_api-09
+    name: "Latencia alta em captura em tempo real"
+    sintoma: "Feedback visual com 200ms de atraso"
+    causa_raiz: "Pipeline nao otimizado para real-time"
+    mitigacao: "Real-time pipeline < 50ms — otimizacao end-to-end para captura ao vivo"
+    severity: HIGH
+  - dor_id: D-S07-motion_capture_api-10
+    name: "Root motion perdida no retargeting"
+    sintoma: "Personagem se move mas nao translada no espaco"
+    causa_raiz: "Root motion nao extraida"
+    mitigacao: "Root motion extraction — separar translacao global do movimento local"
+    severity: MEDIUM
+  - dor_id: D-S07-motion_capture_api-11
+    name: "Sem suporte a multiplos performers"
+    sintoma: "Cena com 5 atores capturada apenas individualmente"
+    causa_raiz: "Multi-person tracking ausente"
+    mitigacao: "Multi-person tracking — rastrear ate 10 performers simultaneamente"
+    severity: HIGH
+  - dor_id: D-S07-motion_capture_api-12
+    name: "Escala incorreta de animacao"
+    sintoma: "Personagem 2m recebe animacao de personagem 1.6m sem ajuste"
+    causa_raiz: "Scale normalization ausente"
+    mitigacao: "Height normalization — normalizar animacao para altura do personagem alvo"
+    severity: MEDIUM
+  - dor_id: D-S07-motion_capture_api-13
+    name: "Sem modo de limpeza de captura"
+    sintoma: "Artefatos de captura devem ser limpos manualmente"
+    causa_raiz: "Automatic cleanup ausente"
+    mitigacao: "Automatic cleanup — remover artefatos e suavizar transicoes automaticamente"
+    severity: HIGH
+  - dor_id: D-S07-motion_capture_api-14
+    name: "Metadata de captura incompleto"
+    sintoma: "Impossivel reproduzir condicoes de captura"
+    causa_raiz: "Session metadata ausente"
+    mitigacao: "Full session metadata — equipamento, parametros, data e performer por sessao"
+    severity: MEDIUM
+  - dor_id: D-S07-motion_capture_api-15
+    name: "Sem suporte a streaming de mocap"
+    sintoma: "Dados de captura disponíveis apenas apos processamento"
+    causa_raiz: "Real-time streaming ausente"
+    mitigacao: "Mocap streaming API — transmitir dados de articulacoes em tempo real via WebSocket"
+    severity: LOW
