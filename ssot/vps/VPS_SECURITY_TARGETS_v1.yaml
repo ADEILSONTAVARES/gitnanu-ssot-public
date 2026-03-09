@@ -1,0 +1,47 @@
+ssot_id: VPS_SECURITY_TARGETS_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "VPS Security Targets — Hostinger srv1386861"
+  sistema: NANUCAI OG10
+  host: "gitnanu@72.60.142.44"
+  alias: "gitnanu-vps"
+
+targets_seguranca:
+  ssh:
+    autenticacao: "chave ED25519 apenas (senha desabilitada)"
+    porta: 22
+    usuario: "gitnanu"
+    sudo_sem_senha: false
+
+  gitnanu_writer:
+    regra: "GitNanu e o UNICO escritor canonico do repo"
+    branch_protection: "main protegida — force push bloqueado"
+    single_writer: true
+
+  secrets:
+    storage: "vault_local/ (nunca no repo)"
+    rotacao: "a cada 30 dias ou apos incidente"
+    scan: "MCP_Coca_Guard em todo pre-commit"
+
+  network:
+    egress_runner: "BLOQUEADO (runner sem acesso externo)"
+    allowlist_mcps: "ssot/protocols/UNIVERSAL_PROTOCOLS_v1.yaml#mcp_firewall"
+
+  backup:
+    frequencia: "bundle diario via GitNanu"
+    destino: "GNDrive (Cloudflare R2)"
+    retencao: "30 dias rolling"
+
+  monitoramento:
+    mcp: "MCP_Sentry_Debug"
+    alertas: "Doctor1 + MCP_Notification_Sender"
+    mttr_target: "3 minutos"
+
+invariants:
+  - "COCA-COLA LOCAL ONLY — vault_local nunca vai para GitHub"
+  - "Single writer — GitNanu unico com push rights"
+  - "Zero secrets em repo publico"
+  - "Runner isolado sem egress"
