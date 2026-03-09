@@ -1,0 +1,42 @@
+ssot_id: TEAMS_A2A_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Teams A2A Protocol — comunicacao agente-agente em team mode"
+  sistema: NANUCAI OG10
+  pointer_base: "ssot/protocols/UNIVERSAL_PROTOCOLS_v1.yaml#a2a_agent_to_agent"
+
+team_mode:
+  descricao: "Cowork10X + PrM — multiplos agentes coordenados"
+  hierarquia:
+    cerebro: "PrM (Professor Mestre)"
+    orquestracao: "OG10 valida e registra"
+    executores: "SubAgents (subordinados, nunca cerebro)"
+    sandbox: "executor trabalha em sandbox isolada"
+    merge: "somente apos Doctor Gate"
+
+protocolo_delegacao:
+  passo_1: "PrM decompose task em subtasks"
+  passo_2: "Studio_Route atribui subtask ao SubAgent correto"
+  passo_3: "SubAgent executa em sandbox (max 5 steps)"
+  passo_4: "SubAgent retorna artefato + evidence_ref para PrM"
+  passo_5: "Doctor1 valida artefato"
+  passo_6: "PrM merge se PASS, escalate Council se FAIL"
+
+regras_team:
+  - "PrM e sempre o cerebro — nunca o executor"
+  - "SubAgent nao delega para outro SubAgent sem PrM aprovacao"
+  - "Cowork10X e Claude/Gemini sao executores subordinados"
+  - "Merge somente apos gate — fail-closed"
+  - "Toda delegacao tem job_id + evidence_ref"
+
+quorum_team:
+  acoes_criticas: "2/3 do team deve aprovar"
+  acoes_normais: "PrM decide sozinho"
+  definicao_critica: "blast_radius >= HIGH ou budget > threshold"
+
+envelope_mensagem:
+  campos: [sender, receiver, job_id, payload_type, evidence_ref, timestamp_utc]
+  payload_types: [task, result, error, gate_check, escalate]
