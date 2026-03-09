@@ -1,0 +1,95 @@
+studio_id: S07
+api: face_swap_api
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-face_swap_api-01
+    name: "Face swap sem verificacao de consentimento"
+    sintoma: "Rosto de pessoa real trocado sem autorizacao"
+    causa_raiz: "Consent verification ausente"
+    mitigacao: "Consent verification obrigatoria — verificar autorizacao do titular do rosto"
+    severity: CRITICAL
+  - dor_id: D-S07-face_swap_api-02
+    name: "Artefatos nas bordas do rosto trocado"
+    sintoma: "Linha visivel ao redor do rosto indicando edicao"
+    causa_raiz: "Blending insuficiente"
+    mitigacao: "Edge blending — Poisson blending nas bordas para transicao natural"
+    severity: HIGH
+  - dor_id: D-S07-face_swap_api-03
+    name: "Iluminacao inconsistente entre rosto e cena"
+    sintoma: "Rosto com luz frontal em cena com luz lateral"
+    causa_raiz: "Iluminacao do rosto nao adaptada a cena"
+    mitigacao: "Illumination matching — adaptar iluminacao do rosto ao mapa de luz da cena"
+    severity: HIGH
+  - dor_id: D-S07-face_swap_api-04
+    name: "Face swap em video com flickering"
+    sintoma: "Rosto trocado pisca entre frames"
+    causa_raiz: "Temporal consistency ausente"
+    mitigacao: "Temporal consistency — garantir coerencia entre frames consecutivos"
+    severity: HIGH
+  - dor_id: D-S07-face_swap_api-05
+    name: "Expressao facial original nao preservada"
+    sintoma: "Rosto trocado perde a expressao do original"
+    causa_raiz: "Expression transfer incorreto"
+    mitigacao: "Expression preservation — transferir blend shapes da face original para a nova"
+    severity: CRITICAL
+  - dor_id: D-S07-face_swap_api-06
+    name: "Tom de pele incompativel com cena"
+    sintoma: "Rosto muito claro em personagem com pele escura"
+    causa_raiz: "Color matching de pele ausente"
+    mitigacao: "Skin color matching — ajustar tom e temperatura da pele ao contexto"
+    severity: HIGH
+  - dor_id: D-S07-face_swap_api-07
+    name: "Performance em video longo muito lenta"
+    sintoma: "Video de 5 min demora 20 min para processar"
+    causa_raiz: "Processamento sequencial frame a frame"
+    mitigacao: "Parallel frame processing — processar batches de frames em paralelo"
+    severity: MEDIUM
+  - dor_id: D-S07-face_swap_api-08
+    name: "Ausencia de watermark em deepfake"
+    sintoma: "Impossivel identificar video como editado"
+    causa_raiz: "Content authentication ausente"
+    mitigacao: "Deepfake watermark obrigatorio — watermark invisivel mas verificavel em todo output"
+    severity: CRITICAL
+  - dor_id: D-S07-face_swap_api-09
+    name: "Falha em rostos parcialmente cobertos"
+    sintoma: "Oculos ou mascara causam artefatos"
+    causa_raiz: "Occlusion handling insuficiente"
+    mitigacao: "Occlusion-aware swap — detectar obstrucoes e adaptar a troca ao contorno visivel"
+    severity: HIGH
+  - dor_id: D-S07-face_swap_api-10
+    name: "Sem modo de deteccao de face swap"
+    sintoma: "API usada para criar deepfakes sem deteccao"
+    causa_raiz: "Detection API ausente"
+    mitigacao: "Detection mode — endpoint para verificar se imagem contem face swap"
+    severity: MEDIUM
+  - dor_id: D-S07-face_swap_api-11
+    name: "Qualidade reduzida em rostos pequenos"
+    sintoma: "Rosto abaixo de 100px com artefatos visiveis"
+    causa_raiz: "Super-resolution nao aplicada em rostos pequenos"
+    mitigacao: "Face super-resolution pre-swap — upscalar rosto antes do swap para garantir qualidade"
+    severity: HIGH
+  - dor_id: D-S07-face_swap_api-12
+    name: "Sem rastreabilidade de operacoes"
+    sintoma: "Impossivel auditar quais swaps foram feitos"
+    causa_raiz: "Audit log ausente"
+    mitigacao: "Audit log obrigatorio — origem, destino, timestamp e usuario em todo swap"
+    severity: MEDIUM
+  - dor_id: D-S07-face_swap_api-13
+    name: "Falha silenciosa em multiplos rostos"
+    sintoma: "Video com 3 pessoas troca apenas 1 sem avisar"
+    causa_raiz: "Multi-face detection incompleta"
+    mitigacao: "Multi-face detection e report — listar todos os rostos detectados e status de cada um"
+    severity: HIGH
+  - dor_id: D-S07-face_swap_api-14
+    name: "Proporcoes faciais distorcidas"
+    sintoma: "Rosto largo em cabeca estreita"
+    causa_raiz: "Geometry fitting impreciso"
+    mitigacao: "Geometry-based fitting — ajustar escala e proporcao do rosto ao contorno da cabeca"
+    severity: MEDIUM
+  - dor_id: D-S07-face_swap_api-15
+    name: "Sem suporte a video em tempo real"
+    sintoma: "Swap apenas em batch, nao em stream"
+    causa_raiz: "Real-time nao suportado"
+    mitigacao: "Real-time swap pipeline — latencia < 100ms para uso em videoconferencia"
+    severity: LOW
