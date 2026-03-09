@@ -1,0 +1,132 @@
+ssot_id: OG10_LOCK_T1_T2_T3_T4
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Anti-Hallucination Locks — T1 / T2 / T3 / T4"
+  descricao: "4 travas de alucinação que tornam o sistema zero-hallucination"
+  principio: "NO_EVIDENCE_NO_CLAIM — sem prova, sem afirmação"
+  compliance_target: "= 1.00 (zero violações)"
+
+T1_no_evidence_no_claim:
+  id: T1
+  nome: "No Evidence No Claim"
+  nivel: CRITICAL
+  descricao: "Toda afirmação factual exige evidence_ref vinculada"
+
+  regra: |
+    Se o sistema afirma X, deve existir evidence_ref(X) com:
+    - source: onde a evidência foi coletada
+    - timestamp: quando foi coletada
+    - confidence: 0.00-1.00
+    - sha256: hash da evidência raw
+
+  violacao_exemplos:
+    - "Afirmar que API retorna 200 sem ter chamado a API"
+    - "Dizer que teste passou sem ter rodado o teste"
+    - "Citar benchmark sem ter o resultado armazenado"
+
+  enforcement:
+    gate: "U2 verifica evidence_ref antes do seal"
+    acao_violacao: "job REJECTED — deve coletar evidência"
+    log: "T1_VIOLATION_{job_id}.json"
+
+T2_raw_never_in_chat:
+  id: T2
+  nome: "Raw Never in Chat"
+  nivel: CRITICAL
+  descricao: "Dados raw nunca aparecem no contexto LLM"
+
+  regra: |
+    O que vai para o contexto:
+    - facts: resumo em 1-3 frases
+    - brief: sumário estruturado ≤ 500 tokens
+    - artifact_ref: ponteiro para arquivo (não o arquivo)
+
+    O que NUNCA vai para o contexto:
+    - Raw evidence completa
+    - Secrets, tokens, PII
+    - Dados de vault local
+    - Logs brutos de sistema
+
+  vault_mode: "COCA-COLA LOCAL ONLY para vault, secrets, evidence_raw"
+
+  enforcement:
+    gate: "U0 e U1 filtram tudo antes de montar PAC"
+    acao_violacao: "context limpo + alerta Coca-Guard"
+    log: "T2_VIOLATION_{job_id}.json"
+
+T3_target_vs_measured:
+  id: T3
+  nome: "Target vs Measured — Never Mix"
+  nivel: HIGH
+  descricao: "Valores alvo e medidos nunca aparecem no mesmo campo"
+
+  regra: |
+    Toda métrica deve ter campos separados:
+    - target: o que queremos atingir (spec)
+    - measured: o que realmente medimos (evidência)
+    - gap: target - measured
+    - status: PASS | WARN | FAIL
+
+    NUNCA usar apenas um campo para os dois.
+    NUNCA apresentar target como se fosse measured.
+
+  violacao_exemplos:
+    - "latency: '≤ 3s'" sem separar target de measured
+    - "score: 96.0" sem indicar se é target ou medido
+    - "pass_rate: 0.99" sem especificar período e amostra
+
+  enforcement:
+    gate: "PHDMat valida formato de toda métrica no output"
+    acao_violacao: "campo rejeitado, deve ser reformatado"
+    log: "T3_VIOLATION_{job_id}.json"
+
+T4_no_hallucination_factual:
+  id: T4
+  nome: "Zero Hallucination Factual"
+  nivel: CRITICAL
+  descricao: "O sistema nunca inventa fatos, dados, resultados ou capacidades"
+
+  regra: |
+    Se o sistema não tem evidência, ele diz:
+    "Não tenho evidência suficiente para afirmar X.
+    Posso buscar? [sim/não]"
+
+    NUNCA:
+    - Inventar resultado de benchmark não rodado
+    - Afirmar que feature existe sem ter testado
+    - Gerar dado numérico sem fonte
+    - Extrapolar além da evidência disponível
+
+  mecanismos_de_protecao:
+    confidence_gate: "confidence < 0.80 → escala para Controller"
+    quorum_Q2: "RAG exige ≥ 2 trilhas concordando"
+    council_review: "casos ambíguos vão para J1+J2+J3"
+    evidence_required: "todo claim factual = evidence_ref obrigatória"
+
+  enforcement:
+    gate: "AgentZero pre-flight + Doctor1 + TestSprite"
+    acao_violacao: "job HALTED — investigação obrigatória"
+    log: "T4_VIOLATION_{job_id}.json"
+    escalacao: "I-Vierne Investigate acionado"
+
+council_100x3:
+  descricao: "Tribunal de revisão para casos de alta ambiguidade"
+  juizes:
+    J1: "Accuracy Judge — verifica fatos e dados"
+    J2: "Safety Judge — verifica riscos e compliance"
+    J3: "Quality Judge — verifica completude e utilidade"
+  threshold_consult: "confidence < 0.75 ou risk_score > 85"
+  voto: "maioria simples (2 de 3)"
+  output: "council_decision.json com evidência dos 3 juízes"
+
+metricas_compliance:
+  T1_violation_rate: "= 0.00"
+  T2_violation_rate: "= 0.00"
+  T3_violation_rate: "= 0.00"
+  T4_violation_rate: "= 0.00"
+  council_consultation_rate: "≤ 0.05 (raro)"
+  false_positive_rate: "≤ 0.01"
+  confidence_avg: "≥ 0.92"
