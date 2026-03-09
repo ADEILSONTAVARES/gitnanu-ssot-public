@@ -1,0 +1,101 @@
+studio_id: S00
+api: gitnanu
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-git-01
+    name: "Writer concorrente viola single-writer protocol"
+    sintoma: "Dois processos fazem push simultaneo no main"
+    causa_raiz: "Ausencia de lock antes de operacao de escrita"
+    mitigacao: "GitNanu e o unico writer — branch protection obrigatorio"
+    severity: CRITICAL
+  - dor_id: D-S00-git-02
+    name: "Token GitHub exposto em script ou log"
+    sintoma: "PAT visivel em output, historico ou artefato"
+    causa_raiz: "Token passado como argumento sem sanitizacao"
+    mitigacao: "Token nunca em log — secrets guard CW-212 em todo output"
+    severity: CRITICAL
+  - dor_id: D-S00-git-02b
+    name: "Commit sem PASS_STRICT"
+    sintoma: "Arquivo com erro ou placeholder commitado no main"
+    causa_raiz: "Push sem rodar gate_pass_strict.py antes"
+    mitigacao: "gate_pass_strict.py obrigatorio antes de todo push"
+    severity: CRITICAL
+  - dor_id: D-S00-git-03
+    name: "Force push destrói historico canonico"
+    sintoma: "Commits anteriores perdidos irreversivelmente"
+    causa_raiz: "git push --force sem protecao de branch"
+    mitigacao: "Branch protection + force push bloqueado no main"
+    severity: CRITICAL
+  - dor_id: D-S00-git-04
+    name: "Arquivo COCA-COLA commitado publicamente"
+    sintoma: "secrets, vault, evidence raw no repo publico"
+    causa_raiz: ".gitignore incompleto ou mal configurado"
+    mitigacao: "assert_public_no_secrets.sh em todo push"
+    severity: CRITICAL
+  - dor_id: D-S00-git-05
+    name: "Autostash perdendo mudancas locais no pull"
+    sintoma: "Alteracoes locais nao trackeadas sumindo no merge"
+    causa_raiz: "git pull com untracked files sem stash previo"
+    mitigacao: "git status antes de pull; stash explicito se necessario"
+    severity: HIGH
+  - dor_id: D-S00-git-06
+    name: "Bundle de sincronizacao corrompido"
+    sintoma: "VPS ou Mac com bundle invalido — sync falha"
+    causa_raiz: "Bundle gerado durante operacao incompleta"
+    mitigacao: "Verificacao de integridade do bundle antes de aplicar"
+    severity: HIGH
+  - dor_id: D-S00-git-07
+    name: "SHA256 divergente entre Mac e VPS"
+    sintoma: "Arquivo diferente nas duas maquinas com mesmo nome"
+    causa_raiz: "Sync parcial — um lado nao recebeu a ultima versao"
+    mitigacao: "Verificar SHA256 nos dois endpoints apos sync"
+    severity: HIGH
+  - dor_id: D-S00-git-08
+    name: "Tag incorreta aplicada antes do gate"
+    sintoma: "Tag v-latest apontando para commit com erro"
+    causa_raiz: "tag_latest_if_pass.sh rodado sem PASS_STRICT"
+    mitigacao: "tag_latest_if_pass.sh so executa apos PASS_STRICT confirmado"
+    severity: HIGH
+  - dor_id: D-S00-git-09
+    name: "Arquivo gerado localmente nao syncado com GitHub"
+    sintoma: "Mac tem arquivo; GitHub nao tem"
+    causa_raiz: "Deploy via API nao executado apos criacao local"
+    mitigacao: "git status pos-criacao; deploy via API obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-git-10
+    name: "Placeholder em arquivo commitado"
+    sintoma: "FIXME, TODO, TBD, PLACEHOLDER no arquivo canonico"
+    causa_raiz: "no_placeholders.py nao rodado antes do push"
+    mitigacao: "no_placeholders.py em todo pipeline antes de commit"
+    severity: HIGH
+  - dor_id: D-S00-git-11
+    name: "Merge conflict silencioso em YAML"
+    sintoma: "YAML com markers de conflito (`<<<<<<<`) commitado"
+    causa_raiz: "Merge sem resolucao completa dos conflitos"
+    mitigacao: "Lint YAML pos-merge; rejeitar arquivo com conflict markers"
+    severity: HIGH
+  - dor_id: D-S00-git-12
+    name: "Deploy lote com token expirado"
+    sintoma: "Script de deploy falha com 401 no meio do lote"
+    causa_raiz: "PAT expirado sem renovacao previa"
+    mitigacao: "Verificar expiracao do token antes de iniciar deploy"
+    severity: MEDIUM
+  - dor_id: D-S00-git-13
+    name: "Rate limit GitHub bloqueando deploy em lote"
+    sintoma: "Script para com 403 ou 429 durante multiplos uploads"
+    causa_raiz: "Muitas requisicoes sem sleep entre elas"
+    mitigacao: "Rate limit guard com retry exponencial no script de deploy"
+    severity: MEDIUM
+  - dor_id: D-S00-git-14
+    name: "Commit message nao padronizado"
+    sintoma: "Historico do repo com mensagens inconsistentes"
+    causa_raiz: "Deploy sem convencao de commit message"
+    mitigacao: "Formato: feat(lote-X): nome_arquivo — obrigatorio"
+    severity: MEDIUM
+  - dor_id: D-S00-git-15
+    name: "deploy_lote.py com token hardcoded"
+    sintoma: "Token PAT visivel no script salvo em disco"
+    causa_raiz: "Token nao passado como argumento — embutido no codigo"
+    mitigacao: "Token sempre como argumento CLI; nunca hardcoded"
+    severity: MEDIUM
