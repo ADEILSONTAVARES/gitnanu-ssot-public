@@ -1,0 +1,95 @@
+studio_id: S05
+api: bark_tts
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-bark_tts-01
+    name: "Voz gerada com emoção errada para o contexto"
+    sintoma: "Sintese de tristeza aplicada em anuncio alegre"
+    causa_raiz: "Emotion tag nao derivado do contexto do texto"
+    mitigacao: "Emotion detection automatico + confirmacao antes de sintetizar"
+    severity: HIGH
+  - dor_id: D-S05-bark_tts-02
+    name: "Qualidade de audio degradada em sentenças longas"
+    sintoma: "Distorcao e artefatos apos 30 segundos de audio"
+    causa_raiz: "Modelo nao otimizado para textos longos"
+    mitigacao: "Chunking por sentenca — sintetizar e concatenar em segmentos de 15s"
+    severity: CRITICAL
+  - dor_id: D-S05-bark_tts-03
+    name: "Pronuncia incorreta de termos tecnicos"
+    sintoma: "Siglas e termos de nicho pronunciados errado"
+    causa_raiz: "Dicionario de pronuncia nao customizado"
+    mitigacao: "Custom pronunciation dictionary obrigatorio para terminologia do dominio"
+    severity: HIGH
+  - dor_id: D-S05-bark_tts-04
+    name: "Latencia alta em geracao de audio longo"
+    sintoma: "Geracao de 2 min de audio demora 3 min"
+    causa_raiz: "Processamento sequencial sem paralelismo"
+    mitigacao: "Parallel synthesis — chunkar e sintetizar em paralelo"
+    severity: HIGH
+  - dor_id: D-S05-bark_tts-05
+    name: "Audio gerado sem normalizacao de volume"
+    sintoma: "Partes do audio muito altas ou muito baixas"
+    causa_raiz: "Normalizacao de loudness nao aplicada pos-geracao"
+    mitigacao: "Loudness normalization obrigatoria pos-sintese — LUFS-I alvo configuravel"
+    severity: CRITICAL
+  - dor_id: D-S05-bark_tts-06
+    name: "Tom inconsistente entre segmentos concatenados"
+    sintoma: "Voz muda sutilmente entre chunks"
+    causa_raiz: "Voice embedding nao mantido entre chunks"
+    mitigacao: "Voice embedding fixo por sessao — mesmo speaker em toda a geracao"
+    severity: HIGH
+  - dor_id: D-S05-bark_tts-07
+    name: "Geracao sem controle de velocidade de fala"
+    sintoma: "Texto urgente sintetizado na mesma velocidade que texto calmo"
+    causa_raiz: "Speech rate nao parametrizado por contexto"
+    mitigacao: "Speech rate como parametro explicito derivado do tone do conteudo"
+    severity: MEDIUM
+  - dor_id: D-S05-bark_tts-08
+    name: "Caracteres especiais gerando silencio inesperado"
+    sintoma: "URLs e emails causam pausas longas"
+    causa_raiz: "Preprocessing de texto nao normaliza URLs e emails"
+    mitigacao: "Text normalization gate — converter URLs e emails para forma falavel"
+    severity: HIGH
+  - dor_id: D-S05-bark_tts-09
+    name: "Output sem metadados de duracao"
+    sintoma: "Pipeline downstream nao sabe duracao do audio sem reproduzir"
+    causa_raiz: "Duracao nao calculada nem armazenada"
+    mitigacao: "Duration metadata obrigatorio no output — calculado pos-sintese"
+    severity: MEDIUM
+  - dor_id: D-S05-bark_tts-10
+    name: "Falha silenciosa em geracao de batch"
+    sintoma: "50 audios solicitados, 45 entregues sem aviso dos 5 falhos"
+    causa_raiz: "Error handling insuficiente em batch"
+    mitigacao: "Batch completion report — lista de sucesso e falha com motivo"
+    severity: CRITICAL
+  - dor_id: D-S05-bark_tts-11
+    name: "Voz inadequada para o publico-alvo"
+    sintoma: "Voz adulta gerada para conteudo infantil"
+    causa_raiz: "Speaker profile nao definido por audiencia"
+    mitigacao: "Audience profile como input obrigatorio — mapeia para speaker adequado"
+    severity: HIGH
+  - dor_id: D-S05-bark_tts-12
+    name: "Audio com ruido de fundo"
+    sintoma: "Output contem artefatos de ruido mesmo em ambiente silencioso"
+    causa_raiz: "Pos-processamento sem noise reduction"
+    mitigacao: "Noise reduction gate pos-sintese — threshold configuravel"
+    severity: MEDIUM
+  - dor_id: D-S05-bark_tts-13
+    name: "Custo de computo nao monitorado"
+    sintoma: "Geracao em batch consome GPU sem limite"
+    causa_raiz: "Sem metering de recursos computacionais"
+    mitigacao: "Resource metering por job — alerta ao atingir limite de GPU budget"
+    severity: HIGH
+  - dor_id: D-S05-bark_tts-14
+    name: "Falta de suporte a SSML"
+    sintoma: "Enfase e pausas customizadas nao funcionam"
+    causa_raiz: "SSML parser nao implementado"
+    mitigacao: "SSML support — processar tags de enfase, pausa e prosody antes de sintetizar"
+    severity: MEDIUM
+  - dor_id: D-S05-bark_tts-15
+    name: "Output sem verificacao de inteligibilidade"
+    sintoma: "Audio gerado mas palavras criticas ininteligiveis"
+    causa_raiz: "Sem speech-to-text round-trip validation"
+    mitigacao: "STT round-trip validation — comparar texto original vs transcricao do audio"
+    severity: LOW
