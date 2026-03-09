@@ -1,0 +1,18 @@
+wf_id: WF_PREWARM_STACK_OG10_v1
+trigger: schedule_daily OR before_peak_hours OR manual_button OR after_incident_recovery
+freeze_rule: agente_gelo_level >= 2 blocks LLM prewarm; level >= 3 blocks ALL
+budget_cap_pct: 2.0
+prompts: sinteticos minimos — NUNCA dados de usuario reais
+gates: [Doctor1_input, Doctor1_output]
+cura_semanal: true
+steps:
+  1: {op: carregar PREWARM_TARGETS_REGISTRY, mcp: gndrive_mcp, fail: ABORT}
+  2: {op: Doctor Gate 1 valida registry schema, gate: Doctor1_input, fail: ABORT_with_evidence}
+  3: {op: prewarm tier_0 infra targets, mcp: agno_runtime_mcp, receipt: required}
+  4: {op: prewarm tier_1 LLM targets se plan>=pro, mcp: agno_runtime_mcp, receipt: required}
+  5: {op: prewarm tier_2 MCP targets, mcp: cache_quantum_mcp, receipt: required}
+  6: {op: Doctor Gate 1 valida todos receipts, gate: Doctor1_output, fail: trigger_autocura}
+  7: {op: salvar resultado em GNDrive/prewarm/results/, mcp: gndrive_mcp, receipt: required}
+  8: {op: GammaNotion card Prewarm Semanal OK, mcp: gammanote_mcp}
+failure_path: trigger WF_PREWARM_FAILURE_INCIDENT_AUTOCURA_OG10_v1
+outputs: [prewarm_results_yaml, receipt_path, gammanote_card_url]
