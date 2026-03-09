@@ -1,0 +1,170 @@
+spec_id: OG10_TARGET_METRICS_v1
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "OG10 Target Metrics — Metricas-Alvo Publicas NANUCAI OG10"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+  checklist_ref: "OG10_CHECKLIST_MASTER_PENTE_FINO_v1.md (secao Observacao final)"
+
+policy:
+  targets_only: true
+  ledger_bruto: "PROIBIDO neste arquivo — vai para vault_local (COCA-COLA LOCAL ONLY)"
+  audited_values: "Somente com evidence_pack real + council_verdict assinado"
+  rule: "Todo numero aqui e TARGET (alvo publico) — nunca MEASURED (valor real medido)"
+  invariant_T4: "Target vs Measured NUNCA misturar (Lock T4)"
+
+# ============================================================
+# 1. SCORE OG10
+# ============================================================
+og10_score:
+  composite_formula: "F * 0.45 + V * 0.35 + E * 0.20"
+  target_composite: 96.0
+  minimum_delivery: 8.5
+  minimum_per_action: 9.6
+  classes:
+    CORE_ELITE:       {range: "9.5-10.0", status: ACTIVE}
+    APOIO_FORTE:      {range: "9.0-9.49", status: ACTIVE}
+    CANDIDATE_VERIFY: {range: "8.0-8.99", status: REVIEW}
+    LAB:              {range: "<8.0",     status: EXPERIMENTAL}
+
+# ============================================================
+# 2. LATENCIA (targets P95 por layer)
+# ============================================================
+latencia_targets:
+  L0_router:        {p95_ms: 60,   model: "minimax-m2"}
+  L1_leve:          {p95_ms: 150,  model: "kimi-k2.5"}
+  L2_medio:         {p95_ms: 500,  model: "claude-sonnet"}
+  L3_pesado:        {p95_ms: 2000, model: "deepseek-v3"}
+  antigravity:      {p95_ms: 3000, model: "gemini-3.1-pro"}
+  serena_compress:  {p95_ms: 200}
+  doctor1_gate:     {p95_ms: 500}
+  doctor2_deep:     {p95_ms: 2000}
+  council_100x3:    {p95_ms: 500}
+  gitnanu_write:    {p95_ms: 5000}
+  memory_rag_query: {p95_ms: 100}
+  addon_l0_always:  {p95_ms: 10, note: "overhead maximo para addons always-on L0"}
+  prewarm_cache:    {p95_ms: 50}
+
+# ============================================================
+# 3. CUSTO (targets — nunca ledger bruto)
+# ============================================================
+custo_targets:
+  cpsj_l0_usd:          0.000051
+  budget_split:
+    l0_deterministic_pct: 85
+    l1_l3_llm_pct:        15
+  shadow_band:
+    min_pct: 0.3
+    max_pct: 0.6
+    exclusive_cap_pct: 2.0
+  budget_guard: ACTIVE
+  cost_per_1k_tokens_l0_target_usd: 0.0001
+
+# ============================================================
+# 4. THROUGHPUT (targets)
+# ============================================================
+throughput_targets:
+  req_per_sec_l0:      100
+  burst_target:        500
+  burst_window_sec:    10
+  prewarm_hit_rate_pct: 80
+  cache_hit_rate_pct:   70
+
+# ============================================================
+# 5. QUALIDADE (targets)
+# ============================================================
+qualidade_targets:
+  pass_strict_validators: 7
+  actions_total:          35120
+  actions_errors_max:     0
+  actions_warnings_max:   0
+  studios_covered:        52
+  studio_range:           "S00-S51"
+  zero_placeholders:      true
+  zero_secrets_in_repo:   true
+  zero_runtime_committed: true
+
+# ============================================================
+# 6. BENCH90 (targets)
+# ============================================================
+bench90_targets:
+  pipeline:             "60-60-60-150-150-100x3"
+  total_raw_points:     780
+  compressed_scale:     "0-90"
+  target_nota:          90.0
+  minimum_nota:         85.0
+  benchmarks_total:     90
+  criticos_pass_rate:   "100% — nenhum critico pode falhar"
+  council_consensus:    "J1 AND J2 AND J3 todos PASS"
+
+# ============================================================
+# 7. MCPs ELITE (targets)
+# ============================================================
+mcp_targets:
+  total_avaliados:      50
+  total_aprovados:      25
+  taxa_aprovacao_pct:   50
+  nota_minima:          9.0
+  nota_media_target:    9.36
+  perfeitos_10_0:       2
+  formula:              "F*0.45 + V*0.35 + E*0.20"
+
+# ============================================================
+# 8. SUBAGENTS (targets)
+# ============================================================
+subagent_targets:
+  estrutura:            "60-5-30"
+  catalog_total:        60
+  base_roles:           5
+  domain_specs:         30
+
+# ============================================================
+# 9. ADDONS (targets)
+# ============================================================
+addon_targets:
+  estrutura:            "40-15-3"
+  addons_total:         40
+  pains_total:          15
+  universais_total:     3
+  l0_always_on:         12
+  l1_l3_triggered:      28
+
+# ============================================================
+# 10. SEGURANCA (targets)
+# ============================================================
+seguranca_targets:
+  secrets_in_public_repo:   0
+  pii_in_public_repo:       0
+  unauthorized_writers:     0
+  coca_guard_patterns:      ["sk-", "ghp_", "AKIA", "CPF", "SSN", "password", "secret"]
+  doctor_gate_bypass:       0
+  pass_strict_required:     true
+
+# ============================================================
+# 11. MEMORIA (targets)
+# ============================================================
+memoria_targets:
+  rag_query_p95_ms:     100
+  semantic_fidelity_pct: 98
+  pac_sizes:            [2000, 4000, 8000, 12000]
+  lta_retention_days:   365
+  context_compression:  "SERENA — fidelidade >= 98%"
+
+# ============================================================
+# INVARIANTES
+# ============================================================
+invariants:
+  - "TODOS os numeros neste arquivo sao TARGETS — nunca valores medidos reais"
+  - "Valores medidos reais ficam em vault_local (COCA-COLA LOCAL ONLY)"
+  - "audited=true somente com evidence_pack + council_verdict assinados"
+  - "Lock T4: Target vs Measured NUNCA misturar"
+  - "Este arquivo e referencia publica — zero dados sensiveis"
+
+evidence_required_for_audited:
+  - "vault_local/bench90/bench90_results.json"
+  - "vault_local/ledgers/ledger_cost.json"
+  - "vault_local/evidence/evidence_pack.manifest.json"
+  - "council_verdict_bench90.json (assinado J1+J2+J3)"
