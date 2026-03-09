@@ -1,0 +1,83 @@
+spec_id: GATEWAY_ROUTING_RULES
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Gateway Routing Rules — Regras de Roteamento OG10"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+description: >
+  Regras de roteamento do AGENT_ROUTER para selecionar
+  studio, lane, modelo e budget corretos para cada intencao.
+
+router_ref: "ssot/agents/AGENTS_REGISTRY_OG10_v7.yaml"
+bridge_map_ref: "ssot/gateway/GATEWAY_BRIDGE_MAP.yaml"
+
+routing_decision:
+  max_ms: 60
+  inputs: [intent, studio_id, urgency, context_size, budget_remaining]
+  outputs: [lane, model, studio_id, addon_principal, pac_size]
+
+rules:
+
+  R01_LANE_SELECTION:
+    priority: 1
+    condition: "intent.complexity == LOW AND context_size < 512"
+    action: "lane = L0, model = minimax-m2"
+    rationale: "Maximo custo-eficiencia em tarefas simples"
+
+  R02_LANE_L1:
+    priority: 2
+    condition: "intent.complexity == MEDIUM OR context_size 512-2048"
+    action: "lane = L1, model = kimi-k2.5"
+    rationale: "LLM leve para tarefas intermediarias"
+
+  R03_LANE_L2:
+    priority: 3
+    condition: "intent.complexity == HIGH OR studio IN [S42,S43,S44,S45,S46,S47,S48,S49,S50,S51]"
+    action: "lane = L2, model = claude-sonnet"
+    rationale: "Studios criticos requerem L2 minimo"
+
+  R04_LANE_L3:
+    priority: 4
+    condition: "intent.complexity == CRITICAL OR breaking_change == true"
+    action: "lane = L3, model = deepseek-v3, doctor_gate = Doctor2"
+    rationale: "Mudancas criticas requerem auditoria profunda"
+
+  R05_VISUAL:
+    priority: 5
+    condition: "intent.modality IN [image, video, screenshot] OR context_size > 100000"
+    action: "bridge = ANTIGRAVITY_BRIDGE, model = gemini-3.1-pro"
+    rationale: "Tarefas visuais e long-context para AntiGravity"
+
+  R06_BUDGET_GUARD:
+    priority: 0
+    condition: "budget_remaining < threshold"
+    action: "BLOCK — emitir BudgetGuard alert, escalar para PrM"
+    rationale: "Nunca ultrapassar cap de budget"
+
+  R07_SHADOW_BAND:
+    priority: 6
+    condition: "studio IN shadow_band_studios"
+    action: "lane = L0_exclusive, budget_cap = 2%"
+    rationale: "Studios shadow band com budget exclusivo 0.3-0.6% (max 2%)"
+
+  R08_GITNANU:
+    priority: 7
+    condition: "intent.type IN [git_push, file_create, file_update, repo_operation]"
+    action: "bridge = GITNANU_BRIDGE, single_writer_check = true"
+    rationale: "Todas operacoes repo via GitNanu single-writer"
+
+pac_selection:
+  PAC_2K:  {condition: "lane == L0 AND context < 2000"}
+  PAC_4K:  {condition: "lane == L1 AND context < 4000"}
+  PAC_8K:  {condition: "lane == L2 AND context < 8000"}
+  PAC_12K: {condition: "lane == L3 OR context >= 8000"}
+
+invariants:
+  - "R06_BUDGET_GUARD tem priority 0 — sempre executado primeiro"
+  - "R08_GITNANU single_writer_check obrigatorio"
+  - "PAC selecionado antes de chamar modelo"
+  - "Nenhuma regra pode bypassar Doctor Gate"
