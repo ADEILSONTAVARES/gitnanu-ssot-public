@@ -1,0 +1,96 @@
+# DORES_S25_meeting_scheduler_v1
+studio_id: S25
+api: meeting_scheduler
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S25-ms-01
+    name: Dor 1 de meeting_scheduler
+    sintoma: Sintoma 1
+    causa_raiz: Causa 1
+    mitigacao: Mitigacao 1
+    severity: HIGH
+  - dor_id: D-S25-ms-02
+    name: Dor 2 de meeting_scheduler
+    sintoma: Sintoma 2
+    causa_raiz: Causa 2
+    mitigacao: Mitigacao 2
+    severity: HIGH
+  - dor_id: D-S25-ms-03
+    name: Dor 3 de meeting_scheduler
+    sintoma: Sintoma 3
+    causa_raiz: Causa 3
+    mitigacao: Mitigacao 3
+    severity: HIGH
+  - dor_id: D-S25-ms-04
+    name: Dor 4 de meeting_scheduler
+    sintoma: Sintoma 4
+    causa_raiz: Causa 4
+    mitigacao: Mitigacao 4
+    severity: HIGH
+  - dor_id: D-S25-ms-05
+    name: Dor 5 de meeting_scheduler
+    sintoma: Sintoma 5
+    causa_raiz: Causa 5
+    mitigacao: Mitigacao 5
+    severity: HIGH
+  - dor_id: D-S25-ms-06
+    name: Dor 6 de meeting_scheduler
+    sintoma: Sintoma 6
+    causa_raiz: Causa 6
+    mitigacao: Mitigacao 6
+    severity: HIGH
+  - dor_id: D-S25-ms-07
+    name: Dor 7 de meeting_scheduler
+    sintoma: Sintoma 7
+    causa_raiz: Causa 7
+    mitigacao: Mitigacao 7
+    severity: HIGH
+  - dor_id: D-S25-ms-08
+    name: Dor 8 de meeting_scheduler
+    sintoma: Sintoma 8
+    causa_raiz: Causa 8
+    mitigacao: Mitigacao 8
+    severity: HIGH
+  - dor_id: D-S25-ms-09
+    name: Dor 9 de meeting_scheduler
+    sintoma: Sintoma 9
+    causa_raiz: Causa 9
+    mitigacao: Mitigacao 9
+    severity: HIGH
+  - dor_id: D-S25-ms-10
+    name: Dor 10 de meeting_scheduler
+    sintoma: Sintoma 10
+    causa_raiz: Causa 10
+    mitigacao: Mitigacao 10
+    severity: HIGH
+  - dor_id: D-S25-ms-11
+    name: Dor 11 de meeting_scheduler
+    sintoma: Sintoma 11
+    causa_raiz: Causa 11
+    mitigacao: Mitigacao 11
+    severity: HIGH
+  - dor_id: D-S25-ms-12
+    name: Dor 12 de meeting_scheduler
+    sintoma: Sintoma 12
+    causa_raiz: Causa 12
+    mitigacao: Mitigacao 12
+    severity: HIGH
+  - dor_id: D-S25-ms-13
+    name: Dor 13 de meeting_scheduler
+    sintoma: Sintoma 13
+    causa_raiz: Causa 13
+    mitigacao: Mitigacao 13
+    severity: HIGH
+  - dor_id: D-S25-ms-14
+    name: Dor 14 de meeting_scheduler
+    sintoma: Sintoma 14
+    causa_raiz: Causa 14
+    mitigacao: Mitigacao 14
+    severity: HIGH
+  - dor_id: D-S25-ms-15
+    name: Dor 15 de meeting_scheduler
+    sintoma: Sintoma 15
+    causa_raiz: Causa 15
+    mitigacao: Mitigacao 15
+    severity: HIGH

@@ -1,0 +1,96 @@
+# DORES_S45_circuit_breaker_v1
+studio_id: S45
+api: circuit_breaker
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S45-cb-01
+    name: Dor 1 de circuit_breaker
+    sintoma: Sintoma 1
+    causa_raiz: Causa 1
+    mitigacao: Mitigacao 1
+    severity: HIGH
+  - dor_id: D-S45-cb-02
+    name: Dor 2 de circuit_breaker
+    sintoma: Sintoma 2
+    causa_raiz: Causa 2
+    mitigacao: Mitigacao 2
+    severity: HIGH
+  - dor_id: D-S45-cb-03
+    name: Dor 3 de circuit_breaker
+    sintoma: Sintoma 3
+    causa_raiz: Causa 3
+    mitigacao: Mitigacao 3
+    severity: HIGH
+  - dor_id: D-S45-cb-04
+    name: Dor 4 de circuit_breaker
+    sintoma: Sintoma 4
+    causa_raiz: Causa 4
+    mitigacao: Mitigacao 4
+    severity: HIGH
+  - dor_id: D-S45-cb-05
+    name: Dor 5 de circuit_breaker
+    sintoma: Sintoma 5
+    causa_raiz: Causa 5
+    mitigacao: Mitigacao 5
+    severity: HIGH
+  - dor_id: D-S45-cb-06
+    name: Dor 6 de circuit_breaker
+    sintoma: Sintoma 6
+    causa_raiz: Causa 6
+    mitigacao: Mitigacao 6
+    severity: HIGH
+  - dor_id: D-S45-cb-07
+    name: Dor 7 de circuit_breaker
+    sintoma: Sintoma 7
+    causa_raiz: Causa 7
+    mitigacao: Mitigacao 7
+    severity: HIGH
+  - dor_id: D-S45-cb-08
+    name: Dor 8 de circuit_breaker
+    sintoma: Sintoma 8
+    causa_raiz: Causa 8
+    mitigacao: Mitigacao 8
+    severity: HIGH
+  - dor_id: D-S45-cb-09
+    name: Dor 9 de circuit_breaker
+    sintoma: Sintoma 9
+    causa_raiz: Causa 9
+    mitigacao: Mitigacao 9
+    severity: HIGH
+  - dor_id: D-S45-cb-10
+    name: Dor 10 de circuit_breaker
+    sintoma: Sintoma 10
+    causa_raiz: Causa 10
+    mitigacao: Mitigacao 10
+    severity: HIGH
+  - dor_id: D-S45-cb-11
+    name: Dor 11 de circuit_breaker
+    sintoma: Sintoma 11
+    causa_raiz: Causa 11
+    mitigacao: Mitigacao 11
+    severity: HIGH
+  - dor_id: D-S45-cb-12
+    name: Dor 12 de circuit_breaker
+    sintoma: Sintoma 12
+    causa_raiz: Causa 12
+    mitigacao: Mitigacao 12
+    severity: HIGH
+  - dor_id: D-S45-cb-13
+    name: Dor 13 de circuit_breaker
+    sintoma: Sintoma 13
+    causa_raiz: Causa 13
+    mitigacao: Mitigacao 13
+    severity: HIGH
+  - dor_id: D-S45-cb-14
+    name: Dor 14 de circuit_breaker
+    sintoma: Sintoma 14
+    causa_raiz: Causa 14
+    mitigacao: Mitigacao 14
+    severity: HIGH
+  - dor_id: D-S45-cb-15
+    name: Dor 15 de circuit_breaker
+    sintoma: Sintoma 15
+    causa_raiz: Causa 15
+    mitigacao: Mitigacao 15
+    severity: HIGH

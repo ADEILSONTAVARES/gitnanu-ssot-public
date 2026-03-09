@@ -1,0 +1,96 @@
+# DORES_S32_manuscript_formatter_v1
+studio_id: S32
+api: manuscript_formatter
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S32-mf-01
+    name: Dor 1 de manuscript_formatter
+    sintoma: Sintoma 1
+    causa_raiz: Causa 1
+    mitigacao: Mitigacao 1
+    severity: HIGH
+  - dor_id: D-S32-mf-02
+    name: Dor 2 de manuscript_formatter
+    sintoma: Sintoma 2
+    causa_raiz: Causa 2
+    mitigacao: Mitigacao 2
+    severity: HIGH
+  - dor_id: D-S32-mf-03
+    name: Dor 3 de manuscript_formatter
+    sintoma: Sintoma 3
+    causa_raiz: Causa 3
+    mitigacao: Mitigacao 3
+    severity: HIGH
+  - dor_id: D-S32-mf-04
+    name: Dor 4 de manuscript_formatter
+    sintoma: Sintoma 4
+    causa_raiz: Causa 4
+    mitigacao: Mitigacao 4
+    severity: HIGH
+  - dor_id: D-S32-mf-05
+    name: Dor 5 de manuscript_formatter
+    sintoma: Sintoma 5
+    causa_raiz: Causa 5
+    mitigacao: Mitigacao 5
+    severity: HIGH
+  - dor_id: D-S32-mf-06
+    name: Dor 6 de manuscript_formatter
+    sintoma: Sintoma 6
+    causa_raiz: Causa 6
+    mitigacao: Mitigacao 6
+    severity: HIGH
+  - dor_id: D-S32-mf-07
+    name: Dor 7 de manuscript_formatter
+    sintoma: Sintoma 7
+    causa_raiz: Causa 7
+    mitigacao: Mitigacao 7
+    severity: HIGH
+  - dor_id: D-S32-mf-08
+    name: Dor 8 de manuscript_formatter
+    sintoma: Sintoma 8
+    causa_raiz: Causa 8
+    mitigacao: Mitigacao 8
+    severity: HIGH
+  - dor_id: D-S32-mf-09
+    name: Dor 9 de manuscript_formatter
+    sintoma: Sintoma 9
+    causa_raiz: Causa 9
+    mitigacao: Mitigacao 9
+    severity: HIGH
+  - dor_id: D-S32-mf-10
+    name: Dor 10 de manuscript_formatter
+    sintoma: Sintoma 10
+    causa_raiz: Causa 10
+    mitigacao: Mitigacao 10
+    severity: HIGH
+  - dor_id: D-S32-mf-11
+    name: Dor 11 de manuscript_formatter
+    sintoma: Sintoma 11
+    causa_raiz: Causa 11
+    mitigacao: Mitigacao 11
+    severity: HIGH
+  - dor_id: D-S32-mf-12
+    name: Dor 12 de manuscript_formatter
+    sintoma: Sintoma 12
+    causa_raiz: Causa 12
+    mitigacao: Mitigacao 12
+    severity: HIGH
+  - dor_id: D-S32-mf-13
+    name: Dor 13 de manuscript_formatter
+    sintoma: Sintoma 13
+    causa_raiz: Causa 13
+    mitigacao: Mitigacao 13
+    severity: HIGH
+  - dor_id: D-S32-mf-14
+    name: Dor 14 de manuscript_formatter
+    sintoma: Sintoma 14
+    causa_raiz: Causa 14
+    mitigacao: Mitigacao 14
+    severity: HIGH
+  - dor_id: D-S32-mf-15
+    name: Dor 15 de manuscript_formatter
+    sintoma: Sintoma 15
+    causa_raiz: Causa 15
+    mitigacao: Mitigacao 15
+    severity: HIGH

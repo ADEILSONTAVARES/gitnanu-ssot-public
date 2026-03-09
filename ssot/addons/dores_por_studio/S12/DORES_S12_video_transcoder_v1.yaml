@@ -1,0 +1,96 @@
+# DORES_S12_video_transcoder_v1
+studio_id: S12
+api: video_transcoder
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S12-vt-01
+    name: Dor 1 de video_transcoder
+    sintoma: Sintoma 1
+    causa_raiz: Causa 1
+    mitigacao: Mitigacao 1
+    severity: HIGH
+  - dor_id: D-S12-vt-02
+    name: Dor 2 de video_transcoder
+    sintoma: Sintoma 2
+    causa_raiz: Causa 2
+    mitigacao: Mitigacao 2
+    severity: HIGH
+  - dor_id: D-S12-vt-03
+    name: Dor 3 de video_transcoder
+    sintoma: Sintoma 3
+    causa_raiz: Causa 3
+    mitigacao: Mitigacao 3
+    severity: HIGH
+  - dor_id: D-S12-vt-04
+    name: Dor 4 de video_transcoder
+    sintoma: Sintoma 4
+    causa_raiz: Causa 4
+    mitigacao: Mitigacao 4
+    severity: HIGH
+  - dor_id: D-S12-vt-05
+    name: Dor 5 de video_transcoder
+    sintoma: Sintoma 5
+    causa_raiz: Causa 5
+    mitigacao: Mitigacao 5
+    severity: HIGH
+  - dor_id: D-S12-vt-06
+    name: Dor 6 de video_transcoder
+    sintoma: Sintoma 6
+    causa_raiz: Causa 6
+    mitigacao: Mitigacao 6
+    severity: HIGH
+  - dor_id: D-S12-vt-07
+    name: Dor 7 de video_transcoder
+    sintoma: Sintoma 7
+    causa_raiz: Causa 7
+    mitigacao: Mitigacao 7
+    severity: HIGH
+  - dor_id: D-S12-vt-08
+    name: Dor 8 de video_transcoder
+    sintoma: Sintoma 8
+    causa_raiz: Causa 8
+    mitigacao: Mitigacao 8
+    severity: HIGH
+  - dor_id: D-S12-vt-09
+    name: Dor 9 de video_transcoder
+    sintoma: Sintoma 9
+    causa_raiz: Causa 9
+    mitigacao: Mitigacao 9
+    severity: HIGH
+  - dor_id: D-S12-vt-10
+    name: Dor 10 de video_transcoder
+    sintoma: Sintoma 10
+    causa_raiz: Causa 10
+    mitigacao: Mitigacao 10
+    severity: HIGH
+  - dor_id: D-S12-vt-11
+    name: Dor 11 de video_transcoder
+    sintoma: Sintoma 11
+    causa_raiz: Causa 11
+    mitigacao: Mitigacao 11
+    severity: HIGH
+  - dor_id: D-S12-vt-12
+    name: Dor 12 de video_transcoder
+    sintoma: Sintoma 12
+    causa_raiz: Causa 12
+    mitigacao: Mitigacao 12
+    severity: HIGH
+  - dor_id: D-S12-vt-13
+    name: Dor 13 de video_transcoder
+    sintoma: Sintoma 13
+    causa_raiz: Causa 13
+    mitigacao: Mitigacao 13
+    severity: HIGH
+  - dor_id: D-S12-vt-14
+    name: Dor 14 de video_transcoder
+    sintoma: Sintoma 14
+    causa_raiz: Causa 14
+    mitigacao: Mitigacao 14
+    severity: HIGH
+  - dor_id: D-S12-vt-15
+    name: Dor 15 de video_transcoder
+    sintoma: Sintoma 15
+    causa_raiz: Causa 15
+    mitigacao: Mitigacao 15
+    severity: HIGH
