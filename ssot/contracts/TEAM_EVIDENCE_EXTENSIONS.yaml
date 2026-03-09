@@ -1,0 +1,52 @@
+ssot_id: TEAM_EVIDENCE_EXTENSIONS
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Team Evidence Extensions — extensoes de evidence para team mode"
+  sistema: NANUCAI OG10
+  pointer_base: "ssot/contracts/EVIDENCE_PACK_TEMPLATE_v2.yaml"
+
+extensoes_team:
+
+  delegacao_evidence:
+    campos:
+      delegador: "PrM ou SubAgent que delegou"
+      receptor: "SubAgent que recebeu"
+      task_id: "identificador da subtask"
+      instrucoes_hash: "SHA256 das instrucoes passadas"
+    obrigatorio: true
+    descricao: "rastreia cadeia de delegacao"
+
+  merge_evidence:
+    campos:
+      artefatos_merged: "array de job_ids dos artefatos"
+      merge_strategy: "concat | replace | patch"
+      conflicts_resolved: "boolean"
+      resolver: "PrM ou Council"
+    obrigatorio_se: "task teve merge de multiplos SubAgents"
+
+  quorum_evidence:
+    campos:
+      decisao_id: "identificador da decisao"
+      votos: "array {membro, voto, timestamp}"
+      quorum_atingido: "boolean"
+      tipo_quorum: "simples | qualificado | unanime"
+    obrigatorio_se: "acao requereu quorum"
+
+  blast_radius_evidence:
+    campos:
+      nivel: "LOW | MEDIUM | HIGH | CRITICAL"
+      componentes_afetados: "array de studio_ids"
+      rollback_plan: "pointer para plano de rollback"
+    obrigatorio_se: "blast_radius >= HIGH"
+
+storage:
+  local: "vault_local/evidence/{job_id}/team_extensions.json"
+  coca_local_only: true
+
+invariants:
+  - "Extensoes nunca no repo publico"
+  - "Toda delegacao tem evidence rastreavel"
+  - "Quorum evidence imutavel apos emissao"
