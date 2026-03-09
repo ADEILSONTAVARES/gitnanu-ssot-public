@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_CLOUDFLARE_CDN
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_CLOUDFLARE_CDN
+  title: "MCP Spec — MCP_CLOUDFLARE_CDN"
+  grupo: infra_devops
+  grupo_desc: "Infra e DevOps"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.0
+  F: 9.1
+  V: 9.1
+  E: 8.8
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "CDN, cache de borda e protecao DDoS"
+  trigger: "static_assets + edge_cache + ddos_protection"
+  latencia_p95: "20ms"
+  lock_t: []
+  sistemas: ["PrM_CORE", "UI_STUDIOS"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.0
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
