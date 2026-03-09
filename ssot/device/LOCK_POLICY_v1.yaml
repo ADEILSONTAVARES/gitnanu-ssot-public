@@ -1,0 +1,39 @@
+ssot_id: LOCK_POLICY_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Device Lock Policy — Multi-device sync seguro"
+  sistema: NANUCAI OG10
+
+dispositivos_registrados:
+  mac_local:
+    alias: "Adeilsons-MacBook-Pro"
+    role: "desenvolvimento primario"
+    trust: HIGH
+  vps_gitnanu:
+    alias: "gitnanu-vps"
+    host: "72.60.142.44"
+    role: "GitNanu writer canonico"
+    trust: HIGH
+
+politica_sync:
+  writer_canonico: "gitnanu-vps (GitNanu)"
+  leitores: ["mac_local"]
+  regra: "Mac puxa (git pull), VPS empurra (git push)"
+  conflito: "VPS sempre vence — single writer"
+
+politica_lock:
+  arquivo_lockado:
+    - "nenhum device alem do GitNanu faz push direto para main"
+    - "PRs requerem PASS_STRICT antes de merge"
+  excecoes: "nenhuma — zero excecoes para main"
+
+bundle_sync:
+  ferramenta: "git bundle"
+  fluxo: "Mac -> bundle -> VPS -> push -> GitHub"
+  frequencia: "por sessao de trabalho"
+
+pointer_device_trust:
+  spec: "ssot/gitnanu/DEVICE_TRUST_SPEC.yaml"
