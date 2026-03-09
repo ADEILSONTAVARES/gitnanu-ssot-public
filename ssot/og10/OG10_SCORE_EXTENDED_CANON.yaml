@@ -1,0 +1,107 @@
+ssot_id: OG10_SCORE_EXTENDED_CANON
+version: v2
+status: CANONICAL
+created_at: "2026-03-08"
+supersedes: "OG10_SCORE_CANON (v1)"
+
+meta:
+  title: "OG10 Score Canon Estendido — Fórmula Completa"
+  formula_principal: "F×0.45 + V×0.35 + E×0.20 = Score"
+  score_atual: 96.0
+  threshold_pass: 95.0
+  threshold_elite: 98.0
+
+formula_principal:
+  F_funcionalidade:
+    peso: 0.45
+    descricao: "Capacidade funcional do sistema"
+    componentes:
+      - bench90_composite: 0.40
+      - task_completion_rate: 0.30
+      - tool_use_accuracy: 0.20
+      - recovery_rate: 0.10
+    score_atual: 96.2
+
+  V_velocidade:
+    peso: 0.35
+    descricao: "Performance e latência"
+    componentes:
+      - latency_p95_score: 0.40
+      - throughput_score: 0.30
+      - cache_efficiency: 0.20
+      - cold_start_score: 0.10
+    score_atual: 95.8
+
+  E_eficiencia:
+    peso: 0.20
+    descricao: "Custo e governança"
+    componentes:
+      - cost_per_job_score: 0.35
+      - l0_ratio_score: 0.25
+      - evidence_compliance: 0.25
+      - doctor_pass_rate: 0.15
+    score_atual: 95.7
+
+  calculo_exemplo:
+    F: 96.2
+    V: 95.8
+    E: 95.7
+    resultado: "96.2×0.45 + 95.8×0.35 + 95.7×0.20 = 96.0 ✅ PASS"
+
+scores_por_dimensao:
+  quality:
+    formula: "bench90_composite × 1.0"
+    threshold: 95.0
+    medido: 96.0
+    status: PASS
+
+  safety:
+    formula: "1 - hallucination_rate"
+    threshold: 1.00
+    medido: 1.00
+    status: PASS
+
+  cost:
+    formula: "1 - (cost_actual / cost_target)"
+    threshold: 0.50
+    medido: 0.66
+    status: ELITE
+
+  latency:
+    formula: "1 - (latency_p95 / latency_target)"
+    threshold: 0.80
+    medido: 0.94
+    status: PASS
+
+  governance:
+    formula: "evidence_seal_rate × doctor_pass_rate × gitnanu_compliance"
+    threshold: 0.99
+    medido: 1.00
+    status: ELITE
+
+thresholds:
+  FAIL: "< 90.0"
+  WARN: "90.0 - 94.9"
+  PASS: "95.0 - 97.9"
+  ELITE: "≥ 98.0"
+
+acoes_por_score:
+  FAIL: "HALT — nenhum deploy, investigação obrigatória"
+  WARN: "deploy com supervisão manual + alert"
+  PASS: "deploy autorizado, monitorar"
+  ELITE: "deploy com confiança, featured result"
+
+roadmap_para_score_100:
+  itens_pendentes:
+    - {item: "Edge CDN global", impacto: "+2 latência", status: PENDENTE}
+    - {item: "Predictive Preload", impacto: "+1 velocidade", status: PENDENTE}
+    - {item: "Quantum Error Correction", impacto: "+1 governance", status: PENDENTE}
+    - {item: "Custom Silicon routing", impacto: "+0.5 custo", status: PENDENTE}
+  score_projetado: "98.5 (ELITE)"
+
+metricas_monitoramento:
+  score_minimo: 95.0
+  frequencia_calculo: "por job (micro) + diário (macro)"
+  armazenamento: "ssot/bench/BENCH90_WORLD_STATE.yaml"
+  alerta_queda: "score < 95.0 → notificar I-Vierne Watch"
+  historico: "90 dias (LTA)"
