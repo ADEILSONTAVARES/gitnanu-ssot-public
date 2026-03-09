@@ -1,0 +1,44 @@
+ssot_id: SMOKE_TEST_SPEC_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Smoke Test Spec — testes rapidos pos-deploy"
+  sistema: NANUCAI OG10
+  pointer_script: "scripts/ops/smoke_test.sh"
+
+testes_smoke:
+  T01_redis_ping:
+    comando: "redis-cli ping"
+    esperado: "PONG"
+    timeout_s: 5
+
+  T02_gate_pass_strict:
+    comando: "python3 scripts/gate_pass_strict.py"
+    esperado: "PASS: PASS_STRICT"
+    timeout_s: 60
+
+  T03_actions_index:
+    comando: "python3 scripts/gates/validate_actions_index.py"
+    esperado: "Errors: 0"
+    timeout_s: 30
+
+  T04_no_placeholders:
+    comando: "python3 scripts/validators/no_placeholders.py"
+    esperado: "PASS: no_placeholders"
+    timeout_s: 15
+
+  T05_secret_scan:
+    comando: "python3 scripts/validators/secret_scan_light.py"
+    esperado: "PASS: secret_scan_light"
+    timeout_s: 15
+
+  T06_studio_count:
+    descricao: "Verificar 52 studios presentes"
+    esperado: "52 dirs em ssot/studios/"
+    timeout_s: 5
+
+criterio_pass:
+  todos_obrigatorios: [T01, T02, T03, T04, T05, T06]
+  qualquer_falha: "BLOCK deploy"
