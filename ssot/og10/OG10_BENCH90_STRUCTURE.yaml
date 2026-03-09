@@ -1,0 +1,123 @@
+ssot_id: OG10_BENCH90_STRUCTURE
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Bench90 — Estrutura 54+20+16"
+  formula_composite: "B54×0.60 + V20×0.22 + E16×0.18 ≥ 95.0"
+  total_benchmarks: 90
+  threshold_global: 95.0
+  run_frequency: "a cada 72h ou após major deploy"
+
+secoes:
+  B54_fundamentais:
+    peso: 0.60
+    count: 54
+    threshold: 95.0
+    descricao: "Benchmarks fundamentais de capacidade do sistema"
+    categorias:
+      knowledge_reasoning:
+        count: 14
+        ids: [B01, B02, B03, B04, B05, B06, B07, B08, B09, B10, B11, B12, B13, B14]
+        metricas: ["accuracy", "consistency", "citation_quality"]
+      math_logic:
+        count: 10
+        ids: [B15, B16, B17, B18, B19, B20, B21, B22, B23, B24]
+        metricas: ["correctness", "steps_shown", "error_rate"]
+      code_generation:
+        count: 12
+        ids: [B25, B26, B27, B28, B29, B30, B31, B32, B33, B34, B35, B36]
+        metricas: ["syntax_valid", "test_pass_rate", "complexity"]
+      safety_alignment:
+        count: 8
+        ids: [B37, B38, B39, B40, B41, B42, B43, B44]
+        metricas: ["refusal_rate", "hallucination_rate", "bias_score"]
+      agentic_orchestration:
+        count: 10
+        ids: [B45, B46, B47, B48, B49, B50, B51, B52, B53, B54]
+        metricas: ["task_completion", "tool_use_accuracy", "recovery_rate"]
+
+  V20_media:
+    peso: 0.22
+    count: 20
+    threshold: 93.0
+    descricao: "Benchmarks de pipelines de media e video"
+    categorias:
+      image_processing:
+        count: 6
+        ids: [V01, V02, V03, V04, V05, V06]
+        metricas: ["fidelity", "latency_ms", "format_compliance"]
+      video_pipeline:
+        count: 8
+        ids: [V07, V08, V09, V10, V11, V12, V13, V14]
+        metricas: ["frame_accuracy", "compression_ratio", "sync_quality"]
+      audio_subtitle:
+        count: 4
+        ids: [V15, V16, V17, V18]
+        metricas: ["wer", "timing_accuracy"]
+      rights_compliance:
+        count: 2
+        ids: [V19, V20]
+        metricas: ["rights_check_pass", "watermark_integrity"]
+
+  E16_efficiency:
+    peso: 0.18
+    count: 16
+    threshold: 94.0
+    descricao: "Benchmarks de eficiência e confiabilidade"
+    categorias:
+      latency:
+        count: 4
+        ids: [E01, E02, E03, E04]
+        targets:
+          E01_p50: "≤ 500ms"
+          E02_p95: "≤ 3000ms"
+          E03_p99: "≤ 8000ms"
+          E04_cold_start: "≤ 10000ms"
+      cost:
+        count: 4
+        ids: [E05, E06, E07, E08]
+        targets:
+          E05_cost_per_job: "≤ $0.000141"
+          E06_shadow_band: "0.3-0.6%"
+          E07_l0_ratio: "≥ 0.85"
+          E08_cache_hit_rate: "≥ 0.70"
+      reliability:
+        count: 4
+        ids: [E09, E10, E11, E12]
+        targets:
+          E09_uptime: "≥ 0.999"
+          E10_error_rate: "≤ 0.001"
+          E11_retry_success: "≥ 0.95"
+          E12_rollback_success: "= 1.00"
+      governance:
+        count: 4
+        ids: [E13, E14, E15, E16]
+        targets:
+          E13_evidence_seal_rate: "= 1.00"
+          E14_doctor_pass_rate: "≥ 0.99"
+          E15_no_hallucination: "= 1.00 (T1-T4)"
+          E16_gitnanu_compliance: "= 1.00"
+
+formula_composite:
+  expressao: "B54×0.60 + V20×0.22 + E16×0.18"
+  threshold_pass: 95.0
+  exemplo_calculo:
+    B54_score: 96.0
+    V20_score: 94.5
+    E16_score: 95.8
+    composite: "96.0×0.60 + 94.5×0.22 + 95.8×0.18 = 95.61 → PASS"
+
+acoes_por_resultado:
+  composite_lt_90: "HALT — nenhum deploy, investigação obrigatória"
+  composite_90_94: "WARN — deploy com supervisão manual"
+  composite_gte_95: "PASS — deploy autorizado"
+  composite_gte_98: "ELITE — featured benchmark result"
+
+run_protocol:
+  trigger: ["deploy_major", "72h_cron", "manual_request"]
+  executor: "QA Coringão + PHDMat"
+  output: "BENCH90_RUN_{date}.json"
+  storage: "ssot/bench/ (LTA)"
+  evidence_required: true
