@@ -1,0 +1,51 @@
+ssot_id: TEAM_DOD_TEMPLATE
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Team Definition of Done Template — criterios de conclusao"
+  sistema: NANUCAI OG10
+
+definition_of_done:
+  criterios_obrigatorios:
+    funcionalidade:
+      - "todos os casos de uso implementados"
+      - "zero bugs criticos ou HIGH abertos"
+      - "comportamento correto em edge cases"
+
+    qualidade:
+      - "nota >= 9.0 no Council review"
+      - "PASS_STRICT no gate"
+      - "zero placeholders"
+      - "zero secrets expostos"
+
+    evidence:
+      - "evidence_seal gerado"
+      - "evidence_ref no artefato"
+      - "vault_local atualizado"
+
+    documentacao:
+      - "ssot_id presente"
+      - "version e status corretos"
+      - "meta.title descritivo"
+
+    testes:
+      - "TestSprite PASS"
+      - "smoke test PASS"
+      - "zero erros no actions_index"
+
+  criterios_team_mode:
+    - "quorum atingido para acoes criticas"
+    - "council_ref presente se blast_radius HIGH"
+    - "delegacao_chain documentada"
+
+status_permitidos_para_done:
+  - "CANONICAL (arquivos SSOT)"
+  - "PASS (jobs de execucao)"
+
+nao_e_done_se:
+  - "nota < 9.0"
+  - "placeholder presente"
+  - "evidence_seal ausente"
+  - "FAIL_STRICT no gate"
