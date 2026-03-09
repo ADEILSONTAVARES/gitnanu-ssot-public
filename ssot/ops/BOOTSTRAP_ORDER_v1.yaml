@@ -1,0 +1,55 @@
+ssot_id: BOOTSTRAP_ORDER_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Bootstrap Order — sequencia de inicializacao OG10"
+  sistema: NANUCAI OG10
+
+ordem_bootstrap:
+  fase_0_infra:
+    ordem: 0
+    componentes:
+      - {id: "Redis", tipo: "cache L0", obrigatorio: true}
+      - {id: "Supabase", tipo: "vector + DB", obrigatorio: true}
+      - {id: "Vault_local", tipo: "secrets", obrigatorio: true}
+    health_check: "ping Redis + Supabase antes de continuar"
+
+  fase_1_gitnanu:
+    ordem: 1
+    componentes:
+      - {id: "GitNanu", tipo: "SSOT writer", obrigatorio: true}
+    gate: "branch protection ativa"
+
+  fase_2_mcps:
+    ordem: 2
+    componentes:
+      - {id: "MCP_AgentZero_Preflight", obrigatorio: true}
+      - {id: "MCP_Cache_Quantum_Lookup", obrigatorio: true}
+      - {id: "MCP_Coca_Guard", obrigatorio: true}
+      - {id: "MCP_Doctor1_Gates", obrigatorio: true}
+    gate: "todos MCPs criticos respondendo"
+
+  fase_3_studios:
+    ordem: 3
+    componentes:
+      - {id: "S00-S09", prioridade: "CRITICO", carga: "imediata"}
+      - {id: "S10-S39", prioridade: "HIGH", carga: "lazy"}
+      - {id: "S40-S51", prioridade: "MEDIUM", carga: "on-demand"}
+    gate: "S00 PASS antes de outros studios"
+
+  fase_4_prm:
+    ordem: 4
+    componentes:
+      - {id: "PrM", tipo: "Professor Mestre superagent", obrigatorio: true}
+    depends_on: ["fase_3_studios"]
+
+  fase_5_gateway:
+    ordem: 5
+    componentes:
+      - {id: "AG_GATEWAY_002", tipo: "stateful job queue"}
+      - {id: "AG_WORKER_001", tipo: "polling worker 10s"}
+
+fail_closed: true
+invariant: "Qualquer fase que falha bloqueia as fases seguintes"
