@@ -1,0 +1,72 @@
+ssot_id: FAMILIAS_7_REGISTRY
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "7 Familias RAG - Registry Canonico"
+  total_familias: 7
+  cobertura: "todos os tipos de dado do NANUCAI OG10"
+
+familias:
+  F1_SSOT:
+    id: F1
+    nome: "SSOT"
+    descricao: "Documentos canonicos, specs, playbooks, YAMLs do repo"
+    storage_primario: "ssot/ (repo GitNanu)"
+    ttl: "permanente"
+    sistemas: [GitNanu, GNDrive, GammaNOTION]
+
+  F2_CODE:
+    id: F2
+    nome: "CODE"
+    descricao: "Codigo fonte, patches, diffs, scripts"
+    storage_primario: "ssot/addons/ (repo)"
+    ttl: "180 dias"
+    sistemas: [Mouse, GitNanu]
+
+  F3_MCP:
+    id: F3
+    nome: "MCP"
+    descricao: "Resultados de chamadas MCP, tool traces"
+    storage_primario: "LTA (se relevante)"
+    ttl: "30 dias"
+    sistemas: [PrM]
+
+  F4_RUNS:
+    id: F4
+    nome: "RUNS"
+    descricao: "Historico de execucoes, jobs, pipelines, ledger de custo"
+    storage_primario: "LTA"
+    ttl: "90 dias"
+    sistemas: [PrM, TeamAsWork10x, Cowork10x]
+
+  F5_BENCH:
+    id: F5
+    nome: "BENCH"
+    descricao: "Resultados de benchmarks, scores, metricas OG10"
+    storage_primario: "ssot/bench/ (repo)"
+    ttl: "permanente"
+    sistemas: [PrM, GitNanu]
+
+  F6_OPS:
+    id: F6
+    nome: "OPS"
+    descricao: "Logs operacionais, alertas, incidentes, metricas de infra"
+    storage_primario: "LTA"
+    ttl: "60 dias"
+    sistemas: [PrM]
+
+  F7_MEDIA:
+    id: F7
+    nome: "MEDIA"
+    descricao: "Assets de media, metadados de conteudo criativo"
+    storage_primario: "GNDrive"
+    ttl: "365 dias"
+    sistemas: [Mouse, GNDrive]
+
+cobertura_por_studio:
+  S00_S09: [F1_SSOT, F2_CODE, F4_RUNS]
+  S10_S29: [F1_SSOT, F2_CODE, F3_MCP, F4_RUNS, F5_BENCH]
+  S30_S41: [F1_SSOT, F3_MCP, F4_RUNS, F7_MEDIA]
+  S42_S51: [F1_SSOT, F2_CODE, F3_MCP, F4_RUNS, F5_BENCH, F6_OPS]
