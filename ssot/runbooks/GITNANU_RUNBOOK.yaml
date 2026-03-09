@@ -1,0 +1,95 @@
+spec_id: GITNANU_RUNBOOK
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "GitNanu Runbook — Procedimentos Operacionais"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+description: >
+  Runbook operacional completo para o GitNanu single-writer protocol.
+  Cobre sincronizacao Mac-VPS-GitHub, troubleshooting e procedimentos
+  de emergencia.
+
+devices:
+  mac_local:
+    path: "~/Projects/gitnanu-ssot-public"
+    role: "desenvolvimento e geracao de scripts"
+    push_allowed: false
+    pull_allowed: true
+
+  vps_gitnanu:
+    host: "72.60.142.44"
+    user: "gitnanu"
+    alias: "ssh gitnanu-vps"
+    path: "~/Projects/gitnanu-ssot-public"
+    role: "WRITER UNICO — unico que faz push"
+    push_allowed: true
+    pull_allowed: true
+
+  github:
+    repo: "ADEILSONTAVARES/gitnanu-ssot-public"
+    branch: "main"
+    protection: "single-writer (GitNanu only)"
+
+procedures:
+
+  PROC_01_DEPLOY_VIA_API:
+    nome: "Deploy via GitHub API (Python script)"
+    quando: "Criar ou atualizar arquivos no repo sem acesso direto ao VPS"
+    passos:
+      1: "Gerar script Python com FILES dict completo"
+      2: "Verificar token GitHub valido (curl -s -H 'Authorization: token TOKEN' https://api.github.com/user)"
+      3: "Baixar script para ~/Documents/ no Mac"
+      4: "chmod +x ~/Documents/script.py"
+      5: "python3 ~/Documents/script.py TOKEN"
+      6: "Verificar output: N OK | 0 ERRO"
+      7: "git pull no Mac"
+      8: "python3 scripts/gate_pass_strict.py"
+    gate_required: PASS_STRICT
+
+  PROC_02_SYNC_MAC_VPS:
+    nome: "Sincronizacao Mac <-> VPS <-> GitHub"
+    quando: "Manter todos os devices atualizados"
+    passos:
+      1: "No Mac: git pull"
+      2: "No VPS: ssh gitnanu-vps 'cd ~/Projects/gitnanu-ssot-public && git pull'"
+      3: "Verificar git log --oneline -5 nos dois devices"
+    gate_required: false
+
+  PROC_03_EMERGENCY_ROLLBACK:
+    nome: "Rollback de emergencia"
+    quando: "Commit com erro passou para main"
+    passos:
+      1: "Identificar commit anterior valido: git log --oneline"
+      2: "No VPS: git revert HEAD --no-edit"
+      3: "python3 scripts/gate_pass_strict.py"
+      4: "Se PASS: git push origin main"
+      5: "No Mac: git pull"
+    gate_required: PASS_STRICT
+    nota: "NUNCA usar git reset --hard em main sem aprovacao Council"
+
+  PROC_04_TOKEN_RENEWAL:
+    nome: "Renovacao de token GitHub"
+    quando: "Token expirado (HTTP 401)"
+    passos:
+      1: "Acessar https://github.com/settings/tokens/new"
+      2: "Nome: gitnanu-deploy, Validade: 7 dias"
+      3: "Scope: repo (apenas)"
+      4: "Generate token — copiar imediatamente"
+      5: "Testar: curl -s -H 'Authorization: token TOKEN' https://api.github.com/user"
+      6: "Deve retornar login: ADEILSONTAVARES"
+
+troubleshooting:
+  HTTP_401: "Token expirado ou invalido — ver PROC_04_TOKEN_RENEWAL"
+  permission_denied: "Script sem permissao — chmod +x ~/Documents/script.py"
+  file_not_found: "Script nao baixado ainda — clicar Baixar no Claude antes de rodar"
+  gate_fail: "Ver output completo do validator que falhou — corrigir e re-rodar"
+  merge_conflict: "git stash && git pull && git stash pop"
+
+invariants:
+  - "PASS_STRICT obrigatorio antes de todo push"
+  - "Mac nunca faz push direto — apenas via API ou VPS"
+  - "Token nunca commitado no repo"
