@@ -1,0 +1,49 @@
+ssot_id: TEAM_QUORUM_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Team Quorum Policy — regras de quorum para decisoes criticas"
+  sistema: NANUCAI OG10
+  pointer_a2a: "ssot/protocols/TEAMS_A2A_v1.yaml"
+
+definicao_quorum:
+  quorum_simples: "maioria simples (> 50%)"
+  quorum_qualificado: "2/3 dos membros ativos"
+  quorum_unanime: "100% dos membros"
+
+acoes_por_quorum:
+  quorum_simples:
+    - "aprovacao de tasks normais"
+    - "alocacao de recursos dentro do budget"
+    - "mudancas de configuracao nao-criticas"
+
+  quorum_qualificado:
+    - "acoes com blast_radius HIGH"
+    - "mudancas de arquitetura"
+    - "deploy em producao"
+    - "adicao de novo MCP ao allowlist"
+
+  quorum_unanime:
+    - "mudancas em invariants do sistema"
+    - "remocao de studio ACTIVE"
+    - "alteracao da formula OG10"
+    - "ativacao de studio RESERVED"
+    - "mudanca de fase de storage"
+
+council_100x3:
+  composicao: "J1 + J2 + J3"
+  quorum_pass: "2/3 (J1+J2 ou J1+J3 ou J2+J3)"
+  quorum_block: "qualquer J vota BLOCK = escalate para revisao"
+  unanime_block: "3/3 BLOCK = BLOCK definitivo"
+
+timeout_deliberacao:
+  acoes_normais: "5 minutos"
+  acoes_criticas: "30 minutos"
+  timeout_acao: "escalate para humano"
+
+invariants:
+  - "Quorum nunca reduzido sem Council unanime"
+  - "Toda decisao com quorum tem evidence_ref"
+  - "Timeout sem quorum = nao aprovado (fail-closed)"
