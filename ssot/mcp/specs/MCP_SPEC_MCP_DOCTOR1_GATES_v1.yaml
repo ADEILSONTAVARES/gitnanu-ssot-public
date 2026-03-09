@@ -1,0 +1,41 @@
+spec_id: MCP_SPEC_MCP_DOCTOR1_GATES
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_DOCTOR1_GATES
+  title: "MCP Spec — MCP_DOCTOR1_GATES"
+  grupo: governanca_seguranca
+  grupo_desc: "Governanca e Seguranca"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.4
+  F: 9.5
+  V: 9.3
+  E: 9.4
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Gates basicos obrigatorios em toda transicao PAC"
+  trigger: "toda transicao PAC"
+  latencia_p95: "500ms"
+  lock_t: ["T1", "T3"]
+  sistemas: ["PrM_CORE", "GitNanu"]
+  checks: ["syntax_yaml", "no_secrets", "no_placeholders", "schema_basic"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.4
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
