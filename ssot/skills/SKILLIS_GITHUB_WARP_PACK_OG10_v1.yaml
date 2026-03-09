@@ -1,0 +1,10 @@
+pack_id: SKILLIS_GITHUB_WARP_PACK_OG10_v1
+version: 1.0
+skills:
+  - skill.github.autofix_tags_and_open_pr_v1
+  - skill.github.harvest_envivo_v1
+  - skill.github.merge_approved_pr_v1
+domain_required: dev_github_min7
+mcp_required: [github_mcp, warp_agent_mcp, gitnanu_mcp]
+freeze_rule: domain_score < 7 blocks all skills in pack
+schedule: weekly + on_demand
