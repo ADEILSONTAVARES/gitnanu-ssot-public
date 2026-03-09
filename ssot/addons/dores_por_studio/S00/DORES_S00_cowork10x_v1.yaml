@@ -1,0 +1,95 @@
+studio_id: S00
+api: cowork10x
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S00-cw-01
+    name: "Tarefa agendada nao executa"
+    sintoma: "Job nao roda no horario configurado"
+    causa_raiz: "Maquina dormindo ou Claude Desktop fechado"
+    mitigacao: "Monitorar uptime da maquina antes de agendar"
+    severity: CRITICAL
+  - dor_id: D-S00-cw-02
+    name: "Executor escreve direto no SSOT canonico"
+    sintoma: "Arquivo canonico alterado sem gate"
+    causa_raiz: "Sandbox ausente — executor sem restricao de pasta"
+    mitigacao: "Cowork opera apenas em /work/ /staging/ /pac_out/"
+    severity: CRITICAL
+  - dor_id: D-S00-cw-03
+    name: "Memoria perdida entre sessoes"
+    sintoma: "Cowork esquece contexto da sessao anterior"
+    causa_raiz: "Cowork nao tem memoria entre sessoes por design"
+    mitigacao: "PAC + GNDrive como memoria externa obrigatoria"
+    severity: CRITICAL
+  - dor_id: D-S00-cw-04
+    name: "Prompt injection via documento externo"
+    sintoma: "Instrucao maliciosa em arquivo lido pelo Cowork"
+    causa_raiz: "Agente agentico processa conteudo externo sem sanitizacao"
+    mitigacao: "Scan de conteudo antes de processar documentos externos"
+    severity: CRITICAL
+  - dor_id: D-S00-cw-05
+    name: "Email enviado automaticamente sem aprovacao"
+    sintoma: "Mensagem disparada sem revisao humana"
+    causa_raiz: "Confundir draft com envio — Gmail connector cria draft apenas"
+    mitigacao: "Envio sempre manual — Cowork cria rascunho, humano envia"
+    severity: CRITICAL
+  - dor_id: D-S00-cw-06
+    name: "Quota esgotada em tarefa recorrente"
+    sintoma: "Tarefa falha silenciosamente por limite de uso"
+    causa_raiz: "Cowork consome mais quota que chat comum"
+    mitigacao: "Monitorar quota antes de iniciar cada tarefa agendada"
+    severity: HIGH
+  - dor_id: D-S00-cw-07
+    name: "Arquivo deletado sem confirmacao"
+    sintoma: "Arquivo removido permanentemente pelo agente"
+    causa_raiz: "Cowork pode deletar arquivos com permissao — sem undo"
+    mitigacao: "Snapshot obrigatorio antes de qualquer operacao destrutiva"
+    severity: HIGH
+  - dor_id: D-S00-cw-08
+    name: "Instrucoes globais conflitando com instrucoes de pasta"
+    sintoma: "Comportamento inconsistente entre projetos"
+    causa_raiz: "CLAUDE.md global sobrescreve ou conflita com pasta-level"
+    mitigacao: "Hierarquia explicita: pasta > global; nunca ambiguidade"
+    severity: HIGH
+  - dor_id: D-S00-cw-09
+    name: "Plugin nao autorizado executado"
+    sintoma: "Plugin de terceiro roda sem aprovacao do OG10"
+    causa_raiz: "Marketplace sem curadoria interna"
+    mitigacao: "Allowlist de plugins aprovados pelo OG10"
+    severity: HIGH
+  - dor_id: D-S00-cw-10
+    name: "Artefato gerado sem evidencia rastreavel"
+    sintoma: "Output sem hash, data ou contexto de geracao"
+    causa_raiz: "Cowork nao emite evidence pack automaticamente"
+    mitigacao: "Hook pos-execucao gera evidence pack obrigatorio"
+    severity: HIGH
+  - dor_id: D-S00-cw-11
+    name: "Sincronizacao entre dispositivos ausente"
+    sintoma: "Trabalho iniciado no Mac nao continua no outro dispositivo"
+    causa_raiz: "Cowork e desktop-only sem sync entre dispositivos"
+    mitigacao: "GNDrive como camada de sincronizacao externa"
+    severity: HIGH
+  - dor_id: D-S00-cw-12
+    name: "Executor vira cerebro do sistema"
+    sintoma: "PrM ignorado — Cowork tomando decisoes de arquitetura"
+    causa_raiz: "Hierarquia invertida — executor sem restricao de escopo"
+    mitigacao: "Cowork opera em sandbox; PrM e o unico cerebro"
+    severity: HIGH
+  - dor_id: D-S00-cw-13
+    name: "Resultado de subagente nao auditado"
+    sintoma: "Subagente conclui tarefa sem revisao humana"
+    causa_raiz: "Auto-approve sem gate intermediario"
+    mitigacao: "Doctor gate obrigatorio antes de aceitar output de subagente"
+    severity: MEDIUM
+  - dor_id: D-S00-cw-14
+    name: "Microsoft 365 alterado pelo conector"
+    sintoma: "Dados em Excel/SharePoint modificados sem autorizacao"
+    causa_raiz: "Confundir conector read-only com write — M365 e read-only"
+    mitigacao: "Validar scope do conector antes de qualquer operacao"
+    severity: MEDIUM
+  - dor_id: D-S00-cw-15
+    name: "Tarefa recorrente sem log de execucao"
+    sintoma: "Impossivel auditar o que rodou e quando"
+    causa_raiz: "Ausencia de manifesto de execucao por rodada"
+    mitigacao: "Manifesto diario obrigatorio com status de cada tarefa"
+    severity: MEDIUM
