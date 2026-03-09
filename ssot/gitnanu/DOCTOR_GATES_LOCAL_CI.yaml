@@ -1,0 +1,40 @@
+ssot_id: DOCTOR_GATES_LOCAL_CI
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "GitNanu Doctor Gates - Local + CI"
+  principio: "fail-closed - nunca passa com erro"
+  sistemas: [GitNanu, PrM]
+
+gate_local_fast:
+  quando: "antes de todo git commit"
+  latencia_max: "< 500ms"
+  checks:
+    - {nome: "syntax_yaml", descricao: "todo YAML e JSON valido"}
+    - {nome: "no_secrets", descricao: "nenhum pattern de secret no staging"}
+    - {nome: "no_placeholders", descricao: "nenhum __PLACEHOLDER__ ou TODO:"}
+    - {nome: "schema_basic", descricao: "campos obrigatorios presentes"}
+  acao_falha: "ABORT commit"
+
+gate_pass_strict:
+  quando: "antes de todo git push (obrigatorio)"
+  arquivo: "scripts/gate_pass_strict.py"
+  resultado_exigido: "PASS_STRICT"
+  acao_falha: "ABORT push - corrigir antes de tentar novamente"
+
+gate_ci_strict:
+  quando: "todo push no GitHub (automatico)"
+  executor: "GitHub Actions"
+  latencia_max: "< 3min"
+  acao_falha: "PR bloqueado, notificar GitNanu"
+
+fail_closed:
+  regra: "qualquer falha em qualquer gate = ABORT"
+  excecoes: "nenhuma"
+
+metricas:
+  local_gate_pass_rate: {target: ">= 0.99"}
+  strict_gate_pass_rate: {target: ">= 0.99"}
+  ci_gate_pass_rate: {target: ">= 0.98"}
