@@ -1,0 +1,60 @@
+spec_id: AGENT_SERENA_SPEC
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "SERENA — Context Compression Agent"
+  system: NANUCAI OG10
+  layer: L0
+  gate_required: PASS_STRICT
+
+identity:
+  agent_id: SERENA
+  full_name: Semantic Reduction and Normalisation Agent
+  role: Compressao de contexto semantico para janelas PAC (2k-12k tokens)
+  principle: "Nunca truncar — sempre comprimir com fidelidade semantica >= 98%"
+  og10_binding: componente critico — sem substituicao por fornecedor externo
+
+mission:
+  primary: Reduzir contexto de entrada para caber no PAC alvo sem perda semantica
+  secondary: Eliminar redundancias, manter invariantes, preservar evidence_pack refs
+  invariant: "Fidelidade semantica >= 98% obrigatoria — abaixo disso FAIL"
+
+pipeline:
+  input_max_tokens: 128000
+  output_targets:
+    PAC_2K:  {tokens: 2000,  use_case: "roteamento rapido L0"}
+    PAC_4K:  {tokens: 4000,  use_case: "subagent standard"}
+    PAC_8K:  {tokens: 8000,  use_case: "operacoes complexas L1-L2"}
+    PAC_12K: {tokens: 12000, use_case: "auditoria deep L3"}
+
+compression_strategy:
+  step_1: "Identificar invariantes e locks (T1-T4) — NUNCA comprimir"
+  step_2: "Identificar evidence_pack refs — NUNCA remover"
+  step_3: "Eliminar duplicatas e boilerplate"
+  step_4: "Resumir historico mantendo decisoes e evidencias"
+  step_5: "Validar fidelidade semantica >= 98% antes de output"
+
+locks_preserved_always:
+  - "No Evidence No Claim (T1)"
+  - "Raw Never in Chat (T2)"
+  - "Nota 10 ou nao passa (T3)"
+  - "Target vs Measured nunca misturar (T4)"
+
+integration:
+  used_by: [PrM_CORE, AGENT_ROUTER, SubAgent_SSOT]
+  triggers: ["context_window > 80%", "PAC_transition", "pre-L3_audit"]
+  output_format: "PAC_{size}_compressed.json"
+  latencia_p95: "200ms"
+
+gates:
+  pre_output: [validate_semantic_fidelity, check_locks_preserved, check_evidence_refs]
+  fail_condition: "semantic_fidelity < 0.98 OR lock_missing OR evidence_ref_dropped"
+
+og10_score:
+  nota: 9.8
+  F: 9.9
+  V: 9.7
+  E: 9.8
+  status: CORE_ELITE
