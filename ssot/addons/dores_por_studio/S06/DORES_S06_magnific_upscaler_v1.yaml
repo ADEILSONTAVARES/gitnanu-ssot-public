@@ -1,0 +1,95 @@
+studio_id: S06
+api: magnific_upscaler
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S06-magnific_upscaler-01
+    name: "Detalhes alucinados deformam o conteudo original"
+    sintoma: "Pele com textura inventada diferente do original"
+    causa_raiz: "Hallucination sem controle de fidelidade"
+    mitigacao: "Hallucination control — parametro de criatividade vs fidelidade com 0=fiel"
+    severity: CRITICAL
+  - dor_id: D-S06-magnific_upscaler-02
+    name: "Upscaling de rosto criando identidade diferente"
+    sintoma: "Rosto upscalado parece outra pessoa"
+    causa_raiz: "Face reconstruction agressiva demais"
+    mitigacao: "Face fidelity mode — reconstruir sem alterar identidade do sujeito"
+    severity: HIGH
+  - dor_id: D-S06-magnific_upscaler-03
+    name: "Cores saturadas alem do aceitavel pos-upscaling"
+    sintoma: "Imagem fica supersaturada apos processamento"
+    causa_raiz: "Color enhancement sem limite"
+    mitigacao: "Color enhancement cap — saturacao maxima configuravel, padrao preservar original"
+    severity: HIGH
+  - dor_id: D-S06-magnific_upscaler-04
+    name: "Processamento muito lento para workflow de producao"
+    sintoma: "Imagem 1K para 4K demora 3 minutos"
+    causa_raiz: "Sem otimizacao para throughput alto"
+    mitigacao: "Throughput mode — otimizar para batch com qualidade ligeiramente reduzida"
+    severity: HIGH
+  - dor_id: D-S06-magnific_upscaler-05
+    name: "Artefatos em bordas de objetos"
+    sintoma: "Halo visivel ao redor de objetos em primeiro plano"
+    causa_raiz: "Edge detection insuficiente"
+    mitigacao: "Edge-aware upscaling — detectar bordas e aplicar processamento diferenciado"
+    severity: MEDIUM
+  - dor_id: D-S06-magnific_upscaler-06
+    name: "Perda de fidelidade de texto em imagens fotograficas"
+    sintoma: "Texto em placas e cartazes fica borrado"
+    causa_raiz: "Texto nao tratado como regiao especial"
+    mitigacao: "Text region detection — aplicar super-resolution especializada em texto"
+    severity: CRITICAL
+  - dor_id: D-S06-magnific_upscaler-07
+    name: "Output sem opcao de comparacao"
+    sintoma: "Nao e possivel avaliar o resultado antes de baixar"
+    causa_raiz: "Preview comparativo ausente"
+    mitigacao: "Interactive comparison — slider antes/depois obrigatorio antes do download"
+    severity: HIGH
+  - dor_id: D-S06-magnific_upscaler-08
+    name: "Upscaling inadequado para arte digital"
+    sintoma: "Lineart pixelada em vez de vetorizada suavemente"
+    causa_raiz: "Nenhum modo especializado para arte digital"
+    mitigacao: "Art mode — deteccao automatica de tipo de imagem e aplicacao de modo adequado"
+    severity: HIGH
+  - dor_id: D-S06-magnific_upscaler-09
+    name: "Custo nao proporcional ao beneficio em imagens ja boas"
+    sintoma: "Imagem de alta qualidade cobrada como upscaling complexo"
+    causa_raiz: "Sem deteccao de qualidade pre-processamento"
+    mitigacao: "Quality pre-assessment — avaliar necessidade de upscaling e estimar ganho antes de cobrar"
+    severity: MEDIUM
+  - dor_id: D-S06-magnific_upscaler-10
+    name: "Sem suporte a processamento parcial"
+    sintoma: "Upscaling de toda a imagem quando apenas um crop e necessario"
+    causa_raiz: "Region upscaling nao disponivel"
+    mitigacao: "Region upscaling — processar apenas area selecionada para economizar custo e tempo"
+    severity: HIGH
+  - dor_id: D-S06-magnific_upscaler-11
+    name: "Output com EXIF corrompido"
+    sintoma: "Metadados da imagem original perdidos apos upscaling"
+    causa_raiz: "EXIF nao preservado no processamento"
+    mitigacao: "EXIF preservation — copiar metadados originais para o output processado"
+    severity: MEDIUM
+  - dor_id: D-S06-magnific_upscaler-12
+    name: "Sem modo de preview rapido"
+    sintoma: "Preview demora tanto quanto a geracao final"
+    causa_raiz: "Draft preview nao implementado"
+    mitigacao: "Draft preview — qualidade reduzida em < 5s para aprovacao antes da geracao final"
+    severity: CRITICAL
+  - dor_id: D-S06-magnific_upscaler-13
+    name: "Falta de controle de nitidez"
+    sintoma: "Upscaling sempre aplica sharpening maxima"
+    causa_raiz: "Sharpness control ausente"
+    mitigacao: "Sharpness control — parametro de 0 a 1 para controlar intensidade de nitidez"
+    severity: HIGH
+  - dor_id: D-S06-magnific_upscaler-14
+    name: "Sem suporte a formatos RAW"
+    sintoma: "Arquivos de camera nao processados diretamente"
+    causa_raiz: "RAW format nao suportado"
+    mitigacao: "RAW support — processar DNG, CR2, ARW diretamente sem conversao previa"
+    severity: MEDIUM
+  - dor_id: D-S06-magnific_upscaler-15
+    name: "Resultado inconsistente entre resolucoes de entrada"
+    sintoma: "Mesma imagem em 800px vs 1000px resulta em outputs visivelmente diferentes"
+    causa_raiz: "Nao normalizacao de input"
+    mitigacao: "Input normalization — normalizar para resolucao canonica antes do processamento"
+    severity: LOW
