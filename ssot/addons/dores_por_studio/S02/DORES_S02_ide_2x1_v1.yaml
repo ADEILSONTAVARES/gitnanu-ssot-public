@@ -1,0 +1,95 @@
+studio_id: S02
+api: ide_2x1
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S02-ide_2x1-01
+    name: "Patch aplicado sem diff previo"
+    sintoma: "Codigo alterado sem mostrar o que mudou antes de aplicar"
+    causa_raiz: "Diff-first invariant nao aplicado no fluxo do IDE"
+    mitigacao: "Diff obrigatorio antes de qualquer patch — usuario aprova o diff"
+    severity: CRITICAL
+  - dor_id: D-S02-ide_2x1-02
+    name: "Dois editores no mesmo arquivo simultaneamente"
+    sintoma: "Conflito silencioso entre edicao humana e edicao da IA"
+    causa_raiz: "Sem file lock durante edicao ativa"
+    mitigacao: "File lock durante edicao ativa — aviso ao usuario antes de iniciar"
+    severity: HIGH
+  - dor_id: D-S02-ide_2x1-03
+    name: "Sugestao de codigo fora do contexto do projeto"
+    sintoma: "IA sugere biblioteca nao utilizada no projeto"
+    causa_raiz: "Contexto de dependencias nao injetado"
+    mitigacao: "Package.json/requirements.txt injetados no contexto antes de sugerir"
+    severity: MEDIUM
+  - dor_id: D-S02-ide_2x1-04
+    name: "Refatoracao quebra testes existentes"
+    sintoma: "Apos refatoracao da IA, test suite falha"
+    causa_raiz: "Testes nao rodados pos-refatoracao"
+    mitigacao: "Test run obrigatorio pos-qualquer refatoracao antes de commit"
+    severity: CRITICAL
+  - dor_id: D-S02-ide_2x1-05
+    name: "Autocompletar sugere codigo depreciado"
+    sintoma: "IA sugere API removida na versao atual do framework"
+    causa_raiz: "Versao do framework nao definida como constraint"
+    mitigacao: "Framework version lock — filtrar sugestoes por versao declarada"
+    severity: HIGH
+  - dor_id: D-S02-ide_2x1-06
+    name: "Geracao de codigo sem tratamento de erro"
+    sintoma: "Funcao gerada nao trata excecoes nem casos de borda"
+    causa_raiz: "Error handling nao incluido no prompt de geracao"
+    mitigacao: "Error handling obrigatorio em toda geracao de funcao"
+    severity: HIGH
+  - dor_id: D-S02-ide_2x1-07
+    name: "Secret hardcoded no codigo gerado"
+    sintoma: "API key ou senha aparece literal no codigo"
+    causa_raiz: "Geracao sem secret scan"
+    mitigacao: "Secret scan pos-geracao — bloquear commit se detectado"
+    severity: CRITICAL
+  - dor_id: D-S02-ide_2x1-08
+    name: "Contexto de conversacao perdido em sessao longa"
+    sintoma: "IA esquece decisoes tomadas no inicio da sessao"
+    causa_raiz: "Context window excedida sem compressao"
+    mitigacao: "SERENA context compression ativa — preservar decisoes criticas"
+    severity: HIGH
+  - dor_id: D-S02-ide_2x1-09
+    name: "Commit gerado sem mensagem descritiva"
+    sintoma: "git log exibe mensagens como 'fix' ou 'update'"
+    causa_raiz: "Commit message nao gerada com contexto da mudanca"
+    mitigacao: "Commit message gerada automaticamente com escopo e descricao"
+    severity: LOW
+  - dor_id: D-S02-ide_2x1-10
+    name: "Terminal integrado executa comando destrutivo sem confirmacao"
+    sintoma: "rm -rf ou DROP TABLE executado sem aviso"
+    causa_raiz: "Sem dangerous command gate no terminal integrado"
+    mitigacao: "Dangerous command detector — confirmacao explicita antes de executar"
+    severity: CRITICAL
+  - dor_id: D-S02-ide_2x1-11
+    name: "Explicacao de codigo desatualizada apos edicao"
+    sintoma: "Documentacao inline nao reflete codigo atual"
+    causa_raiz: "Documentacao gerada uma vez e nao sincronizada"
+    mitigacao: "Doc sync triggerado em toda mudanca de funcao publica"
+    severity: LOW
+  - dor_id: D-S02-ide_2x1-12
+    name: "Busca semantica retorna arquivo errado"
+    sintoma: "Busca por funcao encontra arquivo de nome similar mas contexto diferente"
+    causa_raiz: "Indexacao semantica desatualizada"
+    mitigacao: "Index rebuild triggerado em todo git pull ou file save"
+    severity: MEDIUM
+  - dor_id: D-S02-ide_2x1-13
+    name: "Geracao de teste sem cobertura de casos de borda"
+    sintoma: "Testes gerados cobrem apenas happy path"
+    causa_raiz: "Test generation sem instrucao para edge cases"
+    mitigacao: "Edge case prompting obrigatorio — null, empty, overflow, auth failure"
+    severity: HIGH
+  - dor_id: D-S02-ide_2x1-14
+    name: "Performance do IDE degradada em projetos grandes"
+    sintoma: "Latencia alta em projetos com 10k+ arquivos"
+    causa_raiz: "Indexacao completa sem lazy loading"
+    mitigacao: "Lazy indexing — indexar apenas arquivos abertos e dependencias diretas"
+    severity: MEDIUM
+  - dor_id: D-S02-ide_2x1-15
+    name: "Rollback indisponivel apos patch errado"
+    sintoma: "Usuario nao consegue desfazer mudanca da IA"
+    causa_raiz: "Snapshot nao criado antes do patch"
+    mitigacao: "Snapshot obrigatorio antes de qualquer patch — rollback em 1 clique"
+    severity: CRITICAL
