@@ -1,0 +1,38 @@
+ssot_id: LTA_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "LTA - Long Term Archive Policy"
+  formula: "4x3pQ2 10x10x10x10(2)"
+  storage: "GNDrive + ssot/ repo"
+  sistemas: [PrM, GNDrive, GitNanu, U2]
+
+promocao_para_lta:
+  condicoes_obrigatorias:
+    - "relevancia >= 0.90 em >= 3 jobs distintos"
+    - "evidence_seal = true (SHA256 + timestamp)"
+    - "quorum_Q2 confirmado (>= 2 trilhas)"
+    - "aprovado por U2 Prove+Close"
+    - "doctor_pass = true"
+
+processo_promocao:
+  passo_1: "U2 detecta candidato LTA apos evidence_seal"
+  passo_2: "RAG3TrimTwin verifica relevancia historica"
+  passo_3: "Quorum Q2 confirma consistencia"
+  passo_4: "SERENA comprime para formato LTA"
+  passo_5: "LTA_Promotion MCP executa armazenamento"
+  passo_6: "GitNanu commita referencia no ssot/ se F1 ou F5"
+
+retencao:
+  padrao: "3 anos apos ultimo acesso"
+  critico_S42_S51: "7 anos (compliance)"
+  bench_F5: "permanente"
+  ssot_F1: "permanente"
+
+metricas:
+  promocao_rate: {target: "~3% dos jobs"}
+  acesso_lta_rate: {target: "5-15% dos jobs"}
+  compressao_ratio: {target: ">= 0.40"}
+  retencao_compliance: {target: "= 1.00"}
