@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_DEEPSEEK_V3
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_DEEPSEEK_V3
+  title: "MCP Spec — MCP_DEEPSEEK_V3"
+  grupo: ia_llm
+  grupo_desc: "IA e LLM"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.3
+  F: 9.4
+  V: 9.4
+  E: 9.1
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "LLM de alta capacidade para tarefas de raciocinio L2-L3"
+  trigger: "complex_reasoning + code_generation + L2_L3_tasks"
+  latencia_p95: "3000ms"
+  lock_t: ["T1", "T4"]
+  sistemas: ["AGENT_ROUTER", "PrM_CORE"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.3
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
