@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_SERENA_COMPRESS
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_SERENA_COMPRESS
+  title: "MCP Spec — MCP_SERENA_COMPRESS"
+  grupo: governanca_seguranca
+  grupo_desc: "Governanca e Seguranca"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.8
+  F: 9.9
+  V: 9.7
+  E: 9.8
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: CORE_ELITE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Compressao de contexto semantico para PAC 2k-12k tokens"
+  trigger: "context_window > 80% + PAC_transition"
+  latencia_p95: "200ms"
+  lock_t: ["T1", "T2"]
+  sistemas: ["PrM_CORE", "SubAgent_SSOT", "AGENT_ROUTER"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.8
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
