@@ -1,0 +1,21 @@
+spec_id: MCP_FIREWALL_POLICY_OG10_v1
+version: 1
+principle: fail-closed — se MCP nao esta na allowlist BLOCK
+allowlist_required: true
+rules:
+  - id: R01
+    rule: MCP nao listado em BENCH90 MCPs ELITE = BLOCKED
+  - id: R02
+    rule: MCP com score < 7 no domain_min7 = BLOCKED
+  - id: R03
+    rule: MCP com freeze_flag=true = BLOCKED ate human_unfreeze
+  - id: R04
+    rule: secrets nunca em prompt — apenas via broker MCP
+  - id: R05
+    rule: agente_gelo_level >= 2 bloqueia MCPs write
+  - id: R06
+    rule: agente_gelo_level >= 3 bloqueia TODOS MCPs exceto read+evidence
+  - id: R07
+    rule: COCA-COLA LOCAL ONLY — vault/secrets/evidence/raw nunca em repo publico
+on_violation: ABORT + evidence_pack + escalate_doctor2
+audit_log: GNDrive/firewall/logs/ — imutavel
