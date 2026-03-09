@@ -1,0 +1,95 @@
+studio_id: S05
+api: tortoise_tts
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-tortoise_tts-01
+    name: "Geracao extremamente lenta para uso em producao"
+    sintoma: "5 minutos para sintetizar 30 segundos de audio"
+    causa_raiz: "Modelo pesado sem otimizacao de inferencia"
+    mitigacao: "Inference optimization — quantizacao e batch processing para reducao de latencia"
+    severity: HIGH
+  - dor_id: D-S05-tortoise_tts-02
+    name: "Qualidade inconsistente entre runs identicos"
+    sintoma: "Mesma configuracao produz qualidades diferentes"
+    causa_raiz: "Temperatura de amostragem muito alta"
+    mitigacao: "Temperature control — reduzir temperatura para outputs mais consistentes"
+    severity: CRITICAL
+  - dor_id: D-S05-tortoise_tts-03
+    name: "Voz clonada com amostras de baixa qualidade"
+    sintoma: "Clone de ma qualidade quando amostras tem ruido"
+    causa_raiz: "Sem validacao de qualidade das amostras de entrada"
+    mitigacao: "Sample quality gate — rejeitar amostras com SNR abaixo de threshold"
+    severity: HIGH
+  - dor_id: D-S05-tortoise_tts-04
+    name: "Consumo excessivo de VRAM"
+    sintoma: "Modelo ocupa 12GB de VRAM impossibilitando uso compartilhado"
+    causa_raiz: "Sem gerenciamento de memoria GPU"
+    mitigacao: "Memory management — model offloading quando nao em uso, batch size adaptativo"
+    severity: HIGH
+  - dor_id: D-S05-tortoise_tts-05
+    name: "Artefatos de respiracao artificiais"
+    sintoma: "Sons de respiracao inseridos em posicoes incorretas"
+    causa_raiz: "Breath insertion nao calibrada para o speaker"
+    mitigacao: "Breath calibration — aprender padrao de respiracao do speaker das amostras"
+    severity: CRITICAL
+  - dor_id: D-S05-tortoise_tts-06
+    name: "Output sem controle de pitch"
+    sintoma: "Impossivel ajustar altura da voz sem resintetizar"
+    causa_raiz: "Pitch control nao exposto como parametro"
+    mitigacao: "Pitch control API — parametro de semitones relativo ao pitch base do speaker"
+    severity: HIGH
+  - dor_id: D-S05-tortoise_tts-07
+    name: "Falha silenciosa em GPU sem CUDA"
+    sintoma: "Modelo tenta rodar em GPU incompativel e falha sem mensagem clara"
+    causa_raiz: "Device detection insuficiente"
+    mitigacao: "Device detection gate — verificar CUDA version e VRAM antes de iniciar"
+    severity: MEDIUM
+  - dor_id: D-S05-tortoise_tts-08
+    name: "Geracao sem reproducibilidade garantida"
+    sintoma: "Seed identico em maquinas diferentes produz outputs diferentes"
+    causa_raiz: "Seed nao propagado para todos os componentes do modelo"
+    mitigacao: "Full seed propagation — garantir mesmo seed em todos os modulos aleatorios"
+    severity: HIGH
+  - dor_id: D-S05-tortoise_tts-09
+    name: "Audio longo com deriva de timbre"
+    sintoma: "Voz muda sutilmente ao longo de 5 minutos de audio"
+    causa_raiz: "Speaker conditioning perdido em sequencias longas"
+    mitigacao: "Speaker conditioning refresh — re-aplicar conditioning a cada 30s em audios longos"
+    severity: MEDIUM
+  - dor_id: D-S05-tortoise_tts-10
+    name: "Sem suporte a processamento em fila"
+    sintoma: "Multiplos requests causam OOM em GPU"
+    causa_raiz: "Sem queue de processamento"
+    mitigacao: "Request queue — processar requests sequencialmente com status por job"
+    severity: CRITICAL
+  - dor_id: D-S05-tortoise_tts-11
+    name: "Pronuncia de nomes proprios incorreta"
+    sintoma: "Nomes de pessoas e lugares pronunciados errado"
+    causa_raiz: "Lexicon de nomes proprios ausente"
+    mitigacao: "Proper noun lexicon — dicionario de pronuncia para nomes comuns do idioma"
+    severity: HIGH
+  - dor_id: D-S05-tortoise_tts-12
+    name: "Output sem metadata de speaker"
+    sintoma: "Impossivel rastrear qual configuracao de speaker foi usada"
+    causa_raiz: "Speaker config nao salvo no metadata"
+    mitigacao: "Speaker metadata obrigatorio — configuracao completa do speaker no output"
+    severity: MEDIUM
+  - dor_id: D-S05-tortoise_tts-13
+    name: "Geracao em batch sem priorizacao"
+    sintoma: "Jobs urgentes ficam atras de jobs normais na fila"
+    causa_raiz: "Sem priority queue"
+    mitigacao: "Priority queue — suporte a jobs de alta prioridade com SLA garantido"
+    severity: HIGH
+  - dor_id: D-S05-tortoise_tts-14
+    name: "Falta de modo rapido para preview"
+    sintoma: "Preview demora tanto quanto geracao final"
+    causa_raiz: "Sem modo draft de qualidade reduzida"
+    mitigacao: "Draft mode — qualidade reduzida para preview rapido antes da geracao final"
+    severity: MEDIUM
+  - dor_id: D-S05-tortoise_tts-15
+    name: "Sem monitoramento de saude do modelo"
+    sintoma: "Modelo degrada silenciosamente sem alertas"
+    causa_raiz: "Health check nao implementado"
+    mitigacao: "Model health check — verificar qualidade periodicamente com amostra de referencia"
+    severity: LOW
