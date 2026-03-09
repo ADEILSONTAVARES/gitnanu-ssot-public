@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_N8N_WORKFLOW
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_N8N_WORKFLOW
+  title: "MCP Spec — MCP_N8N_WORKFLOW"
+  grupo: infra_devops
+  grupo_desc: "Infra e DevOps"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.1
+  F: 9.2
+  V: 9.0
+  E: 9.1
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: APOIO_FORTE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Orquestracao de workflows e automacoes via n8n"
+  trigger: "workflow_trigger + job_queue + scheduled_tasks"
+  latencia_p95: "1000ms"
+  lock_t: ["T1"]
+  sistemas: ["AG_GATEWAY_002", "AG_WORKER_001"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.1
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
