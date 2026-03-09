@@ -1,0 +1,15 @@
+wf_id: WF_AUTOFIX_COUNCIL_TAGS_PR_OG10_v1
+trigger: schedule_weekly OR council_score_drift_detected
+freeze_rule: agente_gelo_level >= 2 blocks writes
+gates: [AgenteZero_preflight, Doctor1_input, Doctor1_output]
+steps:
+  1: {op: AgenteZero preflight — valida dominio dev_github_min7, gate: AgenteZero, fail: ABORT}
+  2: {op: git checkout -b chore/autofix-council-tags, mcp: warp_agent_mcp, receipt: required}
+  3: {op: scripts/autofix_council_tags.py --dry-run, mcp: warp_agent_mcp, output: drift_report.yaml}
+  4: {op: Doctor Gate 1 valida drift_report.yaml, gate: Doctor1_input, fail: ABORT_with_evidence}
+  5: {op: scripts/autofix_council_tags.py --apply, mcp: warp_agent_mcp, receipt: required}
+  6: {op: git commit + gh pr create com evidence_refs, mcp: github_mcp, receipt: required}
+  7: {op: Doctor Gate 1 valida PR diff, gate: Doctor1_output, fail: close_pr_ABORT}
+  8: {op: GammaNotion card AutoFix Tags PR aberto, mcp: gammanote_mcp}
+  9: {op: evidence_pack -> GNDrive/autofix/, mcp: gndrive_mcp, receipt: required}
+outputs: [pr_url, drift_report_yaml, evidence_pack_path, receipt_path]
