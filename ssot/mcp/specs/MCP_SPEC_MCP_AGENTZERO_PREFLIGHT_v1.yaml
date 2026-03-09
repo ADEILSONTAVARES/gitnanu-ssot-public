@@ -1,0 +1,41 @@
+spec_id: MCP_SPEC_MCP_AGENTZERO_PREFLIGHT
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_AGENTZERO_PREFLIGHT
+  title: "MCP Spec — MCP_AGENTZERO_PREFLIGHT"
+  grupo: governanca_seguranca
+  grupo_desc: "Governanca e Seguranca"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.8
+  F: 9.9
+  V: 9.7
+  E: 9.8
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: CORE_ELITE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Preflight completo antes de qualquer operacao critica"
+  trigger: "pre-E1 (todo job)"
+  latencia_p95: "50ms"
+  lock_t: ["T1", "T2", "T3", "T4"]
+  sistemas: ["PrM_CORE", "AGENT_ROUTER", "todos_studios"]
+  checks: ["syntax_yaml", "no_secrets", "no_placeholders", "schema_basic", "blast_radius_estimate"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.8
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
