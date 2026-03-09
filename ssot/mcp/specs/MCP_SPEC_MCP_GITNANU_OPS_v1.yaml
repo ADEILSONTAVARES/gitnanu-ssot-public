@@ -1,0 +1,40 @@
+spec_id: MCP_SPEC_MCP_GITNANU_OPS
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_GITNANU_OPS
+  title: "MCP Spec — MCP_GITNANU_OPS"
+  grupo: governanca_seguranca
+  grupo_desc: "Governanca e Seguranca"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.7
+  F: 9.8
+  V: 9.6
+  E: 9.7
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: CORE_ELITE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Operacoes Git com single-writer protocol e COCA-COLA LOCAL ONLY"
+  trigger: "todo push/commit ao repo"
+  latencia_p95: "5000ms"
+  lock_t: ["T2", "T3"]
+  sistemas: ["GitNanu"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.7
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
