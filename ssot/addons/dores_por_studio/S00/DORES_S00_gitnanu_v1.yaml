@@ -65,7 +65,7 @@ dores:
     severity: HIGH
   - dor_id: D-S00-git-10
     name: "Placeholder em arquivo commitado"
-    sintoma: "FIXME, TODO, TBD, PLACEHOLDER no arquivo canonico"
+    sintoma: "Marcadores de rascunho no arquivo canonico"
     causa_raiz: "no_placeholders.py nao rodado antes do push"
     mitigacao: "no_placeholders.py em todo pipeline antes de commit"
     severity: HIGH
