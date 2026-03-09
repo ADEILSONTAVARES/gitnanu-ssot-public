@@ -1,0 +1,22 @@
+ssot_id: EXPORT_CODE_ONLY_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "GitNanu Export Policy - Code Only no Repo Publico"
+  principio: "Apenas artefatos canonicos publicos vao para o repo"
+  sistemas: [GitNanu, PrM, GNDrive, Mouse]
+
+o_que_VAI_para_o_repo:
+  yaml_canonicos: ["ssot/**/*.yaml", "scripts/**/*.py", "*.md"]
+
+o_que_NAO_VAI_para_o_repo:
+  dados_sensiveis: ["vault/", ".env*", "evidence_raw/", "logs/sensitive/"]
+  runtime_state: ["node_modules/", "__pycache__/", "*.pyc", ".venv/", "dist/", "build/"]
+  temporarios: ["*.tmp", "*.log", "NEXT_CHAT_HANDOFF_*.md", "PASTE_LOG_*.md"]
+
+metricas:
+  policy_compliance: {target: "= 1.00"}
+  binaries_in_repo: {target: "= 0"}
+  secrets_in_repo: {target: "= 0"}
