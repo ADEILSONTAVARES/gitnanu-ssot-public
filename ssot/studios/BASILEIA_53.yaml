@@ -18,7 +18,7 @@ politica_reserved:
 
 placeholder:
   studio_id: "S52"
-  nome: "TBD"
+  nome: "Expansao Futura"
   descricao: "Reservado para expansao — definir quando S00-S51 estiverem maduros"
 
 invariants:
