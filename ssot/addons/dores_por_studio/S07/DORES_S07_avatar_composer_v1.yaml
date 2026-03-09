@@ -1,0 +1,95 @@
+studio_id: S07
+api: avatar_composer
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S07-avatar_composer-01
+    name: "Avatar gerado sem resemblance ao usuario"
+    sintoma: "Foto de referencia ignorada na composicao"
+    causa_raiz: "Reference image nao usada como constraint"
+    mitigacao: "Reference image constraint obrigatorio — avatar deve preservar tracos do input"
+    severity: CRITICAL
+  - dor_id: D-S07-avatar_composer-02
+    name: "Elementos do avatar desproporcionais"
+    sintoma: "Cabeca muito grande para o corpo"
+    causa_raiz: "Proporcoes anatomicas nao validadas"
+    mitigacao: "Proportion validation — verificar ratios anatomicos pos-composicao"
+    severity: HIGH
+  - dor_id: D-S07-avatar_composer-03
+    name: "Roupas clipando atraves do corpo"
+    sintoma: "Elementos de vestuario atravessando geometria do avatar"
+    causa_raiz: "Sem collision detection na composicao"
+    mitigacao: "Collision detection — verificar interseccao de meshes antes de renderizar"
+    severity: HIGH
+  - dor_id: D-S07-avatar_composer-04
+    name: "Avatar sem expressoes faciais funcionais"
+    sintoma: "Boca nao move ao falar, expressoes congeladas"
+    causa_raiz: "Rigging facial ausente"
+    mitigacao: "Facial rig obrigatorio — blend shapes para expressoes e fala"
+    severity: HIGH
+  - dor_id: D-S07-avatar_composer-05
+    name: "Geracao de avatar de pessoa real sem consentimento"
+    sintoma: "Clone visual de celebridade criado sem autorizacao"
+    causa_raiz: "Sem identity recognition gate"
+    mitigacao: "Identity recognition filter — detectar e bloquear geracao de pessoas reais identificaveis"
+    severity: CRITICAL
+  - dor_id: D-S07-avatar_composer-06
+    name: "Textura de pele nao realista"
+    sintoma: "Tom de pele plastico, sem poros ou microdetalhes"
+    causa_raiz: "Skin shader simplificado"
+    mitigacao: "PBR skin shader — subsurface scattering e microdetalhes de pele por padrao"
+    severity: HIGH
+  - dor_id: D-S07-avatar_composer-07
+    name: "Avatar incompativel com plataformas alvo"
+    sintoma: "VRM exportado nao funciona no VRChat"
+    causa_raiz: "Sem validacao de compatibilidade de formato"
+    mitigacao: "Platform compatibility check — validar formato contra spec da plataforma alvo"
+    severity: MEDIUM
+  - dor_id: D-S07-avatar_composer-08
+    name: "Tempo de renderizacao excessivo"
+    sintoma: "Preview do avatar demora 30s para carregar"
+    causa_raiz: "Sem LOD para preview"
+    mitigacao: "LOD para preview — versao simplificada para preview rapido, hires para export"
+    severity: CRITICAL
+  - dor_id: D-S07-avatar_composer-09
+    name: "Cabelo simulado incorretamente"
+    sintoma: "Cabelo atravessa ombros e corpo do avatar"
+    causa_raiz: "Physics simulation ausente no cabelo"
+    mitigacao: "Hair physics — simulacao basica de colisao para cabelo"
+    severity: HIGH
+  - dor_id: D-S07-avatar_composer-10
+    name: "Ausencia de modo de exportacao versatil"
+    sintoma: "Avatar so exportavel em um formato"
+    causa_raiz: "Export formats limitados"
+    mitigacao: "Multi-format export — GLB, VRM, FBX, USDZ como opcoes de export"
+    severity: MEDIUM
+  - dor_id: D-S07-avatar_composer-11
+    name: "Sem versionamento de avatar"
+    sintoma: "Impossivel voltar para versao anterior do avatar"
+    causa_raiz: "Version history nao implementado"
+    mitigacao: "Avatar version history — salvar cada estado do avatar com diff de parametros"
+    severity: HIGH
+  - dor_id: D-S07-avatar_composer-12
+    name: "Acessorios mal posicionados"
+    sintoma: "Oculos flutuando acima do nariz"
+    causa_raiz: "Accessory anchor points imprecisos"
+    mitigacao: "Anchor point calibration — pontos de ancoragem precisos por tipo de acessorio"
+    severity: MEDIUM
+  - dor_id: D-S07-avatar_composer-13
+    name: "Avatar sem suporte a animacoes pre-construidas"
+    sintoma: "Impossivel animar sem software 3D especializado"
+    causa_raiz: "Animation library ausente"
+    mitigacao: "Animation library — set basico de animacoes idle, walk, talk por padrao"
+    severity: HIGH
+  - dor_id: D-S07-avatar_composer-14
+    name: "Custo de render nao informado antes de gerar"
+    sintoma: "Usuario inicia render de alta qualidade sem saber o custo"
+    causa_raiz: "Sem estimativa pre-render"
+    mitigacao: "Render cost estimation — exibir custo estimado antes de confirmar render"
+    severity: MEDIUM
+  - dor_id: D-S07-avatar_composer-15
+    name: "Metadata de avatar nao estruturado"
+    sintoma: "Impossivel usar avatar em sistemas que requerem metadata padronizado"
+    causa_raiz: "Metadata schema nao definido"
+    mitigacao: "Structured metadata — schema VRM/ReadyPlayerMe para interoperabilidade"
+    severity: LOW
