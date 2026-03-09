@@ -1,0 +1,37 @@
+ssot_id: AGENTZERO_PREFLIGHT_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "AgentZero - Pre-flight Check Spec"
+  tipo: "MCP aprovado (nota 9.1/10)"
+  quando: "antes de todo job (etapa pre-E1)"
+  sistemas: [PrM, Mouse]
+
+funcao:
+  descricao: "Verificacao pre-voo - garante que o job pode comecar"
+  gate: "fail-closed - job nao inicia se AgentZero falhar"
+
+checks_preflight:
+  sistema:
+    - {nome: "memory_available", threshold: ">= 512MB livre"}
+    - {nome: "context_clean", check: "STM vazia ou < 2k tokens"}
+    - {nome: "tools_available", check: "ping nos MCPs do routing_decision"}
+  seguranca:
+    - {nome: "no_active_violations", check: "violation_log vazio"}
+    - {nome: "budget_available", check: "cost_estimated <= cost_max do studio"}
+    - {nome: "no_conflict_jobs", check: "studio_lock disponivel"}
+  dados:
+    - {nome: "input_schema_valid", check: "JSON schema validation"}
+    - {nome: "no_pii_in_request", check: "scan basico de PII patterns"}
+    - {nome: "studio_id_valid", check: "studio_id em [S00..S51]"}
+
+outputs:
+  preflight_pass: "PASS - job pode iniciar"
+  preflight_fail: "FAIL - job bloqueado com motivo"
+
+metricas:
+  preflight_pass_rate: {target: ">= 0.98"}
+  false_block_rate: {target: "<= 0.005"}
+  latencia_p95: {target: "<= 50ms"}
