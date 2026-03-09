@@ -1,0 +1,95 @@
+studio_id: S05
+api: speechify
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-speechify-01
+    name: "Velocidade de leitura inadequada para o tipo de conteudo"
+    sintoma: "Artigo tecnico lido na mesma velocidade que noticia"
+    causa_raiz: "Velocidade fixa independente do tipo de conteudo"
+    mitigacao: "Adaptive speed — detectar tipo de conteudo e ajustar velocidade automaticamente"
+    severity: HIGH
+  - dor_id: D-S05-speechify-02
+    name: "Texto de imagem nao reconhecido"
+    sintoma: "PDF com imagens escaneadas nao tem audio"
+    causa_raiz: "OCR nao integrado ao pipeline de leitura"
+    mitigacao: "OCR integration — processar imagens antes da sintese para extrair texto"
+    severity: CRITICAL
+  - dor_id: D-S05-speechify-03
+    name: "Paragrafo pulado silenciosamente"
+    sintoma: "Secoes do documento ignoradas sem aviso"
+    causa_raiz: "Parser de documento com falhas silenciosas"
+    mitigacao: "Parse validation — verificar cobertura completa antes de sintetizar"
+    severity: HIGH
+  - dor_id: D-S05-speechify-04
+    name: "Sincronizacao de destaque de texto desalinhada"
+    sintoma: "Palavra destacada nao corresponde a palavra sendo lida"
+    causa_raiz: "Timestamp alignment insuficiente"
+    mitigacao: "Word-level timestamp alignment — calibrar destaque por palavra individual"
+    severity: HIGH
+  - dor_id: D-S05-speechify-05
+    name: "Leitura de notas de rodape interrompendo o fluxo"
+    sintoma: "Nota de rodape inserida no meio da leitura do paragrafo"
+    causa_raiz: "Estrutura do documento nao respeitada na ordem de leitura"
+    mitigacao: "Document structure parser — ler rodapes ao final da secao, nao inline"
+    severity: CRITICAL
+  - dor_id: D-S05-speechify-06
+    name: "Audio nao retomado no ponto correto apos pausa"
+    sintoma: "Apos pausar e retomar, audio recomeça do inicio"
+    causa_raiz: "Bookmark de posicao nao salvo"
+    mitigacao: "Position bookmark — salvar posicao exata ao pausar, retomar do mesmo ponto"
+    severity: HIGH
+  - dor_id: D-S05-speechify-07
+    name: "Texto multilingual lido com sotaque incorreto"
+    sintoma: "Trecho em ingles lido com sotaque portugues"
+    causa_raiz: "Language detection nao aplicado por segmento"
+    mitigacao: "Per-segment language detection — trocar modelo de voz ao detectar mudanca de idioma"
+    severity: MEDIUM
+  - dor_id: D-S05-speechify-08
+    name: "Volume inconsistente entre paginas"
+    sintoma: "Pagina 3 muito mais baixa que pagina 1"
+    causa_raiz: "Normalizacao de volume nao aplicada entre paginas"
+    mitigacao: "Cross-page loudness normalization — mesmo LUFS-I em toda a leitura"
+    severity: HIGH
+  - dor_id: D-S05-speechify-09
+    name: "Leitura de tabelas sem contexto"
+    sintoma: "Celulas de tabela lidas em sequencia sem mencionar linha/coluna"
+    causa_raiz: "Tabelas nao estruturadas para leitura linear"
+    mitigacao: "Table reader — anunciar linha e coluna antes de cada celula"
+    severity: MEDIUM
+  - dor_id: D-S05-speechify-10
+    name: "Custo nao exibido antes de sintetizar documento longo"
+    sintoma: "Livro de 300 paginas sintetizado sem aviso de custo"
+    causa_raiz: "Sem estimativa de custo pre-sintese"
+    mitigacao: "Cost estimation pre-synthesis — exibir custo estimado e pedir confirmacao"
+    severity: CRITICAL
+  - dor_id: D-S05-speechify-11
+    name: "Geracao interrompida por timeout em documentos longos"
+    sintoma: "Sintese de 2h de audio interrompida apos 30min"
+    causa_raiz: "Sem checkpoint em sintese longa"
+    mitigacao: "Checkpoint system — salvar progresso a cada 10min para retomar em caso de falha"
+    severity: HIGH
+  - dor_id: D-S05-speechify-12
+    name: "Formatacao de codigo lida literalmente"
+    sintoma: "Indentacao e simbolos de codigo lidos como texto"
+    causa_raiz: "Code block nao detectado"
+    mitigacao: "Code block detection — anunciar como bloco de codigo e pular para resumo"
+    severity: MEDIUM
+  - dor_id: D-S05-speechify-13
+    name: "Ausencia de controle por capitulo"
+    sintoma: "Usuario nao consegue pular para capitulo especifico"
+    causa_raiz: "Navegacao por capitulo nao implementada"
+    mitigacao: "Chapter navigation — index de capitulos com deep link para posicao no audio"
+    severity: HIGH
+  - dor_id: D-S05-speechify-14
+    name: "Leitura de URLs completas sem simplificacao"
+    sintoma: "https://www.exemplo.com.br/path/to/page lida literalmente"
+    causa_raiz: "URL nao normalizada para leitura"
+    mitigacao: "URL normalization — ler apenas dominio ou descricao anchor quando disponivel"
+    severity: MEDIUM
+  - dor_id: D-S05-speechify-15
+    name: "Sem suporte a marcadores de usuario"
+    sintoma: "Usuario nao consegue marcar trechos para revisitar"
+    causa_raiz: "Bookmark system nao implementado"
+    mitigacao: "User bookmarks — salvar posicoes marcadas com nota opcional"
+    severity: LOW
