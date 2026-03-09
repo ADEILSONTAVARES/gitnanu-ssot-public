@@ -1,0 +1,52 @@
+ssot_id: SSOT_VS_EVIDENCE_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "SSOT vs Evidence Policy — separacao clara"
+  sistema: NANUCAI OG10
+
+definicoes:
+  ssot:
+    descricao: "Single Source of Truth — definicoes canonicas, schemas, policies"
+    onde: "repo publico gitnanu-ssot-public"
+    conteudo: "YAML canonicos, schemas JSON, templates"
+    sensivel: false
+
+  evidence:
+    descricao: "Provas de execucao — resultados medidos, logs, verdicts"
+    onde: "vault_local/ + GNDrive (NUNCA repo publico)"
+    conteudo: "MEASURED results, council verdicts, logs de job"
+    sensivel: true
+    coca_local_only: true
+
+regras_separacao:
+  ssot_contem:
+    - "Definicoes TARGET (metas)"
+    - "Schemas e templates"
+    - "Policies e protocolos"
+    - "Registries e indices"
+    - "Pointers para evidence (nunca o conteudo)"
+
+  ssot_nunca_contem:
+    - "MEASURED results (apenas TARGET)"
+    - "Logs de execucao com dados reais"
+    - "Council verdicts com scores reais"
+    - "Secrets ou tokens"
+    - "PII ou dados de usuarios"
+
+  evidence_contem:
+    - "MEASURED scores de benchmarks"
+    - "Council verdicts com justificativas"
+    - "Logs de job com timestamps"
+    - "Evidence seals (hash + assinatura)"
+
+pointer_pattern:
+  formato: "evidence_ref: vault_local/evidence/{job_id}/{artefato}.json"
+  regra: "SSOT guarda o pointer — evidence fica no vault"
+
+invariants:
+  - "T4: TARGET e MEASURED nunca misturados"
+  - "Evidence nunca no repo publico"
+  - "SSOT sempre pode ser publico — evidence nunca"
