@@ -1,0 +1,31 @@
+ssot_id: TASK_STATE_MACHINE_TEAM_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Task State Machine — Team mode"
+  sistema: NANUCAI OG10
+  pointer_base: "ssot/contracts/TASK_STATE_MACHINE.yaml"
+
+estados:
+  PENDING:    {descricao: "Aguardando atribuicao", transicoes: [ASSIGNED]}
+  ASSIGNED:   {descricao: "Atribuida a agente/subagent", transicoes: [IN_PROGRESS, BLOCKED]}
+  IN_PROGRESS:{descricao: "Em execucao", transicoes: [DONE, FAILED, BLOCKED]}
+  BLOCKED:    {descricao: "Aguardando dependencia ou aprovacao", transicoes: [IN_PROGRESS, CANCELLED]}
+  DONE:       {descricao: "Concluida com evidence_seal", transicoes: []}
+  FAILED:     {descricao: "Falhou apos 3 retries", transicoes: [RETRY, CANCELLED]}
+  RETRY:      {descricao: "Ralph loop ativo", transicoes: [IN_PROGRESS, FAILED]}
+  CANCELLED:  {descricao: "Cancelada manualmente", transicoes: []}
+
+transicoes_team:
+  quorum_aprovacao:
+    condicao: "acoes criticas requerem quorum 2/3 do team"
+    policy: "ssot/policies/TEAM_QUORUM_POLICY.yaml (referencia)"
+  delegacao_subagent:
+    condicao: "task pode ser delegada via SubAgent 60-5-30"
+    max_depth: 2
+
+evidence_obrigatoria:
+  estados_que_requerem: [DONE]
+  campos: [evidence_ref, evidence_seal, job_id, timestamp]
