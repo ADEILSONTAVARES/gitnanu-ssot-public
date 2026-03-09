@@ -1,0 +1,38 @@
+ssot_id: OG10_FORMULA_CANON_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "OG10 Formula Canon — pointer publico (COCA-COLA LOCAL ONLY)"
+  sistema: NANUCAI OG10
+  nota: "Este arquivo e o pointer publico. A formula completa com pesos internos fica em vault_local (COCA-COLA LOCAL ONLY)."
+
+formula_publica:
+  expressao: "Score = F * w_F + V * w_V + E * w_E"
+  target_score: ">= 9.0"
+  nota_maxima: 10.0
+  componentes:
+    F: {nome: "Fidelidade", descricao: "precisao e ausencia de alucinacao", benchmarks: 54}
+    V: {nome: "Velocidade", descricao: "latencia e throughput", benchmarks: 20}
+    E: {nome: "Economia", descricao: "custo e eficiencia", benchmarks: 16}
+
+invariants_publicos:
+  - "Score >= 9.0 obrigatorio para PASS_STRICT (T3)"
+  - "F e o componente de maior peso (fidelidade primeiro)"
+  - "Formula imutavel sem Council 100x3 unanime"
+  - "Pesos internos (w_F, w_V, w_E) sao COCA-COLA LOCAL ONLY"
+
+pointer_privado:
+  path: "vault_local/og10/OG10_FORMULA_MASTER_v1.yaml"
+  acesso: "operador autorizado apenas"
+  coca_local_only: true
+
+pointer_v2:
+  path: "ssot/og10/OG10_FORMULA_POINTER_PUBLIC_v2.yaml"
+  nota: "v2 contem detalhes adicionais de composicao publica"
+
+score_referencias:
+  canon: "ssot/og10/OG10_SCORE_CANON.yaml"
+  extended: "ssot/og10/OG10_SCORE_EXTENDED_CANON.yaml"
+  bench90: "ssot/bench/BENCH90_CANON_v1.yaml"
