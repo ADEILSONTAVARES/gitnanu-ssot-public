@@ -1,0 +1,23 @@
+ssot_id: MICRO_SKILLS_REGISTRY
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "Micro Skills Registry - Skills Especializadas por Dominio"
+  total: 12
+  camada: "L0 (deterministico)"
+
+micro_skills:
+  MS01_yaml_lint: {nome: "YAML Lint", dominio: "validacao", latencia: "<= 5ms"}
+  MS02_schema_check: {nome: "Schema Check", dominio: "validacao", latencia: "<= 10ms"}
+  MS03_cost_estimate: {nome: "Cost Estimator", dominio: "orcamento", latencia: "<= 2ms"}
+  MS04_risk_scorer: {nome: "Risk Scorer", dominio: "seguranca", latencia: "<= 5ms"}
+  MS05_studio_router: {nome: "Studio Router", dominio: "roteamento", latencia: "<= 10ms"}
+  MS06_context_trimmer: {nome: "Context Trimmer", dominio: "memoria", latencia: "<= 50ms"}
+  MS07_evidence_hasher: {nome: "Evidence Hasher", dominio: "governanca", latencia: "<= 5ms"}
+  MS08_ledger_writer: {nome: "Ledger Writer", dominio: "custo", latencia: "<= 10ms"}
+  MS09_score_calculator: {nome: "Score Calculator", formula: "Fx0.45 + Vx0.35 + Ex0.20", latencia: "<= 5ms"}
+  MS10_pac_builder: {nome: "PAC Builder", dominio: "contexto", latencia: "<= 20ms"}
+  MS11_rights_checker: {nome: "Rights Checker", dominio: "media", trigger: "Studios S30-S41", latencia: "<= 100ms"}
+  MS12_adr_generator: {nome: "ADR Generator", dominio: "governanca", trigger: "Studios S42-S51 + breaking changes", latencia: "<= 50ms"}
