@@ -1,0 +1,136 @@
+# SKILL_TEMPLATE_CANON_v1
+# Template canonico para criacao de novas skills no NANUCAI OG10
+# Processo: copiar este arquivo, preencher campos, seguir SKILL_CREATOR_PROTOCOL.yaml
+# Status inicial obrigatorio: DRAFT — so vira ACTIVE apos Doctor1 aprovacao
+
+ssot_id: SKILL_TEMPLATE_CANON_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+source: "ssot/skills/SKILL_CREATOR_PROTOCOL.yaml"
+
+# ============================================================
+# INSTRUCOES DE USO
+# ============================================================
+# 1. Copie este arquivo para ssot/skills/<SKILL_ID>_v1.yaml
+# 2. Preencha todos os campos marcados com <PREENCHER>
+# 3. Status inicial: DRAFT
+# 4. Siga o processo em SKILL_CREATOR_PROTOCOL.yaml (passos 1-7)
+# 5. Nao commitar com status DRAFT — apenas ACTIVE vai para repo
+
+# ============================================================
+# TEMPLATE DE SKILL
+# ============================================================
+
+skill_template:
+
+  # --- IDENTIFICACAO ---
+  skill_id: "<PREENCHER: ex. MS03_cost_estimator>"
+  skill_name: "<PREENCHER: nome legivel>"
+  version: "v1"
+  status: DRAFT                    # DRAFT -> ACTIVE apos Doctor1
+  created_at: "<PREENCHER: data>"
+  author: "GitNanu"
+  evidence_ref: "<PREENCHER: vault_local/skills/evidence/<skill_id>/>"
+
+  # --- CLASSIFICACAO ---
+  tipo: "<PREENCHER: micro_skill | universal | domain>"
+  layer: "<PREENCHER: L0 | L1 | L2 | L3>"
+  trigger: "<PREENCHER: condicao de ativacao>"
+  always_on: false                 # true apenas para L0 obrigatorios
+
+  # --- DESCRICAO ---
+  objetivo: "<PREENCHER: o que a skill faz em 1 frase>"
+  problema_resolve: "<PREENCHER: dor ou necessidade que atende>"
+  recorrencia_minima: 3            # jobs distintos onde foi necessaria
+
+  # --- INPUTS / OUTPUTS ---
+  inputs:
+    - name: "<PREENCHER>"
+      type: "<PREENCHER: string | int | yaml | json>"
+      required: true
+      description: "<PREENCHER>"
+  outputs:
+    - name: "<PREENCHER>"
+      type: "<PREENCHER>"
+      description: "<PREENCHER>"
+
+  # --- EXECUCAO ---
+  steps:
+    - id: S1
+      action: "<PREENCHER>"
+      mcp_usado: "<PREENCHER ou null>"
+      latencia_esperada: "<PREENCHER: ex. 100ms>"
+    - id: S2
+      action: "<PREENCHER>"
+      mcp_usado: "<PREENCHER ou null>"
+      latencia_esperada: "<PREENCHER>"
+
+  # --- METRICAS ---
+  metricas:
+    latencia_p95: "<PREENCHER: ex. 500ms>"
+    success_rate_target: 0.95
+    custo_estimado_usd: "<PREENCHER: ex. 0.000005>"
+    dentro_shadow_band: true       # obrigatorio true para aprovacao
+
+  # --- GOVERNANCA ---
+  governanca:
+    coca_cola_local_only: false    # true se manipula evidence/secrets/vault
+    evidence_obrigatoria: true
+    doctor1_aprovado: false        # vira true apos passo 5 do protocolo
+    evidence_seal: false           # vira true apos doctor1 + 3 jobs testados
+    rollback_suportado: true
+
+  # --- TESTES ---
+  testes:
+    jobs_testados: 0               # minimo 3 para aprovacao
+    job_ids: []                    # preencher com IDs reais dos jobs de teste
+    pass_rate: null                # preencher apos testes
+
+  # --- INTEGRACAO ---
+  integracao:
+    registrar_em: "<PREENCHER: MICRO_SKILLS_REGISTRY.yaml | SKILLS_UNIVERSAIS_U0_U1_U2_CANON.yaml>"
+    depende_de: []                 # outras skills ou MCPs necessarios
+    incompativel_com: []
+
+# ============================================================
+# CHECKLIST PRE-COMMIT (SKILL_CREATOR_PROTOCOL passo 7)
+# ============================================================
+
+checklist_pre_commit:
+  - "[x] skill_id unico — nao duplica skill existente"
+  - "[ ] status = ACTIVE (nao commitar DRAFT)"
+  - "[ ] doctor1_aprovado = true"
+  - "[ ] evidence_seal = true"
+  - "[ ] jobs_testados >= 3 com job_ids preenchidos"
+  - "[ ] pass_rate >= 0.95"
+  - "[ ] dentro_shadow_band = true"
+  - "[ ] registrado em MICRO_SKILLS_REGISTRY ou SKILLS_UNIVERSAIS"
+  - "[ ] evidence_ref aponta para vault_local (nao commitar evidence)"
+  - "[ ] PASS_STRICT verde antes de push"
+
+# ============================================================
+# EXEMPLOS DE SKILLS JA EXISTENTES (REFERENCIA)
+# ============================================================
+
+exemplos_referencia:
+  U0_Intake_Inspect_Route:
+    arquivo: "ssot/skills/SKILL_UNIVERSAL_U0_OG10_v1.yaml"
+    layer: L0
+    always_on: true
+  U1_Orchestrate_Patch_Propagate:
+    arquivo: "ssot/skills/SKILL_UNIVERSAL_U1_OG10_v1.yaml"
+    layer: L0
+    always_on: true
+  U2_Verify_Prove_Close:
+    arquivo: "ssot/skills/SKILL_UNIVERSAL_U2_OG10_v1.yaml"
+    layer: L0_L1
+    always_on: true
+  skill_autocura_prewarm:
+    arquivo: "ssot/skills/skill.autocura.prewarm_review_v1.yaml"
+    layer: L1
+    trigger: "prewarm_fail"
+  skill_github_autofix:
+    arquivo: "ssot/skills/skill.github.autofix_tags_and_open_pr_v1.yaml"
+    layer: L1
+    trigger: "tag_error"
