@@ -1,0 +1,44 @@
+ssot_id: STORAGE_PHASE_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Storage Phase Policy — estrategia de armazenamento por fase"
+  sistema: NANUCAI OG10
+  adr: "docs/adr/ADR_0010_STORAGE_STRATEGY_PHASE0_FILES_OVER_DB.md"
+
+fases:
+
+  fase_0_files_over_db:
+    status: "ATUAL"
+    principio: "Files over DB — YAML/JSON em disco antes de banco"
+    storage_primario: "repo Git (SSOT publico)"
+    storage_privado: "vault_local/ (COCA-COLA LOCAL ONLY)"
+    storage_cloud: "GNDrive (Cloudflare R2)"
+    banco_de_dados: "Supabase — apenas vector search e auth"
+    redis: "cache L0 — nao e storage primario"
+
+  fase_1_hybrid:
+    status: "FUTURO"
+    condicao: "quando usuarios > 1000 ou latencia > SLA"
+    mudanca: "migrar evidence para Supabase + manter SSOT em Git"
+    aprovacao: "Council 100x3"
+
+  fase_2_db_first:
+    status: "FUTURO DISTANTE"
+    condicao: "escala enterprise"
+    mudanca: "DB como storage primario com Git como backup"
+    aprovacao: "Council 100x3 unanime"
+
+principios_fase_0:
+  - "Git e a fonte de verdade para SSOT"
+  - "Supabase apenas para vector e auth (nao SSOT)"
+  - "Redis apenas para cache — nunca persiste SSOT"
+  - "GNDrive para evidence e backups"
+  - "Simplicidade sobre otimizacao prematura"
+
+invariants:
+  - "Mudanca de fase requer Council aprovacao"
+  - "SSOT sempre em Git independente da fase"
+  - "Evidence sempre COCA-COLA LOCAL ONLY"
