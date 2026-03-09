@@ -1,0 +1,47 @@
+ssot_id: IDE_BUILD_PIPELINE_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "IDE Build Pipeline — Mouse Inteligente + Patch-First"
+  sistema: NANUCAI OG10
+  studio: S02
+
+pipeline_fases:
+  fase_1_intake:
+    skill: U0_Intake_Inspect_Route
+    tokens_max: 60
+    output: "routing_decision + studio_id"
+
+  fase_2_context:
+    mcps: [MCP_MCPContext, MCP_Context7x, MCP_Cache_Quantum_Lookup]
+    tokens_max: 12000
+    output: "contexto_enriquecido"
+
+  fase_3_patch:
+    modo: "patch-first (str_replace)"
+    mcps: [MCP_Patch_Generate, MCP_Undo_Token_Create, MCP_Patch_Apply]
+    limite_linhas: 50
+    limite_tokens: 500
+    limite_arquivos: 3
+    rollback: "automatico se falhar"
+
+  fase_4_validate:
+    mcps: [MCP_TestSprite, MCP_Doctor1_Gates, MCP_Ralph_Loop]
+    max_retries: 3
+    output: "PASS | FAIL + diagnostico"
+
+  fase_5_seal:
+    mcps: [MCP_Evidence_Seal, MCP_Evidence_Store_GNDrive]
+    output: "evidence_ref + ledger_entry"
+
+capo_aberto:
+  descricao: "IDE mostra 100% das APIs e ferramentas habilitadas no plano"
+  principio: "Lei 6 OG10 — transparencia total"
+  paineis: [connectors, mcps, studios, actions, cost_meter]
+
+export_policy:
+  tipo: "code-only"
+  og10_governance_exported: false
+  nota: "Lei 7 OG10 — Export nao exporta governanca"
