@@ -1,0 +1,95 @@
+studio_id: S06
+api: recraft_api
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S06-recraft_api-01
+    name: "SVG gerado com paths desnecessariamente complexos"
+    sintoma: "Arquivo SVG com 10MB para uma ilustracao simples"
+    causa_raiz: "Path optimization nao aplicada"
+    mitigacao: "SVG optimization gate — simplificar paths, remover nos redundantes pos-geracao"
+    severity: CRITICAL
+  - dor_id: D-S06-recraft_api-02
+    name: "Estilo inconsistente em set de ilustracoes"
+    sintoma: "Icone 1 flat design, icone 2 com sombras"
+    causa_raiz: "Style reference perdida entre geracoes"
+    mitigacao: "Style lock por projeto — primeira geracao define estilo de todo o set"
+    severity: HIGH
+  - dor_id: D-S06-recraft_api-03
+    name: "Cores fora da paleta de marca"
+    sintoma: "Ilustracao usa tons nao aprovados"
+    causa_raiz: "Brand palette nao injetada"
+    mitigacao: "Brand palette constraint — apenas cores da paleta permitidas por projeto"
+    severity: HIGH
+  - dor_id: D-S06-recraft_api-04
+    name: "Elemento protegido alterado em restyle"
+    sintoma: "Logo deformado durante restyle do background"
+    causa_raiz: "Protected elements sem mask"
+    mitigacao: "Protected element mask — elementos fixos imunes a restyle"
+    severity: HIGH
+  - dor_id: D-S06-recraft_api-05
+    name: "Geracao de personagem com anatomia incorreta"
+    sintoma: "Maos com 6 dedos, proporcoes incorretas"
+    causa_raiz: "Sem constraint anatomico"
+    mitigacao: "Anatomy constraint mode — proporcoes humanas normativas como baseline"
+    severity: MEDIUM
+  - dor_id: D-S06-recraft_api-06
+    name: "Output incompativel com ferramenta de design"
+    sintoma: "SVG nao abre corretamente no Figma"
+    causa_raiz: "SVG spec nao validado contra ferramentas alvo"
+    mitigacao: "SVG compatibility validation — testar abertura em Figma e Adobe antes de entregar"
+    severity: CRITICAL
+  - dor_id: D-S06-recraft_api-07
+    name: "Custo elevado em iteracoes de icones"
+    sintoma: "20 iteracoes para acertar um icone"
+    causa_raiz: "Sem modo de preview economico"
+    mitigacao: "Icon preview mode — geracao simplificada de baixo custo para validar conceito"
+    severity: HIGH
+  - dor_id: D-S06-recraft_api-08
+    name: "Animacao de SVG nao suportada"
+    sintoma: "Sistema precisa de SVG animado mas API retorna estatico"
+    causa_raiz: "Animated SVG nao disponivel"
+    mitigacao: "Animated SVG support — SMIL e CSS animations como opcao de output"
+    severity: HIGH
+  - dor_id: D-S06-recraft_api-09
+    name: "Geracao sem suporte a grid system"
+    sintoma: "Ilustracoes nao alinhadas ao grid de 8px"
+    causa_raiz: "Grid alignment nao suportado"
+    mitigacao: "Grid-aligned generation — parametro de grid size para alinhamento automatico"
+    severity: MEDIUM
+  - dor_id: D-S06-recraft_api-10
+    name: "Metadados de criacao ausentes no SVG"
+    sintoma: "Impossivel rastrear origem do asset"
+    causa_raiz: "Metadata nao incluido no SVG"
+    mitigacao: "SVG metadata — incluir prompt, versao do modelo e timestamp no SVG como comentario"
+    severity: HIGH
+  - dor_id: D-S06-recraft_api-11
+    name: "Texto no SVG nao editavel"
+    sintoma: "Texto e path de bezier em vez de elemento text"
+    causa_raiz: "Text elements nao preservados"
+    mitigacao: "Text element preservation — manter texto como elemento editavel no SVG"
+    severity: MEDIUM
+  - dor_id: D-S06-recraft_api-12
+    name: "Sem deteccao de uso de asset protegido"
+    sintoma: "Ilustracao gerada similar a asset com copyright"
+    causa_raiz: "Copyright detection ausente"
+    mitigacao: "Visual similarity check — comparar output com banco de assets protegidos"
+    severity: CRITICAL
+  - dor_id: D-S06-recraft_api-13
+    name: "Rate limit baixo para producao"
+    sintoma: "50 requests/hora insuficiente para workflow intenso"
+    causa_raiz: "Rate limit nao escalavel"
+    mitigacao: "Tiered rate limits — planos com limites proporcionais ao volume de producao"
+    severity: HIGH
+  - dor_id: D-S06-recraft_api-14
+    name: "Output sem modo de exportacao multipla"
+    sintoma: "Exportar em 5 formatos requer 5 requests separados"
+    causa_raiz: "Bulk export nao suportado"
+    mitigacao: "Bulk export — exportar em multiplos formatos em um unico request"
+    severity: MEDIUM
+  - dor_id: D-S06-recraft_api-15
+    name: "Falta de modo de refinamento iterativo"
+    sintoma: "Cada iteracao cria nova geracao do zero"
+    causa_raiz: "Iterative refinement nao suportado"
+    mitigacao: "Iterative refinement — modo de edicao que preserva elementos aprovados e refina apenas o solicitado"
+    severity: LOW
