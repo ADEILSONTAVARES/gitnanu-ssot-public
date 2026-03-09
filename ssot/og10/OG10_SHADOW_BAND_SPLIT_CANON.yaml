@@ -1,0 +1,92 @@
+ssot_id: OG10_SHADOW_BAND_SPLIT_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "OG10 Shadow Band + Split 85/15 — Orçamento Canônico"
+  cost_target_per_job: "$0.000141"
+  shadow_band: "0.3-0.6% do budget total"
+
+split_85_15:
+  l0_deterministic:
+    share: 0.85
+    descricao: "Camada determinística — custo base fixo"
+    componentes:
+      - "Skills U0/U1/U2 (85% do trabalho)"
+      - "MCPs always-on (12 addons L0)"
+      - "Doctor gates locais"
+      - "Cache lookups"
+      - "Evidence seal"
+      - "PAC montagem"
+    custo_base: "$0.000120 por job"
+    variabilidade: "< 2%"
+
+  l1_l3_llm:
+    share: 0.15
+    descricao: "Camada LLM — custo variável, shadow band controlado"
+    componentes:
+      - "Worker LLM calls (etapa E4)"
+      - "28 addons triggered L1-L3"
+      - "15 Pains especializados"
+      - "SubAgent workers (quando acionado)"
+    custo_variavel: "$0.000021 por job (média)"
+    variabilidade: "shadow band 0.3-0.6%"
+
+shadow_band:
+  definicao: "Percentual do budget consumido por L1-L3 LLM calls"
+  target_min: 0.003
+  target_max: 0.006
+  exclusiva_2pct:
+    descricao: "Operações exclusivas permitem até 2% do budget"
+    trigger: "studio_criticality = CRITICAL (S42-S51)"
+    requer: "Controller approval + evidence"
+
+modelos_por_custo:
+  tier_ultra_low:
+    modelos: ["gemini-flash-lite"]
+    uso: "research worker, tarefas simples"
+    custo_relativo: "1x"
+  tier_low:
+    modelos: ["deepseek-v3", "minimax-m2-1"]
+    uso: "workers gerais"
+    custo_relativo: "3x"
+  tier_medium:
+    modelos: ["claude-sonnet-4-5", "gpt-5-2"]
+    uso: "main agent, code worker"
+    custo_relativo: "10x"
+  tier_high:
+    modelos: ["o3"]
+    uso: "controller (decisões críticas)"
+    custo_relativo: "30x"
+  tier_premium:
+    modelos: ["claude-opus-4-6"]
+    uso: "fallback main, quality crítica"
+    custo_relativo: "50x"
+
+roteamento_por_custo:
+  regra_basica: "sempre usar modelo mais barato suficiente"
+  escalacao:
+    - "Simples: gemini-flash-lite ou deepseek"
+    - "Médio: claude-sonnet-4-5"
+    - "Crítico: o3 (controller only)"
+    - "Fallback: claude-opus-4-6 (raro)"
+  proibido: "nunca usar Opus como worker principal"
+
+alertas_custo:
+  warn_threshold: "$0.000120"
+  halt_threshold: "$0.000180"
+  shadow_band_alert: "> 0.006 (3 jobs consecutivos)"
+  acoes:
+    warn: "logar no ledger, notificar I-Vierne Watch"
+    halt: "bloquear job, escalar para Controller"
+    shadow_band_alert: "revisar addons triggered"
+
+metricas:
+  cost_per_job_p50: "≤ $0.000090"
+  cost_per_job_p95: "≤ $0.000141"
+  cost_per_job_p99: "≤ $0.000180"
+  l0_ratio_atual: "≥ 0.85"
+  shadow_band_atual: "0.3-0.6%"
+  cache_savings: "≥ 30% do custo total"
+  ledger_accuracy: "= 1.00"
