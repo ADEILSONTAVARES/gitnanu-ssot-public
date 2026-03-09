@@ -1,0 +1,95 @@
+studio_id: S05
+api: resemble_ai
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S05-resemble_ai-01
+    name: "Clonagem de voz sem verificacao de identidade do solicitante"
+    sintoma: "Qualquer usuario pode clonar qualquer voz"
+    causa_raiz: "Sem autenticacao do titular da voz"
+    mitigacao: "Identity verification obrigatoria — titular da voz deve aprovar clonagem"
+    severity: HIGH
+  - dor_id: D-S05-resemble_ai-02
+    name: "Controle emocional produz transicoes abruptas"
+    sintoma: "Mudanca de emocao no meio do texto soa artificial"
+    causa_raiz: "Transicao emocional nao suavizada"
+    mitigacao: "Emotion blending — interpolacao suave entre estados emocionais"
+    severity: CRITICAL
+  - dor_id: D-S05-resemble_ai-03
+    name: "Voz clonada usada alem do escopo autorizado"
+    sintoma: "Clone criado para uso interno usado em producao publica"
+    causa_raiz: "Sem scope limitation na autorizacao"
+    mitigacao: "Scope enforcement — clone autorizado apenas para casos de uso declarados"
+    severity: HIGH
+  - dor_id: D-S05-resemble_ai-04
+    name: "Audio com click no inicio e fim do segmento"
+    sintoma: "Artefatos audiveis nas bordas dos segmentos"
+    causa_raiz: "Sem fade in/out nos segmentos"
+    mitigacao: "Fade in/out automatico — 10ms nos inico e fim de cada segmento"
+    severity: HIGH
+  - dor_id: D-S05-resemble_ai-05
+    name: "Geracao de deepfake de audio nao detectavel"
+    sintoma: "Audio clonado sem watermark verificavel"
+    causa_raiz: "Sem autenticacao criptografica do audio"
+    mitigacao: "Cryptographic watermark obrigatorio — hash verificavel embedado no audio"
+    severity: CRITICAL
+  - dor_id: D-S05-resemble_ai-06
+    name: "Voz degradada apos muitos clones do mesmo modelo"
+    sintoma: "Qualidade cai apos 100+ geracoes do mesmo clone"
+    causa_raiz: "Modelo sem refresh do voice embedding"
+    mitigacao: "Voice embedding refresh — re-calibrar modelo a cada 50 geracoes"
+    severity: HIGH
+  - dor_id: D-S05-resemble_ai-07
+    name: "Custo de armazenamento de modelos nao monitorado"
+    sintoma: "100 clones armazenados sem visibilidade de custo"
+    causa_raiz: "Sem storage metering por modelo"
+    mitigacao: "Storage metering — custo de armazenamento por clone exibido no dashboard"
+    severity: MEDIUM
+  - dor_id: D-S05-resemble_ai-08
+    name: "Geracao sem suporte a sotaque regional"
+    sintoma: "Portugues de Portugal gerado com sotaque brasileiro"
+    causa_raiz: "Dialect constraint nao suportado"
+    mitigacao: "Dialect support — especificar variante regional como parametro obrigatorio"
+    severity: HIGH
+  - dor_id: D-S05-resemble_ai-09
+    name: "Latencia alta em primeiro uso de clone"
+    sintoma: "Primeira geracao demora 5s enquanto modelo carrega"
+    causa_raiz: "Modelo nao pre-carregado"
+    mitigacao: "Model preloading — carregar modelos de clones frequentes em memoria antecipadamente"
+    severity: MEDIUM
+  - dor_id: D-S05-resemble_ai-10
+    name: "Audio exportado sem informacao de licenca"
+    sintoma: "Impossivel verificar termos de uso do audio gerado"
+    causa_raiz: "License metadata nao incluido"
+    mitigacao: "License metadata obrigatorio — termos de uso e restricoes no metadata do arquivo"
+    severity: CRITICAL
+  - dor_id: D-S05-resemble_ai-11
+    name: "Falha em textos com emojis"
+    sintoma: "Emoji no texto causa erro na sintese"
+    causa_raiz: "Emoji nao preprocessado"
+    mitigacao: "Emoji normalization — converter emojis para descricao textual antes de sintetizar"
+    severity: HIGH
+  - dor_id: D-S05-resemble_ai-12
+    name: "Sem limite de taxa de clonagem"
+    sintoma: "Usuario pode criar 1000 clones sem restricao"
+    causa_raiz: "Sem rate limit em voice cloning"
+    mitigacao: "Rate limit em clonagem — maximo de clones por usuario por periodo"
+    severity: MEDIUM
+  - dor_id: D-S05-resemble_ai-13
+    name: "Preview de emocao nao representativo"
+    sintoma: "Preview mostra intensidade baixa mas output final usa intensidade alta"
+    causa_raiz: "Preview nao usa mesmos parametros do output"
+    mitigacao: "Parameter parity — preview usa exatamente os mesmos parametros do output final"
+    severity: HIGH
+  - dor_id: D-S05-resemble_ai-14
+    name: "Ausencia de comparador de qualidade entre clones"
+    sintoma: "Impossivel comparar dois clones do mesmo locutor"
+    causa_raiz: "Sem quality comparison tool"
+    mitigacao: "Quality comparison — MOS score comparativo entre versoes do mesmo clone"
+    severity: MEDIUM
+  - dor_id: D-S05-resemble_ai-15
+    name: "Geracao sem fallback quando modelo indisponivel"
+    sintoma: "Sintese falha se modelo especifico esta offline"
+    causa_raiz: "Sem fallback para modelo base"
+    mitigacao: "Model fallback — usar modelo base quando clone especifico indisponivel"
+    severity: LOW
