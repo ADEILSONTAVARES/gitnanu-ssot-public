@@ -1,0 +1,49 @@
+ssot_id: RAG3TRIMTWIN_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "RAG3TrimTwin Quantum - Especificacao Tecnica"
+  formula: "4x3pQ2 10x10x10"
+  tipo: "MCP aprovado (nota 9.2/10)"
+  sistemas: [PrM, GNDrive, GammaNOTION]
+
+inputs:
+  query: "string - pergunta ou contexto do job"
+  familias_alvo: "lista de F1-F7 para buscar"
+  top_k: "int (default 10)"
+  quorum_minimo: "int (default 2)"
+
+outputs:
+  evidencias: "lista de chunks com score e source"
+  quorum_status: "PASS | CONFLICT | INSUFFICIENT"
+  trilhas_concordantes: "int (0-4)"
+  confidence: "float 0.00-1.00"
+
+pipeline:
+  fase_1_broadcast:
+    T1: "embeddings search (cosine similarity)"
+    T2: "BM25 keyword search"
+    T3: "structural match (ssot_id, version, studio)"
+    T4: "temporal sort (updated_at desc)"
+    resultado: "100 candidatos por trilha"
+  fase_2_trim:
+    algoritmo: "cross-encoder reranking"
+    input: "400 candidatos (4x100)"
+    output: "top-10 por trilha (40 total)"
+  fase_3_twin:
+    twin_check: "comparar chunks com mesmo topico"
+    output: "10 evidencias finais com status"
+  quorum_check:
+    regra: ">= 2 trilhas devem ter o chunk no top-10"
+    aprovado: "quorum_status = PASS, confidence >= 0.80"
+    conflito: "quorum_status = CONFLICT -> escalar Controller"
+
+metricas:
+  latencia_p50: {target: "<= 200ms"}
+  latencia_p95: {target: "<= 800ms"}
+  precision_at_5: {target: ">= 0.95"}
+  recall: {target: ">= 0.90"}
+  quorum_pass_rate: {target: ">= 0.92"}
+  conflict_rate: {target: "<= 0.05"}
