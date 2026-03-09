@@ -1,0 +1,52 @@
+ssot_id: BUDGET_GUARD_POLICY
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Budget Guard Policy — controle de custo OG10"
+  sistema: NANUCAI OG10
+
+split_85_15:
+  L0_deterministic:
+    percentual: 85
+    custo_llm: "zero"
+    componentes: [cache, redis, rules_engine, U0_routing]
+  L1_L3_llm:
+    percentual: 15
+    custo_llm: "variavel"
+    componentes: [enriquecimento, council, reasoning]
+
+shadow_band:
+  min: 0.3
+  max: 0.6
+  exclusivo: 2.0
+  unidade: "percentual do budget total"
+  nota: "plano p999 tem shadow_band exclusivo de 2%"
+
+limites_por_job:
+  max_custo_job_normal: 0.05
+  max_custo_job_complexo: 0.50
+  max_custo_council: 0.20
+  unidade: "USD"
+
+alertas:
+  aviso: "job_cost > max * 0.8"
+  bloqueio: "job_cost > max * 1.5"
+  kill_switch: "job_cost > max * 2.0"
+
+acoes_bloqueio:
+  sequencia:
+    1: "pausar job"
+    2: "notificar Doctor1"
+    3: "aguardar aprovacao manual para continuar"
+    4: "se nao aprovado em 5min: kill job"
+
+metricas_custo:
+  pointer: "ssot/cost/COST_CANON_OG10_v1.yaml"
+  pricing: "ssot/cost/LLM_PRICING_1M_TOKENS.yaml"
+
+invariants:
+  - "85/15 split e imutavel sem Council aprovacao"
+  - "Kill switch automatico se budget > 2x max"
+  - "Custo por job sempre logado com evidence_ref"
