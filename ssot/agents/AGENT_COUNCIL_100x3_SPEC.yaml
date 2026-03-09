@@ -1,0 +1,76 @@
+spec_id: AGENT_COUNCIL_100x3_SPEC
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Council 100x3 — Triple Judge Validation System"
+  system: NANUCAI OG10
+  layer: L2_L3
+  gate_required: PASS_STRICT
+
+identity:
+  agent_id: COUNCIL_100x3
+  role: Sistema de validacao por 3 juizes independentes para claims criticos
+  principle: "Consenso de 3 juizes independentes — qualquer FAIL bloqueia o claim"
+  og10_binding: componente de evidencia — sem bypass permitido
+
+mission:
+  primary: Validar claims criticos, benchmarks e evidencias atraves de 3 juizes
+  secondary: Garantir que nota 100 so e declarada com consenso pleno
+  invariant: "Todos os 3 juizes devem PASS — minoria nao basta"
+
+judges:
+  J1_FIDELIDADE:
+    role: "Juiz de Fidelidade — valida F (0.45)"
+    checks: [claim_vs_evidence, no_hallucination, source_traceability]
+    weight: 0.45
+    fail_condition: "claim nao rastreavel a evidence_pack real"
+
+  J2_VELOCIDADE:
+    role: "Juiz de Velocidade/Eficiencia — valida V (0.35)"
+    checks: [latency_p95, cost_per_token, throughput]
+    weight: 0.35
+    fail_condition: "latency > target * 1.5 OR cost > cap * 1.2"
+
+  J3_EVIDENCIA:
+    role: "Juiz de Evidencia — valida E (0.20)"
+    checks: [evidence_pack_exists, sha256_valid, ci_green, measured_preenchido]
+    weight: 0.20
+    fail_condition: "evidence_pack ausente OR sha256 invalido OR ci_red"
+
+scoring:
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  target: 96.0
+  minimum_pass: 9.6
+  consensus_required: "J1 AND J2 AND J3 todos PASS"
+  tie_break: "FAIL — duvida bloqueia"
+
+triggers:
+  - "benchmark_claim (BENCH90)"
+  - "nota_sistema declaration"
+  - "evidence_pack_promotion"
+  - "audited=true request"
+
+pipeline:
+  step_1: "J1 avalia fidelidade — emite PASS/FAIL + justificativa"
+  step_2: "J2 avalia velocidade — emite PASS/FAIL + metricas"
+  step_3: "J3 avalia evidencia — emite PASS/FAIL + sha256_ref"
+  step_4: "Consenso: todos PASS -> APPROVED | qualquer FAIL -> BLOCKED"
+  step_5: "Output: council_verdict.json com assinaturas dos 3 juizes"
+
+gates:
+  pre_verdict: [validate_all_judges_responded, check_no_conflict_of_interest]
+  post_verdict: [sign_verdict_sha256, commit_to_evidence_pack]
+
+integration:
+  used_by: [PrM_CORE, BENCH90_VALIDATOR, ACTIONS_INDEX_MASTER]
+  output: "council_verdict_{claim_id}.json"
+  latencia_p95: "500ms"
+
+og10_score:
+  nota: 9.9
+  F: 10.0
+  V: 9.7
+  E: 10.0
+  status: CORE_ELITE
