@@ -1,0 +1,21 @@
+ssot_id: KILL_SWITCH_POLICY_OG10_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Kill Switch Policy — OG10 emergencia"
+  pointer_contrato: "ssot/contracts/KILL_SWITCH_POLICY_v1.yaml"
+
+ativacao_imediata:
+  - "secret detectado em output"
+  - "scope_violation confirmada"
+  - "budget > max * 1.5"
+  - "signature_invalid"
+
+ativacao_manual:
+  - "operador digita KILL_SWITCH em terminal autorizado"
+  - "Council 100x3 veredito BLOCK unanime"
+
+efeito: "job killed + rollback + quarantine + incident log"
+retomada: "Council review + evidence obrigatoria"
