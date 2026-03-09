@@ -1,0 +1,95 @@
+studio_id: S06
+api: clarity_upscaler
+version: 1
+total_dores: 15
+dores:
+  - dor_id: D-S06-clarity_upscaler-01
+    name: "Artefatos de alucinacao apos upscaling"
+    sintoma: "Detalhes inventados que nao existiam na imagem original"
+    causa_raiz: "Enhancement agressivo sem constraint de fidelidade"
+    mitigacao: "Fidelity constraint — modo de upscaling com limite de hallucination"
+    severity: CRITICAL
+  - dor_id: D-S06-clarity_upscaler-02
+    name: "Texto na imagem distorcido apos upscaling"
+    sintoma: "Letras ficam ilegíveis após upscaling"
+    causa_raiz: "Texto nao tratado como regiao especial"
+    mitigacao: "Text region detection — aplicar OCR-guided upscaling em areas com texto"
+    severity: HIGH
+  - dor_id: D-S06-clarity_upscaler-03
+    name: "Upscaling excessivo degradando qualidade"
+    sintoma: "4x upscaling de imagem muito baixa res resulta em artefatos"
+    causa_raiz: "Fator de upscaling sem limite baseado na resolucao original"
+    mitigacao: "Resolution ratio limit — maximo de 4x sem alertar usuario, 8x requer confirmacao"
+    severity: HIGH
+  - dor_id: D-S06-clarity_upscaler-04
+    name: "Faces deformadas apos upscaling"
+    sintoma: "Rosto fica distorcido com proporcoes incorretas"
+    causa_raiz: "Sem face-specific enhancement"
+    mitigacao: "Face detection — aplicar face upscaling especializado em regioes de rosto"
+    severity: HIGH
+  - dor_id: D-S06-clarity_upscaler-05
+    name: "Cor alterada apos upscaling"
+    sintoma: "Saturacao e tonalidade diferentes da imagem original"
+    causa_raiz: "Color preservation nao garantida"
+    mitigacao: "Color preservation mode — calcular delta de cor e corrigir pos-upscaling"
+    severity: MEDIUM
+  - dor_id: D-S06-clarity_upscaler-06
+    name: "Borda da imagem com artefatos"
+    sintoma: "Pixels nas bordas com ruido ou distorcao"
+    causa_raiz: "Padding insuficiente no processamento de bordas"
+    mitigacao: "Border padding — adicionar padding antes do processamento e remover no output"
+    severity: CRITICAL
+  - dor_id: D-S06-clarity_upscaler-07
+    name: "Processamento lento em imagens grandes"
+    sintoma: "4K upscaling para 8K demora 5 minutos"
+    causa_raiz: "Sem GPU acceleration ou tiling"
+    mitigacao: "Tiled processing com GPU — processar em tiles paralelos para reduzir latencia"
+    severity: HIGH
+  - dor_id: D-S06-clarity_upscaler-08
+    name: "Output sem comparacao antes/depois"
+    sintoma: "Usuario nao consegue avaliar ganho do upscaling"
+    causa_raiz: "Sem preview comparativo"
+    mitigacao: "Side-by-side comparison obrigatorio — exibir original vs upscaled antes de confirmar"
+    severity: HIGH
+  - dor_id: D-S06-clarity_upscaler-09
+    name: "Perda de granularidade em texturas"
+    sintoma: "Textura de tecido ou pele fica plastificada"
+    causa_raiz: "Enhancement suaviza texturas ao inves de preservar"
+    mitigacao: "Texture preservation mode — detectar texturas e aplicar enhancement conservador"
+    severity: MEDIUM
+  - dor_id: D-S06-clarity_upscaler-10
+    name: "Upscaling sem metadados de processamento"
+    sintoma: "Impossivel saber qual algoritmo e parametros foram usados"
+    causa_raiz: "Processing metadata nao salvo"
+    mitigacao: "Processing metadata obrigatorio — algoritmo, fator, parametros salvos no EXIF"
+    severity: HIGH
+  - dor_id: D-S06-clarity_upscaler-11
+    name: "Falha silenciosa em formato nao suportado"
+    sintoma: "TIFF 16-bit enviado e processado como JPEG degradado"
+    causa_raiz: "Formato nao validado antes do processamento"
+    mitigacao: "Format validation gate — rejeitar formatos nao suportados com mensagem clara"
+    severity: MEDIUM
+  - dor_id: D-S06-clarity_upscaler-12
+    name: "Resultado diferente entre execucoes identicas"
+    sintoma: "Mesmo input produz outputs diferentes"
+    causa_raiz: "Seed nao fixo no modelo"
+    mitigacao: "Deterministic mode — seed fixo para reproducibilidade garantida"
+    severity: CRITICAL
+  - dor_id: D-S06-clarity_upscaler-13
+    name: "Sem suporte a processamento em lote"
+    sintoma: "1000 imagens processadas uma por vez"
+    causa_raiz: "Batch API nao implementada"
+    mitigacao: "Batch processing API — fila com paralelismo configuravel"
+    severity: HIGH
+  - dor_id: D-S06-clarity_upscaler-14
+    name: "Qualidade ruim em imagens com muito noise"
+    sintoma: "Upscaling amplifica o ruido original"
+    causa_raiz: "Denoising nao aplicado antes do upscaling"
+    mitigacao: "Denoising pre-processing — aplicar noise reduction antes do upscaling"
+    severity: MEDIUM
+  - dor_id: D-S06-clarity_upscaler-15
+    name: "Custo por imagem nao informado antes do processamento"
+    sintoma: "Usuario processa 500 imagens sem saber o custo total"
+    causa_raiz: "Sem estimativa de custo pre-processamento"
+    mitigacao: "Cost estimation pre-batch — exibir custo total estimado antes de iniciar lote"
+    severity: LOW
