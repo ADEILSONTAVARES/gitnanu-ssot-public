@@ -1,0 +1,41 @@
+spec_id: MCP_SPEC_MCP_COCA_GUARD
+version: v1.0
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  mcp_id: MCP_COCA_GUARD
+  title: "MCP Spec — MCP_COCA_GUARD"
+  grupo: governanca_seguranca
+  grupo_desc: "Governanca e Seguranca"
+  system: NANUCAI OG10
+  gate_required: PASS_STRICT
+
+score:
+  nota: 9.5
+  F: 9.6
+  V: 9.4
+  E: 9.5
+  formula: "F*0.45 + V*0.35 + E*0.20"
+  status: CORE_ELITE
+  criterio_aprovacao: "nota >= 9.0/10"
+
+spec:
+  uso: "Secrets e PII detection em todo output"
+  trigger: "pre-commit + pre-chat + CI"
+  latencia_p95: "100ms"
+  lock_t: ["T2"]
+  sistemas: ["GitNanu", "PrM_CORE", "CI_CD"]
+  patterns: ["sk-", "ghp_", "AKIA", "CPF", "SSN", "password", "secret", "token"]
+
+invariants:
+  - "nota >= 9.0 obrigatoria para status ACTIVE"
+  - "audited=true somente com evidence_pack real"
+  - "Measured nunca confundir com Target (T4)"
+
+status_atual:
+  measured: UNVERIFIED
+  target_nota: 9.5
+  evidence_required:
+    - "vault_local/bench90/bench90_results.json"
+    - "vault_local/evidence/evidence_pack.manifest.json"
