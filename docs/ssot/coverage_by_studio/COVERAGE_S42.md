@@ -1,0 +1,731 @@
+# Coverage Report — S42
+
+| Campo | Valor |
+|-------|-------|
+| Total APIs | 16 |
+| Total Actions | 640 |
+| Actions ACTIVE | 640 |
+| score_measured null | 640 (100%) |
+| avg score_target | 9.72 |
+| Por severity | {'CRITICAL': 160, 'HIGH': 320, 'MEDIUM': 160} |
+| Por type | {'validate': 424, 'guard': 56, 'store': 40, 'audit': 40, 'route': 16, 'transform': 32, 'notify': 24, 'publish': 8} |
+
+## action_audit_trail (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## action_canary (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## action_cost_estimator (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## action_deduplicator (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## action_dependency_graph (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## action_naming (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-an-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-an-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-an-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-an-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-an-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-an-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-an-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-an-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-an-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-an-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-an-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-an-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-an-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-an-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-an-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-an-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-an-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-an-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-an-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-an-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-an-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-an-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-an-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-an-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-an-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-an-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-an-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-an-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-an-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-an-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-an-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-an-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-an-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-an-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-an-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-an-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-an-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-an-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-an-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-an-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
+
+## action_rollback_engine (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## action_simulator (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## action_validator (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ar-01 | validate_pii_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-02 | redact_key_log | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-03 | enforce_approval_gate | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-04 | validate_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-06 | enforce_cost_guard | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-08 | emit_operation_receipt | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ar-11 | hash_output | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-13 | retry_with_backoff | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-14 | validate_response_format | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-15 | enforce_timeout | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-16 | sanitize_input | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-17 | validate_rate_limit | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-18 | log_latency_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-20 | emit_cost_metric | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-22 | sanitize_output_pii | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-23 | store_evidence | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-24 | validate_output_size | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-25 | enforce_max_retries | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-26 | notify_on_critical_error | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-28 | store_replay_payload | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-30 | enforce_visibility_gate | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ar-31 | sync_to_gndrive | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-32 | publish_changelog_entry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-33 | report_usage_stats | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-36 | emit_health_check | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-37 | archive_old_artifacts | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-39 | emit_audit_summary | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ar-40 | notify_budget_warning | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+
+## evidence_rules (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-er-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-er-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-er-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-er-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-er-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-er-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-er-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-er-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-er-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-er-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-er-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-er-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-er-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-er-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-er-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-er-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-er-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-er-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-er-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-er-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-er-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-er-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-er-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-er-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-er-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-er-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-er-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-er-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-er-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-er-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-er-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-er-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-er-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-er-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-er-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-er-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-er-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-er-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-er-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-er-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
+
+## idempotency_rules (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-ir-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ir-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-ir-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-ir-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ir-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-ir-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-ir-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-ir-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-ir-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-ir-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-ir-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-ir-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ir-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-ir-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-ir-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-ir-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-ir-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ir-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-ir-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ir-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-ir-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ir-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-ir-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-ir-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-ir-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-ir-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-ir-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ir-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-ir-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-ir-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-ir-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-ir-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-ir-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-ir-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-ir-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ir-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-ir-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-ir-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-ir-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-ir-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
+
+## job_request (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-jq-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-jq-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-jq-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-jq-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-jq-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-jq-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-jq-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-jq-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-jq-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-jq-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-jq-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-jq-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jq-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-jq-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-jq-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-jq-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-jq-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jq-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-jq-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jq-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-jq-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jq-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-jq-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-jq-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-jq-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-jq-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-jq-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jq-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-jq-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jq-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-jq-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-jq-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-jq-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-jq-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-jq-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-jq-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-jq-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-jq-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-jq-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-jq-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
+
+## job_result (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-jr-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-jr-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-jr-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-jr-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-jr-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-jr-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-jr-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-jr-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-jr-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-jr-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-jr-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-jr-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jr-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-jr-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-jr-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-jr-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-jr-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jr-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-jr-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jr-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-jr-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jr-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-jr-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-jr-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-jr-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-jr-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-jr-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jr-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-jr-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-jr-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-jr-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-jr-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-jr-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-jr-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-jr-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-jr-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-jr-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-jr-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-jr-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-jr-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
+
+## retry_rules (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-rr-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rr-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-rr-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rr-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rr-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rr-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rr-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-rr-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-rr-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rr-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-rr-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-rr-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rr-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-rr-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-rr-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-rr-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-rr-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rr-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-rr-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rr-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-rr-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rr-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-rr-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-rr-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-rr-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-rr-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-rr-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rr-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-rr-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rr-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-rr-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-rr-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-rr-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-rr-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-rr-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-rr-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-rr-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-rr-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-rr-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-rr-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
+
+## risk_classification (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-rc-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rc-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-rc-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rc-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rc-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rc-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rc-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-rc-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-rc-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rc-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-rc-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-rc-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rc-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-rc-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-rc-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-rc-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-rc-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rc-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-rc-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rc-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-rc-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rc-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-rc-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-rc-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-rc-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-rc-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-rc-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rc-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-rc-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rc-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-rc-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-rc-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-rc-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-rc-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-rc-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-rc-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-rc-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-rc-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-rc-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-rc-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
+
+## rollback_hooks (40 actions | avg target: 9.72)
+
+| action_id | action_name | target | measured | severity | type | trigger | status |
+|-----------|-------------|--------|----------|----------|------|---------|--------|
+| A-S42-rh-01 | validate_pii_in_payload | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rh-02 | redact_api_key_log | 9.9 | null | CRITICAL | guard | on_output | ACTIVE |
+| A-S42-rh-03 | enforce_approval_gate | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rh-04 | validate_workspace_scope | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rh-05 | enforce_lgpd_consent | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rh-06 | enforce_cost_guard | 9.9 | null | CRITICAL | guard | on_input | ACTIVE |
+| A-S42-rh-07 | enforce_rollback_snapshot | 9.9 | null | CRITICAL | store | on_input | ACTIVE |
+| A-S42-rh-08 | emit_operation_receipt | 9.9 | null | CRITICAL | audit | on_output | ACTIVE |
+| A-S42-rh-09 | validate_integrity_hash | 9.9 | null | CRITICAL | validate | on_input | ACTIVE |
+| A-S42-rh-10 | enforce_dlq_on_failure | 9.9 | null | CRITICAL | route | on_error | ACTIVE |
+| A-S42-rh-11 | hash_output | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-rh-12 | validate_input_schema | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rh-13 | retry_with_backoff | 9.7 | null | HIGH | route | on_error | ACTIVE |
+| A-S42-rh-14 | validate_response_format | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-rh-15 | enforce_timeout | 9.7 | null | HIGH | guard | on_input | ACTIVE |
+| A-S42-rh-16 | sanitize_text_input | 9.7 | null | HIGH | transform | on_input | ACTIVE |
+| A-S42-rh-17 | validate_rate_limit_headroom | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rh-18 | log_latency_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-rh-19 | validate_permissions | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rh-20 | emit_cost_metric | 9.7 | null | HIGH | audit | on_output | ACTIVE |
+| A-S42-rh-21 | validate_resource_quota | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rh-22 | sanitize_output_pii | 9.7 | null | HIGH | transform | on_output | ACTIVE |
+| A-S42-rh-23 | store_evidence | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-rh-24 | validate_output_size | 9.7 | null | HIGH | validate | on_output | ACTIVE |
+| A-S42-rh-25 | enforce_max_retries | 9.7 | null | HIGH | guard | on_error | ACTIVE |
+| A-S42-rh-26 | notify_on_critical_error | 9.7 | null | HIGH | notify | on_error | ACTIVE |
+| A-S42-rh-27 | validate_auth_token | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rh-28 | store_replay_payload | 9.7 | null | HIGH | store | on_output | ACTIVE |
+| A-S42-rh-29 | validate_idempotency_key | 9.7 | null | HIGH | validate | on_input | ACTIVE |
+| A-S42-rh-30 | enforce_visibility_gate | 9.7 | null | HIGH | guard | on_output | ACTIVE |
+| A-S42-rh-31 | sync_to_gndrive | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-rh-32 | publish_changelog_entry | 9.6 | null | MEDIUM | publish | on_event | ACTIVE |
+| A-S42-rh-33 | report_usage_stats | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-rh-34 | cleanup_expired_cache | 9.6 | null | MEDIUM | transform | on_schedule | ACTIVE |
+| A-S42-rh-35 | validate_version_compatibility | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-rh-36 | emit_health_check | 9.6 | null | MEDIUM | notify | on_schedule | ACTIVE |
+| A-S42-rh-37 | archive_old_artifacts | 9.6 | null | MEDIUM | store | on_schedule | ACTIVE |
+| A-S42-rh-38 | validate_connector_registry | 9.6 | null | MEDIUM | validate | on_input | ACTIVE |
+| A-S42-rh-39 | emit_audit_summary | 9.6 | null | MEDIUM | audit | on_schedule | ACTIVE |
+| A-S42-rh-40 | notify_budget_warning | 9.6 | null | MEDIUM | notify | on_event | ACTIVE |
