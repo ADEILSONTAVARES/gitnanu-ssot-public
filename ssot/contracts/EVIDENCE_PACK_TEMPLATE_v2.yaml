@@ -1,0 +1,63 @@
+ssot_id: EVIDENCE_PACK_TEMPLATE_v2
+version: v2
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "Evidence Pack Template v2 — template atualizado com team mode"
+  sistema: NANUCAI OG10
+  pointer_v1: "ssot/contracts/EVIDENCE_PACK_TEMPLATE.yaml"
+  mudancas_v2: "adicao de campos team_mode e council_ref"
+
+campos_obrigatorios:
+  job_id:
+    formato: "JOB_{uuid}"
+    obrigatorio: true
+
+  studio_id:
+    valores: "S00-S51"
+    obrigatorio: true
+
+  timestamp_utc:
+    formato: "ISO8601"
+    obrigatorio: true
+
+  executor:
+    valores: ["PrM", "SubAgent", "GitNanu", "Operador"]
+    obrigatorio: true
+
+  status:
+    valores: [PASS, FAIL, QUARANTINE]
+    obrigatorio: true
+
+  artefatos:
+    tipo: "array de paths"
+    formato: "vault_local/evidence/{job_id}/"
+    obrigatorio: true
+
+  evidence_seal:
+    tipo: "hash SHA256 dos artefatos"
+    obrigatorio: true
+
+campos_opcionais_v2:
+  team_mode:
+    tipo: "boolean"
+    descricao: "indica se foi execucao em modo team"
+
+  council_ref:
+    tipo: "string"
+    formato: "vault_local/council/{job_id}/verdict.json"
+    obrigatorio_se: "acoes criticas ou blast_radius HIGH"
+
+  delegacao_chain:
+    tipo: "array"
+    descricao: "cadeia de delegacao PrM -> SubAgent"
+
+  custo_total_usd:
+    tipo: "float"
+    descricao: "custo total do job incluindo todos MCPs"
+
+invariants:
+  - "evidence_seal valida integridade de todos os artefatos"
+  - "v2 retrocompativel com v1 (campos novos opcionais)"
+  - "COCA-COLA LOCAL ONLY — vault_local nunca no repo"
