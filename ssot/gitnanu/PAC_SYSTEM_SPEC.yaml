@@ -1,0 +1,35 @@
+ssot_id: PAC_SYSTEM_SPEC
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "GitNanu PAC System - Controle de Estado de Contexto"
+  estados: 8
+  max_tokens: 12000
+  sistemas: [GitNanu, PrM, GNDrive]
+
+estados:
+  DRAFT:    {tokens: 2000,  gate: "nenhum",       proximo: READY}
+  READY:    {tokens: 4000,  gate: "U0 completo",  proximo: REVIEW}
+  REVIEW:   {tokens: 6000,  gate: "Doctor1",      proximo: APPROVED}
+  APPROVED: {tokens: 8000,  gate: "Controller",   proximo: APPLIED}
+  APPLIED:  {tokens: 10000, gate: "U2 score>=90", proximo: MERGED}
+  MERGED:   {tokens: 11000, gate: "evidence_seal",proximo: PUBLISHED}
+  PUBLISHED:{tokens: 12000, gate: "ledger_write", proximo: ARCHIVED}
+  ARCHIVED: {tokens: 3000,  gate: "LTA_check",    proximo: null}
+
+timestamp_obrigatorio:
+  regra: "todo arquivo commitado pelo GitNanu deve ter timestamp"
+  campos_obrigatorios: [created_at, updated_at]
+  formato: "ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+  enforcement: "validator no gate_pass_strict"
+
+smart_commit_format:
+  tipos: [feat, fix, chore, docs, refactor, test, ci]
+  obrigatorio: [evidence_ref, job_id, timestamp]
+
+metricas:
+  pac_state_compliance: {target: "= 1.00"}
+  timestamp_compliance: {target: "= 1.00"}
+  smart_commit_compliance: {target: "= 1.00"}
