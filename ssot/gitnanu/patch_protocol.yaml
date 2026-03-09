@@ -1,0 +1,50 @@
+ssot_id: GITNANU_PATCH_PROTOCOL
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "GitNanu Patch Protocol — protocolo de escrita cirurgica"
+  sistema: NANUCAI OG10
+  pointer_gitnanu: "ssot/gitnanu/"
+
+principio: "Patch-First — str_replace cirurgico antes de rewrite completo"
+
+limites_patch:
+  max_linhas_por_patch: 50
+  max_tokens_por_patch: 500
+  max_arquivos_por_commit: 3
+  max_commits_por_sessao: 10
+
+sequencia_patch:
+  passo_1: "Undo Token gerado antes de qualquer mudanca (MCP_Undo_Token_Create)"
+  passo_2: "str_replace aplicado (patch cirurgico)"
+  passo_3: "TestSprite valida (MCP_TestSprite)"
+  passo_4: "Se PASS: commit + evidence_seal"
+  passo_5: "Se FAIL: rollback automatico via Undo Token"
+
+quando_usar_rewrite:
+  condicao: "patch impossivel — arquivo novo ou refactor total"
+  aprovacao: "Doctor1 Gates obrigatorio"
+  evidencia: "justificativa no commit message"
+
+commit_message_formato:
+  padrao: "feat|fix|chore({escopo}): {descricao curta}"
+  exemplos:
+    - "feat(lote-k): SKILLS_REGISTRY.yaml"
+    - "fix(basileia53): remove placeholder"
+    - "chore(gitnanu): patch_protocol.yaml"
+
+bundle_sync_mac_vps:
+  fluxo:
+    1: "Mac cria bundle: git bundle create /tmp/sync.bundle --all"
+    2: "Mac envia para VPS: scp /tmp/sync.bundle gitnanu-vps:~/"
+    3: "VPS importa: git fetch /root/sync.bundle"
+    4: "VPS push: git push origin main"
+  regra: "VPS e o unico que executa git push para GitHub"
+
+invariants:
+  - "Undo Token obrigatorio antes de qualquer write"
+  - "Single writer — GitNanu unico com push rights"
+  - "Patch-first sempre — rewrite e excecao aprovada"
+  - "PASS_STRICT antes de qualquer merge em main"
