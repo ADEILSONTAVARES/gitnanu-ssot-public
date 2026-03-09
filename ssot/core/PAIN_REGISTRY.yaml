@@ -1,0 +1,597 @@
+# PAIN_REGISTRY.yaml — Registro Canônico de Dores NANUCAI OG10
+# SSOT: ssot/core/PAIN_REGISTRY.yaml
+# Cobre: P-001..P-015 (Multibot55) + dores canônicas por domínio
+# Invariante: cada dor tem mitigação explícita — sem dor sem solução
+version: 1
+total_pains: 65
+sections:
+  Multibot55_Pains: "P-001..P-015 — dores específicas do bridge Multibot"
+  Domain_Pains: "P-016..P-065 — dores canônicas por domínio operacional"
+
+pains:
+  # ─── MULTIBOT55 PAINS (P-001..P-015) ───
+  - pain_id: P-001
+    name: "Contexto perdido entre bots"
+    domain: multibot
+    sintoma: "Bot B não tem acesso ao contexto processado pelo Bot A"
+    causa_raiz: "Ausência de mecanismo de context sharing entre instâncias"
+    mitigacao: "MB-006 handoff com receipt + MB-014 inject_context obrigatório"
+    severity: CRITICAL
+    actions: [MB-006, MB-014]
+
+  - pain_id: P-002
+    name: "Resultados divergentes sem resolução"
+    domain: multibot
+    sintoma: "Bot A e Bot B retornam resultados contraditórios sem consenso"
+    causa_raiz: "Ausência de mecanismo de consenso entre bots"
+    mitigacao: "MB-003 consensus + MB-024 quorum_check antes de aceitar"
+    severity: CRITICAL
+    actions: [MB-003, MB-024]
+
+  - pain_id: P-003
+    name: "Bot travado sem timeout"
+    domain: multibot
+    sintoma: "Bot não responde e bloqueia pipeline indefinidamente"
+    causa_raiz: "Timeout não configurado nas chamadas de bot"
+    mitigacao: "MB-020 timeout_guard com interrupt após limite"
+    severity: CRITICAL
+    actions: [MB-020, CW-219]
+
+  - pain_id: P-004
+    name: "Custo descontrolado em sessão multibot"
+    domain: multibot
+    sintoma: "Custo total da sessão excede budget sem alerta"
+    causa_raiz: "BudgetGuard não aplicado em chamadas multibot"
+    mitigacao: "MB-013 cost_track + CW-217 budget_guard_check em cada chamada"
+    severity: HIGH
+    actions: [MB-013, CW-217]
+
+  - pain_id: P-005
+    name: "Output de bot sem validação de qualidade"
+    domain: multibot
+    sintoma: "Resultado de bot aceito sem passar pelo Council ou Doctor Gate"
+    causa_raiz: "Pipeline sem etapa de validação obrigatória"
+    mitigacao: "MB-015 validate_output + CW-055 run_doctor_gate obrigatórios"
+    severity: HIGH
+    actions: [MB-015, CW-055]
+
+  - pain_id: P-006
+    name: "Task sem owner definido"
+    domain: multibot
+    sintoma: "Tarefa multibot executada sem responsável explícito"
+    causa_raiz: "Owner não atribuído antes de iniciar tarefa"
+    mitigacao: "MB-037 assign_owner obrigatório — task sem owner é bloqueada"
+    severity: HIGH
+    actions: [MB-037]
+
+  - pain_id: P-007
+    name: "DoD não verificado antes de aceitar resultado"
+    domain: multibot
+    sintoma: "Resultado aceito sem verificar Definition of Done"
+    causa_raiz: "Ausência de check de DoD no pipeline"
+    mitigacao: "MB-038 check_dod obrigatório antes de MB-040 final_receipt"
+    severity: HIGH
+    actions: [MB-038, MB-040]
+
+  - pain_id: P-008
+    name: "Dados sensíveis em log de sessão multibot"
+    domain: multibot
+    sintoma: "Tokens, keys ou dados privados visíveis em logs"
+    causa_raiz: "MB-034 strip_sensitive não aplicado antes de log"
+    mitigacao: "MB-034 strip_sensitive obrigatório em todo teardown"
+    severity: HIGH
+    actions: [MB-034, CW-212]
+
+  - pain_id: P-009
+    name: "Bot reiniciado sem checkpoint"
+    domain: multibot
+    sintoma: "Falha de bot perde todo o progresso do pipeline"
+    causa_raiz: "Checkpoint não criado em etapas críticas"
+    mitigacao: "MB-031 pipeline_checkpoint em toda etapa crítica"
+    severity: HIGH
+    actions: [MB-031, MB-032]
+
+  - pain_id: P-010
+    name: "Rate limit silencioso em chamadas paralelas"
+    domain: multibot
+    sintoma: "Chamadas paralelas falham sem alerta por rate limit"
+    causa_raiz: "MB-011 rate_limit não aplicado em execução paralela"
+    mitigacao: "MB-011 rate_limit + MB-010 load_balance obrigatórios"
+    severity: MEDIUM
+    actions: [MB-010, MB-011]
+
+  - pain_id: P-011
+    name: "Evidence pack ausente em tarefa crítica"
+    domain: multibot
+    sintoma: "Tarefa crítica executada sem evidence pack T1"
+    causa_raiz: "MB-033 inject_evidence não chamado antes da tarefa"
+    mitigacao: "MB-033 inject_evidence obrigatório para tarefas com severity HIGH+"
+    severity: HIGH
+    actions: [MB-033, CW-065]
+
+  - pain_id: P-012
+    name: "Escalada para PrM não disparada em divergência"
+    domain: multibot
+    sintoma: "Decisão crítica tomada sem aprovação do PrM"
+    causa_raiz: "MB-023 escalate_to_prm não configurado como fallback"
+    mitigacao: "MB-023 escalate_to_prm como fallback obrigatório em conflito"
+    severity: HIGH
+    actions: [MB-023, CW-205]
+
+  - pain_id: P-013
+    name: "Sessão multibot sem receipt final"
+    domain: multibot
+    sintoma: "Sessão encerrada sem evidência das ações executadas"
+    causa_raiz: "MB-040 final_receipt não chamado no teardown"
+    mitigacao: "MB-040 final_receipt é a última ação obrigatória de toda sessão"
+    severity: MEDIUM
+    actions: [MB-039, MB-040]
+
+  - pain_id: P-014
+    name: "Bot especialista não terminado após conclusão"
+    domain: multibot
+    sintoma: "Bot especialista persiste após tarefa — consumindo recursos"
+    causa_raiz: "MB-022 terminate_specialist não chamado"
+    mitigacao: "MB-022 terminate_specialist obrigatório após MB-003 ou MB-040"
+    severity: MEDIUM
+    actions: [MB-021, MB-022]
+
+  - pain_id: P-015
+    name: "Cache de resultado corrompido"
+    domain: multibot
+    sintoma: "Resultado cacheado retorna dado obsoleto ou inválido"
+    causa_raiz: "TTL não configurado ou invalidação de cache ausente"
+    mitigacao: "MB-029 cache_result com TTL explícito + invalidação em update"
+    severity: MEDIUM
+    actions: [MB-029, MB-030]
+
+  # ─── DOMAIN PAINS (P-016..P-065) ───
+  - pain_id: P-016
+    name: "Alucinação factual em conteúdo gerado"
+    domain: content
+    sintoma: "Conteúdo contém fatos incorretos apresentados como verdade"
+    causa_raiz: "T1 No Evidence No Claim não aplicado antes da publicação"
+    mitigacao: "CW-052 validate_factual_accuracy + CW-053 validate_no_hallucination"
+    severity: CRITICAL
+    actions: [CW-052, CW-053, CW-065]
+
+  - pain_id: P-017
+    name: "Raw data exposto no chat"
+    domain: content
+    sintoma: "Dados brutos de evidence ou internos aparecem no output do chat"
+    causa_raiz: "T2 Raw Never in Chat violado"
+    mitigacao: "CW-072 validate_no_raw_in_chat em todo output antes de exibir"
+    severity: CRITICAL
+    actions: [CW-072]
+
+  - pain_id: P-018
+    name: "Score abaixo do threshold publicado"
+    domain: quality
+    sintoma: "Artefato com score < threshold enviado para produção"
+    causa_raiz: "T3 Nota 10 ou não passa ignorado"
+    mitigacao: "CW-073 validate_score_nota10 bloqueia deploy abaixo do threshold"
+    severity: CRITICAL
+    actions: [CW-073, CW-055]
+
+  - pain_id: P-019
+    name: "Target e Measured misturados em relatório"
+    domain: analytics
+    sintoma: "Relatório confunde métricas alvo com métricas medidas"
+    causa_raiz: "T4 Target vs Measured NUNCA misturar violado"
+    mitigacao: "CW-074 validate_target_vs_measured em todo relatório de métricas"
+    severity: CRITICAL
+    actions: [CW-074]
+
+  - pain_id: P-020
+    name: "Placeholder em artefato deployado"
+    domain: quality
+    sintoma: "TBD/FIXME/TODO presentes em artefato em produção"
+    causa_raiz: "CW-061 run_placeholder_check não executado antes do deploy"
+    mitigacao: "CW-061 placeholder_check obrigatório no preflight de todo deploy"
+    severity: HIGH
+    actions: [CW-061, CW-059]
+
+  - pain_id: P-021
+    name: "Deploy sem PASS_STRICT"
+    domain: gitnanu
+    sintoma: "Arquivo commitado com erro ou aviso no gate"
+    causa_raiz: "CW-059 run_pass_strict não executado antes do push"
+    mitigacao: "CW-059 PASS_STRICT obrigatório antes de todo git push"
+    severity: CRITICAL
+    actions: [CW-059, CW-080]
+
+  - pain_id: P-022
+    name: "Secret exposto em commit"
+    domain: security
+    sintoma: "Token, senha ou chave API visível no histórico do git"
+    causa_raiz: "CW-088 git_scan_coca_cola não executado antes do push"
+    mitigacao: "CW-088 secret scan obrigatório + COCA-COLA local only"
+    severity: CRITICAL
+    actions: [CW-060, CW-088, CW-212, CW-213]
+
+  - pain_id: P-023
+    name: "Force push destrói histórico"
+    domain: gitnanu
+    sintoma: "Commits anteriores perdidos por force push no main"
+    causa_raiz: "Branch protection desabilitada ou bypassada"
+    mitigacao: "CW-085 git_protect_branch + single-writer enforcement"
+    severity: CRITICAL
+    actions: [CW-085, CW-091]
+
+  - pain_id: P-024
+    name: "Webhook Stripe sem verificação de assinatura"
+    domain: payments
+    sintoma: "Webhook processado sem validar assinatura HMAC"
+    causa_raiz: "PAY-018 payment_verify_webhook não implementado"
+    mitigacao: "PAY-018 obrigatório + raw body preservado antes de qualquer parse"
+    severity: CRITICAL
+    actions: [PAY-018, PAY-020]
+
+  - pain_id: P-025
+    name: "Evento Stripe processado duas vezes"
+    domain: payments
+    sintoma: "Cobrança duplicada ou ação dupla por evento replay"
+    causa_raiz: "PAY-020 dedupe_event não implementado"
+    mitigacao: "PAY-020 dedupe por event_id obrigatório antes de processar"
+    severity: CRITICAL
+    actions: [PAY-020, PAY-008]
+
+  - pain_id: P-026
+    name: "Falha de pagamento sem retry automático"
+    domain: payments
+    sintoma: "Pagamento falhado não reprocessado — receita perdida"
+    causa_raiz: "PAY-037 smart_retry não configurado"
+    mitigacao: "PAY-037 Smart Retries ativo em todas as assinaturas"
+    severity: HIGH
+    actions: [PAY-037, PAY-038]
+
+  - pain_id: P-027
+    name: "Operação Stripe sem idempotency key"
+    domain: payments
+    sintoma: "Operação de pagamento duplicada em retry de rede"
+    causa_raiz: "PAY-008 idempotency_key não aplicada"
+    mitigacao: "PAY-008 obrigatório em toda operação de escrita no Stripe"
+    severity: HIGH
+    actions: [PAY-008, PAY-011]
+
+  - pain_id: P-028
+    name: "Contexto de sessão perdido entre turnos"
+    domain: memory
+    sintoma: "PrM perde contexto crítico entre mensagens"
+    causa_raiz: "CW-001 load_context ou CW-012 build_pac não executados"
+    mitigacao: "CW-001 + CW-011 obrigatórios no preflight de toda sessão"
+    severity: HIGH
+    actions: [CW-001, CW-011, CW-012]
+
+  - pain_id: P-029
+    name: "SSOT drift não detectado"
+    domain: memory
+    sintoma: "Estado do sistema diverge do SSOT sem alarme"
+    causa_raiz: "CW-007 diff_ssot não executado regularmente"
+    mitigacao: "CW-007 diff_ssot + CW-008 reset_to_ssot em caso de drift"
+    severity: HIGH
+    actions: [CW-007, CW-008]
+
+  - pain_id: P-030
+    name: "Deploy sem smoke test pós-execução"
+    domain: deployment
+    sintoma: "Deploy considerado concluído sem validação funcional"
+    causa_raiz: "CW-154 deploy_smoke_test não executado"
+    mitigacao: "CW-154 smoke_test obrigatório após todo deploy"
+    severity: HIGH
+    actions: [CW-151, CW-154, CW-156]
+
+  - pain_id: P-031
+    name: "Budget LLM excedido silenciosamente"
+    domain: cost
+    sintoma: "Custo de API LLM excede hard cap sem bloqueio"
+    causa_raiz: "CW-217 budget_guard_check não aplicado"
+    mitigacao: "CW-217 BudgetGuard em toda chamada LLM — fail-closed"
+    severity: HIGH
+    actions: [CW-103, CW-217]
+
+  - pain_id: P-032
+    name: "Modelo errado selecionado para tarefa"
+    domain: routing
+    sintoma: "Tarefa L0 roteada para modelo L2/L3 — custo desnecessário"
+    causa_raiz: "CW-222 router_select_model não consultado"
+    mitigacao: "CW-222 Router V6 obrigatório antes de toda chamada LLM"
+    severity: MEDIUM
+    actions: [CW-222, CW-223]
+
+  - pain_id: P-033
+    name: "Conteúdo gerado sem revisão do Council"
+    domain: quality
+    sintoma: "Output crítico publicado sem veredito do Council 100x3"
+    causa_raiz: "CW-056 run_council_vote não executado"
+    mitigacao: "CW-056 council_vote obrigatório para outputs de alta criticidade"
+    severity: MEDIUM
+    actions: [CW-056, CW-057, CW-207, CW-208]
+
+  - pain_id: P-034
+    name: "Relatório com dados desatualizados"
+    domain: analytics
+    sintoma: "Relatório gerado com dados de cache expirado"
+    causa_raiz: "Cache Redis não invalidado após atualização de dados"
+    mitigacao: "CW-124 redis_cache_get com TTL + invalidação explícita em update"
+    severity: MEDIUM
+    actions: [CW-123, CW-124]
+
+  - pain_id: P-035
+    name: "n8n workflow sem tratamento de erro"
+    domain: automation
+    sintoma: "Workflow falha silenciosamente sem notificação"
+    causa_raiz: "CW-164 monitor_alert não configurado em fluxos críticos"
+    mitigacao: "CW-114 n8n_trigger + CW-115 n8n_status + CW-164 monitor_alert"
+    severity: MEDIUM
+    actions: [CW-114, CW-115, CW-164]
+
+  - pain_id: P-036
+    name: "Handoff de sessão sem documento de continuidade"
+    domain: memory
+    sintoma: "Próxima sessão começa sem contexto da anterior"
+    causa_raiz: "CW-018 generate_handoff_doc não executado no teardown"
+    mitigacao: "CW-018 handoff_doc obrigatório no teardown de toda sessão"
+    severity: MEDIUM
+    actions: [CW-017, CW-018, CW-025]
+
+  - pain_id: P-037
+    name: "Produto lançado sem checklist de pré-lançamento"
+    domain: deployment
+    sintoma: "Lançamento com gaps críticos não verificados"
+    causa_raiz: "CW-231 launch_preflight não executado"
+    mitigacao: "CW-231 launch_preflight obrigatório com 100% dos itens OK"
+    severity: HIGH
+    actions: [CW-231, CW-232, CW-235]
+
+  - pain_id: P-038
+    name: "Schema YAML inválido commitado"
+    domain: gitnanu
+    sintoma: "YAML com sintaxe inválida entra no repo"
+    causa_raiz: "CW-099 git_lint_yaml não executado antes do commit"
+    mitigacao: "CW-099 lint_yaml + CW-062 validate_schema obrigatórios"
+    severity: HIGH
+    actions: [CW-062, CW-099]
+
+  - pain_id: P-039
+    name: "Token GitHub expirado no meio do deploy"
+    domain: gitnanu
+    sintoma: "Script de deploy falha com 401 durante lote"
+    causa_raiz: "CW-087 git_check_token_expiry não verificado antes"
+    mitigacao: "CW-087 verificar expiração antes de iniciar qualquer deploy"
+    severity: MEDIUM
+    actions: [CW-087]
+
+  - pain_id: P-040
+    name: "Commit sem mensagem padronizada"
+    domain: gitnanu
+    sintoma: "Histórico do repo com mensagens inconsistentes"
+    causa_raiz: "CW-094 validate_commit_message não aplicado"
+    mitigacao: "CW-094 formato feat/fix/docs obrigatório em todo commit"
+    severity: LOW
+    actions: [CW-094]
+
+  - pain_id: P-041
+    name: "MCP chamado sem verificação de budget"
+    domain: mcp
+    sintoma: "Chamada MCP excede budget sem bloqueio"
+    causa_raiz: "CW-103 mcp_budget_check não executado antes da chamada"
+    mitigacao: "CW-103 + CW-104 obrigatórios antes de toda chamada MCP"
+    severity: HIGH
+    actions: [CW-102, CW-103, CW-104]
+
+  - pain_id: P-042
+    name: "Trial convertido sem método de pagamento"
+    domain: billing
+    sintoma: "Trial expira sem cobrança — receita perdida"
+    causa_raiz: "PAY-046/PAY-048 sem validação de payment method antes"
+    mitigacao: "PAY-017 setup_intent durante trial + PAY-048 convert na expiração"
+    severity: HIGH
+    actions: [PAY-017, PAY-046, PAY-048]
+
+  - pain_id: P-043
+    name: "Webhook não entregue sem retry"
+    domain: billing
+    sintoma: "Evento crítico não processado por falha de entrega"
+    causa_raiz: "PAY-073 billing_webhook_retry não configurado"
+    mitigacao: "PAY-073 retry automático + PAY-072 teste periódico de webhook"
+    severity: HIGH
+    actions: [PAY-072, PAY-073]
+
+  - pain_id: P-044
+    name: "Usuário com quota excedida sem bloqueio"
+    domain: billing
+    sintoma: "Usuário usa recursos além do plano sem interrupção"
+    causa_raiz: "PAY-077 billing_quota_enforcement não aplicado"
+    mitigacao: "PAY-077 quota_enforcement + CW-139 billing_check_quota"
+    severity: HIGH
+    actions: [CW-139, PAY-077, PAY-078]
+
+  - pain_id: P-045
+    name: "Invoice sem nota fiscal para LATAM"
+    domain: billing
+    sintoma: "Cliente BR sem nota fiscal — compliance fiscal violado"
+    causa_raiz: "PAY-057 tax_id_add não coletado no onboarding"
+    mitigacao: "PAY-057 coletar CPF/CNPJ + PAY-058 tax_exemption se aplicável"
+    severity: MEDIUM
+    actions: [PAY-057, PAY-058]
+
+  - pain_id: P-046
+    name: "Churn não detectado a tempo"
+    domain: analytics
+    sintoma: "Cliente cancela sem intervenção prévia de retenção"
+    causa_raiz: "PAY-061 churn_report sem alerta em tempo real"
+    mitigacao: "PAY-061 churn_report + CW-247 notification_send em risco de churn"
+    severity: MEDIUM
+    actions: [PAY-061, CW-247]
+
+  - pain_id: P-047
+    name: "Subagente sem DoD explícito"
+    domain: orchestration
+    sintoma: "Subagente conclui tarefa sem critério de conclusão definido"
+    causa_raiz: "CW-202 subagent_assign_task sem DoD no payload"
+    mitigacao: "CW-202 exige DoD explícito no payload de toda tarefa"
+    severity: HIGH
+    actions: [CW-202, MB-038]
+
+  - pain_id: P-048
+    name: "Kill Switch não verificado antes de operação irreversível"
+    domain: orchestration
+    sintoma: "Operação irreversível executada sem verificação de Kill Switch"
+    causa_raiz: "CW-218 kill_switch_check não no preflight"
+    mitigacao: "CW-218 obrigatório antes de toda operação irreversível"
+    severity: CRITICAL
+    actions: [CW-218, CW-219]
+
+  - pain_id: P-049
+    name: "Anomalia em métrica não detectada"
+    domain: analytics
+    sintoma: "Spike de erro ou custo não alertado a tempo"
+    causa_raiz: "CW-194 analytics_anomaly_detect não configurado"
+    mitigacao: "CW-194 anomaly_detect + CW-164 monitor_alert em tempo real"
+    severity: HIGH
+    actions: [CW-186, CW-194, CW-164]
+
+  - pain_id: P-050
+    name: "Sessão sem recibo final"
+    domain: orchestration
+    sintoma: "Sessão encerrada sem evidência auditável das ações"
+    causa_raiz: "CW-250 generate_session_final_receipt não executado"
+    mitigacao: "CW-250 é a última ação obrigatória de toda sessão canônica"
+    severity: MEDIUM
+    actions: [CW-249, CW-250]
+
+  - pain_id: P-051
+    name: "Diff não revisado antes de patch"
+    domain: gitnanu
+    sintoma: "Patch aplicado sem revisão prévia das mudanças"
+    causa_raiz: "CW-064 validate_diff_before_patch não no preflight"
+    mitigacao: "CW-077 git_diff + CW-064 diff_before_patch obrigatórios"
+    severity: HIGH
+    actions: [CW-064, CW-077]
+
+  - pain_id: P-052
+    name: "Artefato sem evidence pack"
+    domain: quality
+    sintoma: "Artefato publicado sem evidências de validação T1/T2/T3/T4"
+    causa_raiz: "CW-065 validate_evidence_pack não executado"
+    mitigacao: "CW-065 evidence pack completo obrigatório para artefatos críticos"
+    severity: HIGH
+    actions: [CW-015, CW-065, CW-075]
+
+  - pain_id: P-053
+    name: "Regressão de qualidade não detectada"
+    domain: quality
+    sintoma: "Score BENCH90 cai sem alarme"
+    causa_raiz: "CW-066 run_regression_check não periódico"
+    mitigacao: "CW-066 regression_check + CW-057 bench90_eval a cada release"
+    severity: HIGH
+    actions: [CW-057, CW-066]
+
+  - pain_id: P-054
+    name: "Serviço de infraestrutura falhando silenciosamente"
+    domain: infrastructure
+    sintoma: "Serviço crítico degradado sem alerta"
+    causa_raiz: "CW-157 infra_health_check não periódico"
+    mitigacao: "CW-157 health_check + CW-165 check_latency em schedule"
+    severity: HIGH
+    actions: [CW-157, CW-165, CW-166]
+
+  - pain_id: P-055
+    name: "Backup não executado"
+    domain: infrastructure
+    sintoma: "Dados críticos sem backup recente"
+    causa_raiz: "CW-159 infra_backup não agendado"
+    mitigacao: "CW-159 backup diário + CW-160 restore testado mensalmente"
+    severity: HIGH
+    actions: [CW-159, CW-160]
+
+  - pain_id: P-056
+    name: "Feature flag não revertida após teste"
+    domain: deployment
+    sintoma: "Feature flag de teste permanece ativa em produção"
+    causa_raiz: "CW-173 deploy_feature_flag sem TTL ou revisão"
+    mitigacao: "CW-173 com TTL explícito + revisão obrigatória em 7 dias"
+    severity: MEDIUM
+    actions: [CW-173]
+
+  - pain_id: P-057
+    name: "Cache CDN não purgado pós-deploy"
+    domain: deployment
+    sintoma: "Usuários recebem versão antiga após deploy"
+    causa_raiz: "CW-171 cdn_purge_cache não executado no teardown de deploy"
+    mitigacao: "CW-171 purge + CW-172 warm obrigatórios após todo deploy"
+    severity: MEDIUM
+    actions: [CW-171, CW-172]
+
+  - pain_id: P-058
+    name: "Onboarding incompleto sem acompanhamento"
+    domain: product
+    sintoma: "Novo usuário abandona onboarding sem conclusão"
+    causa_raiz: "CW-237 onboarding_complete_step não monitorado"
+    mitigacao: "CW-236 + CW-237 + CW-247 notificação de etapa pendente"
+    severity: MEDIUM
+    actions: [CW-236, CW-237, CW-238, CW-247]
+
+  - pain_id: P-059
+    name: "Suporte sem SLA definido"
+    domain: support
+    sintoma: "Tickets de suporte sem prazo de resolução"
+    causa_raiz: "CW-239 create_ticket sem SLA no payload"
+    mitigacao: "CW-239 exige SLA explícito + CW-164 alerta em violação"
+    severity: MEDIUM
+    actions: [CW-239, CW-240, CW-164]
+
+  - pain_id: P-060
+    name: "Produto publicado no marketplace sem PASS_STRICT"
+    domain: marketplace
+    sintoma: "Produto com defeitos visível para clientes"
+    causa_raiz: "CW-231 launch_preflight não inclui PASS_STRICT"
+    mitigacao: "CW-231 exige PASS_STRICT explícito como item de checklist"
+    severity: HIGH
+    actions: [CW-059, CW-231, CW-226]
+
+  - pain_id: P-061
+    name: "Secrets rotacionados sem atualização de referências"
+    domain: security
+    sintoma: "Serviço quebra após rotação de secret"
+    causa_raiz: "CW-168 security_rotate_secrets sem update de referências"
+    mitigacao: "CW-168 inclui atualização de todas as referências antes de aplicar"
+    severity: HIGH
+    actions: [CW-168]
+
+  - pain_id: P-062
+    name: "Dependências com vulnerabilidade em produção"
+    domain: security
+    sintoma: "Vulnerability crítica em dependência sem patch"
+    causa_raiz: "CW-167 security_scan não periódico"
+    mitigacao: "CW-167 security_scan semanal + patch obrigatório em CRITICAL"
+    severity: HIGH
+    actions: [CW-167]
+
+  - pain_id: P-063
+    name: "MCP sem log de chamada"
+    domain: mcp
+    sintoma: "Chamada MCP não auditável — sem rastreamento"
+    causa_raiz: "CW-106 mcp_log_call não aplicado"
+    mitigacao: "CW-106 log obrigatório em toda chamada MCP Elite"
+    severity: MEDIUM
+    actions: [CW-106, CW-125]
+
+  - pain_id: P-064
+    name: "Conteúdo fora do brand guidelines publicado"
+    domain: content
+    sintoma: "Tom, estilo ou identidade visual fora do padrão"
+    causa_raiz: "CW-067 validate_tone_brand não executado"
+    mitigacao: "CW-067 tone_brand check obrigatório antes de publicação"
+    severity: MEDIUM
+    actions: [CW-067]
+
+  - pain_id: P-065
+    name: "Pipeline sem checkpoint — retomada impossível"
+    domain: orchestration
+    sintoma: "Falha no meio do pipeline exige reinício completo"
+    causa_raiz: "CW-221 orchestrate_pipeline sem checkpoints configurados"
+    mitigacao: "CW-221 com checkpoints em toda etapa crítica + MB-031"
+    severity: HIGH
+    actions: [CW-221, MB-031, MB-032]

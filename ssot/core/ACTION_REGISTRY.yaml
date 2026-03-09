@@ -1,0 +1,2606 @@
+# ACTION_REGISTRY.yaml — Registro Canônico de Ações NANUCAI OG10
+# SSOT: ssot/core/ACTION_REGISTRY.yaml
+# Cobre: CoworkActions250 (CW) + Multibot55 Bridge (MB) + StripeOps80 (PAY)
+# Total: 370 ações canônicas
+version: 1
+total_actions: 370
+families:
+  CoworkActions250:
+    prefix: CW
+    range: "CW-001..CW-250"
+    total: 250
+    blocks: 10
+    description: "Catálogo operacional completo do PrM — 10 blocos de 25 ações"
+  Multibot55Bridge:
+    prefix: MB
+    range: "MB-001..MB-040"
+    total: 40
+    description: "Bridge Multibot — somente gaps não cobertos pelo CoworkActions250"
+  StripeOps80:
+    prefix: PAY
+    range: "PAY-001..PAY-080"
+    total: 80
+    blocks: 2
+    description: "PaymentOps (PAY-001..PAY-040) + BillingOps (PAY-041..PAY-080)"
+
+actions:
+  # ─── BLOCO 1: CONTEXTO E MEMÓRIA (CW-001..CW-025) ───
+  - action_id: CW-001
+    name: "load_context"
+    block: B1
+    family: CoworkActions250
+    description: "Carrega contexto canônico da sessão via PAC"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-002
+    name: "compress_context"
+    block: B1
+    family: CoworkActions250
+    description: "Comprime contexto com SERENA para reduzir tokens"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-003
+    name: "save_context"
+    block: B1
+    family: CoworkActions250
+    description: "Salva contexto atual no PAC ao final da sessão"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-004
+    name: "load_lta"
+    block: B1
+    family: CoworkActions250
+    description: "Carrega Long Term Archive (LTA) para contexto persistente"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-005
+    name: "promote_to_lta"
+    block: B1
+    family: CoworkActions250
+    description: "Promove item de sessão para LTA conforme política"
+    stage: teardown
+    idempotent: false
+  - action_id: CW-006
+    name: "load_ssot"
+    block: B1
+    family: CoworkActions250
+    description: "Carrega SSOT canônico do studio ativo"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-007
+    name: "diff_ssot"
+    block: B1
+    family: CoworkActions250
+    description: "Compara estado atual com SSOT — detecta drift"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-008
+    name: "reset_to_ssot"
+    block: B1
+    family: CoworkActions250
+    description: "Restaura estado canônico do SSOT após drift detectado"
+    stage: repair
+    idempotent: true
+  - action_id: CW-009
+    name: "list_memory_keys"
+    block: B1
+    family: CoworkActions250
+    description: "Lista chaves disponíveis na memória da sessão"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-010
+    name: "clear_session_memory"
+    block: B1
+    family: CoworkActions250
+    description: "Limpa memória volátil da sessão mantendo LTA"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-011
+    name: "load_pac_slice"
+    block: B1
+    family: CoworkActions250
+    description: "Carrega fatia específica do PAC por domínio"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-012
+    name: "build_pac_from_ssot"
+    block: B1
+    family: CoworkActions250
+    description: "Constrói PAC comprimido a partir do SSOT atual"
+    stage: build
+    idempotent: true
+  - action_id: CW-013
+    name: "validate_memory_integrity"
+    block: B1
+    family: CoworkActions250
+    description: "Valida integridade e consistência da memória ativa"
+    stage: validation
+    idempotent: true
+  - action_id: CW-014
+    name: "export_session_receipt"
+    block: B1
+    family: CoworkActions250
+    description: "Exporta recibo completo da sessão com ações executadas"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-015
+    name: "load_evidence_pack"
+    block: B1
+    family: CoworkActions250
+    description: "Carrega evidence pack para validação T1/T2"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-016
+    name: "archive_evidence"
+    block: B1
+    family: CoworkActions250
+    description: "Arquiva evidências coletadas na sessão"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-017
+    name: "load_handoff_doc"
+    block: B1
+    family: CoworkActions250
+    description: "Carrega documento de handoff para continuidade"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-018
+    name: "generate_handoff_doc"
+    block: B1
+    family: CoworkActions250
+    description: "Gera documento de handoff para próxima sessão"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-019
+    name: "sync_memory_vps"
+    block: B1
+    family: CoworkActions250
+    description: "Sincroniza memória local com VPS via GitNanu"
+    stage: sync
+    idempotent: true
+  - action_id: CW-020
+    name: "validate_pac_completeness"
+    block: B1
+    family: CoworkActions250
+    description: "Valida se PAC cobre todos os domínios ativos"
+    stage: validation
+    idempotent: true
+  - action_id: CW-021
+    name: "load_studio_context"
+    block: B1
+    family: CoworkActions250
+    description: "Carrega contexto específico do studio ativo"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-022
+    name: "snapshot_state"
+    block: B1
+    family: CoworkActions250
+    description: "Cria snapshot do estado atual para rollback"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-023
+    name: "restore_snapshot"
+    block: B1
+    family: CoworkActions250
+    description: "Restaura estado a partir de snapshot anterior"
+    stage: repair
+    idempotent: true
+  - action_id: CW-024
+    name: "prune_stale_memory"
+    block: B1
+    family: CoworkActions250
+    description: "Remove entradas obsoletas da memória por TTL"
+    stage: maintenance
+    idempotent: true
+  - action_id: CW-025
+    name: "index_memory_keys"
+    block: B1
+    family: CoworkActions250
+    description: "Indexa chaves de memória para busca rápida"
+    stage: maintenance
+    idempotent: true
+
+  # ─── BLOCO 2: GERAÇÃO DE CONTEÚDO (CW-026..CW-050) ───
+  - action_id: CW-026
+    name: "generate_text"
+    block: B2
+    family: CoworkActions250
+    description: "Gera texto via modelo LLM com prompt estruturado"
+    stage: execute
+    idempotent: false
+  - action_id: CW-027
+    name: "generate_outline"
+    block: B2
+    family: CoworkActions250
+    description: "Gera estrutura/outline de documento ou conteúdo"
+    stage: execute
+    idempotent: false
+  - action_id: CW-028
+    name: "generate_summary"
+    block: B2
+    family: CoworkActions250
+    description: "Sumariza conteúdo longo em versão condensada"
+    stage: execute
+    idempotent: false
+  - action_id: CW-029
+    name: "generate_translation"
+    block: B2
+    family: CoworkActions250
+    description: "Traduz conteúdo mantendo tom e contexto"
+    stage: execute
+    idempotent: false
+  - action_id: CW-030
+    name: "generate_variation"
+    block: B2
+    family: CoworkActions250
+    description: "Gera N variações de um conteúdo base"
+    stage: execute
+    idempotent: false
+  - action_id: CW-031
+    name: "generate_image_prompt"
+    block: B2
+    family: CoworkActions250
+    description: "Gera prompt otimizado para geração de imagem"
+    stage: execute
+    idempotent: false
+  - action_id: CW-032
+    name: "generate_voice_script"
+    block: B2
+    family: CoworkActions250
+    description: "Adapta texto para narração de voz"
+    stage: execute
+    idempotent: false
+  - action_id: CW-033
+    name: "generate_social_post"
+    block: B2
+    family: CoworkActions250
+    description: "Cria post otimizado para rede social específica"
+    stage: execute
+    idempotent: false
+  - action_id: CW-034
+    name: "generate_email_sequence"
+    block: B2
+    family: CoworkActions250
+    description: "Gera sequência de emails com lógica de funil"
+    stage: execute
+    idempotent: false
+  - action_id: CW-035
+    name: "generate_vsl_script"
+    block: B2
+    family: CoworkActions250
+    description: "Cria script VSL com estrutura hook-story-offer"
+    stage: execute
+    idempotent: false
+  - action_id: CW-036
+    name: "generate_book_chapter"
+    block: B2
+    family: CoworkActions250
+    description: "Gera capítulo de livro com coerência narrativa"
+    stage: execute
+    idempotent: false
+  - action_id: CW-037
+    name: "generate_course_module"
+    block: B2
+    family: CoworkActions250
+    description: "Cria módulo de curso com objetivos e exercícios"
+    stage: execute
+    idempotent: false
+  - action_id: CW-038
+    name: "generate_sales_copy"
+    block: B2
+    family: CoworkActions250
+    description: "Escreve copy de vendas com gatilhos e CTA"
+    stage: execute
+    idempotent: false
+  - action_id: CW-039
+    name: "generate_seo_article"
+    block: B2
+    family: CoworkActions250
+    description: "Cria artigo otimizado para SEO com keywords"
+    stage: execute
+    idempotent: false
+  - action_id: CW-040
+    name: "generate_ad_creative"
+    block: B2
+    family: CoworkActions250
+    description: "Cria criativo de anúncio para plataforma específica"
+    stage: execute
+    idempotent: false
+  - action_id: CW-041
+    name: "generate_presentation"
+    block: B2
+    family: CoworkActions250
+    description: "Gera estrutura e conteúdo de apresentação"
+    stage: execute
+    idempotent: false
+  - action_id: CW-042
+    name: "generate_report"
+    block: B2
+    family: CoworkActions250
+    description: "Gera relatório executivo com dados e análises"
+    stage: execute
+    idempotent: false
+  - action_id: CW-043
+    name: "generate_proposal"
+    block: B2
+    family: CoworkActions250
+    description: "Cria proposta comercial personalizada"
+    stage: execute
+    idempotent: false
+  - action_id: CW-044
+    name: "generate_contract"
+    block: B2
+    family: CoworkActions250
+    description: "Gera minutas de contratos e documentos legais"
+    stage: execute
+    idempotent: false
+  - action_id: CW-045
+    name: "generate_faq"
+    block: B2
+    family: CoworkActions250
+    description: "Cria FAQ completo a partir de produto ou serviço"
+    stage: execute
+    idempotent: false
+  - action_id: CW-046
+    name: "generate_persona"
+    block: B2
+    family: CoworkActions250
+    description: "Cria persona detalhada de cliente ideal"
+    stage: execute
+    idempotent: false
+  - action_id: CW-047
+    name: "generate_strategy_doc"
+    block: B2
+    family: CoworkActions250
+    description: "Gera documento estratégico com análise e plano"
+    stage: execute
+    idempotent: false
+  - action_id: CW-048
+    name: "generate_okr_set"
+    block: B2
+    family: CoworkActions250
+    description: "Define OKRs alinhados com objetivos do negócio"
+    stage: execute
+    idempotent: false
+  - action_id: CW-049
+    name: "generate_roadmap"
+    block: B2
+    family: CoworkActions250
+    description: "Cria roadmap de produto ou projeto"
+    stage: execute
+    idempotent: false
+  - action_id: CW-050
+    name: "generate_benchmark_report"
+    block: B2
+    family: CoworkActions250
+    description: "Gera relatório de benchmark comparativo"
+    stage: execute
+    idempotent: false
+
+  # ─── BLOCO 3: VALIDAÇÃO E QUALIDADE (CW-051..CW-075) ───
+  - action_id: CW-051
+    name: "validate_content_quality"
+    block: B3
+    family: CoworkActions250
+    description: "Valida qualidade do conteúdo gerado via Council"
+    stage: validation
+    idempotent: true
+  - action_id: CW-052
+    name: "validate_factual_accuracy"
+    block: B3
+    family: CoworkActions250
+    description: "Verifica acurácia factual — T1 No Evidence No Claim"
+    stage: validation
+    idempotent: true
+  - action_id: CW-053
+    name: "validate_no_hallucination"
+    block: B3
+    family: CoworkActions250
+    description: "Detecta alucinações via T1/T2 locks"
+    stage: validation
+    idempotent: true
+  - action_id: CW-054
+    name: "validate_ssot_compliance"
+    block: B3
+    family: CoworkActions250
+    description: "Verifica conformidade com SSOT canônico"
+    stage: validation
+    idempotent: true
+  - action_id: CW-055
+    name: "run_doctor_gate"
+    block: B3
+    family: CoworkActions250
+    description: "Executa Doctor Gate — fail-closed em caso de erro"
+    stage: validation
+    idempotent: true
+  - action_id: CW-056
+    name: "run_council_vote"
+    block: B3
+    family: CoworkActions250
+    description: "Submete output ao Council 100x3 para veredito"
+    stage: validation
+    idempotent: false
+  - action_id: CW-057
+    name: "run_bench90_eval"
+    block: B3
+    family: CoworkActions250
+    description: "Avalia output nos 90 benchmarks F/V/E"
+    stage: validation
+    idempotent: true
+  - action_id: CW-058
+    name: "run_no_holes_check"
+    block: B3
+    family: CoworkActions250
+    description: "Verifica ausência de gaps — No Holes policy"
+    stage: validation
+    idempotent: true
+  - action_id: CW-059
+    name: "run_pass_strict"
+    block: B3
+    family: CoworkActions250
+    description: "Executa PASS_STRICT completo no artefato"
+    stage: validation
+    idempotent: true
+  - action_id: CW-060
+    name: "run_secret_scan"
+    block: B3
+    family: CoworkActions250
+    description: "Escaneia artefato por secrets e tokens expostos"
+    stage: validation
+    idempotent: true
+  - action_id: CW-061
+    name: "run_placeholder_check"
+    block: B3
+    family: CoworkActions250
+    description: "Detecta placeholders TBD/FIXME/TODO no artefato"
+    stage: validation
+    idempotent: true
+  - action_id: CW-062
+    name: "validate_schema"
+    block: B3
+    family: CoworkActions250
+    description: "Valida artefato contra schema YAML/JSON canônico"
+    stage: validation
+    idempotent: true
+  - action_id: CW-063
+    name: "validate_idempotency"
+    block: B3
+    family: CoworkActions250
+    description: "Verifica se ação é idempotente antes de executar"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-064
+    name: "validate_diff_before_patch"
+    block: B3
+    family: CoworkActions250
+    description: "Exige diff revisado antes de aplicar patch"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-065
+    name: "validate_evidence_pack"
+    block: B3
+    family: CoworkActions250
+    description: "Valida evidence pack completo T1/T2/T3/T4"
+    stage: validation
+    idempotent: true
+  - action_id: CW-066
+    name: "run_regression_check"
+    block: B3
+    family: CoworkActions250
+    description: "Verifica regressões vs baseline de qualidade"
+    stage: validation
+    idempotent: true
+  - action_id: CW-067
+    name: "validate_tone_brand"
+    block: B3
+    family: CoworkActions250
+    description: "Verifica aderência ao tom e brand guidelines"
+    stage: validation
+    idempotent: true
+  - action_id: CW-068
+    name: "validate_completeness"
+    block: B3
+    family: CoworkActions250
+    description: "Verifica se output está completo e sem lacunas"
+    stage: validation
+    idempotent: true
+  - action_id: CW-069
+    name: "run_testsprite"
+    block: B3
+    family: CoworkActions250
+    description: "Executa TestSprite QA automatizado"
+    stage: validation
+    idempotent: true
+  - action_id: CW-070
+    name: "run_phdmat_eval"
+    block: B3
+    family: CoworkActions250
+    description: "Avalia profundidade técnica via PHDMAT"
+    stage: validation
+    idempotent: true
+  - action_id: CW-071
+    name: "validate_runtime_not_committed"
+    block: B3
+    family: CoworkActions250
+    description: "Garante que runtime não foi commitado no repo"
+    stage: validation
+    idempotent: true
+  - action_id: CW-072
+    name: "validate_no_raw_in_chat"
+    block: B3
+    family: CoworkActions250
+    description: "T2 — Raw data nunca em chat, apenas em evidências"
+    stage: validation
+    idempotent: true
+  - action_id: CW-073
+    name: "validate_score_nota10"
+    block: B3
+    family: CoworkActions250
+    description: "T3 — Nota 10 ou não passa — bloqueia abaixo do threshold"
+    stage: validation
+    idempotent: true
+  - action_id: CW-074
+    name: "validate_target_vs_measured"
+    block: B3
+    family: CoworkActions250
+    description: "T4 — Target vs Measured nunca misturados"
+    stage: validation
+    idempotent: true
+  - action_id: CW-075
+    name: "generate_validation_receipt"
+    block: B3
+    family: CoworkActions250
+    description: "Gera recibo de validação com score e timestamp"
+    stage: validation
+    idempotent: true
+
+  # ─── BLOCO 4: GITNANU E VERSIONAMENTO (CW-076..CW-100) ───
+  - action_id: CW-076
+    name: "git_status"
+    block: B4
+    family: CoworkActions250
+    description: "Verifica estado atual do repo GitNanu"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-077
+    name: "git_diff"
+    block: B4
+    family: CoworkActions250
+    description: "Exibe diff antes de qualquer operação de escrita"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-078
+    name: "git_add"
+    block: B4
+    family: CoworkActions250
+    description: "Adiciona arquivos ao staging area"
+    stage: execute
+    idempotent: false
+  - action_id: CW-079
+    name: "git_commit"
+    block: B4
+    family: CoworkActions250
+    description: "Commita com mensagem padronizada feat/fix/docs"
+    stage: execute
+    idempotent: false
+  - action_id: CW-080
+    name: "git_push_vps"
+    block: B4
+    family: CoworkActions250
+    description: "Push para GitHub via VPS (único writer canônico)"
+    stage: execute
+    idempotent: false
+  - action_id: CW-081
+    name: "git_pull"
+    block: B4
+    family: CoworkActions250
+    description: "Sincroniza com origin/main"
+    stage: sync
+    idempotent: true
+  - action_id: CW-082
+    name: "git_tag_latest"
+    block: B4
+    family: CoworkActions250
+    description: "Aplica tag v-latest após PASS_STRICT confirmado"
+    stage: teardown
+    idempotent: false
+  - action_id: CW-083
+    name: "git_bundle_sync"
+    block: B4
+    family: CoworkActions250
+    description: "Cria bundle para sync Mac <-> VPS via SCP"
+    stage: sync
+    idempotent: true
+  - action_id: CW-084
+    name: "git_verify_sha256"
+    block: B4
+    family: CoworkActions250
+    description: "Verifica SHA256 de arquivo nos dois endpoints"
+    stage: validation
+    idempotent: true
+  - action_id: CW-085
+    name: "git_protect_branch"
+    block: B4
+    family: CoworkActions250
+    description: "Verifica branch protection no main"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-086
+    name: "git_deploy_via_api"
+    block: B4
+    family: CoworkActions250
+    description: "Deploy de arquivo via GitHub API (PUT /contents)"
+    stage: execute
+    idempotent: false
+  - action_id: CW-087
+    name: "git_check_token_expiry"
+    block: B4
+    family: CoworkActions250
+    description: "Verifica expiração do PAT antes do deploy"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-088
+    name: "git_scan_coca_cola"
+    block: B4
+    family: CoworkActions250
+    description: "Escaneia repo por COCA-COLA antes do push"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-089
+    name: "git_abort_rebase"
+    block: B4
+    family: CoworkActions250
+    description: "Aborta rebase em conflito e reseta para origin"
+    stage: repair
+    idempotent: true
+  - action_id: CW-090
+    name: "git_reset_hard_origin"
+    block: B4
+    family: CoworkActions250
+    description: "Hard reset para origin/main em caso de divergência"
+    stage: repair
+    idempotent: true
+  - action_id: CW-091
+    name: "git_verify_single_writer"
+    block: B4
+    family: CoworkActions250
+    description: "Confirma que somente VPS faz push para main"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-092
+    name: "git_rate_limit_guard"
+    block: B4
+    family: CoworkActions250
+    description: "Controla rate limit de requests à API GitHub"
+    stage: execute
+    idempotent: true
+  - action_id: CW-093
+    name: "git_generate_lote_script"
+    block: B4
+    family: CoworkActions250
+    description: "Gera script de deploy em lote para múltiplos arquivos"
+    stage: build
+    idempotent: true
+  - action_id: CW-094
+    name: "git_validate_commit_message"
+    block: B4
+    family: CoworkActions250
+    description: "Valida formato da commit message (feat/fix/docs)"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-095
+    name: "git_check_ahead_behind"
+    block: B4
+    family: CoworkActions250
+    description: "Verifica AHEAD/BEHIND do branch local vs origin"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-096
+    name: "git_stash"
+    block: B4
+    family: CoworkActions250
+    description: "Stash de mudanças locais antes de pull"
+    stage: preflight
+    idempotent: false
+  - action_id: CW-097
+    name: "git_stash_pop"
+    block: B4
+    family: CoworkActions250
+    description: "Restaura stash após pull/merge"
+    stage: repair
+    idempotent: false
+  - action_id: CW-098
+    name: "git_generate_receipt"
+    block: B4
+    family: CoworkActions250
+    description: "Gera recibo de operação git com hash e timestamp"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-099
+    name: "git_lint_yaml"
+    block: B4
+    family: CoworkActions250
+    description: "Valida YAML dos arquivos antes de commit"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-100
+    name: "git_verify_no_conflict_markers"
+    block: B4
+    family: CoworkActions250
+    description: "Detecta markers de conflito em arquivos YAML/MD"
+    stage: preflight
+    idempotent: true
+
+  # ─── BLOCO 5: MCP E INTEGRAÇÕES (CW-101..CW-125) ───
+  - action_id: CW-101
+    name: "mcp_call"
+    block: B5
+    family: CoworkActions250
+    description: "Invoca MCP Elite com payload validado"
+    stage: execute
+    idempotent: false
+  - action_id: CW-102
+    name: "mcp_health_check"
+    block: B5
+    family: CoworkActions250
+    description: "Verifica disponibilidade dos MCPs Elite 25"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-103
+    name: "mcp_budget_check"
+    block: B5
+    family: CoworkActions250
+    description: "Verifica budget disponível antes de chamar MCP"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-104
+    name: "mcp_firewall_check"
+    block: B5
+    family: CoworkActions250
+    description: "Verifica MCP Firewall Policy antes de chamar"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-105
+    name: "mcp_retry_with_backoff"
+    block: B5
+    family: CoworkActions250
+    description: "Retry com backoff exponencial em falha de MCP"
+    stage: repair
+    idempotent: false
+  - action_id: CW-106
+    name: "mcp_log_call"
+    block: B5
+    family: CoworkActions250
+    description: "Registra chamada MCP no log de auditoria"
+    stage: execute
+    idempotent: true
+  - action_id: CW-107
+    name: "notion_write"
+    block: B5
+    family: CoworkActions250
+    description: "Escreve conteúdo no Notion via MCP"
+    stage: execute
+    idempotent: false
+  - action_id: CW-108
+    name: "notion_read"
+    block: B5
+    family: CoworkActions250
+    description: "Lê conteúdo do Notion via MCP"
+    stage: execute
+    idempotent: true
+  - action_id: CW-109
+    name: "gdrive_upload"
+    block: B5
+    family: CoworkActions250
+    description: "Upload de arquivo para Google Drive via MCP"
+    stage: execute
+    idempotent: false
+  - action_id: CW-110
+    name: "gdrive_read"
+    block: B5
+    family: CoworkActions250
+    description: "Lê arquivo do Google Drive via MCP"
+    stage: execute
+    idempotent: true
+  - action_id: CW-111
+    name: "gmail_send"
+    block: B5
+    family: CoworkActions250
+    description: "Envia email via Gmail MCP com aprovação prévia"
+    stage: execute
+    idempotent: false
+  - action_id: CW-112
+    name: "gmail_read"
+    block: B5
+    family: CoworkActions250
+    description: "Lê emails do Gmail via MCP"
+    stage: execute
+    idempotent: true
+  - action_id: CW-113
+    name: "slack_send"
+    block: B5
+    family: CoworkActions250
+    description: "Envia mensagem no Slack via MCP"
+    stage: execute
+    idempotent: false
+  - action_id: CW-114
+    name: "n8n_trigger"
+    block: B5
+    family: CoworkActions250
+    description: "Dispara workflow n8n via webhook"
+    stage: execute
+    idempotent: false
+  - action_id: CW-115
+    name: "n8n_status"
+    block: B5
+    family: CoworkActions250
+    description: "Verifica status de execução de workflow n8n"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-116
+    name: "supabase_query"
+    block: B5
+    family: CoworkActions250
+    description: "Executa query no Supabase via MCP"
+    stage: execute
+    idempotent: true
+  - action_id: CW-117
+    name: "supabase_insert"
+    block: B5
+    family: CoworkActions250
+    description: "Insere dados no Supabase via MCP"
+    stage: execute
+    idempotent: false
+  - action_id: CW-118
+    name: "perplexity_search"
+    block: B5
+    family: CoworkActions250
+    description: "Pesquisa com Perplexity para enriquecimento factual"
+    stage: execute
+    idempotent: true
+  - action_id: CW-119
+    name: "tavily_search"
+    block: B5
+    family: CoworkActions250
+    description: "Pesquisa com Tavily para evidências externas"
+    stage: execute
+    idempotent: true
+  - action_id: CW-120
+    name: "deepseek_reason"
+    block: B5
+    family: CoworkActions250
+    description: "Invoca DeepSeek para raciocínio complexo"
+    stage: execute
+    idempotent: false
+  - action_id: CW-121
+    name: "minimax_generate"
+    block: B5
+    family: CoworkActions250
+    description: "Gera conteúdo via MiniMax M2.1"
+    stage: execute
+    idempotent: false
+  - action_id: CW-122
+    name: "cloudflare_deploy"
+    block: B5
+    family: CoworkActions250
+    description: "Deploy de asset via Cloudflare CDN"
+    stage: execute
+    idempotent: false
+  - action_id: CW-123
+    name: "redis_cache_set"
+    block: B5
+    family: CoworkActions250
+    description: "Armazena resultado em cache Redis"
+    stage: execute
+    idempotent: false
+  - action_id: CW-124
+    name: "redis_cache_get"
+    block: B5
+    family: CoworkActions250
+    description: "Recupera resultado do cache Redis"
+    stage: execute
+    idempotent: true
+  - action_id: CW-125
+    name: "mcp_generate_call_receipt"
+    block: B5
+    family: CoworkActions250
+    description: "Gera recibo de chamada MCP com inputs/outputs"
+    stage: teardown
+    idempotent: true
+
+  # ─── BLOCO 6: BILLING E PAGAMENTOS (CW-126..CW-150) ───
+  - action_id: CW-126
+    name: "stripe_create_customer"
+    block: B6
+    family: CoworkActions250
+    description: "Cria customer no Stripe com idempotência"
+    stage: execute
+    idempotent: false
+  - action_id: CW-127
+    name: "stripe_create_subscription"
+    block: B6
+    family: CoworkActions250
+    description: "Cria assinatura com plano e trial configurados"
+    stage: execute
+    idempotent: false
+  - action_id: CW-128
+    name: "stripe_cancel_subscription"
+    block: B6
+    family: CoworkActions250
+    description: "Cancela assinatura com período de grace"
+    stage: execute
+    idempotent: false
+  - action_id: CW-129
+    name: "stripe_verify_webhook"
+    block: B6
+    family: CoworkActions250
+    description: "Verifica assinatura do webhook + raw body (PAY-018)"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-130
+    name: "stripe_dedupe_event"
+    block: B6
+    family: CoworkActions250
+    description: "Deduplica event_id para idempotência (PAY-020)"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-131
+    name: "stripe_idempotency_key"
+    block: B6
+    family: CoworkActions250
+    description: "Aplica chave de idempotência em operações Stripe"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-132
+    name: "stripe_smart_retry"
+    block: B6
+    family: CoworkActions250
+    description: "Smart Retries para recovery de receita (PAY-037)"
+    stage: repair
+    idempotent: false
+  - action_id: CW-133
+    name: "stripe_update_payment_method"
+    block: B6
+    family: CoworkActions250
+    description: "Atualiza método de pagamento do customer"
+    stage: execute
+    idempotent: false
+  - action_id: CW-134
+    name: "stripe_create_invoice"
+    block: B6
+    family: CoworkActions250
+    description: "Cria e finaliza invoice manualmente"
+    stage: execute
+    idempotent: false
+  - action_id: CW-135
+    name: "stripe_refund"
+    block: B6
+    family: CoworkActions250
+    description: "Processa reembolso total ou parcial"
+    stage: execute
+    idempotent: false
+  - action_id: CW-136
+    name: "hotmart_verify_purchase"
+    block: B6
+    family: CoworkActions250
+    description: "Verifica compra válida no Hotmart"
+    stage: validation
+    idempotent: true
+  - action_id: CW-137
+    name: "hotmart_webhook_handler"
+    block: B6
+    family: CoworkActions250
+    description: "Processa webhook Hotmart com dedupe"
+    stage: execute
+    idempotent: false
+  - action_id: CW-138
+    name: "billing_sync_supabase"
+    block: B6
+    family: CoworkActions250
+    description: "Sincroniza estado de billing no Supabase"
+    stage: execute
+    idempotent: false
+  - action_id: CW-139
+    name: "billing_check_quota"
+    block: B6
+    family: CoworkActions250
+    description: "Verifica quota do plano antes de executar ação"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-140
+    name: "billing_upgrade_plan"
+    block: B6
+    family: CoworkActions250
+    description: "Processa upgrade de plano com proration"
+    stage: execute
+    idempotent: false
+  - action_id: CW-141
+    name: "billing_downgrade_plan"
+    block: B6
+    family: CoworkActions250
+    description: "Processa downgrade ao fim do período"
+    stage: execute
+    idempotent: false
+  - action_id: CW-142
+    name: "billing_apply_credits"
+    block: B6
+    family: CoworkActions250
+    description: "Aplica Universal Credits na conta do usuário"
+    stage: execute
+    idempotent: false
+  - action_id: CW-143
+    name: "billing_check_dunning"
+    block: B6
+    family: CoworkActions250
+    description: "Verifica status de dunning em inadimplência"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-144
+    name: "billing_generate_receipt"
+    block: B6
+    family: CoworkActions250
+    description: "Gera recibo de transação para o cliente"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-145
+    name: "billing_revenue_report"
+    block: B6
+    family: CoworkActions250
+    description: "Gera relatório de receita por período"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-146
+    name: "billing_churn_analysis"
+    block: B6
+    family: CoworkActions250
+    description: "Analisa churn e motivos de cancelamento"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-147
+    name: "billing_mrr_calculation"
+    block: B6
+    family: CoworkActions250
+    description: "Calcula MRR e ARR atualizados"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-148
+    name: "billing_tax_calculation"
+    block: B6
+    family: CoworkActions250
+    description: "Calcula impostos conforme região do cliente"
+    stage: execute
+    idempotent: true
+  - action_id: CW-149
+    name: "billing_coupon_apply"
+    block: B6
+    family: CoworkActions250
+    description: "Aplica cupom de desconto com validação"
+    stage: execute
+    idempotent: false
+  - action_id: CW-150
+    name: "billing_trial_conversion"
+    block: B6
+    family: CoworkActions250
+    description: "Converte trial em assinatura paga"
+    stage: execute
+    idempotent: false
+
+  # ─── BLOCO 7: DEPLOY E INFRAESTRUTURA (CW-151..CW-175) ───
+  - action_id: CW-151
+    name: "deploy_preflight"
+    block: B7
+    family: CoworkActions250
+    description: "Verifica pré-condições antes de qualquer deploy"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-152
+    name: "deploy_to_cloudflare"
+    block: B7
+    family: CoworkActions250
+    description: "Deploy de Worker ou Pages no Cloudflare"
+    stage: execute
+    idempotent: false
+  - action_id: CW-153
+    name: "deploy_to_vps"
+    block: B7
+    family: CoworkActions250
+    description: "Deploy de serviço na VPS Hostinger via SSH"
+    stage: execute
+    idempotent: false
+  - action_id: CW-154
+    name: "deploy_smoke_test"
+    block: B7
+    family: CoworkActions250
+    description: "Executa smoke test pós-deploy"
+    stage: validation
+    idempotent: true
+  - action_id: CW-155
+    name: "deploy_rollback"
+    block: B7
+    family: CoworkActions250
+    description: "Rollback para versão anterior em caso de falha"
+    stage: repair
+    idempotent: false
+  - action_id: CW-156
+    name: "deploy_generate_receipt"
+    block: B7
+    family: CoworkActions250
+    description: "Gera recibo de deploy com hash e timestamp"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-157
+    name: "infra_health_check"
+    block: B7
+    family: CoworkActions250
+    description: "Verifica saúde de todos os serviços de infraestrutura"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-158
+    name: "infra_scale_up"
+    block: B7
+    family: CoworkActions250
+    description: "Escala recursos de infraestrutura sob demanda"
+    stage: execute
+    idempotent: false
+  - action_id: CW-159
+    name: "infra_backup"
+    block: B7
+    family: CoworkActions250
+    description: "Executa backup de dados críticos"
+    stage: maintenance
+    idempotent: true
+  - action_id: CW-160
+    name: "infra_restore"
+    block: B7
+    family: CoworkActions250
+    description: "Restaura dados de backup validado"
+    stage: repair
+    idempotent: false
+  - action_id: CW-161
+    name: "ci_run_gate"
+    block: B7
+    family: CoworkActions250
+    description: "Executa gate CI completo via GitHub Actions"
+    stage: validation
+    idempotent: true
+  - action_id: CW-162
+    name: "ci_trigger_workflow"
+    block: B7
+    family: CoworkActions250
+    description: "Dispara workflow específico no GitHub Actions"
+    stage: execute
+    idempotent: false
+  - action_id: CW-163
+    name: "ci_check_status"
+    block: B7
+    family: CoworkActions250
+    description: "Verifica status de execução do CI"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-164
+    name: "monitor_alert"
+    block: B7
+    family: CoworkActions250
+    description: "Dispara alerta de monitoramento via Slack/email"
+    stage: execute
+    idempotent: false
+  - action_id: CW-165
+    name: "monitor_check_latency"
+    block: B7
+    family: CoworkActions250
+    description: "Verifica latência dos endpoints críticos"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-166
+    name: "monitor_check_error_rate"
+    block: B7
+    family: CoworkActions250
+    description: "Verifica taxa de erro nos últimos N minutos"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-167
+    name: "security_scan"
+    block: B7
+    family: CoworkActions250
+    description: "Escaneia dependências por vulnerabilidades"
+    stage: validation
+    idempotent: true
+  - action_id: CW-168
+    name: "security_rotate_secrets"
+    block: B7
+    family: CoworkActions250
+    description: "Rotaciona secrets e atualiza referências"
+    stage: maintenance
+    idempotent: false
+  - action_id: CW-169
+    name: "db_migrate"
+    block: B7
+    family: CoworkActions250
+    description: "Executa migration de banco com rollback preparado"
+    stage: execute
+    idempotent: false
+  - action_id: CW-170
+    name: "db_seed"
+    block: B7
+    family: CoworkActions250
+    description: "Popula banco com dados seed canônicos"
+    stage: execute
+    idempotent: false
+  - action_id: CW-171
+    name: "cdn_purge_cache"
+    block: B7
+    family: CoworkActions250
+    description: "Purga cache CDN pós-deploy"
+    stage: execute
+    idempotent: true
+  - action_id: CW-172
+    name: "cdn_warm_cache"
+    block: B7
+    family: CoworkActions250
+    description: "Pré-aquece cache CDN em URLs críticas"
+    stage: execute
+    idempotent: true
+  - action_id: CW-173
+    name: "deploy_feature_flag"
+    block: B7
+    family: CoworkActions250
+    description: "Ativa/desativa feature flag sem redeploy"
+    stage: execute
+    idempotent: false
+  - action_id: CW-174
+    name: "deploy_canary"
+    block: B7
+    family: CoworkActions250
+    description: "Deploy canary com percentual de tráfego controlado"
+    stage: execute
+    idempotent: false
+  - action_id: CW-175
+    name: "deploy_blue_green"
+    block: B7
+    family: CoworkActions250
+    description: "Deploy blue-green com switch atômico"
+    stage: execute
+    idempotent: false
+
+  # ─── BLOCO 8: ANALYTICS E REPORTING (CW-176..CW-200) ───
+  - action_id: CW-176
+    name: "analytics_track_event"
+    block: B8
+    family: CoworkActions250
+    description: "Registra evento de analytics com contexto"
+    stage: execute
+    idempotent: false
+  - action_id: CW-177
+    name: "analytics_generate_report"
+    block: B8
+    family: CoworkActions250
+    description: "Gera relatório de analytics por período"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-178
+    name: "analytics_kpi_dashboard"
+    block: B8
+    family: CoworkActions250
+    description: "Atualiza dashboard de KPIs em tempo real"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-179
+    name: "analytics_cohort_analysis"
+    block: B8
+    family: CoworkActions250
+    description: "Analisa coortes de usuários por período"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-180
+    name: "analytics_funnel_analysis"
+    block: B8
+    family: CoworkActions250
+    description: "Analisa conversão em cada etapa do funil"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-181
+    name: "analytics_ab_test_result"
+    block: B8
+    family: CoworkActions250
+    description: "Consolida resultado de teste A/B com significância"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-182
+    name: "analytics_ltv_calculation"
+    block: B8
+    family: CoworkActions250
+    description: "Calcula LTV por segmento de cliente"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-183
+    name: "analytics_cac_calculation"
+    block: B8
+    family: CoworkActions250
+    description: "Calcula CAC por canal de aquisição"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-184
+    name: "analytics_nps_report"
+    block: B8
+    family: CoworkActions250
+    description: "Consolida respostas NPS e calcula score"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-185
+    name: "analytics_content_performance"
+    block: B8
+    family: CoworkActions250
+    description: "Analisa performance de conteúdo por canal"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-186
+    name: "analytics_model_cost_report"
+    block: B8
+    family: CoworkActions250
+    description: "Relatório de custo por modelo LLM"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-187
+    name: "analytics_shadow_band_report"
+    block: B8
+    family: CoworkActions250
+    description: "Relatório de uso da shadow band 0.3-0.6%"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-188
+    name: "analytics_bench90_score"
+    block: B8
+    family: CoworkActions250
+    description: "Calcula score BENCH90 atual do sistema"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-189
+    name: "analytics_error_rate_report"
+    block: B8
+    family: CoworkActions250
+    description: "Relatório de taxa de erro por studio"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-190
+    name: "analytics_latency_report"
+    block: B8
+    family: CoworkActions250
+    description: "Relatório de latência P50/P90/P99"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-191
+    name: "analytics_studio_usage"
+    block: B8
+    family: CoworkActions250
+    description: "Analisa uso por studio S00-S51"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-192
+    name: "analytics_plan_distribution"
+    block: B8
+    family: CoworkActions250
+    description: "Distribuição de usuários por plano de preço"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-193
+    name: "analytics_forecast"
+    block: B8
+    family: CoworkActions250
+    description: "Gera previsão de receita e crescimento"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-194
+    name: "analytics_anomaly_detect"
+    block: B8
+    family: CoworkActions250
+    description: "Detecta anomalias em métricas de sistema"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-195
+    name: "analytics_export_csv"
+    block: B8
+    family: CoworkActions250
+    description: "Exporta dados de analytics em CSV"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-196
+    name: "analytics_export_pdf"
+    block: B8
+    family: CoworkActions250
+    description: "Exporta relatório em PDF formatado"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-197
+    name: "analytics_schedule_report"
+    block: B8
+    family: CoworkActions250
+    description: "Agenda envio automático de relatório"
+    stage: execute
+    idempotent: false
+  - action_id: CW-198
+    name: "analytics_benchmark_compare"
+    block: B8
+    family: CoworkActions250
+    description: "Compara métricas atuais vs benchmark histórico"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-199
+    name: "analytics_model_routing_report"
+    block: B8
+    family: CoworkActions250
+    description: "Relatório de roteamento L0/L1/L2/L3"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-200
+    name: "analytics_generate_executive_summary"
+    block: B8
+    family: CoworkActions250
+    description: "Gera sumário executivo consolidado"
+    stage: inspection
+    idempotent: true
+
+  # ─── BLOCO 9: SUBAGENTES E ORQUESTRAÇÃO (CW-201..CW-225) ───
+  - action_id: CW-201
+    name: "subagent_spawn"
+    block: B9
+    family: CoworkActions250
+    description: "Cria subagente especializado via pipeline 60-5-30"
+    stage: execute
+    idempotent: false
+  - action_id: CW-202
+    name: "subagent_assign_task"
+    block: B9
+    family: CoworkActions250
+    description: "Atribui tarefa a subagente com DoD explícito"
+    stage: execute
+    idempotent: false
+  - action_id: CW-203
+    name: "subagent_collect_result"
+    block: B9
+    family: CoworkActions250
+    description: "Coleta resultado de subagente com validação"
+    stage: execute
+    idempotent: true
+  - action_id: CW-204
+    name: "subagent_terminate"
+    block: B9
+    family: CoworkActions250
+    description: "Termina subagente após conclusão da tarefa"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-205
+    name: "subagent_escalate"
+    block: B9
+    family: CoworkActions250
+    description: "Escala resultado para PrM em caso de dúvida"
+    stage: repair
+    idempotent: false
+  - action_id: CW-206
+    name: "council_submit"
+    block: B9
+    family: CoworkActions250
+    description: "Submete artefato ao Council 100x3"
+    stage: validation
+    idempotent: false
+  - action_id: CW-207
+    name: "council_collect_votes"
+    block: B9
+    family: CoworkActions250
+    description: "Coleta votos J1/J2/J3 do Council"
+    stage: validation
+    idempotent: true
+  - action_id: CW-208
+    name: "council_apply_verdict"
+    block: B9
+    family: CoworkActions250
+    description: "Aplica veredito do Council ao artefato"
+    stage: execute
+    idempotent: false
+  - action_id: CW-209
+    name: "antigravity_trigger"
+    block: B9
+    family: CoworkActions250
+    description: "Dispara job no Antigravity n8n"
+    stage: execute
+    idempotent: false
+  - action_id: CW-210
+    name: "antigravity_poll_status"
+    block: B9
+    family: CoworkActions250
+    description: "Consulta status de job no Antigravity"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-211
+    name: "antigravity_collect_result"
+    block: B9
+    family: CoworkActions250
+    description: "Coleta resultado do job Antigravity"
+    stage: execute
+    idempotent: true
+  - action_id: CW-212
+    name: "secrets_guard"
+    block: B9
+    family: CoworkActions250
+    description: "Sanitiza output removendo secrets antes de exibir"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-213
+    name: "coca_guard"
+    block: B9
+    family: CoworkActions250
+    description: "COCA-COLA guard — bloqueia exfil de dados privados"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-214
+    name: "ralph_loop"
+    block: B9
+    family: CoworkActions250
+    description: "Loop de refinamento RALPH até score mínimo"
+    stage: validation
+    idempotent: false
+  - action_id: CW-215
+    name: "serena_compress"
+    block: B9
+    family: CoworkActions250
+    description: "Comprime contexto com SERENA always-on"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-216
+    name: "agentzero_preflight"
+    block: B9
+    family: CoworkActions250
+    description: "Executa AgentZero Preflight antes de ação crítica"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-217
+    name: "budget_guard_check"
+    block: B9
+    family: CoworkActions250
+    description: "BudgetGuard — bloqueia se custo excede hard cap"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-218
+    name: "kill_switch_check"
+    block: B9
+    family: CoworkActions250
+    description: "Verifica Kill Switch antes de operação irreversível"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-219
+    name: "abort_stop"
+    block: B9
+    family: CoworkActions250
+    description: "Abort/Stop real — interrompe pipeline imediatamente"
+    stage: repair
+    idempotent: true
+  - action_id: CW-220
+    name: "quarantine_output"
+    block: B9
+    family: CoworkActions250
+    description: "Isola output suspeito para revisão manual"
+    stage: repair
+    idempotent: true
+  - action_id: CW-221
+    name: "orchestrate_pipeline"
+    block: B9
+    family: CoworkActions250
+    description: "Orquestra pipeline multi-step com checkpoints"
+    stage: execute
+    idempotent: false
+  - action_id: CW-222
+    name: "router_select_model"
+    block: B9
+    family: CoworkActions250
+    description: "Router V6 seleciona modelo via Thompson Sampling"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-223
+    name: "router_update_bandit"
+    block: B9
+    family: CoworkActions250
+    description: "Atualiza prior do bandit com resultado da chamada"
+    stage: teardown
+    idempotent: false
+  - action_id: CW-224
+    name: "autocura_trigger"
+    block: B9
+    family: CoworkActions250
+    description: "Dispara auto-cura CURA-1C em falha detectada"
+    stage: repair
+    idempotent: false
+  - action_id: CW-225
+    name: "generate_pipeline_receipt"
+    block: B9
+    family: CoworkActions250
+    description: "Gera recibo completo do pipeline executado"
+    stage: teardown
+    idempotent: true
+
+  # ─── BLOCO 10: MARKETPLACE E PRODUÇÃO (CW-226..CW-250) ───
+  - action_id: CW-226
+    name: "marketplace_list_product"
+    block: B10
+    family: CoworkActions250
+    description: "Publica produto no marketplace BrainboxIA"
+    stage: execute
+    idempotent: false
+  - action_id: CW-227
+    name: "marketplace_update_product"
+    block: B10
+    family: CoworkActions250
+    description: "Atualiza produto existente no marketplace"
+    stage: execute
+    idempotent: false
+  - action_id: CW-228
+    name: "marketplace_unpublish"
+    block: B10
+    family: CoworkActions250
+    description: "Remove produto do marketplace"
+    stage: execute
+    idempotent: false
+  - action_id: CW-229
+    name: "marketplace_search"
+    block: B10
+    family: CoworkActions250
+    description: "Busca produtos no marketplace com filtros"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-230
+    name: "marketplace_purchase"
+    block: B10
+    family: CoworkActions250
+    description: "Processa compra de produto no marketplace"
+    stage: execute
+    idempotent: false
+  - action_id: CW-231
+    name: "launch_preflight"
+    block: B10
+    family: CoworkActions250
+    description: "Checklist completo pré-lançamento de produto"
+    stage: preflight
+    idempotent: true
+  - action_id: CW-232
+    name: "launch_execute"
+    block: B10
+    family: CoworkActions250
+    description: "Executa lançamento com sequência de ativações"
+    stage: execute
+    idempotent: false
+  - action_id: CW-233
+    name: "launch_monitor"
+    block: B10
+    family: CoworkActions250
+    description: "Monitora métricas nas primeiras 24h de lançamento"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-234
+    name: "launch_rollback"
+    block: B10
+    family: CoworkActions250
+    description: "Reverte lançamento em caso de falha crítica"
+    stage: repair
+    idempotent: false
+  - action_id: CW-235
+    name: "launch_generate_receipt"
+    block: B10
+    family: CoworkActions250
+    description: "Gera recibo de lançamento com métricas iniciais"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-236
+    name: "onboarding_start"
+    block: B10
+    family: CoworkActions250
+    description: "Inicia fluxo de onboarding para novo usuário"
+    stage: execute
+    idempotent: false
+  - action_id: CW-237
+    name: "onboarding_complete_step"
+    block: B10
+    family: CoworkActions250
+    description: "Marca etapa de onboarding como concluída"
+    stage: execute
+    idempotent: false
+  - action_id: CW-238
+    name: "onboarding_send_welcome"
+    block: B10
+    family: CoworkActions250
+    description: "Envia email de boas-vindas com próximos passos"
+    stage: execute
+    idempotent: false
+  - action_id: CW-239
+    name: "support_create_ticket"
+    block: B10
+    family: CoworkActions250
+    description: "Cria ticket de suporte com contexto completo"
+    stage: execute
+    idempotent: false
+  - action_id: CW-240
+    name: "support_resolve_ticket"
+    block: B10
+    family: CoworkActions250
+    description: "Resolve ticket com solução documentada"
+    stage: execute
+    idempotent: false
+  - action_id: CW-241
+    name: "support_escalate_ticket"
+    block: B10
+    family: CoworkActions250
+    description: "Escala ticket para nível superior"
+    stage: execute
+    idempotent: false
+  - action_id: CW-242
+    name: "affiliate_register"
+    block: B10
+    family: CoworkActions250
+    description: "Registra afiliado com código único"
+    stage: execute
+    idempotent: false
+  - action_id: CW-243
+    name: "affiliate_calculate_commission"
+    block: B10
+    family: CoworkActions250
+    description: "Calcula comissão de afiliado por período"
+    stage: inspection
+    idempotent: true
+  - action_id: CW-244
+    name: "affiliate_payout"
+    block: B10
+    family: CoworkActions250
+    description: "Processa pagamento de comissão para afiliado"
+    stage: execute
+    idempotent: false
+  - action_id: CW-245
+    name: "community_post"
+    block: B10
+    family: CoworkActions250
+    description: "Publica conteúdo na comunidade com moderação"
+    stage: execute
+    idempotent: false
+  - action_id: CW-246
+    name: "community_moderate"
+    block: B10
+    family: CoworkActions250
+    description: "Modera conteúdo da comunidade via AI"
+    stage: execute
+    idempotent: false
+  - action_id: CW-247
+    name: "notification_send"
+    block: B10
+    family: CoworkActions250
+    description: "Envia notificação push/email/slack ao usuário"
+    stage: execute
+    idempotent: false
+  - action_id: CW-248
+    name: "user_segment_update"
+    block: B10
+    family: CoworkActions250
+    description: "Atualiza segmento do usuário baseado em comportamento"
+    stage: execute
+    idempotent: false
+  - action_id: CW-249
+    name: "generate_end_of_day_report"
+    block: B10
+    family: CoworkActions250
+    description: "Relatório diário consolidado de todas as operações"
+    stage: teardown
+    idempotent: true
+  - action_id: CW-250
+    name: "generate_session_final_receipt"
+    block: B10
+    family: CoworkActions250
+    description: "Recibo final da sessão — encerra pipeline canônico"
+    stage: teardown
+    idempotent: true
+
+  # ─── MULTIBOT55 BRIDGE (MB-001..MB-040) ───
+  - action_id: MB-001
+    name: "multibot_route_to_specialist"
+    family: Multibot55Bridge
+    description: "Roteia tarefa para bot especialista por domínio"
+    stage: execute
+    idempotent: false
+  - action_id: MB-002
+    name: "multibot_aggregate_results"
+    family: Multibot55Bridge
+    description: "Agrega resultados de múltiplos bots especializados"
+    stage: execute
+    idempotent: true
+  - action_id: MB-003
+    name: "multibot_consensus"
+    family: Multibot55Bridge
+    description: "Gera consenso entre respostas divergentes de bots"
+    stage: validation
+    idempotent: true
+  - action_id: MB-004
+    name: "multibot_session_init"
+    family: Multibot55Bridge
+    description: "Inicializa sessão multibot com contexto compartilhado"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-005
+    name: "multibot_session_close"
+    family: Multibot55Bridge
+    description: "Fecha sessão multibot e consolida memória"
+    stage: teardown
+    idempotent: true
+  - action_id: MB-006
+    name: "multibot_handoff"
+    family: Multibot55Bridge
+    description: "Transfere contexto entre bots com receipt"
+    stage: execute
+    idempotent: false
+  - action_id: MB-007
+    name: "multibot_parallel_execute"
+    family: Multibot55Bridge
+    description: "Executa múltiplas tarefas em paralelo via bots"
+    stage: execute
+    idempotent: false
+  - action_id: MB-008
+    name: "multibot_sync_state"
+    family: Multibot55Bridge
+    description: "Sincroniza estado entre bots ativos"
+    stage: sync
+    idempotent: true
+  - action_id: MB-009
+    name: "multibot_error_recovery"
+    family: Multibot55Bridge
+    description: "Recupera bot falho e redireciona tarefa"
+    stage: repair
+    idempotent: false
+  - action_id: MB-010
+    name: "multibot_load_balance"
+    family: Multibot55Bridge
+    description: "Balanceia carga entre bots disponíveis"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-011
+    name: "multibot_rate_limit"
+    family: Multibot55Bridge
+    description: "Controla rate limit global de chamadas multibot"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-012
+    name: "multibot_audit_log"
+    family: Multibot55Bridge
+    description: "Registra todas as ações multibot para auditoria"
+    stage: execute
+    idempotent: true
+  - action_id: MB-013
+    name: "multibot_cost_track"
+    family: Multibot55Bridge
+    description: "Rastreia custo total da sessão multibot"
+    stage: inspection
+    idempotent: true
+  - action_id: MB-014
+    name: "multibot_inject_context"
+    family: Multibot55Bridge
+    description: "Injeta contexto SSOT em bot recém-inicializado"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-015
+    name: "multibot_validate_output"
+    family: Multibot55Bridge
+    description: "Valida output de bot antes de aceitar resultado"
+    stage: validation
+    idempotent: true
+  - action_id: MB-016
+    name: "multibot_generate_receipt"
+    family: Multibot55Bridge
+    description: "Gera recibo completo da sessão multibot"
+    stage: teardown
+    idempotent: true
+  - action_id: MB-017
+    name: "multibot_prewarm"
+    family: Multibot55Bridge
+    description: "Pré-aquece bots críticos antes de pico de uso"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-018
+    name: "multibot_health_check"
+    family: Multibot55Bridge
+    description: "Verifica saúde de todos os bots do pool"
+    stage: inspection
+    idempotent: true
+  - action_id: MB-019
+    name: "multibot_context_compress"
+    family: Multibot55Bridge
+    description: "Comprime contexto compartilhado entre bots"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-020
+    name: "multibot_timeout_guard"
+    family: Multibot55Bridge
+    description: "Interrompe bot que excedeu timeout configurado"
+    stage: repair
+    idempotent: true
+  - action_id: MB-021
+    name: "multibot_spawn_specialist"
+    family: Multibot55Bridge
+    description: "Cria bot especialista sob demanda para domínio"
+    stage: execute
+    idempotent: false
+  - action_id: MB-022
+    name: "multibot_terminate_specialist"
+    family: Multibot55Bridge
+    description: "Encerra bot especialista após tarefa concluída"
+    stage: teardown
+    idempotent: true
+  - action_id: MB-023
+    name: "multibot_escalate_to_prm"
+    family: Multibot55Bridge
+    description: "Escala decisão crítica para PrM"
+    stage: repair
+    idempotent: false
+  - action_id: MB-024
+    name: "multibot_quorum_check"
+    family: Multibot55Bridge
+    description: "Verifica quorum de aprovação entre bots"
+    stage: validation
+    idempotent: true
+  - action_id: MB-025
+    name: "multibot_merge_outputs"
+    family: Multibot55Bridge
+    description: "Mescla outputs de múltiplos bots em resultado único"
+    stage: execute
+    idempotent: true
+  - action_id: MB-026
+    name: "multibot_dedupe_results"
+    family: Multibot55Bridge
+    description: "Remove duplicatas entre resultados de bots"
+    stage: execute
+    idempotent: true
+  - action_id: MB-027
+    name: "multibot_rank_results"
+    family: Multibot55Bridge
+    description: "Ranqueia resultados por score de qualidade"
+    stage: validation
+    idempotent: true
+  - action_id: MB-028
+    name: "multibot_format_output"
+    family: Multibot55Bridge
+    description: "Formata output final de acordo com template"
+    stage: execute
+    idempotent: true
+  - action_id: MB-029
+    name: "multibot_cache_result"
+    family: Multibot55Bridge
+    description: "Armazena resultado em cache para reuso"
+    stage: teardown
+    idempotent: false
+  - action_id: MB-030
+    name: "multibot_retrieve_cached"
+    family: Multibot55Bridge
+    description: "Recupera resultado cacheado se disponível"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-031
+    name: "multibot_pipeline_checkpoint"
+    family: Multibot55Bridge
+    description: "Cria checkpoint de pipeline para retomada"
+    stage: execute
+    idempotent: true
+  - action_id: MB-032
+    name: "multibot_resume_from_checkpoint"
+    family: Multibot55Bridge
+    description: "Retoma pipeline a partir de checkpoint"
+    stage: repair
+    idempotent: false
+  - action_id: MB-033
+    name: "multibot_inject_evidence"
+    family: Multibot55Bridge
+    description: "Injeta evidence pack em bot para validação T1"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-034
+    name: "multibot_strip_sensitive"
+    family: Multibot55Bridge
+    description: "Remove dados sensíveis de outputs antes de log"
+    stage: teardown
+    idempotent: true
+  - action_id: MB-035
+    name: "multibot_notify_completion"
+    family: Multibot55Bridge
+    description: "Notifica conclusão de tarefa ao orquestrador"
+    stage: teardown
+    idempotent: false
+  - action_id: MB-036
+    name: "multibot_retry_failed"
+    family: Multibot55Bridge
+    description: "Retenta tarefa falhada com bot alternativo"
+    stage: repair
+    idempotent: false
+  - action_id: MB-037
+    name: "multibot_assign_owner"
+    family: Multibot55Bridge
+    description: "Atribui owner obrigatório à tarefa multibot"
+    stage: preflight
+    idempotent: true
+  - action_id: MB-038
+    name: "multibot_check_dod"
+    family: Multibot55Bridge
+    description: "Verifica Definition of Done antes de aceitar resultado"
+    stage: validation
+    idempotent: true
+  - action_id: MB-039
+    name: "multibot_session_evidence"
+    family: Multibot55Bridge
+    description: "Gera evidence pack da sessão multibot"
+    stage: teardown
+    idempotent: true
+  - action_id: MB-040
+    name: "multibot_final_receipt"
+    family: Multibot55Bridge
+    description: "Recibo final multibot com todas as ações e scores"
+    stage: teardown
+    idempotent: true
+
+  # ─── STRIPEOPS80 — PAYMENTOPS (PAY-001..PAY-040) ───
+  - action_id: PAY-001
+    name: "payment_init_customer"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Inicializa customer com metadados completos"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-002
+    name: "payment_attach_method"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Anexa método de pagamento ao customer"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-003
+    name: "payment_set_default_method"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Define método padrão de pagamento"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-004
+    name: "payment_detach_method"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Remove método de pagamento do customer"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-005
+    name: "payment_create_intent"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cria PaymentIntent com valor e currency"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-006
+    name: "payment_confirm_intent"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Confirma PaymentIntent após autenticação"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-007
+    name: "payment_cancel_intent"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cancela PaymentIntent antes da captura"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-008
+    name: "payment_idempotency_key"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Aplica Idempotency-Key em operações de pagamento"
+    stage: preflight
+    idempotent: true
+    critical: true
+  - action_id: PAY-009
+    name: "payment_3ds_handle"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Gerencia fluxo 3D Secure de autenticação"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-010
+    name: "payment_refund_full"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Reembolso total do pagamento"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-011
+    name: "payment_refund_partial"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Reembolso parcial com valor específico"
+    stage: execute
+    idempotent: false
+    critical: true
+  - action_id: PAY-012
+    name: "payment_dispute_handle"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Gerencia disputa/chargeback com evidências"
+    stage: repair
+    idempotent: false
+  - action_id: PAY-013
+    name: "payment_capture_manual"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Captura manual de pagamento autorizado"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-014
+    name: "payment_list_transactions"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Lista transações por período e filtro"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-015
+    name: "payment_export_report"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Exporta relatório de pagamentos em CSV"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-016
+    name: "payment_tax_collect"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Coleta tax automático via Stripe Tax"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-017
+    name: "payment_setup_intent"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cria SetupIntent para salvar método futuro"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-018
+    name: "payment_verify_webhook"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Verifica assinatura webhook + raw body obrigatório"
+    stage: preflight
+    idempotent: true
+    critical: true
+  - action_id: PAY-019
+    name: "payment_webhook_route"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Roteia evento webhook para handler correto"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-020
+    name: "payment_dedupe_event"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Deduplica event_id — idempotência de webhook"
+    stage: preflight
+    idempotent: true
+    critical: true
+  - action_id: PAY-021
+    name: "payment_link_create"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cria Payment Link para checkout sem código"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-022
+    name: "payment_checkout_session"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cria Checkout Session com produtos e preços"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-023
+    name: "payment_portal_session"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cria Customer Portal Session para self-service"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-024
+    name: "payment_coupon_create"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cria cupom de desconto percentual ou fixo"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-025
+    name: "payment_promotion_code"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Cria código de promoção aplicável no checkout"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-026
+    name: "payment_validate_card"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Valida cartão sem cobrança via microauthorization"
+    stage: validation
+    idempotent: true
+  - action_id: PAY-027
+    name: "payment_fraud_check"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Verifica score de fraude via Stripe Radar"
+    stage: preflight
+    idempotent: true
+  - action_id: PAY-028
+    name: "payment_reconcile"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Reconcilia pagamentos com registros internos"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-029
+    name: "payment_payout_schedule"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Configura agenda de repasse para conta bancária"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-030
+    name: "payment_bank_transfer"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Processa transferência bancária direta"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-031
+    name: "payment_multi_currency"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Processa pagamento em múltiplas moedas"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-032
+    name: "payment_pix_generate"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Gera QR Code PIX para pagamento BR"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-033
+    name: "payment_boleto_generate"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Gera boleto bancário para pagamento BR"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-034
+    name: "payment_split_payment"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Divide pagamento entre múltiplas contas"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-035
+    name: "payment_fee_calculation"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Calcula taxas da plataforma por transação"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-036
+    name: "payment_revenue_recognize"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Reconhece receita conforme GAAP/IFRS"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-037
+    name: "payment_smart_retry"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Smart Retries automático para recovery de receita"
+    stage: repair
+    idempotent: false
+    critical: true
+  - action_id: PAY-038
+    name: "payment_dunning_sequence"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Sequência de dunning para inadimplência"
+    stage: repair
+    idempotent: false
+  - action_id: PAY-039
+    name: "payment_pause_subscription"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Pausa assinatura mantendo dados de pagamento"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-040
+    name: "payment_generate_receipt"
+    block: PaymentOps
+    family: StripeOps80
+    description: "Gera recibo de pagamento para cliente"
+    stage: teardown
+    idempotent: true
+
+  # ─── STRIPEOPS80 — BILLINGOPS (PAY-041..PAY-080) ───
+  - action_id: PAY-041
+    name: "billing_create_product"
+    block: BillingOps
+    family: StripeOps80
+    description: "Cria produto no Stripe com metadados"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-042
+    name: "billing_create_price"
+    block: BillingOps
+    family: StripeOps80
+    description: "Cria preço recorrente ou one-time"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-043
+    name: "billing_archive_price"
+    block: BillingOps
+    family: StripeOps80
+    description: "Arquiva preço obsoleto sem deletar histórico"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-044
+    name: "billing_create_meter"
+    block: BillingOps
+    family: StripeOps80
+    description: "Cria meter para cobrança por uso (usage-based)"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-045
+    name: "billing_report_usage"
+    block: BillingOps
+    family: StripeOps80
+    description: "Reporta uso do meter para faturamento"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-046
+    name: "billing_create_trial"
+    block: BillingOps
+    family: StripeOps80
+    description: "Cria trial com período e conversão configurados"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-047
+    name: "billing_extend_trial"
+    block: BillingOps
+    family: StripeOps80
+    description: "Estende período de trial de forma controlada"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-048
+    name: "billing_convert_trial"
+    block: BillingOps
+    family: StripeOps80
+    description: "Converte trial em assinatura paga"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-049
+    name: "billing_proration_calculate"
+    block: BillingOps
+    family: StripeOps80
+    description: "Calcula proration em mudança de plano"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-050
+    name: "billing_schedule_change"
+    block: BillingOps
+    family: StripeOps80
+    description: "Agenda mudança de plano para próximo ciclo"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-051
+    name: "billing_invoice_list"
+    block: BillingOps
+    family: StripeOps80
+    description: "Lista invoices do customer por período"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-052
+    name: "billing_invoice_download"
+    block: BillingOps
+    family: StripeOps80
+    description: "Gera link de download de invoice PDF"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-053
+    name: "billing_invoice_void"
+    block: BillingOps
+    family: StripeOps80
+    description: "Anula invoice não pago"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-054
+    name: "billing_invoice_finalize"
+    block: BillingOps
+    family: StripeOps80
+    description: "Finaliza invoice e envia para pagamento"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-055
+    name: "billing_credit_note"
+    block: BillingOps
+    family: StripeOps80
+    description: "Emite nota de crédito para cliente"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-056
+    name: "billing_balance_adjust"
+    block: BillingOps
+    family: StripeOps80
+    description: "Ajusta balance do customer no Stripe"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-057
+    name: "billing_tax_id_add"
+    block: BillingOps
+    family: StripeOps80
+    description: "Adiciona Tax ID (CPF/CNPJ) ao customer"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-058
+    name: "billing_tax_exemption"
+    block: BillingOps
+    family: StripeOps80
+    description: "Aplica isenção fiscal ao customer"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-059
+    name: "billing_mrr_snapshot"
+    block: BillingOps
+    family: StripeOps80
+    description: "Tira snapshot do MRR atual"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-060
+    name: "billing_arr_forecast"
+    block: BillingOps
+    family: StripeOps80
+    description: "Projeta ARR baseado em MRR atual e churn"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-061
+    name: "billing_churn_report"
+    block: BillingOps
+    family: StripeOps80
+    description: "Relatório de churn por período e segmento"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-062
+    name: "billing_expansion_revenue"
+    block: BillingOps
+    family: StripeOps80
+    description: "Calcula expansion revenue (upgrades)"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-063
+    name: "billing_contraction_revenue"
+    block: BillingOps
+    family: StripeOps80
+    description: "Calcula contraction revenue (downgrades)"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-064
+    name: "billing_new_mrr"
+    block: BillingOps
+    family: StripeOps80
+    description: "Calcula new MRR de novos customers"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-065
+    name: "billing_reactivation_track"
+    block: BillingOps
+    family: StripeOps80
+    description: "Rastreia reativações de customers cancelados"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-066
+    name: "billing_cohort_retention"
+    block: BillingOps
+    family: StripeOps80
+    description: "Analisa retenção por cohort de assinantes"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-067
+    name: "billing_plan_mix_report"
+    block: BillingOps
+    family: StripeOps80
+    description: "Distribuição de receita por plano"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-068
+    name: "billing_payment_failure_report"
+    block: BillingOps
+    family: StripeOps80
+    description: "Relatório de falhas de pagamento por motivo"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-069
+    name: "billing_recovery_rate"
+    block: BillingOps
+    family: StripeOps80
+    description: "Taxa de recovery de pagamentos falhados"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-070
+    name: "billing_ltv_by_plan"
+    block: BillingOps
+    family: StripeOps80
+    description: "LTV médio por plano de assinatura"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-071
+    name: "billing_webhook_list"
+    block: BillingOps
+    family: StripeOps80
+    description: "Lista webhooks configurados e seus status"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-072
+    name: "billing_webhook_test"
+    block: BillingOps
+    family: StripeOps80
+    description: "Testa webhook com evento simulado"
+    stage: validation
+    idempotent: true
+  - action_id: PAY-073
+    name: "billing_webhook_retry"
+    block: BillingOps
+    family: StripeOps80
+    description: "Retenta entrega de webhook falhado"
+    stage: repair
+    idempotent: false
+  - action_id: PAY-074
+    name: "billing_data_export"
+    block: BillingOps
+    family: StripeOps80
+    description: "Exporta dados de billing para análise externa"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-075
+    name: "billing_audit_trail"
+    block: BillingOps
+    family: StripeOps80
+    description: "Gera trilha de auditoria de eventos de billing"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-076
+    name: "billing_compliance_report"
+    block: BillingOps
+    family: StripeOps80
+    description: "Relatório de conformidade fiscal e regulatória"
+    stage: inspection
+    idempotent: true
+  - action_id: PAY-077
+    name: "billing_quota_enforcement"
+    block: BillingOps
+    family: StripeOps80
+    description: "Aplica limite de quota baseado no plano"
+    stage: preflight
+    idempotent: true
+  - action_id: PAY-078
+    name: "billing_overage_charge"
+    block: BillingOps
+    family: StripeOps80
+    description: "Cobra excedente de uso além da quota"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-079
+    name: "billing_notification_configure"
+    block: BillingOps
+    family: StripeOps80
+    description: "Configura notificações de billing por evento"
+    stage: execute
+    idempotent: false
+  - action_id: PAY-080
+    name: "billing_final_receipt"
+    block: BillingOps
+    family: StripeOps80
+    description: "Recibo final de billing — fecha ciclo canônico"
+    stage: teardown
+    idempotent: true
