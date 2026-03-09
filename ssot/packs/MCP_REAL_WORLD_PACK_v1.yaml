@@ -1,0 +1,55 @@
+ssot_id: MCP_REAL_WORLD_PACK_v1
+version: v1
+status: CANONICAL
+created_at: "2026-03-09"
+
+meta:
+  title: "MCP Real World Pack — 8+ MCPs casos reais"
+  sistema: NANUCAI OG10
+  pointer_elite: "ssot/mcp/MCP_ELITE_25_CANON.yaml"
+
+packs:
+
+  pack_desenvolvimento:
+    nome: "Dev Pack"
+    mcps:
+      - {id: "MCP_Context7x", uso: "documentacao APIs em tempo real", score: 9.2}
+      - {id: "MCP_TestSprite", uso: "geracao e execucao de testes", score: 9.5}
+      - {id: "MCP_Patch_Generate", uso: "patch-first str_replace", score: 9.3}
+      - {id: "MCP_Undo_Token_Create", uso: "rollback atomico", score: 10.0}
+      - {id: "MCP_Ralph_Loop", uso: "retry inteligente max 3x", score: 9.1}
+
+  pack_pesquisa:
+    nome: "Research Pack"
+    mcps:
+      - {id: "MCP_Firecrawl", uso: "web scraping estruturado", score: 9.5}
+      - {id: "MCP_Brave_Search", uso: "busca web privada", score: 9.0}
+      - {id: "MCP_MCPContext", uso: "contexto enriquecido", score: 9.4}
+
+  pack_seguranca:
+    nome: "Security Pack"
+    mcps:
+      - {id: "MCP_Coca_Guard", uso: "scan secrets + COCA-COLA", score: 10.0}
+      - {id: "MCP_Sentry_Debug", uso: "debug e monitoramento", score: 10.0}
+      - {id: "MCP_Evidence_Seal", uso: "selar evidencias", score: 10.0}
+      - {id: "MCP_AgentZero_Preflight", uso: "validacao pre-execucao", score: 9.8}
+
+  pack_memoria:
+    nome: "Memory Pack"
+    mcps:
+      - {id: "MCP_PHDMat_Full", uso: "memoria permanente persistente", score: 10.0}
+      - {id: "MCP_Cache_Quantum_Lookup", uso: "cache lookup L0", score: 9.9}
+      - {id: "MCP_Context_Compressor_Serena", uso: "compressao contexto", score: 9.6}
+
+  pack_execucao:
+    nome: "Execution Pack"
+    mcps:
+      - {id: "MCP_Playwright", uso: "browser automation", score: 9.5}
+      - {id: "MCP_Thinking_OpenAI", uso: "reasoning chain O1", score: 10.0}
+      - {id: "MCP_Thinking_Anthropic", uso: "reasoning chain Claude", score: 10.0}
+      - {id: "MCP_Rollback_Execute", uso: "rollback atomico execucao", score: 10.0}
+
+invariants:
+  - "Todos MCPs passam por Doctor1 antes de producao"
+  - "Pack nao substitui allowlist — MCP fora da allowlist = BLOCK"
+  - "Score < 8.5 nao entra em pack de producao"
