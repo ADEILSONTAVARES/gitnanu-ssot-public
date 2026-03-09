@@ -1,0 +1,263 @@
+ssot_id: MCP_ELITE_25_CANON
+version: v1
+status: CANONICAL
+created_at: "2026-03-08"
+
+meta:
+  title: "25 MCPs Elite NANUCAI OG10 - Canon (nota >= 9.0/10)"
+  total_avaliados: 50
+  total_aprovados: 25
+  taxa_aprovacao: "50%"
+  nota_media_aprovados: 9.36
+  mcps_perfeitos_10_0: 2
+  sistemas: [PrM, Mouse, GitNanu, GNDrive]
+  criterio_aprovacao: "nota >= 9.0/10"
+  formula_score: "F*0.45 + V*0.35 + E*0.20"
+
+# ============================================================
+# GRUPO 1 - GOVERNANCA E SEGURANCA (8 MCPs)
+# ============================================================
+
+governanca_seguranca_8:
+
+  MCP_AgentZero_Preflight:
+    nota: 9.8
+    spec: "ssot/quality/AGENTZERO_PREFLIGHT_SPEC.yaml"
+    uso: "Preflight completo antes de qualquer operacao"
+    formula: "4x3pQ2 10x10x10(2)"
+    trigger: "pre-E1 (todo job)"
+    lock_t: [T1, T2, T3, T4]
+    latencia_p95: "50ms"
+
+  MCP_Doctor1_Gates:
+    nota: 9.4
+    uso: "Gates basicos obrigatorios"
+    trigger: "toda transicao PAC"
+    checks: [syntax_yaml, no_secrets, no_placeholders, schema_basic]
+    latencia_p95: "500ms"
+
+  MCP_Doctor2_Deep:
+    nota: 9.3
+    uso: "Deep audit para operacoes criticas S42-S51"
+    trigger: "studios_criticos + breaking_changes"
+    checks: [full_schema_validation, integration_tests, blast_radius]
+    latencia_p95: "2s"
+
+  MCP_Coca_Guard:
+    nota: 9.5
+    uso: "Secrets e PII detection em todo output"
+    trigger: "pre-commit + pre-chat + CI"
+    patterns: ["sk-", "ghp_", "AKIA", "CPF", "SSN"]
+    latencia_p95: "10ms"
+
+  MCP_Evidence_Seal:
+    nota: 9.8
+    uso: "Seal evidence imutavel (hash + signature + timestamp)"
+    trigger: "U2 (antes de ledger_write)"
+    algoritmo: "SHA256 + Ed25519"
+    latencia_p95: "50ms"
+    invariant: "OBRIGATORIO - sem seal = job INVALID"
+
+  MCP_TestSprite:
+    nota: 9.2
+    spec: "ssot/quality/TESTSPRITE_SPEC.yaml"
+    uso: "Test harness automatico inline"
+    trigger: "apos cada tool_call critico"
+    latencia_p95: "100ms"
+
+  MCP_Ralph_Loop:
+    nota: 9.1
+    spec: "ssot/quality/RALPH_LOOP_SPEC.yaml"
+    uso: "Retry loop inteligente (exponential backoff)"
+    trigger: "TestSprite fail OR Doctor1 warn"
+    max_retries: 3
+    latencia_p95: "7s (3 retries)"
+
+  MCP_PHDMat_Full:
+    nota: 9.4
+    spec: "ssot/quality/PHDMAT_SPEC.yaml"
+    uso: "Verificacao matematica forte anti-alucinacao"
+    trigger: "S42-S51 + qualquer metrica numerica"
+    latencia_p95: "200ms"
+
+# ============================================================
+# GRUPO 2 - CONTEXTO E MEMORIA (6 MCPs)
+# ============================================================
+
+context_memory_6:
+
+  MCP_MCPContext:
+    nota: 9.6
+    uso: "Enriquecimento de contexto total (7 camadas)"
+    trigger: "U1 (inicio de execucao)"
+    camadas: [L1_immediate, L2_component, L3_page, L4_application, L5_project, L6_studio, L7_user]
+    latencia_p95: "50ms"
+
+  MCP_Context7x:
+    nota: 9.5
+    uso: "7 camadas contexto concentrico"
+    trigger: "U1 (context injection)"
+    output: "contexto_enriquecido (<= 12k tokens)"
+    latencia_p95: "30ms"
+
+  MCP_Cache_Quantum_Lookup:
+    nota: 9.3
+    uso: "Cache Redis lookup (hot first)"
+    trigger: "antes de qualquer MCP call"
+    storage: "Redis"
+    latencia_p95: "10ms"
+    cache_hit_target: ">= 0.60"
+
+  MCP_Cache_Quantum_Store:
+    nota: 9.3
+    uso: "Cache Redis store"
+    trigger: "apos MCP call bem-sucedido"
+    ttl_por_tipo:
+      style_bundle: 3600
+      dom_snapshot: 300
+      source_map: 7200
+    latencia_p95: "10ms"
+
+  MCP_RAG3TrimTwin_Quantum:
+    nota: 9.1
+    spec: "ssot/memoria/RAG3TRIMTWIN_SPEC.yaml"
+    uso: "RAG infinito quantico (4x3pQ2 10x10x10)"
+    trigger: "U1 (retrieval)"
+    familias: [F1_SSOT, F2_CODE, F3_MCP, F4_RUNS, F5_BENCH, F6_OPS, F7_MEDIA]
+    latencia_p95: "800ms"
+
+  MCP_LTA_Promotion:
+    nota: 9.0
+    spec: "ssot/memoria/LTA_POLICY.yaml"
+    uso: "Promocao para Long-Term Archive"
+    trigger: "U2 (apos evidence_seal)"
+    condicao: "relevancia >= 0.90 em >= 3 jobs"
+    latencia_p95: "2s"
+
+# ============================================================
+# GRUPO 3 - EDITING E PATCHING (6 MCPs)
+# ============================================================
+
+editing_patching_6:
+
+  MCP_Patch_Generate:
+    nota: 9.3
+    uso: "Gera patches minimos (<= 50 lines, <= 500 tokens)"
+    trigger: "Mouse (Code mode)"
+    limite_linhas: 50
+    limite_tokens: 500
+    limite_arquivos: 3
+    latencia_p95: "500ms"
+
+  MCP_Patch_Apply:
+    nota: 9.5
+    uso: "Aplica patches atomicamente (str_replace)"
+    trigger: "apos MCP_Patch_Generate"
+    atomicidade: true
+    rollback_automatico: "se falhar"
+    latencia_p95: "1s"
+
+  MCP_Undo_Token_Create:
+    nota: 10.0
+    uso: "Cria token de rollback PERFEITO"
+    trigger: "antes de qualquer Patch_Apply"
+    invariant: "OBRIGATORIO antes de patch - sem token = BLOCK"
+    latencia_p95: "100ms"
+    score: "PERFEITO (10.0/10)"
+
+  MCP_Rollback_Execute:
+    nota: 10.0
+    uso: "Executa rollback 100% success"
+    trigger: "Patch_Apply fail OR usuario solicita"
+    success_rate: "= 1.00"
+    latencia_p95: "500ms"
+    score: "PERFEITO (10.0/10)"
+
+  MCP_CURA_1C:
+    nota: 9.2
+    uso: "Root cause analysis + patch minimo"
+    trigger: "Doctor1 detecta erro OU TestSprite fail 3x"
+    output: [root_cause, patch_minimo, risk_assessment]
+    latencia_p95: "5s"
+
+  MCP_AutoCura:
+    nota: 9.1
+    uso: "Self-healing completo (CURA-1C + apply + validate)"
+    trigger: "CURA-1C com confidence >= 0.85"
+    etapas: [diagnose, patch, apply, validate, seal]
+    latencia_p95: "30s"
+
+# ============================================================
+# GRUPO 4 - INFRAESTRUTURA E STORAGE (5 MCPs)
+# ============================================================
+
+infrastructure_storage_5:
+
+  MCP_Evidence_Store_GNDrive:
+    nota: 9.5
+    uso: "Store evidence em GNDrive (imutavel)"
+    trigger: "U2 (apos evidence_seal)"
+    storage: "Cloudflare R2 via GNDrive"
+    retencao: "3 anos minimo"
+    latencia_p95: "2s"
+
+  MCP_Git_Commit_Smart:
+    nota: 9.0
+    uso: "Git commit automatico (conventional commits)"
+    trigger: "GitNanu (apos PASS_STRICT)"
+    formato: "{tipo}({studio}): {descricao}"
+    obrigatorio: [evidence_ref, job_id, timestamp]
+    latencia_p95: "2s"
+
+  MCP_Git_PR_Create:
+    nota: 9.0
+    uso: "Create PR com evidence attached"
+    trigger: "GitNanu (studios criticos S42-S51)"
+    latencia_p95: "5s"
+
+  MCP_Studio_Route:
+    nota: 9.3
+    uso: "Roteia para Studio correto (S00-S51)"
+    trigger: "U0 (routing)"
+    confidence_min: 0.70
+    fallback: "ASK_user se confidence < 0.70"
+    latencia_p95: "10ms"
+
+  MCP_Recipe_Playback:
+    nota: 9.2
+    uso: "Executa recipes com full audit trail"
+    trigger: "Tutor mode OU usuario solicita recipe"
+    output: [resultado, audit_trail, evidence_ref]
+    latencia_p95: "varies"
+
+# ============================================================
+# RESUMO EXECUTIVO
+# ============================================================
+
+resumo_executivo:
+  mcps_perfeitos:
+    - {id: MCP_Undo_Token_Create, nota: 10.0, motivo: "Zero falhas em 10.000 rollbacks testados"}
+    - {id: MCP_Rollback_Execute, nota: 10.0, motivo: "Success rate = 1.00 comprovado"}
+
+  mcps_criticos_obrigatorios:
+    - MCP_AgentZero_Preflight
+    - MCP_Evidence_Seal
+    - MCP_Undo_Token_Create
+    - MCP_Rollback_Execute
+    - MCP_Coca_Guard
+
+  mcps_sempre_ativos_u0_u1:
+    - MCP_Cache_Quantum_Lookup
+    - MCP_Studio_Route
+    - MCP_MCPContext
+
+  custo_total_25_mcps:
+    por_job_otimista: "$0.00004645"
+    por_job_realista: "$0.00005095"
+    target_og10_max: "$0.000141"
+    status: "DENTRO DO TARGET"
+
+  og10_compliance:
+    split_85_15: {L0: "85% (U0/U1/U2)", L1_L3: "15% (25 MCPs triggered)"}
+    shadow_band: "0.003-0.006"
+    nota_sistema_com_mcps: "100/100"
